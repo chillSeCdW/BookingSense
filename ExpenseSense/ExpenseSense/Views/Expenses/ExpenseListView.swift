@@ -11,16 +11,16 @@ import SwiftData
 struct ExpenseListView: View {
   @Environment(\.modelContext) private var modelContext
   @Query private var entries: [ExpenseEntry]
-  
+
   var body: some View {
     NavigationSplitView {
       List {
         ForEach(entries) { entry in
           NavigationLink {
-            Text("Item at \(entry.name), \(entry.amount)")
+            ExpenseEntryView(expenseEntry: entry)
           } label: {
-            Text("\(entry.name)  \(entry.amount.formatted(.currency(code: "USD")))")
-          }
+            Text("\(entry.name)  \(entry.amount) - \(entry.interval)")
+          }.listRowBackground(Color(UIColor.random()))
         }
         .onDelete(perform: deleteItems)
       }
@@ -38,10 +38,15 @@ struct ExpenseListView: View {
       Text("Select an item")
     }
   }
-  
+
   private func addItem() {
       withAnimation {
-        let newItem = ExpenseEntry(name: "testName", amount: 10.0, interval: .weekly)
+        let newItem = ExpenseEntry(
+          name: "testName",
+          amount: 10.0,
+          amountPrefix: .plus,
+          interval: .weekly
+        )
         modelContext.insert(newItem)
       }
   }
@@ -58,4 +63,15 @@ struct ExpenseListView: View {
 #Preview {
   ExpenseListView()
         .modelContainer(for: ExpenseEntry.self, inMemory: true)
+}
+
+extension UIColor {
+    static func random() -> UIColor {
+        return UIColor(
+          red: .random(in: 0...1),
+          green: .random(in: 0...1),
+          blue: .random(in: 0...1),
+          alpha: 1.0
+        )
+    }
 }

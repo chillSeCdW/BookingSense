@@ -12,11 +12,13 @@
 		B915DC472BB46B950018E812 /* ExpenseListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B915DC462BB46B950018E812 /* ExpenseListView.swift */; };
 		B915DC492BB46E350018E812 /* OverviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B915DC482BB46E350018E812 /* OverviewView.swift */; };
 		B915DC4F2BB479190018E812 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = B915DC4E2BB479180018E812 /* Constants.swift */; };
+		B919B4A22BC6AA47009B2FA4 /* ExpenseEntryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B919B4A12BC6AA47009B2FA4 /* ExpenseEntryView.swift */; };
 		B9DAFAD52BA8AFAF000486EA /* ExpenseSenseApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9DAFAD42BA8AFAF000486EA /* ExpenseSenseApp.swift */; };
 		B9DAFAD72BA8AFAF000486EA /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9DAFAD62BA8AFAF000486EA /* ContentView.swift */; };
 		B9DAFAD92BA8AFAF000486EA /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9DAFAD82BA8AFAF000486EA /* Item.swift */; };
 		B9DAFADB2BA8AFAF000486EA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B9DAFADA2BA8AFAF000486EA /* Assets.xcassets */; };
 		B9DAFADF2BA8AFAF000486EA /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B9DAFADE2BA8AFAF000486EA /* Preview Assets.xcassets */; };
+		B9DE5B7F2BC6E7740017ACF4 /* AmountPrefix.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9DE5B7E2BC6E7740017ACF4 /* AmountPrefix.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -25,6 +27,7 @@
 		B915DC462BB46B950018E812 /* ExpenseListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpenseListView.swift; sourceTree = "<group>"; };
 		B915DC482BB46E350018E812 /* OverviewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverviewView.swift; sourceTree = "<group>"; };
 		B915DC4E2BB479180018E812 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		B919B4A12BC6AA47009B2FA4 /* ExpenseEntryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpenseEntryView.swift; sourceTree = "<group>"; };
 		B9DAFAD12BA8AFAF000486EA /* ExpenseSense.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ExpenseSense.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B9DAFAD42BA8AFAF000486EA /* ExpenseSenseApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpenseSenseApp.swift; sourceTree = "<group>"; };
 		B9DAFAD62BA8AFAF000486EA /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -32,6 +35,7 @@
 		B9DAFADA2BA8AFAF000486EA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B9DAFADC2BA8AFAF000486EA /* ExpenseSense.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ExpenseSense.entitlements; sourceTree = "<group>"; };
 		B9DAFADE2BA8AFAF000486EA /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		B9DE5B7E2BC6E7740017ACF4 /* AmountPrefix.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AmountPrefix.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -48,8 +52,8 @@
 		B915DC4C2BB46E790018E812 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				B915DC462BB46B950018E812 /* ExpenseListView.swift */,
-				B915DC482BB46E350018E812 /* OverviewView.swift */,
+				B919B4A42BC6AAAA009B2FA4 /* Expenses */,
+				B919B4A32BC6AAA3009B2FA4 /* Overview */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -60,8 +64,26 @@
 				B915DC402BB459260018E812 /* ExpenseEntry.swift */,
 				B915DC442BB4644A0018E812 /* Interval.swift */,
 				B915DC4E2BB479180018E812 /* Constants.swift */,
+				B9DE5B7E2BC6E7740017ACF4 /* AmountPrefix.swift */,
 			);
 			path = Data;
+			sourceTree = "<group>";
+		};
+		B919B4A32BC6AAA3009B2FA4 /* Overview */ = {
+			isa = PBXGroup;
+			children = (
+				B915DC482BB46E350018E812 /* OverviewView.swift */,
+			);
+			path = Overview;
+			sourceTree = "<group>";
+		};
+		B919B4A42BC6AAAA009B2FA4 /* Expenses */ = {
+			isa = PBXGroup;
+			children = (
+				B915DC462BB46B950018E812 /* ExpenseListView.swift */,
+				B919B4A12BC6AA47009B2FA4 /* ExpenseEntryView.swift */,
+			);
+			path = Expenses;
 			sourceTree = "<group>";
 		};
 		B9DAFAC82BA8AFAF000486EA = {
@@ -113,12 +135,15 @@
 				B9DAFACD2BA8AFAF000486EA /* Sources */,
 				B9DAFACE2BA8AFAF000486EA /* Frameworks */,
 				B9DAFACF2BA8AFAF000486EA /* Resources */,
+				B919B4AB2BC6B1F5009B2FA4 /* ShellScript */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
 			name = ExpenseSense;
+			packageProductDependencies = (
+			);
 			productName = ExpenseSense;
 			productReference = B9DAFAD12BA8AFAF000486EA /* ExpenseSense.app */;
 			productType = "com.apple.product-type.application";
@@ -147,6 +172,9 @@
 				Base,
 			);
 			mainGroup = B9DAFAC82BA8AFAF000486EA;
+			packageReferences = (
+				B919B4A82BC6B1B2009B2FA4 /* XCRemoteSwiftPackageReference "SwiftLint" */,
+			);
 			productRefGroup = B9DAFAD22BA8AFAF000486EA /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -168,6 +196,27 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		B919B4AB2BC6B1F5009B2FA4 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if [[ \"$(uname -m)\" == arm64 ]]; then\n    export PATH=\"/opt/homebrew/bin:$PATH\"\nfi\n\nif which swiftlint > /dev/null; then\n  swiftlint\nelse\n  echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		B9DAFACD2BA8AFAF000486EA /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -178,8 +227,10 @@
 				B9DAFAD72BA8AFAF000486EA /* ContentView.swift in Sources */,
 				B9DAFAD92BA8AFAF000486EA /* Item.swift in Sources */,
 				B9DAFAD52BA8AFAF000486EA /* ExpenseSenseApp.swift in Sources */,
+				B9DE5B7F2BC6E7740017ACF4 /* AmountPrefix.swift in Sources */,
 				B915DC412BB459260018E812 /* ExpenseEntry.swift in Sources */,
 				B915DC492BB46E350018E812 /* OverviewView.swift in Sources */,
+				B919B4A22BC6AA47009B2FA4 /* ExpenseEntryView.swift in Sources */,
 				B915DC4F2BB479190018E812 /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -313,6 +364,7 @@
 				DEVELOPMENT_TEAM = 5LGL268AY8;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_CFBundleDisplayName = ExpenseSense;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.finance";
@@ -329,7 +381,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 17.4;
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 14.0;
+				MACOSX_DEPLOYMENT_TARGET = 14.4;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.chill.ExpenseSense;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -354,6 +406,7 @@
 				DEVELOPMENT_TEAM = 5LGL268AY8;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_CFBundleDisplayName = ExpenseSense;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.finance";
@@ -370,7 +423,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 17.4;
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 14.0;
+				MACOSX_DEPLOYMENT_TARGET = 14.4;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.chill.ExpenseSense;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -405,6 +458,17 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		B919B4A82BC6B1B2009B2FA4 /* XCRemoteSwiftPackageReference "SwiftLint" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/realm/SwiftLint.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.54.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
 	};
 	rootObject = B9DAFAC92BA8AFAF000486EA /* Project object */;
 }
