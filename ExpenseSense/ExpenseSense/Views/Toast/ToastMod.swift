@@ -19,7 +19,7 @@ struct ToastMod: ViewModifier {
       .overlay(
         ZStack {
           mainToastView()
-            .offset(y: 0)
+            .offset(y: 630)
         }.animation(.spring(), value: toast)
       )
       .onChange(of: toast) {
@@ -39,7 +39,7 @@ struct ToastMod: ViewModifier {
         }
         Spacer()
       }
-       .transition(.move(edge: .top))
+      .transition(.move(edge: .trailing))
     }
   }
 
