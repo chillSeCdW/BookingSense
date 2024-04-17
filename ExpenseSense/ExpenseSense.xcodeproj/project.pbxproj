@@ -13,6 +13,10 @@
 		B915DC492BB46E350018E812 /* OverviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B915DC482BB46E350018E812 /* OverviewView.swift */; };
 		B915DC4F2BB479190018E812 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = B915DC4E2BB479180018E812 /* Constants.swift */; };
 		B919B4A22BC6AA47009B2FA4 /* ExpenseEntryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B919B4A12BC6AA47009B2FA4 /* ExpenseEntryView.swift */; };
+		B9BE668C2BCFF03D0063734E /* ToastStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9BE668B2BCFF03D0063734E /* ToastStyle.swift */; };
+		B9BE668E2BCFF0700063734E /* Toast.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9BE668D2BCFF0700063734E /* Toast.swift */; };
+		B9BE66902BCFF0B90063734E /* ToastView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9BE668F2BCFF0B90063734E /* ToastView.swift */; };
+		B9BE66922BCFF1CB0063734E /* ToastMod.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9BE66912BCFF1CB0063734E /* ToastMod.swift */; };
 		B9DAFAD52BA8AFAF000486EA /* ExpenseSenseApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9DAFAD42BA8AFAF000486EA /* ExpenseSenseApp.swift */; };
 		B9DAFAD72BA8AFAF000486EA /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9DAFAD62BA8AFAF000486EA /* ContentView.swift */; };
 		B9DAFAD92BA8AFAF000486EA /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9DAFAD82BA8AFAF000486EA /* Item.swift */; };
@@ -28,6 +32,10 @@
 		B915DC482BB46E350018E812 /* OverviewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverviewView.swift; sourceTree = "<group>"; };
 		B915DC4E2BB479180018E812 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		B919B4A12BC6AA47009B2FA4 /* ExpenseEntryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpenseEntryView.swift; sourceTree = "<group>"; };
+		B9BE668B2BCFF03D0063734E /* ToastStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToastStyle.swift; sourceTree = "<group>"; };
+		B9BE668D2BCFF0700063734E /* Toast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Toast.swift; sourceTree = "<group>"; };
+		B9BE668F2BCFF0B90063734E /* ToastView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToastView.swift; sourceTree = "<group>"; };
+		B9BE66912BCFF1CB0063734E /* ToastMod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToastMod.swift; sourceTree = "<group>"; };
 		B9DAFAD12BA8AFAF000486EA /* ExpenseSense.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ExpenseSense.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B9DAFAD42BA8AFAF000486EA /* ExpenseSenseApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpenseSenseApp.swift; sourceTree = "<group>"; };
 		B9DAFAD62BA8AFAF000486EA /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -52,6 +60,7 @@
 		B915DC4C2BB46E790018E812 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				B9BE668A2BCFEFF70063734E /* Toast */,
 				B919B4A42BC6AAAA009B2FA4 /* Expenses */,
 				B919B4A32BC6AAA3009B2FA4 /* Overview */,
 			);
@@ -61,6 +70,8 @@
 		B915DC4D2BB46EA50018E812 /* Data */ = {
 			isa = PBXGroup;
 			children = (
+				B9BE668B2BCFF03D0063734E /* ToastStyle.swift */,
+				B9BE668D2BCFF0700063734E /* Toast.swift */,
 				B915DC402BB459260018E812 /* ExpenseEntry.swift */,
 				B915DC442BB4644A0018E812 /* Interval.swift */,
 				B915DC4E2BB479180018E812 /* Constants.swift */,
@@ -84,6 +95,15 @@
 				B919B4A12BC6AA47009B2FA4 /* ExpenseEntryView.swift */,
 			);
 			path = Expenses;
+			sourceTree = "<group>";
+		};
+		B9BE668A2BCFEFF70063734E /* Toast */ = {
+			isa = PBXGroup;
+			children = (
+				B9BE668F2BCFF0B90063734E /* ToastView.swift */,
+				B9BE66912BCFF1CB0063734E /* ToastMod.swift */,
+			);
+			path = Toast;
 			sourceTree = "<group>";
 		};
 		B9DAFAC82BA8AFAF000486EA = {
@@ -213,7 +233,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "if [[ \"$(uname -m)\" == arm64 ]]; then\n    export PATH=\"/opt/homebrew/bin:$PATH\"\nfi\n\nif which swiftlint > /dev/null; then\n  swiftlint\nelse\n  echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
+			shellScript = "if [[ \"$(uname -m)\" == arm64 ]]; then\n    export PATH=\"/opt/homebrew/bin:$PATH\"\nfi\n\nif which swiftlint > /dev/null; then\n  swiftlint --fix && swiftlint\nelse\n  echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -223,10 +243,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				B915DC452BB4644A0018E812 /* Interval.swift in Sources */,
+				B9BE668E2BCFF0700063734E /* Toast.swift in Sources */,
+				B9BE668C2BCFF03D0063734E /* ToastStyle.swift in Sources */,
 				B915DC472BB46B950018E812 /* ExpenseListView.swift in Sources */,
+				B9BE66922BCFF1CB0063734E /* ToastMod.swift in Sources */,
 				B9DAFAD72BA8AFAF000486EA /* ContentView.swift in Sources */,
 				B9DAFAD92BA8AFAF000486EA /* Item.swift in Sources */,
 				B9DAFAD52BA8AFAF000486EA /* ExpenseSenseApp.swift in Sources */,
+				B9BE66902BCFF0B90063734E /* ToastView.swift in Sources */,
 				B9DE5B7F2BC6E7740017ACF4 /* AmountPrefix.swift in Sources */,
 				B915DC412BB459260018E812 /* ExpenseEntry.swift in Sources */,
 				B915DC492BB46E350018E812 /* OverviewView.swift in Sources */,

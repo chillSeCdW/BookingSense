@@ -12,12 +12,16 @@ struct ExpenseListView: View {
   @Environment(\.modelContext) private var modelContext
   @Query private var entries: [ExpenseEntry]
 
+  @State private var toast: Toast?
+
   var body: some View {
     NavigationSplitView {
       List {
         ForEach(entries) { entry in
           NavigationLink {
-            ExpenseEntryView(expenseEntry: entry)
+            ExpenseEntryView(expenseEntry: entry) { toastType in
+              createToast(toastType: toastType)
+            }
           } label: {
             Text("\(entry.name)  \(entry.amount) - \(entry.interval)")
           }.listRowBackground(Color(UIColor.random()))
@@ -36,14 +40,14 @@ struct ExpenseListView: View {
       }
     } detail: {
       Text("Select an item")
-    }
+    }.toastView(toast: $toast)
   }
 
   private func addItem() {
       withAnimation {
         let newItem = ExpenseEntry(
           name: "testName",
-          amount: 10.0,
+          amount: Decimal(10.1),
           amountPrefix: .plus,
           interval: .weekly
         )
@@ -57,6 +61,18 @@ struct ExpenseListView: View {
               modelContext.delete(entries[index])
           }
       }
+  }
+
+  private func createToast(toastType: ToastStyle) {
+    switch toastType {
+    case .success:
+      toast = Toast(style: .success, message: "Saved.", width: 160)
+    case .info:
+      toast = Toast(style: .info, message: "Saved.", width: 160)
+    case .error:
+      toast = Toast(style: .error, message: "Something went wrong while saving.", width: 160)
+    }
+
   }
 }
 

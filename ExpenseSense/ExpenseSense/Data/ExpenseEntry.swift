@@ -17,11 +17,11 @@ final class ExpenseEntry: Codable {
   @Attribute(.unique)
   var id: String
   var name: String
-  var amount: Float
+  var amount: Decimal
   var amountPrefix: AmountPrefix
   var interval: Interval
 
-  init(name: String, amount: Float, amountPrefix: AmountPrefix, interval: Interval) {
+  init(name: String, amount: Decimal, amountPrefix: AmountPrefix, interval: Interval) {
     self.id = UUID().uuidString
     self.name = name
     self.amount = amount
@@ -33,7 +33,7 @@ final class ExpenseEntry: Codable {
     let container = try decoder.container(keyedBy: CodingKeys.self)
     id = try container.decode(String.self, forKey: .id)
     name = try container.decode(String.self, forKey: .name)
-    amount = try container.decode(Float.self, forKey: .amount)
+    amount = try container.decode(Decimal.self, forKey: .amount)
     amountPrefix = try container.decode(AmountPrefix.self, forKey: .amountPrefix)
     interval = try container.decode(Interval.self, forKey: .interval)
   }
