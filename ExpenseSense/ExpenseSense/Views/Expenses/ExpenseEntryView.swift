@@ -11,7 +11,7 @@ import SwiftData
 
 struct ExpenseEntryView: View {
   @Bindable var expenseEntry: ExpenseEntry
-  var onCancelTapped: ((ToastStyle) -> Void)
+  var showToast: ((ToastStyle, String) -> Void)
 
   @State private var name: String = ""
   @State private var amountPrefix: AmountPrefix = .plus
@@ -19,11 +19,13 @@ struct ExpenseEntryView: View {
   @State private var interval: Interval = .monthly
 
   func save() {
-    print(Locale.current.groupingSeparator!)
-    print(Locale.current.decimalSeparator!)
     let parsedAmount = try? Decimal(amount, format: Decimal.FormatStyle(locale: Locale.current))
-    if parsedAmount != nil {
-      onCancelTapped(.success)
+    if checkIfAmountWasTransformed(amount, parsedDecimal: parsedAmount) {
+      showToast(.info,
+                     "Amount parsed to: \(parsedAmount?.formatted() ?? ""). Check your Settings -> Language & Region -> Number Format to use the correct Decimal separator for your region."
+      )
+    } else {
+      showToast(.success, "successfully saved your Data.")
     }
     expenseEntry.name = name
     expenseEntry.amountPrefix = amountPrefix
@@ -51,7 +53,7 @@ struct ExpenseEntryView: View {
           Text("Amount")
         }
         .textFieldStyle(RoundedBorderTextFieldStyle())
-        .keyboardType(.numbersAndPunctuation)
+        .keyboardType(.decimalPad)
         .onAppear {
           name = expenseEntry.name
           amountPrefix = expenseEntry.amountPrefix
@@ -77,6 +79,19 @@ struct ExpenseEntryView: View {
      let locale = NSLocale(localeIdentifier: code)
     return locale.displayName(forKey: NSLocale.Key.currencySymbol, value: code)
   }
+
+  func checkIfAmountWasTransformed(_ amountStr: String, parsedDecimal: Decimal?) -> Bool {
+    if parsedDecimal != nil {
+      if (0...2).contains(amountStr.components(separatedBy: Locale.current.decimalSeparator!).count) {
+        return false
+      }
+      if amountStr.elementsEqual(parsedDecimal!.formatted()) {
+        return false
+      }
+      return true
+    }
+    return false
+  }
 }
 
 #Preview {
@@ -85,7 +100,7 @@ struct ExpenseEntryView: View {
     amount: Decimal(string: "15,35", locale: Locale(identifier: Locale.current.identifier)) ?? Decimal(),
     amountPrefix: .plus,
     interval: .weekly)
-  ) { _ in
+  ) { _, _ in
 
   }
     .modelContainer(for: ExpenseEntry.self, inMemory: true)

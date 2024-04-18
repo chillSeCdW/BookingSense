@@ -10,6 +10,7 @@ import SwiftData
 
 struct ExpenseListView: View {
   @Environment(\.modelContext) private var modelContext
+  @Environment(Constants.self) private var constants
   @Query private var entries: [ExpenseEntry]
 
   @State private var toast: Toast?
@@ -19,12 +20,12 @@ struct ExpenseListView: View {
       List {
         ForEach(entries) { entry in
           NavigationLink {
-            ExpenseEntryView(expenseEntry: entry) { toastType in
-              createToast(toastType: toastType)
+            ExpenseEntryView(expenseEntry: entry) { toastType, message in
+              createToast(toastType: toastType, message: message)
             }
           } label: {
-            Text("\(entry.name)  \(entry.amount) - \(entry.interval)")
-          }.listRowBackground(Color(UIColor.random()))
+            Text("\(entry.name) \(entry.amountPrefix.description)\(entry.amount.formatted()) - \(entry.interval)")
+          }.listRowBackground(Constants.init().listBackgroundColors[entry.amountPrefix])
         }
         .onDelete(perform: deleteItems)
       }
@@ -63,14 +64,14 @@ struct ExpenseListView: View {
       }
   }
 
-  private func createToast(toastType: ToastStyle) {
+  private func createToast(toastType: ToastStyle, message: String) {
     switch toastType {
     case .success:
-      toast = Toast(style: .success, message: "Saved.", width: 160)
+      toast = Toast(style: .success, title: "Success", message: message, width: 160)
     case .info:
-      toast = Toast(style: .info, message: "Saved.", width: 160)
+      toast = Toast(style: .info, title: "Info", message: message, duration: 10, width: 160)
     case .error:
-      toast = Toast(style: .error, message: "Something went wrong while saving.", width: 160)
+      toast = Toast(style: .error, title: "Error", message: message, duration: 10, width: 160)
     }
 
   }

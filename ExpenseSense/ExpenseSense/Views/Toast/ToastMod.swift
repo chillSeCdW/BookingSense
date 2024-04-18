@@ -32,7 +32,7 @@ struct ToastMod: ViewModifier {
       VStack {
         ToastView(
           type: toast.style,
-          title: "test",
+          title: toast.title,
           message: toast.message
         ) {
           dismissToast()
