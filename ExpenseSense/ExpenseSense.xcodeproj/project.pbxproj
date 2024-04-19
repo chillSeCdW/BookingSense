@@ -17,9 +17,9 @@
 		B9BE668E2BCFF0700063734E /* Toast.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9BE668D2BCFF0700063734E /* Toast.swift */; };
 		B9BE66902BCFF0B90063734E /* ToastView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9BE668F2BCFF0B90063734E /* ToastView.swift */; };
 		B9BE66922BCFF1CB0063734E /* ToastMod.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9BE66912BCFF1CB0063734E /* ToastMod.swift */; };
+		B9D534132BD2903500C3355F /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = B9D534122BD2903500C3355F /* Localizable.xcstrings */; };
 		B9DAFAD52BA8AFAF000486EA /* ExpenseSenseApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9DAFAD42BA8AFAF000486EA /* ExpenseSenseApp.swift */; };
 		B9DAFAD72BA8AFAF000486EA /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9DAFAD62BA8AFAF000486EA /* ContentView.swift */; };
-		B9DAFAD92BA8AFAF000486EA /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9DAFAD82BA8AFAF000486EA /* Item.swift */; };
 		B9DAFADB2BA8AFAF000486EA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B9DAFADA2BA8AFAF000486EA /* Assets.xcassets */; };
 		B9DAFADF2BA8AFAF000486EA /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B9DAFADE2BA8AFAF000486EA /* Preview Assets.xcassets */; };
 		B9DE5B7F2BC6E7740017ACF4 /* AmountPrefix.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9DE5B7E2BC6E7740017ACF4 /* AmountPrefix.swift */; };
@@ -36,10 +36,10 @@
 		B9BE668D2BCFF0700063734E /* Toast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Toast.swift; sourceTree = "<group>"; };
 		B9BE668F2BCFF0B90063734E /* ToastView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToastView.swift; sourceTree = "<group>"; };
 		B9BE66912BCFF1CB0063734E /* ToastMod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToastMod.swift; sourceTree = "<group>"; };
+		B9D534122BD2903500C3355F /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
 		B9DAFAD12BA8AFAF000486EA /* ExpenseSense.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ExpenseSense.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B9DAFAD42BA8AFAF000486EA /* ExpenseSenseApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpenseSenseApp.swift; sourceTree = "<group>"; };
 		B9DAFAD62BA8AFAF000486EA /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
-		B9DAFAD82BA8AFAF000486EA /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
 		B9DAFADA2BA8AFAF000486EA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B9DAFADC2BA8AFAF000486EA /* ExpenseSense.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ExpenseSense.entitlements; sourceTree = "<group>"; };
 		B9DAFADE2BA8AFAF000486EA /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
@@ -109,7 +109,14 @@
 		B9DAFAC82BA8AFAF000486EA = {
 			isa = PBXGroup;
 			children = (
-				B9DAFAD32BA8AFAF000486EA /* ExpenseSense */,
+				B9DAFADD2BA8AFAF000486EA /* Preview Content */,
+				B915DC4D2BB46EA50018E812 /* Data */,
+				B915DC4C2BB46E790018E812 /* Views */,
+				B9DAFAD42BA8AFAF000486EA /* ExpenseSenseApp.swift */,
+				B9DAFAD62BA8AFAF000486EA /* ContentView.swift */,
+				B9DAFADA2BA8AFAF000486EA /* Assets.xcassets */,
+				B9DAFADC2BA8AFAF000486EA /* ExpenseSense.entitlements */,
+				B9D534122BD2903500C3355F /* Localizable.xcstrings */,
 				B9DAFAD22BA8AFAF000486EA /* Products */,
 			);
 			sourceTree = "<group>";
@@ -120,21 +127,6 @@
 				B9DAFAD12BA8AFAF000486EA /* ExpenseSense.app */,
 			);
 			name = Products;
-			sourceTree = "<group>";
-		};
-		B9DAFAD32BA8AFAF000486EA /* ExpenseSense */ = {
-			isa = PBXGroup;
-			children = (
-				B9DAFADD2BA8AFAF000486EA /* Preview Content */,
-				B915DC4D2BB46EA50018E812 /* Data */,
-				B915DC4C2BB46E790018E812 /* Views */,
-				B9DAFAD42BA8AFAF000486EA /* ExpenseSenseApp.swift */,
-				B9DAFAD62BA8AFAF000486EA /* ContentView.swift */,
-				B9DAFAD82BA8AFAF000486EA /* Item.swift */,
-				B9DAFADA2BA8AFAF000486EA /* Assets.xcassets */,
-				B9DAFADC2BA8AFAF000486EA /* ExpenseSense.entitlements */,
-			);
-			path = ExpenseSense;
 			sourceTree = "<group>";
 		};
 		B9DAFADD2BA8AFAF000486EA /* Preview Content */ = {
@@ -190,6 +182,7 @@
 			knownRegions = (
 				en,
 				Base,
+				de,
 			);
 			mainGroup = B9DAFAC82BA8AFAF000486EA;
 			packageReferences = (
@@ -211,6 +204,7 @@
 			files = (
 				B9DAFADF2BA8AFAF000486EA /* Preview Assets.xcassets in Resources */,
 				B9DAFADB2BA8AFAF000486EA /* Assets.xcassets in Resources */,
+				B9D534132BD2903500C3355F /* Localizable.xcstrings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -248,7 +242,6 @@
 				B915DC472BB46B950018E812 /* ExpenseListView.swift in Sources */,
 				B9BE66922BCFF1CB0063734E /* ToastMod.swift in Sources */,
 				B9DAFAD72BA8AFAF000486EA /* ContentView.swift in Sources */,
-				B9DAFAD92BA8AFAF000486EA /* Item.swift in Sources */,
 				B9DAFAD52BA8AFAF000486EA /* ExpenseSenseApp.swift in Sources */,
 				B9BE66902BCFF0B90063734E /* ToastView.swift in Sources */,
 				B9DE5B7F2BC6E7740017ACF4 /* AmountPrefix.swift in Sources */,
@@ -381,10 +374,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = ExpenseSense/ExpenseSense.entitlements;
+				CODE_SIGN_ENTITLEMENTS = ExpenseSense.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"ExpenseSense/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"Preview Content\"";
 				DEVELOPMENT_TEAM = 5LGL268AY8;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
@@ -423,10 +416,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = ExpenseSense/ExpenseSense.entitlements;
+				CODE_SIGN_ENTITLEMENTS = ExpenseSense.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"ExpenseSense/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"Preview Content\"";
 				DEVELOPMENT_TEAM = 5LGL268AY8;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;

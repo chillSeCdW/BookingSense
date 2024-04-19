@@ -21,11 +21,10 @@ struct ExpenseEntryView: View {
   func save() {
     let parsedAmount = try? Decimal(amount, format: Decimal.FormatStyle(locale: Locale.current))
     if checkIfAmountWasTransformed(amount, parsedDecimal: parsedAmount) {
-      showToast(.info,
-                     "Amount parsed to: \(parsedAmount?.formatted() ?? ""). Check your Settings -> Language & Region -> Number Format to use the correct Decimal separator for your region."
+      showToast(.info, String(localized: "\(parsedAmount?.formatted() ?? "0") transformedInfo")
       )
     } else {
-      showToast(.success, "successfully saved your Data.")
+      showToast(.success, String(localized: "saved Data"))
     }
     expenseEntry.name = name
     expenseEntry.amountPrefix = amountPrefix
@@ -36,7 +35,7 @@ struct ExpenseEntryView: View {
   var body: some View {
     Form {
       TextField(text: $name, prompt: Text("Name")) {
-        Text("name")
+        Text("Name")
       }
       HStack {
         Picker("Interval", selection: $amountPrefix) {
@@ -69,7 +68,7 @@ struct ExpenseEntryView: View {
       }
       .pickerStyle(.wheel)
       .frame(maxWidth: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/, maxHeight: 100)
-      Button("save", systemImage: "arrow.up", action: save)
+      Button("saveButton", systemImage: "arrow.up", action: save)
     }.onDisappear {
       save()
     }
@@ -90,7 +89,7 @@ struct ExpenseEntryView: View {
       }
       return true
     }
-    return false
+    return true
   }
 }
 

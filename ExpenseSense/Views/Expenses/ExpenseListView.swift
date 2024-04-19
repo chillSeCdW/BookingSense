@@ -67,11 +67,11 @@ struct ExpenseListView: View {
   private func createToast(toastType: ToastStyle, message: String) {
     switch toastType {
     case .success:
-      toast = Toast(style: .success, title: "Success", message: message, width: 160)
+      toast = Toast(style: .success, title: String(localized: "Success"), message: message, width: 160)
     case .info:
-      toast = Toast(style: .info, title: "Info", message: message, duration: 10, width: 160)
+      toast = Toast(style: .info, title: String(localized: "Info"), message: message, duration: 10, width: 160)
     case .error:
-      toast = Toast(style: .error, title: "Error", message: message, duration: 10, width: 160)
+      toast = Toast(style: .error, title: String(localized: "Error"), message: message, duration: 10, width: 160)
     }
 
   }

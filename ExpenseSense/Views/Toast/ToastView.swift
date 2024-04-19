@@ -55,15 +55,15 @@ struct FancyToastView_Previews: PreviewProvider {
     VStack {
       ToastView(
         type: .error,
-        title: "Error",
+        title: String(localized: "Error"),
         message: "Some Example Text. Some Example Text.") {}
       ToastView(
         type: .info,
-        title: "Info",
+        title: String(localized: "Info"),
         message: "Some Example Text. Some Example Text. Some Example Text.") {}
       ToastView(
         type: .success,
-        title: "Success",
+        title: String(localized: "Success"),
         message: "Some Example Text. Some Example Text. Some Example Text.") {}
     }
   }
