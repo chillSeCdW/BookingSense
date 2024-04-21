@@ -9,6 +9,8 @@ import SwiftUI
 import SwiftData
 
 struct ExpenseListView: View {
+  @Environment(\.colorScheme) var colorScheme
+  @Environment(\.editMode) private var editMode
   @Environment(\.modelContext) private var modelContext
   @Environment(Constants.self) private var constants
   @Query private var entries: [ExpenseEntry]
@@ -18,6 +20,8 @@ struct ExpenseListView: View {
   var body: some View {
     NavigationSplitView {
       List {
+//        Section(header: Text("weekly")) {
+//        }
         ForEach(entries) { entry in
           NavigationLink {
             ExpenseEntryView(expenseEntry: entry) { toastType, message in
@@ -25,7 +29,17 @@ struct ExpenseListView: View {
             }
           } label: {
             Text("\(entry.name) \(entry.amountPrefix.description)\(entry.amount.formatted()) - \(entry.interval)")
-          }.listRowBackground(Constants.init().listBackgroundColors[entry.amountPrefix])
+          }
+          .listRowBackground(
+            HStack(spacing: 0) {
+              Rectangle()
+                .fill(Constants.init().listBackgroundColors[entry.amountPrefix]!)
+                .frame(width: 10, height: UIScreen.main.bounds.height)
+              Rectangle()
+                .fill(colorScheme == .light ? .white : Color(uiColor: .darkGray))
+                .frame(height: UIScreen.main.bounds.height)
+            }
+          )
         }
         .onDelete(perform: deleteItems)
       }
@@ -34,7 +48,12 @@ struct ExpenseListView: View {
             EditButton()
         }
         ToolbarItem {
-            Button(action: addItem) {
+          DeleteAllButtonView {
+            deleteAllItems()
+          }
+        }
+        ToolbarItem {
+            Button(action: addEntry) {
                 Label("Add Item", systemImage: "plus")
             }
         }
@@ -44,7 +63,7 @@ struct ExpenseListView: View {
     }.toastView(toast: $toast)
   }
 
-  private func addItem() {
+  private func addEntry() {
       withAnimation {
         let newItem = ExpenseEntry(
           name: "testName",
@@ -64,6 +83,14 @@ struct ExpenseListView: View {
       }
   }
 
+  private func deleteAllItems() {
+      withAnimation {
+        entries.forEach { entry in
+          modelContext.delete(entry)
+        }
+      }
+  }
+
   private func createToast(toastType: ToastStyle, message: String) {
     switch toastType {
     case .success:
@@ -73,13 +100,13 @@ struct ExpenseListView: View {
     case .error:
       toast = Toast(style: .error, title: String(localized: "Error"), message: message, duration: 10, width: 160)
     }
-
   }
 }
 
 #Preview {
   ExpenseListView()
         .modelContainer(for: ExpenseEntry.self, inMemory: true)
+        .environment(Constants())
 }
 
 extension UIColor {

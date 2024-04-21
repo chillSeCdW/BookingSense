@@ -5,7 +5,7 @@
       "localizations" : {
         "de" : {
           "stringUnit" : {
-            "state" : "needs_review",
+            "state" : "translated",
             "value" : "Betrag wurde angepasst: %@. Überprüfe deinen Dezimal Separator unter Einstellungen -> Allgemein -> Sprache & Region -> Zahlenformat."
           }
         },
@@ -65,6 +65,26 @@
         }
       }
     },
+    "Are you sure you want to delete all Entries?" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Are you sure you want to delete all Entries?"
+          }
+        }
+      }
+    },
+    "Are you sure?" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Are you sure?"
+          }
+        }
+      }
+    },
     "biweekly" : {
       "localizations" : {
         "de" : {
@@ -93,6 +113,26 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "daily"
+          }
+        }
+      }
+    },
+    "Delete All" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Delete All"
+          }
+        }
+      }
+    },
+    "Delete all entries" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Delete all entries"
           }
         }
       }
@@ -288,9 +328,6 @@
           }
         }
       }
-    },
-    "someOverview" : {
-
     },
     "Success" : {
       "localizations" : {
