@@ -15,7 +15,6 @@ struct DeleteAllButtonView: View {
   var body: some View {
     Button(action: showPopup) {
         Label("Delete All", systemImage: "trash")
-        .labelStyle(VerticalLabelStyle())
     }.confirmationDialog("Are you sure?", isPresented: $showingConfirmation) {
       Button("Delete all entries", action: deleteEntries)
     } message: {

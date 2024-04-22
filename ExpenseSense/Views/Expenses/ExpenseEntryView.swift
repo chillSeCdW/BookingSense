@@ -47,13 +47,13 @@ struct ExpenseEntryView: View {
           name = expenseEntry.name
           amountPrefix = expenseEntry.amountPrefix
           amount = expenseEntry.amount.formatted()
-          interval = expenseEntry.interval
+          interval = Interval(rawValue: expenseEntry.interval) ?? Interval.monthly
           oldName = name
           oldAmountPrefix = amountPrefix
           oldAmount = amount
           oldInterval = interval
         }
-        Text(getSymbol(Locale.current.currency!.identifier) ?? "$")
+        Text(Constants.getSymbol(Locale.current.currency!.identifier) ?? "$")
       }
       Picker("Interval", selection: $interval) {
           ForEach(Interval.allCases) { option in
@@ -75,13 +75,11 @@ struct ExpenseEntryView: View {
     if checkIfAmountWasTransformed(amount, parsedDecimal: parsedAmount) {
       showToast(.info, String(localized: "\(parsedAmount?.formatted() ?? "0") transformedInfo")
       )
-    } else {
-      showToast(.success, String(localized: "saved Data"))
     }
     expenseEntry.name = name
     expenseEntry.amountPrefix = amountPrefix
     expenseEntry.amount = parsedAmount ?? Decimal()
-    expenseEntry.interval = interval
+    expenseEntry.interval = interval.rawValue
   }
 
   func revert() {
@@ -89,11 +87,6 @@ struct ExpenseEntryView: View {
     amountPrefix = oldAmountPrefix
     amount = oldAmount
     interval = oldInterval
-  }
-
-  func getSymbol(_ code: String) -> String? {
-     let locale = NSLocale(localeIdentifier: code)
-    return locale.displayName(forKey: NSLocale.Key.currencySymbol, value: code)
   }
 
   func checkIfAmountWasTransformed(_ amountStr: String, parsedDecimal: Decimal?) -> Bool {

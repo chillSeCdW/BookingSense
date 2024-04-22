@@ -22,13 +22,11 @@ struct ExpenseSenseApp: App {
           fatalError("Could not create ModelContainer: \(error)")
       }
   }()
-  var constants: Constants = Constants()
 
   var body: some Scene {
       WindowGroup {
           ContentView()
       }
       .modelContainer(sharedModelContainer)
-      .environment(constants)
   }
 }

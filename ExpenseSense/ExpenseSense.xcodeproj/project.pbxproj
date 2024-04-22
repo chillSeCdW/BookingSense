@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B90C97A32BD6952800DCE805 /* PredicatedListEntriesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B90C97A22BD6952800DCE805 /* PredicatedListEntriesView.swift */; };
 		B915DC412BB459260018E812 /* ExpenseEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = B915DC402BB459260018E812 /* ExpenseEntry.swift */; };
 		B915DC452BB4644A0018E812 /* Interval.swift in Sources */ = {isa = PBXBuildFile; fileRef = B915DC442BB4644A0018E812 /* Interval.swift */; };
 		B915DC472BB46B950018E812 /* ExpenseListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B915DC462BB46B950018E812 /* ExpenseListView.swift */; };
@@ -17,7 +18,6 @@
 		B9BE668E2BCFF0700063734E /* Toast.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9BE668D2BCFF0700063734E /* Toast.swift */; };
 		B9BE66902BCFF0B90063734E /* ToastView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9BE668F2BCFF0B90063734E /* ToastView.swift */; };
 		B9BE66922BCFF1CB0063734E /* ToastMod.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9BE66912BCFF1CB0063734E /* ToastMod.swift */; };
-		B9C9CCBF2BD53F5C000F06EE /* VerticalLabelStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9C9CCBE2BD53F5C000F06EE /* VerticalLabelStyle.swift */; };
 		B9C9CCC12BD57711000F06EE /* DeleteAllButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9C9CCC02BD57711000F06EE /* DeleteAllButtonView.swift */; };
 		B9D534132BD2903500C3355F /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = B9D534122BD2903500C3355F /* Localizable.xcstrings */; };
 		B9DAFAD52BA8AFAF000486EA /* ExpenseSenseApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9DAFAD42BA8AFAF000486EA /* ExpenseSenseApp.swift */; };
@@ -28,6 +28,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		B90C97A22BD6952800DCE805 /* PredicatedListEntriesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PredicatedListEntriesView.swift; sourceTree = "<group>"; };
 		B915DC402BB459260018E812 /* ExpenseEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpenseEntry.swift; sourceTree = "<group>"; };
 		B915DC442BB4644A0018E812 /* Interval.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Interval.swift; sourceTree = "<group>"; };
 		B915DC462BB46B950018E812 /* ExpenseListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpenseListView.swift; sourceTree = "<group>"; };
@@ -38,7 +39,6 @@
 		B9BE668D2BCFF0700063734E /* Toast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Toast.swift; sourceTree = "<group>"; };
 		B9BE668F2BCFF0B90063734E /* ToastView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToastView.swift; sourceTree = "<group>"; };
 		B9BE66912BCFF1CB0063734E /* ToastMod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToastMod.swift; sourceTree = "<group>"; };
-		B9C9CCBE2BD53F5C000F06EE /* VerticalLabelStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerticalLabelStyle.swift; sourceTree = "<group>"; };
 		B9C9CCC02BD57711000F06EE /* DeleteAllButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteAllButtonView.swift; sourceTree = "<group>"; };
 		B9D534122BD2903500C3355F /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
 		B9DAFAD12BA8AFAF000486EA /* ExpenseSense.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ExpenseSense.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -80,7 +80,6 @@
 				B915DC442BB4644A0018E812 /* Interval.swift */,
 				B915DC4E2BB479180018E812 /* Constants.swift */,
 				B9DE5B7E2BC6E7740017ACF4 /* AmountPrefix.swift */,
-				B9C9CCBE2BD53F5C000F06EE /* VerticalLabelStyle.swift */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -99,6 +98,7 @@
 				B915DC462BB46B950018E812 /* ExpenseListView.swift */,
 				B919B4A12BC6AA47009B2FA4 /* ExpenseEntryView.swift */,
 				B9C9CCC02BD57711000F06EE /* DeleteAllButtonView.swift */,
+				B90C97A22BD6952800DCE805 /* PredicatedListEntriesView.swift */,
 			);
 			path = Expenses;
 			sourceTree = "<group>";
@@ -242,9 +242,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B90C97A32BD6952800DCE805 /* PredicatedListEntriesView.swift in Sources */,
 				B915DC452BB4644A0018E812 /* Interval.swift in Sources */,
 				B9BE668E2BCFF0700063734E /* Toast.swift in Sources */,
-				B9C9CCBF2BD53F5C000F06EE /* VerticalLabelStyle.swift in Sources */,
 				B9BE668C2BCFF03D0063734E /* ToastStyle.swift in Sources */,
 				B915DC472BB46B950018E812 /* ExpenseListView.swift in Sources */,
 				B9BE66922BCFF1CB0063734E /* ToastMod.swift in Sources */,

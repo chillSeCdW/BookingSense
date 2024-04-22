@@ -11,7 +11,7 @@ import SwiftData
 @Model
 final class ExpenseEntry: Codable {
   enum CodingKeys: CodingKey {
-    case id, name, amount, amountPrefix, interval
+    case id, name, amount, amountPrefix, interval, intervalString
   }
 
   @Attribute(.unique)
@@ -19,14 +19,22 @@ final class ExpenseEntry: Codable {
   var name: String
   var amount: Decimal
   var amountPrefix: AmountPrefix
-  var interval: Interval
+  var interval: String
 
   init(name: String, amount: Decimal, amountPrefix: AmountPrefix, interval: Interval) {
     self.id = UUID().uuidString
     self.name = name
     self.amount = amount
     self.amountPrefix = amountPrefix
-    self.interval = interval
+    self.interval = interval.rawValue
+  }
+
+  static func predicate(
+      interval: Interval
+  ) -> Predicate<ExpenseEntry> {
+      return #Predicate<ExpenseEntry> { entry in
+        entry.interval == interval.rawValue
+      }
   }
 
   required init(from decoder: Decoder) throws {
@@ -35,7 +43,7 @@ final class ExpenseEntry: Codable {
     name = try container.decode(String.self, forKey: .name)
     amount = try container.decode(Decimal.self, forKey: .amount)
     amountPrefix = try container.decode(AmountPrefix.self, forKey: .amountPrefix)
-    interval = try container.decode(Interval.self, forKey: .interval)
+    interval = try container.decode(String.self, forKey: .interval)
   }
 
   func encode(to encoder: Encoder) throws {

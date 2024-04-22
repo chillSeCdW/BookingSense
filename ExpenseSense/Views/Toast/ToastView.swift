@@ -9,7 +9,6 @@ import SwiftUI
 
 struct ToastView: View {
   @Environment(\.colorScheme) var colorScheme
-  @Environment(Constants.self) private var constants
 
   var type: ToastStyle
   var title: String
@@ -37,7 +36,7 @@ struct ToastView: View {
       }
       .padding()
     }
-    .background(Constants.init().getBackground(colorScheme))
+    .background(Constants.getBackground(colorScheme))
     .overlay(
       Rectangle()
         .fill(type.color)

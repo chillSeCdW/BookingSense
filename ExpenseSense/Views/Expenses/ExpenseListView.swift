@@ -12,7 +12,6 @@ struct ExpenseListView: View {
   @Environment(\.colorScheme) var colorScheme
   @Environment(\.editMode) private var editMode
   @Environment(\.modelContext) private var modelContext
-  @Environment(Constants.self) private var constants
   @Query private var entries: [ExpenseEntry]
 
   @State private var toast: Toast?
@@ -20,28 +19,13 @@ struct ExpenseListView: View {
   var body: some View {
     NavigationSplitView {
       List {
-//        Section(header: Text("weekly")) {
-//        }
-        ForEach(entries) { entry in
-          NavigationLink {
-            ExpenseEntryView(expenseEntry: entry) { toastType, message in
-              createToast(toastType: toastType, message: message)
-            }
-          } label: {
-            Text("\(entry.name) \(entry.amountPrefix.description)\(entry.amount.formatted()) - \(entry.interval)")
-          }
-          .listRowBackground(
-            HStack(spacing: 0) {
-              Rectangle()
-                .fill(Constants.init().listBackgroundColors[entry.amountPrefix]!)
-                .frame(width: 10, height: UIScreen.main.bounds.height)
-              Rectangle()
-                .fill(Constants.init().getBackground(colorScheme))
-                .frame(height: UIScreen.main.bounds.height)
-            }
-          )
-        }
-        .onDelete(perform: deleteItems)
+        PredicatedListEntriesView(interval: .annually, createToast: createToast)
+        PredicatedListEntriesView(interval: .semiannually, createToast: createToast)
+        PredicatedListEntriesView(interval: .quarterly, createToast: createToast)
+        PredicatedListEntriesView(interval: .monthly, createToast: createToast)
+        PredicatedListEntriesView(interval: .biweekly, createToast: createToast)
+        PredicatedListEntriesView(interval: .weekly, createToast: createToast)
+        PredicatedListEntriesView(interval: .daily, createToast: createToast)
       }
       .toolbar {
         ToolbarItem(placement: .navigationBarTrailing) {
@@ -75,14 +59,6 @@ struct ExpenseListView: View {
       }
   }
 
-  private func deleteItems(offsets: IndexSet) {
-      withAnimation {
-          for index in offsets {
-              modelContext.delete(entries[index])
-          }
-      }
-  }
-
   private func deleteAllItems() {
       withAnimation {
         entries.forEach { entry in
@@ -93,11 +69,9 @@ struct ExpenseListView: View {
 
   private func createToast(toastType: ToastStyle, message: String) {
     switch toastType {
-    case .success:
-      toast = Toast(style: .success, title: String(localized: "Success"), message: message, width: 160)
     case .info:
       toast = Toast(style: .info, title: String(localized: "Info"), message: message, duration: 10, width: 160)
-    case .error:
+    default:
       toast = Toast(style: .error, title: String(localized: "Error"), message: message, duration: 10, width: 160)
     }
   }
@@ -106,5 +80,4 @@ struct ExpenseListView: View {
 #Preview {
   ExpenseListView()
         .modelContainer(for: ExpenseEntry.self, inMemory: true)
-        .environment(Constants())
 }
