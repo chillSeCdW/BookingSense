@@ -19,7 +19,7 @@ struct DeleteAllButtonView: View {
     }.confirmationDialog("Are you sure?", isPresented: $showingConfirmation) {
       Button("Delete all entries", action: deleteEntries)
     } message: {
-      Text("Are you sure you want to delete all Entries?")
+      Text("Are you sure you want to delete all entries?")
     }
   }
 

@@ -65,18 +65,30 @@
         }
       }
     },
-    "Are you sure you want to delete all Entries?" : {
+    "Are you sure you want to delete all entries?" : {
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Möchten Sie sicher alle Einträge löschen?"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Are you sure you want to delete all Entries?"
+            "value" : "Are you sure you want to delete all entries?"
           }
         }
       }
     },
     "Are you sure?" : {
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sind Sie sicher?"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -119,6 +131,12 @@
     },
     "Delete All" : {
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Alles löschen"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -129,6 +147,12 @@
     },
     "Delete all entries" : {
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Alle Einträge löschen"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",

@@ -12,5 +12,7 @@ class Constants: Observable {
     AmountPrefix.plus: Color(UIColor(red: 0.2039, green: 0.7373, blue: 0.2039, alpha: 1.0)), // green
     AmountPrefix.minus: Color(UIColor(red: 0.7882, green: 0, blue: 0.0118, alpha: 1.0)) // red
   ]
-  var darkGrey: UIColor = UIColor(white: 1, alpha: 0.15) // TODO: make to function for light/dark mode
+  var getBackground: (ColorScheme) -> Color = { scheme in
+    scheme == .light ? .white : Color(uiColor: UIColor(white: 1, alpha: 0.15)) // darkGrey
+  }
 }

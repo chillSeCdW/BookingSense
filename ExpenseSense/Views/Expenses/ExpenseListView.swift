@@ -36,7 +36,7 @@ struct ExpenseListView: View {
                 .fill(Constants.init().listBackgroundColors[entry.amountPrefix]!)
                 .frame(width: 10, height: UIScreen.main.bounds.height)
               Rectangle()
-                .fill(colorScheme == .light ? .white : Color(uiColor: .darkGray))
+                .fill(Constants.init().getBackground(colorScheme))
                 .frame(height: UIScreen.main.bounds.height)
             }
           )
