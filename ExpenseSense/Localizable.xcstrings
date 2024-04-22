@@ -289,18 +289,18 @@
         }
       }
     },
-    "saveButton" : {
+    "revertButton" : {
       "localizations" : {
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "speichern"
+            "value" : "Änderungen rückgängig machen"
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "save"
+            "value" : "Revert changes"
           }
         }
       }

@@ -17,20 +17,10 @@ struct ExpenseEntryView: View {
   @State private var amountPrefix: AmountPrefix = .plus
   @State private var amount: String = ""
   @State private var interval: Interval = .monthly
-
-  func save() {
-    let parsedAmount = try? Decimal(amount, format: Decimal.FormatStyle(locale: Locale.current))
-    if checkIfAmountWasTransformed(amount, parsedDecimal: parsedAmount) {
-      showToast(.info, String(localized: "\(parsedAmount?.formatted() ?? "0") transformedInfo")
-      )
-    } else {
-      showToast(.success, String(localized: "saved Data"))
-    }
-    expenseEntry.name = name
-    expenseEntry.amountPrefix = amountPrefix
-    expenseEntry.amount = parsedAmount ?? Decimal()
-    expenseEntry.interval = interval
-  }
+  @State private var oldName: String = ""
+  @State private var oldAmountPrefix: AmountPrefix = .plus
+  @State private var oldAmount: String = ""
+  @State private var oldInterval: Interval = .monthly
 
   var body: some View {
     Form {
@@ -58,6 +48,10 @@ struct ExpenseEntryView: View {
           amountPrefix = expenseEntry.amountPrefix
           amount = expenseEntry.amount.formatted()
           interval = expenseEntry.interval
+          oldName = name
+          oldAmountPrefix = amountPrefix
+          oldAmount = amount
+          oldInterval = interval
         }
         Text(getSymbol(Locale.current.currency!.identifier) ?? "$")
       }
@@ -68,10 +62,33 @@ struct ExpenseEntryView: View {
       }
       .pickerStyle(.wheel)
       .frame(maxWidth: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/, maxHeight: 100)
-      Button("saveButton", systemImage: "arrow.up", action: save)
+      if didValuesChange() {
+        Button("revertButton", systemImage: "arrow.circlepath", action: revert)
+      }
     }.onDisappear {
       save()
     }
+  }
+
+  func save() {
+    let parsedAmount = try? Decimal(amount, format: Decimal.FormatStyle(locale: Locale.current))
+    if checkIfAmountWasTransformed(amount, parsedDecimal: parsedAmount) {
+      showToast(.info, String(localized: "\(parsedAmount?.formatted() ?? "0") transformedInfo")
+      )
+    } else {
+      showToast(.success, String(localized: "saved Data"))
+    }
+    expenseEntry.name = name
+    expenseEntry.amountPrefix = amountPrefix
+    expenseEntry.amount = parsedAmount ?? Decimal()
+    expenseEntry.interval = interval
+  }
+
+  func revert() {
+    name = oldName
+    amountPrefix = oldAmountPrefix
+    amount = oldAmount
+    interval = oldInterval
   }
 
   func getSymbol(_ code: String) -> String? {
@@ -90,6 +107,17 @@ struct ExpenseEntryView: View {
       return true
     }
     return true
+  }
+
+  func didValuesChange() -> Bool {
+    if name != oldName ||
+        amount != oldAmount ||
+        amountPrefix != oldAmountPrefix ||
+        interval != oldInterval {
+      return true
+    }
+
+    return false
   }
 }
 
