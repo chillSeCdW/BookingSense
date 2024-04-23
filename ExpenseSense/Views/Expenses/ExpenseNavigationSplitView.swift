@@ -8,13 +8,14 @@
 import SwiftUI
 import SwiftData
 
-struct ExpenseListView: View {
+struct ExpenseNavigationSplitView: View {
   @Environment(\.colorScheme) var colorScheme
   @Environment(\.editMode) private var editMode
   @Environment(\.modelContext) private var modelContext
   @Query private var entries: [ExpenseEntry]
+  @State private var showingSheet = false
 
-  @State private var toast: Toast?
+  var createToast: ((ToastStyle, String) -> Void)
 
   var body: some View {
     NavigationSplitView {
@@ -43,41 +44,30 @@ struct ExpenseListView: View {
         }
       }
     } detail: {
-      Text("Select an item")
-    }.toastView(toast: $toast)
+      Text("Select an entry")
+    }.sheet(isPresented: $showingSheet, content: {
+      ExpenseEntryView(showToast: createToast)
+    })
   }
 
   private func addEntry() {
-      withAnimation {
-        let newItem = ExpenseEntry(
-          name: "testName",
-          amount: Decimal(10.1),
-          amountPrefix: .plus,
-          interval: .weekly
-        )
-        modelContext.insert(newItem)
-      }
+    withAnimation {
+      showingSheet.toggle()
+    }
   }
 
   private func deleteAllItems() {
-      withAnimation {
-        entries.forEach { entry in
-          modelContext.delete(entry)
-        }
+    withAnimation {
+      entries.forEach { entry in
+        modelContext.delete(entry)
       }
-  }
-
-  private func createToast(toastType: ToastStyle, message: String) {
-    switch toastType {
-    case .info:
-      toast = Toast(style: .info, title: String(localized: "Info"), message: message, duration: 10, width: 160)
-    default:
-      toast = Toast(style: .error, title: String(localized: "Error"), message: message, duration: 10, width: 160)
     }
   }
 }
 
 #Preview {
-  ExpenseListView()
-        .modelContainer(previewContainer)
+  ExpenseNavigationSplitView { toastType, message in
+    print(toastType)
+    print(message)
+  }.modelContainer(previewContainer)
 }

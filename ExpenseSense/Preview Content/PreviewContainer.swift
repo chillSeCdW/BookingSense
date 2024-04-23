@@ -24,13 +24,13 @@ let previewContainer: ModelContainer = {
 }()
 
 func generateRandomEntriesItem() -> ExpenseEntry {
-    let names = [ "Rent", "Car", "Groceries", "Gym", "internet", "Netflix", "Donations", "phone", "cloud" ]
+    let names = [ "Rent", "Car", "Groceries", "Gym", "Internet", "Netflix", "Donations", "Phone", "Cloud" ]
 
     let randomIndex = Int.random(in: 0..<names.count)
     let randomTask = names[randomIndex]
 
   return ExpenseEntry(name: randomTask,
-                      amount: Decimal(Double.random(in: 0...100)),
+                      amount: Decimal(Double.random(in: 0...500)),
                       amountPrefix: AmountPrefix.allCases.randomElement()!,
                       interval: Interval.allCases.randomElement()!
   )

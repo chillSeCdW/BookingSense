@@ -10,7 +10,10 @@ import SwiftUI
 import SwiftData
 
 struct ExpenseEntryView: View {
-  @Bindable var expenseEntry: ExpenseEntry
+  @Environment(\.modelContext) private var modelContext
+  @Environment(\.dismiss) var dismiss
+
+  var expenseEntry: ExpenseEntry?
   var showToast: ((ToastStyle, String) -> Void)
 
   @State private var name: String = ""
@@ -21,6 +24,10 @@ struct ExpenseEntryView: View {
   @State private var oldAmountPrefix: AmountPrefix = .plus
   @State private var oldAmount: String = ""
   @State private var oldInterval: Interval = .monthly
+
+  private var isCreate: Bool {
+      expenseEntry == nil ? true : false
+  }
 
   var body: some View {
     Form {
@@ -44,14 +51,16 @@ struct ExpenseEntryView: View {
         .textFieldStyle(RoundedBorderTextFieldStyle())
         .keyboardType(.decimalPad)
         .onAppear {
-          name = expenseEntry.name
-          amountPrefix = expenseEntry.amountPrefix
-          amount = expenseEntry.amount.formatted()
-          interval = Interval(rawValue: expenseEntry.interval) ?? Interval.monthly
-          oldName = name
-          oldAmountPrefix = amountPrefix
-          oldAmount = amount
-          oldInterval = interval
+          if let expenseEntry {
+            name = expenseEntry.name
+            amountPrefix = expenseEntry.amountPrefix
+            amount = expenseEntry.amount.formatted()
+            interval = Interval(rawValue: expenseEntry.interval) ?? Interval.monthly
+            oldName = name
+            oldAmountPrefix = amountPrefix
+            oldAmount = amount
+            oldInterval = interval
+          }
         }
         Text(Constants.getSymbol(Locale.current.currency!.identifier) ?? "$")
       }
@@ -60,13 +69,27 @@ struct ExpenseEntryView: View {
             Text(String(describing: option.description))
           }
       }
-      .pickerStyle(.wheel)
+      .pickerStyle(.menu)
       .frame(maxWidth: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/, maxHeight: 100)
-      if didValuesChange() {
+      if !isCreate && didValuesChange() {
         Button("revertButton", systemImage: "arrow.circlepath", action: revert)
       }
-    }.onDisappear {
-      save()
+      if isCreate {
+        HStack {
+          Button("Cancel") {
+            dismiss()
+          }
+          Spacer()
+          Button("Create") {
+            save()
+          }
+        }
+      }
+    }
+    .onDisappear {
+      if !isCreate {
+        save()
+      }
     }
   }
 
@@ -76,10 +99,20 @@ struct ExpenseEntryView: View {
       showToast(.info, String(localized: "\(parsedAmount?.formatted() ?? "0") transformedInfo")
       )
     }
-    expenseEntry.name = name
-    expenseEntry.amountPrefix = amountPrefix
-    expenseEntry.amount = parsedAmount ?? Decimal()
-    expenseEntry.interval = interval.rawValue
+
+    if let expenseEntry {
+      expenseEntry.name = name
+      expenseEntry.amountPrefix = amountPrefix
+      expenseEntry.amount = parsedAmount ?? Decimal()
+      expenseEntry.interval = interval.rawValue
+    } else {
+      modelContext.insert(ExpenseEntry(
+        name: name,
+        amount: parsedAmount ?? Decimal(),
+        amountPrefix: amountPrefix,
+        interval: interval
+      ))
+    }
   }
 
   func revert() {
@@ -114,13 +147,19 @@ struct ExpenseEntryView: View {
   }
 }
 
-#Preview {
+#Preview("Edit") {
   ExpenseEntryView(expenseEntry: ExpenseEntry(
     name: "testName",
     amount: Decimal(string: "15,35", locale: Locale(identifier: Locale.current.identifier)) ?? Decimal(),
     amountPrefix: .plus,
     interval: .weekly)
   ) { _, _ in
+
+  }
+}
+
+#Preview("Create") {
+  ExpenseEntryView { _, _ in
 
   }
 }

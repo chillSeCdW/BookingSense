@@ -10,11 +10,12 @@
 		B90C97A32BD6952800DCE805 /* PredicatedListEntriesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B90C97A22BD6952800DCE805 /* PredicatedListEntriesView.swift */; };
 		B915DC412BB459260018E812 /* ExpenseEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = B915DC402BB459260018E812 /* ExpenseEntry.swift */; };
 		B915DC452BB4644A0018E812 /* Interval.swift in Sources */ = {isa = PBXBuildFile; fileRef = B915DC442BB4644A0018E812 /* Interval.swift */; };
-		B915DC472BB46B950018E812 /* ExpenseListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B915DC462BB46B950018E812 /* ExpenseListView.swift */; };
+		B915DC472BB46B950018E812 /* ExpenseNavigationSplitView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B915DC462BB46B950018E812 /* ExpenseNavigationSplitView.swift */; };
 		B915DC492BB46E350018E812 /* OverviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B915DC482BB46E350018E812 /* OverviewView.swift */; };
 		B915DC4F2BB479190018E812 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = B915DC4E2BB479180018E812 /* Constants.swift */; };
 		B919B4A22BC6AA47009B2FA4 /* ExpenseEntryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B919B4A12BC6AA47009B2FA4 /* ExpenseEntryView.swift */; };
 		B94A74152BD7BF2800FA305F /* PreviewContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = B94A74142BD7BF2800FA305F /* PreviewContainer.swift */; };
+		B94A74172BD7F27D00FA305F /* ExpenseNavigationStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B94A74162BD7F27D00FA305F /* ExpenseNavigationStackView.swift */; };
 		B9BE668C2BCFF03D0063734E /* ToastStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9BE668B2BCFF03D0063734E /* ToastStyle.swift */; };
 		B9BE668E2BCFF0700063734E /* Toast.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9BE668D2BCFF0700063734E /* Toast.swift */; };
 		B9BE66902BCFF0B90063734E /* ToastView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9BE668F2BCFF0B90063734E /* ToastView.swift */; };
@@ -32,11 +33,12 @@
 		B90C97A22BD6952800DCE805 /* PredicatedListEntriesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PredicatedListEntriesView.swift; sourceTree = "<group>"; };
 		B915DC402BB459260018E812 /* ExpenseEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpenseEntry.swift; sourceTree = "<group>"; };
 		B915DC442BB4644A0018E812 /* Interval.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Interval.swift; sourceTree = "<group>"; };
-		B915DC462BB46B950018E812 /* ExpenseListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpenseListView.swift; sourceTree = "<group>"; };
+		B915DC462BB46B950018E812 /* ExpenseNavigationSplitView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpenseNavigationSplitView.swift; sourceTree = "<group>"; };
 		B915DC482BB46E350018E812 /* OverviewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverviewView.swift; sourceTree = "<group>"; };
 		B915DC4E2BB479180018E812 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		B919B4A12BC6AA47009B2FA4 /* ExpenseEntryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpenseEntryView.swift; sourceTree = "<group>"; };
 		B94A74142BD7BF2800FA305F /* PreviewContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewContainer.swift; sourceTree = "<group>"; };
+		B94A74162BD7F27D00FA305F /* ExpenseNavigationStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpenseNavigationStackView.swift; sourceTree = "<group>"; };
 		B9BE668B2BCFF03D0063734E /* ToastStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToastStyle.swift; sourceTree = "<group>"; };
 		B9BE668D2BCFF0700063734E /* Toast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Toast.swift; sourceTree = "<group>"; };
 		B9BE668F2BCFF0B90063734E /* ToastView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToastView.swift; sourceTree = "<group>"; };
@@ -97,10 +99,11 @@
 		B919B4A42BC6AAAA009B2FA4 /* Expenses */ = {
 			isa = PBXGroup;
 			children = (
-				B915DC462BB46B950018E812 /* ExpenseListView.swift */,
+				B915DC462BB46B950018E812 /* ExpenseNavigationSplitView.swift */,
 				B919B4A12BC6AA47009B2FA4 /* ExpenseEntryView.swift */,
 				B9C9CCC02BD57711000F06EE /* DeleteAllButtonView.swift */,
 				B90C97A22BD6952800DCE805 /* PredicatedListEntriesView.swift */,
+				B94A74162BD7F27D00FA305F /* ExpenseNavigationStackView.swift */,
 			);
 			path = Expenses;
 			sourceTree = "<group>";
@@ -249,7 +252,8 @@
 				B915DC452BB4644A0018E812 /* Interval.swift in Sources */,
 				B9BE668E2BCFF0700063734E /* Toast.swift in Sources */,
 				B9BE668C2BCFF03D0063734E /* ToastStyle.swift in Sources */,
-				B915DC472BB46B950018E812 /* ExpenseListView.swift in Sources */,
+				B915DC472BB46B950018E812 /* ExpenseNavigationSplitView.swift in Sources */,
+				B94A74172BD7F27D00FA305F /* ExpenseNavigationStackView.swift in Sources */,
 				B9BE66922BCFF1CB0063734E /* ToastMod.swift in Sources */,
 				B94A74152BD7BF2800FA305F /* PreviewContainer.swift in Sources */,
 				B9DAFAD72BA8AFAF000486EA /* ContentView.swift in Sources */,
@@ -415,11 +419,11 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.chill.ExpenseSense;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = auto;
-				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = 1;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
@@ -457,11 +461,11 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.chill.ExpenseSense;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = auto;
-				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = 1;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};
