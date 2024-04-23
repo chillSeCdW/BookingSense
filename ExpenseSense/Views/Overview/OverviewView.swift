@@ -17,4 +17,5 @@ struct OverviewView: View {
 
 #Preview {
   OverviewView()
+    .modelContainer(previewContainer)
 }

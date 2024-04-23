@@ -61,3 +61,13 @@ struct PredicatedListEntriesView: View {
       }
   }
 }
+
+#Preview {
+  PredicatedListEntriesView(interval: .annually) { toastType, message in
+    switch toastType {
+    default:
+      print(toastType)
+      print(message)
+    }
+  }.modelContainer(previewContainer)
+}

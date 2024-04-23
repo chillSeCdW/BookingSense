@@ -123,5 +123,4 @@ struct ExpenseEntryView: View {
   ) { _, _ in
 
   }
-    .modelContainer(for: ExpenseEntry.self, inMemory: true)
 }

@@ -50,27 +50,24 @@ struct ToastView: View {
   }
 }
 
-struct FancyToastView_Previews: PreviewProvider {
-  static var previews: some View {
-    VStack {
-      ToastView(
-        type: .error,
-        title: String(localized: "Error"),
-        message: "Some Example Text. Some Example Text.") {}
-      ToastView(
-        type: .info,
-        title: String(localized: "Info"),
-        message: "Some Example Text. Some Example Text. Some Example Text.") {}
-      ToastView(
-        type: .success,
-        title: String(localized: "Success"),
-        message: "Some Example Text. Some Example Text. Some Example Text.") {}
-    }
+#Preview {
+  VStack {
+    ToastView(
+      type: .error,
+      title: String(localized: "Error"),
+      message: "Some Example Text. Some Example Text.") {}
+    ToastView(
+      type: .info,
+      title: String(localized: "Info"),
+      message: "Some Example Text. Some Example Text. Some Example Text.") {}
+    ToastView(
+      type: .success,
+      title: String(localized: "Success"),
+      message: "Some Example Text. Some Example Text. Some Example Text.") {}
   }
 }
 
 extension View {
-
   func toastView(toast: Binding<Toast?>) -> some View {
     self.modifier(ToastMod(toast: toast))
   }

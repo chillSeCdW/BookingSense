@@ -79,5 +79,5 @@ struct ExpenseListView: View {
 
 #Preview {
   ExpenseListView()
-        .modelContainer(for: ExpenseEntry.self, inMemory: true)
+        .modelContainer(previewContainer)
 }
