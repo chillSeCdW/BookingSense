@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct DeleteAllButtonView: View {
-  @Environment(\.editMode) private var editMode
   @State private var showingConfirmation = false
   var deleteEntries: (() -> Void)
 

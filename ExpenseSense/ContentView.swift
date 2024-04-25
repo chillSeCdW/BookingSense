@@ -10,6 +10,8 @@ import SwiftData
 
 struct ContentView: View {
   @State private var toast: Toast?
+  @State private var navigationContext = NavigationContext()
+  @State private var viewInfo = ViewInfo()
 
   var body: some View {
     TabView {
@@ -21,7 +23,10 @@ struct ContentView: View {
         .tabItem {
             Label("Expenses", systemImage: "list.dash")
         }
-    }.toastView(toast: $toast)
+    }
+    .environment(viewInfo)
+    .environment(navigationContext)
+    .toastView(toast: $toast)
   }
 
   private func createToast(toastType: ToastStyle, message: String) {

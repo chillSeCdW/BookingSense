@@ -13,7 +13,7 @@ let previewContainer: ModelContainer = {
     do {
         let container = try ModelContainer(for: ExpenseEntry.self,
                                            configurations: .init(isStoredInMemoryOnly: true))
-        for _ in 1...20 {
+        for _ in 1...25 {
             container.mainContext.insert(generateRandomEntriesItem())
         }
 

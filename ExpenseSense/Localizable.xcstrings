@@ -321,37 +321,8 @@
         }
       }
     },
-    "revertButton" : {
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Änderungen rückgängig machen"
-          }
-        },
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Revert changes"
-          }
-        }
-      }
-    },
-    "Select an entry" : {
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Eintrag auswählen"
-          }
-        },
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Select an entry"
-          }
-        }
-      }
+    "save" : {
+
     },
     "semiannually" : {
       "localizations" : {
@@ -368,6 +339,15 @@
           }
         }
       }
+    },
+    "Sort" : {
+
+    },
+    "Sort By" : {
+
+    },
+    "Sort Order" : {
+
     },
     "Success" : {
       "localizations" : {

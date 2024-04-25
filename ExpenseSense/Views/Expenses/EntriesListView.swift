@@ -1,14 +1,14 @@
 //
-//  PredicatedListEntriesView.swift
+//  EntriesListView.swift
 //  ExpenseSense
 //
-//  Created by Kenny Salazar on 22.04.24.
+//  Created by Kenny Salazar on 24.04.24.
 //
 
 import SwiftUI
 import SwiftData
 
-struct PredicatedListEntriesView: View {
+struct EntriesListView: View {
   @Environment(\.colorScheme) var colorScheme
   @Environment(\.modelContext) private var modelContext
   @Query private var entries: [ExpenseEntry]
@@ -16,21 +16,32 @@ struct PredicatedListEntriesView: View {
   var interval: Interval
   var createToast: ((ToastStyle, String) -> Void)
 
-  init(interval: Interval, createToast: @escaping ((ToastStyle, String) -> Void)) {
+  init(interval: Interval,
+       createToast: @escaping ((ToastStyle, String) -> Void),
+       searchName: String = "",
+       sortParameter: SortParameter = .amount,
+       sortOrder: SortOrder = .reverse
+  ) {
     self.interval = interval
     self.createToast = createToast
-    self._entries = Query(Constants.createDescriptor(searchString: "", interval: interval), animation: .default)
+
+    switch sortParameter {
+    case .name: _entries = Query(
+      filter: ExpenseEntry.predicate(searchName: searchName, interval: interval),
+      sort: \.name,
+      order: sortOrder)
+    case .amount: _entries = Query(
+      filter: ExpenseEntry.predicate(searchName: searchName, interval: interval),
+      sort: \.amount,
+      order: sortOrder)
+    }
   }
 
   var body: some View {
     if !entries.isEmpty {
       Section(header: Text(interval.description)) {
         ForEach(entries) { entry in
-          NavigationLink {
-            ExpenseEntryView(expenseEntry: entry) { toastType, message in
-              createToast(toastType, message)
-            }
-          } label: {
+          NavigationLink(value: entry) {
             HStack(spacing: 0) {
               Text(entry.name)
               Spacer()
@@ -63,7 +74,7 @@ struct PredicatedListEntriesView: View {
 }
 
 #Preview {
-  PredicatedListEntriesView(interval: .annually) { toastType, message in
+  EntriesListView(interval: .annually) { toastType, message in
     switch toastType {
     default:
       print(toastType)

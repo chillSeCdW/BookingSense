@@ -30,10 +30,13 @@ final class ExpenseEntry: Codable {
   }
 
   static func predicate(
+      searchName: String,
       interval: Interval
   ) -> Predicate<ExpenseEntry> {
       return #Predicate<ExpenseEntry> { entry in
-        entry.interval == interval.rawValue
+        (searchName.isEmpty || entry.name.contains(searchName))
+        &&
+        (entry.interval == interval.rawValue)
       }
   }
 
@@ -53,5 +56,11 @@ final class ExpenseEntry: Codable {
     try container.encode(amount, forKey: .amount)
     try container.encode(amountPrefix, forKey: .amountPrefix)
     try container.encode(interval, forKey: .interval)
+  }
+}
+
+extension ExpenseEntry {
+  static func totalExpenseEntries(modelContext: ModelContext) -> Int {
+      (try? modelContext.fetchCount(FetchDescriptor<ExpenseEntry>())) ?? 0
   }
 }

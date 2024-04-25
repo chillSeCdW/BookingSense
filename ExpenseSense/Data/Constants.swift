@@ -17,13 +17,12 @@ struct Constants {
     scheme == .light ? .white : Color(uiColor: UIColor(white: 1, alpha: 0.15)) // darkGrey
   }
 
-  static func createDescriptor(interval: Interval) -> FetchDescriptor<ExpenseEntry> {
-    let predicate = ExpenseEntry.predicate(interval: interval)
-    var descriptor = FetchDescriptor<ExpenseEntry>(
+  static func createDescriptor(searchString: String, interval: Interval) -> FetchDescriptor<ExpenseEntry> {
+    let predicate = ExpenseEntry.predicate(searchName: searchString, interval: interval)
+    let descriptor = FetchDescriptor<ExpenseEntry>(
       predicate: predicate,
       sortBy: [SortDescriptor(\.name, order: .forward)]
     )
-    descriptor.fetchLimit = 10
     return descriptor
   }
 

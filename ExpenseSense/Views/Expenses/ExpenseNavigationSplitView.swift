@@ -9,44 +9,42 @@ import SwiftUI
 import SwiftData
 
 struct ExpenseNavigationSplitView: View {
+  @Environment(ViewInfo.self) var viewInfo
+  @Environment(NavigationContext.self) private var navigationContext
   @Environment(\.colorScheme) var colorScheme
   @Environment(\.editMode) private var editMode
   @Environment(\.modelContext) private var modelContext
   @Query private var entries: [ExpenseEntry]
   @State private var showingSheet = false
+  @State private var text = ""
 
   var createToast: ((ToastStyle, String) -> Void)
 
   var body: some View {
+    @Bindable var viewInfo = viewInfo
+    @Bindable var navigationContext = navigationContext
+
     NavigationSplitView {
-      List {
-        PredicatedListEntriesView(interval: .annually, createToast: createToast)
-        PredicatedListEntriesView(interval: .semiannually, createToast: createToast)
-        PredicatedListEntriesView(interval: .quarterly, createToast: createToast)
-        PredicatedListEntriesView(interval: .monthly, createToast: createToast)
-        PredicatedListEntriesView(interval: .biweekly, createToast: createToast)
-        PredicatedListEntriesView(interval: .weekly, createToast: createToast)
-        PredicatedListEntriesView(interval: .daily, createToast: createToast)
+      List(selection: $navigationContext.selectedEntry) {
+        ForEach(Interval.allCases) { option in
+          EntriesListView(
+            interval: option,
+            createToast: createToast,
+            searchName: viewInfo.searchText,
+            sortParameter: viewInfo.sortParameter,
+            sortOrder: viewInfo.sortOrder
+          )
+        }
       }
+      .navigationTitle("Expenses")
+      .searchable(text: $viewInfo.searchText)
       .toolbar {
-        ToolbarItem(placement: .navigationBarTrailing) {
-            EditButton()
-        }
-        ToolbarItem {
-          DeleteAllButtonView {
-            deleteAllItems()
-          }
-        }
-        ToolbarItem {
-            Button(action: addEntry) {
-                Label("Add Item", systemImage: "plus")
-            }
-        }
+        ToolbarEntriesList(deleteAllItems: deleteAllItems, addEntry: addEntry)
       }
     } detail: {
-      Text("Select an entry")
+      ExpenseEntryView(expenseEntry: navigationContext.selectedEntry, showToast: createToast)
     }.sheet(isPresented: $showingSheet, content: {
-      ExpenseEntryView(showToast: createToast)
+      ExpenseEntryView(expenseEntry: navigationContext.selectedEntry, showToast: createToast)
     })
   }
 
@@ -69,5 +67,8 @@ struct ExpenseNavigationSplitView: View {
   ExpenseNavigationSplitView { toastType, message in
     print(toastType)
     print(message)
-  }.modelContainer(previewContainer)
+  }
+  .environment(ViewInfo())
+  .environment(NavigationContext())
+  .modelContainer(previewContainer)
 }

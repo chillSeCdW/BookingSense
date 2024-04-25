@@ -15,7 +15,13 @@
 		B915DC4F2BB479190018E812 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = B915DC4E2BB479180018E812 /* Constants.swift */; };
 		B919B4A22BC6AA47009B2FA4 /* ExpenseEntryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B919B4A12BC6AA47009B2FA4 /* ExpenseEntryView.swift */; };
 		B94A74152BD7BF2800FA305F /* PreviewContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = B94A74142BD7BF2800FA305F /* PreviewContainer.swift */; };
-		B94A74172BD7F27D00FA305F /* ExpenseNavigationStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B94A74162BD7F27D00FA305F /* ExpenseNavigationStackView.swift */; };
+		B99205FC2BD90F780099EF26 /* ViewInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = B99205FB2BD90F780099EF26 /* ViewInfo.swift */; };
+		B99205FF2BD90FAD0099EF26 /* SortButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B99205FE2BD90FAD0099EF26 /* SortButton.swift */; };
+		B99206012BD92FFA0099EF26 /* EntriesListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B99206002BD92FFA0099EF26 /* EntriesListView.swift */; };
+		B99206052BD946670099EF26 /* NavigationContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = B99206042BD946670099EF26 /* NavigationContext.swift */; };
+		B99206072BDA806E0099EF26 /* ToolbarEntriesList.swift in Sources */ = {isa = PBXBuildFile; fileRef = B99206062BDA806E0099EF26 /* ToolbarEntriesList.swift */; };
+		B99206092BDA96090099EF26 /* ToolbarEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = B99206082BDA96090099EF26 /* ToolbarEntry.swift */; };
+		B992060B2BDA96D80099EF26 /* ExpenseEntryForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = B992060A2BDA96D80099EF26 /* ExpenseEntryForm.swift */; };
 		B9BE668C2BCFF03D0063734E /* ToastStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9BE668B2BCFF03D0063734E /* ToastStyle.swift */; };
 		B9BE668E2BCFF0700063734E /* Toast.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9BE668D2BCFF0700063734E /* Toast.swift */; };
 		B9BE66902BCFF0B90063734E /* ToastView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9BE668F2BCFF0B90063734E /* ToastView.swift */; };
@@ -38,7 +44,13 @@
 		B915DC4E2BB479180018E812 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		B919B4A12BC6AA47009B2FA4 /* ExpenseEntryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpenseEntryView.swift; sourceTree = "<group>"; };
 		B94A74142BD7BF2800FA305F /* PreviewContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewContainer.swift; sourceTree = "<group>"; };
-		B94A74162BD7F27D00FA305F /* ExpenseNavigationStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpenseNavigationStackView.swift; sourceTree = "<group>"; };
+		B99205FB2BD90F780099EF26 /* ViewInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewInfo.swift; sourceTree = "<group>"; };
+		B99205FE2BD90FAD0099EF26 /* SortButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortButton.swift; sourceTree = "<group>"; };
+		B99206002BD92FFA0099EF26 /* EntriesListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntriesListView.swift; sourceTree = "<group>"; };
+		B99206042BD946670099EF26 /* NavigationContext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationContext.swift; sourceTree = "<group>"; };
+		B99206062BDA806E0099EF26 /* ToolbarEntriesList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolbarEntriesList.swift; sourceTree = "<group>"; };
+		B99206082BDA96090099EF26 /* ToolbarEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolbarEntry.swift; sourceTree = "<group>"; };
+		B992060A2BDA96D80099EF26 /* ExpenseEntryForm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpenseEntryForm.swift; sourceTree = "<group>"; };
 		B9BE668B2BCFF03D0063734E /* ToastStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToastStyle.swift; sourceTree = "<group>"; };
 		B9BE668D2BCFF0700063734E /* Toast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Toast.swift; sourceTree = "<group>"; };
 		B9BE668F2BCFF0B90063734E /* ToastView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToastView.swift; sourceTree = "<group>"; };
@@ -68,6 +80,7 @@
 		B915DC4C2BB46E790018E812 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				B99205FD2BD90FA40099EF26 /* Navigation */,
 				B9BE668A2BCFEFF70063734E /* Toast */,
 				B919B4A42BC6AAAA009B2FA4 /* Expenses */,
 				B919B4A32BC6AAA3009B2FA4 /* Overview */,
@@ -78,6 +91,7 @@
 		B915DC4D2BB46EA50018E812 /* Data */ = {
 			isa = PBXGroup;
 			children = (
+				B99205FA2BD90F630099EF26 /* Model */,
 				B9BE668B2BCFF03D0063734E /* ToastStyle.swift */,
 				B9BE668D2BCFF0700063734E /* Toast.swift */,
 				B915DC402BB459260018E812 /* ExpenseEntry.swift */,
@@ -103,9 +117,29 @@
 				B919B4A12BC6AA47009B2FA4 /* ExpenseEntryView.swift */,
 				B9C9CCC02BD57711000F06EE /* DeleteAllButtonView.swift */,
 				B90C97A22BD6952800DCE805 /* PredicatedListEntriesView.swift */,
-				B94A74162BD7F27D00FA305F /* ExpenseNavigationStackView.swift */,
+				B99206002BD92FFA0099EF26 /* EntriesListView.swift */,
+				B992060A2BDA96D80099EF26 /* ExpenseEntryForm.swift */,
 			);
 			path = Expenses;
+			sourceTree = "<group>";
+		};
+		B99205FA2BD90F630099EF26 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				B99205FB2BD90F780099EF26 /* ViewInfo.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		B99205FD2BD90FA40099EF26 /* Navigation */ = {
+			isa = PBXGroup;
+			children = (
+				B99205FE2BD90FAD0099EF26 /* SortButton.swift */,
+				B99206042BD946670099EF26 /* NavigationContext.swift */,
+				B99206062BDA806E0099EF26 /* ToolbarEntriesList.swift */,
+				B99206082BDA96090099EF26 /* ToolbarEntry.swift */,
+			);
+			path = Navigation;
 			sourceTree = "<group>";
 		};
 		B9BE668A2BCFEFF70063734E /* Toast */ = {
@@ -249,18 +283,24 @@
 			buildActionMask = 2147483647;
 			files = (
 				B90C97A32BD6952800DCE805 /* PredicatedListEntriesView.swift in Sources */,
+				B99206052BD946670099EF26 /* NavigationContext.swift in Sources */,
+				B99206092BDA96090099EF26 /* ToolbarEntry.swift in Sources */,
 				B915DC452BB4644A0018E812 /* Interval.swift in Sources */,
 				B9BE668E2BCFF0700063734E /* Toast.swift in Sources */,
 				B9BE668C2BCFF03D0063734E /* ToastStyle.swift in Sources */,
 				B915DC472BB46B950018E812 /* ExpenseNavigationSplitView.swift in Sources */,
-				B94A74172BD7F27D00FA305F /* ExpenseNavigationStackView.swift in Sources */,
 				B9BE66922BCFF1CB0063734E /* ToastMod.swift in Sources */,
 				B94A74152BD7BF2800FA305F /* PreviewContainer.swift in Sources */,
+				B99205FC2BD90F780099EF26 /* ViewInfo.swift in Sources */,
+				B99206012BD92FFA0099EF26 /* EntriesListView.swift in Sources */,
 				B9DAFAD72BA8AFAF000486EA /* ContentView.swift in Sources */,
+				B99205FF2BD90FAD0099EF26 /* SortButton.swift in Sources */,
 				B9DAFAD52BA8AFAF000486EA /* ExpenseSenseApp.swift in Sources */,
 				B9BE66902BCFF0B90063734E /* ToastView.swift in Sources */,
 				B9C9CCC12BD57711000F06EE /* DeleteAllButtonView.swift in Sources */,
 				B9DE5B7F2BC6E7740017ACF4 /* AmountPrefix.swift in Sources */,
+				B99206072BDA806E0099EF26 /* ToolbarEntriesList.swift in Sources */,
+				B992060B2BDA96D80099EF26 /* ExpenseEntryForm.swift in Sources */,
 				B915DC412BB459260018E812 /* ExpenseEntry.swift in Sources */,
 				B915DC492BB46E350018E812 /* OverviewView.swift in Sources */,
 				B919B4A22BC6AA47009B2FA4 /* ExpenseEntryView.swift in Sources */,
@@ -391,6 +431,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = ExpenseSense.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Preview Content\"";
@@ -418,6 +459,7 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.chill.ExpenseSense;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SDKROOT = auto;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
@@ -433,6 +475,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = ExpenseSense.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Preview Content\"";
@@ -460,6 +503,7 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.chill.ExpenseSense;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SDKROOT = auto;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
