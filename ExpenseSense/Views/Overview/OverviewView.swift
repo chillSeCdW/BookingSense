@@ -7,11 +7,16 @@
 
 import Foundation
 import SwiftUI
+import SwiftData
 
 struct OverviewView: View {
 
   var body: some View {
-    Text("Overview")
+    NavigationStack {
+      List {
+        BasicStats()
+      }
+    }
   }
 }
 

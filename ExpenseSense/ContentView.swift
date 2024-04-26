@@ -18,7 +18,7 @@ struct ContentView: View {
       OverviewView()
         .tabItem {
           Label("Overview", systemImage: "dollarsign.arrow.circlepath")
-        }
+      }
       ExpenseNavigationSplitView(createToast: createToast)
         .tabItem {
             Label("Expenses", systemImage: "list.dash")
@@ -41,5 +41,5 @@ struct ContentView: View {
 
 #Preview {
     ContentView()
-        .modelContainer(for: ExpenseEntry.self, inMemory: true)
+        .modelContainer(previewContainer)
 }
