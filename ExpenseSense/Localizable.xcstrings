@@ -322,7 +322,20 @@
       }
     },
     "save" : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "speichern"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "save"
+          }
+        }
+      }
     },
     "semiannually" : {
       "localizations" : {
@@ -341,13 +354,52 @@
       }
     },
     "Sort" : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : " sortieren"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sort"
+          }
+        }
+      }
     },
     "Sort By" : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : " sortieren nach"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sort By"
+          }
+        }
+      }
     },
     "Sort Order" : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sortierreihenfolge"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sort Order"
+          }
+        }
+      }
     },
     "Success" : {
       "localizations" : {
@@ -377,6 +429,38 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "weekly"
+          }
+        }
+      }
+    },
+    "Your Total minus:" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Gesamte Abzüge:"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Your total deductions:"
+          }
+        }
+      }
+    },
+    "Your Total plus:" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Gesamtes Einkommen:"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Your total income:"
           }
         }
       }
