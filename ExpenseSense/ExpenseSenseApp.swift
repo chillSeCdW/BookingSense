@@ -8,19 +8,21 @@
 import SwiftUI
 import SwiftData
 
+typealias ExpenseEntry = ExpenseSchemaV1.ExpenseEntry
+
 @main
 struct ExpenseSenseApp: App {
   var sharedModelContainer: ModelContainer = {
-      let schema = Schema([
-          ExpenseEntry.self
-      ])
-      let modelConfiguration = ModelConfiguration(schema: schema, isStoredInMemoryOnly: false)
+    #if DEBUG
+    if CommandLine.arguments.contains("enable-testing") {
+      let factory = ContainerFactory(ExpenseEntry.self, storeInMemory: true)
+      factory.addExamples(ContainerFactory.generateFixedEntriesItems())
+      return factory.container
+    }
+    #endif
 
-      do {
-          return try ModelContainer(for: schema, configurations: [modelConfiguration])
-      } catch {
-          fatalError("Could not create ModelContainer: \(error)")
-      }
+    let factory = ContainerFactory(ExpenseEntry.self, storeInMemory: false)
+    return factory.container
   }()
 
   var body: some Scene {

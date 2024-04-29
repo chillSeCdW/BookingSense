@@ -18,7 +18,7 @@ struct ExpenseNavigationSplitView: View {
   @State private var showingSheet = false
   @State private var text = ""
 
-  var createToast: ((ToastStyle, String) -> Void)
+  var addToast: ((Toast) -> Void)
 
   var body: some View {
     @Bindable var viewInfo = viewInfo
@@ -29,7 +29,6 @@ struct ExpenseNavigationSplitView: View {
         ForEach(Interval.allCases) { option in
           EntriesListView(
             interval: option,
-            createToast: createToast,
             searchName: viewInfo.searchText,
             sortParameter: viewInfo.sortParameter,
             sortOrder: viewInfo.sortOrder
@@ -42,9 +41,9 @@ struct ExpenseNavigationSplitView: View {
         ToolbarEntriesList(deleteAllItems: deleteAllItems, addEntry: addEntry)
       }
     } detail: {
-      ExpenseEntryView(expenseEntry: navigationContext.selectedEntry, showToast: createToast)
+      ExpenseEntryView(expenseEntry: navigationContext.selectedEntry, addToast: addToast)
     }.sheet(isPresented: $showingSheet, content: {
-      ExpenseEntryView(expenseEntry: navigationContext.selectedEntry, showToast: createToast)
+      ExpenseEntryView(expenseEntry: navigationContext.selectedEntry, addToast: addToast)
     })
   }
 
@@ -64,11 +63,12 @@ struct ExpenseNavigationSplitView: View {
 }
 
 #Preview {
-  ExpenseNavigationSplitView { toastType, message in
-    print(toastType)
-    print(message)
+  let factory = ContainerFactory(ExpenseEntry.self, storeInMemory: true)
+  factory.addExamples(ContainerFactory.generateRandomEntriesItems())
+  return ExpenseNavigationSplitView { toast in
+    print(toast)
   }
   .environment(ViewInfo())
   .environment(NavigationContext())
-  .modelContainer(previewContainer)
+  .modelContainer(factory.container)
 }

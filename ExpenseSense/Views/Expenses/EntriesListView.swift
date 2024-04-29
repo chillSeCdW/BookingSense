@@ -14,16 +14,13 @@ struct EntriesListView: View {
   @Query private var entries: [ExpenseEntry]
 
   var interval: Interval
-  var createToast: ((ToastStyle, String) -> Void)
 
   init(interval: Interval,
-       createToast: @escaping ((ToastStyle, String) -> Void),
        searchName: String = "",
        sortParameter: SortParameter = .amount,
        sortOrder: SortOrder = .reverse
   ) {
     self.interval = interval
-    self.createToast = createToast
 
     switch sortParameter {
     case .name: _entries = Query(
@@ -74,11 +71,8 @@ struct EntriesListView: View {
 }
 
 #Preview {
-  EntriesListView(interval: .annually) { toastType, message in
-    switch toastType {
-    default:
-      print(toastType)
-      print(message)
-    }
-  }.modelContainer(previewContainer)
+  let factory = ContainerFactory(ExpenseEntry.self, storeInMemory: true)
+  factory.addExamples(ContainerFactory.generateRandomEntriesItems())
+  return EntriesListView(interval: .annually)
+    .modelContainer(factory.container)
 }

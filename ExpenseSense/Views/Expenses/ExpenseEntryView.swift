@@ -14,7 +14,7 @@ struct ExpenseEntryView: View {
   @Environment(\.dismiss) var dismiss
 
   var expenseEntry: ExpenseEntry?
-  var showToast: ((ToastStyle, String) -> Void)
+  var addToast: ((Toast) -> Void)
 
   @State private var name: String = ""
   @State private var amountPrefix: AmountPrefix = .plus
@@ -43,7 +43,11 @@ struct ExpenseEntryView: View {
   func save() {
     let parsedAmount = try? Decimal(amount, format: Decimal.FormatStyle(locale: Locale.current))
     if checkIfAmountWasTransformed(amount, parsedDecimal: parsedAmount) {
-      showToast(.info, String(localized: "\(parsedAmount?.formatted() ?? "0") transformedInfo")
+      addToast(
+        Constants.createToast(
+          .info,
+          message: String(localized: "\(parsedAmount?.formatted() ?? "0") transformedInfo")
+        )
       )
     }
 
@@ -97,12 +101,12 @@ struct ExpenseEntryView: View {
     amountPrefix: .plus,
     interval: .weekly)
 
-  return ExpenseEntryView(expenseEntry: entry) { _, _ in
+  return ExpenseEntryView(expenseEntry: entry) { _ in
   }.environment(NavigationContext(selectedEntry: entry))
 }
 
 #Preview("Create") {
-  ExpenseEntryView { _, _ in
+  ExpenseEntryView { _ in
 
   }.environment(NavigationContext())
 }
