@@ -19,7 +19,7 @@ struct ContentView: View {
         .tabItem {
           Label("Overview", systemImage: "dollarsign.arrow.circlepath")
       }
-      ExpenseNavigationSplitView(createToast: createToast)
+      ExpenseNavigationSplitView(addToast: addToast)
         .tabItem {
             Label("Expenses", systemImage: "list.dash")
         }
@@ -29,17 +29,13 @@ struct ContentView: View {
     .toastView(toast: $toast)
   }
 
-  private func createToast(toastType: ToastStyle, message: String) {
-    switch toastType {
-    case .info:
-      toast = Toast(style: .info, title: String(localized: "Info"), message: message, duration: 10, width: 160)
-    default:
-      toast = Toast(style: .error, title: String(localized: "Error"), message: message, duration: 10, width: 160)
-    }
+  private func addToast(createdToast: Toast) {
+    toast = createdToast
   }
 }
 
 #Preview {
-    ContentView()
-        .modelContainer(previewContainer)
+  let factory = ContainerFactory(ExpenseEntry.self, storeInMemory: true)
+  factory.addExamples(ContainerFactory.generateRandomEntriesItems())
+  return ContentView().modelContainer(factory.container)
 }

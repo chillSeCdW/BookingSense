@@ -26,7 +26,7 @@ struct BasicStats: View {
     }
   }
 
-  func calculateTotals(_ amountPrefix: AmountPrefix) -> Decimal {
+  private func calculateTotals(_ amountPrefix: AmountPrefix) -> Decimal {
     var calcu: Decimal = Decimal()
 
     for entry in entries where entry.amountPrefix == amountPrefix {
@@ -59,6 +59,8 @@ struct BasicStats: View {
 }
 
 #Preview {
-  BasicStats()
-    .modelContainer(previewContainer)
+  let factory = ContainerFactory(ExpenseEntry.self, storeInMemory: true)
+  factory.addExamples(ContainerFactory.generateRandomEntriesItems())
+  return BasicStats()
+    .modelContainer(factory.container)
 }

@@ -14,11 +14,11 @@ struct PredicatedListEntriesView: View {
   @Query private var entries: [ExpenseEntry]
 
   var interval: Interval
-  var createToast: ((ToastStyle, String) -> Void)
+  var addToast: ((Toast) -> Void)
 
-  init(interval: Interval, createToast: @escaping ((ToastStyle, String) -> Void)) {
+  init(interval: Interval, addToast: @escaping ((Toast) -> Void)) {
     self.interval = interval
-    self.createToast = createToast
+    self.addToast = addToast
     self._entries = Query(Constants.createDescriptor(searchString: "", interval: interval), animation: .default)
   }
 
@@ -27,8 +27,8 @@ struct PredicatedListEntriesView: View {
       Section(header: Text(interval.description)) {
         ForEach(entries) { entry in
           NavigationLink {
-            ExpenseEntryView(expenseEntry: entry) { toastType, message in
-              createToast(toastType, message)
+            ExpenseEntryView(expenseEntry: entry) { toast in
+              addToast(toast)
             }
           } label: {
             HStack(spacing: 0) {
@@ -63,11 +63,9 @@ struct PredicatedListEntriesView: View {
 }
 
 #Preview {
-  PredicatedListEntriesView(interval: .annually) { toastType, message in
-    switch toastType {
-    default:
-      print(toastType)
-      print(message)
-    }
-  }.modelContainer(previewContainer)
+  let factory = ContainerFactory(ExpenseEntry.self, storeInMemory: true)
+  factory.addExamples(ContainerFactory.generateRandomEntriesItems())
+  return PredicatedListEntriesView(interval: .annually) { toast in
+      print(toast)
+  }.modelContainer(factory.container)
 }

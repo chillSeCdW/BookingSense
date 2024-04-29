@@ -21,6 +21,8 @@ struct OverviewView: View {
 }
 
 #Preview {
-  OverviewView()
-    .modelContainer(previewContainer)
+  let factory = ContainerFactory(ExpenseEntry.self, storeInMemory: true)
+  factory.addExamples(ContainerFactory.generateRandomEntriesItems())
+  return OverviewView()
+    .modelContainer(factory.container)
 }
