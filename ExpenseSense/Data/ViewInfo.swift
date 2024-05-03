@@ -1,8 +1,8 @@
 //
 //  ViewInfo.swift
-//  ExpenseSense
+//  BookingSense
 //
-//  Created by Kenny Salazar on 24.04.24.
+//  Created by kenny on 24.04.24.
 //
 
 import Foundation
@@ -19,6 +19,6 @@ class ViewInfo {
     var totalExpenseEntries: Int = 0
 
     func update(modelContext: ModelContext) {
-      totalExpenseEntries = ExpenseEntry.totalExpenseEntries(modelContext: modelContext)
+      totalExpenseEntries = BookingEntry.totalExpenseEntries(modelContext: modelContext)
     }
 }

@@ -113,6 +113,9 @@
         }
       }
     },
+    "Bookings" : {
+
+    },
     "Cancel" : {
       "localizations" : {
         "de" : {
@@ -144,6 +147,9 @@
           }
         }
       }
+    },
+    "Create Entry" : {
+
     },
     "daily" : {
       "localizations" : {
@@ -193,6 +199,15 @@
         }
       }
     },
+    "Edit" : {
+
+    },
+    "Edit Entry" : {
+
+    },
+    "Entries" : {
+
+    },
     "Error" : {
       "localizations" : {
         "de" : {
@@ -210,6 +225,7 @@
       }
     },
     "Expenses" : {
+      "extractionState" : "stale",
       "localizations" : {
         "de" : {
           "stringUnit" : {

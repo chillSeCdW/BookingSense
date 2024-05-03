@@ -1,8 +1,8 @@
 //
 //  Constants.swift
-//  ExpenseSense
+//  BookingSense
 //
-//  Created by Kenny Salazar on 27.03.24.
+//  Created by kenny on 27.03.24.
 //
 
 import SwiftUI
@@ -17,9 +17,9 @@ struct Constants {
     scheme == .light ? .white : Color(uiColor: UIColor(white: 1, alpha: 0.15)) // darkGrey
   }
 
-  static func createDescriptor(searchString: String, interval: Interval) -> FetchDescriptor<ExpenseEntry> {
-    let predicate = ExpenseEntry.predicate(searchName: searchString, interval: interval)
-    let descriptor = FetchDescriptor<ExpenseEntry>(
+  static func createDescriptor(searchString: String, interval: Interval) -> FetchDescriptor<BookingEntry> {
+    let predicate = BookingEntry.predicate(searchName: searchString, interval: interval)
+    let descriptor = FetchDescriptor<BookingEntry>(
       predicate: predicate,
       sortBy: [SortDescriptor(\.name, order: .forward)]
     )

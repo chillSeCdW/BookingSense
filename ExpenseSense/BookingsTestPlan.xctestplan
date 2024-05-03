@@ -1,0 +1,42 @@
+{
+  "configurations" : [
+    {
+      "id" : "ABFC1BCE-EA0C-4A08-AFF6-E81806115148",
+      "name" : "US English",
+      "options" : {
+        "language" : "en",
+        "region" : "US"
+      }
+    },
+    {
+      "id" : "489D6814-1287-431A-A62B-61E12D35498C",
+      "name" : "German",
+      "options" : {
+        "language" : "de",
+        "region" : "DE"
+      }
+    }
+  ],
+  "defaultOptions" : {
+    "testTimeoutsEnabled" : true
+  },
+  "testTargets" : [
+    {
+      "parallelizable" : true,
+      "target" : {
+        "containerPath" : "container:BookingSense.xcodeproj",
+        "identifier" : "B92782BD2BDD9F8000D13808",
+        "name" : "BookingSenseTests"
+      }
+    },
+    {
+      "parallelizable" : true,
+      "target" : {
+        "containerPath" : "container:BookingSense.xcodeproj",
+        "identifier" : "B92782EF2BDE779700D13808",
+        "name" : "BookingSenseUITests"
+      }
+    }
+  ],
+  "version" : 1
+}

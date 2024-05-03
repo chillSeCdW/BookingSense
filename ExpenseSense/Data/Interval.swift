@@ -1,8 +1,8 @@
 //
 //  interval.swift
-//  ExpenseSense
+//  BookingSense
 //
-//  Created by Kenny Salazar on 27.03.24.
+//  Created by kenny on 27.03.24.
 //
 
 import Foundation

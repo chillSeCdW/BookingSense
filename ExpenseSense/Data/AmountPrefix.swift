@@ -1,8 +1,8 @@
 //
 //  AmountPrefix.swift
-//  ExpenseSense
+//  BookingSense
 //
-//  Created by Kenny Salazar on 10.04.24.
+//  Created by kenny on 10.04.24.
 //
 
 import Foundation
