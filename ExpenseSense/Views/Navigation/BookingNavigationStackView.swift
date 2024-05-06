@@ -22,27 +22,19 @@ struct BookingNavigationStackView: View {
     @Bindable var viewInfo = viewInfo
 
     NavigationStack(path: $stackPath) {
-      List {
-        ForEach(Interval.allCases) { option in
-          EntryListView(
-            interval: option,
-            searchName: viewInfo.searchText,
-            sortParameter: viewInfo.sortParameter,
-            sortOrder: viewInfo.sortOrder
-          )
+      NavigationStackContentView(isListEmpty: entries.isEmpty)
+        .navigationDestination(for: BookingEntry.self) { entry in
+          EntryView(expenseEntry: entry)
         }
-      }.navigationDestination(for: BookingEntry.self) { entry in
-        EntryView(expenseEntry: entry)
-      }
-      .navigationTitle("Entries")
-      .searchable(text: $viewInfo.searchText)
-      .toolbar {
-        ToolbarEntryList(showingConfirmation: $showingConfirmation, addEntry: addEntry)
-      }.confirmationDialog("Are you sure?", isPresented: $showingConfirmation) {
-        Button("Delete all entries", action: deleteAllItems)
-      } message: {
-        Text("Are you sure you want to delete all entries?")
-      }
+        .navigationTitle("Entries")
+        .searchable(text: $viewInfo.searchText, prompt: "Search")
+        .toolbar {
+          ToolbarEntryList(showingConfirmation: $showingConfirmation, addEntry: addEntry)
+        }.confirmationDialog("Are you sure?", isPresented: $showingConfirmation) {
+          Button("Delete all entries", action: deleteAllItems)
+        } message: {
+          Text("Are you sure you want to delete all entries?")
+        }
     }
     .sheet(isPresented: $showingSheet, content: {
       NavigationStack {
@@ -66,9 +58,17 @@ struct BookingNavigationStackView: View {
   }
 }
 
-#Preview {
+#Preview("NavStackWithList") {
   let factory = ContainerFactory(BookingEntry.self, storeInMemory: true)
   factory.addExamples(ContainerFactory.generateRandomEntriesItems())
+  return BookingNavigationStackView()
+  .environment(ViewInfo())
+  .environment(NavigationContext())
+  .modelContainer(factory.container)
+}
+
+#Preview("NavStackWithoutList") {
+  let factory = ContainerFactory(BookingEntry.self, storeInMemory: true)
   return BookingNavigationStackView()
   .environment(ViewInfo())
   .environment(NavigationContext())

@@ -14,13 +14,13 @@ struct BasicStatsView: View {
   var body: some View {
     VStack {
       HStack {
-        Text("Your Total plus:")
+        Text("Your total plus")
         Text(calculateTotals(.plus), format: .currency(code: Locale.current.currency!.identifier))
       }
     }
     VStack {
       HStack {
-        Text("Your Total minus:")
+        Text("Your total minus")
         Text(calculateTotals(.minus), format: .currency(code: Locale.current.currency!.identifier))
       }
     }

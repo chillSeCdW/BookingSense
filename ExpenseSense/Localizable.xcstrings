@@ -6,18 +6,35 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Betrag wurde angepasst: %@. Überprüfe deinen Dezimal Separator unter Einstellungen -> Allgemein -> Sprache & Region -> Zahlenformat."
+            "value" : "Betrag wurde als %@ erfasst."
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Amount parsed to: %@. Check your Settings -> General -> Language & Region -> Number Format to use the correct Decimal separator for your region."
+            "value" : "Amount was parsed to: %@."
+          }
+        }
+      }
+    },
+    "Add item" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Eintrag hinzufügen"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Add item"
           }
         }
       }
     },
     "Add Item" : {
+      "extractionState" : "stale",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -49,7 +66,7 @@
         }
       }
     },
-    "annually" : {
+    "Annually" : {
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -97,12 +114,12 @@
         }
       }
     },
-    "biweekly" : {
+    "Biweekly" : {
       "localizations" : {
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "zweiwöchentlich"
+            "value" : "wöchentlich"
           }
         },
         "en" : {
@@ -114,7 +131,20 @@
       }
     },
     "Bookings" : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Buchungen"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bookings"
+          }
+        }
+      }
     },
     "Cancel" : {
       "localizations" : {
@@ -148,10 +178,23 @@
         }
       }
     },
-    "Create Entry" : {
-
+    "Create entry" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Eintrag erstellen"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Create entry"
+          }
+        }
+      }
     },
-    "daily" : {
+    "Daily" : {
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -167,7 +210,7 @@
         }
       }
     },
-    "Delete All" : {
+    "Delete all" : {
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -178,7 +221,7 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Delete All"
+            "value" : "Delete all"
           }
         }
       }
@@ -200,13 +243,52 @@
       }
     },
     "Edit" : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bearbeiten"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Edit"
+          }
+        }
+      }
     },
-    "Edit Entry" : {
-
+    "Edit entry" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Eintrag bearbeiten"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Edit entry"
+          }
+        }
+      }
     },
     "Entries" : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Einträge"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Entries"
+          }
+        }
+      }
     },
     "Error" : {
       "localizations" : {
@@ -220,23 +302,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Error"
-          }
-        }
-      }
-    },
-    "Expenses" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Ausgaben"
-          }
-        },
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Expenses"
           }
         }
       }
@@ -273,7 +338,7 @@
         }
       }
     },
-    "monthly" : {
+    "Monthly" : {
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -305,6 +370,22 @@
         }
       }
     },
+    "No entries available" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Keine Einträge vorhanden."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No entries available."
+          }
+        }
+      }
+    },
     "Overview" : {
       "localizations" : {
         "de" : {
@@ -321,7 +402,23 @@
         }
       }
     },
-    "quarterly" : {
+    "Press the + button to add an entry" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Drücken Sie die + Taste um einen Eintrag hinzuzufügen."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Press the + button to add an entry."
+          }
+        }
+      }
+    },
+    "Quarterly" : {
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -337,7 +434,7 @@
         }
       }
     },
-    "save" : {
+    "Save" : {
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -353,7 +450,23 @@
         }
       }
     },
-    "semiannually" : {
+    "Search" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Suchen"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "search"
+          }
+        }
+      }
+    },
+    "Semiannually" : {
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -374,7 +487,7 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : " sortieren"
+            "value" : "sortieren"
           }
         },
         "en" : {
@@ -385,12 +498,12 @@
         }
       }
     },
-    "Sort By" : {
+    "Sort by" : {
       "localizations" : {
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : " sortieren nach"
+            "value" : "sortieren nach"
           }
         },
         "en" : {
@@ -401,7 +514,7 @@
         }
       }
     },
-    "Sort Order" : {
+    "Sort order" : {
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -412,7 +525,7 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Sort Order"
+            "value" : "Sort order"
           }
         }
       }
@@ -433,7 +546,7 @@
         }
       }
     },
-    "weekly" : {
+    "Weekly" : {
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -449,7 +562,7 @@
         }
       }
     },
-    "Your Total minus:" : {
+    "Your total minus" : {
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -465,7 +578,7 @@
         }
       }
     },
-    "Your Total plus:" : {
+    "Your total plus" : {
       "localizations" : {
         "de" : {
           "stringUnit" : {

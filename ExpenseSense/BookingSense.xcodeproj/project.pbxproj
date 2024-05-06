@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B90B2B412BE4E88400BD2042 /* FilledNavigationStackUITest.swift in Sources */ = {isa = PBXBuildFile; fileRef = B90B2B402BE4E88400BD2042 /* FilledNavigationStackUITest.swift */; };
+		B90B2B432BE504A200BD2042 /* NavigationStackContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B90B2B422BE504A200BD2042 /* NavigationStackContentView.swift */; };
+		B90B2B452BE5069700BD2042 /* EmptyNavigationStackUITest.swift in Sources */ = {isa = PBXBuildFile; fileRef = B90B2B442BE5069700BD2042 /* EmptyNavigationStackUITest.swift */; };
+		B90B2B472BE91AC600BD2042 /* TestHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = B90B2B462BE91AC600BD2042 /* TestHelper.swift */; };
 		B915DC452BB4644A0018E812 /* Interval.swift in Sources */ = {isa = PBXBuildFile; fileRef = B915DC442BB4644A0018E812 /* Interval.swift */; };
 		B915DC492BB46E350018E812 /* OverviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B915DC482BB46E350018E812 /* OverviewView.swift */; };
 		B915DC4F2BB479190018E812 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = B915DC4E2BB479180018E812 /* Constants.swift */; };
@@ -67,6 +71,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		B90B2B402BE4E88400BD2042 /* FilledNavigationStackUITest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilledNavigationStackUITest.swift; sourceTree = "<group>"; };
+		B90B2B422BE504A200BD2042 /* NavigationStackContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationStackContentView.swift; sourceTree = "<group>"; };
+		B90B2B442BE5069700BD2042 /* EmptyNavigationStackUITest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyNavigationStackUITest.swift; sourceTree = "<group>"; };
+		B90B2B462BE91AC600BD2042 /* TestHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestHelper.swift; sourceTree = "<group>"; };
 		B915DC442BB4644A0018E812 /* Interval.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Interval.swift; sourceTree = "<group>"; };
 		B915DC482BB46E350018E812 /* OverviewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverviewView.swift; sourceTree = "<group>"; };
 		B915DC4E2BB479180018E812 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
@@ -241,6 +249,9 @@
 				B92782DA2BDE72E800D13808 /* BasicStatsUITests.swift */,
 				B92782F22BDE779700D13808 /* BookingSenseUITests.swift */,
 				B92782F42BDE779700D13808 /* BookingSenseUITestsLaunchTests.swift */,
+				B90B2B402BE4E88400BD2042 /* FilledNavigationStackUITest.swift */,
+				B90B2B442BE5069700BD2042 /* EmptyNavigationStackUITest.swift */,
+				B90B2B462BE91AC600BD2042 /* TestHelper.swift */,
 			);
 			path = BookingSenseUITests;
 			sourceTree = "<group>";
@@ -268,6 +279,7 @@
 			children = (
 				B90ABBD72BE3DCCB006E5AA8 /* Toolbar */,
 				B95981F92BE3890500578A9C /* BookingNavigationStackView.swift */,
+				B90B2B422BE504A200BD2042 /* NavigationStackContentView.swift */,
 			);
 			path = Navigation;
 			sourceTree = "<group>";
@@ -493,8 +505,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				B92782F52BDE779700D13808 /* BookingSenseUITestsLaunchTests.swift in Sources */,
+				B90B2B452BE5069700BD2042 /* EmptyNavigationStackUITest.swift in Sources */,
 				B92782FB2BDE782100D13808 /* BasicStatsUITests.swift in Sources */,
+				B90B2B412BE4E88400BD2042 /* FilledNavigationStackUITest.swift in Sources */,
 				B92782F32BDE779700D13808 /* BookingSenseUITests.swift in Sources */,
+				B90B2B472BE91AC600BD2042 /* TestHelper.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -505,6 +520,7 @@
 				B99206052BD946670099EF26 /* NavigationContext.swift in Sources */,
 				B99206092BDA96090099EF26 /* ToolbarEntry.swift in Sources */,
 				B915DC452BB4644A0018E812 /* Interval.swift in Sources */,
+				B90B2B432BE504A200BD2042 /* NavigationStackContentView.swift in Sources */,
 				B9BE668E2BCFF0700063734E /* Toast.swift in Sources */,
 				B9BE668C2BCFF03D0063734E /* ToastStyle.swift in Sources */,
 				B9BE66922BCFF1CB0063734E /* ToastMod.swift in Sources */,

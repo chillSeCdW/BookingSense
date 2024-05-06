@@ -13,7 +13,7 @@ struct DeleteAllButtonView: View {
 
   var body: some View {
     Button(action: showPopup) {
-        Label("Delete All", systemImage: "trash")
+        Label("Delete all", systemImage: "trash")
     }.confirmationDialog("Are you sure?", isPresented: $showingConfirmation) {
       Button("Delete all entries", action: deleteEntries)
     } message: {

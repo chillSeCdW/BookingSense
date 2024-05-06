@@ -21,19 +21,19 @@ enum Interval: String, Codable, CaseIterable, Identifiable {
   var description: String {
       switch self {
       case .daily:
-        return String(localized: "daily")
+        return String(localized: "Daily")
       case .weekly:
-        return String(localized: "weekly")
+        return String(localized: "Weekly")
       case .biweekly:
-        return String(localized: "biweekly")
+        return String(localized: "Biweekly")
       case .monthly:
-        return String(localized: "monthly")
+        return String(localized: "Monthly")
       case .quarterly:
-        return String(localized: "quarterly")
+        return String(localized: "Quarterly")
       case .semiannually:
-        return String(localized: "semiannually")
+        return String(localized: "Semiannually")
       case .annually:
-        return String(localized: "annually")
+        return String(localized: "Annually")
       }
   }
 }

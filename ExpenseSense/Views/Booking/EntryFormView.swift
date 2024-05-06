@@ -44,6 +44,7 @@ struct EntryFormView: View {
         }
       }
       Text(Constants.getSymbol(Locale.current.currency!.identifier) ?? "$")
+        .accessibilityIdentifier("CurrencySymbol")
     }.alignmentGuide(.listRowSeparatorLeading) { _ in
         return 0
     }

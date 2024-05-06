@@ -44,7 +44,7 @@ struct EntryListView: View {
               Spacer()
               Text(entry.amount, format: .currency(code: Locale.current.currency!.identifier))
             }
-          }
+          }.accessibilityIdentifier(entry.name + entry.amount.formatted(Decimal.FormatStyle(locale: Locale.current)))
           .listRowBackground(
             HStack(spacing: 0) {
               Rectangle()

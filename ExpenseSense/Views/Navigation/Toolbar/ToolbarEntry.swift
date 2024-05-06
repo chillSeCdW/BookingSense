@@ -26,7 +26,7 @@ struct ToolbarEntry: ToolbarContent {
       }
     } else {
       ToolbarItem {
-        Button("save", action: save)
+        Button("Save", action: save)
           .disabled(!didValuesChange())
       }
     }

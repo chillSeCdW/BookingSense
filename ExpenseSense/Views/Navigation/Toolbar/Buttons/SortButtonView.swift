@@ -14,12 +14,12 @@ struct SortButtonView: View {
         @Bindable var viewModel = viewInfo
 
         Menu {
-            Picker("Sort Order", selection: $viewModel.sortOrder) {
+            Picker("Sort order", selection: $viewModel.sortOrder) {
                 ForEach([SortOrder.forward, .reverse], id: \.self) { order in
                     Text(order.name)
                 }
             }
-            Picker("Sort By", selection: $viewModel.sortParameter) {
+            Picker("Sort by", selection: $viewModel.sortParameter) {
                 ForEach(SortParameter.allCases) { parameter in
                     Text(parameter.name)
                 }

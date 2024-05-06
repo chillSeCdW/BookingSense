@@ -14,7 +14,11 @@ typealias BookingEntry = BookingSchemaV1.BookingEntry
 struct BookingSenseApp: App {
   var sharedModelContainer: ModelContainer = {
     #if DEBUG
-    if CommandLine.arguments.contains("enable-testing") {
+    if CommandLine.arguments.contains("enable-testing-empty") {
+      let factory = ContainerFactory(BookingEntry.self, storeInMemory: true)
+      return factory.container
+    }
+    if CommandLine.arguments.contains("enable-testing-data") {
       let factory = ContainerFactory(BookingEntry.self, storeInMemory: true)
       factory.addExamples(ContainerFactory.generateFixedEntriesItems())
       return factory.container
