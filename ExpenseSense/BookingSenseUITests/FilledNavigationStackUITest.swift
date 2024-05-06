@@ -6,17 +6,15 @@ import XCTest
 final class FilledNavigationStackUITest: XCTestCase {
 
   var app: XCUIApplication!
-
-  func localized(_ key: String) -> String {
-    let uiTestBundle = Bundle(for: BasicStatsUITests.self)
-    return NSLocalizedString(key, bundle: uiTestBundle, comment: "")
-  }
+  var tHelp: TestHelper!
 
   override func setUpWithError() throws {
     continueAfterFailure = false
     app = XCUIApplication()
     app.launchArguments =  ["enable-testing-data"]
     app.launch()
+
+    tHelp = TestHelper(FilledNavigationStackUITest.self)
   }
 
   override func tearDownWithError() throws {
@@ -24,16 +22,16 @@ final class FilledNavigationStackUITest: XCTestCase {
   }
 
   func testNavigationStackViewIsVisibleWhenOnBookingsView() throws {
-    XCTAssertTrue(app.tabBars.buttons[localized("Bookings")].isHittable)
-    app.tabBars.buttons[localized("Bookings")].tap()
-    XCTAssertTrue(app.tabBars.buttons[localized("Overview")].isHittable)
+    XCTAssertTrue(app.tabBars.buttons[tHelp.localized("Bookings")].isHittable)
+    app.tabBars.buttons[tHelp.localized("Bookings")].tap()
+    XCTAssertTrue(app.tabBars.buttons[tHelp.localized("Overview")].isHittable)
 
-    let addButton = app.buttons[localized("Add item")]
-    let sortButton = app.buttons[localized("Sort")]
-    let editButton = app.buttons[localized("Edit")]
+    let addButton = app.buttons[tHelp.localized("Add item")]
+    let sortButton = app.buttons[tHelp.localized("Sort")]
+    let editButton = app.buttons[tHelp.localized("Edit")]
 
-    let entries = app.staticTexts[localized("Entries")]
-    let searchField = app.searchFields[localized("Search")]
+    let entries = app.staticTexts[tHelp.localized("Entries")]
+    let searchField = app.searchFields[tHelp.localized("Search")]
 
     XCTAssertTrue(addButton.isHittable)
     XCTAssertTrue(sortButton.isHittable)

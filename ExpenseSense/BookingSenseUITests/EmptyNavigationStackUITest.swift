@@ -6,17 +6,15 @@ import XCTest
 final class EmptyNavigationStackUITest: XCTestCase {
 
   var app: XCUIApplication!
-
-  func localized(_ key: String) -> String {
-    let uiTestBundle = Bundle(for: BasicStatsUITests.self)
-    return NSLocalizedString(key, bundle: uiTestBundle, comment: "")
-  }
+  var tHelp: TestHelper!
 
   override func setUpWithError() throws {
     continueAfterFailure = false
     app = XCUIApplication()
     app.launchArguments =  ["enable-testing-empty"]
     app.launch()
+
+    tHelp = TestHelper(EmptyNavigationStackUITest.self)
   }
 
   override func tearDownWithError() throws {
@@ -26,15 +24,15 @@ final class EmptyNavigationStackUITest: XCTestCase {
   func testNavigationStackViewIsVisibleWhenOnBookingsView() throws {
     navigateToEntryNavigation()
 
-    let addButton = app.buttons[localized("Add item")]
-    let sortButton = app.buttons[localized("Sort")]
-    let editButton = app.buttons[localized("Edit")]
+    let addButton = app.buttons[tHelp.localized("Add item")]
+    let sortButton = app.buttons[tHelp.localized("Sort")]
+    let editButton = app.buttons[tHelp.localized("Edit")]
 
-    let entries = app.staticTexts[localized("Entries")]
-    let searchField = app.searchFields[localized("Search")]
+    let entries = app.staticTexts[tHelp.localized("Entries")]
+    let searchField = app.searchFields[tHelp.localized("Search")]
 
-    let noEntriesText = app.staticTexts[localized("No entries available")]
-    let pressButtonText = app.staticTexts[localized("Press the + button to add an entry")]
+    let noEntriesText = app.staticTexts[tHelp.localized("No entries available")]
+    let pressButtonText = app.staticTexts[tHelp.localized("Press the + button to add an entry")]
 
     XCTAssertTrue(addButton.isHittable)
     XCTAssertTrue(sortButton.isHittable)
@@ -65,33 +63,33 @@ final class EmptyNavigationStackUITest: XCTestCase {
 
   func navigateToEntryNavigation() {
     XCTContext.runActivity(named: "go to entry navigation tab") { _ in
-      XCTAssertTrue(app.tabBars.buttons[localized("Bookings")].isHittable)
-      app.tabBars.buttons[localized("Bookings")].tap()
-      XCTAssertTrue(app.tabBars.buttons[localized("Overview")].isHittable)
+      XCTAssertTrue(app.tabBars.buttons[tHelp.localized("Bookings")].isHittable)
+      app.tabBars.buttons[tHelp.localized("Bookings")].tap()
+      XCTAssertTrue(app.tabBars.buttons[tHelp.localized("Overview")].isHittable)
     }
   }
 
   func openCreateEntrySheet(_ localeId: String) {
     XCTContext.runActivity(named: "Open create Entry") { _ in
-      let addButton = app.buttons[localized("Add item")]
+      let addButton = app.buttons[tHelp.localized("Add item")]
       XCTAssertTrue(addButton.isHittable)
       addButton.tap()
-      let navBarCreateEntry = app.navigationBars[localized("Create entry")]
+      let navBarCreateEntry = app.navigationBars[tHelp.localized("Create entry")]
       XCTAssertTrue(navBarCreateEntry.isHittable)
 
-      let createButton = navBarCreateEntry.buttons[localized("Create")]
-      let cancelButton = navBarCreateEntry.buttons[localized("Cancel")]
-      let createHeadline = navBarCreateEntry.staticTexts[localized("Create entry")]
+      let createButton = navBarCreateEntry.buttons[tHelp.localized("Create")]
+      let cancelButton = navBarCreateEntry.buttons[tHelp.localized("Cancel")]
+      let createHeadline = navBarCreateEntry.staticTexts[tHelp.localized("Create entry")]
 
       XCTAssertTrue(cancelButton.isHittable)
       XCTAssertTrue(createButton.isHittable)
       XCTAssertTrue(createHeadline.isHittable)
 
-      let nameTextField = app.collectionViews.textFields[localized("Name")]
+      let nameTextField = app.collectionViews.textFields[tHelp.localized("Name")]
       let plusPickerWheel = app.collectionViews.pickerWheels["+"]
-      let amountTextField = app.collectionViews.textFields[localized("Amount")]
+      let amountTextField = app.collectionViews.textFields[tHelp.localized("Amount")]
       let currentCurrency = app.collectionViews.staticTexts["CurrencySymbol"]
-      let pickerInterval = app.collectionViews.pickers[localized("Interval")]
+      let pickerInterval = app.collectionViews.pickers[tHelp.localized("Interval")]
       let local = NSLocale(localeIdentifier: localeId)
 
       XCTAssertTrue(nameTextField.isHittable)
@@ -102,20 +100,20 @@ final class EmptyNavigationStackUITest: XCTestCase {
 
       XCTAssertEqual(currentCurrency.label, local.displayName(forKey: NSLocale.Key.currencySymbol, value: localeId))
 
-      let intervalButton = app.collectionViews.buttons[localized("Interval") + ", " + localized("Monthly")]
+      let intervalButton = app.collectionViews.buttons[tHelp.localized("Interval") + ", " + tHelp.localized("Monthly")]
       XCTAssertTrue(intervalButton.isHittable)
     }
   }
 
   func addEntryInformationAndSubmit(name: String, amount: String) {
     XCTContext.runActivity(named: "enter Entry information") { _ in
-      let navBarCreateEntry = app.navigationBars[localized("Create entry")]
-      let createButton = navBarCreateEntry.buttons[localized("Create")]
+      let navBarCreateEntry = app.navigationBars[tHelp.localized("Create entry")]
+      let createButton = navBarCreateEntry.buttons[tHelp.localized("Create")]
 
-      let nameTextField = app.collectionViews.textFields[localized("Name")]
+      let nameTextField = app.collectionViews.textFields[tHelp.localized("Name")]
       nameTextField.tap()
       nameTextField.typeText(name)
-      let amountTextField = app.collectionViews.textFields[localized("Amount")]
+      let amountTextField = app.collectionViews.textFields[tHelp.localized("Amount")]
       amountTextField.tap()
       amountTextField.typeText(amount)
       createButton.tap()
@@ -129,7 +127,7 @@ final class EmptyNavigationStackUITest: XCTestCase {
       XCTAssertTrue(listEntry.isHittable)
       XCTAssertTrue(listEntry.staticTexts[name].isHittable)
       XCTAssertTrue(listEntry
-        .staticTexts[TestHelper.generateFormattedCurrencyFor(localeId, number: Decimal(string: amount)!)].isHittable
+        .staticTexts[tHelp.generateFormattedCurrencyFor(localeId, number: Decimal(string: amount)!)].isHittable
       )
     }
   }

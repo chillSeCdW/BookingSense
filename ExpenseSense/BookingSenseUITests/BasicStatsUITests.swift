@@ -10,17 +10,15 @@ import XCTest
 final class BasicStatsUITests: XCTestCase {
 
   var app: XCUIApplication!
-
-  func localized(_ key: String) -> String {
-    let uiTestBundle = Bundle(for: BasicStatsUITests.self)
-    return NSLocalizedString(key, bundle: uiTestBundle, comment: "")
-  }
+  var tHelp: TestHelper!
 
   override func setUpWithError() throws {
     continueAfterFailure = false
     app = XCUIApplication()
     app.launchArguments =  ["enable-testing-data"]
     app.launch()
+
+    tHelp = TestHelper(BasicStatsUITests.self)
   }
 
   override func tearDownWithError() throws {
@@ -28,12 +26,12 @@ final class BasicStatsUITests: XCTestCase {
   }
 
   func testBasicStatsAreVisibleWhenOnOverview() throws {
-    XCTAssertTrue(app.tabBars.buttons[localized("Overview")].isHittable)
-    app.tabBars.buttons[localized("Overview")].tap()
-    let income = app.collectionViews.staticTexts[localized("Your total plus")]
-    let deductions = app.collectionViews.staticTexts[localized("Your total minus")]
-    let plus = app.collectionViews.staticTexts[TestHelper.generateFormattedStringFromCurrentLocaleFor(Decimal(12000))]
-    let minus = app.collectionViews.staticTexts[TestHelper.generateFormattedStringFromCurrentLocaleFor(Decimal(2400))]
+    XCTAssertTrue(app.tabBars.buttons[tHelp.localized("Overview")].isHittable)
+    app.tabBars.buttons[tHelp.localized("Overview")].tap()
+    let income = app.collectionViews.staticTexts[tHelp.localized("Your total plus")]
+    let deductions = app.collectionViews.staticTexts[tHelp.localized("Your total minus")]
+    let plus = app.collectionViews.staticTexts[tHelp.generateFormattedStringFromCurrentLocaleFor(Decimal(12000))]
+    let minus = app.collectionViews.staticTexts[tHelp.generateFormattedStringFromCurrentLocaleFor(Decimal(2400))]
 
     XCTAssertTrue(income.isHittable)
     XCTAssertTrue(deductions.isHittable)
