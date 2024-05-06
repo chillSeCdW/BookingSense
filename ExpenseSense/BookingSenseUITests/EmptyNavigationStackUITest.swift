@@ -51,10 +51,16 @@ final class EmptyNavigationStackUITest: XCTestCase {
   }
 
   func testNavigationStackViewIsAbleToAddAnEntry() throws {
+    let entryName = "someEntryName"
+    let entryAmount = "125"
     navigateToEntryNavigation()
     openCreateEntrySheet(Locale.current.currency!.identifier)
-    addEntryInformationAndSubmit()
-    checkIfEntryCreated(Locale.current.currency!.identifier)
+    addEntryInformationAndSubmit(name: entryName, amount: entryAmount)
+    checkIfEntryCreated(
+      Locale.current.currency!.identifier,
+      name: entryName,
+      amount: entryAmount
+    )
   }
 
   func navigateToEntryNavigation() {
@@ -101,64 +107,30 @@ final class EmptyNavigationStackUITest: XCTestCase {
     }
   }
 
-  func addEntryInformationAndSubmit() {
+  func addEntryInformationAndSubmit(name: String, amount: String) {
     XCTContext.runActivity(named: "enter Entry information") { _ in
       let navBarCreateEntry = app.navigationBars[localized("Create entry")]
       let createButton = navBarCreateEntry.buttons[localized("Create")]
 
       let nameTextField = app.collectionViews.textFields[localized("Name")]
       nameTextField.tap()
-      nameTextField.typeText("someEntryName")
+      nameTextField.typeText(name)
       let amountTextField = app.collectionViews.textFields[localized("Amount")]
       amountTextField.tap()
-      amountTextField.typeText("125")
+      amountTextField.typeText(amount)
       createButton.tap()
     }
   }
 
-  func checkIfEntryCreated(_ localeId: String) {
+  func checkIfEntryCreated(_ localeId: String, name: String, amount: String) {
     XCTContext.runActivity(named: "check Bookings List for entry") { _ in
-      let listEntry = app.collectionViews.buttons["someEntryName125"]
+      let listEntry = app.collectionViews.buttons[name + amount]
 
       XCTAssertTrue(listEntry.isHittable)
-      XCTAssertTrue(listEntry.staticTexts["someEntryName"].isHittable)
-      XCTAssertTrue(listEntry.staticTexts[TestHelper.generateFormattedCurrencyFor(localeId, number: Decimal(125))].isHittable)
+      XCTAssertTrue(listEntry.staticTexts[name].isHittable)
+      XCTAssertTrue(listEntry
+        .staticTexts[TestHelper.generateFormattedCurrencyFor(localeId, number: Decimal(string: amount)!)].isHittable
+      )
     }
   }
-
-  
-
-//  func test() throws {
-//    XCTAssertTrue(app.tabBars.buttons[localized("Bookings")].isHittable)
-//    app.tabBars.buttons[localized("Bookings")].tap()
-//    XCTAssertTrue(app.tabBars.buttons[localized("Overview")].isHittable)
-//
-//    let addButton = app.buttons[localized("Add item")]
-//    XCTAssertTrue(addButton.isHittable)
-//    addButton.tap()
-//    
-//    let app = XCUIApplication()
-//    let bookingsenseIcon = app.icons["BookingSense"]
-//    bookingsenseIcon.tap()
-//    bookingsenseIcon.tap()
-//    bookingsenseIcon.tap()
-//    app.tabBars["Tab-Leiste"].buttons["Buchungen"].tap()
-//    app.navigationBars["Einträge"].buttons["Eintrag hinzufügen"].tap()
-//    
-//    let collectionViewsQuery = app.collectionViews
-//    collectionViewsQuery.buttons["In­ter­vall, monatlich"].tap()
-//    
-//    let pickerWheel = collectionViewsQuery.pickerWheels["+"]
-//    pickerWheel.press(forDuration: 0.6);
-//    pickerWheel.tap()
-//    pickerWheel.tap()
-//    
-//    let pickerWheel2 = collectionViewsQuery.pickerWheels["-"]
-//    pickerWheel2.tap()
-//    pickerWheel2.tap()
-//    collectionViewsQuery.textFields["Name"].tap()
-//    collectionViewsQuery.textFields["Betrag"].tap()
-//    collectionViewsQuery.staticTexts["monatlich"].tap()
-//    
-//  }
 }
