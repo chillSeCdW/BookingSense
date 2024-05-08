@@ -43,5 +43,3 @@ struct NavigationStackContentView: View {
     NavigationStackContentView(isListEmpty: true)
     .environment(ViewInfo())
 }
-
-

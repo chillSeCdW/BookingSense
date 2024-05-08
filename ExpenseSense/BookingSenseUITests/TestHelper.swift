@@ -24,8 +24,12 @@ class TestHelper {
     number.formatted(.currency(code: localeId))
   }
 
-  func generateFormattedStringFromCurrentLocaleFor(_ number: Decimal) -> String {
+  func generateFormattedCurrencyStringFromCurrentLocaleFor(_ number: Decimal) -> String {
     generateFormattedCurrencyFor(Locale.current.currency!.identifier, number: number)
+  }
+
+  func generateFormattedStringFromCurrentLocaleFor(_ number: Decimal) -> String {
+    number.formatted()
   }
 
   func navigateToEntryNavigation() {
@@ -33,6 +37,48 @@ class TestHelper {
       XCTAssertTrue(app.tabBars.buttons[localized("Bookings")].isHittable)
       app.tabBars.buttons[localized("Bookings")].tap()
       XCTAssertTrue(app.tabBars.buttons[localized("Overview")].isHittable)
+    }
+  }
+
+  func openEditEntrySheet(_ localeId: String, name: String, amount: Decimal) {
+    XCTContext.runActivity(named: "Open edit Entry") { _ in
+      let listEntry = app.collectionViews.buttons["NavLink" + name]
+      XCTAssertTrue(listEntry.isHittable)
+      listEntry.tap()
+      let navBarEditEntry = app.navigationBars[localized("Edit entry")]
+      XCTAssertTrue(navBarEditEntry.isHittable)
+
+      let backButton = navBarEditEntry.buttons[localized("Entries")]
+      let saveButton = navBarEditEntry.buttons[localized("Save")]
+      let createHeadline = navBarEditEntry.staticTexts[localized("Edit entry")]
+
+      XCTAssertTrue(backButton.isHittable)
+      XCTAssertTrue(saveButton.isHittable)
+      XCTAssertTrue(createHeadline.isHittable)
+
+      let nameTextField = app.collectionViews.textFields[localized("Name")]
+      let plusPickerWheel = app.collectionViews.pickerWheels["+"]
+      let amountTextField = app.collectionViews.textFields[localized("Amount")]
+      let currentCurrency = app.collectionViews.staticTexts["CurrencySymbol"]
+      let amountPrefixPicker = app.collectionViews.pickers[localized("AmountPrefix")]
+      let intervalPicker = app.collectionViews.buttons["intervalPicker"]
+      let intervalText = app.collectionViews.staticTexts[localized("Interval")]
+      let local = NSLocale(localeIdentifier: localeId)
+
+      XCTAssertTrue(nameTextField.isHittable)
+      XCTAssertTrue(plusPickerWheel.isHittable)
+      XCTAssertTrue(amountTextField.isHittable)
+      XCTAssertTrue(currentCurrency.isHittable)
+      XCTAssertTrue(amountPrefixPicker.isHittable)
+      XCTAssertTrue(intervalPicker.isHittable)
+
+      XCTAssertEqual(nameTextField.value as? String, name)
+      XCTAssertEqual(amountPrefixPicker.pickerWheels.element.value as? String, "+")
+      XCTAssertEqual(amountTextField.value as? String, generateFormattedStringFromCurrentLocaleFor(amount))
+      XCTAssertEqual(currentCurrency.label, local.displayName(forKey: NSLocale.Key.currencySymbol, value: localeId))
+      XCTAssertEqual(intervalText.label, localized("Interval"))
+      XCTAssertTrue(intervalPicker.staticTexts[localized("Monthly")].isHittable)
+
     }
   }
 
@@ -89,6 +135,31 @@ class TestHelper {
       amountTextField.tap()
       amountTextField.typeText(amount)
       createButton.tap()
+    }
+  }
+
+  func editEntrySheetAndSave(_ localeId: String, newName: String, newAmount: String) {
+    XCTContext.runActivity(named: "edit Entry with new values") { _ in
+      let navBarEditEntry = app.navigationBars[localized("Edit entry")]
+      XCTAssertTrue(navBarEditEntry.isHittable)
+
+      let saveButton = navBarEditEntry.buttons[localized("Save")]
+      XCTAssertTrue(saveButton.isHittable)
+
+      let nameTextField = app.collectionViews.textFields[localized("Name")]
+      let plusPickerWheel = app.collectionViews.pickerWheels["+"]
+      let amountTextField = app.collectionViews.textFields[localized("Amount")]
+      let intervalPicker = app.collectionViews.buttons["intervalPicker"]
+
+      nameTextField.doubleTap()
+      nameTextField.typeText(newName)
+      amountTextField.doubleTap()
+      amountTextField.typeText(newAmount)
+      plusPickerWheel.adjust(toPickerWheelValue: "-")
+      intervalPicker.tap()
+      app.collectionViews.buttons[localized("Biweekly")].tap()
+
+      saveButton.tap()
     }
   }
 

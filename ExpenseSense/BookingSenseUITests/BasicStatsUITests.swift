@@ -30,8 +30,8 @@ final class BasicStatsUITests: XCTestCase {
     app.tabBars.buttons[tHelp.localized("Overview")].tap()
     let income = app.collectionViews.staticTexts[tHelp.localized("Your total plus")]
     let deductions = app.collectionViews.staticTexts[tHelp.localized("Your total minus")]
-    let plus = app.collectionViews.staticTexts[tHelp.generateFormattedStringFromCurrentLocaleFor(Decimal(12000))]
-    let minus = app.collectionViews.staticTexts[tHelp.generateFormattedStringFromCurrentLocaleFor(Decimal(2400))]
+    let plus = app.collectionViews.staticTexts[tHelp.generateFormattedCurrencyStringFromCurrentLocaleFor(Decimal(12000))]
+    let minus = app.collectionViews.staticTexts[tHelp.generateFormattedCurrencyStringFromCurrentLocaleFor(Decimal(2400))]
 
     XCTAssertTrue(income.isHittable)
     XCTAssertTrue(deductions.isHittable)

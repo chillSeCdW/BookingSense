@@ -48,4 +48,18 @@ final class FilledNavigationStackUITest: XCTestCase {
       tHelp.checkIfEntryExists(name)
     }
   }
+
+  func testEditBookingsEntry() throws {
+    tHelp.navigateToEntryNavigation()
+    tHelp.openEditEntrySheet(Locale.current.currency!.identifier, name: "Salary", amount: Decimal(1000))
+    app.navigationBars[tHelp.localized("Edit entry")].buttons[tHelp.localized("Entries")].tap()
+    tHelp.checkIfEntryExistsWith(Locale.current.currency!.identifier, name: "Salary", amount: "1000")
+  }
+
+  func testEditBookingsEntrySavedCorrectly() throws {
+    tHelp.navigateToEntryNavigation()
+    tHelp.openEditEntrySheet(Locale.current.currency!.identifier, name: "Salary", amount: Decimal(1000))
+    tHelp.editEntrySheetAndSave(Locale.current.currency!.identifier, newName: "newSalary", newAmount: "1100")
+    tHelp.checkIfEntryExistsWith(Locale.current.currency!.identifier, name: "newSalary", amount: "1100")
+  }
 }
