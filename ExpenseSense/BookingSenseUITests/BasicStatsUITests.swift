@@ -18,7 +18,7 @@ final class BasicStatsUITests: XCTestCase {
     app.launchArguments =  ["enable-testing-data"]
     app.launch()
 
-    tHelp = TestHelper(BasicStatsUITests.self)
+    tHelp = TestHelper(BasicStatsUITests.self, app: app)
   }
 
   override func tearDownWithError() throws {

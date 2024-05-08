@@ -14,29 +14,38 @@ final class FilledNavigationStackUITest: XCTestCase {
     app.launchArguments =  ["enable-testing-data"]
     app.launch()
 
-    tHelp = TestHelper(FilledNavigationStackUITest.self)
+    tHelp = TestHelper(FilledNavigationStackUITest.self, app: app)
   }
 
   override func tearDownWithError() throws {
     app.terminate()
   }
 
-  func testNavigationStackViewIsVisibleWhenOnBookingsView() throws {
-    XCTAssertTrue(app.tabBars.buttons[tHelp.localized("Bookings")].isHittable)
-    app.tabBars.buttons[tHelp.localized("Bookings")].tap()
-    XCTAssertTrue(app.tabBars.buttons[tHelp.localized("Overview")].isHittable)
+  func testNavigationStackViewShowsSavedBookings() throws {
+    let names = [ "Salary", "Rent", "Car"]
 
-    let addButton = app.buttons[tHelp.localized("Add item")]
-    let sortButton = app.buttons[tHelp.localized("Sort")]
-    let editButton = app.buttons[tHelp.localized("Edit")]
+    tHelp.navigateToEntryNavigation()
+    for (index, name) in names.enumerated() {
+      tHelp.checkIfEntryExistsWith(
+        Locale.current.currency!.identifier,
+        name: name,
+        amount: index == 0 ? "1000" : "100"
+      )
+    }
+  }
 
-    let entries = app.staticTexts[tHelp.localized("Entries")]
-    let searchField = app.searchFields[tHelp.localized("Search")]
+  func testSavedBookingsDeleteAllButton() throws {
+    let names = [ "Salary", "Rent", "Car"]
 
-    XCTAssertTrue(addButton.isHittable)
-    XCTAssertTrue(sortButton.isHittable)
-    XCTAssertTrue(editButton.isHittable)
-    XCTAssertTrue(entries.isHittable)
-    XCTAssertTrue(searchField.isHittable)
+    tHelp.navigateToEntryNavigation()
+    tHelp.goIntoEditMode()
+    for name in names {
+      tHelp.checkIfEntryHasDeleteButton(name)
+    }
+    tHelp.openDeleteAllConfirmationScreen()
+    tHelp.confirmDeleteAllConfirmationScreen()
+    for name in names {
+      tHelp.checkIfEntryExists(name)
+    }
   }
 }

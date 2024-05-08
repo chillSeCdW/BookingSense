@@ -20,7 +20,7 @@ struct EntryFormView: View {
       Text("Name")
     }
     HStack {
-      Picker("Interval", selection: $amountPrefix) {
+      Picker("AmountPrefix", selection: $amountPrefix) {
         ForEach(AmountPrefix.allCases) { option in
           Text(String(describing: option.description))
         }
@@ -52,7 +52,7 @@ struct EntryFormView: View {
       ForEach(Interval.allCases) { option in
         Text(String(describing: option.description))
       }
-    }
+    }.accessibilityIdentifier("intervalPicker")
     .pickerStyle(.menu)
   }
 }
