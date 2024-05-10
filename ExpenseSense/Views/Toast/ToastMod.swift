@@ -1,8 +1,8 @@
 //
 //  ToastMod.swift
-//  ExpenseSense
+//  BookingSense
 //
-//  Created by Kenny Salazar on 17.04.24.
+//  Created by kenny on 17.04.24.
 //
 
 import Foundation
@@ -19,6 +19,7 @@ struct ToastMod: ViewModifier {
       .overlay(
         ZStack {
           mainToastView()
+            .accessibilityIdentifier("ToastView")
             .offset(y: 40)
         }.animation(.spring(), value: toast)
       )

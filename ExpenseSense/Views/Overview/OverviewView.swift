@@ -1,8 +1,8 @@
 //
 //  OverviewView.swift
-//  ExpenseSense
+//  BookingSense
 //
-//  Created by Kenny Salazar on 27.03.24.
+//  Created by kenny on 27.03.24.
 //
 
 import Foundation
@@ -14,14 +14,14 @@ struct OverviewView: View {
   var body: some View {
     NavigationStack {
       List {
-        BasicStats()
+        BasicStatsView()
       }
     }
   }
 }
 
 #Preview {
-  let factory = ContainerFactory(ExpenseEntry.self, storeInMemory: true)
+  let factory = ContainerFactory(BookingEntry.self, storeInMemory: true)
   factory.addExamples(ContainerFactory.generateRandomEntriesItems())
   return OverviewView()
     .modelContainer(factory.container)

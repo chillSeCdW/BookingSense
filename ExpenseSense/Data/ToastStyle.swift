@@ -1,8 +1,8 @@
 //
 //  ToastStyle.swift
-//  ExpenseSense
+//  BookingSense
 //
-//  Created by Kenny Salazar on 17.04.24.
+//  Created by kenny on 17.04.24.
 //
 
 import Foundation

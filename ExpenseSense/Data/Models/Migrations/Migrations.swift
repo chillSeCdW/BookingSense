@@ -1,8 +1,8 @@
 //
 //  Migrations.swift
-//  ExpenseSense
+//  BookingSense
 //
-//  Created by Kenny Salazar on 29.04.24.
+//  Created by kenny on 29.04.24.
 //
 
 import Foundation
@@ -11,7 +11,7 @@ import SwiftData
 enum ExpenseMigrationV1ToV2: SchemaMigrationPlan {
   static var schemas: [any VersionedSchema.Type] {
     [
-      ExpenseSchemaV1.self
+      BookingSchemaV1.self
     ]
   }
 
