@@ -175,6 +175,29 @@ class TestHelper {
     }
   }
 
+  func checkIfToastExistsWith(amount: String) {
+    XCTContext.runActivity(named: "check if Toast was created with values") { _ in
+
+      let image = app.images.matching(identifier: "ToastView").element
+
+      let titleLabel = app.staticTexts.matching(identifier: "ToastView")
+      .containing(XCUIElement.ElementType.staticText, identifier: localized("Info")).element.label
+
+      let message = String.localizedStringWithFormat(localized("%@ transformedInfo"), amount)
+
+      let messageLabel = app.staticTexts.matching(identifier: "ToastView")
+        .containing(XCUIElement.ElementType.staticText, identifier: message).element.label
+
+      let toastButton = app.buttons.matching(identifier: "ToastView").element
+
+      XCTAssertTrue(toastButton.isHittable)
+      XCTAssertTrue(image.isHittable)
+      XCTAssertEqual(titleLabel, localized("Info"))
+      XCTAssertEqual(messageLabel, message)
+
+    }
+  }
+
   func checkIfEntryExists(_ name: String) {
     XCTContext.runActivity(named: "check if entry exists") { _ in
       let waiter = XCTWaiter()

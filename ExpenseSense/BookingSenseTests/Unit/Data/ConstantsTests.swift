@@ -28,7 +28,12 @@ final class ConstantsTests: XCTestCase {
   func testGetBackground() throws {
     XCTAssertEqual(
       Constants.getBackground(ColorScheme.dark),
-      Color(uiColor: UIColor(white: 1, alpha: 0.15))
+      Color(uiColor: UIColor(
+        red: 64/255,
+        green: 64/255,
+        blue: 64/255,
+        alpha: 1.0
+      ))
     )
     XCTAssertEqual(
       Constants.getBackground(ColorScheme.light),

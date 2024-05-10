@@ -14,7 +14,14 @@ struct Constants {
     AmountPrefix.minus: Color(UIColor(red: 0.7882, green: 0, blue: 0.0118, alpha: 1.0)) // red
   ]
   static var getBackground: (ColorScheme) -> Color = { scheme in
-    scheme == .light ? .white : Color(uiColor: UIColor(white: 1, alpha: 0.15)) // darkGrey
+    scheme == .light ? .white : Color(
+      uiColor: UIColor(
+        red: 64/255,
+        green: 64/255,
+        blue: 64/255,
+        alpha: 1.0
+      ) // darkGrey
+    )
   }
 
   static func createDescriptor(searchString: String, interval: Interval) -> FetchDescriptor<BookingEntry> {
