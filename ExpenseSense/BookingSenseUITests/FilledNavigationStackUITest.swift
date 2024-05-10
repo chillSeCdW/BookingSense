@@ -63,6 +63,12 @@ final class FilledNavigationStackUITest: XCTestCase {
     tHelp.checkIfEntryExistsWith(Locale.current.currency!.identifier, name: "newSalary", amount: "1100")
   }
 
+  func testDeleteBookingsEntry() throws {
+    tHelp.navigateToEntryNavigation()
+    tHelp.deleteEntry(name: "Salary")
+    tHelp.checkIfEntryExists("Salary")
+  }
+
   func testEditBookingsEntryTriggersToast() throws {
     let newAmount = "11" + Locale.current.decimalSeparator! + Locale.current.decimalSeparator! + "00"
     tHelp.navigateToEntryNavigation()
@@ -70,5 +76,6 @@ final class FilledNavigationStackUITest: XCTestCase {
     tHelp.editEntrySheetAndSave(Locale.current.currency!.identifier, newName: "newSalary", newAmount: newAmount)
     tHelp.checkIfEntryExistsWith(Locale.current.currency!.identifier, name: "newSalary", amount: "11")
     tHelp.checkIfToastExistsWith(amount: "11")
+    tHelp.dismissToast()
   }
 }

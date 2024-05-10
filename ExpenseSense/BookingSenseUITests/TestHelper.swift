@@ -138,6 +138,15 @@ class TestHelper {
     }
   }
 
+  func deleteEntry(name: String) {
+    XCTContext.runActivity(named: "delete Entry with values") { _ in
+      let listEntry = app.collectionViews.buttons["NavLink" + name]
+      listEntry.swipeLeft()
+      let deleteButton = app.collectionViews.buttons[localized("Delete")]
+      deleteButton.tap()
+    }
+  }
+
   func editEntrySheetAndSave(_ localeId: String, newName: String, newAmount: String) {
     XCTContext.runActivity(named: "edit Entry with new values") { _ in
       let navBarEditEntry = app.navigationBars[localized("Edit entry")]
@@ -195,6 +204,14 @@ class TestHelper {
       XCTAssertEqual(titleLabel, localized("Info"))
       XCTAssertEqual(messageLabel, message)
 
+    }
+  }
+
+  func dismissToast() {
+    XCTContext.runActivity(named: "dismissing Toast") { _ in
+      let toastButton = app.buttons.matching(identifier: "ToastView").element
+
+      toastButton.tap()
     }
   }
 
