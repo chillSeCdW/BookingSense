@@ -20,7 +20,7 @@ struct ToolbarEntryList: ToolbarContent {
     if editMode?.wrappedValue.isEditing == true {
       ToolbarItem(placement: .navigationBarLeading) {
         Button(action: showPopup) {
-            Label("Delete all", systemImage: "trash")
+          Label("Delete all", systemImage: "trash")
         }
       }
     }
