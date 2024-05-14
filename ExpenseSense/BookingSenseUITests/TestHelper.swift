@@ -28,8 +28,12 @@ class TestHelper {
     generateFormattedCurrencyFor(Locale.current.currency!.identifier, number: number)
   }
 
-  func generateFormattedStringFromCurrentLocaleFor(_ number: Decimal) -> String {
-    number.formatted()
+  func generateFormattedStringFromFormatterFor(_ number: Decimal) -> String {
+    let formatter = NumberFormatter()
+    formatter.numberStyle = .decimal
+    formatter.usesGroupingSeparator = false
+
+    return formatter.string(from: NSDecimalNumber(decimal: number))!
   }
 
   func navigateToEntryNavigation() {
@@ -74,7 +78,7 @@ class TestHelper {
 
       XCTAssertEqual(nameTextField.value as? String, name)
       XCTAssertEqual(amountPrefixPicker.pickerWheels.element.value as? String, "+")
-      XCTAssertEqual(amountTextField.value as? String, generateFormattedStringFromCurrentLocaleFor(amount))
+      XCTAssertEqual(amountTextField.value as? String, generateFormattedStringFromFormatterFor(amount))
       XCTAssertEqual(currentCurrency.label, local.displayName(forKey: NSLocale.Key.currencySymbol, value: localeId))
       XCTAssertEqual(intervalText.label, localized("Interval"))
       XCTAssertTrue(intervalPicker.staticTexts[localized("Monthly")].isHittable)
