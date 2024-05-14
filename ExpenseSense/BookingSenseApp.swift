@@ -29,10 +29,20 @@ struct BookingSenseApp: App {
     return factory.container
   }()
 
+  init() {
+    setupVersion()
+  }
+
   var body: some Scene {
       WindowGroup {
           ContentView()
       }
       .modelContainer(sharedModelContainer)
+  }
+
+  func setupVersion() {
+    let version = Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as? String
+    let build = Bundle.main.object(forInfoDictionaryKey: "CFBundleVersion") as? String
+    UserDefaults.standard.set("Version \(version ?? "") (\(build ?? ""))", forKey: "app_version")
   }
 }
