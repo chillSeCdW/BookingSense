@@ -9,6 +9,12 @@ import SwiftUI
 
 struct EntryFormView: View {
   var expenseEntry: BookingEntry?
+  var formatter: NumberFormatter {
+    let formatter = NumberFormatter()
+    formatter.numberStyle = .decimal
+    formatter.usesGroupingSeparator = false
+    return formatter
+  }
 
   @Binding var name: String
   @Binding var amountPrefix: AmountPrefix
@@ -39,7 +45,7 @@ struct EntryFormView: View {
         if let expenseEntry {
           name = expenseEntry.name
           amountPrefix = expenseEntry.amountPrefix
-          amount = expenseEntry.amount.formatted()
+          amount = formatter.string(from: NSDecimalNumber(decimal: expenseEntry.amount)) ?? ""
           interval = Interval(rawValue: expenseEntry.interval) ?? Interval.monthly
         }
       }
