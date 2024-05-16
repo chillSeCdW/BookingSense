@@ -26,7 +26,7 @@ struct BookingNavigationStackView: View {
         .navigationDestination(for: BookingEntry.self) { entry in
           EntryView(expenseEntry: entry)
         }
-        .navigationTitle("Entries")
+        .navigationTitle("Bookings")
         .searchable(text: $viewInfo.searchText, prompt: "Search")
         .toolbar {
           ToolbarEntryList(showingConfirmation: $showingConfirmation, addEntry: addEntry)

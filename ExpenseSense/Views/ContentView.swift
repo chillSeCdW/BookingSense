@@ -9,8 +9,9 @@ import SwiftUI
 import SwiftData
 
 struct ContentView: View {
-  @State private var navigationContext = NavigationContext()
-  @State private var viewInfo = ViewInfo()
+  @Environment(\.modelContext) private var modelContext
+  @Environment(NavigationContext.self) var navigationContext
+  @Environment(ViewInfo.self) var viewInfo
 
   var body: some View {
     @Bindable var navigationContext = navigationContext
@@ -25,14 +26,15 @@ struct ContentView: View {
             Label("Bookings", systemImage: "list.dash")
         }
     }
-    .environment(viewInfo)
-    .environment(navigationContext)
     .toastView(toast: $navigationContext.toast)
   }
 }
 
 #Preview {
   let factory = ContainerFactory(BookingEntry.self, storeInMemory: true)
-  factory.addExamples(ContainerFactory.generateRandomEntriesItems())
-  return ContentView().modelContainer(factory.container)
+  factory.addExamples(ContainerFactory.generateFixedEntriesItems())
+  return ContentView()
+    .environment(NavigationContext())
+    .environment(ViewInfo())
+    .modelContainer(factory.container)
 }

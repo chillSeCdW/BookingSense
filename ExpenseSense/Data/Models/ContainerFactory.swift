@@ -48,15 +48,53 @@ struct ContainerFactory {
 
   static func generateFixedEntriesItems() -> [BookingEntry] {
     var returnResult: [BookingEntry] = []
-    let names = [ "Salary", "Rent", "Car"]
 
-    for (index, name) in names.enumerated() {
-      returnResult.append(BookingEntry(name: name,
-                                       amount: index == 0 ? Decimal(1000) : Decimal(100),
-                                       amountPrefix: index == 0 ? AmountPrefix.plus : AmountPrefix.minus,
-                                       interval: Interval.monthly)
-      )
-    }
+    returnResult.append(BookingEntry(name: "Salary",
+                                     amount: 2500,
+                                     amountPrefix: AmountPrefix.plus,
+                                     interval: .monthly)
+    )
+    returnResult.append(BookingEntry(name: "someSecondSalary",
+                                     amount: 150,
+                                     amountPrefix: AmountPrefix.plus,
+                                     interval: .biweekly)
+    )
+
+    returnResult.append(BookingEntry(name: "dailyEntry",
+                                     amount: 1,
+                                     amountPrefix: AmountPrefix.minus,
+                                     interval: .daily)
+    )
+    returnResult.append(BookingEntry(name: "weeklyEntry",
+                                     amount: 10,
+                                     amountPrefix: AmountPrefix.minus,
+                                     interval: .weekly)
+    )
+    returnResult.append(BookingEntry(name: "biweeklyEntry",
+                                     amount: 20,
+                                     amountPrefix: AmountPrefix.minus,
+                                     interval: .biweekly)
+    )
+    returnResult.append(BookingEntry(name: "monthlyEntry",
+                                     amount: 800,
+                                     amountPrefix: AmountPrefix.minus,
+                                     interval: .monthly)
+    )
+    returnResult.append(BookingEntry(name: "quarterlyEntry",
+                                     amount: 100,
+                                     amountPrefix: AmountPrefix.minus,
+                                     interval: .quarterly)
+    )
+    returnResult.append(BookingEntry(name: "semiannuallyEntry",
+                                     amount: 200,
+                                     amountPrefix: AmountPrefix.minus,
+                                     interval: .semiannually)
+    )
+    returnResult.append(BookingEntry(name: "annuallyEntry",
+                                     amount: 400,
+                                     amountPrefix: AmountPrefix.minus,
+                                     interval: .annually)
+    )
     return returnResult
   }
 }

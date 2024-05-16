@@ -52,7 +52,7 @@ class TestHelper {
       let navBarEditEntry = app.navigationBars[localized("Edit entry")]
       XCTAssertTrue(navBarEditEntry.isHittable)
 
-      let backButton = navBarEditEntry.buttons[localized("Entries")]
+      let backButton = navBarEditEntry.buttons[localized("Bookings")]
       let saveButton = navBarEditEntry.buttons[localized("Save")]
       let createHeadline = navBarEditEntry.staticTexts[localized("Edit entry")]
 
@@ -179,6 +179,16 @@ class TestHelper {
   func checkIfEntryExistsWith(_ localeId: String, name: String, amount: String) {
     XCTContext.runActivity(named: "check if entry was created with values") { _ in
       let listEntry = app.collectionViews.buttons["NavLink" + name]
+      let maxSwipes = 2
+      var count = 0
+
+      while !listEntry.isHittable && count < maxSwipes {
+        app.swipeUp()
+        count += 1
+        if !listEntry.isHittable {
+          app.swipeDown()
+        }
+      }
 
       XCTAssertTrue(listEntry.isHittable)
       XCTAssertTrue(listEntry.staticTexts[name].isHittable)
@@ -246,6 +256,16 @@ class TestHelper {
   func checkIfEntryHasDeleteButton(_ name: String) {
     XCTContext.runActivity(named: "checking if Entry has delete button") { _ in
       let listEntry = app.collectionViews.buttons["NavLink" + name]
+      let maxSwipes = 2
+      var count = 0
+
+      while !listEntry.isHittable && count < maxSwipes {
+        app.swipeUp()
+        count += 1
+        if !listEntry.isHittable {
+          app.swipeDown()
+        }
+      }
 
       XCTAssertTrue(listEntry.isHittable)
       XCTAssertTrue(listEntry.images.element.exists)
