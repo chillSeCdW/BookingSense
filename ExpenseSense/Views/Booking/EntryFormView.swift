@@ -66,6 +66,7 @@ struct EntryFormView: View {
 #Preview {
   let entry = BookingEntry(
     name: "testName",
+    tags: ["default"],
     amount: Decimal(string: "15,35", locale: Locale(identifier: Locale.current.identifier)) ?? Decimal(),
     amountPrefix: .plus,
     interval: .weekly)
