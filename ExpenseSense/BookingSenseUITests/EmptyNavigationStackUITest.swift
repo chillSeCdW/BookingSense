@@ -28,7 +28,7 @@ final class EmptyNavigationStackUITest: XCTestCase {
     let sortButton = app.buttons[tHelp.localized("Sort")]
     let editButton = app.buttons[tHelp.localized("Edit")]
 
-    let entries = app.staticTexts[tHelp.localized("Entries")]
+    let bookings = app.staticTexts[tHelp.localized("Bookings")]
     let searchField = app.searchFields[tHelp.localized("Search")]
 
     let noEntriesText = app.staticTexts[tHelp.localized("No entries available")]
@@ -37,7 +37,7 @@ final class EmptyNavigationStackUITest: XCTestCase {
     XCTAssertTrue(addButton.isHittable)
     XCTAssertTrue(sortButton.isHittable)
     XCTAssertTrue(editButton.isHittable)
-    XCTAssertTrue(entries.isHittable)
+    XCTAssertTrue(bookings.isHittable)
     XCTAssertTrue(searchField.isHittable)
     XCTAssertTrue(noEntriesText.isHittable)
     XCTAssertTrue(pressButtonText.isHittable)

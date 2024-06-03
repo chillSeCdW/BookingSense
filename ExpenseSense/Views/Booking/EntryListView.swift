@@ -36,7 +36,7 @@ struct EntryListView: View {
 
   var body: some View {
     if !entries.isEmpty {
-      Section(header: Text(interval.description)) {
+      Section(content: {
         ForEach(entries) { entry in
           NavigationLink(value: entry) {
             HStack(spacing: 0) {
@@ -56,7 +56,13 @@ struct EntryListView: View {
             }
           )
         }.onDelete(perform: deleteEntry)
-      }
+      }, header: {
+        HStack {
+          Text(interval.description)
+          Text("(" + entries.count.formatted() + " entries)")
+        }
+
+      })
     }
   }
 

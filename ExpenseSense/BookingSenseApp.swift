@@ -29,6 +29,9 @@ struct BookingSenseApp: App {
     return factory.container
   }()
 
+  @State private var navigationContext = NavigationContext()
+  @State private var viewInfo = ViewInfo()
+
   init() {
     setupVersion()
   }
@@ -36,6 +39,8 @@ struct BookingSenseApp: App {
   var body: some Scene {
       WindowGroup {
           ContentView()
+          .environment(viewInfo)
+          .environment(navigationContext)
       }
       .modelContainer(sharedModelContainer)
   }

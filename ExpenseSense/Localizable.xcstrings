@@ -113,6 +113,22 @@
         }
       }
     },
+    "Basic Information" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Grundinformation"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Basic Information"
+          }
+        }
+      }
+    },
     "Biweekly" : {
       "localizations" : {
         "de" : {
@@ -290,22 +306,6 @@
         }
       }
     },
-    "Entries" : {
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Einträge"
-          }
-        },
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Entries"
-          }
-        }
-      }
-    },
     "Error" : {
       "localizations" : {
         "de" : {
@@ -318,6 +318,22 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Error"
+          }
+        }
+      }
+    },
+    "Helpful Infos" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hilfreiche Informationen"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Helpful Information"
           }
         }
       }
@@ -366,6 +382,102 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "monthly"
+          }
+        }
+      }
+    },
+    "Monthly costs of annually" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Monatliche Kosten der jährlichen Einträge:"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Monthly costs of annually entries:"
+          }
+        }
+      }
+    },
+    "Monthly costs of biweekly" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Monatliche Kosten der zweiwöchentlichen Einträge:"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Monthly costs of biweekly entries:"
+          }
+        }
+      }
+    },
+    "Monthly costs of daily" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Monatliche Kosten der täglichen Einträge:"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Monthly costs of daily entries:"
+          }
+        }
+      }
+    },
+    "Monthly costs of quarterly" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Monatliche Kosten der vierteljährlichen Einträge:"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Monthly costs of quarterly entries:"
+          }
+        }
+      }
+    },
+    "Monthly costs of semiannually" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Monatliche Kosten der halbjährlichen Einträge:"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Monthly costs of semiannually entries:"
+          }
+        }
+      }
+    },
+    "Monthly costs of weekly" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Monatliche Kosten der wöchentlichen Einträge:"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Monthly costs of weekly entries:"
           }
         }
       }
@@ -562,6 +674,23 @@
         }
       }
     },
+    "To cover non-monthly deductions" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Um alle nicht monatlichen Kosten zu decken, sollte mindestens folgender Betrag monatlich zurück gelegt werden:"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "To cover non-monthly deductions save at least the following amount each month:"
+          }
+        }
+      }
+    },
     "Weekly" : {
       "localizations" : {
         "de" : {
@@ -574,6 +703,38 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "weekly"
+          }
+        }
+      }
+    },
+    "Your total entries" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Gesamtanzahl von Buchungen:"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Your total number of entries:"
+          }
+        }
+      }
+    },
+    "Your total left" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Restbetrag:"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Your total amount left:"
           }
         }
       }

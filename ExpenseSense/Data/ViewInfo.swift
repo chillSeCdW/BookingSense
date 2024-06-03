@@ -17,8 +17,4 @@ class ViewInfo {
     var searchText: String = ""
 
     var totalExpenseEntries: Int = 0
-
-    func update(modelContext: ModelContext) {
-      totalExpenseEntries = BookingEntry.totalExpenseEntries(modelContext: modelContext)
-    }
 }

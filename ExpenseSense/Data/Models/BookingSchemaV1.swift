@@ -22,7 +22,7 @@ enum BookingSchemaV1: VersionedSchema {
 extension BookingSchemaV1 {
 
   enum CodingKeys: CodingKey {
-    case id, name, amount, amountPrefix, interval, intervalString
+    case id, name, tags, amount, amountPrefix, interval, intervalString
   }
 
   @Model
@@ -31,13 +31,15 @@ extension BookingSchemaV1 {
     @Attribute(.unique)
     var id: String
     var name: String
+    var tags: [String]
     var amount: Decimal
     var amountPrefix: AmountPrefix
     var interval: String
 
-    init(name: String, amount: Decimal, amountPrefix: AmountPrefix, interval: Interval) {
+    init(name: String, tags: [String], amount: Decimal, amountPrefix: AmountPrefix, interval: Interval) {
       self.id = UUID().uuidString
       self.name = name
+      self.tags = tags
       self.amount = amount
       self.amountPrefix = amountPrefix
       self.interval = interval.rawValue
@@ -47,6 +49,7 @@ extension BookingSchemaV1 {
       let container = try decoder.container(keyedBy: CodingKeys.self)
       id = try container.decode(String.self, forKey: .id)
       name = try container.decode(String.self, forKey: .name)
+      tags = try container.decode(Array.self, forKey: .tags)
       amount = try container.decode(Decimal.self, forKey: .amount)
       amountPrefix = try container.decode(AmountPrefix.self, forKey: .amountPrefix)
       interval = try container.decode(String.self, forKey: .interval)
@@ -56,6 +59,7 @@ extension BookingSchemaV1 {
       var container = encoder.container(keyedBy: CodingKeys.self)
       try container.encode(id, forKey: .id)
       try container.encode(name, forKey: .name)
+      try container.encode(name, forKey: .tags)
       try container.encode(amount, forKey: .amount)
       try container.encode(amountPrefix, forKey: .amountPrefix)
       try container.encode(interval, forKey: .interval)

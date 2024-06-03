@@ -38,6 +38,7 @@ struct ContainerFactory {
       let randomTask = names[randomIndex]
 
       returnResult.append(BookingEntry(name: randomTask,
+                                       tags: ["default"],
                                        amount: Decimal(Double.random(in: 0...500)),
                                        amountPrefix: AmountPrefix.allCases.randomElement()!,
                                        interval: Interval.allCases.randomElement()!)
@@ -48,15 +49,62 @@ struct ContainerFactory {
 
   static func generateFixedEntriesItems() -> [BookingEntry] {
     var returnResult: [BookingEntry] = []
-    let names = [ "Salary", "Rent", "Car"]
 
-    for (index, name) in names.enumerated() {
-      returnResult.append(BookingEntry(name: name,
-                                       amount: index == 0 ? Decimal(1000) : Decimal(100),
-                                       amountPrefix: index == 0 ? AmountPrefix.plus : AmountPrefix.minus,
-                                       interval: Interval.monthly)
-      )
-    }
+    returnResult.append(BookingEntry(name: "Salary",
+                                     tags: ["default"],
+                                     amount: 2500,
+                                     amountPrefix: AmountPrefix.plus,
+                                     interval: .monthly)
+    )
+    returnResult.append(BookingEntry(name: "someSecondSalary",
+                                     tags: ["default"],
+                                     amount: 150,
+                                     amountPrefix: AmountPrefix.plus,
+                                     interval: .biweekly)
+    )
+
+    returnResult.append(BookingEntry(name: "dailyEntry",
+                                     tags: ["default"],
+                                     amount: 1,
+                                     amountPrefix: AmountPrefix.minus,
+                                     interval: .daily)
+    )
+    returnResult.append(BookingEntry(name: "weeklyEntry",
+                                     tags: ["default"],
+                                     amount: 10,
+                                     amountPrefix: AmountPrefix.minus,
+                                     interval: .weekly)
+    )
+    returnResult.append(BookingEntry(name: "biweeklyEntry",
+                                     tags: ["default"],
+                                     amount: 20,
+                                     amountPrefix: AmountPrefix.minus,
+                                     interval: .biweekly)
+    )
+    returnResult.append(BookingEntry(name: "monthlyEntry",
+                                     tags: ["default"],
+                                     amount: 800,
+                                     amountPrefix: AmountPrefix.minus,
+                                     interval: .monthly)
+    )
+    returnResult.append(BookingEntry(name: "quarterlyEntry",
+                                     tags: ["default"],
+                                     amount: 100,
+                                     amountPrefix: AmountPrefix.minus,
+                                     interval: .quarterly)
+    )
+    returnResult.append(BookingEntry(name: "semiannuallyEntry",
+                                     tags: ["default"],
+                                     amount: 200,
+                                     amountPrefix: AmountPrefix.minus,
+                                     interval: .semiannually)
+    )
+    returnResult.append(BookingEntry(name: "annuallyEntry",
+                                     tags: ["default"],
+                                     amount: 400,
+                                     amountPrefix: AmountPrefix.minus,
+                                     interval: .annually)
+    )
     return returnResult
   }
 }

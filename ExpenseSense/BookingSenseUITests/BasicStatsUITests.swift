@@ -30,14 +30,24 @@ final class BasicStatsUITests: XCTestCase {
     app.tabBars.buttons[tHelp.localized("Overview")].tap()
     let income = app.collectionViews.staticTexts[tHelp.localized("Your total plus")]
     let deductions = app.collectionViews.staticTexts[tHelp.localized("Your total minus")]
+    let leftText = app.collectionViews.staticTexts[tHelp.localized("Your total left")]
+    let numberEntries = app.collectionViews.staticTexts[tHelp.localized("Your total entries")]
     let plus = app.collectionViews
-      .staticTexts[tHelp.generateFormattedCurrencyStringFromCurrentLocaleFor(Decimal(12000))]
+      .staticTexts[tHelp.generateFormattedCurrencyStringFromCurrentLocaleFor(Decimal(33900))]
     let minus = app.collectionViews
-      .staticTexts[tHelp.generateFormattedCurrencyStringFromCurrentLocaleFor(Decimal(2400))]
+      .staticTexts[tHelp.generateFormattedCurrencyStringFromCurrentLocaleFor(Decimal(12205))]
+    let leftNumber = app.collectionViews
+      .staticTexts[tHelp.generateFormattedCurrencyStringFromCurrentLocaleFor(Decimal(21695))]
+    let entriesNumber = app.collectionViews
+      .staticTexts["9"]
 
     XCTAssertTrue(income.isHittable)
     XCTAssertTrue(deductions.isHittable)
+    XCTAssertTrue(leftText.isHittable)
+    XCTAssertTrue(numberEntries.isHittable)
     XCTAssertTrue(plus.exists)
     XCTAssertTrue(minus.exists)
+    XCTAssertTrue(leftNumber.exists)
+    XCTAssertTrue(entriesNumber.exists)
   }
 }

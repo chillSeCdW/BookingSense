@@ -24,6 +24,27 @@ struct Constants {
     )
   }
 
+  static func getTimesValue(interval: Interval?) -> Decimal {
+    switch interval {
+    case .daily:
+      return 365
+    case .weekly:
+      return 52
+    case .biweekly:
+      return 26
+    case .monthly:
+      return 12
+    case .quarterly:
+      return 4
+    case .semiannually:
+      return 2
+    case .annually:
+      return 1
+    case .none:
+      return 0
+    }
+  }
+
   static func createDescriptor(searchString: String, interval: Interval) -> FetchDescriptor<BookingEntry> {
     let predicate = BookingEntry.predicate(searchName: searchString, interval: interval)
     let descriptor = FetchDescriptor<BookingEntry>(
