@@ -1,0 +1,25 @@
+{
+  "configurations" : [
+    {
+      "id" : "38CE7E8D-DF38-44E2-8D73-211CC1FA7FB8",
+      "name" : "Configuration 1",
+      "options" : {
+
+      }
+    }
+  ],
+  "defaultOptions" : {
+    "testTimeoutsEnabled" : true
+  },
+  "testTargets" : [
+    {
+      "parallelizable" : true,
+      "target" : {
+        "containerPath" : "container:BookingSense.xcodeproj",
+        "identifier" : "B92782BD2BDD9F8000D13808",
+        "name" : "BookingSenseTests"
+      }
+    }
+  ],
+  "version" : 1
+}
