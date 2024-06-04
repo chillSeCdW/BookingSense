@@ -40,11 +40,14 @@
 		B99206072BDA806E0099EF26 /* ToolbarEntryList.swift in Sources */ = {isa = PBXBuildFile; fileRef = B99206062BDA806E0099EF26 /* ToolbarEntryList.swift */; };
 		B99206092BDA96090099EF26 /* ToolbarEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = B99206082BDA96090099EF26 /* ToolbarEntry.swift */; };
 		B992060B2BDA96D80099EF26 /* EntryFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B992060A2BDA96D80099EF26 /* EntryFormView.swift */; };
+		B99284B32C0F090400CB6404 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B99284B22C0F090400CB6404 /* LaunchScreen.storyboard */; };
 		B9B8212B2BF244EB00CEDE43 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = B9B8212A2BF244EB00CEDE43 /* Settings.bundle */; };
 		B9BE668C2BCFF03D0063734E /* ToastStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9BE668B2BCFF03D0063734E /* ToastStyle.swift */; };
 		B9BE668E2BCFF0700063734E /* Toast.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9BE668D2BCFF0700063734E /* Toast.swift */; };
 		B9BE66902BCFF0B90063734E /* ToastView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9BE668F2BCFF0B90063734E /* ToastView.swift */; };
 		B9BE66922BCFF1CB0063734E /* ToastMod.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9BE66912BCFF1CB0063734E /* ToastMod.swift */; };
+		B9D1487A2C0F3CBB0040527B /* BookWalletIcon_light.png in Resources */ = {isa = PBXBuildFile; fileRef = B9D148792C0F3CBB0040527B /* BookWalletIcon_light.png */; };
+		B9D1487B2C0F3CBB0040527B /* BookWalletIcon_light.png in Resources */ = {isa = PBXBuildFile; fileRef = B9D148792C0F3CBB0040527B /* BookWalletIcon_light.png */; };
 		B9D534132BD2903500C3355F /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = B9D534122BD2903500C3355F /* Localizable.xcstrings */; };
 		B9DAFAD52BA8AFAF000486EA /* BookingSenseApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9DAFAD42BA8AFAF000486EA /* BookingSenseApp.swift */; };
 		B9DAFAD72BA8AFAF000486EA /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9DAFAD62BA8AFAF000486EA /* ContentView.swift */; };
@@ -53,6 +56,8 @@
 		B9DE5B7F2BC6E7740017ACF4 /* AmountPrefix.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9DE5B7E2BC6E7740017ACF4 /* AmountPrefix.swift */; };
 		B9E2D0192BDE87FE0001B391 /* MockContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9E2D0182BDE87FE0001B391 /* MockContainer.swift */; };
 		B9E4ABF22BF6438E00E96330 /* InfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9E4ABF12BF6438E00E96330 /* InfoView.swift */; };
+		B9E590B92C0F3AD5008C10A8 /* BookWalletIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = B9E590B82C0F3AD5008C10A8 /* BookWalletIcon.png */; };
+		B9E590BA2C0F3AD5008C10A8 /* BookWalletIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = B9E590B82C0F3AD5008C10A8 /* BookWalletIcon.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -108,11 +113,14 @@
 		B99206062BDA806E0099EF26 /* ToolbarEntryList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolbarEntryList.swift; sourceTree = "<group>"; };
 		B99206082BDA96090099EF26 /* ToolbarEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolbarEntry.swift; sourceTree = "<group>"; };
 		B992060A2BDA96D80099EF26 /* EntryFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryFormView.swift; sourceTree = "<group>"; };
+		B99284B22C0F090400CB6404 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B9B8212A2BF244EB00CEDE43 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 		B9BE668B2BCFF03D0063734E /* ToastStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToastStyle.swift; sourceTree = "<group>"; };
 		B9BE668D2BCFF0700063734E /* Toast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Toast.swift; sourceTree = "<group>"; };
 		B9BE668F2BCFF0B90063734E /* ToastView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToastView.swift; sourceTree = "<group>"; };
 		B9BE66912BCFF1CB0063734E /* ToastMod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToastMod.swift; sourceTree = "<group>"; };
+		B9D148792C0F3CBB0040527B /* BookWalletIcon_light.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = BookWalletIcon_light.png; sourceTree = "<group>"; };
+		B9D1487C2C0F42D70040527B /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
 		B9D534122BD2903500C3355F /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
 		B9DAFAD12BA8AFAF000486EA /* BookingSense.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BookingSense.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B9DAFAD42BA8AFAF000486EA /* BookingSenseApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingSenseApp.swift; sourceTree = "<group>"; };
@@ -123,6 +131,7 @@
 		B9DE5B7E2BC6E7740017ACF4 /* AmountPrefix.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AmountPrefix.swift; sourceTree = "<group>"; };
 		B9E2D0182BDE87FE0001B391 /* MockContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockContainer.swift; sourceTree = "<group>"; };
 		B9E4ABF12BF6438E00E96330 /* InfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoView.swift; sourceTree = "<group>"; };
+		B9E590B82C0F3AD5008C10A8 /* BookWalletIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = BookWalletIcon.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -289,6 +298,20 @@
 			path = Navigation;
 			sourceTree = "<group>";
 		};
+		B99284B42C0F09ED00CB6404 /* resources */ = {
+			isa = PBXGroup;
+			children = (
+				B9D148792C0F3CBB0040527B /* BookWalletIcon_light.png */,
+				B9E590B82C0F3AD5008C10A8 /* BookWalletIcon.png */,
+				B9DAFADA2BA8AFAF000486EA /* Assets.xcassets */,
+				B99284B22C0F090400CB6404 /* LaunchScreen.storyboard */,
+				B9DAFADC2BA8AFAF000486EA /* ExpenseSense.entitlements */,
+				B9D534122BD2903500C3355F /* Localizable.xcstrings */,
+				B9D1487C2C0F42D70040527B /* PrivacyInfo.xcprivacy */,
+			);
+			path = resources;
+			sourceTree = "<group>";
+		};
 		B9BE668A2BCFEFF70063734E /* Toast */ = {
 			isa = PBXGroup;
 			children = (
@@ -301,14 +324,12 @@
 		B9DAFAC82BA8AFAF000486EA = {
 			isa = PBXGroup;
 			children = (
-				B9B8212A2BF244EB00CEDE43 /* Settings.bundle */,
 				B9DAFADD2BA8AFAF000486EA /* Preview Content */,
 				B915DC4D2BB46EA50018E812 /* Data */,
 				B915DC4C2BB46E790018E812 /* Views */,
 				B9DAFAD42BA8AFAF000486EA /* BookingSenseApp.swift */,
-				B9DAFADA2BA8AFAF000486EA /* Assets.xcassets */,
-				B9DAFADC2BA8AFAF000486EA /* ExpenseSense.entitlements */,
-				B9D534122BD2903500C3355F /* Localizable.xcstrings */,
+				B9B8212A2BF244EB00CEDE43 /* Settings.bundle */,
+				B99284B42C0F09ED00CB6404 /* resources */,
 				B92782BF2BDD9F8000D13808 /* BookingSenseTests */,
 				B92782F12BDE779700D13808 /* BookingSenseUITests */,
 				B92C53B22BDFDD980029E759 /* BookingsTestPlan.xctestplan */,
@@ -452,6 +473,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B9D1487B2C0F3CBB0040527B /* BookWalletIcon_light.png in Resources */,
+				B9E590BA2C0F3AD5008C10A8 /* BookWalletIcon.png in Resources */,
 				B92C53B32BDFED590029E759 /* Localizable.xcstrings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -462,7 +485,10 @@
 			files = (
 				B9B8212B2BF244EB00CEDE43 /* Settings.bundle in Resources */,
 				B9DAFADF2BA8AFAF000486EA /* Preview Assets.xcassets in Resources */,
+				B9E590B92C0F3AD5008C10A8 /* BookWalletIcon.png in Resources */,
+				B9D1487A2C0F3CBB0040527B /* BookWalletIcon_light.png in Resources */,
 				B9DAFADB2BA8AFAF000486EA /* Assets.xcassets in Resources */,
+				B99284B32C0F090400CB6404 /* LaunchScreen.storyboard in Resources */,
 				B9D534132BD2903500C3355F /* Localizable.xcstrings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -780,7 +806,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = ExpenseSense.entitlements;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
+				CODE_SIGN_ENTITLEMENTS = resources/ExpenseSense.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
@@ -798,6 +825,7 @@
 				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphonesimulator*]" = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen.storyboard;
 				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphoneos*]" = UIStatusBarStyleDefault;
 				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphonesimulator*]" = UIStatusBarStyleDefault;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
@@ -806,7 +834,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 14.4;
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.0.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.chill.BookingSense;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -824,7 +852,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = ExpenseSense.entitlements;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
+				CODE_SIGN_ENTITLEMENTS = resources/ExpenseSense.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
@@ -842,6 +871,7 @@
 				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphonesimulator*]" = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen.storyboard;
 				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphoneos*]" = UIStatusBarStyleDefault;
 				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphonesimulator*]" = UIStatusBarStyleDefault;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
@@ -850,7 +880,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 14.4;
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.0.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.chill.BookingSense;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
