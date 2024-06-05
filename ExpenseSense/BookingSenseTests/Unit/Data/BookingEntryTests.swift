@@ -78,7 +78,6 @@ final class BookingEntryTests: XCTestCase {
       interval: .annually
     )
     let data = try jsonEncoder.encode(entry)
-    print(String(data: data, encoding: .utf8)!)
 
     XCTAssertNotNil(data)
   }

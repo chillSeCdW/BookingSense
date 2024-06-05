@@ -312,4 +312,19 @@ extension XCUIElement {
           self.typeText(deleteString)
           self.typeText(text)
       }
+
+  func clearText() {
+          guard let stringValue = self.value as? String else {
+              return
+          }
+          if let placeholderString = self.placeholderValue, placeholderString == stringValue {
+              return
+          }
+
+          var deleteString = String()
+          for _ in stringValue {
+              deleteString += XCUIKeyboardKey.delete.rawValue
+          }
+          typeText(deleteString)
+      }
 }
