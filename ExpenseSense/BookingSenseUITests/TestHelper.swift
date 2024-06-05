@@ -164,10 +164,8 @@ class TestHelper {
       let amountTextField = app.collectionViews.textFields[localized("Amount")]
       let intervalPicker = app.collectionViews.buttons["intervalPicker"]
 
-      nameTextField.doubleTap()
-      nameTextField.typeText(newName)
-      amountTextField.doubleTap()
-      amountTextField.typeText(newAmount)
+      nameTextField.clearAndEnterText(newName)
+      amountTextField.clearAndEnterText(newAmount)
       minusPickerWheel.adjust(toPickerWheelValue: "+")
       intervalPicker.tap()
       app.collectionViews.buttons[localized("Biweekly")].tap()
@@ -179,7 +177,7 @@ class TestHelper {
   func checkIfEntryExistsWith(_ localeId: String, name: String, amount: String) {
     XCTContext.runActivity(named: "check if entry was created with values") { _ in
       let listEntry = app.collectionViews.buttons["NavLink" + name]
-      let maxSwipes = 2
+      let maxSwipes = 6
       var count = 0
 
       while !listEntry.isHittable && count < maxSwipes {
@@ -301,4 +299,17 @@ class TestHelper {
       app.scrollViews.element(boundBy: 1).buttons[localized("Delete all entries")].tap()
     }
   }
+}
+
+extension XCUIElement {
+  func clearAndEnterText(_ text: String) {
+          guard let stringValue = self.value as? String else {
+              XCTFail("Tried to clear and enter text into a non string value")
+              return
+          }
+          self.tap()
+          let deleteString = String(repeating: XCUIKeyboardKey.delete.rawValue, count: stringValue.count)
+          self.typeText(deleteString)
+          self.typeText(text)
+      }
 }
