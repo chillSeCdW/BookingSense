@@ -61,7 +61,7 @@ class TestHelper {
       XCTAssertTrue(createHeadline.isHittable)
 
       let nameTextField = app.collectionViews.textFields[localized("Name")]
-      let plusPickerWheel = app.collectionViews.pickerWheels["+"]
+      let minusPickerWheel = app.collectionViews.pickerWheels["-"]
       let amountTextField = app.collectionViews.textFields[localized("Amount")]
       let currentCurrency = app.collectionViews.staticTexts["CurrencySymbol"]
       let amountPrefixPicker = app.collectionViews.pickers[localized("AmountPrefix")]
@@ -70,18 +70,18 @@ class TestHelper {
       let local = NSLocale(localeIdentifier: localeId)
 
       XCTAssertTrue(nameTextField.isHittable)
-      XCTAssertTrue(plusPickerWheel.isHittable)
+      XCTAssertTrue(minusPickerWheel.isHittable)
       XCTAssertTrue(amountTextField.isHittable)
       XCTAssertTrue(currentCurrency.isHittable)
       XCTAssertTrue(amountPrefixPicker.isHittable)
       XCTAssertTrue(intervalPicker.isHittable)
 
       XCTAssertEqual(nameTextField.value as? String, name)
-      XCTAssertEqual(amountPrefixPicker.pickerWheels.element.value as? String, "+")
+      XCTAssertEqual(amountPrefixPicker.pickerWheels.element.value as? String, "-")
       XCTAssertEqual(amountTextField.value as? String, generateFormattedStringFromFormatterFor(amount))
       XCTAssertEqual(currentCurrency.label, local.displayName(forKey: NSLocale.Key.currencySymbol, value: localeId))
       XCTAssertEqual(intervalText.label, localized("Interval"))
-      XCTAssertTrue(intervalPicker.staticTexts[localized("Monthly")].isHittable)
+      XCTAssertTrue(intervalPicker.staticTexts[localized("Daily")].isHittable)
 
     }
   }
@@ -160,7 +160,7 @@ class TestHelper {
       XCTAssertTrue(saveButton.isHittable)
 
       let nameTextField = app.collectionViews.textFields[localized("Name")]
-      let plusPickerWheel = app.collectionViews.pickerWheels["+"]
+      let minusPickerWheel = app.collectionViews.pickerWheels["-"]
       let amountTextField = app.collectionViews.textFields[localized("Amount")]
       let intervalPicker = app.collectionViews.buttons["intervalPicker"]
 
@@ -168,7 +168,7 @@ class TestHelper {
       nameTextField.typeText(newName)
       amountTextField.doubleTap()
       amountTextField.typeText(newAmount)
-      plusPickerWheel.adjust(toPickerWheelValue: "-")
+      minusPickerWheel.adjust(toPickerWheelValue: "+")
       intervalPicker.tap()
       app.collectionViews.buttons[localized("Biweekly")].tap()
 

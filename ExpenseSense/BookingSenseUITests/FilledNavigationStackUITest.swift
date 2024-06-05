@@ -72,30 +72,30 @@ final class FilledNavigationStackUITest: XCTestCase {
 
   func testEditBookingsEntry() throws {
     tHelp.navigateToEntryNavigation()
-    tHelp.openEditEntrySheet(Locale.current.currency!.identifier, name: "Salary", amount: Decimal(2500))
+    tHelp.openEditEntrySheet(Locale.current.currency!.identifier, name: "dailyEntry", amount: Decimal(1))
     app.navigationBars[tHelp.localized("Edit entry")].buttons[tHelp.localized("Bookings")].tap()
-    tHelp.checkIfEntryExistsWith(Locale.current.currency!.identifier, name: "Salary", amount: "2500")
+    tHelp.checkIfEntryExistsWith(Locale.current.currency!.identifier, name: "dailyEntry", amount: "1")
   }
 
   func testEditBookingsEntrySavedCorrectly() throws {
     tHelp.navigateToEntryNavigation()
-    tHelp.openEditEntrySheet(Locale.current.currency!.identifier, name: "Salary", amount: Decimal(2500))
-    tHelp.editEntrySheetAndSave(Locale.current.currency!.identifier, newName: "newSalary", newAmount: "1100")
-    tHelp.checkIfEntryExistsWith(Locale.current.currency!.identifier, name: "newSalary", amount: "1100")
+    tHelp.openEditEntrySheet(Locale.current.currency!.identifier, name: "dailyEntry", amount: Decimal(1))
+    tHelp.editEntrySheetAndSave(Locale.current.currency!.identifier, newName: "newDailyEntry", newAmount: "1100")
+    tHelp.checkIfEntryExistsWith(Locale.current.currency!.identifier, name: "newDailyEntry", amount: "1100")
   }
 
   func testDeleteBookingsEntry() throws {
     tHelp.navigateToEntryNavigation()
-    tHelp.deleteEntry(name: "Salary")
-    tHelp.checkIfEntryExists("Salary")
+    tHelp.deleteEntry(name: "dailyEntry")
+    tHelp.checkIfEntryExists("dailyEntry")
   }
 
   func testEditBookingsEntryTriggersToast() throws {
     let newAmount = "11" + Locale.current.decimalSeparator! + Locale.current.decimalSeparator! + "00"
     tHelp.navigateToEntryNavigation()
-    tHelp.openEditEntrySheet(Locale.current.currency!.identifier, name: "Salary", amount: Decimal(2500))
-    tHelp.editEntrySheetAndSave(Locale.current.currency!.identifier, newName: "newSalary", newAmount: newAmount)
-    tHelp.checkIfEntryExistsWith(Locale.current.currency!.identifier, name: "newSalary", amount: "11")
+    tHelp.openEditEntrySheet(Locale.current.currency!.identifier, name: "dailyEntry", amount: Decimal(1))
+    tHelp.editEntrySheetAndSave(Locale.current.currency!.identifier, newName: "newDailyEntry", newAmount: newAmount)
+    tHelp.checkIfEntryExistsWith(Locale.current.currency!.identifier, name: "newDailyEntry", amount: "11")
     tHelp.checkIfToastExistsWith(amount: "11")
     tHelp.dismissToast()
   }
