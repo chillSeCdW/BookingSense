@@ -11,7 +11,8 @@ import SwiftData
 struct Constants {
   static var listBackgroundColors: [AmountPrefix: Color] = [
     AmountPrefix.plus: Color(UIColor(red: 0.2039, green: 0.7373, blue: 0.2039, alpha: 1.0)), // green
-    AmountPrefix.minus: Color(UIColor(red: 0.7882, green: 0, blue: 0.0118, alpha: 1.0)) // red
+    AmountPrefix.minus: Color(UIColor(red: 0.7882, green: 0, blue: 0.0118, alpha: 1.0)), // red
+    AmountPrefix.saving: Color(UIColor(red: 44/255, green: 158/255, blue: 224/255, alpha: 1.0)) // blueish
   ]
   static var getBackground: (ColorScheme) -> Color = { scheme in
     scheme == .light ? .white : Color(

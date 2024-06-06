@@ -60,4 +60,17 @@ final class EmptyNavigationStackUITest: XCTestCase {
       amount: entryAmount
     )
   }
+
+  func testNavigationStackViewIsAbleToAddAnPastedEntryWithSign() throws {
+    let entryName = "someEntryName"
+    let entryAmount = "-125"
+    tHelp.navigateToEntryNavigation()
+    tHelp.openCreateEntrySheet(Locale.current.currency!.identifier)
+    tHelp.addEntryInformationAndSubmit(name: entryName, amount: entryAmount)
+    tHelp.checkIfEntryExistsWith(
+      Locale.current.currency!.identifier,
+      name: entryName,
+      amount: "125"
+    )
+  }
 }

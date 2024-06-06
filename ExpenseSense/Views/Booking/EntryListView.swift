@@ -49,10 +49,9 @@ struct EntryListView: View {
             HStack(spacing: 0) {
               Rectangle()
                 .fill(Constants.listBackgroundColors[entry.amountPrefix]!)
-                .frame(width: 10, height: 50)
+                .frame(width: 10)
               Rectangle()
                 .fill(Constants.getBackground(colorScheme))
-                .frame(height: 50)
             }
           )
         }.onDelete(perform: deleteEntry)

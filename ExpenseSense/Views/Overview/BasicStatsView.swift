@@ -23,6 +23,11 @@ struct BasicStatsView: View {
       format: .currency(code: Locale.current.currency!.identifier)
     )
     InfoView(
+      text: "Your total savings",
+      number: calculateTotals(.saving),
+      format: .currency(code: Locale.current.currency!.identifier)
+    )
+    InfoView(
       text: "Your total left",
       number: calculateLeft(),
       format: .currency(code: Locale.current.currency!.identifier)
@@ -45,7 +50,7 @@ struct BasicStatsView: View {
   }
 
   private func calculateLeft() -> Decimal {
-    calculateTotals(.plus) - calculateTotals(.minus)
+    calculateTotals(.plus) - calculateTotals(.minus) - calculateTotals(.saving)
   }
 }
 

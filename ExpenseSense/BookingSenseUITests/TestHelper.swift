@@ -176,18 +176,11 @@ class TestHelper {
 
   func checkIfEntryExistsWith(_ localeId: String, name: String, amount: String) {
     XCTContext.runActivity(named: "check if entry was created with values") { _ in
-      let listEntry = app.collectionViews.buttons["NavLink" + name]
-      let maxSwipes = 6
-      var count = 0
+      let collectionView = app.collectionViews.firstMatch
 
-      while !listEntry.isHittable && count < maxSwipes {
-        app.swipeUp()
-        count += 1
-        if !listEntry.isHittable {
-          app.swipeDown()
-        }
-      }
+      scrollToButtonElementFrom(collectionView, buttonName: "NavLink" + name, text: name)
 
+      let listEntry = collectionView.buttons["NavLink" + name]
       XCTAssertTrue(listEntry.isHittable)
       XCTAssertTrue(listEntry.staticTexts[name].isHittable)
       XCTAssertTrue(listEntry
@@ -238,7 +231,7 @@ class TestHelper {
 
       switch result {
       case .timedOut:
-          XCTFail("Element still exists after timeout")
+          XCTFail("Element " + name + " still exists after timeout")
       default:
           break
       }
@@ -253,18 +246,11 @@ class TestHelper {
 
   func checkIfEntryHasDeleteButton(_ name: String) {
     XCTContext.runActivity(named: "checking if Entry has delete button") { _ in
-      let listEntry = app.collectionViews.buttons["NavLink" + name]
-      let maxSwipes = 2
-      var count = 0
+      let collectionView = app.collectionViews.firstMatch
 
-      while !listEntry.isHittable && count < maxSwipes {
-        app.swipeUp()
-        count += 1
-        if !listEntry.isHittable {
-          app.swipeDown()
-        }
-      }
+      scrollToButtonElementFrom(collectionView, buttonName: "NavLink" + name, text: name)
 
+      let listEntry = collectionView.buttons["NavLink" + name]
       XCTAssertTrue(listEntry.isHittable)
       XCTAssertTrue(listEntry.images.element.exists)
     }
@@ -297,6 +283,31 @@ class TestHelper {
   func confirmDeleteAllConfirmationScreen() {
     XCTContext.runActivity(named: "confirm Delete all confirmation screen") { _ in
       app.scrollViews.element(boundBy: 1).buttons[localized("Delete all entries")].tap()
+    }
+  }
+
+  func scrollToButtonElementFrom(_ element: XCUIElement, buttonName: String, text: String) {
+    var currentFirstButtonElement: XCUIElement
+    var scrolledElement: XCUIElement
+    let maxSwipes = 6
+    var count = 0
+
+    repeat {
+      currentFirstButtonElement = element.buttons.firstMatch
+      element.swipeDown()
+      scrolledElement = element.buttons.firstMatch
+      count += 1
+    } while !currentFirstButtonElement.label.isEqual(scrolledElement.label) && count < maxSwipes
+
+    count = 0
+
+    while !element.buttons[buttonName].staticTexts[text].isHittable && count < maxSwipes {
+      element.swipeUp(velocity: 300)
+      count += 1
+    }
+
+    if !element.buttons[buttonName].staticTexts[text].isHittable {
+      XCTFail("Button " + buttonName + "was not found")
     }
   }
 }

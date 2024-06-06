@@ -40,8 +40,11 @@ struct EntryView: View {
   }
 
   func save() {
-    let parsedAmount = try? Decimal(amount, format: Decimal.FormatStyle(locale: Locale.current))
-    if checkIfAmountWasTransformed(amount, parsedDecimal: parsedAmount) {
+    let tmpValue = amount.replacingOccurrences(of: "-", with: "")
+    let sanitizedAmount = tmpValue.replacingOccurrences(of: "+", with: "")
+
+    let parsedAmount = try? Decimal(sanitizedAmount, format: Decimal.FormatStyle(locale: Locale.current))
+    if checkIfAmountWasTransformed(sanitizedAmount, parsedDecimal: parsedAmount) {
       navigationContext.addToast(
         createdToast: Constants.createToast(
           .info,

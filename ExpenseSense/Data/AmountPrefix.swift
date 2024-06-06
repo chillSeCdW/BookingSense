@@ -12,13 +12,16 @@ enum AmountPrefix: Codable, CaseIterable, Identifiable {
 
   case plus
   case minus
+  case saving
 
   var description: String {
       switch self {
       case .plus:
-        return "+"
+        return "➕"
       case .minus:
-        return "-"
+        return "➖"
+      case .saving:
+        return "💰"
       }
   }
 }
