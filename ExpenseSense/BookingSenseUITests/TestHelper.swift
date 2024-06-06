@@ -61,7 +61,7 @@ class TestHelper {
       XCTAssertTrue(createHeadline.isHittable)
 
       let nameTextField = app.collectionViews.textFields[localized("Name")]
-      let minusPickerWheel = app.collectionViews.pickerWheels["-"]
+      let minusPickerWheel = app.collectionViews.pickerWheels["➖"]
       let amountTextField = app.collectionViews.textFields[localized("Amount")]
       let currentCurrency = app.collectionViews.staticTexts["CurrencySymbol"]
       let amountPrefixPicker = app.collectionViews.pickers[localized("AmountPrefix")]
@@ -77,7 +77,7 @@ class TestHelper {
       XCTAssertTrue(intervalPicker.isHittable)
 
       XCTAssertEqual(nameTextField.value as? String, name)
-      XCTAssertEqual(amountPrefixPicker.pickerWheels.element.value as? String, "-")
+      XCTAssertEqual(amountPrefixPicker.pickerWheels.element.value as? String, "➖")
       XCTAssertEqual(amountTextField.value as? String, generateFormattedStringFromFormatterFor(amount))
       XCTAssertEqual(currentCurrency.label, local.displayName(forKey: NSLocale.Key.currencySymbol, value: localeId))
       XCTAssertEqual(intervalText.label, localized("Interval"))
@@ -103,7 +103,7 @@ class TestHelper {
       XCTAssertTrue(createHeadline.isHittable)
 
       let nameTextField = app.collectionViews.textFields[localized("Name")]
-      let plusPickerWheel = app.collectionViews.pickerWheels["+"]
+      let plusPickerWheel = app.collectionViews.pickerWheels["➕"]
       let amountTextField = app.collectionViews.textFields[localized("Amount")]
       let currentCurrency = app.collectionViews.staticTexts["CurrencySymbol"]
       let amountPrefixPicker = app.collectionViews.pickers[localized("AmountPrefix")]
@@ -119,7 +119,7 @@ class TestHelper {
       XCTAssertTrue(intervalPicker.isHittable)
 
       XCTAssertEqual(nameTextField.value as? String, localized("Name"))
-      XCTAssertEqual(amountPrefixPicker.pickerWheels.element.value as? String, "+")
+      XCTAssertEqual(amountPrefixPicker.pickerWheels.element.value as? String, "➕")
       XCTAssertEqual(amountTextField.value as? String, localized("Amount"))
       XCTAssertEqual(currentCurrency.label, local.displayName(forKey: NSLocale.Key.currencySymbol, value: localeId))
       XCTAssertEqual(intervalText.label, localized("Interval"))
@@ -160,13 +160,13 @@ class TestHelper {
       XCTAssertTrue(saveButton.isHittable)
 
       let nameTextField = app.collectionViews.textFields[localized("Name")]
-      let minusPickerWheel = app.collectionViews.pickerWheels["-"]
+      let minusPickerWheel = app.collectionViews.pickerWheels["➖"]
       let amountTextField = app.collectionViews.textFields[localized("Amount")]
       let intervalPicker = app.collectionViews.buttons["intervalPicker"]
 
       nameTextField.clearAndEnterText(newName)
       amountTextField.clearAndEnterText(newAmount)
-      minusPickerWheel.adjust(toPickerWheelValue: "+")
+      minusPickerWheel.adjust(toPickerWheelValue: "➕")
       intervalPicker.tap()
       app.collectionViews.buttons[localized("Biweekly")].tap()
 
