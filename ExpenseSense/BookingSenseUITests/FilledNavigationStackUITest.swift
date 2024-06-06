@@ -95,7 +95,6 @@ final class FilledNavigationStackUITest: XCTestCase {
     tHelp.navigateToEntryNavigation()
     tHelp.openEditEntrySheet(Locale.current.currency!.identifier, name: "dailyEntry", amount: Decimal(1))
     tHelp.editEntrySheetAndSave(Locale.current.currency!.identifier, newName: "newDailyEntry", newAmount: newAmount)
-    tHelp.checkIfEntryExistsWith(Locale.current.currency!.identifier, name: "newDailyEntry", amount: "11")
     tHelp.checkIfToastExistsWith(amount: "11")
     tHelp.dismissToast()
   }

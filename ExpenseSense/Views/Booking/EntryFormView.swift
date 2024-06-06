@@ -21,10 +21,18 @@ struct EntryFormView: View {
   @Binding var amount: String
   @Binding var interval: Interval
 
+  @FocusState private var focusedName: Bool
+  @FocusState private var focusedAmount: Bool
+
   var body: some View {
     TextField(text: $name, prompt: Text("Name")) {
       Text("Name")
-    }
+    }.focused($focusedName)
+      .onSubmit {
+        focusedName = false
+        focusedAmount = true
+      }
+
     HStack {
       Picker("AmountPrefix", selection: $amountPrefix) {
         ForEach(AmountPrefix.allCases) { option in
@@ -38,7 +46,7 @@ struct EntryFormView: View {
         prompt: Text("Amount")
       ) {
         Text("Amount")
-      }
+      }.focused($focusedAmount)
       .textFieldStyle(RoundedBorderTextFieldStyle())
       .keyboardType(.decimalPad)
       .onAppear {
@@ -48,6 +56,7 @@ struct EntryFormView: View {
           amount = formatter.string(from: NSDecimalNumber(decimal: expenseEntry.amount)) ?? ""
           interval = Interval(rawValue: expenseEntry.interval) ?? Interval.monthly
         }
+        focusedName = true
       }
       Text(Constants.getSymbol(Locale.current.currency!.identifier) ?? "$")
         .accessibilityIdentifier("CurrencySymbol")
