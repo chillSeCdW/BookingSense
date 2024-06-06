@@ -29,7 +29,6 @@ struct EntryFormView: View {
       Text("Name")
     }.focused($focusedName)
       .onSubmit {
-        focusedName = false
         focusedAmount = true
       }
 
