@@ -744,7 +744,7 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Gesamte Abzüge:"
+            "value" : "Gesamtabzüge:"
           }
         },
         "en" : {
@@ -760,13 +760,30 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Gesamtes Einkommen:"
+            "value" : "Gesamteinkommen:"
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Your total income:"
+          }
+        }
+      }
+    },
+    "Your total savings" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Gesamtersparnis:"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Your total savings:"
           }
         }
       }

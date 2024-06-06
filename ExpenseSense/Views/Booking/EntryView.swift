@@ -28,20 +28,19 @@ struct EntryView: View {
   var body: some View {
     Form {
       EntryFormView(expenseEntry: expenseEntry,
-                       name: $name,
-                       amountPrefix: $amountPrefix,
-                       amount: $amount,
-                       interval: $interval
+                    name: $name,
+                    amountPrefix: $amountPrefix,
+                    amount: $amount,
+                    interval: $interval
       )
     }.navigationTitle(isCreate ? "Create entry" : "Edit entry")
-    .toolbar {
-      ToolbarEntry(isCreate: isCreate, save: save, didValuesChange: didValuesChange)
-    }
+      .toolbar {
+        ToolbarEntry(isCreate: isCreate, save: save, didValuesChange: didValuesChange)
+      }
   }
 
   func save() {
-    let tmpValue = amount.replacingOccurrences(of: "-", with: "")
-    let sanitizedAmount = tmpValue.replacingOccurrences(of: "+", with: "")
+    let sanitizedAmount = stripString(amount)
 
     let parsedAmount = try? Decimal(sanitizedAmount, format: Decimal.FormatStyle(locale: Locale.current))
     if checkIfAmountWasTransformed(sanitizedAmount, parsedDecimal: parsedAmount) {
@@ -94,6 +93,16 @@ struct EntryView: View {
     }
 
     return false
+  }
+
+  func stripString(_ input: String) -> String {
+    let pattern = "[^0-9,\\.]"
+    if let regex = try? NSRegularExpression(pattern: pattern, options: []) {
+      let range = NSRange(location: 0, length: input.utf16.count)
+      let modifiedString = regex.stringByReplacingMatches(in: input, options: [], range: range, withTemplate: "")
+      return modifiedString
+    }
+    return "0"
   }
 }
 
