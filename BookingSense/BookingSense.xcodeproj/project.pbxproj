@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B907587B2C13479300EDC82F /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B907587A2C13479300EDC82F /* ContentView.swift */; };
 		B90B2B412BE4E88400BD2042 /* FilledNavigationStackUITest.swift in Sources */ = {isa = PBXBuildFile; fileRef = B90B2B402BE4E88400BD2042 /* FilledNavigationStackUITest.swift */; };
 		B90B2B432BE504A200BD2042 /* NavigationStackContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B90B2B422BE504A200BD2042 /* NavigationStackContentView.swift */; };
 		B90B2B452BE5069700BD2042 /* EmptyNavigationStackUITest.swift in Sources */ = {isa = PBXBuildFile; fileRef = B90B2B442BE5069700BD2042 /* EmptyNavigationStackUITest.swift */; };
@@ -28,6 +29,8 @@
 		B92782FB2BDE782100D13808 /* BasicStatsUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B92782DA2BDE72E800D13808 /* BasicStatsUITests.swift */; };
 		B92C53B32BDFED590029E759 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = B9D534122BD2903500C3355F /* Localizable.xcstrings */; };
 		B93F74012BF39F91008A5088 /* HelpfulInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B93F74002BF39F91008A5088 /* HelpfulInfoView.swift */; };
+		B9406E152C1335AE00AE0C4C /* SecurityController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9406E142C1335AE00AE0C4C /* SecurityController.swift */; };
+		B9406E172C13368000AE0C4C /* LockView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9406E162C13368000AE0C4C /* LockView.swift */; };
 		B95981FA2BE3890500578A9C /* BookingNavigationStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B95981F92BE3890500578A9C /* BookingNavigationStackView.swift */; };
 		B95981FC2BE3898B00578A9C /* EntryListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B95981FB2BE3898B00578A9C /* EntryListView.swift */; };
 		B95F668A2BDBD2D000E9B5AC /* BasicStatsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B95F66892BDBD2D000E9B5AC /* BasicStatsView.swift */; };
@@ -50,7 +53,6 @@
 		B9D1487B2C0F3CBB0040527B /* BookWalletIcon_light.png in Resources */ = {isa = PBXBuildFile; fileRef = B9D148792C0F3CBB0040527B /* BookWalletIcon_light.png */; };
 		B9D534132BD2903500C3355F /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = B9D534122BD2903500C3355F /* Localizable.xcstrings */; };
 		B9DAFAD52BA8AFAF000486EA /* BookingSenseApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9DAFAD42BA8AFAF000486EA /* BookingSenseApp.swift */; };
-		B9DAFAD72BA8AFAF000486EA /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9DAFAD62BA8AFAF000486EA /* ContentView.swift */; };
 		B9DAFADB2BA8AFAF000486EA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B9DAFADA2BA8AFAF000486EA /* Assets.xcassets */; };
 		B9DAFADF2BA8AFAF000486EA /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B9DAFADE2BA8AFAF000486EA /* Preview Assets.xcassets */; };
 		B9DE5B7F2BC6E7740017ACF4 /* AmountPrefix.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9DE5B7E2BC6E7740017ACF4 /* AmountPrefix.swift */; };
@@ -78,6 +80,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		B907587A2C13479300EDC82F /* ContentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ContentView.swift; path = Views/ContentView.swift; sourceTree = SOURCE_ROOT; };
 		B90B2B402BE4E88400BD2042 /* FilledNavigationStackUITest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilledNavigationStackUITest.swift; sourceTree = "<group>"; };
 		B90B2B422BE504A200BD2042 /* NavigationStackContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationStackContentView.swift; sourceTree = "<group>"; };
 		B90B2B442BE5069700BD2042 /* EmptyNavigationStackUITest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyNavigationStackUITest.swift; sourceTree = "<group>"; };
@@ -101,6 +104,8 @@
 		B92782F42BDE779700D13808 /* BookingSenseUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingSenseUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		B92C53B22BDFDD980029E759 /* productionTestPlan.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = productionTestPlan.xctestplan; sourceTree = "<group>"; };
 		B93F74002BF39F91008A5088 /* HelpfulInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelpfulInfoView.swift; sourceTree = "<group>"; };
+		B9406E142C1335AE00AE0C4C /* SecurityController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecurityController.swift; sourceTree = "<group>"; };
+		B9406E162C13368000AE0C4C /* LockView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LockView.swift; sourceTree = "<group>"; };
 		B95981F92BE3890500578A9C /* BookingNavigationStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingNavigationStackView.swift; sourceTree = "<group>"; };
 		B95981FB2BE3898B00578A9C /* EntryListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryListView.swift; sourceTree = "<group>"; };
 		B95F66892BDBD2D000E9B5AC /* BasicStatsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicStatsView.swift; sourceTree = "<group>"; };
@@ -127,7 +132,6 @@
 		B9D534122BD2903500C3355F /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
 		B9DAFAD12BA8AFAF000486EA /* BookingSense.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BookingSense.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B9DAFAD42BA8AFAF000486EA /* BookingSenseApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingSenseApp.swift; sourceTree = "<group>"; };
-		B9DAFAD62BA8AFAF000486EA /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		B9DAFADA2BA8AFAF000486EA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B9DAFADC2BA8AFAF000486EA /* ExpenseSense.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ExpenseSense.entitlements; sourceTree = "<group>"; };
 		B9DAFADE2BA8AFAF000486EA /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
@@ -187,7 +191,8 @@
 				B919B4A42BC6AAAA009B2FA4 /* Booking */,
 				B99205FD2BD90FA40099EF26 /* Navigation */,
 				B919B4A32BC6AAA3009B2FA4 /* Overview */,
-				B9DAFAD62BA8AFAF000486EA /* ContentView.swift */,
+				B907587A2C13479300EDC82F /* ContentView.swift */,
+				B9406E162C13368000AE0C4C /* LockView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -203,6 +208,7 @@
 				B915DC442BB4644A0018E812 /* Interval.swift */,
 				B915DC4E2BB479180018E812 /* Constants.swift */,
 				B9DE5B7E2BC6E7740017ACF4 /* AmountPrefix.swift */,
+				B9406E142C1335AE00AE0C4C /* SecurityController.swift */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -566,16 +572,18 @@
 			files = (
 				B99206052BD946670099EF26 /* NavigationContext.swift in Sources */,
 				B99206092BDA96090099EF26 /* ToolbarEntry.swift in Sources */,
+				B907587B2C13479300EDC82F /* ContentView.swift in Sources */,
 				B915DC452BB4644A0018E812 /* Interval.swift in Sources */,
 				B90B2B432BE504A200BD2042 /* NavigationStackContentView.swift in Sources */,
 				B9BE668E2BCFF0700063734E /* Toast.swift in Sources */,
 				B9BE668C2BCFF03D0063734E /* ToastStyle.swift in Sources */,
 				B9BE66922BCFF1CB0063734E /* ToastMod.swift in Sources */,
+				B9406E152C1335AE00AE0C4C /* SecurityController.swift in Sources */,
 				B95981FC2BE3898B00578A9C /* EntryListView.swift in Sources */,
+				B9406E172C13368000AE0C4C /* LockView.swift in Sources */,
 				B97378FD2BDFC7D1003A729E /* Migrations.swift in Sources */,
 				B99205FC2BD90F780099EF26 /* ViewInfo.swift in Sources */,
 				B97378F82BDFC11E003A729E /* ContainerFactory.swift in Sources */,
-				B9DAFAD72BA8AFAF000486EA /* ContentView.swift in Sources */,
 				B95F668A2BDBD2D000E9B5AC /* BasicStatsView.swift in Sources */,
 				B99205FF2BD90FAD0099EF26 /* SortButtonView.swift in Sources */,
 				B9DAFAD52BA8AFAF000486EA /* BookingSenseApp.swift in Sources */,
@@ -843,6 +851,7 @@
 				INFOPLIST_FILE = "BookingSense-Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = BookingSense;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.finance";
+				INFOPLIST_KEY_NSFaceIDUsageDescription = "Authenticate yourself to unlock BookingSense";
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
@@ -852,8 +861,8 @@
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen.storyboard;
 				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphoneos*]" = UIStatusBarStyleDefault;
 				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphonesimulator*]" = UIStatusBarStyleDefault;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				IPHONEOS_DEPLOYMENT_TARGET = 17.5;
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
@@ -891,6 +900,7 @@
 				INFOPLIST_FILE = "BookingSense-Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = BookingSense;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.finance";
+				INFOPLIST_KEY_NSFaceIDUsageDescription = "Authenticate yourself to unlock BookingSense";
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
@@ -900,8 +910,8 @@
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen.storyboard;
 				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphoneos*]" = UIStatusBarStyleDefault;
 				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphonesimulator*]" = UIStatusBarStyleDefault;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				IPHONEOS_DEPLOYMENT_TARGET = 17.5;
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
