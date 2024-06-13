@@ -11,7 +11,8 @@ import SwiftData
 
 struct OverviewView: View {
   @State private var isExpandedBasic = true
-  @State private var isExpandedMonthy = true
+  @State private var isExpandedHelpful = false
+  @State private var isExpandedMonthyInsights = true
 
   var body: some View {
     NavigationStack {
@@ -19,9 +20,13 @@ struct OverviewView: View {
         Section("Basic Information", isExpanded: $isExpandedBasic) {
           BasicStatsView()
         }
-        Section("Helpful Infos", isExpanded: $isExpandedMonthy) {
+        Section("Monthly Insights", isExpanded: $isExpandedMonthyInsights) {
+          MonthlyInsightsView()
+        }
+        Section("Helpful Infos", isExpanded: $isExpandedHelpful) {
           HelpfulInfoView()
         }
+
       }.listStyle(.sidebar)
     }
   }

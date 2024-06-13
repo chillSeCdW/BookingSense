@@ -161,6 +161,23 @@
         }
       }
     },
+    "calculated total monthly costs" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "alle monatlichen Abzüge and Spannungen + alle anderen Abzüge und Spannungen auf den Monat gerechnet"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "all monthly deductions and savings + all other deductions and savings adjusted for a month"
+          }
+        }
+      }
+    },
     "Cancel" : {
       "localizations" : {
         "de" : {
@@ -338,6 +355,23 @@
         }
       }
     },
+    "How it's calculated" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wie es berechnet wird:"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "How it's calculated:"
+          }
+        }
+      }
+    },
     "Info" : {
       "localizations" : {
         "de" : {
@@ -478,6 +512,22 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Monthly costs of weekly entries:"
+          }
+        }
+      }
+    },
+    "Monthly Insights" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Monatliche Erkenntnisse"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Monthly Insights"
           }
         }
       }
@@ -690,9 +740,6 @@
           }
         }
       }
-    },
-    "Unlock" : {
-
     },
     "Weekly" : {
       "localizations" : {
