@@ -4,8 +4,8 @@
 import SwiftUI
 
 struct InfoBoxButtonView: View {
-  let headline: String
-  let infoText: String?
+  let headline: LocalizedStringKey
+  let infoText: LocalizedStringKey?
 
   @State private var showInfo = false
   @State var textHeight: CGFloat = 0
@@ -20,10 +20,10 @@ struct InfoBoxButtonView: View {
     .popover(isPresented: $showInfo,
              content: {
       VStack {
-        Text(LocalizedStringKey(headline))
+        Text(headline)
           .font(.headline)
         if infoText != nil {
-          Text(LocalizedStringKey(infoText!))
+          Text(infoText!)
             .font(.body)
         }
       }.overlay(
@@ -59,7 +59,7 @@ struct ContentLengthPreference: PreferenceKey {
   VStack {
     InfoBoxButtonView(headline: "How it's calculated", infoText: nil)
     InfoBoxButtonView(headline: "How it's calculated",
-                      infoText: "calculated total monthly costs"
+                      infoText: "calculated total \(Interval.monthly.description) costs"
     )
   }
 }

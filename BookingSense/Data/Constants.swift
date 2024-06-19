@@ -33,11 +33,11 @@ struct Constants {
 
     let conversionRates: [Interval: Decimal] = [
       .daily: 1,
-      .weekly: 7,
-      .biweekly: 14,
-      .monthly: 30,
-      .quarterly: 90,
-      .semiannually: 182,
+      .weekly: 365/52,
+      .biweekly: 365/26,
+      .monthly: 365/12,
+      .quarterly: 365/4,
+      .semiannually: 365/2,
       .annually: 365
     ]
 

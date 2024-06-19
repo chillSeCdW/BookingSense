@@ -2,9 +2,11 @@
 // Using Swift 5.0
 
 import SwiftUI
+import SwiftData
 
 struct NavigationStackContentView: View {
   @Environment(ViewInfo.self) var viewInfo
+  @Query private var entries: [BookingEntry]
 
   var isListEmpty: Bool
 
@@ -24,6 +26,9 @@ struct NavigationStackContentView: View {
             sortParameter: viewInfo.sortParameter,
             sortOrder: viewInfo.sortOrder
           )
+        }
+        Section {} footer: {
+          Text("Total bookings \(entries.count)")
         }
       }
     }

@@ -8,9 +8,9 @@ struct InfoView<F: FormatStyle>: View where F.FormatInput == Decimal, F.FormatOu
   let text: LocalizedStringKey
   let number: F.FormatInput
   let format: F
-  var infoHeadline: String?
-  var infoText: String?
-  @State private var showInfo = false
+  var infoHeadline: LocalizedStringKey?
+  var infoText: LocalizedStringKey?
+  var showApprox = false
 
   var body: some View {
     VStack {
@@ -20,6 +20,9 @@ struct InfoView<F: FormatStyle>: View where F.FormatInput == Decimal, F.FormatOu
         }
         Text(text)
         Spacer()
+        if showApprox {
+          Text("~")
+        }
         Text(number, format: format)
       }
     }

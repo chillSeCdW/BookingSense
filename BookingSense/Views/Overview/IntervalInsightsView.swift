@@ -17,15 +17,37 @@ struct IntervalInsightsView: View {
     }.accessibilityIdentifier("intervalPicker")
     .pickerStyle(.menu)
     InfoView(
-      text: LocalizedStringKey("All costs as \(interval.description)"),
-      number: calculateIntervalTotalDeductions(interval),
+      text: LocalizedStringKey("All income as \(interval.description)"),
+      number: calculateIntervalTotalsFor(.plus, interval: interval),
       format: .currency(code: Locale.current.currency!.identifier),
-      infoHeadline: "How it's calculated",
-      infoText: "calculated total monthly costs"
+      infoHeadline: LocalizedStringKey("How it's calculated"),
+      infoText: LocalizedStringKey("calculated total \(interval.description) income"),
+      showApprox: true
+    )
+    InfoView(
+      text: LocalizedStringKey("All costs as \(interval.description)"),
+      number: calculateIntervalTotalsFor(.minus, interval: interval),
+      format: .currency(code: Locale.current.currency!.identifier),
+      infoHeadline: LocalizedStringKey("How it's calculated"),
+      infoText: LocalizedStringKey("calculated total \(interval.description) costs"),
+      showApprox: true
+    )
+    InfoView(
+      text: LocalizedStringKey("All savings as \(interval.description)"),
+      number: calculateIntervalTotalsFor(.saving, interval: interval),
+      format: .currency(code: Locale.current.currency!.identifier),
+      infoHeadline: LocalizedStringKey("How it's calculated"),
+      infoText: LocalizedStringKey("calculated total \(interval.description) savings"),
+      showApprox: true
     )
     InfoView(
       text: LocalizedStringKey("Total \(interval.description) costs"),
       number: calculateIntervalTotalDeductions(interval),
+      format: .currency(code: Locale.current.currency!.identifier)
+    )
+    InfoView(
+      text: LocalizedStringKey("\(interval.description.capitalized) income"),
+      number: calculateIntervalIncomeOf(interval),
       format: .currency(code: Locale.current.currency!.identifier)
     )
     InfoView(
@@ -40,38 +62,60 @@ struct IntervalInsightsView: View {
     )
   }
 
-  private func calculateIntervalTotalDeductions(_ interval: Interval) -> Decimal {
+  private func calculateIntervalTotalsFor(_ amountPrefix: AmountPrefix, interval: Interval) -> Decimal {
+    var total: Decimal = Decimal()
+
+    for entry in entries where entry.amountPrefix == amountPrefix {
+      print(entry.amount * Constants.getTimesValue(from: Interval(rawValue: entry.interval), to: interval))
+      total += entry.amount * Constants.getTimesValue(from: Interval(rawValue: entry.interval), to: interval)
+    }
+
+    return total
+  }
+
+  private func calculateAllIntervalTotalDeductionsFor(_ interval: Interval) -> Decimal {
     var totalcosts: Decimal = Decimal()
 
-    for entry in entries where entry.amountPrefix == .minus && entry.interval == interval.rawValue {
-      totalcosts += entry.amount
+    for curInterval in Interval.allCases {
+      totalcosts += calculateIntervalTotalDeductions(curInterval) *
+      Constants.getTimesValue(from: curInterval, to: interval)
     }
 
-    for entry in entries where entry.amountPrefix == .saving && entry.interval == interval.rawValue {
-      totalcosts += entry.amount
-    }
+    return totalcosts
+  }
 
+  private func calculateIntervalTotalDeductions(_ interval: Interval) -> Decimal {
     return calculateIntervalDeductionsOf(interval) + calculateIntervalSavings(interval)
   }
 
-  private func calculateIntervalDeductionsOf(_ interval: Interval) -> Decimal {
-    var totalMonthlyCosts: Decimal = Decimal()
+  private func calculateIntervalIncomeOf(_ interval: Interval) -> Decimal {
+    var totalIntervalCosts: Decimal = Decimal()
 
-    for entry in entries where entry.amountPrefix == .minus && entry.interval == interval.rawValue {
-      totalMonthlyCosts += entry.amount
+    for entry in entries where entry.amountPrefix == .plus && entry.interval == interval.rawValue {
+      totalIntervalCosts += entry.amount
     }
 
-    return totalMonthlyCosts
+    return totalIntervalCosts
+  }
+
+  private func calculateIntervalDeductionsOf(_ interval: Interval) -> Decimal {
+    var totalIntervalCosts: Decimal = Decimal()
+
+    for entry in entries where entry.amountPrefix == .minus && entry.interval == interval.rawValue {
+      totalIntervalCosts += entry.amount
+    }
+
+    return totalIntervalCosts
   }
 
   private func calculateIntervalSavings(_ interval: Interval) -> Decimal {
-    var totalMonthlyCosts: Decimal = Decimal()
+    var totalIntervalSavings: Decimal = Decimal()
 
     for entry in entries where entry.amountPrefix == .saving && entry.interval == interval.rawValue {
-      totalMonthlyCosts += entry.amount
+      totalIntervalSavings += entry.amount
     }
 
-    return totalMonthlyCosts
+    return totalIntervalSavings
   }
 }
 
