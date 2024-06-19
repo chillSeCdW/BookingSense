@@ -10,9 +10,10 @@ import SwiftUI
 import SwiftData
 
 struct OverviewView: View {
-  @State private var isExpandedBasic = true
-  @State private var isExpandedHelpful = false
-  @State private var isExpandedMonthyInsights = true
+  @AppStorage("expandedBasic") private var isExpandedBasic = true
+  @AppStorage("expandedPickInsights") private var isExpandedMonthyInsights = true
+  @AppStorage("expandedAdditional") private var isAdditionalInfo = false
+  @AppStorage("insightsInterval") private var interval: Interval = .monthly
 
   var body: some View {
     NavigationStack {
@@ -20,11 +21,11 @@ struct OverviewView: View {
         Section("Basic Information", isExpanded: $isExpandedBasic) {
           BasicStatsView()
         }
-        Section("Monthly Insights", isExpanded: $isExpandedMonthyInsights) {
-          MonthlyInsightsView()
+        Section(LocalizedStringKey("\(interval.description) Insights"), isExpanded: $isExpandedMonthyInsights) {
+          IntervalInsightsView()
         }
-        Section("Helpful Infos", isExpanded: $isExpandedHelpful) {
-          HelpfulInfoView()
+        Section("Additional Infos", isExpanded: $isAdditionalInfo) {
+          AdditionalInfoView()
         }
 
       }.listStyle(.sidebar)

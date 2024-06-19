@@ -1,6 +1,95 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
+    "(%lld entries)" : {
+      "localizations" : {
+        "de" : {
+          "variations" : {
+            "plural" : {
+              "one" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "(%lld Buchung)"
+                }
+              },
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "(%lld Buchungen)"
+                }
+              }
+            }
+          }
+        },
+        "en" : {
+          "variations" : {
+            "plural" : {
+              "one" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "(%lld booking)"
+                }
+              },
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "(%lld bookings)"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "%@ deductions" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@e Abzüge:"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ deductions:"
+          }
+        }
+      }
+    },
+    "%@ Insights" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@e Erkenntnisse:"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ insights"
+          }
+        }
+      }
+    },
+    "%@ savings" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@es Ersparnis:"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ savings:"
+          }
+        }
+      }
+    },
     "%@ transformedInfo" : {
       "localizations" : {
         "de" : {
@@ -29,6 +118,38 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Add item"
+          }
+        }
+      }
+    },
+    "Additional Infos" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zusätzliche Informationen"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Additional information"
+          }
+        }
+      }
+    },
+    "All costs as %@" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Alle Intervall Kosten als %@"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "All interval costs as %@"
           }
         }
       }
@@ -124,7 +245,7 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Basic Information"
+            "value" : "Basic information"
           }
         }
       }
@@ -167,7 +288,7 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "alle monatlichen Abzüge and Spannungen + alle anderen Abzüge und Spannungen auf den Monat gerechnet"
+            "value" : "alle monatlichen Abzüge and Sparungen + alle anderen Abzüge und Sparungen auf den Monat gerechnet"
           }
         },
         "en" : {
@@ -339,22 +460,6 @@
         }
       }
     },
-    "Helpful Infos" : {
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Hilfreiche Informationen"
-          }
-        },
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Helpful Information"
-          }
-        }
-      }
-    },
     "How it's calculated" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -512,22 +617,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Monthly costs of weekly entries:"
-          }
-        }
-      }
-    },
-    "Monthly Insights" : {
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Monatliche Erkenntnisse"
-          }
-        },
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Monthly Insights"
           }
         }
       }
@@ -737,6 +826,22 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "To cover non-monthly deductions save at least the following amount each month:"
+          }
+        }
+      }
+    },
+    "Total %@ costs" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Gesamte %@e Kosten:"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Total %@ costs:"
           }
         }
       }

@@ -58,7 +58,7 @@ struct EntryListView: View {
       }, header: {
         HStack {
           Text(interval.description)
-          Text("(" + entries.count.formatted() + " entries)")
+          Text(LocalizedStringKey("(\(entries.count) entries)"))
         }
 
       })

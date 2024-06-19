@@ -13,44 +13,44 @@ struct BasicStatsView: View {
 
   var body: some View {
     InfoView(
-      text: "Your total plus",
-      number: calculateTotals(.plus),
+      text: LocalizedStringKey("Your total plus"),
+      number: calculateYearlyTotals(.plus),
       format: .currency(code: Locale.current.currency!.identifier)
     )
     InfoView(
-      text: "Your total minus",
-      number: calculateTotals(.minus),
+      text: LocalizedStringKey("Your total minus"),
+      number: calculateYearlyTotals(.minus),
       format: .currency(code: Locale.current.currency!.identifier)
     )
     InfoView(
-      text: "Your total savings",
-      number: calculateTotals(.saving),
+      text: LocalizedStringKey("Your total savings"),
+      number: calculateYearlyTotals(.saving),
       format: .currency(code: Locale.current.currency!.identifier)
     )
     InfoView(
-      text: "Your total left",
-      number: calculateLeft(),
+      text: LocalizedStringKey("Your total left"),
+      number: calculateYearlyLeft(),
       format: .currency(code: Locale.current.currency!.identifier)
     )
     InfoView(
-      text: "Your total entries",
+      text: LocalizedStringKey("Your total entries"),
       number: Decimal(entries.count),
       format: .number
     )
   }
 
-  private func calculateTotals(_ amountPrefix: AmountPrefix) -> Decimal {
+  private func calculateYearlyTotals(_ amountPrefix: AmountPrefix) -> Decimal {
     var calcu: Decimal = Decimal()
 
     for entry in entries where entry.amountPrefix == amountPrefix {
-      calcu += entry.amount * Constants.getTimesValue(interval: Interval(rawValue: entry.interval))
+      calcu += entry.amount * Constants.getTimesValue(from: Interval(rawValue: entry.interval), to: .annually)
     }
 
     return calcu
   }
 
-  private func calculateLeft() -> Decimal {
-    calculateTotals(.plus) - calculateTotals(.minus) - calculateTotals(.saving)
+  private func calculateYearlyLeft() -> Decimal {
+    calculateYearlyTotals(.plus) - calculateYearlyTotals(.minus) - calculateYearlyTotals(.saving)
   }
 }
 

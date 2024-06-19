@@ -12,7 +12,7 @@
 		B90B2B432BE504A200BD2042 /* NavigationStackContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B90B2B422BE504A200BD2042 /* NavigationStackContentView.swift */; };
 		B90B2B452BE5069700BD2042 /* EmptyNavigationStackUITest.swift in Sources */ = {isa = PBXBuildFile; fileRef = B90B2B442BE5069700BD2042 /* EmptyNavigationStackUITest.swift */; };
 		B90B2B472BE91AC600BD2042 /* TestHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = B90B2B462BE91AC600BD2042 /* TestHelper.swift */; };
-		B90D3D0F2C19D97D00133857 /* MonthlyInsightsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B90D3D0E2C19D97D00133857 /* MonthlyInsightsView.swift */; };
+		B90D3D0F2C19D97D00133857 /* IntervalInsightsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B90D3D0E2C19D97D00133857 /* IntervalInsightsView.swift */; };
 		B915DC452BB4644A0018E812 /* Interval.swift in Sources */ = {isa = PBXBuildFile; fileRef = B915DC442BB4644A0018E812 /* Interval.swift */; };
 		B915DC492BB46E350018E812 /* OverviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B915DC482BB46E350018E812 /* OverviewView.swift */; };
 		B915DC4F2BB479190018E812 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = B915DC4E2BB479180018E812 /* Constants.swift */; };
@@ -29,7 +29,7 @@
 		B92782F52BDE779700D13808 /* BookingSenseUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B92782F42BDE779700D13808 /* BookingSenseUITestsLaunchTests.swift */; };
 		B92782FB2BDE782100D13808 /* BasicStatsUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B92782DA2BDE72E800D13808 /* BasicStatsUITests.swift */; };
 		B92C53B32BDFED590029E759 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = B9D534122BD2903500C3355F /* Localizable.xcstrings */; };
-		B93F74012BF39F91008A5088 /* HelpfulInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B93F74002BF39F91008A5088 /* HelpfulInfoView.swift */; };
+		B93F74012BF39F91008A5088 /* AdditionalInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B93F74002BF39F91008A5088 /* AdditionalInfoView.swift */; };
 		B95981FA2BE3890500578A9C /* BookingNavigationStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B95981F92BE3890500578A9C /* BookingNavigationStackView.swift */; };
 		B95981FC2BE3898B00578A9C /* EntryListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B95981FB2BE3898B00578A9C /* EntryListView.swift */; };
 		B95F668A2BDBD2D000E9B5AC /* BasicStatsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B95F66892BDBD2D000E9B5AC /* BasicStatsView.swift */; };
@@ -85,7 +85,7 @@
 		B90B2B422BE504A200BD2042 /* NavigationStackContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationStackContentView.swift; sourceTree = "<group>"; };
 		B90B2B442BE5069700BD2042 /* EmptyNavigationStackUITest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyNavigationStackUITest.swift; sourceTree = "<group>"; };
 		B90B2B462BE91AC600BD2042 /* TestHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestHelper.swift; sourceTree = "<group>"; };
-		B90D3D0E2C19D97D00133857 /* MonthlyInsightsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthlyInsightsView.swift; sourceTree = "<group>"; };
+		B90D3D0E2C19D97D00133857 /* IntervalInsightsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntervalInsightsView.swift; sourceTree = "<group>"; };
 		B915DC442BB4644A0018E812 /* Interval.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Interval.swift; sourceTree = "<group>"; };
 		B915DC482BB46E350018E812 /* OverviewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverviewView.swift; sourceTree = "<group>"; };
 		B915DC4E2BB479180018E812 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
@@ -104,7 +104,7 @@
 		B92782F22BDE779700D13808 /* BookingSenseUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingSenseUITests.swift; sourceTree = "<group>"; };
 		B92782F42BDE779700D13808 /* BookingSenseUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingSenseUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		B92C53B22BDFDD980029E759 /* productionTestPlan.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = productionTestPlan.xctestplan; sourceTree = "<group>"; };
-		B93F74002BF39F91008A5088 /* HelpfulInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelpfulInfoView.swift; sourceTree = "<group>"; };
+		B93F74002BF39F91008A5088 /* AdditionalInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdditionalInfoView.swift; sourceTree = "<group>"; };
 		B95981F92BE3890500578A9C /* BookingNavigationStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingNavigationStackView.swift; sourceTree = "<group>"; };
 		B95981FB2BE3898B00578A9C /* EntryListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryListView.swift; sourceTree = "<group>"; };
 		B95F66892BDBD2D000E9B5AC /* BasicStatsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicStatsView.swift; sourceTree = "<group>"; };
@@ -217,9 +217,9 @@
 			children = (
 				B915DC482BB46E350018E812 /* OverviewView.swift */,
 				B95F66892BDBD2D000E9B5AC /* BasicStatsView.swift */,
-				B93F74002BF39F91008A5088 /* HelpfulInfoView.swift */,
+				B93F74002BF39F91008A5088 /* AdditionalInfoView.swift */,
 				B9E4ABF12BF6438E00E96330 /* InfoView.swift */,
-				B90D3D0E2C19D97D00133857 /* MonthlyInsightsView.swift */,
+				B90D3D0E2C19D97D00133857 /* IntervalInsightsView.swift */,
 			);
 			path = Overview;
 			sourceTree = "<group>";
@@ -570,7 +570,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B90D3D0F2C19D97D00133857 /* MonthlyInsightsView.swift in Sources */,
+				B90D3D0F2C19D97D00133857 /* IntervalInsightsView.swift in Sources */,
 				B99206052BD946670099EF26 /* NavigationContext.swift in Sources */,
 				B99206092BDA96090099EF26 /* ToolbarEntry.swift in Sources */,
 				B907587B2C13479300EDC82F /* ContentView.swift in Sources */,
@@ -593,7 +593,7 @@
 				B9E4ABF22BF6438E00E96330 /* InfoView.swift in Sources */,
 				B99206072BDA806E0099EF26 /* ToolbarEntryList.swift in Sources */,
 				B992060B2BDA96D80099EF26 /* EntryFormView.swift in Sources */,
-				B93F74012BF39F91008A5088 /* HelpfulInfoView.swift in Sources */,
+				B93F74012BF39F91008A5088 /* AdditionalInfoView.swift in Sources */,
 				B915DC492BB46E350018E812 /* OverviewView.swift in Sources */,
 				B919B4A22BC6AA47009B2FA4 /* EntryView.swift in Sources */,
 				B915DC4F2BB479190018E812 /* Constants.swift in Sources */,

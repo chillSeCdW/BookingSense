@@ -5,7 +5,7 @@ import SwiftUI
 import TipKit
 
 struct InfoView<F: FormatStyle>: View where F.FormatInput == Decimal, F.FormatOutput == String {
-  let text: String
+  let text: LocalizedStringKey
   let number: F.FormatInput
   let format: F
   var infoHeadline: String?
@@ -18,7 +18,7 @@ struct InfoView<F: FormatStyle>: View where F.FormatInput == Decimal, F.FormatOu
         if infoHeadline != nil {
           InfoBoxButtonView(headline: infoHeadline!, infoText: infoText)
         }
-        Text(LocalizedStringKey(text))
+        Text(text)
         Spacer()
         Text(number, format: format)
       }
