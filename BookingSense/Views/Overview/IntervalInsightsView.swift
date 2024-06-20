@@ -41,11 +41,6 @@ struct IntervalInsightsView: View {
       showApprox: true
     )
     InfoView(
-      text: LocalizedStringKey("Total \(interval.description) costs"),
-      number: calculateIntervalTotalDeductions(interval),
-      format: .currency(code: Locale.current.currency!.identifier)
-    )
-    InfoView(
       text: LocalizedStringKey("\(interval.description.capitalized) income"),
       number: calculateIntervalIncomeOf(interval),
       format: .currency(code: Locale.current.currency!.identifier)
@@ -60,13 +55,17 @@ struct IntervalInsightsView: View {
       number: calculateIntervalSavings(interval),
       format: .currency(code: Locale.current.currency!.identifier)
     )
+    InfoView(
+      text: LocalizedStringKey("Total \(interval.description) left"),
+      number: calculateIntervalLeft(interval),
+      format: .currency(code: Locale.current.currency!.identifier)
+    )
   }
 
   private func calculateIntervalTotalsFor(_ amountPrefix: AmountPrefix, interval: Interval) -> Decimal {
     var total: Decimal = Decimal()
 
     for entry in entries where entry.amountPrefix == amountPrefix {
-      print(entry.amount * Constants.getTimesValue(from: Interval(rawValue: entry.interval), to: interval))
       total += entry.amount * Constants.getTimesValue(from: Interval(rawValue: entry.interval), to: interval)
     }
 
@@ -86,6 +85,10 @@ struct IntervalInsightsView: View {
 
   private func calculateIntervalTotalDeductions(_ interval: Interval) -> Decimal {
     return calculateIntervalDeductionsOf(interval) + calculateIntervalSavings(interval)
+  }
+
+  private func calculateIntervalLeft(_ interval: Interval) -> Decimal {
+    return calculateIntervalTotalsFor(.plus, interval: interval) - (calculateIntervalDeductionsOf(interval) + calculateIntervalSavings(interval))
   }
 
   private func calculateIntervalIncomeOf(_ interval: Interval) -> Decimal {
