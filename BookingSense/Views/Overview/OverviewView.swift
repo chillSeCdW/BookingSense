@@ -18,16 +18,20 @@ struct OverviewView: View {
   var body: some View {
     NavigationStack {
       List {
-        Section("Basic Information", isExpanded: $isExpandedBasic) {
-          BasicStatsView()
+        Section("Select Interval") {
+          Picker("Interval", selection: $interval) {
+            ForEach(Interval.allCases) { option in
+              Text(String(describing: option.description))
+            }
+          }.accessibilityIdentifier("intervalPicker")
+            .pickerStyle(.menu)
         }
         Section(LocalizedStringKey("\(interval.description) Insights"), isExpanded: $isExpandedMonthyInsights) {
           IntervalInsightsView()
         }
-        Section("Additional Infos", isExpanded: $isAdditionalInfo) {
+        Section("Additional \(interval.description) Infos", isExpanded: $isAdditionalInfo) {
           AdditionalInfoView()
         }
-
       }.listStyle(.sidebar)
     }
   }

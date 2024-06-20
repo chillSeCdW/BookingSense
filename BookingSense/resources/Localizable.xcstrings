@@ -1,6 +1,134 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
+    "%@ costs of annually" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@e Kosten der jährlichen Buchungen:"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ costs of annual bookings:"
+          }
+        }
+      }
+    },
+    "%@ costs of biweekly" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@e Kosten der zweiwöchtlichen Buchungen:"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ costs of biweekly bookings:"
+          }
+        }
+      }
+    },
+    "%@ costs of daily" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@e Kosten der täglichen Buchungen:"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ costs of daily bookings:"
+          }
+        }
+      }
+    },
+    "%@ costs of monthly" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@e Kosten der monatlichen Buchungen:"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ costs of monthly bookings:"
+          }
+        }
+      }
+    },
+    "%@ costs of quarterly" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@e Kosten der vierteljährlichen Buchungen:"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ costs of quarterly bookings:"
+          }
+        }
+      }
+    },
+    "%@ costs of semiannually" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@e Kosten der halbjährlichen Buchungen:"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ costs of semiannual bookings:"
+          }
+        }
+      }
+    },
+    "%@ costs of weekly" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@e Kosten der wöchentlichen Buchungen:"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ costs of weekly bookings:"
+          }
+        }
+      }
+    },
+    "%@ cover details %@" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Um alle nicht %1$@en Kosten zu decken, sollte mindestens folgender Betrag %2$@ zurück gelegt werden."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "To cover non-%1$@ deductions save at least the following amount every %2$@."
+          }
+        }
+      }
+    },
     "%@ deductions" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -46,6 +174,22 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "%@ insights"
+          }
+        }
+      }
+    },
+    "%@ left" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ übrig:"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ left:"
           }
         }
       }
@@ -154,18 +298,18 @@
         }
       }
     },
-    "Additional Infos" : {
+    "Additional %@ Infos" : {
       "localizations" : {
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Zusätzliche Informationen"
+            "value" : "Zusätzliche %@e Informationen"
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Additional information"
+            "value" : "Additional %@ information"
           }
         }
       }
@@ -175,13 +319,13 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Alle Intervall Kosten als %@:"
+            "value" : "Alle Kosten als %@:"
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "All interval costs as %@:"
+            "value" : "All costs as %@:"
           }
         }
       }
@@ -191,13 +335,13 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Alle Intervall Einkommen als %@:"
+            "value" : "Alle Einkommen als %@:"
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "All interval income as %@:"
+            "value" : "All income as %@:"
           }
         }
       }
@@ -207,13 +351,13 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Alle Intervall Sparungen als %@:"
+            "value" : "Alle Einsparungen als %@:"
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "All interval savings as %@:"
+            "value" : "All savings as %@:"
           }
         }
       }
@@ -261,7 +405,7 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "annually"
+            "value" : "annual"
           }
         }
       }
@@ -298,18 +442,18 @@
         }
       }
     },
-    "Basic Information" : {
+    "Biweek" : {
       "localizations" : {
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Grundinformation"
+            "value" : "jede zweite Woche"
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Basic information"
+            "value" : "second week"
           }
         }
       }
@@ -384,7 +528,7 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "alle %@e Sparungen + alle anderen Sparungen auf den ausgewählten Interval umgerechnet"
+            "value" : "alle %@e Einsparungen + alle anderen Einsparungen auf das ausgewählte Interval umgerechnet"
           }
         },
         "en" : {
@@ -455,6 +599,22 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "daily"
+          }
+        }
+      }
+    },
+    "Day" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "täglich"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "day"
           }
         }
       }
@@ -556,6 +716,22 @@
         }
       }
     },
+    "Half-year" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "halbjährlich"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "half-year"
+          }
+        }
+      }
+    },
     "How it's calculated" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -605,6 +781,22 @@
         }
       }
     },
+    "month" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "monatlich"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "month"
+          }
+        }
+      }
+    },
     "Monthly" : {
       "localizations" : {
         "de" : {
@@ -617,102 +809,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "monthly"
-          }
-        }
-      }
-    },
-    "Monthly costs of annually" : {
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Monatliche Kosten der jährlichen Einträge:"
-          }
-        },
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Monthly costs of annually entries:"
-          }
-        }
-      }
-    },
-    "Monthly costs of biweekly" : {
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Monatliche Kosten der zweiwöchentlichen Einträge:"
-          }
-        },
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Monthly costs of biweekly entries:"
-          }
-        }
-      }
-    },
-    "Monthly costs of daily" : {
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Monatliche Kosten der täglichen Einträge:"
-          }
-        },
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Monthly costs of daily entries:"
-          }
-        }
-      }
-    },
-    "Monthly costs of quarterly" : {
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Monatliche Kosten der vierteljährlichen Einträge:"
-          }
-        },
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Monthly costs of quarterly entries:"
-          }
-        }
-      }
-    },
-    "Monthly costs of semiannually" : {
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Monatliche Kosten der halbjährlichen Einträge:"
-          }
-        },
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Monthly costs of semiannually entries:"
-          }
-        }
-      }
-    },
-    "Monthly costs of weekly" : {
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Monatliche Kosten der wöchentlichen Einträge:"
-          }
-        },
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Monthly costs of weekly entries:"
           }
         }
       }
@@ -781,6 +877,22 @@
         }
       }
     },
+    "Quarter" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Vierteljahr"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "quarter year"
+          }
+        }
+      }
+    },
     "Quarterly" : {
       "localizations" : {
         "de" : {
@@ -829,6 +941,22 @@
         }
       }
     },
+    "Select Interval" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Interval auswählen"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Select interval"
+          }
+        }
+      }
+    },
     "Semiannually" : {
       "localizations" : {
         "de" : {
@@ -840,7 +968,7 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "semiannually"
+            "value" : "semiannual"
           }
         }
       }
@@ -909,6 +1037,22 @@
         }
       }
     },
+    "To cover %@ deductions" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Folgenden Betrag %@ bei Seite legen:"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "save following amount %@:"
+          }
+        }
+      }
+    },
     "To cover non-monthly deductions" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -922,22 +1066,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "To cover non-monthly deductions save at least the following amount each month:"
-          }
-        }
-      }
-    },
-    "Total %@ costs" : {
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Gesamte %@e Kosten:"
-          }
-        },
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Total %@ costs:"
           }
         }
       }
@@ -958,6 +1086,22 @@
         }
       }
     },
+    "Week" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "wöchentlich"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "week"
+          }
+        }
+      }
+    },
     "Weekly" : {
       "localizations" : {
         "de" : {
@@ -970,6 +1114,22 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "weekly"
+          }
+        }
+      }
+    },
+    "Year" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "jährlich"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "year"
           }
         }
       }

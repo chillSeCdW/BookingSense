@@ -6,86 +6,94 @@ import SwiftData
 
 struct AdditionalInfoView: View {
   @Query private var entries: [BookingEntry]
+  @AppStorage("insightsInterval") private var interval: Interval = .monthly
 
   var body: some View {
-    let monthlyDailyCosts = calculateMonthlyCostsOf(.daily)
-    let monthlyWeeklyCosts = calculateMonthlyCostsOf(.weekly)
-    let monthlyBiWeeklyCosts = calculateMonthlyCostsOf(.biweekly)
-    let monthlyQuarterlyCosts = calculateMonthlyCostsOf(.quarterly)
-    let monthlySemiAnnuallyCosts = calculateMonthlyCostsOf(.semiannually)
-    let monthlyAnnuallyCosts = calculateMonthlyCostsOf(.annually)
+    let dailyCosts = calculateCosts(.daily, to: interval)
+    let weeklyCosts = calculateCosts(.weekly, to: interval)
+    let biWeeklyCosts = calculateCosts(.biweekly, to: interval)
+    let monthlyCosts = calculateCosts(.monthly, to: interval)
+    let quarterlyCosts = calculateCosts(.quarterly, to: interval)
+    let semiAnnuallyCosts = calculateCosts(.semiannually, to: interval)
+    let annuallyCosts = calculateCosts(.annually, to: interval)
 
-    if monthlyDailyCosts > 0 {
+    if dailyCosts > 0 && interval != .daily {
       InfoView(
-        text: LocalizedStringKey("Monthly costs of daily"),
-        number: monthlyDailyCosts,
+        text: LocalizedStringKey("\(interval.description.capitalized) costs of daily"),
+        number: dailyCosts,
         format: .currency(code: Locale.current.currency!.identifier)
       )
     }
-    if monthlyWeeklyCosts > 0 {
+    if weeklyCosts > 0 && interval != .weekly {
       InfoView(
-        text: LocalizedStringKey("Monthly costs of weekly"),
-        number: monthlyWeeklyCosts,
+        text: LocalizedStringKey("\(interval.description.capitalized) costs of weekly"),
+        number: weeklyCosts,
         format: .currency(code: Locale.current.currency!.identifier)
       )
     }
-    if monthlyBiWeeklyCosts > 0 {
+    if biWeeklyCosts > 0 && interval != .biweekly {
       InfoView(
-        text: LocalizedStringKey("Monthly costs of biweekly"),
-        number: monthlyBiWeeklyCosts,
+        text: LocalizedStringKey("\(interval.description.capitalized) costs of biweekly"),
+        number: biWeeklyCosts,
         format: .currency(code: Locale.current.currency!.identifier)
       )
     }
-
-    if monthlyQuarterlyCosts > 0 {
+    if monthlyCosts > 0 && interval != .monthly {
       InfoView(
-        text: LocalizedStringKey("Monthly costs of quarterly"),
-        number: monthlyQuarterlyCosts,
+        text: LocalizedStringKey("\(interval.description.capitalized) costs of monthly"),
+        number: monthlyCosts,
         format: .currency(code: Locale.current.currency!.identifier)
       )
     }
-    if monthlySemiAnnuallyCosts > 0 {
+    if quarterlyCosts > 0 && interval != .quarterly {
       InfoView(
-        text: LocalizedStringKey("Monthly costs of semiannually"),
-        number: monthlySemiAnnuallyCosts,
+        text: LocalizedStringKey("\(interval.description.capitalized) costs of quarterly"),
+        number: quarterlyCosts,
         format: .currency(code: Locale.current.currency!.identifier)
       )
     }
-    if monthlyAnnuallyCosts > 0 {
+    if semiAnnuallyCosts > 0 && interval != .semiannually {
       InfoView(
-        text: LocalizedStringKey("Monthly costs of annually"),
-        number: calculateMonthlyCostsOf(.annually),
+        text: LocalizedStringKey("\(interval.description.capitalized) costs of semiannually"),
+        number: semiAnnuallyCosts,
         format: .currency(code: Locale.current.currency!.identifier)
       )
     }
-
+    if annuallyCosts > 0 && interval != .annually {
+      InfoView(
+        text: LocalizedStringKey("\(interval.description.capitalized) costs of annually"),
+        number: annuallyCosts,
+        format: .currency(code: Locale.current.currency!.identifier)
+      )
+    }
     InfoView(
-      text: LocalizedStringKey("To cover non-monthly deductions"),
-      number: calculateSaveMonthly(),
-      format: .currency(code: Locale.current.currency!.identifier)
+      text: LocalizedStringKey("To cover \(interval.description) deductions"),
+      number: calculateSaveInterval(interval),
+      format: .currency(code: Locale.current.currency!.identifier),
+      infoHeadline: LocalizedStringKey("\(interval.description) cover details \(Constants.convertIntervalToNoun(interval))"),
+      showApprox: true
     )
   }
 
-  private func calculateMonthlyCostsOf(_ interval: Interval) -> Decimal {
-    var totalMonthlyCosts: Decimal = Decimal()
+  private func calculateCosts(_ from: Interval, to toInterval: Interval) -> Decimal {
+    var totalIntervalCosts: Decimal = Decimal()
 
-    for entry in entries where entry.amountPrefix == .minus && entry.interval == interval.rawValue {
+    for entry in entries where entry.amountPrefix == .minus && entry.interval == from.rawValue {
       let curInterval = Interval(rawValue: entry.interval)
-      totalMonthlyCosts += entry.amount * Constants.getTimesValue(from: curInterval, to: .monthly)
-
+      totalIntervalCosts += entry.amount * Constants.getTimesValue(from: curInterval, to: toInterval)
     }
 
-    return totalMonthlyCosts
+    return totalIntervalCosts
   }
 
-  private func calculateSaveMonthly() -> Decimal {
-    var totalNonMonthlyCosts: Decimal = Decimal()
+  private func calculateSaveInterval(_ calculateTo: Interval) -> Decimal {
+    var totalDifferentIntervalCosts: Decimal = Decimal()
 
-    for interval in Interval.allCases where interval != .monthly {
-      totalNonMonthlyCosts += calculateMonthlyCostsOf(interval)
+    for interval in Interval.allCases where interval != calculateTo {
+      totalDifferentIntervalCosts += calculateCosts(interval, to: calculateTo)
     }
 
-    return totalNonMonthlyCosts
+    return totalDifferentIntervalCosts
   }
 }
 

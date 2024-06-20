@@ -26,6 +26,25 @@ struct Constants {
     )
   }
 
+  static func convertIntervalToNoun(_ interval: Interval) -> String {
+    switch interval {
+    case .daily:
+      return String(localized: "Day")
+    case .weekly:
+      return String(localized: "Week")
+    case .biweekly:
+      return String(localized: "Biweek")
+    case .monthly:
+      return String(localized: "month")
+    case .quarterly:
+      return String(localized: "Quarter")
+    case .semiannually:
+      return String(localized: "Half-year")
+    case .annually:
+      return String(localized: "Year")
+    }
+  }
+
   static func getTimesValue(from interval: Interval?, to targetInterval: Interval?) -> Decimal {
     guard let fromInterval = interval, let targetInterval = targetInterval else {
       return 0

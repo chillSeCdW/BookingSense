@@ -10,12 +10,6 @@ struct IntervalInsightsView: View {
   @AppStorage("insightsInterval") private var interval: Interval = .monthly
 
   var body: some View {
-    Picker("Interval", selection: $interval) {
-      ForEach(Interval.allCases) { option in
-        Text(String(describing: option.description))
-      }
-    }.accessibilityIdentifier("intervalPicker")
-    .pickerStyle(.menu)
     InfoView(
       text: LocalizedStringKey("All income as \(interval.description)"),
       number: calculateIntervalTotalsFor(.plus, interval: interval),
@@ -56,7 +50,7 @@ struct IntervalInsightsView: View {
       format: .currency(code: Locale.current.currency!.identifier)
     )
     InfoView(
-      text: LocalizedStringKey("Total \(interval.description) left"),
+      text: LocalizedStringKey("\(interval.description.capitalized) left"),
       number: calculateIntervalLeft(interval),
       format: .currency(code: Locale.current.currency!.identifier)
     )
@@ -88,7 +82,8 @@ struct IntervalInsightsView: View {
   }
 
   private func calculateIntervalLeft(_ interval: Interval) -> Decimal {
-    return calculateIntervalTotalsFor(.plus, interval: interval) - (calculateIntervalDeductionsOf(interval) + calculateIntervalSavings(interval))
+    return calculateIntervalTotalsFor(.plus, interval: interval) -
+    (calculateIntervalDeductionsOf(interval) + calculateIntervalSavings(interval))
   }
 
   private func calculateIntervalIncomeOf(_ interval: Interval) -> Decimal {
