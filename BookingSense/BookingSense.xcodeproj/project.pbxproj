@@ -12,6 +12,7 @@
 		B90B2B432BE504A200BD2042 /* NavigationStackContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B90B2B422BE504A200BD2042 /* NavigationStackContentView.swift */; };
 		B90B2B452BE5069700BD2042 /* EmptyNavigationStackUITest.swift in Sources */ = {isa = PBXBuildFile; fileRef = B90B2B442BE5069700BD2042 /* EmptyNavigationStackUITest.swift */; };
 		B90B2B472BE91AC600BD2042 /* TestHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = B90B2B462BE91AC600BD2042 /* TestHelper.swift */; };
+		B90D3D0F2C19D97D00133857 /* IntervalInsightsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B90D3D0E2C19D97D00133857 /* IntervalInsightsView.swift */; };
 		B915DC452BB4644A0018E812 /* Interval.swift in Sources */ = {isa = PBXBuildFile; fileRef = B915DC442BB4644A0018E812 /* Interval.swift */; };
 		B915DC492BB46E350018E812 /* OverviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B915DC482BB46E350018E812 /* OverviewView.swift */; };
 		B915DC4F2BB479190018E812 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = B915DC4E2BB479180018E812 /* Constants.swift */; };
@@ -26,14 +27,10 @@
 		B92782D92BDE6E9600D13808 /* AmountPrefixTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B92782D82BDE6E9500D13808 /* AmountPrefixTests.swift */; };
 		B92782F32BDE779700D13808 /* BookingSenseUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B92782F22BDE779700D13808 /* BookingSenseUITests.swift */; };
 		B92782F52BDE779700D13808 /* BookingSenseUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B92782F42BDE779700D13808 /* BookingSenseUITestsLaunchTests.swift */; };
-		B92782FB2BDE782100D13808 /* BasicStatsUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B92782DA2BDE72E800D13808 /* BasicStatsUITests.swift */; };
 		B92C53B32BDFED590029E759 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = B9D534122BD2903500C3355F /* Localizable.xcstrings */; };
-		B93F74012BF39F91008A5088 /* HelpfulInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B93F74002BF39F91008A5088 /* HelpfulInfoView.swift */; };
-		B9406E152C1335AE00AE0C4C /* SecurityController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9406E142C1335AE00AE0C4C /* SecurityController.swift */; };
-		B9406E172C13368000AE0C4C /* LockView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9406E162C13368000AE0C4C /* LockView.swift */; };
+		B93F74012BF39F91008A5088 /* AdditionalInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B93F74002BF39F91008A5088 /* AdditionalInfoView.swift */; };
 		B95981FA2BE3890500578A9C /* BookingNavigationStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B95981F92BE3890500578A9C /* BookingNavigationStackView.swift */; };
 		B95981FC2BE3898B00578A9C /* EntryListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B95981FB2BE3898B00578A9C /* EntryListView.swift */; };
-		B95F668A2BDBD2D000E9B5AC /* BasicStatsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B95F66892BDBD2D000E9B5AC /* BasicStatsView.swift */; };
 		B97378F82BDFC11E003A729E /* ContainerFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = B97378F72BDFC11E003A729E /* ContainerFactory.swift */; };
 		B97378FA2BDFC569003A729E /* BookingSchemaV1.swift in Sources */ = {isa = PBXBuildFile; fileRef = B97378F92BDFC569003A729E /* BookingSchemaV1.swift */; };
 		B97378FD2BDFC7D1003A729E /* Migrations.swift in Sources */ = {isa = PBXBuildFile; fileRef = B97378FC2BDFC7D1003A729E /* Migrations.swift */; };
@@ -56,6 +53,7 @@
 		B9DAFADB2BA8AFAF000486EA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B9DAFADA2BA8AFAF000486EA /* Assets.xcassets */; };
 		B9DAFADF2BA8AFAF000486EA /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B9DAFADE2BA8AFAF000486EA /* Preview Assets.xcassets */; };
 		B9DE5B7F2BC6E7740017ACF4 /* AmountPrefix.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9DE5B7E2BC6E7740017ACF4 /* AmountPrefix.swift */; };
+		B9E0B9122C1B98230047EA77 /* InfoBoxButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9E0B9112C1B98220047EA77 /* InfoBoxButtonView.swift */; };
 		B9E2D0192BDE87FE0001B391 /* MockContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9E2D0182BDE87FE0001B391 /* MockContainer.swift */; };
 		B9E4ABF22BF6438E00E96330 /* InfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9E4ABF12BF6438E00E96330 /* InfoView.swift */; };
 		B9E590B92C0F3AD5008C10A8 /* BookWalletIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = B9E590B82C0F3AD5008C10A8 /* BookWalletIcon.png */; };
@@ -85,6 +83,7 @@
 		B90B2B422BE504A200BD2042 /* NavigationStackContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationStackContentView.swift; sourceTree = "<group>"; };
 		B90B2B442BE5069700BD2042 /* EmptyNavigationStackUITest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyNavigationStackUITest.swift; sourceTree = "<group>"; };
 		B90B2B462BE91AC600BD2042 /* TestHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestHelper.swift; sourceTree = "<group>"; };
+		B90D3D0E2C19D97D00133857 /* IntervalInsightsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntervalInsightsView.swift; sourceTree = "<group>"; };
 		B915DC442BB4644A0018E812 /* Interval.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Interval.swift; sourceTree = "<group>"; };
 		B915DC482BB46E350018E812 /* OverviewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverviewView.swift; sourceTree = "<group>"; };
 		B915DC4E2BB479180018E812 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
@@ -98,17 +97,13 @@
 		B92782D42BDE660200D13808 /* ToastTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToastTests.swift; sourceTree = "<group>"; };
 		B92782D62BDE669600D13808 /* BookingEntryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingEntryTests.swift; sourceTree = "<group>"; };
 		B92782D82BDE6E9500D13808 /* AmountPrefixTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AmountPrefixTests.swift; sourceTree = "<group>"; };
-		B92782DA2BDE72E800D13808 /* BasicStatsUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicStatsUITests.swift; sourceTree = "<group>"; };
 		B92782F02BDE779700D13808 /* BookingSenseUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BookingSenseUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B92782F22BDE779700D13808 /* BookingSenseUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingSenseUITests.swift; sourceTree = "<group>"; };
 		B92782F42BDE779700D13808 /* BookingSenseUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingSenseUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		B92C53B22BDFDD980029E759 /* productionTestPlan.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = productionTestPlan.xctestplan; sourceTree = "<group>"; };
-		B93F74002BF39F91008A5088 /* HelpfulInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelpfulInfoView.swift; sourceTree = "<group>"; };
-		B9406E142C1335AE00AE0C4C /* SecurityController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecurityController.swift; sourceTree = "<group>"; };
-		B9406E162C13368000AE0C4C /* LockView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LockView.swift; sourceTree = "<group>"; };
+		B93F74002BF39F91008A5088 /* AdditionalInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdditionalInfoView.swift; sourceTree = "<group>"; };
 		B95981F92BE3890500578A9C /* BookingNavigationStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingNavigationStackView.swift; sourceTree = "<group>"; };
 		B95981FB2BE3898B00578A9C /* EntryListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryListView.swift; sourceTree = "<group>"; };
-		B95F66892BDBD2D000E9B5AC /* BasicStatsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicStatsView.swift; sourceTree = "<group>"; };
 		B9655DDC2C0FBC1800D81C33 /* basicTestPlan.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = basicTestPlan.xctestplan; sourceTree = "<group>"; };
 		B97378F72BDFC11E003A729E /* ContainerFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContainerFactory.swift; sourceTree = "<group>"; };
 		B97378F92BDFC569003A729E /* BookingSchemaV1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingSchemaV1.swift; sourceTree = "<group>"; };
@@ -136,6 +131,7 @@
 		B9DAFADC2BA8AFAF000486EA /* ExpenseSense.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ExpenseSense.entitlements; sourceTree = "<group>"; };
 		B9DAFADE2BA8AFAF000486EA /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		B9DE5B7E2BC6E7740017ACF4 /* AmountPrefix.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AmountPrefix.swift; sourceTree = "<group>"; };
+		B9E0B9112C1B98220047EA77 /* InfoBoxButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoBoxButtonView.swift; sourceTree = "<group>"; };
 		B9E2D0182BDE87FE0001B391 /* MockContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockContainer.swift; sourceTree = "<group>"; };
 		B9E4ABF12BF6438E00E96330 /* InfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoView.swift; sourceTree = "<group>"; };
 		B9E590B82C0F3AD5008C10A8 /* BookWalletIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = BookWalletIcon.png; sourceTree = "<group>"; };
@@ -192,7 +188,7 @@
 				B99205FD2BD90FA40099EF26 /* Navigation */,
 				B919B4A32BC6AAA3009B2FA4 /* Overview */,
 				B907587A2C13479300EDC82F /* ContentView.swift */,
-				B9406E162C13368000AE0C4C /* LockView.swift */,
+				B9E0B9112C1B98220047EA77 /* InfoBoxButtonView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -208,7 +204,6 @@
 				B915DC442BB4644A0018E812 /* Interval.swift */,
 				B915DC4E2BB479180018E812 /* Constants.swift */,
 				B9DE5B7E2BC6E7740017ACF4 /* AmountPrefix.swift */,
-				B9406E142C1335AE00AE0C4C /* SecurityController.swift */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -217,9 +212,9 @@
 			isa = PBXGroup;
 			children = (
 				B915DC482BB46E350018E812 /* OverviewView.swift */,
-				B95F66892BDBD2D000E9B5AC /* BasicStatsView.swift */,
-				B93F74002BF39F91008A5088 /* HelpfulInfoView.swift */,
+				B93F74002BF39F91008A5088 /* AdditionalInfoView.swift */,
 				B9E4ABF12BF6438E00E96330 /* InfoView.swift */,
+				B90D3D0E2C19D97D00133857 /* IntervalInsightsView.swift */,
 			);
 			path = Overview;
 			sourceTree = "<group>";
@@ -269,7 +264,6 @@
 		B92782F12BDE779700D13808 /* BookingSenseUITests */ = {
 			isa = PBXGroup;
 			children = (
-				B92782DA2BDE72E800D13808 /* BasicStatsUITests.swift */,
 				B92782F22BDE779700D13808 /* BookingSenseUITests.swift */,
 				B92782F42BDE779700D13808 /* BookingSenseUITestsLaunchTests.swift */,
 				B90B2B402BE4E88400BD2042 /* FilledNavigationStackUITest.swift */,
@@ -559,7 +553,6 @@
 			files = (
 				B92782F52BDE779700D13808 /* BookingSenseUITestsLaunchTests.swift in Sources */,
 				B90B2B452BE5069700BD2042 /* EmptyNavigationStackUITest.swift in Sources */,
-				B92782FB2BDE782100D13808 /* BasicStatsUITests.swift in Sources */,
 				B90B2B412BE4E88400BD2042 /* FilledNavigationStackUITest.swift in Sources */,
 				B92782F32BDE779700D13808 /* BookingSenseUITests.swift in Sources */,
 				B90B2B472BE91AC600BD2042 /* TestHelper.swift in Sources */,
@@ -570,6 +563,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B90D3D0F2C19D97D00133857 /* IntervalInsightsView.swift in Sources */,
 				B99206052BD946670099EF26 /* NavigationContext.swift in Sources */,
 				B99206092BDA96090099EF26 /* ToolbarEntry.swift in Sources */,
 				B907587B2C13479300EDC82F /* ContentView.swift in Sources */,
@@ -578,13 +572,11 @@
 				B9BE668E2BCFF0700063734E /* Toast.swift in Sources */,
 				B9BE668C2BCFF03D0063734E /* ToastStyle.swift in Sources */,
 				B9BE66922BCFF1CB0063734E /* ToastMod.swift in Sources */,
-				B9406E152C1335AE00AE0C4C /* SecurityController.swift in Sources */,
 				B95981FC2BE3898B00578A9C /* EntryListView.swift in Sources */,
-				B9406E172C13368000AE0C4C /* LockView.swift in Sources */,
+				B9E0B9122C1B98230047EA77 /* InfoBoxButtonView.swift in Sources */,
 				B97378FD2BDFC7D1003A729E /* Migrations.swift in Sources */,
 				B99205FC2BD90F780099EF26 /* ViewInfo.swift in Sources */,
 				B97378F82BDFC11E003A729E /* ContainerFactory.swift in Sources */,
-				B95F668A2BDBD2D000E9B5AC /* BasicStatsView.swift in Sources */,
 				B99205FF2BD90FAD0099EF26 /* SortButtonView.swift in Sources */,
 				B9DAFAD52BA8AFAF000486EA /* BookingSenseApp.swift in Sources */,
 				B9BE66902BCFF0B90063734E /* ToastView.swift in Sources */,
@@ -593,7 +585,7 @@
 				B9E4ABF22BF6438E00E96330 /* InfoView.swift in Sources */,
 				B99206072BDA806E0099EF26 /* ToolbarEntryList.swift in Sources */,
 				B992060B2BDA96D80099EF26 /* EntryFormView.swift in Sources */,
-				B93F74012BF39F91008A5088 /* HelpfulInfoView.swift in Sources */,
+				B93F74012BF39F91008A5088 /* AdditionalInfoView.swift in Sources */,
 				B915DC492BB46E350018E812 /* OverviewView.swift in Sources */,
 				B919B4A22BC6AA47009B2FA4 /* EntryView.swift in Sources */,
 				B915DC4F2BB479190018E812 /* Constants.swift in Sources */,

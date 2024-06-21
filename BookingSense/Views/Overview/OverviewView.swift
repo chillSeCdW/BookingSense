@@ -10,17 +10,27 @@ import SwiftUI
 import SwiftData
 
 struct OverviewView: View {
-  @State private var isExpandedBasic = true
-  @State private var isExpandedMonthy = true
+  @AppStorage("expandedBasic") private var isExpandedBasic = true
+  @AppStorage("expandedPickInsights") private var isExpandedMonthyInsights = true
+  @AppStorage("expandedAdditional") private var isAdditionalInfo = false
+  @AppStorage("insightsInterval") private var interval: Interval = .monthly
 
   var body: some View {
     NavigationStack {
       List {
-        Section("Basic Information", isExpanded: $isExpandedBasic) {
-          BasicStatsView()
+        Section("Select Interval") {
+          Picker("Interval", selection: $interval) {
+            ForEach(Interval.allCases) { option in
+              Text(String(describing: option.description))
+            }
+          }.accessibilityIdentifier("intervalPicker")
+            .pickerStyle(.menu)
         }
-        Section("Helpful Infos", isExpanded: $isExpandedMonthy) {
-          HelpfulInfoView()
+        Section(LocalizedStringKey("\(interval.description) Insights"), isExpanded: $isExpandedMonthyInsights) {
+          IntervalInsightsView()
+        }
+        Section("Additional \(interval.description) Infos", isExpanded: $isAdditionalInfo) {
+          AdditionalInfoView()
         }
       }.listStyle(.sidebar)
     }

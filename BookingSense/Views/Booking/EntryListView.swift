@@ -57,11 +57,11 @@ struct EntryListView: View {
         }.onDelete(perform: deleteEntry)
       }, header: {
         HStack {
-          Text(interval.description)
-          Text("(" + entries.count.formatted() + " entries)")
+          Text(interval.description.capitalized)
         }
-
-      })
+      }, footer: {
+        Text(LocalizedStringKey("\(entries.count) entries"))
+      }).headerProminence(.increased)
     }
   }
 

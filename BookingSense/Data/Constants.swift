@@ -7,6 +7,7 @@
 
 import SwiftUI
 import SwiftData
+import Foundation
 
 struct Constants {
   static var listBackgroundColors: [AmountPrefix: Color] = [
@@ -25,25 +26,62 @@ struct Constants {
     )
   }
 
-  static func getTimesValue(interval: Interval?) -> Decimal {
+  static func convertIntervalToNoun(_ interval: Interval) -> String {
     switch interval {
     case .daily:
-      return 365
+      return String(localized: "Day")
     case .weekly:
-      return 52
+      return String(localized: "Week")
     case .biweekly:
-      return 26
+      return String(localized: "Biweek")
     case .monthly:
-      return 12
+      return String(localized: "month")
     case .quarterly:
-      return 4
+      return String(localized: "Quarter")
     case .semiannually:
-      return 2
+      return String(localized: "Half-year")
     case .annually:
-      return 1
-    case .none:
+      return String(localized: "Year")
+    }
+  }
+
+  static func getTimesValue(from interval: Interval?, to targetInterval: Interval?) -> Decimal {
+    guard let fromInterval = interval, let targetInterval = targetInterval else {
       return 0
     }
+
+    let conversionRates: [Interval: Decimal] = [
+      .daily: 1,
+      .weekly: 365/52,
+      .biweekly: 365/26,
+      .monthly: 365/12,
+      .quarterly: 365/4,
+      .semiannually: 365/2,
+      .annually: 365
+    ]
+
+    guard let fromRate = conversionRates[fromInterval], let toRate = conversionRates[targetInterval] else {
+      return 0
+    }
+
+    var tmp: Decimal
+    var result = Decimal()
+    var makeFraction = false
+
+    if toRate > fromRate {
+      tmp = toRate / fromRate
+    } else {
+      tmp = fromRate / toRate
+      makeFraction = true
+    }
+
+    NSDecimalRound(&result, &tmp, 0, .bankers)
+
+    if makeFraction {
+      result = 1/result
+    }
+
+    return result
   }
 
   static func createDescriptor(searchString: String, interval: Interval) -> FetchDescriptor<BookingEntry> {
@@ -56,7 +94,7 @@ struct Constants {
   }
 
   static func getSymbol(_ code: String) -> String? {
-     let locale = NSLocale(localeIdentifier: code)
+    let locale = NSLocale(localeIdentifier: code)
     return locale.displayName(forKey: NSLocale.Key.currencySymbol, value: code)
   }
 
