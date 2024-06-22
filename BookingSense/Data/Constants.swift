@@ -26,7 +26,7 @@ struct Constants {
     )
   }
 
-  static func convertIntervalToNoun(_ interval: Interval) -> String {
+  static func convertToNoun(_ interval: Interval) -> String {
     switch interval {
     case .daily:
       return String(localized: "Day")

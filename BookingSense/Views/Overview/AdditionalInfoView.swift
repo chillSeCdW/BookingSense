@@ -70,7 +70,7 @@ struct AdditionalInfoView: View {
       text: LocalizedStringKey("To cover \(interval.description) deductions"),
       number: calculateSaveInterval(interval),
       format: .currency(code: Locale.current.currency!.identifier),
-      infoHeadline: LocalizedStringKey("\(interval.description) cover details \(Constants.convertIntervalToNoun(interval))"),
+      infoHeadline: LocalizedStringKey("\(interval.description) cover details \(Constants.convertToNoun(interval))"),
       showApprox: true
     )
   }
