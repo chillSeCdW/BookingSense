@@ -32,18 +32,18 @@ struct InfoView<F: FormatStyle>: View where F.FormatInput == Decimal, F.FormatOu
 #Preview {
   VStack {
     InfoView(
-      text: "Your total plus",
+      text: "All income as \(Interval.annually.description)",
       number: Decimal(1000),
       format: .currency(code: Locale.current.currency!.identifier),
       infoHeadline: "How it's calculated"
     )
     InfoView(
-      text: "Your total plus",
+      text: "All income as \(Interval.annually.description)",
       number: Decimal(1000),
       format: .number
     )
     InfoView(
-      text: "Your total plus",
+      text: "All income as \(Interval.annually.description)",
       number: Decimal(0),
       format: .number
     )
