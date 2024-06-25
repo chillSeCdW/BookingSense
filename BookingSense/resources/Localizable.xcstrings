@@ -1,6 +1,64 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
+    "\n" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : ""
+          }
+        }
+      }
+    },
+    " stands for deductions" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : " steht für Abzüge."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : " stands for deductions."
+          }
+        }
+      }
+    },
+    " stands for income" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : " steht für Einkommen."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : " stands for income."
+          }
+        }
+      }
+    },
+    " stands for savings" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : " steht für Ersparnisse."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : " stands for savings."
+          }
+        }
+      }
+    },
     "%@ costs of annually" : {
       "localizations" : {
         "de" : {
@@ -178,22 +236,6 @@
         }
       }
     },
-    "%@ left" : {
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "%@ übrig:"
-          }
-        },
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "%@ left:"
-          }
-        }
-      }
-    },
     "%@ savings" : {
       "localizations" : {
         "de" : {
@@ -206,6 +248,22 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "%@ savings:"
+          }
+        }
+      }
+    },
+    "%@ symbol" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@"
           }
         }
       }
@@ -298,6 +356,22 @@
         }
       }
     },
+    "Adding a booking" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Buchung hinzufügen"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Adding a booking"
+          }
+        }
+      }
+    },
     "Additional %@ Infos" : {
       "localizations" : {
         "de" : {
@@ -310,6 +384,22 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Additional %@ information"
+          }
+        }
+      }
+    },
+    "Additional information" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zusätzliche Informationen"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Additional information"
           }
         }
       }
@@ -539,6 +629,22 @@
         }
       }
     },
+    "calculated total left" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "alle Einkommen - alle Abzüge und Einsparungen jeweils auf den ausgewählten Interval umgerechnet"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "all incomes adjusted for selected interval -  all deductions and savings for selected interval"
+          }
+        }
+      }
+    },
     "Cancel" : {
       "localizations" : {
         "de" : {
@@ -551,6 +657,38 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Cancel"
+          }
+        }
+      }
+    },
+    "click here for some additional information" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hier klicken für weitere Informationen."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Click here for some additional information."
+          }
+        }
+      }
+    },
+    "click here to add a booking" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hier klicken um eine Buchung zu erstellen."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Click here to add a booking."
           }
         }
       }
@@ -861,6 +999,22 @@
         }
       }
     },
+    "Prefix of booking" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Präfix der Buchung"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Prefix of booking"
+          }
+        }
+      }
+    },
     "Press the + button to add an entry" : {
       "localizations" : {
         "de" : {
@@ -1066,6 +1220,22 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "To cover non-monthly deductions save at least the following amount each month:"
+          }
+        }
+      }
+    },
+    "Total %@ left" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Gesamter %@ Restbetrag:"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Total %@ left:"
           }
         }
       }

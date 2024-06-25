@@ -3,7 +3,6 @@
 
 import SwiftUI
 import SwiftData
-import TipKit
 
 struct IntervalInsightsView: View {
   @Query private var entries: [BookingEntry]
@@ -35,6 +34,14 @@ struct IntervalInsightsView: View {
       showApprox: true
     )
     InfoView(
+      text: LocalizedStringKey("Total \(interval.description) left"),
+      number: calculateIntervalLeft(interval),
+      format: .currency(code: Locale.current.currency!.identifier),
+      infoHeadline: LocalizedStringKey("How it's calculated"),
+      infoText: LocalizedStringKey("calculated total left"),
+      showApprox: true
+    )
+    InfoView(
       text: LocalizedStringKey("\(interval.description.capitalized) income"),
       number: calculateIntervalIncomeOf(interval),
       format: .currency(code: Locale.current.currency!.identifier)
@@ -47,11 +54,6 @@ struct IntervalInsightsView: View {
     InfoView(
       text: LocalizedStringKey("\(interval.description.capitalized) savings"),
       number: calculateIntervalSavings(interval),
-      format: .currency(code: Locale.current.currency!.identifier)
-    )
-    InfoView(
-      text: LocalizedStringKey("\(interval.description.capitalized) left"),
-      number: calculateIntervalLeft(interval),
       format: .currency(code: Locale.current.currency!.identifier)
     )
   }
@@ -83,7 +85,7 @@ struct IntervalInsightsView: View {
 
   private func calculateIntervalLeft(_ interval: Interval) -> Decimal {
     return calculateIntervalTotalsFor(.plus, interval: interval) -
-    (calculateIntervalDeductionsOf(interval) + calculateIntervalSavings(interval))
+    (calculateIntervalTotalsFor(.minus, interval: interval) + calculateIntervalTotalsFor(.saving, interval: interval))
   }
 
   private func calculateIntervalIncomeOf(_ interval: Interval) -> Decimal {

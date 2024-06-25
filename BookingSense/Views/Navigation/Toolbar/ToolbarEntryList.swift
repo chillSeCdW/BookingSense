@@ -27,7 +27,8 @@ struct ToolbarEntryList: ToolbarContent {
     ToolbarItem {
         Button(action: addEntry) {
             Label("Add item", systemImage: "plus")
-        }
+        }.buttonStyle(.borderless) // fix for TipKit bug
+        .popoverTip(ToolbarAddTip())
     }
     ToolbarItem {
       withAnimation {

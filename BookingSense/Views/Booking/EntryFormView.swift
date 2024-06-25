@@ -41,6 +41,7 @@ struct EntryFormView: View {
       }
       .pickerStyle(.wheel)
       .frame(maxWidth: 80, maxHeight: 100)
+      .popoverTip(PrefixBookingTip())
       TextField(
         text: $amount,
         prompt: Text("Amount")

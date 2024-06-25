@@ -31,7 +31,7 @@ struct OverviewView: View {
         }
         Section("Additional \(interval.description) Infos", isExpanded: $isAdditionalInfo) {
           AdditionalInfoView()
-        }
+        }.popoverTip(AdditinalInfoTip())
       }.navigationTitle("Overview")
         .listStyle(.sidebar)
     }
