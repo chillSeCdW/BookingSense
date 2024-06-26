@@ -9,25 +9,28 @@ import SwiftUI
 
 struct ToolbarEntryList: ToolbarContent {
   @Environment(\.editMode) private var editMode
+  @AppStorage("blurSensitive") var blurSensitive = false
 
   @Binding var showingConfirmation: Bool
   var addEntry: () -> Void
 
   var body: some ToolbarContent {
-    ToolbarItem(placement: .navigationBarTrailing) {
-        EditButton()
+    ToolbarItem(placement: .navigationBarLeading) {
+      Button(action: toggleDisplaySensitiveInfo) {
+        Image(systemName: blurSensitive ? "eye.slash" : "eye")
+      }.contentTransition(.symbolEffect(.replace.downUp.byLayer))
     }
     if editMode?.wrappedValue.isEditing == true {
       ToolbarItem(placement: .navigationBarLeading) {
         Button(action: showPopup) {
-          Label("Delete all", systemImage: "trash")
+          Image(systemName: "trash")
         }
       }
     }
     ToolbarItem {
         Button(action: addEntry) {
-            Label("Add item", systemImage: "plus")
-        }.buttonStyle(.borderless) // fix for TipKit bug
+            Image(systemName: "plus")
+        }
         .popoverTip(ToolbarAddTip())
     }
     ToolbarItem {
@@ -35,11 +38,18 @@ struct ToolbarEntryList: ToolbarContent {
         SortButtonView()
       }
     }
+    ToolbarItem(placement: .navigationBarTrailing) {
+        EditButton()
+    }
   }
 
   func showPopup() {
     withAnimation {
       showingConfirmation = true
     }
+  }
+
+  func toggleDisplaySensitiveInfo() {
+    blurSensitive.toggle()
   }
 }

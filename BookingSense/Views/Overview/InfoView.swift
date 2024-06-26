@@ -2,9 +2,10 @@
 // Using Swift 5.0
 
 import SwiftUI
-import TipKit
 
 struct InfoView<F: FormatStyle>: View where F.FormatInput == Decimal, F.FormatOutput == String {
+  @AppStorage("blurSensitive") var blurSensitive = false
+
   let text: LocalizedStringKey
   let number: F.FormatInput
   let format: F
@@ -24,6 +25,7 @@ struct InfoView<F: FormatStyle>: View where F.FormatInput == Decimal, F.FormatOu
           Text("~")
         }
         Text(number, format: format)
+          .blur(radius: blurSensitive ? 5.0 : 0)
       }
     }
   }

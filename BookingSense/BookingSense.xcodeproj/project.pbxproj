@@ -30,6 +30,7 @@
 		B927FB232C26CD49008D30BE /* ToolbarAddTip.swift in Sources */ = {isa = PBXBuildFile; fileRef = B927FB222C26CD49008D30BE /* ToolbarAddTip.swift */; };
 		B927FB252C28205E008D30BE /* AdditinalInfoTip.swift in Sources */ = {isa = PBXBuildFile; fileRef = B927FB242C28205E008D30BE /* AdditinalInfoTip.swift */; };
 		B927FB272C2B68BB008D30BE /* PrefixBookingTip.swift in Sources */ = {isa = PBXBuildFile; fileRef = B927FB262C2B68BB008D30BE /* PrefixBookingTip.swift */; };
+		B927FB292C2C386D008D30BE /* ToolbarOverviewList.swift in Sources */ = {isa = PBXBuildFile; fileRef = B927FB282C2C386D008D30BE /* ToolbarOverviewList.swift */; };
 		B92C53B32BDFED590029E759 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = B9D534122BD2903500C3355F /* Localizable.xcstrings */; };
 		B93F74012BF39F91008A5088 /* AdditionalInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B93F74002BF39F91008A5088 /* AdditionalInfoView.swift */; };
 		B95981FA2BE3890500578A9C /* BookingNavigationStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B95981F92BE3890500578A9C /* BookingNavigationStackView.swift */; };
@@ -106,6 +107,7 @@
 		B927FB222C26CD49008D30BE /* ToolbarAddTip.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolbarAddTip.swift; sourceTree = "<group>"; };
 		B927FB242C28205E008D30BE /* AdditinalInfoTip.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdditinalInfoTip.swift; sourceTree = "<group>"; };
 		B927FB262C2B68BB008D30BE /* PrefixBookingTip.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrefixBookingTip.swift; sourceTree = "<group>"; };
+		B927FB282C2C386D008D30BE /* ToolbarOverviewList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolbarOverviewList.swift; sourceTree = "<group>"; };
 		B92C53B22BDFDD980029E759 /* productionTestPlan.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = productionTestPlan.xctestplan; sourceTree = "<group>"; };
 		B93F74002BF39F91008A5088 /* AdditionalInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdditionalInfoView.swift; sourceTree = "<group>"; };
 		B95981F92BE3890500578A9C /* BookingNavigationStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingNavigationStackView.swift; sourceTree = "<group>"; };
@@ -174,6 +176,7 @@
 				B90ABBD82BE3FC8C006E5AA8 /* Buttons */,
 				B99206062BDA806E0099EF26 /* ToolbarEntryList.swift */,
 				B99206082BDA96090099EF26 /* ToolbarEntry.swift */,
+				B927FB282C2C386D008D30BE /* ToolbarOverviewList.swift */,
 			);
 			path = Toolbar;
 			sourceTree = "<group>";
@@ -608,6 +611,7 @@
 				B93F74012BF39F91008A5088 /* AdditionalInfoView.swift in Sources */,
 				B915DC492BB46E350018E812 /* OverviewView.swift in Sources */,
 				B919B4A22BC6AA47009B2FA4 /* EntryView.swift in Sources */,
+				B927FB292C2C386D008D30BE /* ToolbarOverviewList.swift in Sources */,
 				B915DC4F2BB479190018E812 /* Constants.swift in Sources */,
 				B97378FA2BDFC569003A729E /* BookingSchemaV1.swift in Sources */,
 			);
