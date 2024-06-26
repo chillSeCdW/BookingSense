@@ -61,7 +61,7 @@ class TestHelper {
       XCTAssertTrue(createHeadline.isHittable)
 
       let nameTextField = app.collectionViews.textFields[localized("Name")]
-      let minusPickerWheel = app.collectionViews.pickerWheels["➖"]
+      let minusPickerWheel = app.collectionViews.pickerWheels["minus"]
       let amountTextField = app.collectionViews.textFields[localized("Amount")]
       let currentCurrency = app.collectionViews.staticTexts["CurrencySymbol"]
       let amountPrefixPicker = app.collectionViews.pickers[localized("AmountPrefix")]
@@ -77,7 +77,7 @@ class TestHelper {
       XCTAssertTrue(intervalPicker.isHittable)
 
       XCTAssertEqual(nameTextField.value as? String, name)
-      XCTAssertEqual(amountPrefixPicker.pickerWheels.element.value as? String, "➖")
+      XCTAssertEqual(amountPrefixPicker.pickerWheels.element.value as? String, "minus")
       XCTAssertEqual(amountTextField.value as? String, generateFormattedStringFromFormatterFor(amount))
       XCTAssertEqual(currentCurrency.label, local.displayName(forKey: NSLocale.Key.currencySymbol, value: localeId))
       XCTAssertEqual(intervalText.label, localized("Interval"))
@@ -88,7 +88,7 @@ class TestHelper {
 
   func openCreateEntrySheet(_ localeId: String) {
     XCTContext.runActivity(named: "Open create Entry") { _ in
-      let addButton = app.buttons[localized("Add item")]
+      let addButton = app.buttons[localized("Add")]
       XCTAssertTrue(addButton.isHittable)
       addButton.tap()
       let navBarCreateEntry = app.navigationBars[localized("Create entry")]
@@ -103,7 +103,7 @@ class TestHelper {
       XCTAssertTrue(createHeadline.isHittable)
 
       let nameTextField = app.collectionViews.textFields[localized("Name")]
-      let plusPickerWheel = app.collectionViews.pickerWheels["➕"]
+      let minusPickerWheel = app.collectionViews.pickerWheels["minus"]
       let amountTextField = app.collectionViews.textFields[localized("Amount")]
       let currentCurrency = app.collectionViews.staticTexts["CurrencySymbol"]
       let amountPrefixPicker = app.collectionViews.pickers[localized("AmountPrefix")]
@@ -112,14 +112,14 @@ class TestHelper {
       let local = NSLocale(localeIdentifier: localeId)
 
       XCTAssertTrue(nameTextField.isHittable)
-      XCTAssertTrue(plusPickerWheel.isHittable)
+      XCTAssertTrue(minusPickerWheel.isHittable)
       XCTAssertTrue(amountTextField.isHittable)
       XCTAssertTrue(currentCurrency.isHittable)
       XCTAssertTrue(amountPrefixPicker.isHittable)
       XCTAssertTrue(intervalPicker.isHittable)
 
       XCTAssertEqual(nameTextField.value as? String, localized("Name"))
-      XCTAssertEqual(amountPrefixPicker.pickerWheels.element.value as? String, "➕")
+      XCTAssertEqual(amountPrefixPicker.pickerWheels.element.value as? String, "minus")
       XCTAssertEqual(amountTextField.value as? String, localized("Amount"))
       XCTAssertEqual(currentCurrency.label, local.displayName(forKey: NSLocale.Key.currencySymbol, value: localeId))
       XCTAssertEqual(intervalText.label, localized("Interval"))
@@ -160,13 +160,13 @@ class TestHelper {
       XCTAssertTrue(saveButton.isHittable)
 
       let nameTextField = app.collectionViews.textFields[localized("Name")]
-      let minusPickerWheel = app.collectionViews.pickerWheels["➖"]
+      let minusPickerWheel = app.collectionViews.pickerWheels["minus"]
       let amountTextField = app.collectionViews.textFields[localized("Amount")]
       let intervalPicker = app.collectionViews.buttons["intervalPicker"]
 
       nameTextField.clearAndEnterText(newName)
       amountTextField.clearAndEnterText(newAmount)
-      minusPickerWheel.adjust(toPickerWheelValue: "➕")
+      minusPickerWheel.adjust(toPickerWheelValue: "plus")
       intervalPicker.tap()
       app.collectionViews.buttons[localized("Biweekly")].tap()
 
@@ -259,14 +259,14 @@ class TestHelper {
   func goIntoEditMode() {
     XCTContext.runActivity(named: "activate edit mode") { _ in
       app.navigationBars.buttons[localized("Edit")].tap()
-      let deleteAllButton = app.navigationBars.buttons[localized("Delete all")]
+      let deleteAllButton = app.navigationBars.buttons[localized("Trash")]
       XCTAssertTrue(deleteAllButton.isHittable)
     }
   }
 
   func openDeleteAllConfirmationScreen() {
     XCTContext.runActivity(named: "open Delete all confirmation screen") { _ in
-      app.navigationBars.buttons[localized("Delete all")].tap()
+      app.navigationBars.buttons[localized("Trash")].tap()
       let staticDeleteAllText = app.scrollViews.element(boundBy: 0)
         .staticTexts[localized("Are you sure you want to delete all entries?")]
       let deleteAllConfirm = app.scrollViews.element(boundBy: 1)

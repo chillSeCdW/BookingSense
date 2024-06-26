@@ -24,7 +24,7 @@ final class EmptyNavigationStackUITest: XCTestCase {
   func testNavigationStackViewIsVisibleWhenOnBookingsView() throws {
     tHelp.navigateToEntryNavigation()
 
-    let addButton = app.buttons[tHelp.localized("Add item")]
+    let addButton = app.buttons[tHelp.localized("Add")]
     let sortButton = app.buttons[tHelp.localized("Sort")]
     let editButton = app.buttons[tHelp.localized("Edit")]
 

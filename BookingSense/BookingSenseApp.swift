@@ -7,6 +7,7 @@
 
 import SwiftUI
 import SwiftData
+import TipKit
 
 typealias BookingEntry = BookingSchemaV1.BookingEntry
 
@@ -23,6 +24,8 @@ struct BookingSenseApp: App {
       factory.addExamples(ContainerFactory.generateFixedEntriesItems())
       return factory.container
     }
+//    Tips.showAllTipsForTesting()
+//    Tips.showTipsForTesting([PrefixBookingTip.self])
     #endif
 
     let factory = ContainerFactory(BookingEntry.self, storeInMemory: false)
@@ -34,6 +37,11 @@ struct BookingSenseApp: App {
 
   init() {
     setupVersion()
+
+    try? Tips.configure([
+      .displayFrequency(.daily)
+    ])
+    _ = Tips.MaxDisplayCount(3)
   }
 
   var body: some Scene {

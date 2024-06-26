@@ -17,7 +17,7 @@ struct EntryView: View {
   var expenseEntry: BookingEntry?
 
   @State private var name: String = ""
-  @State private var amountPrefix: AmountPrefix = .plus
+  @State private var amountPrefix: AmountPrefix = .minus
   @State private var amount: String = ""
   @State private var interval: Interval = .monthly
 

@@ -35,11 +35,13 @@ struct EntryFormView: View {
     HStack {
       Picker("AmountPrefix", selection: $amountPrefix) {
         ForEach(AmountPrefix.allCases) { option in
-          Text(String(describing: option.description))
+          Label(option.description, systemImage: option.description)
+            .labelStyle(.iconOnly)
         }
       }
       .pickerStyle(.wheel)
       .frame(maxWidth: 80, maxHeight: 100)
+      .popoverTip(PrefixBookingTip())
       TextField(
         text: $amount,
         prompt: Text("Amount")

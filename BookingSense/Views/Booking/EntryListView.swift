@@ -12,6 +12,7 @@ struct EntryListView: View {
   @Environment(\.colorScheme) var colorScheme
   @Environment(\.modelContext) private var modelContext
   @Query private var entries: [BookingEntry]
+  @AppStorage("blurSensitive") var blurSensitive = false
 
   var interval: Interval
 
@@ -41,8 +42,11 @@ struct EntryListView: View {
           NavigationLink(value: entry) {
             HStack(spacing: 0) {
               Text(entry.name)
+                .blur(radius: blurSensitive ? 5 : 0)
               Spacer()
               Text(entry.amount, format: .currency(code: Locale.current.currency!.identifier))
+                .contentTransition(.symbolEffect(.replace.downUp.byLayer))
+                .blur(radius: blurSensitive ? 5 : 0)
             }
           }.accessibilityIdentifier("NavLink" + entry.name)
           .listRowBackground(
