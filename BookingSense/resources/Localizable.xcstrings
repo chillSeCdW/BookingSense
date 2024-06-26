@@ -340,6 +340,23 @@
         }
       }
     },
+    "Add" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hinzufügen"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Add"
+          }
+        }
+      }
+    },
     "Add item" : {
       "localizations" : {
         "de" : {
@@ -1229,7 +1246,7 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Gesamter %@ Restbetrag:"
+            "value" : "Gesamter %@er Restbetrag:"
           }
         },
         "en" : {
@@ -1252,6 +1269,23 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "%lld total bookings"
+          }
+        }
+      }
+    },
+    "Trash" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Papierkorb"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Trash"
           }
         }
       }
