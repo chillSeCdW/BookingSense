@@ -17,6 +17,6 @@ struct AdditinalInfoTip: Tip {
   }
 
   var options: [Option] {
-    Tips.MaxDisplayCount(1)
+    Tips.MaxDisplayCount(3)
   }
 }

@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import TipKit
 
 struct EntryFormView: View {
   var expenseEntry: BookingEntry?
@@ -41,7 +42,6 @@ struct EntryFormView: View {
       }
       .pickerStyle(.wheel)
       .frame(maxWidth: 80, maxHeight: 100)
-      .popoverTip(PrefixBookingTip())
       TextField(
         text: $amount,
         prompt: Text("Amount")
@@ -70,6 +70,7 @@ struct EntryFormView: View {
       }
     }.accessibilityIdentifier("intervalPicker")
     .pickerStyle(.menu)
+    TipView(PrefixBookingTip())
   }
 }
 

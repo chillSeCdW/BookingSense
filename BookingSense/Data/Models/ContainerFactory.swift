@@ -98,4 +98,14 @@ struct ContainerFactory {
                                      interval: .annually))
     return returnResult
   }
+
+  static func generateALotOfEntries() -> [BookingEntry] {
+    var returnResult: [BookingEntry] = []
+
+    for _ in 0...10 {
+      returnResult.append(contentsOf: generateFixedEntriesItems())
+    }
+
+    return returnResult
+  }
 }

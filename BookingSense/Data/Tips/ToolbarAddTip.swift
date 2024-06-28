@@ -16,4 +16,8 @@ struct ToolbarAddTip: Tip {
     Image(systemName: "info.circle")
       .symbolRenderingMode(.multicolor)
   }
+
+  var options: [Option] {
+    Tips.MaxDisplayCount(3)
+  }
 }
