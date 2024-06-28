@@ -232,6 +232,8 @@
 		B919B4A42BC6AAAA009B2FA4 /* Booking */ = {
 			isa = PBXGroup;
 			children = (
+				B95981F92BE3890500578A9C /* BookingNavigationStackView.swift */,
+				B90B2B422BE504A200BD2042 /* NavigationStackContentView.swift */,
 				B919B4A12BC6AA47009B2FA4 /* EntryView.swift */,
 				B992060A2BDA96D80099EF26 /* EntryFormView.swift */,
 				B95981FB2BE3898B00578A9C /* EntryListView.swift */,
@@ -315,8 +317,6 @@
 			isa = PBXGroup;
 			children = (
 				B90ABBD72BE3DCCB006E5AA8 /* Toolbar */,
-				B95981F92BE3890500578A9C /* BookingNavigationStackView.swift */,
-				B90B2B422BE504A200BD2042 /* NavigationStackContentView.swift */,
 			);
 			path = Navigation;
 			sourceTree = "<group>";
