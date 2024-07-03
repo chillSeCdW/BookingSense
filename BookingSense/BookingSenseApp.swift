@@ -38,7 +38,7 @@ struct BookingSenseApp: App {
   }()
 
   @State private var navigationContext = NavigationContext()
-  @State private var viewInfo = ViewInfo()
+  @State private var viewInfo = SortingInfo()
 
   init() {
     setupVersion()

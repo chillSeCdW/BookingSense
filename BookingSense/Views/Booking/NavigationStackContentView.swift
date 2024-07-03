@@ -5,7 +5,7 @@ import SwiftUI
 import SwiftData
 
 struct NavigationStackContentView: View {
-  @Environment(ViewInfo.self) var viewInfo
+  @Environment(SortingInfo.self) var viewInfo
   @Query private var entries: [BookingEntry]
 
   var isListEmpty: Bool
@@ -39,12 +39,12 @@ struct NavigationStackContentView: View {
   let factory = ContainerFactory(BookingEntry.self, storeInMemory: true)
   factory.addExamples(ContainerFactory.generateRandomEntriesItems())
   return NavigationStackContentView(isListEmpty: false)
-    .environment(ViewInfo())
+    .environment(SortingInfo())
     .environment(NavigationContext())
     .modelContainer(factory.container)
 }
 
 #Preview("emptyContent") {
     NavigationStackContentView(isListEmpty: true)
-    .environment(ViewInfo())
+    .environment(SortingInfo())
 }

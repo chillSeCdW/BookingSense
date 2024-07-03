@@ -48,7 +48,7 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : " steht für Ersparnisse."
+            "value" : " steht für Rücklagen."
           }
         },
         "en" : {
@@ -241,7 +241,7 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "%@es Ersparnis:"
+            "value" : "%@e Rücklagen:"
           }
         },
         "en" : {
@@ -501,6 +501,22 @@
         }
       }
     },
+    "App Store" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "App Store"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "App Store"
+          }
+        }
+      }
+    },
     "Are you sure you want to delete all entries?" : {
       "localizations" : {
         "de" : {
@@ -694,6 +710,22 @@
         }
       }
     },
+    "Contact" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kontakt"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Contact"
+          }
+        }
+      }
+    },
     "Create" : {
       "localizations" : {
         "de" : {
@@ -839,6 +871,70 @@
         }
       }
     },
+    "Export as json" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Daten als Json exportieren"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Export data as json"
+          }
+        }
+      }
+    },
+    "Export/Import" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Export/Import"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Export/Import"
+          }
+        }
+      }
+    },
+    "Give feedback" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Feedback geben"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Give feedback"
+          }
+        }
+      }
+    },
+    "Give feedback with default mail app" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Feedback mit der Standard-Mail-App geben"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Give feedback with default mail app"
+          }
+        }
+      }
+    },
     "Half-year" : {
       "localizations" : {
         "de" : {
@@ -868,6 +964,22 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "How it's calculated:"
+          }
+        }
+      }
+    },
+    "Import as json" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Json Daten importieren"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Import data as json"
           }
         }
       }
@@ -964,6 +1076,22 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "No entries available."
+          }
+        }
+      }
+    },
+    "No mail account found. Open settings." : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kein natives Mail Konto gefunden. Hier eins hinzufügen"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No native mail account found. Add one here."
           }
         }
       }
@@ -1112,6 +1240,22 @@
         }
       }
     },
+    "Settings" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Einstellungen"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Settings"
+          }
+        }
+      }
+    },
     "Sort" : {
       "localizations" : {
         "de" : {
@@ -1172,6 +1316,22 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Success"
+          }
+        }
+      }
+    },
+    "Tip jar" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Trinkgeld"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tip jar"
           }
         }
       }
@@ -1286,6 +1446,22 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "weekly"
+          }
+        }
+      }
+    },
+    "Write an App Store review" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Schreibe eine App Store Bewertung"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Write an App Store review"
           }
         }
       }

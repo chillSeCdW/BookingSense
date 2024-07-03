@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import SwiftUI
 import SwiftData
 
 enum BookingSchemaV1: VersionedSchema {
@@ -28,7 +29,6 @@ extension BookingSchemaV1 {
   @Model
   final class BookingEntry: Codable {
 
-    @Attribute(.unique)
     var id: String
     var name: String
     var tags: [String]
@@ -66,18 +66,18 @@ extension BookingSchemaV1 {
     }
 
     static func predicate(
-        searchName: String,
-        interval: Interval
+      searchName: String,
+      interval: Interval
     ) -> Predicate<BookingEntry> {
-        return #Predicate<BookingEntry> { entry in
-          (searchName.isEmpty || entry.name.contains(searchName))
-          &&
-          (entry.interval == interval.rawValue)
-        }
+      return #Predicate<BookingEntry> { entry in
+        (searchName.isEmpty || entry.name.contains(searchName))
+        &&
+        (entry.interval == interval.rawValue)
+      }
     }
 
     static func totalExpenseEntries(modelContext: ModelContext) -> Int {
-        (try? modelContext.fetchCount(FetchDescriptor<BookingEntry>())) ?? 0
+      (try? modelContext.fetchCount(FetchDescriptor<BookingEntry>())) ?? 0
     }
   }
 }

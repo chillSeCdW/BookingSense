@@ -26,6 +26,9 @@ struct Constants {
     )
   }
 
+  static let mailTo = "hello@chillturtle.de"
+  static let mailSubject = "feedback"
+
   static func convertToNoun(_ interval: Interval) -> String {
     switch interval {
     case .daily:

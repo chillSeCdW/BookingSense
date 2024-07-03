@@ -47,6 +47,6 @@ struct OverviewView: View {
   factory.addExamples(ContainerFactory.generateRandomEntriesItems())
   return OverviewView()
     .environment(NavigationContext())
-    .environment(ViewInfo())
+    .environment(SortingInfo())
     .modelContainer(factory.container)
 }

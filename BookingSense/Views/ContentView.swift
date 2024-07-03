@@ -11,7 +11,7 @@ import SwiftData
 struct ContentView: View {
   @Environment(\.modelContext) private var modelContext
   @Environment(NavigationContext.self) var navigationContext
-  @Environment(ViewInfo.self) var viewInfo
+  @Environment(SortingInfo.self) var viewInfo
   @Environment(\.scenePhase) var scenePhase
   @AppStorage("blurSensitive") var blurSensitive = false
   @AppStorage("tmpBlurSensitive") var tmpBlurSensitive = false
@@ -27,6 +27,10 @@ struct ContentView: View {
       BookingNavigationStackView()
         .tabItem {
           Label("Bookings", systemImage: "list.dash")
+        }
+      SettingsNavigationStackView()
+        .tabItem {
+          Label("Settings", systemImage: "gear")
         }
     }
     .toastView(toast: $navigationContext.toast)
@@ -51,6 +55,6 @@ struct ContentView: View {
   factory.addExamples(ContainerFactory.generateFixedEntriesItems())
   return ContentView()
     .environment(NavigationContext())
-    .environment(ViewInfo())
+    .environment(SortingInfo())
     .modelContainer(factory.container)
 }
