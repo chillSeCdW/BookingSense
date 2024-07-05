@@ -28,18 +28,19 @@ struct EntryFormView: View {
   var body: some View {
     TextField(text: $name, prompt: Text("Name")) {
       Text("Name")
-    }.focused($focusedName)
-      .onSubmit {
-        focusedAmount = true
-      }.toolbar {
-        ToolbarItemGroup(placement: .keyboard) {
-          Spacer()
-          Button("Done") {
-            focusedName = false
-            focusedAmount = false
-          }
+    }.toolbar {
+      ToolbarItemGroup(placement: .keyboard) {
+        Spacer()
+        Button("Done") {
+          focusedName = false
+          focusedAmount = false
         }
       }
+    }
+    .focused($focusedName)
+    .onSubmit {
+      focusedAmount = true
+    }
 
     HStack {
       Picker("AmountPrefix", selection: $amountPrefix) {
