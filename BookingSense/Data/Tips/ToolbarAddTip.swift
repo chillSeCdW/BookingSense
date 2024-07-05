@@ -18,6 +18,6 @@ struct ToolbarAddTip: Tip {
   }
 
   var options: [Option] {
-    Tips.MaxDisplayCount(3)
+    Tips.MaxDisplayCount(2)
   }
 }

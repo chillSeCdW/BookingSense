@@ -6,6 +6,7 @@ import SwiftData
 import MessageUI
 
 struct SettingsNavigationStackView: View {
+
   var body: some View {
     NavigationStack {
       List {
@@ -24,13 +25,16 @@ struct SettingsNavigationStackView: View {
           }
         }
         Section("Tip jar") {
-          Button(action: openTipJar) {
+          NavigationLink {
+              TipJarView()
+          } label: {
             HStack {
               Image(systemName: "giftcard")
               Text("Tip jar")
             }
           }
         }
+
       }
       .navigationTitle("Settings")
       .listStyle(.sidebar)
@@ -38,11 +42,11 @@ struct SettingsNavigationStackView: View {
   }
 
   func openAppStore() {
-    // TODO: add AppStoreLink
-  }
-
-  func openTipJar() {
-    // TODO: add TipJar
+    let url = "https://apps.apple.com/app/id-numberHERE?action=write-review"
+    guard let writeReviewURL = URL(string: url) else {
+        fatalError("Expected a valid URL")
+    }
+    UIApplication.shared.open(writeReviewURL)
   }
 }
 

@@ -7,12 +7,15 @@
 
 import SwiftUI
 import SwiftData
+import StoreKit
 
 struct ContentView: View {
   @Environment(\.modelContext) private var modelContext
   @Environment(NavigationContext.self) var navigationContext
   @Environment(SortingInfo.self) var viewInfo
+  @Environment(\.requestReview) private var requestReview
   @Environment(\.scenePhase) var scenePhase
+  @AppStorage("numberOfVisits") var numberOfVisits = 0
   @AppStorage("blurSensitive") var blurSensitive = false
   @AppStorage("tmpBlurSensitive") var tmpBlurSensitive = false
 
@@ -45,6 +48,14 @@ struct ContentView: View {
           blurSensitive.toggle()
           tmpBlurSensitive.toggle()
         }
+      }
+    }
+    .onAppear {
+      if numberOfVisits >= 5 {
+        requestReview()
+        numberOfVisits = 0
+      } else {
+        numberOfVisits += 1
       }
     }
   }

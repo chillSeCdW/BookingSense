@@ -44,7 +44,7 @@ struct BookingSenseApp: App {
     setupVersion()
 
     try? Tips.configure([
-      .displayFrequency(.daily)
+      .displayFrequency(.immediate)
     ])
     _ = Tips.MaxDisplayCount(3)
   }

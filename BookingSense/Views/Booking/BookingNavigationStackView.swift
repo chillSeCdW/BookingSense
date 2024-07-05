@@ -54,8 +54,10 @@ struct BookingNavigationStackView: View {
 
   private func deleteAllItems() {
     withAnimation {
-      entries.forEach { entry in
-        modelContext.delete(entry)
+      do {
+          try modelContext.delete(model: BookingEntry.self)
+      } catch {
+          print("Failed to delete all Booking entries")
       }
     }
   }

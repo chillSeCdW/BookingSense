@@ -340,6 +340,70 @@
         }
       }
     },
+    "🤗 Amazing tip" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "🤗 Außergewöhnliches Trinkgeld"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "🤗 Amazing tip"
+          }
+        }
+      }
+    },
+    "🤯 Extraordinary tip" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "🤯 Selbstloses Trinkgeld"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "🤯 Extraordinary tip"
+          }
+        }
+      }
+    },
+    "🫨 Ludicrous tip" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "🫨 Irres Trinkgeld"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "🫨 Ludicrous tip"
+          }
+        }
+      }
+    },
+    "🙂 Great tip" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "🙂 Großzügiges Trinkgeld"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "🙂 Great tip"
+          }
+        }
+      }
+    },
     "Add" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -678,6 +742,22 @@
         }
       }
     },
+    "Clear and insert" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Vorhandene Einträge löschen und neue hinzufügen"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Delete old entries and insert new"
+          }
+        }
+      }
+    },
     "click here for some additional information" : {
       "localizations" : {
         "de" : {
@@ -706,6 +786,22 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Click here to add a booking."
+          }
+        }
+      }
+    },
+    "Conflict" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Konflikt"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Conflict"
           }
         }
       }
@@ -823,6 +919,22 @@
         }
       }
     },
+    "Done" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Fertig"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Done"
+          }
+        }
+      }
+    },
     "Edit" : {
       "localizations" : {
         "de" : {
@@ -851,6 +963,22 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Edit entry"
+          }
+        }
+      }
+    },
+    "Entries already found" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bereits vorhandene Einträge wurden gefunden. Wie wollen Sie diese behandeln?"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Some existing entries were found. How do you want to handle them?"
           }
         }
       }
@@ -1016,6 +1144,22 @@
         }
       }
     },
+    "Merge with existing" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Neue Einträge mit alten zusammenführen"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Merge new entries with old ones"
+          }
+        }
+      }
+    },
     "month" : {
       "localizations" : {
         "de" : {
@@ -1092,6 +1236,38 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "No native mail account found. Add one here."
+          }
+        }
+      }
+    },
+    "Ok" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ok"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ok"
+          }
+        }
+      }
+    },
+    "Open homepage" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Webseite öffnen"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Open homepage"
           }
         }
       }
@@ -1256,6 +1432,22 @@
         }
       }
     },
+    "Something went wrong" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Etwas ist schief gelaufen"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Something went wrong"
+          }
+        }
+      }
+    },
     "Sort" : {
       "localizations" : {
         "de" : {
@@ -1332,6 +1524,22 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Tip jar"
+          }
+        }
+      }
+    },
+    "Tips" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Trinkgeld"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tips"
           }
         }
       }

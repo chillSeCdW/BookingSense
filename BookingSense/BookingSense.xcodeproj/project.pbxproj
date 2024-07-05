@@ -38,6 +38,8 @@
 		B96761CD2C34A77B00DA9114 /* MailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B96761CC2C34A77B00DA9114 /* MailView.swift */; };
 		B96761D02C358B0F00DA9114 /* ContactButtons.swift in Sources */ = {isa = PBXBuildFile; fileRef = B96761CF2C358B0F00DA9114 /* ContactButtons.swift */; };
 		B96761D22C3591BC00DA9114 /* ExportImportButtons.swift in Sources */ = {isa = PBXBuildFile; fileRef = B96761D12C3591BC00DA9114 /* ExportImportButtons.swift */; };
+		B96761D52C36BCCD00DA9114 /* TipJarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B96761D42C36BCCD00DA9114 /* TipJarView.swift */; };
+		B96761D92C371F2300DA9114 /* BookingsList.swift in Sources */ = {isa = PBXBuildFile; fileRef = B96761D82C371F2300DA9114 /* BookingsList.swift */; };
 		B97378F82BDFC11E003A729E /* ContainerFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = B97378F72BDFC11E003A729E /* ContainerFactory.swift */; };
 		B97378FA2BDFC569003A729E /* BookingSchemaV1.swift in Sources */ = {isa = PBXBuildFile; fileRef = B97378F92BDFC569003A729E /* BookingSchemaV1.swift */; };
 		B97378FD2BDFC7D1003A729E /* Migrations.swift in Sources */ = {isa = PBXBuildFile; fileRef = B97378FC2BDFC7D1003A729E /* Migrations.swift */; };
@@ -121,6 +123,8 @@
 		B96761CC2C34A77B00DA9114 /* MailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MailView.swift; sourceTree = "<group>"; };
 		B96761CF2C358B0F00DA9114 /* ContactButtons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactButtons.swift; sourceTree = "<group>"; };
 		B96761D12C3591BC00DA9114 /* ExportImportButtons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExportImportButtons.swift; sourceTree = "<group>"; };
+		B96761D42C36BCCD00DA9114 /* TipJarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TipJarView.swift; sourceTree = "<group>"; };
+		B96761D82C371F2300DA9114 /* BookingsList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingsList.swift; sourceTree = "<group>"; };
 		B97378F72BDFC11E003A729E /* ContainerFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContainerFactory.swift; sourceTree = "<group>"; };
 		B97378F92BDFC569003A729E /* BookingSchemaV1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingSchemaV1.swift; sourceTree = "<group>"; };
 		B97378FC2BDFC7D1003A729E /* Migrations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Migrations.swift; sourceTree = "<group>"; };
@@ -322,6 +326,7 @@
 				B96761CC2C34A77B00DA9114 /* MailView.swift */,
 				B96761CF2C358B0F00DA9114 /* ContactButtons.swift */,
 				B96761D12C3591BC00DA9114 /* ExportImportButtons.swift */,
+				B96761D42C36BCCD00DA9114 /* TipJarView.swift */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
@@ -338,6 +343,7 @@
 			isa = PBXGroup;
 			children = (
 				B97378FB2BDFC7C2003A729E /* Migrations */,
+				B96761D82C371F2300DA9114 /* BookingsList.swift */,
 				B97378F92BDFC569003A729E /* BookingSchemaV1.swift */,
 				B97378F72BDFC11E003A729E /* ContainerFactory.swift */,
 			);
@@ -625,8 +631,10 @@
 				B90B2B432BE504A200BD2042 /* NavigationStackContentView.swift in Sources */,
 				B9BE668E2BCFF0700063734E /* Toast.swift in Sources */,
 				B927FB232C26CD49008D30BE /* ToolbarAddTip.swift in Sources */,
+				B96761D92C371F2300DA9114 /* BookingsList.swift in Sources */,
 				B9BE668C2BCFF03D0063734E /* ToastStyle.swift in Sources */,
 				B9781EAB2C2EB8AF00FBA0A5 /* SettingsNavigationStackView.swift in Sources */,
+				B96761D52C36BCCD00DA9114 /* TipJarView.swift in Sources */,
 				B9BE66922BCFF1CB0063734E /* ToastMod.swift in Sources */,
 				B95981FC2BE3898B00578A9C /* EntryListView.swift in Sources */,
 				B9E0B9122C1B98230047EA77 /* InfoBoxButtonView.swift in Sources */,

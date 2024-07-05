@@ -31,6 +31,14 @@ struct EntryFormView: View {
     }.focused($focusedName)
       .onSubmit {
         focusedAmount = true
+      }.toolbar {
+        ToolbarItemGroup(placement: .keyboard) {
+          Spacer()
+          Button("Done") {
+            focusedName = false
+            focusedAmount = false
+          }
+        }
       }
 
     HStack {

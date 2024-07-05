@@ -5,20 +5,44 @@ import SwiftUI
 import SwiftData
 
 struct ExportImportButtons: View {
+  @Environment(\.modelContext) private var modelContext
   @Query private var entries: [BookingEntry]
 
-  @State private var isSharePresented: Bool = false
-  @State private var importing = false
+  @State private var showImport = false
+  @State private var isLoading = false
+  @State private var showErrorAlert = false
+  @State private var showSuccessAlert = false
+  @State private var importConflict = false
+  @State private var thrownError: Error?
+  @State private var importedData: BookingsList?
 
   var body: some View {
-    ShareLink(item: exportJson(entries)!) {
+    Button {
+      isLoading = true
+      Task {
+        exportJson(BookingsList(entries))
+        isLoading = false
+      }
+    } label: {
       HStack {
-        Image(systemName: "arrow.up.doc")
-        Text("Export as json")
+        if isLoading {
+          Spacer()
+          ProgressView()
+          Spacer()
+        } else {
+          Image(systemName: "arrow.up.doc")
+          Text("Export as json")
+        }
       }
     }
+    .disabled(isLoading)
+    .onDisappear(perform: {
+      importedData = nil
+      showSuccessAlert = false
+      showErrorAlert = false
+    })
     Button {
-      importing = true
+      showImport = true
     } label: {
       HStack {
         Image(systemName: "arrow.down.doc")
@@ -26,29 +50,87 @@ struct ExportImportButtons: View {
       }
     }
     .fileImporter(
-      isPresented: $importing,
+      isPresented: $showImport,
       allowedContentTypes: [.json]
     ) { result in
-    // TODO: implement import
       switch result {
       case .success(let file):
-        print(file.absoluteString)
+        do {
+          let data = try Data(contentsOf: file.standardizedFileURL)
+          importedData = try JSONDecoder().decode(BookingsList.self, from: data)
+          if entries.isEmpty {
+            processImportedData(importedData)
+            showSuccessAlert = true
+            importConflict = false
+          } else {
+            showSuccessAlert = true
+            importConflict = true
+          }
+        } catch {
+          thrownError = error
+          showErrorAlert = true
+        }
       case .failure(let error):
-        print(error.localizedDescription)
+        thrownError = error
+        showErrorAlert = true
+      }
+    }.alert(
+      "Something went wrong",
+      isPresented: $showErrorAlert,
+      presenting: thrownError
+    ) { _ in
+    } message: { err in
+      Text(err.localizedDescription)
+    }
+    .alert(
+      importConflict ? "Conflict" : "Success",
+      isPresented: $showSuccessAlert,
+      presenting: importConflict
+    ) { isConflict in
+      if isConflict {
+        Button(role: .cancel) {} label: {
+          Text("Cancel")
+        }
+        Button("Merge with existing") {
+          processImportedData(importedData)
+        }
+        Button("Clear and insert") {
+          cleanData()
+          processImportedData(importedData)
+        }
+      } else {
+        Button("Ok") {
+        }
+      }
+    } message: { isConflict in
+      if isConflict {
+        Text("Entries already found")
       }
     }
   }
 
-  func exportJson(_ entries: [BookingEntry]) -> URL? {
+  func exportJson(_ entries: BookingsList) {
     let jsonString = encodeJson(entries)
+    let filePath = FileManager.default.temporaryDirectory
+      .appendingPathComponent("bookingSenseData")
+      .appendingPathExtension("json")
+    do {
+      try jsonString!.write(to: filePath, atomically: true, encoding: .utf8)
 
-    if let json = jsonString {
-      return json.createJsonFile("bookingSenseData")
+      let activityViewController = UIActivityViewController(
+        activityItems: [filePath],
+        applicationActivities: nil
+      )
+      if let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
+         let rootViewController = windowScene.windows.first?.rootViewController {
+        rootViewController.present(activityViewController, animated: true, completion: nil)
+      }
+    } catch {
+      print("Failed to write file: \(error)")
     }
-    return nil
   }
 
-  func encodeJson(_ entries: [BookingEntry]) -> String? {
+  func encodeJson(_ entries: BookingsList) -> String? {
     let encoder = JSONEncoder()
     encoder.outputFormatting = .prettyPrinted
 
@@ -61,20 +143,20 @@ struct ExportImportButtons: View {
     return nil
   }
 
-  func decodeJson(from jsonString: String) -> BookingEntry? {
-    let decoder = JSONDecoder()
-
-    guard let jsonData = jsonString.data(using: .utf8) else {
-      print("Error converting string to data")
-      return nil
-    }
-
+  func cleanData() {
     do {
-      let bEntry = try decoder.decode(BookingEntry.self, from: jsonData)
-      return bEntry
+      try modelContext.delete(model: BookingEntry.self)
     } catch {
-      print("Error decoding JSON: \(error)")
-      return nil
+      print("Failed to delete all Booking entries")
+    }
+  }
+
+  func processImportedData(_ importList: BookingsList?) {
+    importList?.data.forEach { newEntry in
+      let oldEntry = entries.filter {$0.id == newEntry.id}.first
+      if oldEntry == nil {
+        modelContext.insert(newEntry)
+      }
     }
   }
 }

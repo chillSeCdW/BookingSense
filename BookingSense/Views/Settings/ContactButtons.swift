@@ -52,6 +52,15 @@ struct ContactButtons: View {
         }
       }
     }
+    Button {
+      let url = URL(string: "https://chillturtle.de/BookingSense")!
+      UIApplication.shared.open(url, options: [:], completionHandler: nil)
+    } label: {
+      HStack {
+        Image(systemName: "link")
+        Text("Open homepage")
+      }
+    }
   }
 
   func generateMessageBody() -> String {
