@@ -13,6 +13,9 @@ typealias BookingEntry = BookingSchemaV1.BookingEntry
 
 @main
 struct BookingSenseApp: App {
+
+  @AppStorage("resetTips") var resetTips = false
+
   var sharedModelContainer: ModelContainer = {
     #if DEBUG
     if CommandLine.arguments.contains("enable-testing-empty") {
@@ -42,6 +45,10 @@ struct BookingSenseApp: App {
 
   init() {
     setupVersion()
+    if resetTips {
+      resetTips = false
+      try? Tips.resetDatastore()
+    }
 
     try? Tips.configure([
       .displayFrequency(.immediate)

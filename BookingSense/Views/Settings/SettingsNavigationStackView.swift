@@ -4,8 +4,11 @@
 import SwiftUI
 import SwiftData
 import MessageUI
+import TipKit
 
 struct SettingsNavigationStackView: View {
+
+  @AppStorage("resetTips") var resetTips = false
 
   var body: some View {
     NavigationStack {
@@ -33,6 +36,24 @@ struct SettingsNavigationStackView: View {
               Text("Tip jar")
             }
           }
+        }
+        Section("App Store") {
+          Button(action: openAppStore) {
+            HStack {
+              Image(systemName: "star")
+              Text("Write an App Store review")
+            }
+          }
+        }
+        Section("Hints") {
+          Button(action: {
+            resetTips = true
+          }, label: {
+            HStack {
+              Image(systemName: "info")
+              Text("Reset hints")
+            }
+          })
         }
 
       }

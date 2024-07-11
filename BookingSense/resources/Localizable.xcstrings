@@ -1079,6 +1079,22 @@
         }
       }
     },
+    "Hints" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hinweise"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hints"
+          }
+        }
+      }
+    },
     "How it's calculated" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -1348,6 +1364,22 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "quarterly"
+          }
+        }
+      }
+    },
+    "Reset hints" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hinweise zurücksetzen"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Reset hints"
           }
         }
       }

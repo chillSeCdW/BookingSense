@@ -45,6 +45,9 @@
 		B97378FD2BDFC7D1003A729E /* Migrations.swift in Sources */ = {isa = PBXBuildFile; fileRef = B97378FC2BDFC7D1003A729E /* Migrations.swift */; };
 		B9781EAB2C2EB8AF00FBA0A5 /* SettingsNavigationStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9781EAA2C2EB8AF00FBA0A5 /* SettingsNavigationStackView.swift */; };
 		B9781EB02C346F1500FBA0A5 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B9781EAF2C346F1500FBA0A5 /* StoreKit.framework */; };
+		B98374252C4011E70015C022 /* bookingSenseIconDark.png in Resources */ = {isa = PBXBuildFile; fileRef = B98374232C4011E70015C022 /* bookingSenseIconDark.png */; };
+		B98374262C4011E70015C022 /* bookingSenseIconLight.png in Resources */ = {isa = PBXBuildFile; fileRef = B98374242C4011E70015C022 /* bookingSenseIconLight.png */; };
+		B98374282C4012660015C022 /* bookingSenseIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = B98374272C4012660015C022 /* bookingSenseIcon.png */; };
 		B99205FC2BD90F780099EF26 /* SortingInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = B99205FB2BD90F780099EF26 /* SortingInfo.swift */; };
 		B99205FF2BD90FAD0099EF26 /* SortButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B99205FE2BD90FAD0099EF26 /* SortButtonView.swift */; };
 		B99206052BD946670099EF26 /* NavigationContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = B99206042BD946670099EF26 /* NavigationContext.swift */; };
@@ -57,8 +60,6 @@
 		B9BE668E2BCFF0700063734E /* Toast.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9BE668D2BCFF0700063734E /* Toast.swift */; };
 		B9BE66902BCFF0B90063734E /* ToastView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9BE668F2BCFF0B90063734E /* ToastView.swift */; };
 		B9BE66922BCFF1CB0063734E /* ToastMod.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9BE66912BCFF1CB0063734E /* ToastMod.swift */; };
-		B9D1487A2C0F3CBB0040527B /* BookWalletIcon_light.png in Resources */ = {isa = PBXBuildFile; fileRef = B9D148792C0F3CBB0040527B /* BookWalletIcon_light.png */; };
-		B9D1487B2C0F3CBB0040527B /* BookWalletIcon_light.png in Resources */ = {isa = PBXBuildFile; fileRef = B9D148792C0F3CBB0040527B /* BookWalletIcon_light.png */; };
 		B9D534132BD2903500C3355F /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = B9D534122BD2903500C3355F /* Localizable.xcstrings */; };
 		B9DAFAD52BA8AFAF000486EA /* BookingSenseApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9DAFAD42BA8AFAF000486EA /* BookingSenseApp.swift */; };
 		B9DAFADB2BA8AFAF000486EA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B9DAFADA2BA8AFAF000486EA /* Assets.xcassets */; };
@@ -67,8 +68,6 @@
 		B9E0B9122C1B98230047EA77 /* InfoBoxButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9E0B9112C1B98220047EA77 /* InfoBoxButtonView.swift */; };
 		B9E2D0192BDE87FE0001B391 /* MockContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9E2D0182BDE87FE0001B391 /* MockContainer.swift */; };
 		B9E4ABF22BF6438E00E96330 /* InfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9E4ABF12BF6438E00E96330 /* InfoView.swift */; };
-		B9E590B92C0F3AD5008C10A8 /* BookWalletIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = B9E590B82C0F3AD5008C10A8 /* BookWalletIcon.png */; };
-		B9E590BA2C0F3AD5008C10A8 /* BookWalletIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = B9E590B82C0F3AD5008C10A8 /* BookWalletIcon.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -131,6 +130,9 @@
 		B9781EAA2C2EB8AF00FBA0A5 /* SettingsNavigationStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsNavigationStackView.swift; sourceTree = "<group>"; };
 		B9781EAF2C346F1500FBA0A5 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		B982CA152C11052B002FA2DC /* BookingSense-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "BookingSense-Info.plist"; sourceTree = "<group>"; };
+		B98374232C4011E70015C022 /* bookingSenseIconDark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bookingSenseIconDark.png; sourceTree = "<group>"; };
+		B98374242C4011E70015C022 /* bookingSenseIconLight.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bookingSenseIconLight.png; sourceTree = "<group>"; };
+		B98374272C4012660015C022 /* bookingSenseIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bookingSenseIcon.png; sourceTree = "<group>"; };
 		B99205FB2BD90F780099EF26 /* SortingInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortingInfo.swift; sourceTree = "<group>"; };
 		B99205FE2BD90FAD0099EF26 /* SortButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortButtonView.swift; sourceTree = "<group>"; };
 		B99206042BD946670099EF26 /* NavigationContext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationContext.swift; sourceTree = "<group>"; };
@@ -144,7 +146,6 @@
 		B9BE668F2BCFF0B90063734E /* ToastView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToastView.swift; sourceTree = "<group>"; };
 		B9BE66912BCFF1CB0063734E /* ToastMod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToastMod.swift; sourceTree = "<group>"; };
 		B9C702B12C0FC6E0004546E1 /* ci_post_clone.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = ci_post_clone.sh; sourceTree = "<group>"; };
-		B9D148792C0F3CBB0040527B /* BookWalletIcon_light.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = BookWalletIcon_light.png; sourceTree = "<group>"; };
 		B9D1487C2C0F42D70040527B /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
 		B9D534122BD2903500C3355F /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
 		B9DAFAD12BA8AFAF000486EA /* BookingSense.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BookingSense.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -156,7 +157,6 @@
 		B9E0B9112C1B98220047EA77 /* InfoBoxButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoBoxButtonView.swift; sourceTree = "<group>"; };
 		B9E2D0182BDE87FE0001B391 /* MockContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockContainer.swift; sourceTree = "<group>"; };
 		B9E4ABF12BF6438E00E96330 /* InfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoView.swift; sourceTree = "<group>"; };
-		B9E590B82C0F3AD5008C10A8 /* BookWalletIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = BookWalletIcon.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -361,8 +361,9 @@
 		B99284B42C0F09ED00CB6404 /* resources */ = {
 			isa = PBXGroup;
 			children = (
-				B9D148792C0F3CBB0040527B /* BookWalletIcon_light.png */,
-				B9E590B82C0F3AD5008C10A8 /* BookWalletIcon.png */,
+				B98374272C4012660015C022 /* bookingSenseIcon.png */,
+				B98374232C4011E70015C022 /* bookingSenseIconDark.png */,
+				B98374242C4011E70015C022 /* bookingSenseIconLight.png */,
 				B9DAFADA2BA8AFAF000486EA /* Assets.xcassets */,
 				B99284B22C0F090400CB6404 /* LaunchScreen.storyboard */,
 				B9DAFADC2BA8AFAF000486EA /* ExpenseSense.entitlements */,
@@ -545,8 +546,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B9D1487B2C0F3CBB0040527B /* BookWalletIcon_light.png in Resources */,
-				B9E590BA2C0F3AD5008C10A8 /* BookWalletIcon.png in Resources */,
 				B92C53B32BDFED590029E759 /* Localizable.xcstrings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -556,10 +555,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				B9B8212B2BF244EB00CEDE43 /* Settings.bundle in Resources */,
+				B98374282C4012660015C022 /* bookingSenseIcon.png in Resources */,
 				B9DAFADF2BA8AFAF000486EA /* Preview Assets.xcassets in Resources */,
-				B9E590B92C0F3AD5008C10A8 /* BookWalletIcon.png in Resources */,
-				B9D1487A2C0F3CBB0040527B /* BookWalletIcon_light.png in Resources */,
+				B98374262C4011E70015C022 /* bookingSenseIconLight.png in Resources */,
 				B9DAFADB2BA8AFAF000486EA /* Assets.xcassets in Resources */,
+				B98374252C4011E70015C022 /* bookingSenseIconDark.png in Resources */,
 				B99284B32C0F090400CB6404 /* LaunchScreen.storyboard in Resources */,
 				B9D534132BD2903500C3355F /* Localizable.xcstrings in Resources */,
 			);

@@ -88,9 +88,7 @@ struct ExportImportButtons: View {
       presenting: importConflict
     ) { isConflict in
       if isConflict {
-        Button(role: .cancel) {} label: {
-          Text("Cancel")
-        }
+        Button("Cancel", role: .cancel) {}
         Button("Merge with existing") {
           processImportedData(importedData)
         }
