@@ -8,6 +8,7 @@
 import SwiftUI
 import SwiftData
 import TipKit
+import MijickPopupView
 
 typealias BookingEntry = BookingSchemaV1.BookingEntry
 
@@ -59,6 +60,7 @@ struct BookingSenseApp: App {
   var body: some Scene {
       WindowGroup {
           ContentView()
+          .implementPopupView()
           .environment(viewInfo)
           .environment(navigationContext)
       }

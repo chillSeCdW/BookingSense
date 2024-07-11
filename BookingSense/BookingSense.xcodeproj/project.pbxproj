@@ -31,10 +31,15 @@
 		B927FB252C28205E008D30BE /* AdditinalInfoTip.swift in Sources */ = {isa = PBXBuildFile; fileRef = B927FB242C28205E008D30BE /* AdditinalInfoTip.swift */; };
 		B927FB272C2B68BB008D30BE /* PrefixBookingTip.swift in Sources */ = {isa = PBXBuildFile; fileRef = B927FB262C2B68BB008D30BE /* PrefixBookingTip.swift */; };
 		B927FB292C2C386D008D30BE /* ToolbarOverviewList.swift in Sources */ = {isa = PBXBuildFile; fileRef = B927FB282C2C386D008D30BE /* ToolbarOverviewList.swift */; };
+		B92BC36F2C401DCE00019A62 /* MijickPopupView in Frameworks */ = {isa = PBXBuildFile; productRef = B92BC36E2C401DCE00019A62 /* MijickPopupView */; };
+		B92BC3712C401E7400019A62 /* InfoTopPopUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = B92BC3702C401E7400019A62 /* InfoTopPopUp.swift */; };
 		B92C53B32BDFED590029E759 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = B9D534122BD2903500C3355F /* Localizable.xcstrings */; };
 		B93F74012BF39F91008A5088 /* AdditionalInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B93F74002BF39F91008A5088 /* AdditionalInfoView.swift */; };
 		B95981FA2BE3890500578A9C /* BookingNavigationStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B95981F92BE3890500578A9C /* BookingNavigationStackView.swift */; };
 		B95981FC2BE3898B00578A9C /* EntryListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B95981FB2BE3898B00578A9C /* EntryListView.swift */; };
+		B95E95592C40702700B62A64 /* bookingSenseIconFinalDark.png in Resources */ = {isa = PBXBuildFile; fileRef = B95E95572C40702700B62A64 /* bookingSenseIconFinalDark.png */; };
+		B95E955A2C40702700B62A64 /* bookingSenseIconFinalTint.png in Resources */ = {isa = PBXBuildFile; fileRef = B95E95582C40702700B62A64 /* bookingSenseIconFinalTint.png */; };
+		B95E955B2C40702700B62A64 /* bookingSenseIconFinal.png in Resources */ = {isa = PBXBuildFile; fileRef = B95E95562C40702700B62A64 /* bookingSenseIconFinal.png */; };
 		B96761CD2C34A77B00DA9114 /* MailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B96761CC2C34A77B00DA9114 /* MailView.swift */; };
 		B96761D02C358B0F00DA9114 /* ContactButtons.swift in Sources */ = {isa = PBXBuildFile; fileRef = B96761CF2C358B0F00DA9114 /* ContactButtons.swift */; };
 		B96761D22C3591BC00DA9114 /* ExportImportButtons.swift in Sources */ = {isa = PBXBuildFile; fileRef = B96761D12C3591BC00DA9114 /* ExportImportButtons.swift */; };
@@ -45,9 +50,6 @@
 		B97378FD2BDFC7D1003A729E /* Migrations.swift in Sources */ = {isa = PBXBuildFile; fileRef = B97378FC2BDFC7D1003A729E /* Migrations.swift */; };
 		B9781EAB2C2EB8AF00FBA0A5 /* SettingsNavigationStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9781EAA2C2EB8AF00FBA0A5 /* SettingsNavigationStackView.swift */; };
 		B9781EB02C346F1500FBA0A5 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B9781EAF2C346F1500FBA0A5 /* StoreKit.framework */; };
-		B98374252C4011E70015C022 /* bookingSenseIconDark.png in Resources */ = {isa = PBXBuildFile; fileRef = B98374232C4011E70015C022 /* bookingSenseIconDark.png */; };
-		B98374262C4011E70015C022 /* bookingSenseIconLight.png in Resources */ = {isa = PBXBuildFile; fileRef = B98374242C4011E70015C022 /* bookingSenseIconLight.png */; };
-		B98374282C4012660015C022 /* bookingSenseIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = B98374272C4012660015C022 /* bookingSenseIcon.png */; };
 		B99205FC2BD90F780099EF26 /* SortingInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = B99205FB2BD90F780099EF26 /* SortingInfo.swift */; };
 		B99205FF2BD90FAD0099EF26 /* SortButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B99205FE2BD90FAD0099EF26 /* SortButtonView.swift */; };
 		B99206052BD946670099EF26 /* NavigationContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = B99206042BD946670099EF26 /* NavigationContext.swift */; };
@@ -55,6 +57,7 @@
 		B99206092BDA96090099EF26 /* ToolbarEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = B99206082BDA96090099EF26 /* ToolbarEntry.swift */; };
 		B992060B2BDA96D80099EF26 /* EntryFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B992060A2BDA96D80099EF26 /* EntryFormView.swift */; };
 		B99284B32C0F090400CB6404 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B99284B22C0F090400CB6404 /* LaunchScreen.storyboard */; };
+		B997384F2C4079DA00897AFD /* BookingSenseIconFinalLight.png in Resources */ = {isa = PBXBuildFile; fileRef = B997384E2C4079DA00897AFD /* BookingSenseIconFinalLight.png */; };
 		B9B8212B2BF244EB00CEDE43 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = B9B8212A2BF244EB00CEDE43 /* Settings.bundle */; };
 		B9BE668C2BCFF03D0063734E /* ToastStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9BE668B2BCFF03D0063734E /* ToastStyle.swift */; };
 		B9BE668E2BCFF0700063734E /* Toast.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9BE668D2BCFF0700063734E /* Toast.swift */; };
@@ -114,10 +117,14 @@
 		B927FB242C28205E008D30BE /* AdditinalInfoTip.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdditinalInfoTip.swift; sourceTree = "<group>"; };
 		B927FB262C2B68BB008D30BE /* PrefixBookingTip.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrefixBookingTip.swift; sourceTree = "<group>"; };
 		B927FB282C2C386D008D30BE /* ToolbarOverviewList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolbarOverviewList.swift; sourceTree = "<group>"; };
+		B92BC3702C401E7400019A62 /* InfoTopPopUp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoTopPopUp.swift; sourceTree = "<group>"; };
 		B92C53B22BDFDD980029E759 /* productionTestPlan.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = productionTestPlan.xctestplan; sourceTree = "<group>"; };
 		B93F74002BF39F91008A5088 /* AdditionalInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdditionalInfoView.swift; sourceTree = "<group>"; };
 		B95981F92BE3890500578A9C /* BookingNavigationStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingNavigationStackView.swift; sourceTree = "<group>"; };
 		B95981FB2BE3898B00578A9C /* EntryListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryListView.swift; sourceTree = "<group>"; };
+		B95E95562C40702700B62A64 /* bookingSenseIconFinal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bookingSenseIconFinal.png; sourceTree = "<group>"; };
+		B95E95572C40702700B62A64 /* bookingSenseIconFinalDark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bookingSenseIconFinalDark.png; sourceTree = "<group>"; };
+		B95E95582C40702700B62A64 /* bookingSenseIconFinalTint.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bookingSenseIconFinalTint.png; sourceTree = "<group>"; };
 		B9655DDC2C0FBC1800D81C33 /* basicTestPlan.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = basicTestPlan.xctestplan; sourceTree = "<group>"; };
 		B96761CC2C34A77B00DA9114 /* MailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MailView.swift; sourceTree = "<group>"; };
 		B96761CF2C358B0F00DA9114 /* ContactButtons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactButtons.swift; sourceTree = "<group>"; };
@@ -130,9 +137,6 @@
 		B9781EAA2C2EB8AF00FBA0A5 /* SettingsNavigationStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsNavigationStackView.swift; sourceTree = "<group>"; };
 		B9781EAF2C346F1500FBA0A5 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		B982CA152C11052B002FA2DC /* BookingSense-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "BookingSense-Info.plist"; sourceTree = "<group>"; };
-		B98374232C4011E70015C022 /* bookingSenseIconDark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bookingSenseIconDark.png; sourceTree = "<group>"; };
-		B98374242C4011E70015C022 /* bookingSenseIconLight.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bookingSenseIconLight.png; sourceTree = "<group>"; };
-		B98374272C4012660015C022 /* bookingSenseIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bookingSenseIcon.png; sourceTree = "<group>"; };
 		B99205FB2BD90F780099EF26 /* SortingInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortingInfo.swift; sourceTree = "<group>"; };
 		B99205FE2BD90FAD0099EF26 /* SortButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortButtonView.swift; sourceTree = "<group>"; };
 		B99206042BD946670099EF26 /* NavigationContext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationContext.swift; sourceTree = "<group>"; };
@@ -140,6 +144,7 @@
 		B99206082BDA96090099EF26 /* ToolbarEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolbarEntry.swift; sourceTree = "<group>"; };
 		B992060A2BDA96D80099EF26 /* EntryFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryFormView.swift; sourceTree = "<group>"; };
 		B99284B22C0F090400CB6404 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
+		B997384E2C4079DA00897AFD /* BookingSenseIconFinalLight.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = BookingSenseIconFinalLight.png; sourceTree = "<group>"; };
 		B9B8212A2BF244EB00CEDE43 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 		B9BE668B2BCFF03D0063734E /* ToastStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToastStyle.swift; sourceTree = "<group>"; };
 		B9BE668D2BCFF0700063734E /* Toast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Toast.swift; sourceTree = "<group>"; };
@@ -179,6 +184,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B9781EB02C346F1500FBA0A5 /* StoreKit.framework in Frameworks */,
+				B92BC36F2C401DCE00019A62 /* MijickPopupView in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -361,9 +367,10 @@
 		B99284B42C0F09ED00CB6404 /* resources */ = {
 			isa = PBXGroup;
 			children = (
-				B98374272C4012660015C022 /* bookingSenseIcon.png */,
-				B98374232C4011E70015C022 /* bookingSenseIconDark.png */,
-				B98374242C4011E70015C022 /* bookingSenseIconLight.png */,
+				B997384E2C4079DA00897AFD /* BookingSenseIconFinalLight.png */,
+				B95E95562C40702700B62A64 /* bookingSenseIconFinal.png */,
+				B95E95572C40702700B62A64 /* bookingSenseIconFinalDark.png */,
+				B95E95582C40702700B62A64 /* bookingSenseIconFinalTint.png */,
 				B9DAFADA2BA8AFAF000486EA /* Assets.xcassets */,
 				B99284B22C0F090400CB6404 /* LaunchScreen.storyboard */,
 				B9DAFADC2BA8AFAF000486EA /* ExpenseSense.entitlements */,
@@ -378,6 +385,7 @@
 			children = (
 				B9BE668F2BCFF0B90063734E /* ToastView.swift */,
 				B9BE66912BCFF1CB0063734E /* ToastMod.swift */,
+				B92BC3702C401E7400019A62 /* InfoTopPopUp.swift */,
 			);
 			path = Toast;
 			sourceTree = "<group>";
@@ -482,6 +490,7 @@
 			);
 			name = BookingSense;
 			packageProductDependencies = (
+				B92BC36E2C401DCE00019A62 /* MijickPopupView */,
 			);
 			productName = ExpenseSense;
 			productReference = B9DAFAD12BA8AFAF000486EA /* BookingSense.app */;
@@ -522,6 +531,7 @@
 			mainGroup = B9DAFAC82BA8AFAF000486EA;
 			packageReferences = (
 				B919B4A82BC6B1B2009B2FA4 /* XCRemoteSwiftPackageReference "SwiftLint" */,
+				B92BC36D2C401DCE00019A62 /* XCRemoteSwiftPackageReference "PopupView" */,
 			);
 			productRefGroup = B9DAFAD22BA8AFAF000486EA /* Products */;
 			projectDirPath = "";
@@ -555,13 +565,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				B9B8212B2BF244EB00CEDE43 /* Settings.bundle in Resources */,
-				B98374282C4012660015C022 /* bookingSenseIcon.png in Resources */,
 				B9DAFADF2BA8AFAF000486EA /* Preview Assets.xcassets in Resources */,
-				B98374262C4011E70015C022 /* bookingSenseIconLight.png in Resources */,
+				B95E95592C40702700B62A64 /* bookingSenseIconFinalDark.png in Resources */,
+				B95E955A2C40702700B62A64 /* bookingSenseIconFinalTint.png in Resources */,
+				B95E955B2C40702700B62A64 /* bookingSenseIconFinal.png in Resources */,
 				B9DAFADB2BA8AFAF000486EA /* Assets.xcassets in Resources */,
-				B98374252C4011E70015C022 /* bookingSenseIconDark.png in Resources */,
 				B99284B32C0F090400CB6404 /* LaunchScreen.storyboard in Resources */,
 				B9D534132BD2903500C3355F /* Localizable.xcstrings in Resources */,
+				B997384F2C4079DA00897AFD /* BookingSenseIconFinalLight.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -629,6 +640,7 @@
 				B907587B2C13479300EDC82F /* ContentView.swift in Sources */,
 				B915DC452BB4644A0018E812 /* Interval.swift in Sources */,
 				B90B2B432BE504A200BD2042 /* NavigationStackContentView.swift in Sources */,
+				B92BC3712C401E7400019A62 /* InfoTopPopUp.swift in Sources */,
 				B9BE668E2BCFF0700063734E /* Toast.swift in Sources */,
 				B927FB232C26CD49008D30BE /* ToolbarAddTip.swift in Sources */,
 				B96761D92C371F2300DA9114 /* BookingsList.swift in Sources */,
@@ -1037,7 +1049,23 @@
 				minimumVersion = 0.54.0;
 			};
 		};
+		B92BC36D2C401DCE00019A62 /* XCRemoteSwiftPackageReference "PopupView" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Mijick/PopupView.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.5.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		B92BC36E2C401DCE00019A62 /* MijickPopupView */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B92BC36D2C401DCE00019A62 /* XCRemoteSwiftPackageReference "PopupView" */;
+			productName = MijickPopupView;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = B9DAFAC92BA8AFAF000486EA /* Project object */;
 }

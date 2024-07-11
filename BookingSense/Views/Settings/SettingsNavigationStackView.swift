@@ -40,6 +40,9 @@ struct SettingsNavigationStackView: View {
         Section("Hints") {
           Button(action: {
             resetTips = true
+            InfoTopPopUp()
+              .showAndStack()
+              .dismissAfter(5)
           }, label: {
             HStack {
               Image(systemName: "info")

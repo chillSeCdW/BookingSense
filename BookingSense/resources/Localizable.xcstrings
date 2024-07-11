@@ -920,6 +920,22 @@
         }
       }
     },
+    "Dismiss" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Schließen"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dismiss"
+          }
+        }
+      }
+    },
     "Done" : {
       "localizations" : {
         "de" : {
@@ -1092,6 +1108,22 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Hints"
+          }
+        }
+      }
+    },
+    "Hints will be reset when restarting the App" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hinweise werden zurückgesetzt sobald Sie die App neustarten."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hints will be reset when you restart the App."
           }
         }
       }
