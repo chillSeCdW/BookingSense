@@ -19,32 +19,24 @@ struct SettingsNavigationStackView: View {
         Section("Contact") {
           ContactButtons()
         }
-        Section("App Store") {
-          Button(action: openAppStore) {
-            HStack {
-              Image(systemName: "star")
-              Text("Write an App Store review")
-            }
-          }
-        }
-        Section("Tip jar") {
-          NavigationLink {
-              TipJarView()
-          } label: {
-            HStack {
-              Image(systemName: "giftcard")
-              Text("Tip jar")
-            }
-          }
-        }
-        Section("App Store") {
-          Button(action: openAppStore) {
-            HStack {
-              Image(systemName: "star")
-              Text("Write an App Store review")
-            }
-          }
-        }
+//        Section("App Store") {
+//          Button(action: openAppStore) {
+//            HStack {
+//              Image(systemName: "star")
+//              Text("Write an App Store review")
+//            }
+//          }
+//        }
+//        Section("Tip jar") {
+//          NavigationLink {
+//              TipJarView()
+//          } label: {
+//            HStack {
+//              Image(systemName: "giftcard")
+//              Text("Tip jar")
+//            }
+//          }
+//        }
         Section("Hints") {
           Button(action: {
             resetTips = true

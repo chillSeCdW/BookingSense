@@ -566,6 +566,7 @@
       }
     },
     "App Store" : {
+      "extractionState" : "stale",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -1545,6 +1546,7 @@
       }
     },
     "Tip jar" : {
+      "extractionState" : "stale",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -1691,6 +1693,7 @@
       }
     },
     "Write an App Store review" : {
+      "extractionState" : "stale",
       "localizations" : {
         "de" : {
           "stringUnit" : {
