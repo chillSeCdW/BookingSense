@@ -41,7 +41,7 @@ struct EntryFormView: View {
     .onSubmit {
       focusedAmount = true
     }
-
+    TipView(PrefixBookingTip())
     HStack {
       Picker("AmountPrefix", selection: $amountPrefix) {
         ForEach(AmountPrefix.allCases) { option in
@@ -79,7 +79,6 @@ struct EntryFormView: View {
       }
     }.accessibilityIdentifier("intervalPicker")
     .pickerStyle(.menu)
-    TipView(PrefixBookingTip())
   }
 }
 

@@ -5,12 +5,14 @@ import SwiftUI
 import MijickPopupView
 
 struct InfoTopPopUp: TopPopup {
+  let colorScheme: ColorScheme
 
   func configurePopup(popup: TopPopupConfig) -> TopPopupConfig {
     let scene = (UIApplication.shared.connectedScenes.first as? UIWindowScene)
     let safeAreaPaddingTop = scene?.windows.first?.safeAreaInsets.top
 
     return popup
+      .backgroundColour(Constants.getBackground(colorScheme))
       .topPadding(safeAreaPaddingTop ?? 55)
       .horizontalPadding(16)
   }
@@ -46,5 +48,5 @@ private extension InfoTopPopUp {
 }
 
 #Preview {
-  InfoTopPopUp()
+  InfoTopPopUp(colorScheme: ColorScheme.light)
 }

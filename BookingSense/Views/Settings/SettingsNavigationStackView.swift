@@ -8,6 +8,7 @@ import TipKit
 
 struct SettingsNavigationStackView: View {
 
+  @Environment(\.colorScheme) var colorScheme
   @AppStorage("resetTips") var resetTips = false
 
   var body: some View {
@@ -40,7 +41,7 @@ struct SettingsNavigationStackView: View {
         Section("Hints") {
           Button(action: {
             resetTips = true
-            InfoTopPopUp()
+            InfoTopPopUp(colorScheme: colorScheme)
               .showAndStack()
               .dismissAfter(5)
           }, label: {
