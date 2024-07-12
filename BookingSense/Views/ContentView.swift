@@ -7,18 +7,18 @@
 
 import SwiftUI
 import SwiftData
+import StoreKit
 
 struct ContentView: View {
   @Environment(\.modelContext) private var modelContext
-  @Environment(NavigationContext.self) var navigationContext
-  @Environment(ViewInfo.self) var viewInfo
+  @Environment(SortingInfo.self) var viewInfo
+  @Environment(\.requestReview) private var requestReview
   @Environment(\.scenePhase) var scenePhase
+  @AppStorage("numberOfVisits") var numberOfVisits = 0
   @AppStorage("blurSensitive") var blurSensitive = false
   @AppStorage("tmpBlurSensitive") var tmpBlurSensitive = false
 
   var body: some View {
-    @Bindable var navigationContext = navigationContext
-
     TabView {
       OverviewView()
         .tabItem {
@@ -28,8 +28,11 @@ struct ContentView: View {
         .tabItem {
           Label("Bookings", systemImage: "list.dash")
         }
+      SettingsNavigationStackView()
+        .tabItem {
+          Label("Settings", systemImage: "gear")
+        }
     }
-    .toastView(toast: $navigationContext.toast)
     .onChange(of: scenePhase) { _, newPhase in
       if newPhase == .active {
         if tmpBlurSensitive == true {
@@ -43,6 +46,14 @@ struct ContentView: View {
         }
       }
     }
+    .onAppear {
+      if numberOfVisits >= 5 {
+        requestReview()
+        numberOfVisits = 0
+      } else {
+        numberOfVisits += 1
+      }
+    }
   }
 }
 
@@ -50,7 +61,6 @@ struct ContentView: View {
   let factory = ContainerFactory(BookingEntry.self, storeInMemory: true)
   factory.addExamples(ContainerFactory.generateFixedEntriesItems())
   return ContentView()
-    .environment(NavigationContext())
-    .environment(ViewInfo())
+    .environment(SortingInfo())
     .modelContainer(factory.container)
 }

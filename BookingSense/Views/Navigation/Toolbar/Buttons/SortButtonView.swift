@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct SortButtonView: View {
-    @Environment(ViewInfo.self) private var viewInfo
+    @Environment(SortingInfo.self) private var viewInfo
 
     var body: some View {
         @Bindable var viewModel = viewInfo
@@ -48,5 +48,5 @@ enum SortParameter: String, CaseIterable, Identifiable {
 
 #Preview {
     SortButtonView()
-        .environment(ViewInfo())
+        .environment(SortingInfo())
 }

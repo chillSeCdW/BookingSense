@@ -26,6 +26,9 @@ struct Constants {
     )
   }
 
+  static let mailTo = "hello@chillturtle.de"
+  static let mailSubject = "feedback"
+
   static func convertToNoun(_ interval: Interval) -> String {
     switch interval {
     case .daily:
@@ -96,14 +99,5 @@ struct Constants {
   static func getSymbol(_ code: String) -> String? {
     let locale = NSLocale(localeIdentifier: code)
     return locale.displayName(forKey: NSLocale.Key.currencySymbol, value: code)
-  }
-
-  static func createToast(_ toastType: ToastStyle, message: String) -> Toast {
-    switch toastType {
-    case .info:
-      return Toast(style: .info, title: String(localized: "Info"), message: message, duration: 10, width: 160)
-    default:
-      return Toast(style: .error, title: String(localized: "Error"), message: message, duration: 10, width: 160)
-    }
   }
 }

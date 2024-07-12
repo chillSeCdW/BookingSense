@@ -9,12 +9,10 @@ import Foundation
 import SwiftData
 
 @Observable
-class ViewInfo {
+class SortingInfo {
     var sortParameter: SortParameter = .name
 
     var sortOrder: SortOrder = .reverse
 
     var searchText: String = ""
-
-    var totalExpenseEntries: Int = 0
 }

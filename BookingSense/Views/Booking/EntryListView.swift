@@ -42,12 +42,10 @@ struct EntryListView: View {
           NavigationLink(value: entry) {
             HStack(spacing: 0) {
               Text(entry.name)
-                .blur(radius: blurSensitive ? 5 : 0)
               Spacer()
               Text(entry.amount, format: .currency(code: Locale.current.currency!.identifier))
                 .contentTransition(.symbolEffect(.replace.downUp.byLayer))
-                .blur(radius: blurSensitive ? 5 : 0)
-            }
+            }.blur(radius: blurSensitive ? 4 : 0)
           }.accessibilityIdentifier("NavLink" + entry.name)
           .listRowBackground(
             HStack(spacing: 0) {
@@ -65,7 +63,9 @@ struct EntryListView: View {
         }
       }, footer: {
         Text(LocalizedStringKey("\(entries.count) entries"))
-      }).headerProminence(.increased)
+      })
+      .headerProminence(.increased)
+      .drawingGroup()
     }
   }
 

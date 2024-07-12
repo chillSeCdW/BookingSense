@@ -48,7 +48,7 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : " steht für Ersparnisse."
+            "value" : " steht für Rücklagen."
           }
         },
         "en" : {
@@ -241,7 +241,7 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "%@es Ersparnis:"
+            "value" : "%@e Rücklagen:"
           }
         },
         "en" : {
@@ -340,6 +340,70 @@
         }
       }
     },
+    "🤗 Amazing tip" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "🤗 Außergewöhnliches Trinkgeld"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "🤗 Amazing tip"
+          }
+        }
+      }
+    },
+    "🤯 Extraordinary tip" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "🤯 Selbstloses Trinkgeld"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "🤯 Extraordinary tip"
+          }
+        }
+      }
+    },
+    "🫨 Ludicrous tip" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "🫨 Irres Trinkgeld"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "🫨 Ludicrous tip"
+          }
+        }
+      }
+    },
+    "🙂 Great tip" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "🙂 Großzügiges Trinkgeld"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "🙂 Great tip"
+          }
+        }
+      }
+    },
     "Add" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -353,22 +417,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Add"
-          }
-        }
-      }
-    },
-    "Add item" : {
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Eintrag hinzufügen"
-          }
-        },
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Add item"
           }
         }
       }
@@ -513,6 +561,23 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "annual"
+          }
+        }
+      }
+    },
+    "App Store" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "App Store"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "App Store"
           }
         }
       }
@@ -678,6 +743,22 @@
         }
       }
     },
+    "Clear and insert" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Vorhandene Einträge löschen und neue hinzufügen"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Delete old entries and insert new"
+          }
+        }
+      }
+    },
     "click here for some additional information" : {
       "localizations" : {
         "de" : {
@@ -706,6 +787,38 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Click here to add a booking."
+          }
+        }
+      }
+    },
+    "Conflict" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Konflikt"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Conflict"
+          }
+        }
+      }
+    },
+    "Contact" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kontakt"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Contact"
           }
         }
       }
@@ -791,22 +904,6 @@
         }
       }
     },
-    "Delete all" : {
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Alles löschen"
-          }
-        },
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Delete all"
-          }
-        }
-      }
-    },
     "Delete all entries" : {
       "localizations" : {
         "de" : {
@@ -819,6 +916,38 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Delete all entries"
+          }
+        }
+      }
+    },
+    "Dismiss" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Schließen"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dismiss"
+          }
+        }
+      }
+    },
+    "Done" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Fertig"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Done"
           }
         }
       }
@@ -855,7 +984,24 @@
         }
       }
     },
+    "Entries already found" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bereits vorhandene Einträge wurden gefunden. Wie wollen Sie diese behandeln?"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Some existing entries were found. How do you want to handle them?"
+          }
+        }
+      }
+    },
     "Error" : {
+      "extractionState" : "stale",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -867,6 +1013,70 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Error"
+          }
+        }
+      }
+    },
+    "Export as json" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Daten als Json exportieren"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Export data as json"
+          }
+        }
+      }
+    },
+    "Export/Import" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Export/Import"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Export/Import"
+          }
+        }
+      }
+    },
+    "Give feedback" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Feedback geben"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Give feedback"
+          }
+        }
+      }
+    },
+    "Give feedback with default mail app" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Feedback mit der Standard-Mail-App geben"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Give feedback with default mail app"
           }
         }
       }
@@ -887,6 +1097,38 @@
         }
       }
     },
+    "Hints" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hinweise"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hints"
+          }
+        }
+      }
+    },
+    "Hints will be reset when restarting the App" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hinweise werden zurückgesetzt sobald Sie die App neustarten."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hints will be reset when you restart the App."
+          }
+        }
+      }
+    },
     "How it's calculated" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -900,6 +1142,22 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "How it's calculated:"
+          }
+        }
+      }
+    },
+    "Import as json" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Json Daten importieren"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Import data as json"
           }
         }
       }
@@ -932,6 +1190,22 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Interval"
+          }
+        }
+      }
+    },
+    "Merge with existing" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Neue Einträge mit alten zusammenführen"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Merge new entries with old ones"
           }
         }
       }
@@ -996,6 +1270,54 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "No entries available."
+          }
+        }
+      }
+    },
+    "No mail account found. Open settings." : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kein natives Mail Konto gefunden. Hier eins hinzufügen"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No native mail account found. Add one here."
+          }
+        }
+      }
+    },
+    "Ok" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ok"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ok"
+          }
+        }
+      }
+    },
+    "Open homepage" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Webseite öffnen"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Open homepage"
           }
         }
       }
@@ -1080,6 +1402,22 @@
         }
       }
     },
+    "Reset hints" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hinweise zurücksetzen"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Reset hints"
+          }
+        }
+      }
+    },
     "Save" : {
       "localizations" : {
         "de" : {
@@ -1144,6 +1482,38 @@
         }
       }
     },
+    "Settings" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Einstellungen"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Settings"
+          }
+        }
+      }
+    },
+    "Something went wrong" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Etwas ist schief gelaufen"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Something went wrong"
+          }
+        }
+      }
+    },
     "Sort" : {
       "localizations" : {
         "de" : {
@@ -1204,6 +1574,39 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Success"
+          }
+        }
+      }
+    },
+    "Tip jar" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Trinkgeld"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tip jar"
+          }
+        }
+      }
+    },
+    "Tips" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Trinkgeld"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tips"
           }
         }
       }
@@ -1318,6 +1721,23 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "weekly"
+          }
+        }
+      }
+    },
+    "Write an App Store review" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Schreibe eine App Store Bewertung"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Write an App Store review"
           }
         }
       }

@@ -16,14 +16,6 @@ final class ContentViewTests: XCTestCase {
       factory.addExamples(ContainerFactory.generateRandomEntriesItems())
       let content = ContentView().modelContainer(factory.container)
 
-      @State var toast: Toast? = Toast(
-        style: .info,
-        title: String(localized: "Info"),
-        message: "someMessage",
-        duration: 10,
-        width: 160
-      )
-
-      XCTAssertNotNil(content.toastView(toast: $toast))
+      XCTAssertNotNil(content)
     }
 }

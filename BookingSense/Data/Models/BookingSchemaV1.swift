@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import SwiftUI
 import SwiftData
 
 enum BookingSchemaV1: VersionedSchema {
@@ -28,7 +29,6 @@ extension BookingSchemaV1 {
   @Model
   final class BookingEntry: Codable {
 
-    @Attribute(.unique)
     var id: String
     var name: String
     var tags: [String]
@@ -49,7 +49,7 @@ extension BookingSchemaV1 {
       let container = try decoder.container(keyedBy: CodingKeys.self)
       id = try container.decode(String.self, forKey: .id)
       name = try container.decode(String.self, forKey: .name)
-      tags = try container.decode(Array.self, forKey: .tags)
+      tags = try container.decode([String].self, forKey: .tags)
       amount = try container.decode(Decimal.self, forKey: .amount)
       amountPrefix = try container.decode(AmountPrefix.self, forKey: .amountPrefix)
       interval = try container.decode(String.self, forKey: .interval)
@@ -59,25 +59,25 @@ extension BookingSchemaV1 {
       var container = encoder.container(keyedBy: CodingKeys.self)
       try container.encode(id, forKey: .id)
       try container.encode(name, forKey: .name)
-      try container.encode(name, forKey: .tags)
+      try container.encode(tags, forKey: .tags)
       try container.encode(amount, forKey: .amount)
       try container.encode(amountPrefix, forKey: .amountPrefix)
       try container.encode(interval, forKey: .interval)
     }
 
     static func predicate(
-        searchName: String,
-        interval: Interval
+      searchName: String,
+      interval: Interval
     ) -> Predicate<BookingEntry> {
-        return #Predicate<BookingEntry> { entry in
-          (searchName.isEmpty || entry.name.contains(searchName))
-          &&
-          (entry.interval == interval.rawValue)
-        }
+      return #Predicate<BookingEntry> { entry in
+        (searchName.isEmpty || entry.name.contains(searchName))
+        &&
+        (entry.interval == interval.rawValue)
+      }
     }
 
     static func totalExpenseEntries(modelContext: ModelContext) -> Int {
-        (try? modelContext.fetchCount(FetchDescriptor<BookingEntry>())) ?? 0
+      (try? modelContext.fetchCount(FetchDescriptor<BookingEntry>())) ?? 0
     }
   }
 }

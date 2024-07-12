@@ -8,11 +8,16 @@
 import SwiftUI
 import SwiftData
 import TipKit
+import MijickPopupView
 
 typealias BookingEntry = BookingSchemaV1.BookingEntry
 
 @main
 struct BookingSenseApp: App {
+
+  @AppStorage("resetTips") var resetTips = false
+  @AppStorage("numberOfVisits") var numberOfVisits = 0
+
   var sharedModelContainer: ModelContainer = {
     #if DEBUG
     if CommandLine.arguments.contains("enable-testing-empty") {
@@ -24,31 +29,44 @@ struct BookingSenseApp: App {
       factory.addExamples(ContainerFactory.generateFixedEntriesItems())
       return factory.container
     }
-//    Tips.showAllTipsForTesting()
-//    Tips.showTipsForTesting([PrefixBookingTip.self])
+    if CommandLine.arguments.contains("enable-testing-data-max") {
+      let factory = ContainerFactory(BookingEntry.self, storeInMemory: true)
+      factory.addExamples(ContainerFactory.generateALotOfEntries())
+      return factory.container
+    }
     #endif
 
     let factory = ContainerFactory(BookingEntry.self, storeInMemory: false)
     return factory.container
   }()
 
-  @State private var navigationContext = NavigationContext()
-  @State private var viewInfo = ViewInfo()
+  @State private var viewInfo = SortingInfo()
 
   init() {
     setupVersion()
+    if resetTips {
+      resetTips = false
+      try? Tips.resetDatastore()
+    }
+    //    Tips.showAllTipsForTesting()
+    //    Tips.showTipsForTesting([PrefixBookingTip.self])
+
+    if CommandLine.arguments.contains("disableTips") {
+      numberOfVisits = 0
+      return
+    }
 
     try? Tips.configure([
-      .displayFrequency(.daily)
+      .displayFrequency(.immediate)
     ])
-    _ = Tips.MaxDisplayCount(3)
+    _ = Tips.MaxDisplayCount(2)
   }
 
   var body: some Scene {
       WindowGroup {
           ContentView()
+          .implementPopupView()
           .environment(viewInfo)
-          .environment(navigationContext)
       }
       .modelContainer(sharedModelContainer)
   }

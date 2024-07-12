@@ -10,8 +10,8 @@ import SwiftUI
 import SwiftData
 
 struct EntryView: View {
+  @Environment(\.colorScheme) var colorScheme
   @Environment(\.modelContext) private var modelContext
-  @Environment(NavigationContext.self) private var navigationContext
   @Environment(\.dismiss) var dismiss
 
   var expenseEntry: BookingEntry?
@@ -44,12 +44,9 @@ struct EntryView: View {
 
     let parsedAmount = try? Decimal(sanitizedAmount, format: Decimal.FormatStyle(locale: Locale.current))
     if checkIfAmountWasTransformed(sanitizedAmount, parsedDecimal: parsedAmount) {
-      navigationContext.addToast(
-        createdToast: Constants.createToast(
-          .info,
-          message: String(localized: "\(parsedAmount?.formatted() ?? "0") transformedInfo")
-        )
-      )
+      BookingInfoPopUp(colorScheme: colorScheme, parsedAmount: parsedAmount)
+        .showAndStack()
+        .dismissAfter(10)
     }
 
     if isCreate {
@@ -114,9 +111,9 @@ struct EntryView: View {
     amountPrefix: .plus,
     interval: .weekly)
 
-  return EntryView(expenseEntry: entry).environment(NavigationContext())
+  return EntryView(expenseEntry: entry)
 }
 
 #Preview("Create") {
-  EntryView().environment(NavigationContext())
+  EntryView()
 }

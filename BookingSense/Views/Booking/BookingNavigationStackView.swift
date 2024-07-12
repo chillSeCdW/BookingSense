@@ -9,7 +9,7 @@ import SwiftUI
 import SwiftData
 
 struct BookingNavigationStackView: View {
-  @Environment(ViewInfo.self) var viewInfo
+  @Environment(SortingInfo.self) var viewInfo
   @Environment(\.editMode) private var editMode
   @Environment(\.modelContext) private var modelContext
   @Query private var entries: [BookingEntry]
@@ -54,8 +54,10 @@ struct BookingNavigationStackView: View {
 
   private func deleteAllItems() {
     withAnimation {
-      entries.forEach { entry in
-        modelContext.delete(entry)
+      do {
+          try modelContext.delete(model: BookingEntry.self)
+      } catch {
+          print("Failed to delete all Booking entries")
       }
     }
   }
@@ -65,15 +67,13 @@ struct BookingNavigationStackView: View {
   let factory = ContainerFactory(BookingEntry.self, storeInMemory: true)
   factory.addExamples(ContainerFactory.generateRandomEntriesItems())
   return BookingNavigationStackView()
-    .environment(ViewInfo())
-    .environment(NavigationContext())
+    .environment(SortingInfo())
     .modelContainer(factory.container)
 }
 
 #Preview("NavStackWithoutList") {
   let factory = ContainerFactory(BookingEntry.self, storeInMemory: true)
   return BookingNavigationStackView()
-    .environment(ViewInfo())
-    .environment(NavigationContext())
+    .environment(SortingInfo())
     .modelContainer(factory.container)
 }

@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import TipKit
 
 struct EntryFormView: View {
   var expenseEntry: BookingEntry?
@@ -27,11 +28,20 @@ struct EntryFormView: View {
   var body: some View {
     TextField(text: $name, prompt: Text("Name")) {
       Text("Name")
-    }.focused($focusedName)
-      .onSubmit {
-        focusedAmount = true
+    }.toolbar {
+      ToolbarItemGroup(placement: .keyboard) {
+        Spacer()
+        Button("Done") {
+          focusedName = false
+          focusedAmount = false
+        }
       }
-
+    }
+    .focused($focusedName)
+    .onSubmit {
+      focusedAmount = true
+    }
+    TipView(PrefixBookingTip())
     HStack {
       Picker("AmountPrefix", selection: $amountPrefix) {
         ForEach(AmountPrefix.allCases) { option in
@@ -41,7 +51,6 @@ struct EntryFormView: View {
       }
       .pickerStyle(.wheel)
       .frame(maxWidth: 80, maxHeight: 100)
-      .popoverTip(PrefixBookingTip())
       TextField(
         text: $amount,
         prompt: Text("Amount")
@@ -91,5 +100,4 @@ struct EntryFormView: View {
                           amountPrefix: $amountPrefix,
                           amount: $amount,
                           interval: $interval)
-  .environment(NavigationContext())
 }

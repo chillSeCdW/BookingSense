@@ -1,5 +1,5 @@
 {
-  "originHash" : "7a2c9b4bb42c2221bb642dfc27b6e8a478d63cd04f52d3e2819330e24f9fb63f",
+  "originHash" : "180e4857f5e607eb8f433ad60eada18e6ae7d9d3d7d7d5307685004d0c63bd74",
   "pins" : [
     {
       "identity" : "collectionconcurrencykit",
@@ -17,6 +17,15 @@
       "state" : {
         "revision" : "7892a123f7e8d0fe62f9f03728b17bbd4f94df5c",
         "version" : "1.8.1"
+      }
+    },
+    {
+      "identity" : "popupview",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/Mijick/PopupView.git",
+      "state" : {
+        "revision" : "e18cbd9bff46eecaf1fdd5bcc1cd3666d5f05095",
+        "version" : "2.5.0"
       }
     },
     {
