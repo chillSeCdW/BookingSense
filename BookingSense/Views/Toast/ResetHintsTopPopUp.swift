@@ -4,7 +4,7 @@
 import SwiftUI
 import MijickPopupView
 
-struct InfoTopPopUp: TopPopup {
+struct ResetHintsTopPopUp: TopPopup {
   let colorScheme: ColorScheme
 
   func configurePopup(popup: TopPopupConfig) -> TopPopupConfig {
@@ -19,8 +19,18 @@ struct InfoTopPopUp: TopPopup {
 
   func createContent() -> some View {
     VStack(spacing: 12) {
-      createTopView()
-      createDismissButton()
+      HStack(spacing: 12) {
+        Image(systemName: "info.circle")
+          .foregroundColor(Color.blue)
+        VStack(alignment: .leading) {
+          Text(String(localized: "Info"))
+            .fontWeight(.semibold)
+          Text("Hints will be reset when restarting the App")
+        }.fixedSize(horizontal: false, vertical: true)
+      }
+      Button(action: dismiss) {
+        Text("Dismiss")
+      }
     }
     .padding(.top, 20)
     .padding(.bottom, 16)
@@ -29,24 +39,6 @@ struct InfoTopPopUp: TopPopup {
   }
 }
 
-private extension InfoTopPopUp {
-  func createTopView() -> some View {
-    HStack(spacing: 0) {
-      Image(systemName: "info.circle")
-      Spacer()
-      Text("Hints will be reset when restarting the App")
-        .fixedSize(horizontal: false, vertical: true)
-    }
-  }
-  func createDismissButton() -> some View {
-    HStack {
-      Button(action: dismiss) {
-        Text("Dismiss")
-      }
-    }
-  }
-}
-
 #Preview {
-  InfoTopPopUp(colorScheme: ColorScheme.light)
+  ResetHintsTopPopUp(colorScheme: ColorScheme.light)
 }

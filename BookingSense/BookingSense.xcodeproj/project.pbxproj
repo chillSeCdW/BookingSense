@@ -32,7 +32,7 @@
 		B927FB272C2B68BB008D30BE /* PrefixBookingTip.swift in Sources */ = {isa = PBXBuildFile; fileRef = B927FB262C2B68BB008D30BE /* PrefixBookingTip.swift */; };
 		B927FB292C2C386D008D30BE /* ToolbarOverviewList.swift in Sources */ = {isa = PBXBuildFile; fileRef = B927FB282C2C386D008D30BE /* ToolbarOverviewList.swift */; };
 		B92BC36F2C401DCE00019A62 /* MijickPopupView in Frameworks */ = {isa = PBXBuildFile; productRef = B92BC36E2C401DCE00019A62 /* MijickPopupView */; };
-		B92BC3712C401E7400019A62 /* InfoTopPopUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = B92BC3702C401E7400019A62 /* InfoTopPopUp.swift */; };
+		B92BC3712C401E7400019A62 /* ResetHintsTopPopUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = B92BC3702C401E7400019A62 /* ResetHintsTopPopUp.swift */; };
 		B92C53B32BDFED590029E759 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = B9D534122BD2903500C3355F /* Localizable.xcstrings */; };
 		B93F74012BF39F91008A5088 /* AdditionalInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B93F74002BF39F91008A5088 /* AdditionalInfoView.swift */; };
 		B95981FA2BE3890500578A9C /* BookingNavigationStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B95981F92BE3890500578A9C /* BookingNavigationStackView.swift */; };
@@ -45,6 +45,7 @@
 		B96761D22C3591BC00DA9114 /* ExportImportButtons.swift in Sources */ = {isa = PBXBuildFile; fileRef = B96761D12C3591BC00DA9114 /* ExportImportButtons.swift */; };
 		B96761D52C36BCCD00DA9114 /* TipJarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B96761D42C36BCCD00DA9114 /* TipJarView.swift */; };
 		B96761D92C371F2300DA9114 /* BookingsList.swift in Sources */ = {isa = PBXBuildFile; fileRef = B96761D82C371F2300DA9114 /* BookingsList.swift */; };
+		B96F6E192C41296E00132B50 /* BookingInfoPopUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = B96F6E182C41296E00132B50 /* BookingInfoPopUp.swift */; };
 		B97378F82BDFC11E003A729E /* ContainerFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = B97378F72BDFC11E003A729E /* ContainerFactory.swift */; };
 		B97378FA2BDFC569003A729E /* BookingSchemaV1.swift in Sources */ = {isa = PBXBuildFile; fileRef = B97378F92BDFC569003A729E /* BookingSchemaV1.swift */; };
 		B97378FD2BDFC7D1003A729E /* Migrations.swift in Sources */ = {isa = PBXBuildFile; fileRef = B97378FC2BDFC7D1003A729E /* Migrations.swift */; };
@@ -117,7 +118,7 @@
 		B927FB242C28205E008D30BE /* AdditinalInfoTip.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdditinalInfoTip.swift; sourceTree = "<group>"; };
 		B927FB262C2B68BB008D30BE /* PrefixBookingTip.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrefixBookingTip.swift; sourceTree = "<group>"; };
 		B927FB282C2C386D008D30BE /* ToolbarOverviewList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolbarOverviewList.swift; sourceTree = "<group>"; };
-		B92BC3702C401E7400019A62 /* InfoTopPopUp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoTopPopUp.swift; sourceTree = "<group>"; };
+		B92BC3702C401E7400019A62 /* ResetHintsTopPopUp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetHintsTopPopUp.swift; sourceTree = "<group>"; };
 		B92C53B22BDFDD980029E759 /* productionTestPlan.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = productionTestPlan.xctestplan; sourceTree = "<group>"; };
 		B93F74002BF39F91008A5088 /* AdditionalInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdditionalInfoView.swift; sourceTree = "<group>"; };
 		B95981F92BE3890500578A9C /* BookingNavigationStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingNavigationStackView.swift; sourceTree = "<group>"; };
@@ -131,6 +132,7 @@
 		B96761D12C3591BC00DA9114 /* ExportImportButtons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExportImportButtons.swift; sourceTree = "<group>"; };
 		B96761D42C36BCCD00DA9114 /* TipJarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TipJarView.swift; sourceTree = "<group>"; };
 		B96761D82C371F2300DA9114 /* BookingsList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingsList.swift; sourceTree = "<group>"; };
+		B96F6E182C41296E00132B50 /* BookingInfoPopUp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingInfoPopUp.swift; sourceTree = "<group>"; };
 		B97378F72BDFC11E003A729E /* ContainerFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContainerFactory.swift; sourceTree = "<group>"; };
 		B97378F92BDFC569003A729E /* BookingSchemaV1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingSchemaV1.swift; sourceTree = "<group>"; };
 		B97378FC2BDFC7D1003A729E /* Migrations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Migrations.swift; sourceTree = "<group>"; };
@@ -385,7 +387,8 @@
 			children = (
 				B9BE668F2BCFF0B90063734E /* ToastView.swift */,
 				B9BE66912BCFF1CB0063734E /* ToastMod.swift */,
-				B92BC3702C401E7400019A62 /* InfoTopPopUp.swift */,
+				B92BC3702C401E7400019A62 /* ResetHintsTopPopUp.swift */,
+				B96F6E182C41296E00132B50 /* BookingInfoPopUp.swift */,
 			);
 			path = Toast;
 			sourceTree = "<group>";
@@ -640,11 +643,12 @@
 				B907587B2C13479300EDC82F /* ContentView.swift in Sources */,
 				B915DC452BB4644A0018E812 /* Interval.swift in Sources */,
 				B90B2B432BE504A200BD2042 /* NavigationStackContentView.swift in Sources */,
-				B92BC3712C401E7400019A62 /* InfoTopPopUp.swift in Sources */,
+				B92BC3712C401E7400019A62 /* ResetHintsTopPopUp.swift in Sources */,
 				B9BE668E2BCFF0700063734E /* Toast.swift in Sources */,
 				B927FB232C26CD49008D30BE /* ToolbarAddTip.swift in Sources */,
 				B96761D92C371F2300DA9114 /* BookingsList.swift in Sources */,
 				B9BE668C2BCFF03D0063734E /* ToastStyle.swift in Sources */,
+				B96F6E192C41296E00132B50 /* BookingInfoPopUp.swift in Sources */,
 				B9781EAB2C2EB8AF00FBA0A5 /* SettingsNavigationStackView.swift in Sources */,
 				B96761D52C36BCCD00DA9114 /* TipJarView.swift in Sources */,
 				B9BE66922BCFF1CB0063734E /* ToastMod.swift in Sources */,
