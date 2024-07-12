@@ -16,6 +16,7 @@ typealias BookingEntry = BookingSchemaV1.BookingEntry
 struct BookingSenseApp: App {
 
   @AppStorage("resetTips") var resetTips = false
+  @AppStorage("numberOfVisits") var numberOfVisits = 0
 
   var sharedModelContainer: ModelContainer = {
     #if DEBUG
@@ -33,15 +34,12 @@ struct BookingSenseApp: App {
       factory.addExamples(ContainerFactory.generateALotOfEntries())
       return factory.container
     }
-//    Tips.showAllTipsForTesting()
-//    Tips.showTipsForTesting([PrefixBookingTip.self])
     #endif
 
     let factory = ContainerFactory(BookingEntry.self, storeInMemory: false)
     return factory.container
   }()
 
-  @State private var navigationContext = NavigationContext()
   @State private var viewInfo = SortingInfo()
 
   init() {
@@ -50,11 +48,18 @@ struct BookingSenseApp: App {
       resetTips = false
       try? Tips.resetDatastore()
     }
+    //    Tips.showAllTipsForTesting()
+    //    Tips.showTipsForTesting([PrefixBookingTip.self])
+
+    if CommandLine.arguments.contains("disableTips") {
+      numberOfVisits = 0
+      return
+    }
 
     try? Tips.configure([
       .displayFrequency(.immediate)
     ])
-    _ = Tips.MaxDisplayCount(3)
+    _ = Tips.MaxDisplayCount(2)
   }
 
   var body: some Scene {
@@ -62,7 +67,6 @@ struct BookingSenseApp: App {
           ContentView()
           .implementPopupView()
           .environment(viewInfo)
-          .environment(navigationContext)
       }
       .modelContainer(sharedModelContainer)
   }

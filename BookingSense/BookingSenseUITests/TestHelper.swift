@@ -38,9 +38,9 @@ class TestHelper {
 
   func navigateToEntryNavigation() {
     XCTContext.runActivity(named: "go to entry navigation tab") { _ in
+      XCTAssertTrue(app.tabBars.buttons[localized("Overview")].isHittable)
       XCTAssertTrue(app.tabBars.buttons[localized("Bookings")].isHittable)
       app.tabBars.buttons[localized("Bookings")].tap()
-      XCTAssertTrue(app.tabBars.buttons[localized("Overview")].isHittable)
     }
   }
 
@@ -189,22 +189,22 @@ class TestHelper {
     }
   }
 
-  func checkIfToastExistsWith(amount: String) {
-    XCTContext.runActivity(named: "check if Toast was created with values") { _ in
+  func checkIfPopUpExistsWith(amount: String) {
+    XCTContext.runActivity(named: "check if PopUp was created with values") { _ in
 
-      let image = app.images.matching(identifier: "ToastView").element
+      let image = app.images.matching(identifier: "InfoImage").element
 
-      let titleLabel = app.staticTexts.matching(identifier: "ToastView")
+      let titleLabel = app.staticTexts.matching(identifier: "InfoHeadline")
       .containing(XCUIElement.ElementType.staticText, identifier: localized("Info")).element.label
 
       let message = String.localizedStringWithFormat(localized("%@ transformedInfo"), amount)
 
-      let messageLabel = app.staticTexts.matching(identifier: "ToastView")
+      let messageLabel = app.staticTexts.matching(identifier: "InfoMessage")
         .containing(XCUIElement.ElementType.staticText, identifier: message).element.label
 
-      let toastButton = app.buttons.matching(identifier: "ToastView").element
+      let dismissButton = app.buttons.matching(identifier: "InfoDismiss").element
 
-      XCTAssertTrue(toastButton.isHittable)
+      XCTAssertTrue(dismissButton.isHittable)
       XCTAssertTrue(image.isHittable)
       XCTAssertEqual(titleLabel, localized("Info"))
       XCTAssertEqual(messageLabel, message)
@@ -212,11 +212,10 @@ class TestHelper {
     }
   }
 
-  func dismissToast() {
-    XCTContext.runActivity(named: "dismissing Toast") { _ in
-      let toastButton = app.buttons.matching(identifier: "ToastView").element
-
-      toastButton.tap()
+  func dismissPopUp() {
+    XCTContext.runActivity(named: "dismissing PopUp") { _ in
+      let dismissButton = app.buttons.matching(identifier: "InfoDismiss").element
+      dismissButton.tap()
     }
   }
 

@@ -12,7 +12,6 @@ import SwiftData
 struct EntryView: View {
   @Environment(\.colorScheme) var colorScheme
   @Environment(\.modelContext) private var modelContext
-  @Environment(NavigationContext.self) private var navigationContext
   @Environment(\.dismiss) var dismiss
 
   var expenseEntry: BookingEntry?
@@ -112,9 +111,9 @@ struct EntryView: View {
     amountPrefix: .plus,
     interval: .weekly)
 
-  return EntryView(expenseEntry: entry).environment(NavigationContext())
+  return EntryView(expenseEntry: entry)
 }
 
 #Preview("Create") {
-  EntryView().environment(NavigationContext())
+  EntryView()
 }

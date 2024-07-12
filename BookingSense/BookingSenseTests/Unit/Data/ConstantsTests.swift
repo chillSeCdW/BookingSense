@@ -56,15 +56,4 @@ final class ConstantsTests: XCTestCase {
       NSLocale(localeIdentifier: code).displayName(forKey: NSLocale.Key.currencySymbol, value: code)
     )
   }
-
-  func testCreateToast() throws {
-    XCTAssertEqual(
-      Constants.createToast(.info, message: "someMessage"),
-      Toast(style: .info, title: String(localized: "Info"), message: "someMessage", duration: 10, width: 160)
-    )
-    XCTAssertEqual(
-      Constants.createToast(.error, message: "someError"),
-      Toast(style: .error, title: String(localized: "Error"), message: "someError", duration: 10, width: 160)
-    )
-  }
 }

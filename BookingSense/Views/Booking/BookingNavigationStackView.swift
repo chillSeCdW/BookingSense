@@ -68,7 +68,6 @@ struct BookingNavigationStackView: View {
   factory.addExamples(ContainerFactory.generateRandomEntriesItems())
   return BookingNavigationStackView()
     .environment(SortingInfo())
-    .environment(NavigationContext())
     .modelContainer(factory.container)
 }
 
@@ -76,6 +75,5 @@ struct BookingNavigationStackView: View {
   let factory = ContainerFactory(BookingEntry.self, storeInMemory: true)
   return BookingNavigationStackView()
     .environment(SortingInfo())
-    .environment(NavigationContext())
     .modelContainer(factory.container)
 }

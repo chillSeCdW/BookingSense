@@ -11,7 +11,6 @@ import StoreKit
 
 struct ContentView: View {
   @Environment(\.modelContext) private var modelContext
-  @Environment(NavigationContext.self) var navigationContext
   @Environment(SortingInfo.self) var viewInfo
   @Environment(\.requestReview) private var requestReview
   @Environment(\.scenePhase) var scenePhase
@@ -20,8 +19,6 @@ struct ContentView: View {
   @AppStorage("tmpBlurSensitive") var tmpBlurSensitive = false
 
   var body: some View {
-    @Bindable var navigationContext = navigationContext
-
     TabView {
       OverviewView()
         .tabItem {
@@ -36,7 +33,6 @@ struct ContentView: View {
           Label("Settings", systemImage: "gear")
         }
     }
-    .toastView(toast: $navigationContext.toast)
     .onChange(of: scenePhase) { _, newPhase in
       if newPhase == .active {
         if tmpBlurSensitive == true {
@@ -65,7 +61,6 @@ struct ContentView: View {
   let factory = ContainerFactory(BookingEntry.self, storeInMemory: true)
   factory.addExamples(ContainerFactory.generateFixedEntriesItems())
   return ContentView()
-    .environment(NavigationContext())
     .environment(SortingInfo())
     .modelContainer(factory.container)
 }

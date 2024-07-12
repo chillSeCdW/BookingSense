@@ -11,7 +11,7 @@ final class FilledNavigationStackUITest: XCTestCase {
   override func setUpWithError() throws {
     continueAfterFailure = false
     app = XCUIApplication()
-    app.launchArguments =  ["enable-testing-data"]
+    app.launchArguments =  ["enable-testing-data", "disableTips"]
     app.launch()
 
     tHelp = TestHelper(FilledNavigationStackUITest.self, app: app)
@@ -90,12 +90,12 @@ final class FilledNavigationStackUITest: XCTestCase {
     tHelp.checkIfEntryExists("dailyEntry")
   }
 
-  func testEditBookingsEntryTriggersToast() throws {
+  func testEditBookingsEntryTriggersInfoPopUp() throws {
     let newAmount = "11" + Locale.current.decimalSeparator! + Locale.current.decimalSeparator! + "00"
     tHelp.navigateToEntryNavigation()
     tHelp.openEditEntrySheet(Locale.current.currency!.identifier, name: "dailyEntry", amount: Decimal(1))
     tHelp.editEntrySheetAndSave(Locale.current.currency!.identifier, newName: "newDailyEntry", newAmount: newAmount)
-    tHelp.checkIfToastExistsWith(amount: "11")
-    tHelp.dismissToast()
+    tHelp.checkIfPopUpExistsWith(amount: "11")
+    tHelp.dismissPopUp()
   }
 }

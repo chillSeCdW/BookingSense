@@ -40,7 +40,6 @@ struct NavigationStackContentView: View {
   factory.addExamples(ContainerFactory.generateRandomEntriesItems())
   return NavigationStackContentView(isListEmpty: false)
     .environment(SortingInfo())
-    .environment(NavigationContext())
     .modelContainer(factory.container)
 }
 

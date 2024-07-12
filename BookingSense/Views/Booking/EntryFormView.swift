@@ -100,5 +100,4 @@ struct EntryFormView: View {
                           amountPrefix: $amountPrefix,
                           amount: $amount,
                           interval: $interval)
-  .environment(NavigationContext())
 }

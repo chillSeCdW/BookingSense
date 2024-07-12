@@ -100,13 +100,4 @@ struct Constants {
     let locale = NSLocale(localeIdentifier: code)
     return locale.displayName(forKey: NSLocale.Key.currencySymbol, value: code)
   }
-
-  static func createToast(_ toastType: ToastStyle, message: String) -> Toast {
-    switch toastType {
-    case .info:
-      return Toast(style: .info, title: String(localized: "Info"), message: message, duration: 10, width: 160)
-    default:
-      return Toast(style: .error, title: String(localized: "Error"), message: message, duration: 10, width: 160)
-    }
-  }
 }

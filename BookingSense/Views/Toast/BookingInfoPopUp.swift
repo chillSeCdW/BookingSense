@@ -22,16 +22,19 @@ struct BookingInfoPopUp: TopPopup {
     VStack(spacing: 12) {
       HStack(spacing: 12) {
         Image(systemName: "info.circle.fill")
+          .accessibilityIdentifier("InfoImage")
           .foregroundColor(Color.blue)
         VStack(alignment: .leading) {
           Text(String(localized: "Info"))
+            .accessibilityIdentifier("InfoHeadline")
             .fontWeight(.semibold)
           Text(String(localized: "\(parsedAmount?.formatted() ?? "0") transformedInfo"))
+            .accessibilityIdentifier("InfoMessage")
         }.fixedSize(horizontal: false, vertical: true)
       }
       Button(action: dismiss) {
         Text("Dismiss")
-      }
+      }.accessibilityIdentifier("InfoDismiss")
     }
     .padding(.top, 20)
     .padding(.bottom, 16)

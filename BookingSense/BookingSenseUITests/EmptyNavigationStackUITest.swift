@@ -11,7 +11,7 @@ final class EmptyNavigationStackUITest: XCTestCase {
   override func setUpWithError() throws {
     continueAfterFailure = false
     app = XCUIApplication()
-    app.launchArguments =  ["enable-testing-empty"]
+    app.launchArguments =  ["enable-testing-empty", "disableTips"]
     app.launch()
 
     tHelp = TestHelper(EmptyNavigationStackUITest.self, app: app)
