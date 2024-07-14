@@ -8,6 +8,14 @@
 			<key>Type</key>
 			<string>PSChildPaneSpecifier</string>
 			<key>Title</key>
+			<string>PopupView</string>
+			<key>File</key>
+			<string>Acknowledgements/PopupView</string>
+		</dict>
+		<dict>
+			<key>Type</key>
+			<string>PSChildPaneSpecifier</string>
+			<key>Title</key>
 			<string>SwiftLint</string>
 			<key>File</key>
 			<string>Acknowledgements/SwiftLint</string>
