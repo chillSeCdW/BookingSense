@@ -47,6 +47,38 @@ struct ContainerFactory {
     return returnResult
   }
 
+  static func generateFixedExampleItems() -> [BookingEntry] {
+    var returnResult: [BookingEntry] = []
+
+
+    returnResult.append(BookingEntry(name: "New Bike",
+                                     tags: ["default"],
+                                     amount: 25,
+                                     amountPrefix: AmountPrefix.saving,
+                                     interval: .biweekly))
+    returnResult.append(BookingEntry(name: "Salary",
+                                     tags: ["default"],
+                                     amount: 2000,
+                                     amountPrefix: AmountPrefix.plus,
+                                     interval: .monthly))
+    returnResult.append(BookingEntry(name: "Saving",
+                                     tags: ["default"],
+                                     amount: 150,
+                                     amountPrefix: AmountPrefix.saving,
+                                     interval: .monthly))
+    returnResult.append(BookingEntry(name: "Rent",
+                                     tags: ["default"],
+                                     amount: 500,
+                                     amountPrefix: AmountPrefix.minus,
+                                     interval: .quarterly))
+    returnResult.append(BookingEntry(name: "Vehicle liability insurance",
+                                     tags: ["default"],
+                                     amount: 2000,
+                                     amountPrefix: AmountPrefix.minus,
+                                     interval: .annually))
+    return returnResult
+  }
+
   static func generateFixedEntriesItems() -> [BookingEntry] {
     var returnResult: [BookingEntry] = []
 

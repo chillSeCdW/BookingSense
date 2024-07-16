@@ -85,7 +85,11 @@
       <CommandLineArguments>
          <CommandLineArgument
             argument = "enable-testing-data-max"
-            isEnabled = "YES">
+            isEnabled = "NO">
+         </CommandLineArgument>
+         <CommandLineArgument
+            argument = "enable-testing-data-example"
+            isEnabled = "NO">
          </CommandLineArgument>
       </CommandLineArguments>
       <EnvironmentVariables>
