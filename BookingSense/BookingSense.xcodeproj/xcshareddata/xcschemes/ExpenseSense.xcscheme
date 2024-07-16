@@ -88,6 +88,10 @@
             isEnabled = "NO">
          </CommandLineArgument>
          <CommandLineArgument
+            argument = "enable-testing-data"
+            isEnabled = "NO">
+         </CommandLineArgument>
+         <CommandLineArgument
             argument = "enable-testing-data-example"
             isEnabled = "NO">
          </CommandLineArgument>
