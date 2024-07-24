@@ -5,15 +5,15 @@ import SwiftUI
 import SwiftData
 
 struct NavigationStackContentView: View {
-  @Environment(SortingInfo.self) var viewInfo
+  @Environment(SearchInfo.self) var viewInfo
   @Query private var entries: [BookingEntry]
+  @AppStorage("sortParameter") var sortParameter: SortParameter = .name
+  @AppStorage("sortOrder") var sortOrder: SortOrderParameter = .reverse
 
   var isListEmpty: Bool
 
   @ViewBuilder
   var body: some View {
-    @Bindable var viewInfo = viewInfo
-
     if isListEmpty {
         Text("No entries available")
         Text("Press the + button to add an entry")
@@ -23,8 +23,8 @@ struct NavigationStackContentView: View {
           EntryListView(
             interval: option,
             searchName: viewInfo.searchText,
-            sortParameter: viewInfo.sortParameter,
-            sortOrder: viewInfo.sortOrder
+            sortParameter: sortParameter,
+            sortOrder: sortOrder
           )
         }
         Section {} footer: {
@@ -39,11 +39,11 @@ struct NavigationStackContentView: View {
   let factory = ContainerFactory(BookingEntry.self, storeInMemory: true)
   factory.addExamples(ContainerFactory.generateRandomEntriesItems())
   return NavigationStackContentView(isListEmpty: false)
-    .environment(SortingInfo())
+    .environment(SearchInfo())
     .modelContainer(factory.container)
 }
 
 #Preview("emptyContent") {
     NavigationStackContentView(isListEmpty: true)
-    .environment(SortingInfo())
+    .environment(SearchInfo())
 }

@@ -46,6 +46,6 @@ struct OverviewView: View {
   let factory = ContainerFactory(BookingEntry.self, storeInMemory: true)
   factory.addExamples(ContainerFactory.generateRandomEntriesItems())
   return OverviewView()
-    .environment(SortingInfo())
+    .environment(SearchInfo())
     .modelContainer(factory.container)
 }

@@ -11,7 +11,7 @@ import StoreKit
 
 struct ContentView: View {
   @Environment(\.modelContext) private var modelContext
-  @Environment(SortingInfo.self) var viewInfo
+  @Environment(SearchInfo.self) var viewInfo
   @Environment(\.requestReview) private var requestReview
   @Environment(\.scenePhase) var scenePhase
   @AppStorage("numberOfVisits") var numberOfVisits = 0
@@ -61,6 +61,6 @@ struct ContentView: View {
   let factory = ContainerFactory(BookingEntry.self, storeInMemory: true)
   factory.addExamples(ContainerFactory.generateFixedEntriesItems())
   return ContentView()
-    .environment(SortingInfo())
+    .environment(SearchInfo())
     .modelContainer(factory.container)
 }
