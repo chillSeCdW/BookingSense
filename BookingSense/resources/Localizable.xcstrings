@@ -1022,13 +1022,13 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Daten als Json exportieren"
+            "value" : "Daten exportieren"
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Export data as json"
+            "value" : "Export data"
           }
         }
       }
@@ -1151,13 +1151,13 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Json Daten importieren"
+            "value" : "Daten importieren"
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Import data as json"
+            "value" : "Import data"
           }
         }
       }
@@ -1558,6 +1558,74 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Sort order"
+          }
+        }
+      }
+    },
+    "sort_order.forward" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Vorwärts"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Forward"
+          }
+        }
+      }
+    },
+    "sort_order.reverse" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Rückwärts"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Reverse"
+          }
+        }
+      }
+    },
+    "sort_parameter.amount" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Betrag"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Amount"
+          }
+        }
+      }
+    },
+    "sort_parameter.name" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Name"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Name"
           }
         }
       }

@@ -45,7 +45,7 @@ struct BookingSenseApp: App {
     return factory.container
   }()
 
-  @State private var viewInfo = SortingInfo()
+  @State private var viewInfo = SearchInfo()
 
   init() {
     setupVersion()

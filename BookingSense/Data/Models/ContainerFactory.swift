@@ -50,7 +50,6 @@ struct ContainerFactory {
   static func generateFixedExampleItems() -> [BookingEntry] {
     var returnResult: [BookingEntry] = []
 
-
     returnResult.append(BookingEntry(name: "New Bike",
                                      tags: ["default"],
                                      amount: 25,

@@ -6,13 +6,10 @@
 //
 
 import Foundation
+import SwiftUI
 import SwiftData
 
 @Observable
-class SortingInfo {
-    var sortParameter: SortParameter = .name
-
-    var sortOrder: SortOrder = .reverse
-
+class SearchInfo {
     var searchText: String = ""
 }

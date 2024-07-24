@@ -19,7 +19,7 @@ struct EntryListView: View {
   init(interval: Interval,
        searchName: String = "",
        sortParameter: SortParameter = .amount,
-       sortOrder: SortOrder = .reverse
+       sortOrder: SortOrderParameter = .reverse
   ) {
     self.interval = interval
 
@@ -27,11 +27,11 @@ struct EntryListView: View {
     case .name: _entries = Query(
       filter: BookingEntry.predicate(searchName: searchName, interval: interval),
       sort: \.name,
-      order: sortOrder)
+      order: sortOrder == .forward ? .forward : .reverse)
     case .amount: _entries = Query(
       filter: BookingEntry.predicate(searchName: searchName, interval: interval),
       sort: \.amount,
-      order: sortOrder)
+      order: sortOrder == .forward ? .forward : .reverse)
     }
   }
 

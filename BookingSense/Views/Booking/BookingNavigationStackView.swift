@@ -9,7 +9,7 @@ import SwiftUI
 import SwiftData
 
 struct BookingNavigationStackView: View {
-  @Environment(SortingInfo.self) var viewInfo
+  @Environment(SearchInfo.self) var viewInfo
   @Environment(\.editMode) private var editMode
   @Environment(\.modelContext) private var modelContext
   @Query private var entries: [BookingEntry]
@@ -67,13 +67,13 @@ struct BookingNavigationStackView: View {
   let factory = ContainerFactory(BookingEntry.self, storeInMemory: true)
   factory.addExamples(ContainerFactory.generateRandomEntriesItems())
   return BookingNavigationStackView()
-    .environment(SortingInfo())
+    .environment(SearchInfo())
     .modelContainer(factory.container)
 }
 
 #Preview("NavStackWithoutList") {
   let factory = ContainerFactory(BookingEntry.self, storeInMemory: true)
   return BookingNavigationStackView()
-    .environment(SortingInfo())
+    .environment(SearchInfo())
     .modelContainer(factory.container)
 }
