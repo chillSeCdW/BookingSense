@@ -83,6 +83,11 @@ struct EntryFormView: View {
 }
 
 #Preview {
+  @Previewable @State var name: String = "testName"
+  @Previewable @State var amount: String = "15,35"
+  @Previewable @State var amountPrefix: AmountPrefix = .plus
+  @Previewable @State var interval: Interval = .weekly
+
   let entry = BookingEntry(
     name: "testName",
     tags: ["default"],
@@ -90,12 +95,7 @@ struct EntryFormView: View {
     amountPrefix: .plus,
     interval: .weekly)
 
-  @State var name = entry.name
-  @State var amount = entry.amount.formatted()
-  @State var amountPrefix: AmountPrefix = entry.amountPrefix
-  @State var interval: Interval = Interval(rawValue: entry.interval) ?? Interval.monthly
-
-  return EntryFormView(expenseEntry: entry,
+  EntryFormView(expenseEntry: entry,
                           name: $name,
                           amountPrefix: $amountPrefix,
                           amount: $amount,
