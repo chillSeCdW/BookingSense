@@ -340,70 +340,6 @@
         }
       }
     },
-    "🤗 Amazing tip" : {
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "🤗 Außergewöhnliches Trinkgeld"
-          }
-        },
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "🤗 Amazing tip"
-          }
-        }
-      }
-    },
-    "🤯 Extraordinary tip" : {
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "🤯 Selbstloses Trinkgeld"
-          }
-        },
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "🤯 Extraordinary tip"
-          }
-        }
-      }
-    },
-    "🫨 Ludicrous tip" : {
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "🫨 Irres Trinkgeld"
-          }
-        },
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "🫨 Ludicrous tip"
-          }
-        }
-      }
-    },
-    "🙂 Great tip" : {
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "🙂 Großzügiges Trinkgeld"
-          }
-        },
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "🙂 Great tip"
-          }
-        }
-      }
-    },
     "Add" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -566,7 +502,6 @@
       }
     },
     "App Store" : {
-      "extractionState" : "stale",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -996,23 +931,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Some existing entries were found. How do you want to handle them?"
-          }
-        }
-      }
-    },
-    "Error" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Error"
-          }
-        },
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Error"
           }
         }
       }
@@ -1646,8 +1564,23 @@
         }
       }
     },
+    "Thank you for your tip!" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Vielen Dank für dein Trinkgeld!"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Thank you for your tip!"
+          }
+        }
+      }
+    },
     "Tip jar" : {
-      "extractionState" : "stale",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -1659,22 +1592,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Tip jar"
-          }
-        }
-      }
-    },
-    "Tips" : {
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Trinkgeld"
-          }
-        },
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Tips"
           }
         }
       }
@@ -1794,7 +1711,6 @@
       }
     },
     "Write an App Store review" : {
-      "extractionState" : "stale",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -1806,6 +1722,22 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Write an App Store review"
+          }
+        }
+      }
+    },
+    "Wuhoo!" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wuhoo!"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wuhoo!"
           }
         }
       }

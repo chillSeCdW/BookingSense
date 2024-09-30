@@ -1,0 +1,137 @@
+{
+  "appPolicies" : {
+    "eula" : "",
+    "policies" : [
+      {
+        "locale" : "en_US",
+        "policyText" : "",
+        "policyURL" : ""
+      }
+    ]
+  },
+  "identifier" : "3D0DA47C",
+  "nonRenewingSubscriptions" : [
+
+  ],
+  "products" : [
+    {
+      "displayPrice" : "1.99",
+      "familyShareable" : false,
+      "internalID" : "1BE7EF9A",
+      "localizations" : [
+        {
+          "description" : "A great Tip🙂",
+          "displayName" : "Great Tip",
+          "locale" : "en_US"
+        }
+      ],
+      "productID" : "com.chill.BookingSense.tip01",
+      "referenceName" : "Great Tip",
+      "type" : "Consumable"
+    },
+    {
+      "displayPrice" : "3.99",
+      "familyShareable" : false,
+      "internalID" : "B0724CB6",
+      "localizations" : [
+        {
+          "description" : "An amazing tip🤗",
+          "displayName" : "Amazing Tip",
+          "locale" : "en_US"
+        }
+      ],
+      "productID" : "com.chill.BookingSense.tip02",
+      "referenceName" : "Amazing Tip",
+      "type" : "Consumable"
+    },
+    {
+      "displayPrice" : "7.99",
+      "familyShareable" : false,
+      "internalID" : "0B5955CD",
+      "localizations" : [
+        {
+          "description" : "An extraordinary tip🤯",
+          "displayName" : "Extraordinary Tip",
+          "locale" : "en_US"
+        }
+      ],
+      "productID" : "com.chill.BookingSense.tip03",
+      "referenceName" : "Extraordinary Tip",
+      "type" : "Consumable"
+    },
+    {
+      "displayPrice" : "14.99",
+      "familyShareable" : false,
+      "internalID" : "167EE7C0",
+      "localizations" : [
+        {
+          "description" : "A ludicrous tip🫨",
+          "displayName" : "Ludicrous Tip",
+          "locale" : "en_US"
+        }
+      ],
+      "productID" : "com.chill.BookingSense.tip04",
+      "referenceName" : "Ludicrous Tip",
+      "type" : "Consumable"
+    }
+  ],
+  "settings" : {
+    "_failTransactionsEnabled" : false,
+    "_locale" : "en_US",
+    "_storefront" : "DEU",
+    "_storeKitErrors" : [
+      {
+        "current" : null,
+        "enabled" : false,
+        "name" : "Load Products"
+      },
+      {
+        "current" : null,
+        "enabled" : false,
+        "name" : "Purchase"
+      },
+      {
+        "current" : null,
+        "enabled" : false,
+        "name" : "Verification"
+      },
+      {
+        "current" : null,
+        "enabled" : false,
+        "name" : "App Store Sync"
+      },
+      {
+        "current" : null,
+        "enabled" : false,
+        "name" : "Subscription Status"
+      },
+      {
+        "current" : null,
+        "enabled" : false,
+        "name" : "App Transaction"
+      },
+      {
+        "current" : null,
+        "enabled" : false,
+        "name" : "Manage Subscriptions Sheet"
+      },
+      {
+        "current" : null,
+        "enabled" : false,
+        "name" : "Refund Request Sheet"
+      },
+      {
+        "current" : null,
+        "enabled" : false,
+        "name" : "Offer Code Redeem Sheet"
+      }
+    ]
+  },
+  "subscriptionGroups" : [
+
+  ],
+  "version" : {
+    "major" : 4,
+    "minor" : 0
+  }
+}
