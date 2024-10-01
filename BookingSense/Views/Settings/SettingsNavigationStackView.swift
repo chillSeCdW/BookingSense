@@ -20,24 +20,24 @@ struct SettingsNavigationStackView: View {
         Section("Contact") {
           ContactButtons()
         }
-//        Section("App Store") {
-//          Button(action: openAppStore) {
-//            HStack {
-//              Image(systemName: "star")
-//              Text("Write an App Store review")
-//            }
-//          }
-//        }
-//        Section("Tip jar") {
-//          NavigationLink {
-//              TipJarView()
-//          } label: {
-//            HStack {
-//              Image(systemName: "giftcard")
-//              Text("Tip jar")
-//            }
-//          }
-//        }
+        Section("App Store") {
+          Button(action: openAppStore) {
+            HStack {
+              Image(systemName: "star")
+              Text("Write an App Store review")
+            }
+          }
+        }
+        Section("Tip jar") {
+          NavigationLink {
+              TipJarView()
+          } label: {
+            HStack {
+              Image(systemName: "giftcard")
+              Text("Tip jar")
+            }
+          }
+        }
         Section("Hints") {
           Button(action: {
             resetTips = true
@@ -59,7 +59,7 @@ struct SettingsNavigationStackView: View {
   }
 
   func openAppStore() {
-    let url = "https://apps.apple.com/app/id-numberHERE?action=write-review"
+    let url = "https://apps.apple.com/app/6503708794?action=write-review"
     guard let writeReviewURL = URL(string: url) else {
         fatalError("Expected a valid URL")
     }
