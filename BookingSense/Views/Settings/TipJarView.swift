@@ -17,34 +17,16 @@ struct TipJarView: View {
                       "com.chill.BookingSense.tip04"])
         .productViewStyle(.compact)
         .storeButton(.hidden, for: .cancellation)
-        .onInAppPurchaseStart { purchase in
-          print("In-App Purchase Started: \(purchase)")
+        .onAppear {
+          logger.info("Creating PurchaseHandler shared instance")
+          PurchaseHandler.createSharedInstance(colorScheme)
+          logger.info("PurchaseHandler shared instance created")
         }
-        .onInAppPurchaseCompletion { _, result in
-          if case .success(.success(let verificationResult)) = result {
-            switch verificationResult {
-            case .verified(let transaction):
-                logger.debug("""
-                Transaction ID \(transaction.id) for \(transaction.productID) is verified
-                """)
-                await transaction.finish()
-                ThankYouPopUp(colorScheme: colorScheme)
-                  .showAndStack()
-                  .dismissAfter(2)
-                return
-            case .unverified(let transaction, let error):
-                logger.error("""
-                Transaction ID \(transaction.id) for \(transaction.productID) is unverified: \(error)
-                """)
-                return
-            }
-          }
-          if case .failure(let err) = result {
-            logger.error("""
-            Transaction failed with: \(err)
-            """)
-            return
-          }
+        .task {
+          logger.info("Starting tasks to observe transaction updates")
+          await PurchaseHandler.shared.observeTransactionUpdates()
+          await PurchaseHandler.shared.checkForUnfinishedTransactions()
+          logger.info("Finished checking for transactions")
         }
     }
 }
