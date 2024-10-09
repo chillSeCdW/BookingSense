@@ -33,8 +33,9 @@ struct EntryView: View {
                     amount: $amount,
                     interval: $interval
       )
-    }.navigationTitle(isCreate ? "Create entry" : "Edit entry")
-      .toolbar {
+    }
+    .navigationTitle(isCreate ? "Create entry" : "Edit entry")
+    .toolbar {
         ToolbarEntry(isCreate: isCreate, save: save, didValuesChange: didValuesChange)
       }
   }

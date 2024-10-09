@@ -1015,6 +1015,22 @@
         }
       }
     },
+    "Highest amount" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Höchster Betrag"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Highest amount"
+          }
+        }
+      }
+    },
     "Hints" : {
       "localizations" : {
         "de" : {
@@ -1657,6 +1673,45 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "%lld total bookings"
+          }
+        }
+      }
+    },
+    "Total costs" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Gesamtkosten"
+          }
+        }
+      }
+    },
+    "Total left" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Restbetrag"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Total left"
+          }
+        }
+      }
+    },
+    "Total savings" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Einsparungen"
           }
         }
       }

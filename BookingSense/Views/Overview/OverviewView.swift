@@ -27,6 +27,7 @@ struct OverviewView: View {
             .pickerStyle(.menu)
         }
         Section(LocalizedStringKey("\(interval.description) Insights"), isExpanded: $isExpandedMonthyInsights) {
+          ChartsView()
           IntervalInsightsView()
         }
         Section("Additional \(interval.description) Infos", isExpanded: $isAdditionalInfo) {

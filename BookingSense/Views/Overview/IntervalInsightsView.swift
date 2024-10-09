@@ -59,13 +59,11 @@ struct IntervalInsightsView: View {
   }
 
   private func calculateIntervalTotalsFor(_ amountPrefix: AmountPrefix, interval: Interval) -> Decimal {
-    var total: Decimal = Decimal()
-
-    for entry in entries where entry.amountPrefix == amountPrefix {
-      total += entry.amount * Constants.getTimesValue(from: Interval(rawValue: entry.interval), to: interval)
-    }
-
-    return total
+    return entries.filter { $0.amountPrefix == amountPrefix }
+      .map { entry in
+        entry.amount * Constants.getTimesValue(from: Interval(rawValue: entry.interval), to: interval)
+      }
+      .reduce(0, +)
   }
 
   private func calculateAllIntervalTotalDeductionsFor(_ interval: Interval) -> Decimal {
