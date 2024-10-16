@@ -29,16 +29,6 @@ struct BookingSenseApp: App {
       factory.addExamples(ContainerFactory.generateFixedEntriesItems())
       return factory.container
     }
-    if CommandLine.arguments.contains("enable-testing-data-example") {
-      let factory = ContainerFactory(BookingEntry.self, storeInMemory: true)
-      factory.addExamples(ContainerFactory.generateFixedExampleItems())
-      return factory.container
-    }
-    if CommandLine.arguments.contains("enable-testing-data-max") {
-      let factory = ContainerFactory(BookingEntry.self, storeInMemory: true)
-      factory.addExamples(ContainerFactory.generateALotOfEntries())
-      return factory.container
-    }
 #endif
 
     let factory = ContainerFactory(BookingEntry.self, storeInMemory: false)
