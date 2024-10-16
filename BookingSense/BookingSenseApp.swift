@@ -19,7 +19,7 @@ struct BookingSenseApp: App {
   @AppStorage("numberOfVisits") var numberOfVisits = 0
 
   var sharedModelContainer: ModelContainer = {
-    #if DEBUG
+#if DEBUG
     if CommandLine.arguments.contains("enable-testing-empty") {
       let factory = ContainerFactory(BookingEntry.self, storeInMemory: true)
       return factory.container
@@ -39,7 +39,7 @@ struct BookingSenseApp: App {
       factory.addExamples(ContainerFactory.generateALotOfEntries())
       return factory.container
     }
-    #endif
+#endif
 
     let factory = ContainerFactory(BookingEntry.self, storeInMemory: false)
     return factory.container
@@ -54,13 +54,12 @@ struct BookingSenseApp: App {
       try? Tips.resetDatastore()
     }
     //    Tips.showAllTipsForTesting()
-    //    Tips.showTipsForTesting([PrefixBookingTip.self])
 
     if CommandLine.arguments.contains("disableTips") {
       numberOfVisits = 0
       return
     }
-
+    
     try? Tips.configure([
       .displayFrequency(.immediate)
     ])
@@ -68,12 +67,12 @@ struct BookingSenseApp: App {
   }
 
   var body: some Scene {
-      WindowGroup {
-          ContentView()
-          .implementPopupView()
-          .environment(viewInfo)
-      }
-      .modelContainer(sharedModelContainer)
+    WindowGroup {
+      ContentView()
+        .implementPopupView()
+        .environment(viewInfo)
+    }
+    .modelContainer(sharedModelContainer)
   }
 
   func setupVersion() {

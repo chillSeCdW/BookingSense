@@ -1,63 +1,8 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
-    "\n" : {
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : ""
-          }
-        }
-      }
-    },
-    " stands for deductions" : {
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : " steht für Abzüge."
-          }
-        },
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : " stands for deductions."
-          }
-        }
-      }
-    },
-    " stands for income" : {
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : " steht für Einkommen."
-          }
-        },
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : " stands for income."
-          }
-        }
-      }
-    },
-    " stands for savings" : {
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : " steht für Rücklagen."
-          }
-        },
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : " stands for savings."
-          }
-        }
-      }
+    "" : {
+
     },
     "%@ costs of annually" : {
       "localizations" : {
@@ -252,22 +197,6 @@
         }
       }
     },
-    "%@ symbol" : {
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "%@"
-          }
-        },
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "%@"
-          }
-        }
-      }
-    },
     "%@ transformedInfo" : {
       "localizations" : {
         "de" : {
@@ -385,22 +314,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Additional %@ information"
-          }
-        }
-      }
-    },
-    "Additional information" : {
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Zusätzliche Informationen"
-          }
-        },
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Additional information"
           }
         }
       }
@@ -678,6 +591,22 @@
         }
       }
     },
+    "Charts" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Diagramme"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Charts"
+          }
+        }
+      }
+    },
     "Clear and insert" : {
       "localizations" : {
         "de" : {
@@ -690,22 +619,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Delete old entries and insert new"
-          }
-        }
-      }
-    },
-    "click here for some additional information" : {
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Hier klicken für weitere Informationen."
-          }
-        },
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Click here for some additional information."
           }
         }
       }
@@ -1096,6 +1009,23 @@
         }
       }
     },
+    "Incoming" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Eingehend"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Incoming"
+          }
+        }
+      }
+    },
     "Info" : {
       "localizations" : {
         "de" : {
@@ -1256,6 +1186,23 @@
         }
       }
     },
+    "Outgoing" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ausgehend"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Outgoing"
+          }
+        }
+      }
+    },
     "Overview" : {
       "localizations" : {
         "de" : {
@@ -1268,22 +1215,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Overview"
-          }
-        }
-      }
-    },
-    "Prefix of booking" : {
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Präfix der Buchung"
-          }
-        },
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Prefix of booking"
           }
         }
       }
@@ -1364,6 +1295,23 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "save"
+          }
+        }
+      }
+    },
+    "Saving" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Einsparung"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Saving"
           }
         }
       }

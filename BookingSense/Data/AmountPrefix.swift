@@ -15,13 +15,13 @@ enum AmountPrefix: Codable, CaseIterable, Identifiable {
   case saving
 
   var description: String {
-      switch self {
-      case .plus:
-        return "plus"
-      case .minus:
-        return "minus"
-      case .saving:
-        return "banknote"
-      }
+    switch self {
+    case .plus:
+      return "Incoming"
+    case .minus:
+      return "Outgoing"
+    case .saving:
+      return "Saving"
+    }
   }
 }

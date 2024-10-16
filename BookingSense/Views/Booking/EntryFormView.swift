@@ -41,44 +41,47 @@ struct EntryFormView: View {
     .onSubmit {
       focusedAmount = true
     }
-    TipView(PrefixBookingTip())
-    HStack {
+    VStack {
       Picker("AmountPrefix", selection: $amountPrefix) {
         ForEach(AmountPrefix.allCases) { option in
-          Label(option.description, systemImage: option.description)
-            .labelStyle(.iconOnly)
+          Text(LocalizedStringKey(option.description))
         }
       }
-      .pickerStyle(.wheel)
-      .frame(maxWidth: 80, maxHeight: 100)
-      TextField(
-        text: $amount,
-        prompt: Text("Amount")
-      ) {
-        Text("Amount")
-      }.focused($focusedAmount)
-      .textFieldStyle(RoundedBorderTextFieldStyle())
-      .keyboardType(.decimalPad)
-      .onAppear {
-        if let expenseEntry {
-          name = expenseEntry.name
-          amountPrefix = expenseEntry.amountPrefix
-          amount = formatter.string(from: NSDecimalNumber(decimal: expenseEntry.amount)) ?? ""
-          interval = Interval(rawValue: expenseEntry.interval) ?? Interval.monthly
+      .pickerStyle(.segmented)
+      HStack {
+        Picker("Interval", selection: $interval) {
+          ForEach(Interval.allCases) { option in
+            Text(String(describing: option.description))
+          }
         }
-        focusedName = true
-      }
-      Text(Constants.getSymbol(Locale.current.currency!.identifier) ?? "$")
-        .accessibilityIdentifier("CurrencySymbol")
-    }.alignmentGuide(.listRowSeparatorLeading) { _ in
+        .accessibilityIdentifier("intervalPicker")
+        .pickerStyle(.automatic)
+        .labelsHidden()
+        Spacer()
+        TextField(
+          text: $amount,
+          prompt: Text("Amount")
+        ) {
+          Text("Amount")
+        }
+        .focused($focusedAmount)
+        .multilineTextAlignment(.trailing)
+        .textFieldStyle(RoundedBorderTextFieldStyle())
+        .keyboardType(.decimalPad)
+        .onAppear {
+          if let expenseEntry {
+            name = expenseEntry.name
+            amountPrefix = expenseEntry.amountPrefix
+            amount = formatter.string(from: NSDecimalNumber(decimal: expenseEntry.amount)) ?? ""
+            interval = Interval(rawValue: expenseEntry.interval) ?? Interval.monthly
+          }
+        }
+        Text(Constants.getSymbol(Locale.current.currency!.identifier) ?? "$")
+          .accessibilityIdentifier("CurrencySymbol")
+      }.alignmentGuide(.listRowSeparatorLeading) { _ in
         return 0
-    }
-    Picker("Interval", selection: $interval) {
-      ForEach(Interval.allCases) { option in
-        Text(String(describing: option.description))
       }
-    }.accessibilityIdentifier("intervalPicker")
-    .pickerStyle(.menu)
+    }
   }
 }
 
@@ -96,8 +99,8 @@ struct EntryFormView: View {
     interval: .weekly)
 
   EntryFormView(expenseEntry: entry,
-                          name: $name,
-                          amountPrefix: $amountPrefix,
-                          amount: $amount,
-                          interval: $interval)
+                name: $name,
+                amountPrefix: $amountPrefix,
+                amount: $amount,
+                interval: $interval)
 }

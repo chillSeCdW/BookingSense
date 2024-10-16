@@ -26,12 +26,12 @@
 		B92782F32BDE779700D13808 /* BookingSenseUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B92782F22BDE779700D13808 /* BookingSenseUITests.swift */; };
 		B92782F52BDE779700D13808 /* BookingSenseUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B92782F42BDE779700D13808 /* BookingSenseUITestsLaunchTests.swift */; };
 		B927FB232C26CD49008D30BE /* ToolbarAddTip.swift in Sources */ = {isa = PBXBuildFile; fileRef = B927FB222C26CD49008D30BE /* ToolbarAddTip.swift */; };
-		B927FB252C28205E008D30BE /* AdditinalInfoTip.swift in Sources */ = {isa = PBXBuildFile; fileRef = B927FB242C28205E008D30BE /* AdditinalInfoTip.swift */; };
-		B927FB272C2B68BB008D30BE /* PrefixBookingTip.swift in Sources */ = {isa = PBXBuildFile; fileRef = B927FB262C2B68BB008D30BE /* PrefixBookingTip.swift */; };
 		B927FB292C2C386D008D30BE /* ToolbarOverviewList.swift in Sources */ = {isa = PBXBuildFile; fileRef = B927FB282C2C386D008D30BE /* ToolbarOverviewList.swift */; };
 		B92BC36F2C401DCE00019A62 /* MijickPopupView in Frameworks */ = {isa = PBXBuildFile; productRef = B92BC36E2C401DCE00019A62 /* MijickPopupView */; };
 		B92BC3712C401E7400019A62 /* ResetHintsTopPopUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = B92BC3702C401E7400019A62 /* ResetHintsTopPopUp.swift */; };
 		B92C53B32BDFED590029E759 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = B9D534122BD2903500C3355F /* Localizable.xcstrings */; };
+		B92D6F632CBFBE04000A2697 /* OverviewChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B92D6F622CBFBE04000A2697 /* OverviewChartView.swift */; };
+		B92D6F652CC006C4000A2697 /* ChartModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = B92D6F642CC006BD000A2697 /* ChartModels.swift */; };
 		B93F74012BF39F91008A5088 /* AdditionalInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B93F74002BF39F91008A5088 /* AdditionalInfoView.swift */; };
 		B95981FA2BE3890500578A9C /* BookingNavigationStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B95981F92BE3890500578A9C /* BookingNavigationStackView.swift */; };
 		B95981FC2BE3898B00578A9C /* EntryListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B95981FB2BE3898B00578A9C /* EntryListView.swift */; };
@@ -110,11 +110,11 @@
 		B92782F22BDE779700D13808 /* BookingSenseUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingSenseUITests.swift; sourceTree = "<group>"; };
 		B92782F42BDE779700D13808 /* BookingSenseUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingSenseUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		B927FB222C26CD49008D30BE /* ToolbarAddTip.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolbarAddTip.swift; sourceTree = "<group>"; };
-		B927FB242C28205E008D30BE /* AdditinalInfoTip.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdditinalInfoTip.swift; sourceTree = "<group>"; };
-		B927FB262C2B68BB008D30BE /* PrefixBookingTip.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrefixBookingTip.swift; sourceTree = "<group>"; };
 		B927FB282C2C386D008D30BE /* ToolbarOverviewList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolbarOverviewList.swift; sourceTree = "<group>"; };
 		B92BC3702C401E7400019A62 /* ResetHintsTopPopUp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetHintsTopPopUp.swift; sourceTree = "<group>"; };
 		B92C53B22BDFDD980029E759 /* productionTestPlan.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = productionTestPlan.xctestplan; sourceTree = "<group>"; };
+		B92D6F622CBFBE04000A2697 /* OverviewChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverviewChartView.swift; sourceTree = "<group>"; };
+		B92D6F642CC006BD000A2697 /* ChartModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartModels.swift; sourceTree = "<group>"; };
 		B93F74002BF39F91008A5088 /* AdditionalInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdditionalInfoView.swift; sourceTree = "<group>"; };
 		B95981F92BE3890500578A9C /* BookingNavigationStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingNavigationStackView.swift; sourceTree = "<group>"; };
 		B95981FB2BE3898B00578A9C /* EntryListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryListView.swift; sourceTree = "<group>"; };
@@ -223,6 +223,7 @@
 		B915DC4D2BB46EA50018E812 /* Data */ = {
 			isa = PBXGroup;
 			children = (
+				B92D6F642CC006BD000A2697 /* ChartModels.swift */,
 				B9FEC3D52CAD5277009DD4A0 /* Handlers */,
 				B927FB212C26CD1E008D30BE /* Tips */,
 				B99205FA2BD90F630099EF26 /* Models */,
@@ -237,6 +238,7 @@
 		B919B4A32BC6AAA3009B2FA4 /* Overview */ = {
 			isa = PBXGroup;
 			children = (
+				B92D6F622CBFBE04000A2697 /* OverviewChartView.swift */,
 				B9F4E0342CB2BB5300A12762 /* ChartsView.swift */,
 				B915DC482BB46E350018E812 /* OverviewView.swift */,
 				B93F74002BF39F91008A5088 /* AdditionalInfoView.swift */,
@@ -304,8 +306,6 @@
 			isa = PBXGroup;
 			children = (
 				B927FB222C26CD49008D30BE /* ToolbarAddTip.swift */,
-				B927FB242C28205E008D30BE /* AdditinalInfoTip.swift */,
-				B927FB262C2B68BB008D30BE /* PrefixBookingTip.swift */,
 			);
 			path = Tips;
 			sourceTree = "<group>";
@@ -642,7 +642,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				B90D3D0F2C19D97D00133857 /* IntervalInsightsView.swift in Sources */,
-				B927FB272C2B68BB008D30BE /* PrefixBookingTip.swift in Sources */,
 				B99206092BDA96090099EF26 /* ToolbarEntry.swift in Sources */,
 				B96761CD2C34A77B00DA9114 /* MailView.swift in Sources */,
 				B907587B2C13479300EDC82F /* ContentView.swift in Sources */,
@@ -660,7 +659,6 @@
 				B97378FD2BDFC7D1003A729E /* Migrations.swift in Sources */,
 				B99205FC2BD90F780099EF26 /* SearchInfo.swift in Sources */,
 				B97378F82BDFC11E003A729E /* ContainerFactory.swift in Sources */,
-				B927FB252C28205E008D30BE /* AdditinalInfoTip.swift in Sources */,
 				B99205FF2BD90FAD0099EF26 /* SortButtonView.swift in Sources */,
 				B9F4E0352CB2BB5700A12762 /* ChartsView.swift in Sources */,
 				B96761D02C358B0F00DA9114 /* ContactButtons.swift in Sources */,
@@ -668,11 +666,13 @@
 				B95981FA2BE3890500578A9C /* BookingNavigationStackView.swift in Sources */,
 				B9DE5B7F2BC6E7740017ACF4 /* AmountPrefix.swift in Sources */,
 				B9E4ABF22BF6438E00E96330 /* InfoView.swift in Sources */,
+				B92D6F632CBFBE04000A2697 /* OverviewChartView.swift in Sources */,
 				B9BB9D6E2CAAE96C0057573B /* ThankYouPopUp.swift in Sources */,
 				B99206072BDA806E0099EF26 /* ToolbarEntryList.swift in Sources */,
 				B992060B2BDA96D80099EF26 /* EntryFormView.swift in Sources */,
 				B93F74012BF39F91008A5088 /* AdditionalInfoView.swift in Sources */,
 				B915DC492BB46E350018E812 /* OverviewView.swift in Sources */,
+				B92D6F652CC006C4000A2697 /* ChartModels.swift in Sources */,
 				B919B4A22BC6AA47009B2FA4 /* EntryView.swift in Sources */,
 				B927FB292C2C386D008D30BE /* ToolbarOverviewList.swift in Sources */,
 				B915DC4F2BB479190018E812 /* Constants.swift in Sources */,

@@ -42,6 +42,7 @@ struct BookingNavigationStackView: View {
     .sheet(isPresented: $showingSheet, content: {
       NavigationStack {
         EntryView()
+          .presentationDetents([.medium, .large])
       }
     })
   }
@@ -55,9 +56,9 @@ struct BookingNavigationStackView: View {
   private func deleteAllItems() {
     withAnimation {
       do {
-          try modelContext.delete(model: BookingEntry.self)
+        try modelContext.delete(model: BookingEntry.self)
       } catch {
-          print("Failed to delete all Booking entries")
+        print("Failed to delete all Booking entries")
       }
     }
   }
