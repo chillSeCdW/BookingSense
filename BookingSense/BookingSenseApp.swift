@@ -49,7 +49,7 @@ struct BookingSenseApp: App {
       numberOfVisits = 0
       return
     }
-    
+
     try? Tips.configure([
       .displayFrequency(.immediate)
     ])

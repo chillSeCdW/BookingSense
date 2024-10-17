@@ -17,37 +17,43 @@ struct OverviewView: View {
   @AppStorage("expandedCharts") private var isExpandedCharts = false
   @AppStorage("insightsInterval") private var interval: Interval = .monthly
 
-  var monthlyMinusData: [BookingEntryChartData] {
+  var totalData: [BookingEntryChartData] {
 
-    let minusBreakDown: [BookingEntryChartData] = entries.filter {
-      $0.interval == Interval.monthly.rawValue && $0.amountPrefix == .minus
-    }.map { entry in
-      BookingEntryChartData(id: entry.id, name: entry.name, amount: entry.amount)
+    let sumForAllPlusForInterval = entries.filter { $0.amountPrefix == .plus }
+      .map { entry in
+        entry.amount * Constants.getTimesValue(from: Interval(rawValue: entry.interval), to: interval)
+      }
+      .reduce(0, +)
+
+    let sumForAllMinusForInterval = entries.filter { $0.amountPrefix == .minus }
+      .map { entry in
+        entry.amount * Constants.getTimesValue(from: Interval(rawValue: entry.interval), to: interval)
+      }
+      .reduce(0, +)
+
+    let sumForAllSavingForInterval = entries.filter { $0.amountPrefix == .saving }
+      .map { entry in
+        entry.amount * Constants.getTimesValue(from: Interval(rawValue: entry.interval), to: interval)
+      }
+      .reduce(0, +)
+
+    let totalLeft = sumForAllPlusForInterval - (sumForAllMinusForInterval + sumForAllSavingForInterval)
+
+    if totalLeft < 0 {
+      return []
     }
 
-    return minusBreakDown
-  }
-
-  var monthlyPlusData: [BookingEntryChartData] {
-
-    let plusBreakDown: [BookingEntryChartData] = entries.filter {
-      $0.interval == Interval.monthly.rawValue && $0.amountPrefix == .plus
-    }.map { entry in
-      BookingEntryChartData(id: entry.id, name: entry.name, amount: entry.amount)
-    }
-
-    return plusBreakDown
-  }
-
-  var monthlySavingData: [BookingEntryChartData] {
-
-    let savingBreakDown: [BookingEntryChartData] = entries.filter {
-      $0.interval == Interval.monthly.rawValue && $0.amountPrefix == .saving
-    }.map { entry in
-      BookingEntryChartData(id: entry.id, name: entry.name, amount: entry.amount)
-    }
-
-    return savingBreakDown
+    return [
+      BookingEntryChartData(id: "Total costs",
+                            name: String(localized: "Total costs"),
+                            amount: sumForAllMinusForInterval),
+      BookingEntryChartData(id: "Total savings",
+                            name: String(localized: "Total savings"),
+                            amount: sumForAllSavingForInterval),
+      BookingEntryChartData(id: "Total left",
+                            name: String(localized: "Total left"),
+                            amount: totalLeft)
+    ]
   }
 
   var body: some View {
@@ -62,13 +68,11 @@ struct OverviewView: View {
             .pickerStyle(.menu)
         }
         Section(LocalizedStringKey("\(interval.description) Insights"), isExpanded: $isExpandedBasic) {
-          OverviewChartView()
+          ChartView(data: totalData, headerTitle: String(localized: "\(interval.description.capitalized) Overview"))
           IntervalInsightsView()
         }
         Section("Charts", isExpanded: $isExpandedCharts) {
-          ChartsView(data: monthlyMinusData)
-          ChartsView(data: monthlyPlusData)
-          ChartsView(data: monthlySavingData)
+          ChartsView()
         }
         Section("Additional \(interval.description) Infos", isExpanded: $isAdditionalInfo) {
           AdditionalInfoView()

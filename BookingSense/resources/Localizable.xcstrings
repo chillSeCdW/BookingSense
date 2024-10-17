@@ -181,6 +181,70 @@
         }
       }
     },
+    "%@ Minus" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@e Abzüge"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ deductions"
+          }
+        }
+      }
+    },
+    "%@ Overview" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@e Übersicht"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ Overview"
+          }
+        }
+      }
+    },
+    "%@ Plus" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@es Einkommen"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ income"
+          }
+        }
+      }
+    },
+    "%@ Saving" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@e Rücklagen"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ savings"
+          }
+        }
+      }
+    },
     "%@ savings" : {
       "localizations" : {
         "de" : {
@@ -590,6 +654,9 @@
           }
         }
       }
+    },
+    "Chart Type" : {
+
     },
     "Charts" : {
       "localizations" : {
@@ -1633,6 +1700,12 @@
             "state" : "translated",
             "value" : "Gesamtkosten"
           }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Total costs"
+          }
         }
       }
     },
@@ -1660,6 +1733,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Einsparungen"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Total savings"
           }
         }
       }

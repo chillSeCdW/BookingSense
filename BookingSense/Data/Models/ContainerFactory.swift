@@ -47,9 +47,25 @@ struct ContainerFactory {
     return returnResult
   }
 
+  // swiftlint:disable function_body_length
   static func generateFixedEntriesItems() -> [BookingEntry] {
     var returnResult: [BookingEntry] = []
 
+    returnResult.append(BookingEntry(name: "Trinkgeld",
+                                     tags: ["default"],
+                                     amount: 1,
+                                     amountPrefix: AmountPrefix.plus,
+                                     interval: .daily))
+    returnResult.append(BookingEntry(name: "Cashback",
+                                     tags: ["default"],
+                                     amount: 10,
+                                     amountPrefix: AmountPrefix.plus,
+                                     interval: .weekly))
+    returnResult.append(BookingEntry(name: "Some biWeekly",
+                                     tags: ["default"],
+                                     amount: 50,
+                                     amountPrefix: AmountPrefix.plus,
+                                     interval: .biweekly))
     returnResult.append(BookingEntry(name: "Salary",
                                      tags: ["default"],
                                      amount: 2500,
@@ -60,6 +76,16 @@ struct ContainerFactory {
                                      amount: 150,
                                      amountPrefix: AmountPrefix.plus,
                                      interval: .monthly))
+    returnResult.append(BookingEntry(name: "Investment",
+                                     tags: ["default"],
+                                     amount: 500,
+                                     amountPrefix: AmountPrefix.plus,
+                                     interval: .semiannually))
+    returnResult.append(BookingEntry(name: "Festgeld",
+                                     tags: ["default"],
+                                     amount: 1000,
+                                     amountPrefix: AmountPrefix.plus,
+                                     interval: .annually))
 
     returnResult.append(BookingEntry(name: "Brötchen",
                                      tags: ["default"],
@@ -113,15 +139,30 @@ struct ContainerFactory {
                                      interval: .semiannually))
     returnResult.append(BookingEntry(name: "KFZ Steuer",
                                      tags: ["default"],
-                                     amount: 150,
+                                     amount: 450,
                                      amountPrefix: AmountPrefix.minus,
                                      interval: .annually))
     returnResult.append(BookingEntry(name: "TÜV",
                                      tags: ["default"],
-                                     amount: 200,
+                                     amount: 800,
                                      amountPrefix: AmountPrefix.minus,
                                      interval: .annually))
 
+    returnResult.append(BookingEntry(name: "Einkauf Aufrundung",
+                                     tags: ["default"],
+                                     amount: 1,
+                                     amountPrefix: AmountPrefix.saving,
+                                     interval: .daily))
+    returnResult.append(BookingEntry(name: "Bike saving",
+                                     tags: ["default"],
+                                     amount: 10,
+                                     amountPrefix: AmountPrefix.saving,
+                                     interval: .weekly))
+    returnResult.append(BookingEntry(name: "Phone saving",
+                                     tags: ["default"],
+                                     amount: 20,
+                                     amountPrefix: AmountPrefix.saving,
+                                     interval: .biweekly))
     returnResult.append(BookingEntry(name: "Tagesgeld",
                                      tags: ["default"],
                                      amount: 500,
@@ -132,6 +173,22 @@ struct ContainerFactory {
                                      amount: 200,
                                      amountPrefix: AmountPrefix.saving,
                                      interval: .monthly))
+    returnResult.append(BookingEntry(name: "Versicherung",
+                                     tags: ["default"],
+                                     amount: 200,
+                                     amountPrefix: AmountPrefix.saving,
+                                     interval: .quarterly))
+    returnResult.append(BookingEntry(name: "Altervorsorge",
+                                     tags: ["default"],
+                                     amount: 200,
+                                     amountPrefix: AmountPrefix.saving,
+                                     interval: .semiannually))
+    returnResult.append(BookingEntry(name: "Auto reperatur",
+                                     tags: ["default"],
+                                     amount: 500,
+                                     amountPrefix: AmountPrefix.saving,
+                                     interval: .annually))
     return returnResult
   }
+  // swiftlint:enable function_body_length
 }

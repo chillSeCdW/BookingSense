@@ -6,74 +6,133 @@ import SwiftData
 import Charts
 
 struct ChartsView: View {
-  var data: [BookingEntryChartData]
+  @Query private var entries: [BookingEntry]
+
   @AppStorage("insightsInterval") private var interval: Interval = .monthly
-  @AppStorage("blurSensitive") private var blurSensitive = false
+  @AppStorage("chartTypeIntervalMinus") var chartTypeIntervalMinus: ChartType = .interval
+  @AppStorage("chartTypeIntervalPlus") var chartTypeIntervalPlus: ChartType = .interval
+  @AppStorage("chartTypeIntervalSaving") var chartTypeIntervalSaving: ChartType = .interval
 
-  @State var selectedPie: Double?
+  var intervalMinusData: [BookingEntryChartData] {
 
-  var highestData: (BookingEntryChartData)? {
-    return data.max(by: { $0.amount < $1.amount })
+    let minusBreakDown: [BookingEntryChartData] = entries.filter {
+      $0.interval == interval.rawValue && $0.amountPrefix == .minus
+    }.map { entry in
+      BookingEntryChartData(id: entry.id, name: entry.name, amount: entry.amount)
+    }
+
+    return minusBreakDown
   }
 
-  var cumulativeDataRangesForStyles: [(name: String, range: Range<Double>)] {
-    var cumulative = 0.0
-    return data.map {
-      let newCumulative = cumulative + Double(truncating: abs($0.amount) as NSNumber)
-      let result = (name: $0.name, range: cumulative ..< newCumulative)
-      cumulative = newCumulative
-      return result
+  var intervalTotalMinusData: [BookingEntryChartData] {
+
+    let minusBreakDown: [BookingEntryChartData] = entries.filter {
+      $0.amountPrefix == .minus
+    }.map { entry in
+      if entry.interval != interval.rawValue {
+        return BookingEntryChartData(
+          id: entry.id,
+          name: entry.name,
+          amount: entry.amount * Constants.getTimesValue(from: Interval(rawValue: entry.interval), to: interval))
+      }
+      return BookingEntryChartData(id: entry.id, name: entry.name, amount: entry.amount)
     }
+
+    return minusBreakDown
   }
 
-  var selectedStyle: (BookingEntryChartData)? {
-    if let selectedPie,
-       let selectedIndex = cumulativeDataRangesForStyles
-      .firstIndex(where: { $0.range.contains(selectedPie) }) {
-      return data[selectedIndex]
+  var intervalPlusData: [BookingEntryChartData] {
+
+    let plusBreakDown: [BookingEntryChartData] = entries.filter {
+      $0.interval == interval.rawValue && $0.amountPrefix == .plus
+    }.map { entry in
+      BookingEntryChartData(id: entry.id, name: entry.name, amount: entry.amount)
     }
-    return nil
+
+    return plusBreakDown
+  }
+
+  var intervalTotalPlusData: [BookingEntryChartData] {
+
+    let plusBreakDown: [BookingEntryChartData] = entries.filter {
+      $0.amountPrefix == .plus
+    }.map { entry in
+      if entry.interval != interval.rawValue {
+        return BookingEntryChartData(
+          id: entry.id,
+          name: entry.name,
+          amount: entry.amount * Constants.getTimesValue(from: Interval(rawValue: entry.interval), to: interval))
+      }
+      return BookingEntryChartData(id: entry.id, name: entry.name, amount: entry.amount)
+    }
+
+    return plusBreakDown
+  }
+
+  var intervalSavingData: [BookingEntryChartData] {
+
+    let savingBreakDown: [BookingEntryChartData] = entries.filter {
+      $0.interval == interval.rawValue && $0.amountPrefix == .saving
+    }.map { entry in
+      BookingEntryChartData(id: entry.id, name: entry.name, amount: entry.amount)
+    }
+
+    return savingBreakDown
+  }
+
+  var intervalTotalSavingData: [BookingEntryChartData] {
+
+    let savingBreakDown: [BookingEntryChartData] = entries.filter {
+      $0.amountPrefix == .saving
+    }.map { entry in
+      if entry.interval != interval.rawValue {
+        return BookingEntryChartData(
+          id: entry.id,
+          name: entry.name,
+          amount: entry.amount * Constants.getTimesValue(from: Interval(rawValue: entry.interval), to: interval))
+      }
+      return BookingEntryChartData(id: entry.id, name: entry.name, amount: entry.amount)
+    }
+
+    return savingBreakDown
   }
 
   var body: some View {
-    if !data.isEmpty {
-      Chart(data, id: \.id) { element in
-        SectorMark(
-          angle: .value("Amount", element.amount),
-          innerRadius: .ratio(0.618),
-          angularInset: 1.5
-        )
-        .cornerRadius(5)
-        .foregroundStyle(by: .value("Name", element.name))
-        .opacity(element.name == (selectedStyle?.name ?? highestData?.name) ? 1 : 0.3)
-      }
-      .chartLegend(alignment: .center, spacing: 18)
-      .chartAngleSelection(value: $selectedPie)
-      .scaledToFit()
-      .chartBackground { chartProxy in
-        GeometryReader { geometry in
-          let frame = geometry[chartProxy.plotFrame!]
-          VStack {
-            Text("Highest amount")
-              .font(.callout)
-              .foregroundStyle(.secondary)
-              .opacity(selectedStyle == nil || selectedStyle?.name == highestData?.name ? 1 : 0)
-            Text(LocalizedStringKey(selectedStyle?.name ?? highestData?.name ?? ""))
-              .font(.title2.bold())
-              .foregroundColor(.primary)
-            Text(selectedStyle?.amount ?? highestData?.amount ?? Decimal(),
-                 format: .currency(code: Locale.current.currency!.identifier)
-            ).blur(radius: blurSensitive ? 5.0 : 0)
-              .font(.callout)
-              .foregroundStyle(.secondary)
-          }
-          .position(x: frame.midX, y: frame.midY)
+    chartBody($chartTypeIntervalMinus,
+              intervalData: intervalMinusData,
+              totalData: intervalTotalMinusData,
+              headerTitle: String(localized: "\(interval.description.capitalized) Minus"))
+    chartBody($chartTypeIntervalPlus,
+              intervalData: intervalPlusData,
+              totalData: intervalTotalPlusData,
+              headerTitle: String(localized: "\(interval.description.capitalized) Plus"))
+    chartBody($chartTypeIntervalSaving,
+              intervalData: intervalSavingData,
+              totalData: intervalTotalSavingData,
+              headerTitle: String(localized: "\(interval.description.capitalized) Saving"))
+  }
+
+  func chartBody(_ chartType: Binding<ChartType>,
+                 intervalData: [BookingEntryChartData],
+                 totalData: [BookingEntryChartData],
+                 headerTitle: String) -> some View {
+    VStack {
+      Picker("Chart Type", selection: chartType) {
+        ForEach(ChartType.allCases) { option in
+          Text(LocalizedStringKey(option.description))
         }
+      }
+      .pickerStyle(.segmented)
+      switch chartType.wrappedValue {
+      case .interval:
+        ChartView(data: intervalData, headerTitle: headerTitle)
+      case .total:
+        ChartView(data: totalData, headerTitle: headerTitle)
       }
     }
   }
 }
 
 #Preview {
-  ChartsView(data: [])
+  ChartsView()
 }

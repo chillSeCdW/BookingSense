@@ -8,3 +8,19 @@ struct BookingEntryChartData {
   let name: String
   let amount: Decimal
 }
+
+enum ChartType: String, Codable, CaseIterable, Identifiable {
+  var id: Self { self }
+
+  case interval
+  case total
+
+  var description: String {
+    switch self {
+    case .interval:
+      return "Interval"
+    case .total:
+      return "Total"
+    }
+  }
+}
