@@ -22,16 +22,12 @@ struct ToolbarEntryList: ToolbarContent {
     }
     if editMode?.wrappedValue.isEditing == true {
       ToolbarItem(placement: .navigationBarLeading) {
-        Button(action: showPopup) {
-          Image(systemName: "trash")
-        }
+        Button("Delete all", systemImage: "trash", role: .destructive, action: showPopup).tint(.red)
       }
     }
     ToolbarItem {
-        Button(action: addEntry) {
-            Image(systemName: "plus")
-        }
-        .popoverTip(ToolbarAddTip())
+      Button("Plus", systemImage: "plus", action: addEntry)
+      .popoverTip(ToolbarAddTip())
     }
     ToolbarItem {
       withAnimation {
@@ -39,7 +35,7 @@ struct ToolbarEntryList: ToolbarContent {
       }
     }
     ToolbarItem(placement: .navigationBarTrailing) {
-        EditButton()
+      EditButton()
     }
   }
 
