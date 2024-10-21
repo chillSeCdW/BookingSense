@@ -120,7 +120,7 @@ struct ChartView<Content: View>: View {
       .foregroundStyle(by: .value("Name", element.name))
       .opacity(element.name == (selectedStyle?.name ?? highestData?.name) ? 1 : 0.3)
     }
-    .chartLegend(alignment: .center, spacing: 5)
+    .chartLegend(.hidden)
     .chartAngleSelection(value: $selectedPie)
     .scaledToFill()
     .chartBackground { chartProxy in
@@ -135,6 +135,7 @@ struct ChartView<Content: View>: View {
             .font(.title3.bold())
             .foregroundColor(.primary)
             .frame(maxWidth: frame.width/2)
+            .multilineTextAlignment(.center)
           Text(selectedStyle?.amount ?? highestData?.amount ?? Decimal(),
                format: .currency(code: Locale.current.currency!.identifier)
           ).blur(radius: blurSensitive ? 5.0 : 0)
