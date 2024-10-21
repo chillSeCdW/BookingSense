@@ -18,7 +18,7 @@ struct ChartsView: View {
     let minusBreakDown: [BookingEntryChartData] = entries.filter {
       $0.interval == interval.rawValue && $0.amountPrefix == .minus
     }.map { entry in
-      BookingEntryChartData(id: entry.id, name: entry.name, amount: entry.amount)
+      BookingEntryChartData(id: entry.id, name: entry.name, amount: entry.amount, color: nil)
     }
 
     return minusBreakDown
@@ -33,9 +33,11 @@ struct ChartsView: View {
         return BookingEntryChartData(
           id: entry.id,
           name: entry.name,
-          amount: entry.amount * Constants.getTimesValue(from: Interval(rawValue: entry.interval), to: interval))
+          amount: entry.amount * Constants.getTimesValue(from: Interval(rawValue: entry.interval), to: interval),
+          color: nil
+        )
       }
-      return BookingEntryChartData(id: entry.id, name: entry.name, amount: entry.amount)
+      return BookingEntryChartData(id: entry.id, name: entry.name, amount: entry.amount, color: nil)
     }
 
     return minusBreakDown
@@ -46,7 +48,7 @@ struct ChartsView: View {
     let plusBreakDown: [BookingEntryChartData] = entries.filter {
       $0.interval == interval.rawValue && $0.amountPrefix == .plus
     }.map { entry in
-      BookingEntryChartData(id: entry.id, name: entry.name, amount: entry.amount)
+      BookingEntryChartData(id: entry.id, name: entry.name, amount: entry.amount, color: nil)
     }
 
     return plusBreakDown
@@ -61,9 +63,11 @@ struct ChartsView: View {
         return BookingEntryChartData(
           id: entry.id,
           name: entry.name,
-          amount: entry.amount * Constants.getTimesValue(from: Interval(rawValue: entry.interval), to: interval))
+          amount: entry.amount * Constants.getTimesValue(from: Interval(rawValue: entry.interval), to: interval),
+          color: nil
+        )
       }
-      return BookingEntryChartData(id: entry.id, name: entry.name, amount: entry.amount)
+      return BookingEntryChartData(id: entry.id, name: entry.name, amount: entry.amount, color: nil)
     }
 
     return plusBreakDown
@@ -74,7 +78,7 @@ struct ChartsView: View {
     let savingBreakDown: [BookingEntryChartData] = entries.filter {
       $0.interval == interval.rawValue && $0.amountPrefix == .saving
     }.map { entry in
-      BookingEntryChartData(id: entry.id, name: entry.name, amount: entry.amount)
+      BookingEntryChartData(id: entry.id, name: entry.name, amount: entry.amount, color: nil)
     }
 
     return savingBreakDown
@@ -89,47 +93,41 @@ struct ChartsView: View {
         return BookingEntryChartData(
           id: entry.id,
           name: entry.name,
-          amount: entry.amount * Constants.getTimesValue(from: Interval(rawValue: entry.interval), to: interval))
+          amount: entry.amount * Constants.getTimesValue(from: Interval(rawValue: entry.interval), to: interval),
+          color: nil
+        )
       }
-      return BookingEntryChartData(id: entry.id, name: entry.name, amount: entry.amount)
+      return BookingEntryChartData(id: entry.id, name: entry.name, amount: entry.amount, color: nil)
     }
 
     return savingBreakDown
   }
 
   var body: some View {
-    chartBody($chartTypeIntervalMinus,
-              intervalData: intervalMinusData,
-              totalData: intervalTotalMinusData,
-              headerTitle: String(localized: "\(interval.description.capitalized) Minus"))
-    chartBody($chartTypeIntervalPlus,
-              intervalData: intervalPlusData,
-              totalData: intervalTotalPlusData,
-              headerTitle: String(localized: "\(interval.description.capitalized) Plus"))
-    chartBody($chartTypeIntervalSaving,
-              intervalData: intervalSavingData,
-              totalData: intervalTotalSavingData,
-              headerTitle: String(localized: "\(interval.description.capitalized) Saving"))
+    ChartView(data: chartTypeIntervalMinus == .interval ? intervalMinusData : intervalTotalPlusData,
+              headerTitle: String(localized: "\(interval.description.capitalized) Minus")
+    ) {
+      chartPicker($chartTypeIntervalMinus)
+    }
+    ChartView(data: chartTypeIntervalPlus == .interval ? intervalPlusData : intervalTotalPlusData,
+              headerTitle: String(localized: "\(interval.description.capitalized) Plus")
+    ) {
+      chartPicker($chartTypeIntervalPlus)
+    }
+    ChartView(data: chartTypeIntervalSaving == .interval ? intervalSavingData : intervalTotalSavingData,
+              headerTitle: String(localized: "\(interval.description.capitalized) Plus")
+    ) {
+      chartPicker($chartTypeIntervalSaving)
+    }
   }
 
-  func chartBody(_ chartType: Binding<ChartType>,
-                 intervalData: [BookingEntryChartData],
-                 totalData: [BookingEntryChartData],
-                 headerTitle: String) -> some View {
-    VStack {
-      Picker("Chart Type", selection: chartType) {
-        ForEach(ChartType.allCases) { option in
-          Text(LocalizedStringKey(option.description))
-        }
-      }
-      .pickerStyle(.segmented)
-      switch chartType.wrappedValue {
-      case .interval:
-        ChartView(data: intervalData, headerTitle: headerTitle)
-      case .total:
-        ChartView(data: totalData, headerTitle: headerTitle)
+  func chartPicker(_ chartType: Binding<ChartType>) -> some View {
+    Picker("Chart Type", selection: chartType.animation()) {
+      ForEach(ChartType.allCases) { option in
+        Text(LocalizedStringKey(option.description))
       }
     }
+    .pickerStyle(.segmented)
   }
 }
 

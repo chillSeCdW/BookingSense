@@ -2,11 +2,13 @@
 // Using Swift 6.0
 
 import Foundation
+import SwiftUICore
 
 struct BookingEntryChartData {
   let id: String
   let name: String
   let amount: Decimal
+  let color: Color?
 }
 
 enum ChartType: String, Codable, CaseIterable, Identifiable {

@@ -102,7 +102,7 @@ struct ContainerFactory {
                                      amount: 20,
                                      amountPrefix: AmountPrefix.minus,
                                      interval: .biweekly))
-    returnResult.append(BookingEntry(name: "rent",
+    returnResult.append(BookingEntry(name: "Rent",
                                      tags: ["default"],
                                      amount: 800,
                                      amountPrefix: AmountPrefix.minus,

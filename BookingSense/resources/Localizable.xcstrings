@@ -230,6 +230,7 @@
       }
     },
     "%@ Saving" : {
+      "extractionState" : "stale",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -656,7 +657,20 @@
       }
     },
     "Chart Type" : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Diagrammtyp"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Chart Type"
+          }
+        }
+      }
     },
     "Charts" : {
       "localizations" : {
@@ -911,6 +925,23 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Some existing entries were found. How do you want to handle them?"
+          }
+        }
+      }
+    },
+    "Entry name already exists. Please use different name." : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Name des Eintrags bereits vorhanden. Bitte wähle einen anderen aus."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Entry name already exists. Please use a different name."
           }
         }
       }
@@ -1362,6 +1393,23 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "save"
+          }
+        }
+      }
+    },
+    "Save failed" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Speichern fehlgeschlagen"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Save failed"
           }
         }
       }

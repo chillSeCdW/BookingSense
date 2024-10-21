@@ -46,13 +46,16 @@ struct OverviewView: View {
     return [
       BookingEntryChartData(id: "Total costs",
                             name: String(localized: "Total costs"),
-                            amount: sumForAllMinusForInterval),
+                            amount: sumForAllMinusForInterval,
+                            color: .red),
       BookingEntryChartData(id: "Total savings",
                             name: String(localized: "Total savings"),
-                            amount: sumForAllSavingForInterval),
+                            amount: sumForAllSavingForInterval,
+                            color: .blue),
       BookingEntryChartData(id: "Total left",
                             name: String(localized: "Total left"),
-                            amount: totalLeft)
+                            amount: totalLeft,
+                            color: .green)
     ]
   }
 
@@ -65,7 +68,7 @@ struct OverviewView: View {
               Text(String(describing: option.description))
             }
           }.accessibilityIdentifier("intervalPicker")
-            .pickerStyle(.menu)
+            .pickerStyle(.automatic)
         }
         Section(LocalizedStringKey("\(interval.description) Insights"), isExpanded: $isExpandedBasic) {
           ChartView(data: totalData, headerTitle: String(localized: "\(interval.description.capitalized) Overview"))

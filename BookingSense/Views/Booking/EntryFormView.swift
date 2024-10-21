@@ -22,8 +22,8 @@ struct EntryFormView: View {
   @Binding var amount: String
   @Binding var interval: Interval
 
-  @FocusState private var focusedName: Bool
-  @FocusState private var focusedAmount: Bool
+  @FocusState var focusedName: Bool
+  @FocusState var focusedAmount: Bool
 
   var body: some View {
     TextField(text: $name, prompt: Text("Name")) {
