@@ -15,8 +15,8 @@ struct NavigationStackContentView: View {
   @ViewBuilder
   var body: some View {
     if isListEmpty {
-        Text("No entries available")
-        Text("Press the + button to add an entry")
+      Text("No entries available")
+      Text("Press the + button to add an entry")
     } else {
       List {
         ForEach(Interval.allCases) { option in
@@ -44,6 +44,6 @@ struct NavigationStackContentView: View {
 }
 
 #Preview("emptyContent") {
-    NavigationStackContentView(isListEmpty: true)
+  NavigationStackContentView(isListEmpty: true)
     .environment(SearchInfo())
 }

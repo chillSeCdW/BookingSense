@@ -229,23 +229,6 @@
         }
       }
     },
-    "%@ Saving" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "%@e Rücklagen"
-          }
-        },
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "%@ savings"
-          }
-        }
-      }
-    },
     "%@ savings" : {
       "localizations" : {
         "de" : {
@@ -833,6 +816,22 @@
         }
       }
     },
+    "Delete all" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Alle löschen"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Delete all"
+          }
+        }
+      }
+    },
     "Delete all entries" : {
       "localizations" : {
         "de" : {
@@ -1313,6 +1312,22 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Overview"
+          }
+        }
+      }
+    },
+    "Plus" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Plus"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Plus"
           }
         }
       }
