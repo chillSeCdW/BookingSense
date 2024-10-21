@@ -14,12 +14,18 @@ struct EntryView: View {
   @Environment(\.modelContext) private var modelContext
   @Environment(\.dismiss) var dismiss
 
+  @Query private var entries: [BookingEntry]
+
   var expenseEntry: BookingEntry?
 
   @State private var name: String = ""
   @State private var amountPrefix: AmountPrefix = .minus
   @State private var amount: String = ""
   @State private var interval: Interval = .monthly
+  @State private var errorMessage: String?
+  @FocusState private var focusedName: Bool
+  @FocusState private var focusedAmount: Bool
+  let alertTitle: String = "Save failed"
 
   private var isCreate: Bool {
     expenseEntry == nil ? true : false
@@ -31,16 +37,42 @@ struct EntryView: View {
                     name: $name,
                     amountPrefix: $amountPrefix,
                     amount: $amount,
-                    interval: $interval
+                    interval: $interval,
+                    focusedName: _focusedName,
+                    focusedAmount: _focusedAmount
       )
-    }.navigationTitle(isCreate ? "Create entry" : "Edit entry")
-      .toolbar {
-        ToolbarEntry(isCreate: isCreate, save: save, didValuesChange: didValuesChange)
+    }
+    .navigationTitle(isCreate ? "Create entry" : "Edit entry")
+    .toolbar {
+      ToolbarEntry(isCreate: isCreate, save: save, didValuesChange: didValuesChange)
+    }
+    .alert(Text(LocalizedStringKey(alertTitle)), isPresented: Binding<Bool>(
+        get: { errorMessage != nil },
+        set: { if !$0 { errorMessage = nil } }
+    )) {
+      Button("Ok", role: .cancel) {
+        errorMessage = nil
       }
+    } message: {
+        Text(LocalizedStringKey(errorMessage ?? "An unknown error occurred."))
+    }
   }
 
   func save() {
     let sanitizedAmount = stripString(amount)
+    focusedName = false
+    focusedAmount = false
+
+    let alreadyExists = entries.filter {
+      $0.name == name
+    }.first != nil
+
+    if alreadyExists {
+      DispatchQueue.main.async {
+        errorMessage = "Entry name already exists. Please use different name."
+      }
+      return
+    }
 
     let parsedAmount = try? Decimal(sanitizedAmount, format: Decimal.FormatStyle(locale: Locale.current))
     if checkIfAmountWasTransformed(sanitizedAmount, parsedDecimal: parsedAmount) {
@@ -57,13 +89,14 @@ struct EntryView: View {
         amountPrefix: amountPrefix,
         interval: interval
       ))
+      dismiss()
     } else {
       expenseEntry!.name = name
       expenseEntry!.amountPrefix = amountPrefix
       expenseEntry!.amount = parsedAmount ?? Decimal()
       expenseEntry!.interval = interval.rawValue
+      dismiss()
     }
-    dismiss()
   }
 
   func checkIfAmountWasTransformed(_ amountStr: String, parsedDecimal: Decimal?) -> Bool {

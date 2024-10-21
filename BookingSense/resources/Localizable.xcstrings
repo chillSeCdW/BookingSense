@@ -1,63 +1,8 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
-    "\n" : {
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : ""
-          }
-        }
-      }
-    },
-    " stands for deductions" : {
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : " steht für Abzüge."
-          }
-        },
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : " stands for deductions."
-          }
-        }
-      }
-    },
-    " stands for income" : {
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : " steht für Einkommen."
-          }
-        },
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : " stands for income."
-          }
-        }
-      }
-    },
-    " stands for savings" : {
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : " steht für Rücklagen."
-          }
-        },
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : " stands for savings."
-          }
-        }
-      }
+    "" : {
+
     },
     "%@ costs of annually" : {
       "localizations" : {
@@ -236,6 +181,71 @@
         }
       }
     },
+    "%@ Minus" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@e Abzüge"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ deductions"
+          }
+        }
+      }
+    },
+    "%@ Overview" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@e Übersicht"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ Overview"
+          }
+        }
+      }
+    },
+    "%@ Plus" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@es Einkommen"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ income"
+          }
+        }
+      }
+    },
+    "%@ Saving" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@e Rücklagen"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ savings"
+          }
+        }
+      }
+    },
     "%@ savings" : {
       "localizations" : {
         "de" : {
@@ -248,22 +258,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "%@ savings:"
-          }
-        }
-      }
-    },
-    "%@ symbol" : {
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "%@"
-          }
-        },
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "%@"
           }
         }
       }
@@ -385,22 +379,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Additional %@ information"
-          }
-        }
-      }
-    },
-    "Additional information" : {
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Zusätzliche Informationen"
-          }
-        },
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Additional information"
           }
         }
       }
@@ -678,6 +656,38 @@
         }
       }
     },
+    "Chart Type" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Diagrammtyp"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Chart Type"
+          }
+        }
+      }
+    },
+    "Charts" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Diagramme"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Charts"
+          }
+        }
+      }
+    },
     "Clear and insert" : {
       "localizations" : {
         "de" : {
@@ -690,22 +700,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Delete old entries and insert new"
-          }
-        }
-      }
-    },
-    "click here for some additional information" : {
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Hier klicken für weitere Informationen."
-          }
-        },
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Click here for some additional information."
           }
         }
       }
@@ -935,6 +929,23 @@
         }
       }
     },
+    "Entry name already exists. Please use different name." : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Name des Eintrags bereits vorhanden. Bitte wähle einen anderen aus."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Entry name already exists. Please use a different name."
+          }
+        }
+      }
+    },
     "Export as json" : {
       "localizations" : {
         "de" : {
@@ -1015,6 +1026,22 @@
         }
       }
     },
+    "Highest amount" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Höchster Betrag"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Highest amount"
+          }
+        }
+      }
+    },
     "Hints" : {
       "localizations" : {
         "de" : {
@@ -1076,6 +1103,23 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Import data"
+          }
+        }
+      }
+    },
+    "Incoming" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Eingehend"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Incoming"
           }
         }
       }
@@ -1240,6 +1284,23 @@
         }
       }
     },
+    "Outgoing" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ausgehend"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Outgoing"
+          }
+        }
+      }
+    },
     "Overview" : {
       "localizations" : {
         "de" : {
@@ -1252,22 +1313,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Overview"
-          }
-        }
-      }
-    },
-    "Prefix of booking" : {
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Präfix der Buchung"
-          }
-        },
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Prefix of booking"
           }
         }
       }
@@ -1348,6 +1393,40 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "save"
+          }
+        }
+      }
+    },
+    "Save failed" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Speichern fehlgeschlagen"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Save failed"
+          }
+        }
+      }
+    },
+    "Saving" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Einsparung"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Saving"
           }
         }
       }
@@ -1657,6 +1736,57 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "%lld total bookings"
+          }
+        }
+      }
+    },
+    "Total costs" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Gesamtkosten"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Total costs"
+          }
+        }
+      }
+    },
+    "Total left" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Restbetrag"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Total left"
+          }
+        }
+      }
+    },
+    "Total savings" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Einsparungen"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Total savings"
           }
         }
       }
