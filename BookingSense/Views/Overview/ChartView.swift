@@ -52,12 +52,14 @@ struct ChartView<Content: View>: View {
   }
 
   var body: some View {
-    if !data.isEmpty {
-      VStack {
-        Text(LocalizedStringKey(headerTitle))
-          .font(.title2)
-          .bold()
-        contentView
+    VStack {
+      Text(LocalizedStringKey(headerTitle))
+        .font(.title2)
+        .bold()
+      contentView
+      if data.isEmpty {
+        Text("No data available")
+      } else {
         if isFixedColor {
           fixedColorChart()
         } else {

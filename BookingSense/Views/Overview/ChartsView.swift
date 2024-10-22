@@ -115,7 +115,7 @@ struct ChartsView: View {
       chartPicker($chartTypeIntervalPlus)
     }
     ChartView(data: chartTypeIntervalSaving == .interval ? intervalSavingData : intervalTotalSavingData,
-              headerTitle: String(localized: "\(interval.description.capitalized) Plus")
+              headerTitle: String(localized: "\(interval.description.capitalized) Saving")
     ) {
       chartPicker($chartTypeIntervalSaving)
     }
