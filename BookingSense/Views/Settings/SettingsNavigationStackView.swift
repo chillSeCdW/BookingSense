@@ -10,6 +10,7 @@ struct SettingsNavigationStackView: View {
 
   @Environment(\.colorScheme) var colorScheme
   @AppStorage("resetTips") var resetTips = false
+  @AppStorage("biometricEnabled") var biometricEnabled = false
 
   var body: some View {
     NavigationStack {
@@ -19,6 +20,23 @@ struct SettingsNavigationStackView: View {
         }
         Section("Contact") {
           ContactButtons()
+        }
+        if BiometricHandler.shared.canUseAuthentication() {
+          Section("Authentication") {
+            Toggle("Enable Authentication for Blurring", isOn: $biometricEnabled)
+            if biometricEnabled {
+              Button {
+                if let settingsURL = URL(string: UIApplication.openSettingsURLString) {
+                  UIApplication.shared.open(settingsURL, options: [:], completionHandler: nil)
+                }
+              } label: {
+                HStack {
+                  Image(systemName: "arrow.right.circle")
+                  Text("Give Permission to activate Biometric Authentication")
+                }
+              }
+            }
+          }
         }
         Section("App Store") {
           Button(action: openAppStore) {
@@ -30,7 +48,7 @@ struct SettingsNavigationStackView: View {
         }
         Section("Tip jar") {
           NavigationLink {
-              TipJarView()
+            TipJarView()
           } label: {
             HStack {
               Image(systemName: "giftcard")
@@ -61,7 +79,7 @@ struct SettingsNavigationStackView: View {
   func openAppStore() {
     let url = "https://apps.apple.com/app/6503708794?action=write-review"
     guard let writeReviewURL = URL(string: url) else {
-        fatalError("Expected a valid URL")
+      fatalError("Expected a valid URL")
     }
     UIApplication.shared.open(writeReviewURL)
   }

@@ -5,7 +5,7 @@ import SwiftUI
 import SwiftData
 
 struct NavigationStackContentView: View {
-  @Environment(SearchInfo.self) var viewInfo
+  @Environment(AppStates.self) var appStates
   @Query private var entries: [BookingEntry]
   @AppStorage("sortParameter") var sortParameter: SortParameter = .name
   @AppStorage("sortOrder") var sortOrder: SortOrderParameter = .reverse
@@ -22,7 +22,7 @@ struct NavigationStackContentView: View {
         ForEach(Interval.allCases) { option in
           EntryListView(
             interval: option,
-            searchName: viewInfo.searchText,
+            searchName: appStates.searchText,
             sortParameter: sortParameter,
             sortOrder: sortOrder
           )
@@ -39,11 +39,11 @@ struct NavigationStackContentView: View {
   let factory = ContainerFactory(BookingEntry.self, storeInMemory: true)
   factory.addExamples(ContainerFactory.generateRandomEntriesItems())
   return NavigationStackContentView(isListEmpty: false)
-    .environment(SearchInfo())
+    .environment(AppStates())
     .modelContainer(factory.container)
 }
 
 #Preview("emptyContent") {
   NavigationStackContentView(isListEmpty: true)
-    .environment(SearchInfo())
+    .environment(AppStates())
 }

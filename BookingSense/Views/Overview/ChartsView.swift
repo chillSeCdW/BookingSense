@@ -19,7 +19,9 @@ struct ChartsView: View {
       $0.interval == interval.rawValue && $0.amountPrefix == .minus
     }.map { entry in
       BookingEntryChartData(id: entry.id, name: entry.name, amount: entry.amount, color: nil)
-    }
+    }.sorted(by: { entry1, entry2 in
+      entry1.amount > entry2.amount
+    })
 
     return minusBreakDown
   }
@@ -38,7 +40,9 @@ struct ChartsView: View {
         )
       }
       return BookingEntryChartData(id: entry.id, name: entry.name, amount: entry.amount, color: nil)
-    }
+    }.sorted(by: { entry1, entry2 in
+      entry1.amount > entry2.amount
+    })
 
     return minusBreakDown
   }
@@ -49,7 +53,9 @@ struct ChartsView: View {
       $0.interval == interval.rawValue && $0.amountPrefix == .plus
     }.map { entry in
       BookingEntryChartData(id: entry.id, name: entry.name, amount: entry.amount, color: nil)
-    }
+    }.sorted(by: { entry1, entry2 in
+      entry1.amount > entry2.amount
+    })
 
     return plusBreakDown
   }
@@ -68,7 +74,9 @@ struct ChartsView: View {
         )
       }
       return BookingEntryChartData(id: entry.id, name: entry.name, amount: entry.amount, color: nil)
-    }
+    }.sorted(by: { entry1, entry2 in
+      entry1.amount > entry2.amount
+    })
 
     return plusBreakDown
   }
@@ -79,7 +87,9 @@ struct ChartsView: View {
       $0.interval == interval.rawValue && $0.amountPrefix == .saving
     }.map { entry in
       BookingEntryChartData(id: entry.id, name: entry.name, amount: entry.amount, color: nil)
-    }
+    }.sorted(by: { entry1, entry2 in
+      entry1.amount > entry2.amount
+    })
 
     return savingBreakDown
   }
@@ -98,7 +108,9 @@ struct ChartsView: View {
         )
       }
       return BookingEntryChartData(id: entry.id, name: entry.name, amount: entry.amount, color: nil)
-    }
+    }.sorted(by: { entry1, entry2 in
+      entry1.amount > entry2.amount
+    })
 
     return savingBreakDown
   }
@@ -115,7 +127,7 @@ struct ChartsView: View {
       chartPicker($chartTypeIntervalPlus)
     }
     ChartView(data: chartTypeIntervalSaving == .interval ? intervalSavingData : intervalTotalSavingData,
-              headerTitle: String(localized: "\(interval.description.capitalized) Plus")
+              headerTitle: String(localized: "\(interval.description.capitalized) Saving")
     ) {
       chartPicker($chartTypeIntervalSaving)
     }

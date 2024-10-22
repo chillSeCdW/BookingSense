@@ -35,7 +35,7 @@ struct BookingSenseApp: App {
     return factory.container
   }()
 
-  @State private var viewInfo = SearchInfo()
+  @State private var appStates = AppStates()
 
   init() {
     setupVersion()
@@ -60,7 +60,7 @@ struct BookingSenseApp: App {
     WindowGroup {
       ContentView()
         .implementPopupView()
-        .environment(viewInfo)
+        .environment(appStates)
     }
     .modelContainer(sharedModelContainer)
   }
