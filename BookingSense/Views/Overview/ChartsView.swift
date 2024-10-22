@@ -104,7 +104,7 @@ struct ChartsView: View {
   }
 
   var body: some View {
-    ChartView(data: chartTypeIntervalMinus == .interval ? intervalMinusData : intervalTotalPlusData,
+    ChartView(data: chartTypeIntervalMinus == .interval ? intervalMinusData : intervalTotalMinusData,
               headerTitle: String(localized: "\(interval.description.capitalized) Minus")
     ) {
       chartPicker($chartTypeIntervalMinus)
