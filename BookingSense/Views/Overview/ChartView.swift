@@ -32,6 +32,10 @@ struct ChartView<Content: View>: View {
     return data.max(by: { $0.amount < $1.amount })
   }
 
+  var totalAmount: (Decimal) {
+    return data.map(\.amount).reduce(0, +)
+  }
+
   var cumulativeDataRangesForStyles: [(name: String, range: Range<Double>)] {
     var cumulative = 0.0
     return data.map {
@@ -104,6 +108,14 @@ struct ChartView<Content: View>: View {
                format: .currency(code: Locale.current.currency!.identifier)
           ).blur(radius: blurSensitive ? 5.0 : 0)
             .font(.callout)
+            .bold()
+            .foregroundStyle(.secondary)
+          Text("from")
+            .font(.footnote)
+          Text(totalAmount,
+               format: .currency(code: Locale.current.currency!.identifier)
+          ).blur(radius: blurSensitive ? 5.0 : 0)
+            .font(.callout)
             .foregroundStyle(.secondary)
         }
         .position(x: frame.midX, y: frame.midY)
@@ -145,6 +157,13 @@ struct ChartView<Content: View>: View {
           .blur(radius: blurSensitive ? 5.0 : 0)
           .font(.callout)
           .foregroundStyle(.secondary)
+          Text("from")
+            .font(.footnote)
+          Text(totalAmount,
+               format: .currency(code: Locale.current.currency!.identifier)
+          ).blur(radius: blurSensitive ? 5.0 : 0)
+            .font(.callout)
+            .foregroundStyle(.secondary)
         }
         .position(x: frame.midX, y: frame.midY)
       }
