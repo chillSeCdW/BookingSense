@@ -6,12 +6,19 @@
 //
 
 import SwiftUI
+import LocalAuthentication
+import OSLog
 
 struct ToolbarEntryList: ToolbarContent {
+  private let logger = Logger(subsystem: "BookingSense", category: "ToolbarEntryList")
+
   @Environment(\.editMode) private var editMode
+  @Environment(AppStates.self) var appStates
   @AppStorage("blurSensitive") var blurSensitive = false
+  @AppStorage("biometricEnabled") var biometricEnabled = false
 
   @Binding var showingConfirmation: Bool
+
   var addEntry: () -> Void
 
   var body: some ToolbarContent {
@@ -27,7 +34,7 @@ struct ToolbarEntryList: ToolbarContent {
     }
     ToolbarItem {
       Button("Plus", systemImage: "plus", action: addEntry)
-      .popoverTip(ToolbarAddTip())
+        .popoverTip(ToolbarAddTip())
     }
     ToolbarItem {
       withAnimation {
@@ -46,6 +53,27 @@ struct ToolbarEntryList: ToolbarContent {
   }
 
   func toggleDisplaySensitiveInfo() {
-    blurSensitive.toggle()
+    if biometricEnabled {
+      appStates.authenticationActive = true
+      BiometricHandler.shared.authenticateWithBiometrics { (success: Bool, error: Error?) in
+        if success {
+          blurSensitive.toggle()
+          appStates.authenticationActive = false
+        } else {
+          if let error = error as? LAError {
+            switch error.code {
+            case .userCancel, .systemCancel:
+              logger.error("Authentication code userCance flailed with error: \(error.localizedDescription)")
+            case .userFallback:
+              logger.error("Authentication code userFallback failed with error: \(error.localizedDescription)")
+            default:
+              logger.error("Authentication failed with error: \(error.localizedDescription)")
+            }
+          }
+        }
+      }
+    } else {
+      blurSensitive.toggle()
+    }
   }
 }

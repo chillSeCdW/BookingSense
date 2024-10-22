@@ -186,7 +186,7 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "%@e Abzüge"
+            "value" : "%@e Kosten"
           }
         },
         "en" : {
@@ -225,6 +225,22 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "%@ income"
+          }
+        }
+      }
+    },
+    "%@ Saving" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@e Rücklagen"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ Savings"
           }
         }
       }
@@ -506,6 +522,22 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Are you sure?"
+          }
+        }
+      }
+    },
+    "Authentication" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Authentifizierung"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Authentication"
           }
         }
       }
@@ -912,6 +944,22 @@
         }
       }
     },
+    "Enable Authentication for Blurring" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Authentifizierung für das Verschleiern der Daten"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Enable Authentication for blurring data"
+          }
+        }
+      }
+    },
     "Entries already found" : {
       "localizations" : {
         "de" : {
@@ -933,7 +981,7 @@
       "localizations" : {
         "de" : {
           "stringUnit" : {
-            "state" : "needs_review",
+            "state" : "translated",
             "value" : "Name des Eintrags bereits vorhanden. Bitte wähle einen anderen aus."
           }
         },
@@ -1005,6 +1053,22 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Give feedback with default mail app"
+          }
+        }
+      }
+    },
+    "Give Permission to activate Biometric Authentication" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Vergebe Berechtigung für biometrische Authentifizierung "
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Give Permission to activate Biometric Authentication"
           }
         }
       }
@@ -1215,6 +1279,22 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Name"
+          }
+        }
+      }
+    },
+    "No data available" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Keine Daten verfügbar"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No data available"
           }
         }
       }

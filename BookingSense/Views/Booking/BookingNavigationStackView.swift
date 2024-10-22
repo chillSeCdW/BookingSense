@@ -9,7 +9,7 @@ import SwiftUI
 import SwiftData
 
 struct BookingNavigationStackView: View {
-  @Environment(SearchInfo.self) var viewInfo
+  @Environment(AppStates.self) var appStates
   @Environment(\.editMode) private var editMode
   @Environment(\.modelContext) private var modelContext
   @Query private var entries: [BookingEntry]
@@ -19,7 +19,7 @@ struct BookingNavigationStackView: View {
   @State private var stackPath: [BookingEntry] = []
 
   var body: some View {
-    @Bindable var viewInfo = viewInfo
+    @Bindable var appStates = appStates
 
     NavigationStack(path: $stackPath) {
       VStack {
@@ -29,7 +29,7 @@ struct BookingNavigationStackView: View {
           }
           .navigationTitle("Bookings")
           .navigationBarTitleDisplayMode(.automatic)
-          .searchable(text: $viewInfo.searchText, prompt: "Search")
+          .searchable(text: $appStates.searchText, prompt: "Search")
           .toolbar {
             ToolbarEntryList(showingConfirmation: $showingConfirmation, addEntry: addEntry)
           }
@@ -70,13 +70,13 @@ struct BookingNavigationStackView: View {
   let factory = ContainerFactory(BookingEntry.self, storeInMemory: true)
   factory.addExamples(ContainerFactory.generateRandomEntriesItems())
   return BookingNavigationStackView()
-    .environment(SearchInfo())
+    .environment(AppStates())
     .modelContainer(factory.container)
 }
 
 #Preview("NavStackWithoutList") {
   let factory = ContainerFactory(BookingEntry.self, storeInMemory: true)
   return BookingNavigationStackView()
-    .environment(SearchInfo())
+    .environment(AppStates())
     .modelContainer(factory.container)
 }

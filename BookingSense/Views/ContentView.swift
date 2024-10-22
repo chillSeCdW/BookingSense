@@ -11,7 +11,7 @@ import StoreKit
 
 struct ContentView: View {
   @Environment(\.modelContext) private var modelContext
-  @Environment(SearchInfo.self) var viewInfo
+  @Environment(AppStates.self) var appStates
   @Environment(\.requestReview) private var requestReview
   @Environment(\.scenePhase) var scenePhase
   @AppStorage("numberOfVisits") var numberOfVisits = 0
@@ -34,15 +34,17 @@ struct ContentView: View {
         }
     }
     .onChange(of: scenePhase) { _, newPhase in
-      if newPhase == .active {
-        if tmpBlurSensitive == true {
-          blurSensitive.toggle()
-          tmpBlurSensitive.toggle()
-        }
-      } else if newPhase == .inactive {
-        if blurSensitive == false {
-          blurSensitive.toggle()
-          tmpBlurSensitive.toggle()
+      if !appStates.authenticationActive {
+        if newPhase == .active {
+          if tmpBlurSensitive == true {
+            blurSensitive.toggle()
+            tmpBlurSensitive.toggle()
+          }
+        } else if newPhase == .inactive {
+          if blurSensitive == false {
+            blurSensitive.toggle()
+            tmpBlurSensitive.toggle()
+          }
         }
       }
     }
@@ -61,6 +63,6 @@ struct ContentView: View {
   let factory = ContainerFactory(BookingEntry.self, storeInMemory: true)
   factory.addExamples(ContainerFactory.generateFixedEntriesItems())
   return ContentView()
-    .environment(SearchInfo())
+    .environment(AppStates())
     .modelContainer(factory.container)
 }

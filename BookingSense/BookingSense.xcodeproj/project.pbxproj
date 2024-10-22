@@ -13,6 +13,7 @@
 		B90B2B452BE5069700BD2042 /* EmptyNavigationStackUITest.swift in Sources */ = {isa = PBXBuildFile; fileRef = B90B2B442BE5069700BD2042 /* EmptyNavigationStackUITest.swift */; };
 		B90B2B472BE91AC600BD2042 /* TestHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = B90B2B462BE91AC600BD2042 /* TestHelper.swift */; };
 		B90D3D0F2C19D97D00133857 /* IntervalInsightsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B90D3D0E2C19D97D00133857 /* IntervalInsightsView.swift */; };
+		B91002C82CC796FF00BECF87 /* BiometricHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = B91002C72CC796FA00BECF87 /* BiometricHandler.swift */; };
 		B915DC452BB4644A0018E812 /* Interval.swift in Sources */ = {isa = PBXBuildFile; fileRef = B915DC442BB4644A0018E812 /* Interval.swift */; };
 		B915DC492BB46E350018E812 /* OverviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B915DC482BB46E350018E812 /* OverviewView.swift */; };
 		B915DC4F2BB479190018E812 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = B915DC4E2BB479180018E812 /* Constants.swift */; };
@@ -49,7 +50,7 @@
 		B9781EAB2C2EB8AF00FBA0A5 /* SettingsNavigationStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9781EAA2C2EB8AF00FBA0A5 /* SettingsNavigationStackView.swift */; };
 		B9781EB02C346F1500FBA0A5 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B9781EAF2C346F1500FBA0A5 /* StoreKit.framework */; };
 		B980A2022CC139E00075AE8F /* ChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B980A2012CC139DD0075AE8F /* ChartView.swift */; };
-		B99205FC2BD90F780099EF26 /* SearchInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = B99205FB2BD90F780099EF26 /* SearchInfo.swift */; };
+		B99205FC2BD90F780099EF26 /* AppStates.swift in Sources */ = {isa = PBXBuildFile; fileRef = B99205FB2BD90F780099EF26 /* AppStates.swift */; };
 		B99205FF2BD90FAD0099EF26 /* SortButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B99205FE2BD90FAD0099EF26 /* SortButtonView.swift */; };
 		B99206072BDA806E0099EF26 /* ToolbarEntryList.swift in Sources */ = {isa = PBXBuildFile; fileRef = B99206062BDA806E0099EF26 /* ToolbarEntryList.swift */; };
 		B99206092BDA96090099EF26 /* ToolbarEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = B99206082BDA96090099EF26 /* ToolbarEntry.swift */; };
@@ -95,6 +96,7 @@
 		B90B2B442BE5069700BD2042 /* EmptyNavigationStackUITest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyNavigationStackUITest.swift; sourceTree = "<group>"; };
 		B90B2B462BE91AC600BD2042 /* TestHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestHelper.swift; sourceTree = "<group>"; };
 		B90D3D0E2C19D97D00133857 /* IntervalInsightsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntervalInsightsView.swift; sourceTree = "<group>"; };
+		B91002C72CC796FA00BECF87 /* BiometricHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BiometricHandler.swift; sourceTree = "<group>"; };
 		B915DC442BB4644A0018E812 /* Interval.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Interval.swift; sourceTree = "<group>"; };
 		B915DC482BB46E350018E812 /* OverviewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverviewView.swift; sourceTree = "<group>"; };
 		B915DC4E2BB479180018E812 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
@@ -134,7 +136,7 @@
 		B9781EAF2C346F1500FBA0A5 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		B980A2012CC139DD0075AE8F /* ChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartView.swift; sourceTree = "<group>"; };
 		B982CA152C11052B002FA2DC /* BookingSense-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "BookingSense-Info.plist"; sourceTree = "<group>"; };
-		B99205FB2BD90F780099EF26 /* SearchInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchInfo.swift; sourceTree = "<group>"; };
+		B99205FB2BD90F780099EF26 /* AppStates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStates.swift; sourceTree = "<group>"; };
 		B99205FE2BD90FAD0099EF26 /* SortButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortButtonView.swift; sourceTree = "<group>"; };
 		B99206062BDA806E0099EF26 /* ToolbarEntryList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolbarEntryList.swift; sourceTree = "<group>"; };
 		B99206082BDA96090099EF26 /* ToolbarEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolbarEntry.swift; sourceTree = "<group>"; };
@@ -227,7 +229,7 @@
 				B9FEC3D52CAD5277009DD4A0 /* Handlers */,
 				B927FB212C26CD1E008D30BE /* Tips */,
 				B99205FA2BD90F630099EF26 /* Models */,
-				B99205FB2BD90F780099EF26 /* SearchInfo.swift */,
+				B99205FB2BD90F780099EF26 /* AppStates.swift */,
 				B915DC442BB4644A0018E812 /* Interval.swift */,
 				B915DC4E2BB479180018E812 /* Constants.swift */,
 				B9DE5B7E2BC6E7740017ACF4 /* AmountPrefix.swift */,
@@ -441,6 +443,7 @@
 		B9FEC3D52CAD5277009DD4A0 /* Handlers */ = {
 			isa = PBXGroup;
 			children = (
+				B91002C72CC796FA00BECF87 /* BiometricHandler.swift */,
 				B9FEC3D32CAD4A29009DD4A0 /* PurchaseHandler.swift */,
 			);
 			path = Handlers;
@@ -654,10 +657,11 @@
 				B96F6E192C41296E00132B50 /* BookingInfoPopUp.swift in Sources */,
 				B9781EAB2C2EB8AF00FBA0A5 /* SettingsNavigationStackView.swift in Sources */,
 				B96761D52C36BCCD00DA9114 /* TipJarView.swift in Sources */,
+				B91002C82CC796FF00BECF87 /* BiometricHandler.swift in Sources */,
 				B95981FC2BE3898B00578A9C /* EntryListView.swift in Sources */,
 				B9E0B9122C1B98230047EA77 /* InfoBoxButtonView.swift in Sources */,
 				B97378FD2BDFC7D1003A729E /* Migrations.swift in Sources */,
-				B99205FC2BD90F780099EF26 /* SearchInfo.swift in Sources */,
+				B99205FC2BD90F780099EF26 /* AppStates.swift in Sources */,
 				B97378F82BDFC11E003A729E /* ContainerFactory.swift in Sources */,
 				B99205FF2BD90FAD0099EF26 /* SortButtonView.swift in Sources */,
 				B9F4E0352CB2BB5700A12762 /* ChartsView.swift in Sources */,

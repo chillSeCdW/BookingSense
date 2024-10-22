@@ -50,5 +50,5 @@ enum SortOrderParameter: String, CaseIterable, Identifiable {
 
 #Preview {
     SortButtonView()
-        .environment(SearchInfo())
+        .environment(AppStates())
 }
