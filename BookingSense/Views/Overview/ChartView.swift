@@ -138,11 +138,13 @@ struct ChartView<Content: View>: View {
             .foregroundColor(.primary)
             .frame(maxWidth: frame.width/2)
             .multilineTextAlignment(.center)
+            .blur(radius: blurSensitive ? 5.0 : 0)
           Text(selectedStyle?.amount ?? highestData?.amount ?? Decimal(),
                format: .currency(code: Locale.current.currency!.identifier)
-          ).blur(radius: blurSensitive ? 5.0 : 0)
-            .font(.callout)
-            .foregroundStyle(.secondary)
+          )
+          .blur(radius: blurSensitive ? 5.0 : 0)
+          .font(.callout)
+          .foregroundStyle(.secondary)
         }
         .position(x: frame.midX, y: frame.midY)
       }
