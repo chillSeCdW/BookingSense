@@ -61,19 +61,15 @@ struct ChartView<Content: View>: View {
         .font(.title2)
         .bold()
       contentView
-      if data.isEmpty {
-        Text("No data available")
+      if isFixedColor {
+        fixedColorChart(data.first?.id == "empty")
       } else {
-        if isFixedColor {
-          fixedColorChart()
-        } else {
-          chart()
-        }
+        chart()
       }
     }
   }
 
-  func fixedColorChart() -> some View {
+  func fixedColorChart(_ noData: Bool) -> some View {
     Chart(data, id: \.id) { element in
       SectorMark(
         angle: .value("Amount", element.amount),
@@ -85,11 +81,8 @@ struct ChartView<Content: View>: View {
       .opacity(element.name == (selectedStyle?.name ?? highestData?.name) ? 1 : 0.3)
     }
     .chartLegend(alignment: .center, spacing: 5)
-    .chartForegroundStyleScale([
-      String(localized: "Total costs"): .red,
-      String(localized: "Total savings"): .blue,
-      String(localized: "Total left"): .green
-    ])
+    .chartLegend(noData ? .hidden : .visible)
+    .chartForegroundStyleScale(range: graphColors(for: data))
     .chartAngleSelection(value: $selectedPie)
     .scaledToFit()
     .chartBackground { chartProxy in
@@ -99,24 +92,29 @@ struct ChartView<Content: View>: View {
           Text("Highest amount")
             .font(.callout)
             .foregroundStyle(.secondary)
-            .opacity(selectedStyle == nil || selectedStyle?.name == highestData?.name ? 1 : 0)
+            .opacity(selectedStyle != nil || selectedStyle?.name == highestData?.name || noData ? 0 : 1)
           Text(LocalizedStringKey(selectedStyle?.name ?? highestData?.name ?? ""))
             .font(.title3.bold())
             .foregroundColor(.primary)
             .frame(maxWidth: frame.width/2)
           Text(selectedStyle?.amount ?? highestData?.amount ?? Decimal(),
                format: .currency(code: Locale.current.currency!.identifier)
-          ).blur(radius: blurSensitive ? 5.0 : 0)
-            .font(.callout)
-            .bold()
-            .foregroundStyle(.secondary)
+          )
+          .blur(radius: blurSensitive ? 5.0 : 0)
+          .font(.callout)
+          .bold()
+          .foregroundStyle(.secondary)
+          .opacity(noData ? 0 : 1)
           Text("from")
             .font(.footnote)
+            .opacity(noData ? 0 : 1)
           Text(totalAmount,
                format: .currency(code: Locale.current.currency!.identifier)
-          ).blur(radius: blurSensitive ? 5.0 : 0)
-            .font(.callout)
-            .foregroundStyle(.secondary)
+          )
+          .blur(radius: blurSensitive ? 5.0 : 0)
+          .font(.callout)
+          .foregroundStyle(.secondary)
+          .opacity(noData ? 0 : 1)
         }
         .position(x: frame.midX, y: frame.midY)
       }
@@ -169,6 +167,14 @@ struct ChartView<Content: View>: View {
       }
     }
   }
+
+  func graphColors(for entries: [BookingEntryChartData]) -> [Color] {
+          var returnColors = [Color]()
+          for entry in entries {
+            returnColors.append(entry.color!)
+          }
+          return returnColors
+      }
 }
 
 #Preview {

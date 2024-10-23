@@ -23,7 +23,7 @@ struct ChartsView: View {
       entry1.amount > entry2.amount
     })
 
-    return minusBreakDown
+    return checkDataAddEmpty(minusBreakDown)
   }
 
   var intervalTotalMinusData: [BookingEntryChartData] {
@@ -44,7 +44,7 @@ struct ChartsView: View {
       entry1.amount > entry2.amount
     })
 
-    return minusBreakDown
+    return checkDataAddEmpty(minusBreakDown)
   }
 
   var intervalPlusData: [BookingEntryChartData] {
@@ -57,7 +57,7 @@ struct ChartsView: View {
       entry1.amount > entry2.amount
     })
 
-    return plusBreakDown
+    return checkDataAddEmpty(plusBreakDown)
   }
 
   var intervalTotalPlusData: [BookingEntryChartData] {
@@ -78,7 +78,7 @@ struct ChartsView: View {
       entry1.amount > entry2.amount
     })
 
-    return plusBreakDown
+    return checkDataAddEmpty(plusBreakDown)
   }
 
   var intervalSavingData: [BookingEntryChartData] {
@@ -91,7 +91,7 @@ struct ChartsView: View {
       entry1.amount > entry2.amount
     })
 
-    return savingBreakDown
+    return checkDataAddEmpty(savingBreakDown)
   }
 
   var intervalTotalSavingData: [BookingEntryChartData] {
@@ -112,7 +112,7 @@ struct ChartsView: View {
       entry1.amount > entry2.amount
     })
 
-    return savingBreakDown
+    return checkDataAddEmpty(savingBreakDown)
   }
 
   var body: some View {
@@ -140,6 +140,14 @@ struct ChartsView: View {
       }
     }
     .pickerStyle(.segmented)
+  }
+
+  func checkDataAddEmpty(_ data: [BookingEntryChartData]) -> [BookingEntryChartData] {
+    if data.isEmpty {
+      return [BookingEntryChartData(id: "empty", name: "No data", amount: 1, color: .gray)]
+    } else {
+      return data
+    }
   }
 }
 
