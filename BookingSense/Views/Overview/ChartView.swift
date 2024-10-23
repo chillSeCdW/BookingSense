@@ -85,6 +85,7 @@ struct ChartView<Content: View>: View {
     .chartForegroundStyleScale(range: graphColors(for: data))
     .chartAngleSelection(value: $selectedPie)
     .scaledToFit()
+    .frame(maxHeight: 500)
     .chartBackground { chartProxy in
       GeometryReader { geometry in
         let frame = geometry[chartProxy.plotFrame!]
@@ -134,7 +135,7 @@ struct ChartView<Content: View>: View {
     }
     .chartLegend(.hidden)
     .chartAngleSelection(value: $selectedPie)
-    .scaledToFill()
+    .scaledToFit()
     .chartBackground { chartProxy in
       GeometryReader { geometry in
         let frame = geometry[chartProxy.plotFrame!]
