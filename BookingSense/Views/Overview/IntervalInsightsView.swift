@@ -9,53 +9,55 @@ struct IntervalInsightsView: View {
   @AppStorage("insightsInterval") private var interval: Interval = .monthly
 
   var body: some View {
-    InfoView(
-      text: LocalizedStringKey("All income as \(interval.description)"),
-      number: calculateIntervalTotalsFor(.plus, interval: interval),
-      format: .currency(code: Locale.current.currency!.identifier),
-      infoHeadline: LocalizedStringKey("How it's calculated"),
-      infoText: LocalizedStringKey("calculated total \(interval.description) income"),
-      showApprox: true
-    )
-    InfoView(
-      text: LocalizedStringKey("All costs as \(interval.description)"),
-      number: calculateIntervalTotalsFor(.minus, interval: interval),
-      format: .currency(code: Locale.current.currency!.identifier),
-      infoHeadline: LocalizedStringKey("How it's calculated"),
-      infoText: LocalizedStringKey("calculated total \(interval.description) costs"),
-      showApprox: true
-    )
-    InfoView(
-      text: LocalizedStringKey("All savings as \(interval.description)"),
-      number: calculateIntervalTotalsFor(.saving, interval: interval),
-      format: .currency(code: Locale.current.currency!.identifier),
-      infoHeadline: LocalizedStringKey("How it's calculated"),
-      infoText: LocalizedStringKey("calculated total \(interval.description) savings"),
-      showApprox: true
-    )
-    InfoView(
-      text: LocalizedStringKey("Total \(interval.description) left"),
-      number: calculateIntervalLeft(interval),
-      format: .currency(code: Locale.current.currency!.identifier),
-      infoHeadline: LocalizedStringKey("How it's calculated"),
-      infoText: LocalizedStringKey("calculated total left"),
-      showApprox: true
-    )
-    InfoView(
-      text: LocalizedStringKey("\(interval.description.capitalized) income"),
-      number: calculateIntervalIncomeOf(interval),
-      format: .currency(code: Locale.current.currency!.identifier)
-    )
-    InfoView(
-      text: LocalizedStringKey("\(interval.description.capitalized) deductions"),
-      number: calculateIntervalDeductionsOf(interval),
-      format: .currency(code: Locale.current.currency!.identifier)
-    )
-    InfoView(
-      text: LocalizedStringKey("\(interval.description.capitalized) savings"),
-      number: calculateIntervalSavings(interval),
-      format: .currency(code: Locale.current.currency!.identifier)
-    )
+    VStack(spacing: 13) {
+      InfoView(
+        text: LocalizedStringKey("All income as \(interval.description)"),
+        number: calculateIntervalTotalsFor(.plus, interval: interval),
+        format: .currency(code: Locale.current.currency!.identifier),
+        infoHeadline: LocalizedStringKey("How it's calculated"),
+        infoText: LocalizedStringKey("calculated total \(interval.description) income"),
+        showApprox: true
+      )
+      InfoView(
+        text: LocalizedStringKey("All costs as \(interval.description)"),
+        number: calculateIntervalTotalsFor(.minus, interval: interval),
+        format: .currency(code: Locale.current.currency!.identifier),
+        infoHeadline: LocalizedStringKey("How it's calculated"),
+        infoText: LocalizedStringKey("calculated total \(interval.description) costs"),
+        showApprox: true
+      )
+      InfoView(
+        text: LocalizedStringKey("All savings as \(interval.description)"),
+        number: calculateIntervalTotalsFor(.saving, interval: interval),
+        format: .currency(code: Locale.current.currency!.identifier),
+        infoHeadline: LocalizedStringKey("How it's calculated"),
+        infoText: LocalizedStringKey("calculated total \(interval.description) savings"),
+        showApprox: true
+      )
+      InfoView(
+        text: LocalizedStringKey("Total \(interval.description) left"),
+        number: calculateIntervalLeft(interval),
+        format: .currency(code: Locale.current.currency!.identifier),
+        infoHeadline: LocalizedStringKey("How it's calculated"),
+        infoText: LocalizedStringKey("calculated total left"),
+        showApprox: true
+      )
+      InfoView(
+        text: LocalizedStringKey("\(interval.description.capitalized) income"),
+        number: calculateIntervalIncomeOf(interval),
+        format: .currency(code: Locale.current.currency!.identifier)
+      )
+      InfoView(
+        text: LocalizedStringKey("\(interval.description.capitalized) deductions"),
+        number: calculateIntervalDeductionsOf(interval),
+        format: .currency(code: Locale.current.currency!.identifier)
+      )
+      InfoView(
+        text: LocalizedStringKey("\(interval.description.capitalized) savings"),
+        number: calculateIntervalSavings(interval),
+        format: .currency(code: Locale.current.currency!.identifier)
+      )
+    }.padding(.bottom, 5)
   }
 
   private func calculateIntervalTotalsFor(_ amountPrefix: AmountPrefix, interval: Interval) -> Decimal {

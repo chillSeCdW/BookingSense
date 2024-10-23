@@ -71,8 +71,10 @@ struct OverviewView: View {
             .pickerStyle(.automatic)
         }
         Section(LocalizedStringKey("\(interval.description) Insights"), isExpanded: $isExpandedBasic) {
-          ChartView(data: totalData, headerTitle: String(localized: "\(interval.description.capitalized) Overview"))
-          IntervalInsightsView()
+          VStack {
+            ChartView(data: totalData, headerTitle: String(localized: "\(interval.description.capitalized) Overview"))
+            IntervalInsightsView()
+          }
         }
         Section("Charts", isExpanded: $isExpandedCharts) {
           ChartsView()

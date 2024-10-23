@@ -116,6 +116,17 @@ struct ChartsView: View {
   }
 
   var body: some View {
+    if UIDevice.current.userInterfaceIdiom == .pad {
+      HStack {
+        chartsBody
+      }
+    } else {
+      chartsBody
+    }
+  }
+
+  @ViewBuilder
+  var chartsBody: some View {
     ChartView(data: chartTypeIntervalMinus == .interval ? intervalMinusData : intervalTotalMinusData,
               headerTitle: String(localized: "\(interval.description.capitalized) Minus")
     ) {
