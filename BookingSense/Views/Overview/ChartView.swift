@@ -80,8 +80,8 @@ struct ChartView<Content: View>: View {
       .foregroundStyle(by: .value("Name", element.name))
       .opacity(element.name == (selectedStyle?.name ?? highestData?.name) ? 1 : 0.3)
     }
-    .chartLegend(alignment: .center, spacing: 5)
     .chartLegend(noData ? .hidden : .visible)
+    .chartLegend(alignment: .center, spacing: 5)
     .chartForegroundStyleScale(range: graphColors(for: data))
     .chartAngleSelection(value: $selectedPie)
     .scaledToFit()
