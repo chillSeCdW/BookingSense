@@ -9,7 +9,7 @@ import SwiftUI
 import TipKit
 
 struct EntryFormView: View {
-  var expenseEntry: BookingEntry?
+  var bookingEntry: BookingEntry?
   var formatter: NumberFormatter {
     let formatter = NumberFormatter()
     formatter.numberStyle = .decimal
@@ -69,11 +69,11 @@ struct EntryFormView: View {
         .textFieldStyle(RoundedBorderTextFieldStyle())
         .keyboardType(.decimalPad)
         .onAppear {
-          if let expenseEntry {
-            name = expenseEntry.name
-            amountPrefix = expenseEntry.amountPrefix
-            amount = formatter.string(from: NSDecimalNumber(decimal: expenseEntry.amount)) ?? ""
-            interval = Interval(rawValue: expenseEntry.interval) ?? Interval.monthly
+          if let bookingEntry {
+            name = bookingEntry.name
+            amountPrefix = bookingEntry.amountPrefix
+            amount = formatter.string(from: NSDecimalNumber(decimal: bookingEntry.amount)) ?? ""
+            interval = Interval(rawValue: bookingEntry.interval) ?? Interval.monthly
           }
         }
         Text(Constants.getSymbol(Locale.current.currency!.identifier) ?? "$")
@@ -98,7 +98,7 @@ struct EntryFormView: View {
     amountPrefix: .plus,
     interval: .weekly)
 
-  EntryFormView(expenseEntry: entry,
+  EntryFormView(bookingEntry: entry,
                 name: $name,
                 amountPrefix: $amountPrefix,
                 amount: $amount,
