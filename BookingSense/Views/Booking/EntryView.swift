@@ -16,7 +16,7 @@ struct EntryView: View {
 
   @Query private var entries: [BookingEntry]
 
-  var expenseEntry: BookingEntry?
+  var bookingEntry: BookingEntry?
 
   @State private var name: String = ""
   @State private var amountPrefix: AmountPrefix = .minus
@@ -28,12 +28,12 @@ struct EntryView: View {
   let alertTitle: String = "Save failed"
 
   private var isCreate: Bool {
-    expenseEntry == nil ? true : false
+    bookingEntry == nil ? true : false
   }
 
   var body: some View {
     Form {
-      EntryFormView(expenseEntry: expenseEntry,
+      EntryFormView(bookingEntry: bookingEntry,
                     name: $name,
                     amountPrefix: $amountPrefix,
                     amount: $amount,
@@ -64,7 +64,7 @@ struct EntryView: View {
     focusedAmount = false
 
     let alreadyExists = entries.filter {
-      $0.name == name
+      $0.name == name && $0.persistentModelID != bookingEntry?.persistentModelID
     }.first != nil
 
     if alreadyExists {
@@ -91,10 +91,10 @@ struct EntryView: View {
       ))
       dismiss()
     } else {
-      expenseEntry!.name = name
-      expenseEntry!.amountPrefix = amountPrefix
-      expenseEntry!.amount = parsedAmount ?? Decimal()
-      expenseEntry!.interval = interval.rawValue
+      bookingEntry!.name = name
+      bookingEntry!.amountPrefix = amountPrefix
+      bookingEntry!.amount = parsedAmount ?? Decimal()
+      bookingEntry!.interval = interval.rawValue
       dismiss()
     }
   }
@@ -113,11 +113,11 @@ struct EntryView: View {
   }
 
   func didValuesChange() -> Bool {
-    if let expenseEntry {
-      if name != expenseEntry.name ||
-          amount != expenseEntry.amount.formatted() ||
-          amountPrefix != expenseEntry.amountPrefix ||
-          interval != Interval(rawValue: expenseEntry.interval) ?? Interval.monthly {
+    if let bookingEntry {
+      if name != bookingEntry.name ||
+          amount != bookingEntry.amount.formatted() ||
+          amountPrefix != bookingEntry.amountPrefix ||
+          interval != Interval(rawValue: bookingEntry.interval) ?? Interval.monthly {
         return true
       }
     }
@@ -144,7 +144,7 @@ struct EntryView: View {
     amountPrefix: .plus,
     interval: .weekly)
 
-  return EntryView(expenseEntry: entry)
+  return EntryView(bookingEntry: entry)
 }
 
 #Preview("Create") {

@@ -25,7 +25,7 @@ struct BookingNavigationStackView: View {
       VStack {
         NavigationStackContentView(isListEmpty: entries.isEmpty)
           .navigationDestination(for: BookingEntry.self) { entry in
-            EntryView(expenseEntry: entry)
+            EntryView(bookingEntry: entry)
           }
           .navigationTitle("Bookings")
           .navigationBarTitleDisplayMode(.automatic)
