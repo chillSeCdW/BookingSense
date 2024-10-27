@@ -72,7 +72,7 @@ final class BookingEntryTests: XCTestCase {
     jsonEncoder.outputFormatting = .prettyPrinted
     let entry = BookingEntry(
       name: "someString",
-      tags: ["default"],
+      tag: nil,
       amount: Decimal(),
       amountPrefix: .minus,
       interval: .annually
@@ -84,12 +84,12 @@ final class BookingEntryTests: XCTestCase {
 
   func testTotalExpenseEntries() {
     let entry = BookingEntry(name: "someEntry",
-                             tags: ["default"],
+                             tag: nil,
                              amount: Decimal(500),
                              amountPrefix: AmountPrefix.minus,
                              interval: Interval.annually)
     let entry2 = BookingEntry(name: "someEntry",
-                              tags: ["default"],
+                              tag: nil,
                               amount: Decimal(200),
                               amountPrefix: AmountPrefix.minus,
                               interval: Interval.annually)
