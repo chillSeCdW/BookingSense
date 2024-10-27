@@ -56,7 +56,13 @@ struct ExportImportButtons: View {
       switch result {
       case .success(let file):
         do {
-          let data = try Data(contentsOf: file.standardizedFileURL)
+          let access = file.startAccessingSecurityScopedResource()
+          defer {
+             if access {
+               file.stopAccessingSecurityScopedResource()
+             }
+          }
+          let data = try Data(contentsOf: file)
           importedData = try JSONDecoder().decode(BookingsList.self, from: data)
           if entries.isEmpty {
             processImportedData(importedData)
