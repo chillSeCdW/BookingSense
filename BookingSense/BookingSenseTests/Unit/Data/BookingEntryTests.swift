@@ -21,7 +21,7 @@ final class BookingEntryTests: XCTestCase {
   func testExpenseEntryCreation() throws {
     let entry = BookingEntry(
       name: "someString",
-      tags: ["default"],
+      tag: nil,
       amount: Decimal(),
       amountPrefix: .minus,
       interval: .annually
@@ -44,7 +44,7 @@ final class BookingEntryTests: XCTestCase {
     let objectString = """
     {
       "name" : "someString",
-      "tags" : ["default"],
+      "tag" : null,
       "amount" : 0,
       "id" : "CDE289A7-6293-4792-A57B-A4950D8E1C11",
       "amountPrefix" : {
@@ -61,7 +61,6 @@ final class BookingEntryTests: XCTestCase {
 
     XCTAssertEqual(entry.id, "CDE289A7-6293-4792-A57B-A4950D8E1C11")
     XCTAssertEqual(entry.name, "someString")
-    XCTAssertEqual(entry.tags[0], "default")
     XCTAssertEqual(entry.amount, 0)
     XCTAssertEqual(entry.amountPrefix, .minus)
     XCTAssertEqual(entry.interval, "jährlich")
