@@ -84,10 +84,11 @@ struct EntryView: View {
     if isCreate {
       modelContext.insert(BookingEntry(
         name: name,
-        tag: nil,
         amount: parsedAmount ?? Decimal(),
         amountPrefix: amountPrefix,
-        interval: interval
+        interval: interval,
+        tag: nil,
+        timelineEntries: nil
       ))
       dismiss()
     } else {
@@ -139,10 +140,11 @@ struct EntryView: View {
 #Preview("Edit") {
   let entry = BookingEntry(
     name: "testName",
-    tag: nil,
     amount: Decimal(string: "15,35", locale: Locale(identifier: Locale.current.identifier)) ?? Decimal(),
     amountPrefix: .plus,
-    interval: .weekly)
+    interval: .weekly,
+    tag: nil,
+    timelineEntries: nil)
 
   return EntryView(bookingEntry: entry)
 }

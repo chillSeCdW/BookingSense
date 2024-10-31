@@ -18,7 +18,7 @@ struct ChartsView: View {
     let minusBreakDown: [BookingEntryChartData] = entries.filter {
       $0.interval == interval.rawValue && $0.amountPrefix == .minus
     }.map { entry in
-      BookingEntryChartData(id: entry.id, name: entry.name, amount: entry.amount, color: nil)
+      BookingEntryChartData(id: entry.uuid, name: entry.name, amount: entry.amount, color: nil)
     }.sorted(by: { entry1, entry2 in
       entry1.amount > entry2.amount
     })
@@ -33,13 +33,13 @@ struct ChartsView: View {
     }.map { entry in
       if entry.interval != interval.rawValue {
         return BookingEntryChartData(
-          id: entry.id,
+          id: entry.uuid,
           name: entry.name,
           amount: entry.amount * Constants.getTimesValue(from: Interval(rawValue: entry.interval), to: interval),
           color: nil
         )
       }
-      return BookingEntryChartData(id: entry.id, name: entry.name, amount: entry.amount, color: nil)
+      return BookingEntryChartData(id: entry.uuid, name: entry.name, amount: entry.amount, color: nil)
     }.sorted(by: { entry1, entry2 in
       entry1.amount > entry2.amount
     })
@@ -52,7 +52,7 @@ struct ChartsView: View {
     let plusBreakDown: [BookingEntryChartData] = entries.filter {
       $0.interval == interval.rawValue && $0.amountPrefix == .plus
     }.map { entry in
-      BookingEntryChartData(id: entry.id, name: entry.name, amount: entry.amount, color: nil)
+      BookingEntryChartData(id: entry.uuid, name: entry.name, amount: entry.amount, color: nil)
     }.sorted(by: { entry1, entry2 in
       entry1.amount > entry2.amount
     })
@@ -67,13 +67,13 @@ struct ChartsView: View {
     }.map { entry in
       if entry.interval != interval.rawValue {
         return BookingEntryChartData(
-          id: entry.id,
+          id: entry.uuid,
           name: entry.name,
           amount: entry.amount * Constants.getTimesValue(from: Interval(rawValue: entry.interval), to: interval),
           color: nil
         )
       }
-      return BookingEntryChartData(id: entry.id, name: entry.name, amount: entry.amount, color: nil)
+      return BookingEntryChartData(id: entry.uuid, name: entry.name, amount: entry.amount, color: nil)
     }.sorted(by: { entry1, entry2 in
       entry1.amount > entry2.amount
     })
@@ -86,7 +86,7 @@ struct ChartsView: View {
     let savingBreakDown: [BookingEntryChartData] = entries.filter {
       $0.interval == interval.rawValue && $0.amountPrefix == .saving
     }.map { entry in
-      BookingEntryChartData(id: entry.id, name: entry.name, amount: entry.amount, color: nil)
+      BookingEntryChartData(id: entry.uuid, name: entry.name, amount: entry.amount, color: nil)
     }.sorted(by: { entry1, entry2 in
       entry1.amount > entry2.amount
     })
@@ -101,13 +101,13 @@ struct ChartsView: View {
     }.map { entry in
       if entry.interval != interval.rawValue {
         return BookingEntryChartData(
-          id: entry.id,
+          id: entry.uuid,
           name: entry.name,
           amount: entry.amount * Constants.getTimesValue(from: Interval(rawValue: entry.interval), to: interval),
           color: nil
         )
       }
-      return BookingEntryChartData(id: entry.id, name: entry.name, amount: entry.amount, color: nil)
+      return BookingEntryChartData(id: entry.uuid, name: entry.name, amount: entry.amount, color: nil)
     }.sorted(by: { entry1, entry2 in
       entry1.amount > entry2.amount
     })

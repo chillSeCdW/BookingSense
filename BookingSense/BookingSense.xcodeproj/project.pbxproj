@@ -33,6 +33,10 @@
 		B92BC3712C401E7400019A62 /* ResetHintsTopPopUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = B92BC3702C401E7400019A62 /* ResetHintsTopPopUp.swift */; };
 		B92C53B32BDFED590029E759 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = B9D534122BD2903500C3355F /* Localizable.xcstrings */; };
 		B92D6F652CC006C4000A2697 /* ChartModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = B92D6F642CC006BD000A2697 /* ChartModels.swift */; };
+		B93839F12CD2612E00AAB674 /* BookingSchemaV3.swift in Sources */ = {isa = PBXBuildFile; fileRef = B93839F02CD2612700AAB674 /* BookingSchemaV3.swift */; };
+		B93839F52CD26FC400AAB674 /* JsonBookingEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = B93839F42CD26FB800AAB674 /* JsonBookingEntry.swift */; };
+		B93839F72CD26FCD00AAB674 /* JsonTag.swift in Sources */ = {isa = PBXBuildFile; fileRef = B93839F62CD26FC800AAB674 /* JsonTag.swift */; };
+		B93839F92CD26FD400AAB674 /* JsonTimelineEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = B93839F82CD26FD000AAB674 /* JsonTimelineEntry.swift */; };
 		B93F74012BF39F91008A5088 /* AdditionalInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B93F74002BF39F91008A5088 /* AdditionalInfoView.swift */; };
 		B95981FA2BE3890500578A9C /* BookingNavigationStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B95981F92BE3890500578A9C /* BookingNavigationStackView.swift */; };
 		B95981FC2BE3898B00578A9C /* EntryListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B95981FB2BE3898B00578A9C /* EntryListView.swift */; };
@@ -118,6 +122,10 @@
 		B92BC3702C401E7400019A62 /* ResetHintsTopPopUp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetHintsTopPopUp.swift; sourceTree = "<group>"; };
 		B92C53B22BDFDD980029E759 /* productionTestPlan.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = productionTestPlan.xctestplan; sourceTree = "<group>"; };
 		B92D6F642CC006BD000A2697 /* ChartModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartModels.swift; sourceTree = "<group>"; };
+		B93839F02CD2612700AAB674 /* BookingSchemaV3.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingSchemaV3.swift; sourceTree = "<group>"; };
+		B93839F42CD26FB800AAB674 /* JsonBookingEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JsonBookingEntry.swift; sourceTree = "<group>"; };
+		B93839F62CD26FC800AAB674 /* JsonTag.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JsonTag.swift; sourceTree = "<group>"; };
+		B93839F82CD26FD000AAB674 /* JsonTimelineEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JsonTimelineEntry.swift; sourceTree = "<group>"; };
 		B93F74002BF39F91008A5088 /* AdditionalInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdditionalInfoView.swift; sourceTree = "<group>"; };
 		B95981F92BE3890500578A9C /* BookingNavigationStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingNavigationStackView.swift; sourceTree = "<group>"; };
 		B95981FB2BE3898B00578A9C /* EntryListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryListView.swift; sourceTree = "<group>"; };
@@ -314,6 +322,16 @@
 			path = Tips;
 			sourceTree = "<group>";
 		};
+		B93839F32CD26FA200AAB674 /* Database */ = {
+			isa = PBXGroup;
+			children = (
+				B97378F92BDFC569003A729E /* BookingSchemaV1.swift */,
+				B922EBEB2CCAED5F00D51C0B /* BookingSchemaV2.swift */,
+				B93839F02CD2612700AAB674 /* BookingSchemaV3.swift */,
+			);
+			path = Database;
+			sourceTree = "<group>";
+		};
 		B97378FB2BDFC7C2003A729E /* Migrations */ = {
 			isa = PBXGroup;
 			children = (
@@ -345,10 +363,12 @@
 		B99205FA2BD90F630099EF26 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				B93839F82CD26FD000AAB674 /* JsonTimelineEntry.swift */,
+				B93839F62CD26FC800AAB674 /* JsonTag.swift */,
+				B93839F42CD26FB800AAB674 /* JsonBookingEntry.swift */,
+				B93839F32CD26FA200AAB674 /* Database */,
 				B97378FB2BDFC7C2003A729E /* Migrations */,
 				B96761D82C371F2300DA9114 /* BookingsList.swift */,
-				B97378F92BDFC569003A729E /* BookingSchemaV1.swift */,
-				B922EBEB2CCAED5F00D51C0B /* BookingSchemaV2.swift */,
 				B97378F72BDFC11E003A729E /* ContainerFactory.swift */,
 			);
 			path = Models;
@@ -667,16 +687,20 @@
 				B99205FC2BD90F780099EF26 /* AppStates.swift in Sources */,
 				B97378F82BDFC11E003A729E /* ContainerFactory.swift in Sources */,
 				B99205FF2BD90FAD0099EF26 /* SortButtonView.swift in Sources */,
+				B93839F72CD26FCD00AAB674 /* JsonTag.swift in Sources */,
 				B9F4E0352CB2BB5700A12762 /* ChartsView.swift in Sources */,
 				B96761D02C358B0F00DA9114 /* ContactButtons.swift in Sources */,
 				B9DAFAD52BA8AFAF000486EA /* BookingSenseApp.swift in Sources */,
 				B980A2022CC139E00075AE8F /* ChartView.swift in Sources */,
 				B95981FA2BE3890500578A9C /* BookingNavigationStackView.swift in Sources */,
+				B93839F52CD26FC400AAB674 /* JsonBookingEntry.swift in Sources */,
 				B9DE5B7F2BC6E7740017ACF4 /* AmountPrefix.swift in Sources */,
 				B9E4ABF22BF6438E00E96330 /* InfoView.swift in Sources */,
+				B93839F12CD2612E00AAB674 /* BookingSchemaV3.swift in Sources */,
 				B9BB9D6E2CAAE96C0057573B /* ThankYouPopUp.swift in Sources */,
 				B99206072BDA806E0099EF26 /* ToolbarEntryList.swift in Sources */,
 				B992060B2BDA96D80099EF26 /* EntryFormView.swift in Sources */,
+				B93839F92CD26FD400AAB674 /* JsonTimelineEntry.swift in Sources */,
 				B93F74012BF39F91008A5088 /* AdditionalInfoView.swift in Sources */,
 				B915DC492BB46E350018E812 /* OverviewView.swift in Sources */,
 				B92D6F652CC006C4000A2697 /* ChartModels.swift in Sources */,

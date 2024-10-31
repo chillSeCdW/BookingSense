@@ -1251,22 +1251,6 @@
         }
       }
     },
-    "Merge with existing" : {
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Neue Einträge mit alten zusammenführen"
-          }
-        },
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Merge new entries with old ones"
-          }
-        }
-      }
-    },
     "month" : {
       "localizations" : {
         "de" : {
