@@ -24,6 +24,10 @@ struct ContentView: View {
         .tabItem {
           Label("Overview", systemImage: "dollarsign.arrow.circlepath")
         }
+      TimelineView()
+        .tabItem {
+          Label("Timeline", systemImage: "calendar.day.timeline.left")
+        }
       BookingNavigationStackView()
         .tabItem {
           Label("Bookings", systemImage: "list.dash")

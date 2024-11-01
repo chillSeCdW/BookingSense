@@ -41,13 +41,6 @@ final class ConstantsTests: XCTestCase {
     )
   }
 
-  func testCreateDescriptor() throws {
-    let searchString = ""
-    let interval = Interval.annually
-
-    XCTAssertNotNil(Constants.createDescriptor(searchString: searchString, interval: interval))
-  }
-
   func testGetSymbol() throws {
     let code = "plus"
 

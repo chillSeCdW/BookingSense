@@ -53,12 +53,20 @@ struct ContainerFactory {
     var returnResult: [BookingEntry] = []
     let incomeTag: Tag = Tag(name: "income")
     let timelineEntry: TimelineEntry = TimelineEntry(
-      isDone: false,
+      state: .active,
+      name: "Brötchen",
+      amount: 2.5,
+      amountPrefix: .minus,
       isDue: Date.now.addingTimeInterval( 60 * 60 * 24 * 3),
+      tag: nil,
       completedAt: nil)
     let timelineEntry2: TimelineEntry = TimelineEntry(
-      isDone: false,
+      state: .active,
+      name: "Brötchen",
+      amount: 2.5,
+      amountPrefix: .minus,
       isDue: Date.now.addingTimeInterval( 60 * 60 * 24),
+      tag: nil,
       completedAt: nil)
 
     returnResult.append(BookingEntry(name: "Trinkgeld",

@@ -87,13 +87,17 @@ struct Constants {
     return result
   }
 
-  static func createDescriptor(searchString: String, interval: Interval) -> FetchDescriptor<BookingEntry> {
-    let predicate = BookingEntry.predicate(searchName: searchString, interval: interval)
-    let descriptor = FetchDescriptor<BookingEntry>(
-      predicate: predicate,
-      sortBy: [SortDescriptor(\.name, order: .forward)]
+  // TODO: implement function
+  static func generateTimelineEntryOf(entry: BookingEntry) -> TimelineEntry {
+
+    return TimelineEntry(state: .active,
+                         name: "entryName",
+                         amount: .zero,
+                         amountPrefix: .minus,
+                         isDue: .distantFuture,
+                         tag: nil,
+                         completedAt: nil
     )
-    return descriptor
   }
 
   static func getSymbol(_ code: String) -> String? {

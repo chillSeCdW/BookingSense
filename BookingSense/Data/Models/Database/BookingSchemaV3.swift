@@ -25,7 +25,7 @@ extension BookingSchemaV3 {
 
     var uuid: String
     var name: String = ""
-    var isActive: Bool = true
+    var state: BookingEntryState
     @Relationship var tag: Tag?
     @Relationship(deleteRule: .cascade) var timelineEntries: [TimelineEntry]?
     var amount: Decimal = Decimal.zero
@@ -35,7 +35,7 @@ extension BookingSchemaV3 {
 
     init(uuid: String = UUID().uuidString,
          name: String,
-         isActive: Bool = true,
+         state: BookingEntryState = .active,
          amount: Decimal,
          date: Date = Date(),
          amountPrefix: AmountPrefix,
@@ -44,7 +44,7 @@ extension BookingSchemaV3 {
          timelineEntries: [TimelineEntry]?) {
       self.uuid = uuid
       self.name = name
-      self.isActive = isActive
+      self.state = state
       self.date = date
       self.amount = amount
       self.amountPrefix = amountPrefix
@@ -87,14 +87,30 @@ extension BookingSchemaV3 {
 
     var uuid: String
     @Relationship(inverse: \BookingEntry.timelineEntries) var bookingEntry: BookingEntry?
-    var isDone: Bool = false
+    var state: TimelineEntryState = TimelineEntryState.active
+    var tag: Tag?
+    var name: String = ""
+    var amount: Decimal = Decimal.zero
+    var amountPrefix: AmountPrefix = AmountPrefix.minus
     var isDue: Date = Date()
     var completedAt: Date?
 
-    init(uuid: String = UUID().uuidString, isDone: Bool, isDue: Date, completedAt: Date?) {
+    init(uuid: String = UUID().uuidString,
+         state: TimelineEntryState,
+         name: String,
+         amount: Decimal,
+         amountPrefix: AmountPrefix,
+         isDue: Date,
+         tag: Tag?,
+         completedAt: Date?
+    ) {
       self.uuid = uuid
-      self.isDone = isDone
+      self.state = state
+      self.name = name
+      self.amount = amount
+      self.amountPrefix = amountPrefix
       self.isDue = isDue
+      self.tag = tag
       self.completedAt = completedAt
     }
   }

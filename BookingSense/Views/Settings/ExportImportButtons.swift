@@ -145,7 +145,6 @@ struct ExportImportButtons: View {
 
   func encodeJson(_ entries: BookingsList) -> String? {
     let encoder = JSONEncoder()
-    encoder.outputFormatting = .prettyPrinted
 
     do {
       let jsonData = try encoder.encode(entries)
@@ -182,8 +181,12 @@ struct ExportImportButtons: View {
         if !entry {
           let newTimelineEntry = TimelineEntry(
             uuid: newTimelineEntry.uuid,
-            isDone: newTimelineEntry.isDone,
+            state: newTimelineEntry.state,
+            name: newTimelineEntry.name,
+            amount: newTimelineEntry.amount,
+            amountPrefix: newTimelineEntry.amountPrefix,
             isDue: newTimelineEntry.isDue,
+            tag: nil,
             completedAt: newTimelineEntry.completedAt
           )
           importTimelineEntries[newTimelineEntry.uuid] = newTimelineEntry
@@ -194,6 +197,7 @@ struct ExportImportButtons: View {
         BookingEntry(
           uuid: importBookingEntry.uuid,
           name: importBookingEntry.name,
+          state: importBookingEntry.state,
           amount: importBookingEntry.amount,
           amountPrefix: importBookingEntry.amountPrefix,
           interval: Interval(rawValue: importBookingEntry.interval)!,
@@ -220,8 +224,12 @@ struct ExportImportButtons: View {
         let filteredBookEntries = entries.filter { bookingEntryIDs.contains($0.uuid) }
 
         let timelineEntry = TimelineEntry(
-          isDone: importTimelineEntry.isDone,
+          state: importTimelineEntry.state,
+          name: importTimelineEntry.name,
+          amount: importTimelineEntry.amount,
+          amountPrefix: importTimelineEntry.amountPrefix,
           isDue: importTimelineEntry.isDue,
+          tag: nil,
           completedAt: importTimelineEntry.completedAt
         )
 

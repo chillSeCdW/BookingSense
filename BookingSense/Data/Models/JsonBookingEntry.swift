@@ -4,14 +4,14 @@
 import Foundation
 
 enum JsonBookingEntryKeys: CodingKey {
-  case uuid, name, amount, date, amountPrefix, interval, intervalString, tag, timelineEntries
+  case uuid, name, state, amount, date, amountPrefix, interval, intervalString, tag, timelineEntries
 }
 
 class JsonBookingEntry: Codable {
 
   var uuid: String = UUID().uuidString
   var name: String = ""
-  var isActive: Bool = true
+  var state: BookingEntryState = .active
   var tag: String?
   var timelineEntries: [String]?
   var amount: Decimal = Decimal.zero
@@ -20,7 +20,7 @@ class JsonBookingEntry: Codable {
   var interval: String = "monthly"
 
   init(name: String,
-       isActive: Bool = true,
+       state: BookingEntryState = .active,
        amount: Decimal,
        date: Date = Date(),
        amountPrefix: AmountPrefix,
@@ -28,7 +28,7 @@ class JsonBookingEntry: Codable {
        tag: String?,
        timelineEntries: [String]?) {
     self.name = name
-    self.isActive = isActive
+    self.state = state
     self.date = date
     self.amount = amount
     self.amountPrefix = amountPrefix
@@ -40,7 +40,7 @@ class JsonBookingEntry: Codable {
   init(_ data: BookingEntry) {
     self.uuid = data.uuid
     self.name = data.name
-    self.isActive = data.isActive
+    self.state = data.state
     self.date = data.date
     self.amount = data.amount
     self.amountPrefix = data.amountPrefix
@@ -53,6 +53,7 @@ class JsonBookingEntry: Codable {
     let container = try decoder.container(keyedBy: JsonBookingEntryKeys.self)
     uuid = try container.decode(String.self, forKey: .uuid)
     name = try container.decode(String.self, forKey: .name)
+    state = try container.decode(BookingEntryState.self, forKey: .state)
     date = try container.decode(Date.self, forKey: .date)
     amount = try container.decode(Decimal.self, forKey: .amount)
     amountPrefix = try container.decode(AmountPrefix.self, forKey: .amountPrefix)
@@ -65,6 +66,7 @@ class JsonBookingEntry: Codable {
     var container = encoder.container(keyedBy: JsonBookingEntryKeys.self)
     try container.encode(uuid, forKey: .uuid)
     try container.encode(name, forKey: .name)
+    try container.encode(state, forKey: .state)
     try container.encode(date, forKey: .date)
     try container.encode(amount, forKey: .amount)
     try container.encode(amountPrefix, forKey: .amountPrefix)
