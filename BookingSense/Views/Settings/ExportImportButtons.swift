@@ -3,8 +3,10 @@
 
 import SwiftUI
 import SwiftData
+import OSLog
 
 struct ExportImportButtons: View {
+  private let logger = Logger(subsystem: "BookingSense", category: "ExportImportButtons")
   @Environment(\.modelContext) private var modelContext
   @Query private var entries: [BookingEntry]
   @Query private var tags: [Tag]
@@ -161,7 +163,7 @@ struct ExportImportButtons: View {
       try modelContext.delete(model: Tag.self)
       try modelContext.delete(model: TimelineEntry.self)
     } catch {
-      print("Failed to delete all Booking entries")
+      logger.error("Failed to delete all Booking entries: \(error)")
     }
   }
 
@@ -192,21 +194,27 @@ struct ExportImportButtons: View {
           importTimelineEntries[newTimelineEntry.uuid] = newTimelineEntry
       }
     }
-    importList?.data.forEach { importBookingEntry in
-      modelContext.insert(
-        BookingEntry(
-          uuid: importBookingEntry.uuid,
-          name: importBookingEntry.name,
-          state: importBookingEntry.state,
-          amount: importBookingEntry.amount,
-          amountPrefix: importBookingEntry.amountPrefix,
-          interval: Interval(rawValue: importBookingEntry.interval)!,
-          tag: nil,
-          timelineEntries: nil
+    try? modelContext.transaction {
+      importList?.data.forEach { importBookingEntry in
+        modelContext.insert(
+          BookingEntry(
+            uuid: importBookingEntry.uuid,
+            name: importBookingEntry.name,
+            state: importBookingEntry.state,
+            amount: importBookingEntry.amount,
+            amountPrefix: importBookingEntry.amountPrefix,
+            interval: Interval(rawValue: importBookingEntry.interval)!,
+            tag: nil,
+            timelineEntries: nil
+          )
         )
-      )
+      }
+      do {
+          try modelContext.save()
+      } catch {
+        logger.error("error saving modelContext: \(error)")
+      }
     }
-    try? modelContext.save()
     importList?.tags.forEach { importTag in
       if let bookingEntryIDs = importTag.bookingEntries {
         let filteredBookEntries = entries.filter {

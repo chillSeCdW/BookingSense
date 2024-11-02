@@ -5,19 +5,36 @@ import SwiftUI
 import SwiftData
 
 struct TimelineView: View {
+  @Environment(\.colorScheme) var colorScheme
   @Environment(AppStates.self) var appStates
   @Environment(\.modelContext) private var modelContext
   @Query private var timelineEntries: [TimelineEntry]
 
+  init() {
+    _timelineEntries = Query(
+      filter: nil,
+      sort: \.isDue,
+      order: .forward
+  )
+  }
+
   var body: some View {
     NavigationStack {
-      List {
-        Section(header: Text(Date.now.formatted(.dateTime
-          .month(.wide)
-          .year()))) {
-            ForEach(timelineEntries) { entry in
-              Text(entry.uuid)
-            }
+      Form {
+        ForEach(timelineEntries) { entry in
+          Section(header: Text(entry.isDue.formatted(.dateTime
+            .month(.wide)
+            .year()))) {
+              TimelineEntryView(timelineEntry: entry)
+            }.listRowBackground(
+              HStack(spacing: 0) {
+                Rectangle()
+                  .fill(Constants.listBackgroundColors[entry.amountPrefix]!)
+                  .frame(width: 10)
+                Rectangle()
+                  .fill(Constants.getBackground(colorScheme))
+              }
+            )
         }
       }
       .navigationTitle("Timeline")

@@ -703,6 +703,9 @@
         }
       }
     },
+    "Checked" : {
+
+    },
     "Clear and insert" : {
       "localizations" : {
         "de" : {
@@ -1918,6 +1921,9 @@
           }
         }
       }
+    },
+    "Unchecked" : {
+
     },
     "Week" : {
       "localizations" : {

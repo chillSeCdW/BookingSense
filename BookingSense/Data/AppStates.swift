@@ -11,6 +11,6 @@ import SwiftData
 
 @Observable
 class AppStates {
-    var searchText: String = ""
-    var authenticationActive: Bool = false
+  var searchText: String = ""
+  var authenticationActive: Bool = false
 }

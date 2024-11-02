@@ -82,14 +82,17 @@ struct EntryView: View {
     }
 
     if isCreate {
-      modelContext.insert(BookingEntry(
+      let newEntry = BookingEntry(
         name: name,
         amount: parsedAmount ?? Decimal(),
         amountPrefix: amountPrefix,
         interval: interval,
         tag: nil,
         timelineEntries: nil
-      ))
+      )
+      modelContext.insert(newEntry)
+      // TODO: add generated to Entry and not directly insert into model
+      Constants.generateTimelineEntriesOf(modelContext, entry: newEntry)
       dismiss()
     } else {
       bookingEntry!.name = name

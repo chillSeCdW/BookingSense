@@ -83,7 +83,7 @@ extension BookingSchemaV3 {
   }
 
   @Model
-  final class TimelineEntry {
+  final class TimelineEntry: Identifiable {
 
     var uuid: String
     @Relationship(inverse: \BookingEntry.timelineEntries) var bookingEntry: BookingEntry?
@@ -112,6 +112,14 @@ extension BookingSchemaV3 {
       self.isDue = isDue
       self.tag = tag
       self.completedAt = completedAt
+    }
+
+    static func predicate(
+      _ bookingEntryUUID: String
+    ) -> Predicate<TimelineEntry> {
+      return #Predicate<TimelineEntry> { entry in
+        entry.bookingEntry?.uuid == bookingEntryUUID
+      }
     }
   }
 }

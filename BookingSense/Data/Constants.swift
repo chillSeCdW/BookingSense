@@ -8,8 +8,11 @@
 import SwiftUI
 import SwiftData
 import Foundation
+import OSLog
 
 struct Constants {
+  static let logger = Logger(subsystem: "BookingSense", category: "Constants")
+
   static var listBackgroundColors: [AmountPrefix: Color] = [
     AmountPrefix.plus: Color(UIColor(red: 0.2039, green: 0.7373, blue: 0.2039, alpha: 1.0)), // green
     AmountPrefix.minus: Color(UIColor(red: 0.7882, green: 0, blue: 0.0118, alpha: 1.0)), // red
@@ -52,6 +55,9 @@ struct Constants {
     guard let fromInterval = interval, let targetInterval = targetInterval else {
       return 0
     }
+    if fromInterval == targetInterval {
+      return 1
+    }
 
     let conversionRates: [Interval: Decimal] = [
       .daily: 1,
@@ -87,17 +93,91 @@ struct Constants {
     return result
   }
 
-  // TODO: implement function
-  static func generateTimelineEntryOf(entry: BookingEntry) -> TimelineEntry {
+  static func generateTimelineEntriesOf(_ context: ModelContext, entry: BookingEntry) {
+    guard let entryInterval = Interval(rawValue: entry.interval) else {
+      return
+    }
+    let dateOneYearInFuture = self.getDateOfOneYearInFuture()
 
-    return TimelineEntry(state: .active,
-                         name: "entryName",
-                         amount: .zero,
-                         amountPrefix: .minus,
-                         isDue: .distantFuture,
-                         tag: nil,
-                         completedAt: nil
-    )
+    let entryDates = self.getDatesForEntries(entry.date, endDate: dateOneYearInFuture, interval: entryInterval)
+
+    try? context.transaction {
+      entryDates.forEach { dateEntry in
+        let timelineEntry = TimelineEntry(state: .active,
+                             name: entry.name,
+                             amount: entry.amount,
+                             amountPrefix: entry.amountPrefix,
+                             isDue: dateEntry,
+                             tag: entry.tag,
+                             completedAt: nil
+        )
+        context.insert(timelineEntry)
+      }
+      do {
+          try context.save()
+      } catch {
+        logger.error("error saving modelContext: \(error)")
+      }
+    }
+
+  }
+
+  // swiftlint:disable:next cyclomatic_complexity
+  static func getDatesForEntries(_ startDate: Date, endDate: Date, interval: Interval) -> [Date] {
+    var dates: [Date] = []
+    var currentDate = startDate
+
+    let calendar = Calendar.current
+
+    while currentDate <= endDate {
+      dates.append(currentDate)
+      switch interval {
+      case .daily:
+        if let newDate = calendar.date(byAdding: .day, value: 1, to: currentDate) {
+          currentDate = newDate
+        }
+      case .weekly:
+        if let newDate = calendar.date(byAdding: .weekOfYear, value: 1, to: currentDate) {
+          currentDate = newDate
+        }
+      case .biweekly:
+        if let newDate = calendar.date(byAdding: .weekOfYear, value: 2, to: currentDate) {
+          currentDate = newDate
+        }
+      case .monthly:
+        if let newDate = calendar.date(byAdding: .month, value: 1, to: currentDate) {
+          currentDate = newDate
+        }
+      case .quarterly:
+        if let newDate = calendar.date(byAdding: .month, value: 3, to: currentDate) {
+          currentDate = newDate
+        }
+      case .semiannually:
+        if let newDate = calendar.date(byAdding: .month, value: 6, to: currentDate) {
+          currentDate = newDate
+        }
+      case .annually:
+        if let newDate = calendar.date(byAdding: .year, value: 1, to: currentDate) {
+          currentDate = newDate
+        }
+      }
+    }
+
+    return dates
+  }
+
+  static func getDateOfOneYearInFuture() -> Date {
+    let nextYear = Calendar.current.component(.year, from: .now) + 1
+    let currentMonth = Calendar.current.component(.month, from: .now)
+    let currentDay = Calendar.current.component(.day, from: .now)
+    var components = DateComponents()
+    components.year = nextYear
+    components.month = currentMonth
+    components.day = currentDay
+    components.hour = 23
+    components.minute = 59
+
+    return Calendar.current.date(from: components)!
   }
 
   static func getSymbol(_ code: String) -> String? {
