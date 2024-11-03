@@ -5,43 +5,18 @@ import SwiftUI
 import SwiftData
 
 struct TimelineView: View {
-  @Environment(\.colorScheme) var colorScheme
   @Environment(AppStates.self) var appStates
-  @Environment(\.modelContext) private var modelContext
-  @Query private var timelineEntries: [TimelineEntry]
-
-  init() {
-    _timelineEntries = Query(
-      filter: nil,
-      sort: \.isDue,
-      order: .forward
-  )
-  }
 
   var body: some View {
+    @Bindable var appStates = appStates
+
     NavigationStack {
-      Form {
-        ForEach(timelineEntries) { entry in
-          Section(header: Text(entry.isDue.formatted(.dateTime
-            .month(.wide)
-            .year()))) {
-              TimelineEntryView(timelineEntry: entry)
-            }.listRowBackground(
-              HStack(spacing: 0) {
-                Rectangle()
-                  .fill(Constants.listBackgroundColors[entry.amountPrefix]!)
-                  .frame(width: 10)
-                Rectangle()
-                  .fill(Constants.getBackground(colorScheme))
-              }
-            )
+      TimelineContentListView(searchText: $appStates.searchTimelineText)
+        .navigationTitle("Timeline")
+        .navigationBarTitleDisplayMode(.automatic)
+        .toolbar {
+          ToolbarTimelineContent()
         }
-      }
-      .navigationTitle("Timeline")
-      .listStyle(.sidebar)
-      .toolbar {
-        ToolbarOverviewList()
-      }
-    }
+    }.searchable(text: $appStates.searchTimelineText, prompt: "Search")
   }
 }

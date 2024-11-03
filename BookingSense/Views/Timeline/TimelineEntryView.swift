@@ -7,27 +7,47 @@ import SwiftData
 struct TimelineEntryView: View {
   @Environment(AppStates.self) var appStates
 
-  @State var isDone: Bool = false
-
-  var timelineEntry: TimelineEntry
+  @StateObject var timelineEntry: TimelineEntry
 
   var body: some View {
-    return
-      Toggle(isOn: $isDone) {
-        HStack {
-          Text(timelineEntry.name)
-            .bold()	
-          Spacer()
-          VStack(alignment: .trailing) {
-            Text(timelineEntry.amount, format: .currency(code: Locale.current.currency!.identifier))
-            Text(timelineEntry.isDue.formatted())
-              .foregroundStyle( timelineEntry.isDue < .now ? .red : .secondary)
-          }.foregroundStyle(.secondary)
+    Toggle(isOn: Binding(
+      get: { timelineEntry.state == .done },
+      set: { isDone in
+        timelineEntry.state = isDone ? .done : .active
+        timelineEntry.completedAt = isDone ? .now : nil
+      }
+    )) {
+      HStack {
+        Text(timelineEntry.name)
+          .bold()
+        Spacer()
+        VStack(alignment: .trailing) {
+          Text(timelineEntry.amount, format: .currency(code: Locale.current.currency!.identifier))
+          Text(timelineEntry.isDue.formatted())
+            .foregroundStyle( timelineEntry.isDue < .now ? .red : .secondary)
+        }.foregroundStyle(.secondary)
+      }
+    }
+    .disabled(timelineEntry.state == .skipped)
+    .toggleStyle(CheckToggleStyle())
+    .swipeActions {
+      if timelineEntry.state != .skipped {
+        Button("Skip") {
+          timelineEntry.state = .skipped
+          timelineEntry.completedAt = .now
+        }
+      } else {
+        Button("make Active") {
+          timelineEntry.state = .active
+          timelineEntry.completedAt = nil
         }
       }
-        .toggleStyle(CheckToggleStyle())
-
+      Button("Done on") {
+        print("open Dialog for selecting Date")
       }
+      .tint(.green)
+    }
+  }
 }
 
 struct CheckToggleStyle: ToggleStyle {

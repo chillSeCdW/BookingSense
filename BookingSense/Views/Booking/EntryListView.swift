@@ -46,15 +46,14 @@ struct EntryListView: View {
               Text(entry.amount, format: .currency(code: Locale.current.currency!.identifier))
                 .contentTransition(.symbolEffect(.replace.downUp.byLayer))
             }.blur(radius: blurSensitive ? 4 : 0)
-          }.accessibilityIdentifier("NavLink" + entry.name)
+          }
+          .accessibilityIdentifier("NavLink" + entry.name)
           .listRowBackground(
-            HStack(spacing: 0) {
-              Rectangle()
-                .fill(Constants.listBackgroundColors[entry.amountPrefix]!)
-                .frame(width: 10)
-              Rectangle()
-                .fill(Constants.getBackground(colorScheme))
-            }
+            Constants.getListBackgroundView(
+              amountPrefix: entry.amountPrefix,
+              isActive: entry.state == .active,
+              colorScheme: colorScheme
+            )
           )
         }.onDelete(perform: deleteEntry)
       }, header: {
@@ -70,11 +69,11 @@ struct EntryListView: View {
   }
 
   private func deleteEntry(offsets: IndexSet) {
-      withAnimation {
-          for index in offsets {
-              modelContext.delete(entries[index])
-          }
+    withAnimation {
+      for index in offsets {
+        modelContext.delete(entries[index])
       }
+    }
   }
 }
 

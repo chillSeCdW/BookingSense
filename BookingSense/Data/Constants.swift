@@ -18,6 +18,11 @@ struct Constants {
     AmountPrefix.minus: Color(UIColor(red: 0.7882, green: 0, blue: 0.0118, alpha: 1.0)), // red
     AmountPrefix.saving: Color(UIColor(red: 44/255, green: 158/255, blue: 224/255, alpha: 1.0)) // blueish
   ]
+  static var listBackgroundColorsInactive: [AmountPrefix: Color] = [
+    AmountPrefix.plus: Color(UIColor(red: 0.2039, green: 0.7373, blue: 0.2039, alpha: 0.3)), // green
+    AmountPrefix.minus: Color(UIColor(red: 0.7882, green: 0, blue: 0.0118, alpha: 0.3)), // red
+    AmountPrefix.saving: Color(UIColor(red: 44/255, green: 158/255, blue: 224/255, alpha: 0.3)) // blueish
+  ]
   static var getBackground: (ColorScheme) -> Color = { scheme in
     scheme == .light ? .white : Color(
       uiColor: UIColor(
@@ -31,6 +36,14 @@ struct Constants {
 
   static let mailTo = "hello@chillturtle.de"
   static let mailSubject = "feedback"
+
+  static func getListBackgroundColor(for amountPrefix: AmountPrefix, isActive: Bool) -> Color? {
+    if isActive {
+      return Constants.listBackgroundColors[amountPrefix]
+    } else {
+      return Constants.listBackgroundColorsInactive[amountPrefix]
+    }
+  }
 
   static func convertToNoun(_ interval: Interval) -> String {
     switch interval {
@@ -103,18 +116,20 @@ struct Constants {
 
     try? context.transaction {
       entryDates.forEach { dateEntry in
-        let timelineEntry = TimelineEntry(state: .active,
-                             name: entry.name,
-                             amount: entry.amount,
-                             amountPrefix: entry.amountPrefix,
-                             isDue: dateEntry,
-                             tag: entry.tag,
-                             completedAt: nil
+        let timelineEntry = TimelineEntry(
+          state: .active,
+          name: entry.name,
+          amount: entry.amount,
+          amountPrefix: entry.amountPrefix,
+          isDue: dateEntry,
+          tag: entry.tag,
+          completedAt: nil,
+          bookingEntry: entry
         )
         context.insert(timelineEntry)
       }
       do {
-          try context.save()
+        try context.save()
       } catch {
         logger.error("error saving modelContext: \(error)")
       }
@@ -164,6 +179,39 @@ struct Constants {
     }
 
     return dates
+  }
+
+  static func groupEntriesByMonthAndYear(entries: [TimelineEntry]) -> [Date: [TimelineEntry]] {
+      var groupedEntries: [Date: [TimelineEntry]] = [:]
+      let calendar = Calendar.current
+
+      for entry in entries {
+          let components = calendar.dateComponents([.year, .month], from: entry.isDue)
+          let monthYearDate = calendar.date(from: components)!
+
+          // Add entry to the dictionary
+          if groupedEntries[monthYearDate] == nil {
+              groupedEntries[monthYearDate] = []
+          }
+          groupedEntries[monthYearDate]?.append(entry)
+      }
+
+      return groupedEntries
+  }
+
+  static func getListBackgroundView(amountPrefix: AmountPrefix, isActive: Bool, colorScheme: ColorScheme) -> some View {
+    return HStack(spacing: 0) {
+      Rectangle()
+        .fill(Constants
+          .getListBackgroundColor(
+            for: amountPrefix,
+            isActive: isActive
+          ) ?? Constants.getBackground(colorScheme)
+        )
+        .frame(width: 10)
+      Rectangle()
+        .fill(Constants.getBackground(colorScheme))
+    }
   }
 
   static func getDateOfOneYearInFuture() -> Date {

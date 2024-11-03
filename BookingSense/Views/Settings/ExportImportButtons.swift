@@ -189,7 +189,8 @@ struct ExportImportButtons: View {
             amountPrefix: newTimelineEntry.amountPrefix,
             isDue: newTimelineEntry.isDue,
             tag: nil,
-            completedAt: newTimelineEntry.completedAt
+            completedAt: newTimelineEntry.completedAt,
+            bookingEntry: nil
           )
           importTimelineEntries[newTimelineEntry.uuid] = newTimelineEntry
       }
@@ -238,7 +239,8 @@ struct ExportImportButtons: View {
           amountPrefix: importTimelineEntry.amountPrefix,
           isDue: importTimelineEntry.isDue,
           tag: nil,
-          completedAt: importTimelineEntry.completedAt
+          completedAt: importTimelineEntry.completedAt,
+          bookingEntry: nil
         )
 
         filteredBookEntries.forEach { entry in

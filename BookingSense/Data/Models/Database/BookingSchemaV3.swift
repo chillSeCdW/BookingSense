@@ -83,7 +83,7 @@ extension BookingSchemaV3 {
   }
 
   @Model
-  final class TimelineEntry: Identifiable {
+  final class TimelineEntry: ObservableObject, Identifiable {
 
     var uuid: String
     @Relationship(inverse: \BookingEntry.timelineEntries) var bookingEntry: BookingEntry?
@@ -102,9 +102,11 @@ extension BookingSchemaV3 {
          amountPrefix: AmountPrefix,
          isDue: Date,
          tag: Tag?,
-         completedAt: Date?
+         completedAt: Date?,
+         bookingEntry: BookingEntry?
     ) {
       self.uuid = uuid
+      self.bookingEntry = bookingEntry
       self.state = state
       self.name = name
       self.amount = amount
@@ -115,10 +117,10 @@ extension BookingSchemaV3 {
     }
 
     static func predicate(
-      _ bookingEntryUUID: String
+      _ searchName: String
     ) -> Predicate<TimelineEntry> {
       return #Predicate<TimelineEntry> { entry in
-        entry.bookingEntry?.uuid == bookingEntryUUID
+        return (searchName.isEmpty || entry.name.contains(searchName))
       }
     }
   }

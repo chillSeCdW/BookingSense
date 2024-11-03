@@ -915,6 +915,9 @@
         }
       }
     },
+    "Done on" : {
+
+    },
     "Edit" : {
       "localizations" : {
         "de" : {
@@ -1254,6 +1257,9 @@
         }
       }
     },
+    "make Active" : {
+
+    },
     "month" : {
       "localizations" : {
         "de" : {
@@ -1333,6 +1339,9 @@
           }
         }
       }
+    },
+    "No timeline entries found" : {
+
     },
     "Ok" : {
       "localizations" : {
@@ -1592,6 +1601,9 @@
           }
         }
       }
+    },
+    "Skip" : {
+
     },
     "Something went wrong" : {
       "localizations" : {

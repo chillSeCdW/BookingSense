@@ -59,7 +59,9 @@ struct ContainerFactory {
       amountPrefix: .minus,
       isDue: Date.now.addingTimeInterval( 60 * 60 * 24 * 3),
       tag: nil,
-      completedAt: nil)
+      completedAt: nil,
+      bookingEntry: nil
+    )
     let timelineEntry2: TimelineEntry = TimelineEntry(
       state: .active,
       name: "Brötchen",
@@ -67,7 +69,9 @@ struct ContainerFactory {
       amountPrefix: .minus,
       isDue: Date.now.addingTimeInterval( 60 * 60 * 24),
       tag: nil,
-      completedAt: nil)
+      completedAt: nil,
+      bookingEntry: nil
+    )
 
     returnResult.append(BookingEntry(name: "Trinkgeld",
                                      amount: 1,
