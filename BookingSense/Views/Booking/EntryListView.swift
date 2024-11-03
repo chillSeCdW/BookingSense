@@ -51,7 +51,7 @@ struct EntryListView: View {
           .listRowBackground(
             Constants.getListBackgroundView(
               amountPrefix: entry.amountPrefix,
-              isActive: entry.state == .active,
+              isActive: entry.state == BookingEntryState.active.rawValue,
               colorScheme: colorScheme
             )
           )

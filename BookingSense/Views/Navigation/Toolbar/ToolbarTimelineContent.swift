@@ -7,7 +7,7 @@ import OSLog
 
 struct ToolbarTimelineContent: ToolbarContent {
   private let logger = Logger(subsystem: "BookingSense", category: "ToolbarTimelineContent")
-  
+
   @Environment(AppStates.self) var appStates
   @AppStorage("blurSensitive") var blurSensitive = false
   @AppStorage("biometricEnabled") var biometricEnabled = false
@@ -18,9 +18,11 @@ struct ToolbarTimelineContent: ToolbarContent {
         Image(systemName: blurSensitive ? "eye.slash" : "eye")
       }.contentTransition(.symbolEffect(.replace.downUp.byLayer))
     }
-    ToolbarItem {
-      withAnimation {
-        SortButtonView()
+    ToolbarItem(placement: .navigationBarTrailing) {
+      Button(action: {
+        appStates.isFilterDialogPresented.toggle()
+      }) {
+        Image(systemName: "line.horizontal.3.decrease.circle")
       }
     }
   }

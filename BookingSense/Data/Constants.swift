@@ -117,7 +117,7 @@ struct Constants {
     try? context.transaction {
       entryDates.forEach { dateEntry in
         let timelineEntry = TimelineEntry(
-          state: .active,
+          state: TimelineEntryState.active.rawValue,
           name: entry.name,
           amount: entry.amount,
           amountPrefix: entry.amountPrefix,

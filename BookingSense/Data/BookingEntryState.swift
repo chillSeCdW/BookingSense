@@ -3,7 +3,7 @@
 
 import Foundation
 
-enum BookingEntryState: Codable, CaseIterable, Identifiable {
+enum BookingEntryState: String, Codable, CaseIterable, Identifiable {
   var id: Self { self }
 
   case active

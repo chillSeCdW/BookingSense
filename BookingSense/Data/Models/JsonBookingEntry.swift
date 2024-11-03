@@ -11,7 +11,7 @@ class JsonBookingEntry: Codable {
 
   var uuid: String = UUID().uuidString
   var name: String = ""
-  var state: BookingEntryState = .active
+  var state: String = "active"
   var tag: String?
   var timelineEntries: [String]?
   var amount: Decimal = Decimal.zero
@@ -20,7 +20,7 @@ class JsonBookingEntry: Codable {
   var interval: String = "monthly"
 
   init(name: String,
-       state: BookingEntryState = .active,
+       state: String,
        amount: Decimal,
        date: Date = Date(),
        amountPrefix: AmountPrefix,
@@ -53,7 +53,7 @@ class JsonBookingEntry: Codable {
     let container = try decoder.container(keyedBy: JsonBookingEntryKeys.self)
     uuid = try container.decode(String.self, forKey: .uuid)
     name = try container.decode(String.self, forKey: .name)
-    state = try container.decode(BookingEntryState.self, forKey: .state)
+    state = try container.decode(String.self, forKey: .state)
     date = try container.decode(Date.self, forKey: .date)
     amount = try container.decode(Decimal.self, forKey: .amount)
     amountPrefix = try container.decode(AmountPrefix.self, forKey: .amountPrefix)

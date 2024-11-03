@@ -53,7 +53,7 @@ struct ContainerFactory {
     var returnResult: [BookingEntry] = []
     let incomeTag: Tag = Tag(name: "income")
     let timelineEntry: TimelineEntry = TimelineEntry(
-      state: .active,
+      state: TimelineEntryState.active.rawValue,
       name: "Brötchen",
       amount: 2.5,
       amountPrefix: .minus,
@@ -63,7 +63,7 @@ struct ContainerFactory {
       bookingEntry: nil
     )
     let timelineEntry2: TimelineEntry = TimelineEntry(
-      state: .active,
+      state: TimelineEntryState.active.rawValue,
       name: "Brötchen",
       amount: 2.5,
       amountPrefix: .minus,

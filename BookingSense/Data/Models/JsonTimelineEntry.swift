@@ -11,14 +11,14 @@ class JsonTimelineEntry: Codable {
 
   var uuid: String = UUID().uuidString
   var bookingEntry: String?
-  var state: TimelineEntryState = TimelineEntryState.active
+  var state: String = "active"
   var name: String = ""
   var amount: Decimal = Decimal.zero
   var amountPrefix: AmountPrefix = AmountPrefix.minus
   var isDue: Date = Date()
   var completedAt: Date?
 
-  init(state: TimelineEntryState,
+  init(state: String,
        name: String,
        amount: Decimal,
        amountPrefix: AmountPrefix,
@@ -47,7 +47,7 @@ class JsonTimelineEntry: Codable {
     let container = try decoder.container(keyedBy: TimelineEntryKeys.self)
     uuid = try container.decode(String.self, forKey: .uuid)
     bookingEntry = try container.decodeIfPresent(String.self, forKey: .bookingEntry)
-    state = try container.decode(TimelineEntryState.self, forKey: .state)
+    state = try container.decode(String.self, forKey: .state)
     name = try container.decode(String.self, forKey: .name)
     amount = try container.decode(Decimal.self, forKey: .amount)
     amountPrefix = try container.decode(AmountPrefix.self, forKey: .amountPrefix)

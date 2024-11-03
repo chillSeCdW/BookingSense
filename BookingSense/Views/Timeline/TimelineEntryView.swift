@@ -11,9 +11,9 @@ struct TimelineEntryView: View {
 
   var body: some View {
     Toggle(isOn: Binding(
-      get: { timelineEntry.state == .done },
+      get: { timelineEntry.state == TimelineEntryState.done.rawValue },
       set: { isDone in
-        timelineEntry.state = isDone ? .done : .active
+        timelineEntry.state = isDone ? TimelineEntryState.done.rawValue : TimelineEntryState.active.rawValue
         timelineEntry.completedAt = isDone ? .now : nil
       }
     )) {
@@ -28,17 +28,17 @@ struct TimelineEntryView: View {
         }.foregroundStyle(.secondary)
       }
     }
-    .disabled(timelineEntry.state == .skipped)
+    .disabled(timelineEntry.state == TimelineEntryState.skipped.rawValue)
     .toggleStyle(CheckToggleStyle())
     .swipeActions {
-      if timelineEntry.state != .skipped {
+      if timelineEntry.state != TimelineEntryState.skipped.rawValue {
         Button("Skip") {
-          timelineEntry.state = .skipped
+          timelineEntry.state = TimelineEntryState.skipped.rawValue
           timelineEntry.completedAt = .now
         }
       } else {
         Button("make Active") {
-          timelineEntry.state = .active
+          timelineEntry.state = TimelineEntryState.active.rawValue
           timelineEntry.completedAt = nil
         }
       }

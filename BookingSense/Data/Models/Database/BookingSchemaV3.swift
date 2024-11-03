@@ -24,8 +24,8 @@ extension BookingSchemaV3 {
   final class BookingEntry {
 
     var uuid: String
-    var name: String = ""
-    var state: BookingEntryState
+    var name: String
+    var state: String
     @Relationship var tag: Tag?
     @Relationship(deleteRule: .cascade) var timelineEntries: [TimelineEntry]?
     var amount: Decimal = Decimal.zero
@@ -34,8 +34,8 @@ extension BookingSchemaV3 {
     var interval: String = "monthly"
 
     init(uuid: String = UUID().uuidString,
-         name: String,
-         state: BookingEntryState = .active,
+         name: String = "",
+         state: String = "active",
          amount: Decimal,
          date: Date = Date(),
          amountPrefix: AmountPrefix,
@@ -87,7 +87,7 @@ extension BookingSchemaV3 {
 
     var uuid: String
     @Relationship(inverse: \BookingEntry.timelineEntries) var bookingEntry: BookingEntry?
-    var state: TimelineEntryState = TimelineEntryState.active
+    var state: String = "active"
     var tag: Tag?
     var name: String = ""
     var amount: Decimal = Decimal.zero
@@ -96,7 +96,7 @@ extension BookingSchemaV3 {
     var completedAt: Date?
 
     init(uuid: String = UUID().uuidString,
-         state: TimelineEntryState,
+         state: String,
          name: String,
          amount: Decimal,
          amountPrefix: AmountPrefix,
@@ -117,10 +117,17 @@ extension BookingSchemaV3 {
     }
 
     static func predicate(
-      _ searchName: String
+      _ searchName: String,
+      stateFilter: Set<TimelineEntryState>
     ) -> Predicate<TimelineEntry> {
+      let textFilter = stateFilter.map { entry in
+        entry.rawValue
+      }
+
       return #Predicate<TimelineEntry> { entry in
         return (searchName.isEmpty || entry.name.contains(searchName))
+        &&
+        textFilter.contains(entry.state)
       }
     }
   }

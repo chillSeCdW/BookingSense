@@ -11,12 +11,16 @@ struct TimelineView: View {
     @Bindable var appStates = appStates
 
     NavigationStack {
-      TimelineContentListView(searchText: $appStates.searchTimelineText)
-        .navigationTitle("Timeline")
-        .navigationBarTitleDisplayMode(.automatic)
-        .toolbar {
-          ToolbarTimelineContent()
-        }
+      TimelineContentListView()
+      .navigationTitle("Timeline")
+      .navigationBarTitleDisplayMode(.automatic)
+      .toolbar {
+        ToolbarTimelineContent()
+      }
+      .sheet(isPresented: $appStates.isFilterDialogPresented) {
+        FilterDialog()
+          .presentationDetents([.medium, .large])
+      }
     }.searchable(text: $appStates.searchTimelineText, prompt: "Search")
   }
 }
