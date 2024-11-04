@@ -31,7 +31,6 @@ struct SortButtonView: View {
   }
 }
 
-
 #Preview {
   SortButtonView()
     .environment(AppStates())
