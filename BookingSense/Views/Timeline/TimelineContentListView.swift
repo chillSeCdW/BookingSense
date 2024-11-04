@@ -21,7 +21,8 @@ struct TimelineContentListView: View {
       } else {
         TimelineListView(
           searchText: $appStates.searchTimelineText,
-          stateFilter: appStates.activeFilters
+          stateFilter: appStates.activeTimeStateFilters,
+          amountPFilter: appStates.activeAmountPFilters
         )
       }
     }.onAppear {

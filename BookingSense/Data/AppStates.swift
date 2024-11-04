@@ -13,10 +13,16 @@ import SwiftData
 class AppStates {
   var isFilterDialogPresented: Bool = false
 
-  var activeFilters: Set<TimelineEntryState> {
+  var activeTimeStateFilters: Set<TimelineEntryState> {
     didSet {
-      let filtersArray = activeFilters.map { $0.rawValue }
-      UserDefaults.standard.set(filtersArray, forKey: "activeFilters")
+      let filtersArray = activeTimeStateFilters.map { $0.rawValue }
+      UserDefaults.standard.set(filtersArray, forKey: "activeTimeEntryFilters")
+    }
+  }
+  var activeAmountPFilters: Set<AmountPrefix> {
+    didSet {
+      let filtersArray = activeAmountPFilters.map { $0.rawValue }
+      UserDefaults.standard.set(filtersArray, forKey: "activeStateFilters")
     }
   }
   var sortBy: SortByEnum {
@@ -34,10 +40,15 @@ class AppStates {
   var authenticationActive: Bool = false
 
   init() {
-    if let savedFilters = UserDefaults.standard.array(forKey: "activeFilters") as? [String] {
-      self.activeFilters = Set(savedFilters.compactMap { TimelineEntryState(rawValue: $0) })
+    if let savedFilters = UserDefaults.standard.array(forKey: "activeTimeEntryFilters") as? [String] {
+      self.activeTimeStateFilters = Set(savedFilters.compactMap { TimelineEntryState(rawValue: $0) })
     } else {
-      self.activeFilters = [TimelineEntryState.open]
+      self.activeTimeStateFilters = [TimelineEntryState.open]
+    }
+    if let savedFilters = UserDefaults.standard.array(forKey: "activeStateFilters") as? [String] {
+      self.activeAmountPFilters = Set(savedFilters.compactMap { AmountPrefix(rawValue: $0) })
+    } else {
+      self.activeAmountPFilters = [AmountPrefix.minus, AmountPrefix.plus, AmountPrefix.saving]
     }
     if let sortByEnum = UserDefaults.standard.string(forKey: "BsortBy") {
       self.sortBy = SortByEnum(rawValue: sortByEnum) ?? .name
@@ -52,10 +63,18 @@ class AppStates {
   }
 
   func toggleFilter(_ filter: TimelineEntryState) {
-    if activeFilters.contains(filter) {
-      activeFilters.remove(filter)
+    if activeTimeStateFilters.contains(filter) {
+      activeTimeStateFilters.remove(filter)
     } else {
-      activeFilters.insert(filter)
+      activeTimeStateFilters.insert(filter)
+    }
+  }
+
+  func toggleFilter(_ filter: AmountPrefix) {
+    if activeAmountPFilters.contains(filter) {
+      activeAmountPFilters.remove(filter)
+    } else {
+      activeAmountPFilters.insert(filter)
     }
   }
 }

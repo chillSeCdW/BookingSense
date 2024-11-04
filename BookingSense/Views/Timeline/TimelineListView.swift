@@ -17,9 +17,16 @@ struct TimelineListView: View {
     Constants.groupEntriesByMonthAndYear(entries: timelineEntries)
   }
 
-  init(searchText: Binding<String>, stateFilter: Set<TimelineEntryState>) {
+  init(searchText: Binding<String>,
+       stateFilter: Set<TimelineEntryState>,
+       amountPFilter: Set<AmountPrefix>
+  ) {
     _timelineEntries = Query(
-      filter: TimelineEntry.predicate(searchText.wrappedValue, stateFilter: stateFilter),
+      filter: TimelineEntry.predicate(
+        searchText.wrappedValue,
+        stateFilter: stateFilter,
+        amountPFilter: amountPFilter
+      ),
       sort: \.isDue,
       order: .forward
     )
@@ -27,7 +34,8 @@ struct TimelineListView: View {
 
   var body: some View {
     List {
-      FilterButtonsView()
+      FilterStateButtonsView()
+      FilterAmountButtonsView()
       ForEach(sortedKeys, id: \.self) { date in
         TimelineSectionView(date: date, entriesForDate: groupedEntries[date] ?? [])
       }
@@ -38,24 +46,53 @@ struct TimelineListView: View {
   }
 }
 
-struct FilterButtonsView: View {
+struct FilterStateButtonsView: View {
   @Environment(AppStates.self) var appStates
 
   var body: some View {
-    HStack {
-      ForEach(TimelineEntryState.allCases, id: \.self) { option in
-        Spacer()
-        Button(
-          action: { appStates.toggleFilter(option) },
-          label: { Text(option.description) }
-        )
-        .background(appStates.activeFilters.contains(option) ? Color.blue : Color.gray.opacity(0.2))
-        .foregroundColor(.white)
-        .cornerRadius(20)
-        .buttonStyle(.bordered)
-        Spacer()
+    ScrollView(.horizontal, showsIndicators: false) {
+      HStack {
+        ForEach(TimelineEntryState.allCases, id: \.self) { option in
+          Button(
+            action: { appStates.toggleFilter(option) },
+            label: { Text(option.description) }
+          )
+          .background(
+            appStates.activeTimeStateFilters.contains(option) ? Color.blue : Color.gray.opacity(0.3)
+          )
+          .foregroundColor(.white)
+          .cornerRadius(20)
+          .buttonStyle(.bordered)
+        }
       }
     }
+    .listRowInsets(EdgeInsets())
+    .listRowBackground(Color.clear)
+  }
+}
+
+struct FilterAmountButtonsView: View {
+  @Environment(AppStates.self) var appStates
+
+  var body: some View {
+    ScrollView(.horizontal, showsIndicators: false) {
+      HStack {
+        ForEach(AmountPrefix.allCases, id: \.self) { option in
+          Button(
+            action: { appStates.toggleFilter(option) },
+            label: { Text(option.description) }
+          )
+          .background(appStates.activeAmountPFilters.contains(option) ?
+                      Constants.getListBackgroundColor(for: option) :
+                        Constants.getListBackgroundColor(for: option, isActive: false)
+          )
+          .foregroundColor(.white)
+          .cornerRadius(20)
+          .buttonStyle(.bordered)
+        }
+      }
+    }
+    .listRowInsets(EdgeInsets())
     .listRowBackground(Color.clear)
   }
 }

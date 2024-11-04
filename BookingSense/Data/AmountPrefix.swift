@@ -17,11 +17,11 @@ enum AmountPrefix: String, Codable, CaseIterable, Identifiable {
   var description: String {
     switch self {
     case .plus:
-      return "Incoming"
+      return String(localized: "Incoming")
     case .minus:
-      return "Outgoing"
+      return String(localized: "Outgoing")
     case .saving:
-      return "Saving"
+      return String(localized: "Saving")
     }
   }
 }

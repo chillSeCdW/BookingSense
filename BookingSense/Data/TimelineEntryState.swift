@@ -12,9 +12,9 @@ enum TimelineEntryState: String, Codable, CaseIterable, Identifiable {
 
   var description: String {
     switch self {
-    case .open: return "Open"
-    case .done: return "Done"
-    case .skipped: return "Skipped"
+    case .open: return String(localized: "Open")
+    case .done: return String(localized: "Done")
+    case .skipped: return String(localized: "Skipped")
     }
   }
 }

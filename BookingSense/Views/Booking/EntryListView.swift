@@ -38,7 +38,7 @@ struct EntryListView: View {
   var body: some View {
     if !entries.isEmpty {
       Section(content: {
-        ForEach(entries) { entry in
+        ForEach(entries, id: \.self) { entry in
           NavigationLink(value: entry) {
             HStack(spacing: 0) {
               Text(entry.name)

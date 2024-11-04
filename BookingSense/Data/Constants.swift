@@ -16,12 +16,12 @@ struct Constants {
   static var listBackgroundColors: [AmountPrefix: Color] = [
     AmountPrefix.plus: Color(UIColor(red: 0.2039, green: 0.7373, blue: 0.2039, alpha: 1.0)), // green
     AmountPrefix.minus: Color(UIColor(red: 0.7882, green: 0, blue: 0.0118, alpha: 1.0)), // red
-    AmountPrefix.saving: Color(UIColor(red: 44/255, green: 158/255, blue: 224/255, alpha: 1.0)) // blueish
+    AmountPrefix.saving: Color(UIColor(red: 44/255, green: 200/255, blue: 224/255, alpha: 1.0)) // blueish
   ]
   static var listBackgroundColorsInactive: [AmountPrefix: Color] = [
     AmountPrefix.plus: Color(UIColor(red: 0.2039, green: 0.7373, blue: 0.2039, alpha: 0.3)), // green
     AmountPrefix.minus: Color(UIColor(red: 0.7882, green: 0, blue: 0.0118, alpha: 0.3)), // red
-    AmountPrefix.saving: Color(UIColor(red: 44/255, green: 158/255, blue: 224/255, alpha: 0.3)) // blueish
+    AmountPrefix.saving: Color(UIColor(red: 44/255, green: 200/255, blue: 224/255, alpha: 0.3)) // blueish
   ]
   static var getBackground: (ColorScheme) -> Color = { scheme in
     scheme == .light ? .white : Color(
@@ -37,7 +37,7 @@ struct Constants {
   static let mailTo = "hello@chillturtle.de"
   static let mailSubject = "feedback"
 
-  static func getListBackgroundColor(for amountPrefix: AmountPrefix, isActive: Bool) -> Color? {
+  static func getListBackgroundColor(for amountPrefix: AmountPrefix, isActive: Bool = true) -> Color? {
     if isActive {
       return Constants.listBackgroundColors[amountPrefix]
     } else {

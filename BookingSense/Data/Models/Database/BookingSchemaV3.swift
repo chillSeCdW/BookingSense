@@ -118,16 +118,22 @@ extension BookingSchemaV3 {
 
     static func predicate(
       _ searchName: String,
-      stateFilter: Set<TimelineEntryState>
+      stateFilter: Set<TimelineEntryState>,
+      amountPFilter: Set<AmountPrefix>
     ) -> Predicate<TimelineEntry> {
-      let textFilter = stateFilter.map { entry in
+      let states = stateFilter.map { entry in
+        entry.rawValue
+      }
+      let amountPrefix = amountPFilter.map { entry in
         entry.rawValue
       }
 
       return #Predicate<TimelineEntry> { entry in
         return (searchName.isEmpty || entry.name.contains(searchName))
         &&
-        textFilter.contains(entry.state)
+        states.contains(entry.state)
+        &&
+        amountPrefix.contains(entry.amountPrefix)
       }
     }
   }

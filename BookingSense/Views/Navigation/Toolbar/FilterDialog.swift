@@ -8,27 +8,64 @@ struct FilterDialog: View {
 
   var body: some View {
     NavigationView {
-      List(TimelineEntryState.allCases) { option in
-        HStack {
-          Text(option.description)
-          Spacer()
-          if appStates.activeFilters.contains(option) {
-            Image(systemName: "checkmark")
-              .foregroundColor(.blue)
-          }
+      List {
+        Section("States") {
+          ListOfTimelineStateOptions()
         }
-        .contentShape(Rectangle())
-        .onTapGesture {
-          appStates.toggleFilter(option)
+        Section("Type") {
+          ListOfAmountPrefixOptions()
         }
       }
-      .navigationTitle("Select States to show")
+      .navigationTitle("Select to show")
+      .navigationBarTitleDisplayMode(.inline)
       .toolbar {
         ToolbarItem(placement: .confirmationAction) {
           Button("Done") {
             appStates.isFilterDialogPresented = false
           }
         }
+      }
+    }
+  }
+}
+
+struct ListOfTimelineStateOptions: View {
+  @Environment(AppStates.self) var appStates
+
+  var body: some View {
+    ForEach(TimelineEntryState.allCases, id: \.self) { option in
+      HStack {
+        Text(option.description)
+        Spacer()
+        if appStates.activeTimeStateFilters.contains(option) {
+          Image(systemName: "checkmark")
+            .foregroundColor(.blue)
+        }
+      }
+      .contentShape(Rectangle())
+      .onTapGesture {
+        appStates.toggleFilter(option)
+      }
+    }
+  }
+}
+
+struct ListOfAmountPrefixOptions: View {
+  @Environment(AppStates.self) var appStates
+
+  var body: some View {
+    ForEach(AmountPrefix.allCases, id: \.self) { option in
+      HStack {
+        Text(option.description)
+        Spacer()
+        if appStates.activeAmountPFilters.contains(option) {
+          Image(systemName: "checkmark")
+            .foregroundColor(.blue)
+        }
+      }
+      .contentShape(Rectangle())
+      .onTapGesture {
+        appStates.toggleFilter(option)
       }
     }
   }

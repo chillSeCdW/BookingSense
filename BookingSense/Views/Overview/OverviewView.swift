@@ -53,16 +53,18 @@ struct OverviewView: View {
       BookingEntryChartData(id: "Total costs",
                             name: String(localized: "Total costs"),
                             amount: sumForAllMinusForInterval,
-                            color: .red),
+                            color: Constants.getListBackgroundColor(for: AmountPrefix.minus)),
       BookingEntryChartData(id: "Total savings",
                             name: String(localized: "Total savings"),
                             amount: sumForAllSavingForInterval,
-                            color: .blue),
+                            color: Constants.getListBackgroundColor(for: AmountPrefix.saving)),
       BookingEntryChartData(id: "Total left",
                             name: String(localized: "Total left"),
                             amount: totalLeft,
-                            color: .green)
-    ]
+                            color: Constants.getListBackgroundColor(for: AmountPrefix.plus))
+    ].sorted(by: { entry1, entry2 in
+      entry1.amount > entry2.amount
+    })
   }
 
   var body: some View {

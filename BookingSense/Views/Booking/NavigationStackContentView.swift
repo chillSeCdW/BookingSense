@@ -29,6 +29,7 @@ struct NavigationStackContentView: View {
           Text("Total bookings \(entries.count)")
         }
       }
+      .listRowSpacing(5)
     }
   }
 }

@@ -19,11 +19,9 @@ struct ToolbarTimelineContent: ToolbarContent {
       }.contentTransition(.symbolEffect(.replace.downUp.byLayer))
     }
     ToolbarItem(placement: .navigationBarTrailing) {
-      Button(action: {
-        appStates.isFilterDialogPresented.toggle()
-      }) {
-        Image(systemName: "line.horizontal.3.decrease.circle")
-      }
+      Button(action: { appStates.isFilterDialogPresented.toggle()},
+             label: { Image(systemName: "line.horizontal.3.decrease.circle") }
+      )
     }
   }
 
