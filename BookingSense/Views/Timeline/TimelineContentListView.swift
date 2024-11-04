@@ -14,7 +14,7 @@ struct TimelineContentListView: View {
 
   var body: some View {
     @Bindable var appStates = appStates
-    
+
     NavigationStack {
       if timelineEntries.isEmpty {
         Text("No timeline entries found")

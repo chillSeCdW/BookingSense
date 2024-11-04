@@ -7,8 +7,6 @@ import SwiftData
 struct NavigationStackContentView: View {
   @Environment(AppStates.self) var appStates
   @Query private var entries: [BookingEntry]
-  @AppStorage("sortParameter") var sortParameter: SortParameter = .name
-  @AppStorage("sortOrder") var sortOrder: SortOrderParameter = .reverse
 
   var isListEmpty: Bool
 
@@ -23,8 +21,8 @@ struct NavigationStackContentView: View {
           EntryListView(
             interval: option,
             searchName: appStates.searchText,
-            sortParameter: sortParameter,
-            sortOrder: sortOrder
+            sortParameter: appStates.sortBy,
+            sortOrder: appStates.sortOrder
           )
         }
         Section {} footer: {

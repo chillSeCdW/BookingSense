@@ -91,7 +91,6 @@ struct EntryView: View {
         timelineEntries: nil
       )
       modelContext.insert(newEntry)
-      // TODO: add generated to Entry and not directly insert into model
       Constants.generateTimelineEntriesOf(modelContext, entry: newEntry)
       dismiss()
     } else {

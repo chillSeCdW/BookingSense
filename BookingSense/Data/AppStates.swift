@@ -19,6 +19,8 @@ class AppStates {
       UserDefaults.standard.set(filtersArray, forKey: "activeFilters")
     }
   }
+  var sortBy: SortByEnum = .name
+  var sortOrder: SortOrderEnum = .reverse
   var searchText: String = ""
   var searchTimelineText: String = ""
   var authenticationActive: Bool = false

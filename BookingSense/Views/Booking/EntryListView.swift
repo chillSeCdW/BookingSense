@@ -18,8 +18,8 @@ struct EntryListView: View {
 
   init(interval: Interval,
        searchName: String = "",
-       sortParameter: SortParameter = .amount,
-       sortOrder: SortOrderParameter = .reverse
+       sortParameter: SortByEnum = .amount,
+       sortOrder: SortOrderEnum = .reverse
   ) {
     self.interval = interval
 
