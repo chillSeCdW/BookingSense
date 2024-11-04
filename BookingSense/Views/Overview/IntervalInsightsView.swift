@@ -61,7 +61,7 @@ struct IntervalInsightsView: View {
   }
 
   private func calculateIntervalTotalsFor(_ amountPrefix: AmountPrefix, interval: Interval) -> Decimal {
-    return entries.filter { $0.amountPrefix == amountPrefix }
+    return entries.filter { $0.amountPrefix == amountPrefix.rawValue }
       .map { entry in
         entry.amount * Constants.getTimesValue(from: Interval(rawValue: entry.interval), to: interval)
       }
@@ -91,7 +91,9 @@ struct IntervalInsightsView: View {
   private func calculateIntervalIncomeOf(_ interval: Interval) -> Decimal {
     var totalIntervalCosts: Decimal = Decimal()
 
-    for entry in entries where entry.amountPrefix == .plus && entry.interval == interval.rawValue {
+    for entry in entries where
+    entry.amountPrefix == AmountPrefix.plus.rawValue &&
+    entry.interval == interval.rawValue {
       totalIntervalCosts += entry.amount
     }
 
@@ -101,7 +103,9 @@ struct IntervalInsightsView: View {
   private func calculateIntervalDeductionsOf(_ interval: Interval) -> Decimal {
     var totalIntervalCosts: Decimal = Decimal()
 
-    for entry in entries where entry.amountPrefix == .minus && entry.interval == interval.rawValue {
+    for entry in entries where
+    entry.amountPrefix == AmountPrefix.minus.rawValue &&
+    entry.interval == interval.rawValue {
       totalIntervalCosts += entry.amount
     }
 
@@ -111,7 +115,9 @@ struct IntervalInsightsView: View {
   private func calculateIntervalSavings(_ interval: Interval) -> Decimal {
     var totalIntervalSavings: Decimal = Decimal()
 
-    for entry in entries where entry.amountPrefix == .saving && entry.interval == interval.rawValue {
+    for entry in entries where
+    entry.amountPrefix == AmountPrefix.saving.rawValue &&
+    entry.interval == interval.rawValue {
       totalIntervalSavings += entry.amount
     }
 

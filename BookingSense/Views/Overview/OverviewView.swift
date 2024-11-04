@@ -19,19 +19,25 @@ struct OverviewView: View {
 
   var totalData: [BookingEntryChartData] {
 
-    let sumForAllPlusForInterval = entries.filter { $0.amountPrefix == .plus }
+    let sumForAllPlusForInterval = entries.filter {
+      $0.amountPrefix == AmountPrefix.plus.rawValue
+    }
       .map { entry in
         entry.amount * Constants.getTimesValue(from: Interval(rawValue: entry.interval), to: interval)
       }
       .reduce(0, +)
 
-    let sumForAllMinusForInterval = entries.filter { $0.amountPrefix == .minus }
+    let sumForAllMinusForInterval = entries.filter {
+      $0.amountPrefix == AmountPrefix.minus.rawValue
+    }
       .map { entry in
         entry.amount * Constants.getTimesValue(from: Interval(rawValue: entry.interval), to: interval)
       }
       .reduce(0, +)
 
-    let sumForAllSavingForInterval = entries.filter { $0.amountPrefix == .saving }
+    let sumForAllSavingForInterval = entries.filter {
+      $0.amountPrefix == AmountPrefix.saving.rawValue
+    }
       .map { entry in
         entry.amount * Constants.getTimesValue(from: Interval(rawValue: entry.interval), to: interval)
       }

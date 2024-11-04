@@ -71,7 +71,7 @@ struct EntryFormView: View {
         .onAppear {
           if let bookingEntry {
             name = bookingEntry.name
-            amountPrefix = bookingEntry.amountPrefix
+            amountPrefix = AmountPrefix(rawValue: bookingEntry.amountPrefix)!
             amount = formatter.string(from: NSDecimalNumber(decimal: bookingEntry.amount)) ?? ""
             interval = Interval(rawValue: bookingEntry.interval) ?? Interval.monthly
           }
@@ -94,7 +94,7 @@ struct EntryFormView: View {
   let entry = BookingEntry(
     name: "testName",
     amount: Decimal(string: "15,35", locale: Locale(identifier: Locale.current.identifier)) ?? Decimal(),
-    amountPrefix: .plus,
+    amountPrefix: AmountPrefix.plus.rawValue,
     interval: .weekly,
     tag: nil,
     timelineEntries: nil

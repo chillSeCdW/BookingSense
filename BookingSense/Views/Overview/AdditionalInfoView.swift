@@ -78,7 +78,9 @@ struct AdditionalInfoView: View {
   private func calculateCosts(_ from: Interval, to toInterval: Interval) -> Decimal {
     var totalIntervalCosts: Decimal = Decimal()
 
-    for entry in entries where entry.amountPrefix == .minus && entry.interval == from.rawValue {
+    for entry in entries where
+    entry.amountPrefix == AmountPrefix.minus.rawValue &&
+    entry.interval == from.rawValue {
       let curInterval = Interval(rawValue: entry.interval)
       totalIntervalCosts += entry.amount * Constants.getTimesValue(from: curInterval, to: toInterval)
     }

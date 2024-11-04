@@ -37,7 +37,7 @@ class AppStates {
     if let savedFilters = UserDefaults.standard.array(forKey: "activeFilters") as? [String] {
       self.activeFilters = Set(savedFilters.compactMap { TimelineEntryState(rawValue: $0) })
     } else {
-      self.activeFilters = [TimelineEntryState.active]
+      self.activeFilters = [TimelineEntryState.open]
     }
     if let sortByEnum = UserDefaults.standard.string(forKey: "BsortBy") {
       self.sortBy = SortByEnum(rawValue: sortByEnum) ?? .name

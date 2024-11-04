@@ -117,7 +117,7 @@ struct Constants {
     try? context.transaction {
       entryDates.forEach { dateEntry in
         let timelineEntry = TimelineEntry(
-          state: TimelineEntryState.active.rawValue,
+          state: TimelineEntryState.open.rawValue,
           name: entry.name,
           amount: entry.amount,
           amountPrefix: entry.amountPrefix,
@@ -199,12 +199,12 @@ struct Constants {
       return groupedEntries
   }
 
-  static func getListBackgroundView(amountPrefix: AmountPrefix, isActive: Bool, colorScheme: ColorScheme) -> some View {
+  static func getListBackgroundView(amountPrefix: String, isActive: Bool, colorScheme: ColorScheme) -> some View {
     return HStack(spacing: 0) {
       Rectangle()
         .fill(Constants
           .getListBackgroundColor(
-            for: amountPrefix,
+            for: AmountPrefix(rawValue: amountPrefix)!,
             isActive: isActive
           ) ?? Constants.getBackground(colorScheme)
         )

@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum AmountPrefix: Codable, CaseIterable, Identifiable {
+enum AmountPrefix: String, Codable, CaseIterable, Identifiable {
   var id: Self { self }
 
   case plus

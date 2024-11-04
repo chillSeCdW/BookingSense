@@ -85,7 +85,7 @@ struct EntryView: View {
       let newEntry = BookingEntry(
         name: name,
         amount: parsedAmount ?? Decimal(),
-        amountPrefix: amountPrefix,
+        amountPrefix: amountPrefix.rawValue,
         interval: interval,
         tag: nil,
         timelineEntries: nil
@@ -95,7 +95,7 @@ struct EntryView: View {
       dismiss()
     } else {
       bookingEntry!.name = name
-      bookingEntry!.amountPrefix = amountPrefix
+      bookingEntry!.amountPrefix = amountPrefix.rawValue
       bookingEntry!.amount = parsedAmount ?? Decimal()
       bookingEntry!.interval = interval.rawValue
       dismiss()
@@ -119,7 +119,7 @@ struct EntryView: View {
     if let bookingEntry {
       if name != bookingEntry.name ||
           amount != bookingEntry.amount.formatted() ||
-          amountPrefix != bookingEntry.amountPrefix ||
+          amountPrefix.rawValue != bookingEntry.amountPrefix ||
           interval != Interval(rawValue: bookingEntry.interval) ?? Interval.monthly {
         return true
       }
@@ -143,7 +143,7 @@ struct EntryView: View {
   let entry = BookingEntry(
     name: "testName",
     amount: Decimal(string: "15,35", locale: Locale(identifier: Locale.current.identifier)) ?? Decimal(),
-    amountPrefix: .plus,
+    amountPrefix: AmountPrefix.plus.rawValue,
     interval: .weekly,
     tag: nil,
     timelineEntries: nil)

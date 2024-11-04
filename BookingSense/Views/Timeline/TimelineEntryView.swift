@@ -13,7 +13,7 @@ struct TimelineEntryView: View {
     Toggle(isOn: Binding(
       get: { timelineEntry.state == TimelineEntryState.done.rawValue },
       set: { isDone in
-        timelineEntry.state = isDone ? TimelineEntryState.done.rawValue : TimelineEntryState.active.rawValue
+        timelineEntry.state = isDone ? TimelineEntryState.done.rawValue : TimelineEntryState.open.rawValue
         timelineEntry.completedAt = isDone ? .now : nil
       }
     )) {
@@ -37,8 +37,8 @@ struct TimelineEntryView: View {
           timelineEntry.completedAt = .now
         }
       } else {
-        Button("make Active") {
-          timelineEntry.state = TimelineEntryState.active.rawValue
+        Button("Reopen") {
+          timelineEntry.state = TimelineEntryState.open.rawValue
           timelineEntry.completedAt = nil
         }
       }

@@ -1257,9 +1257,6 @@
         }
       }
     },
-    "make Active" : {
-
-    },
     "month" : {
       "localizations" : {
         "de" : {
@@ -1471,6 +1468,9 @@
           }
         }
       }
+    },
+    "Reopen" : {
+
     },
     "Reset hints" : {
       "localizations" : {

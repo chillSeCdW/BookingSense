@@ -30,7 +30,7 @@ extension BookingSchemaV3 {
     @Relationship(deleteRule: .cascade) var timelineEntries: [TimelineEntry]?
     var amount: Decimal = Decimal.zero
     var date: Date = Date()
-    var amountPrefix: AmountPrefix = AmountPrefix.minus
+    var amountPrefix: String = "minus"
     var interval: String = "monthly"
 
     init(uuid: String = UUID().uuidString,
@@ -38,7 +38,7 @@ extension BookingSchemaV3 {
          state: String = "active",
          amount: Decimal,
          date: Date = Date(),
-         amountPrefix: AmountPrefix,
+         amountPrefix: String = "minus",
          interval: Interval,
          tag: Tag?,
          timelineEntries: [TimelineEntry]?) {
@@ -91,7 +91,7 @@ extension BookingSchemaV3 {
     var tag: Tag?
     var name: String = ""
     var amount: Decimal = Decimal.zero
-    var amountPrefix: AmountPrefix = AmountPrefix.minus
+    var amountPrefix: String = "minus"
     var isDue: Date = Date()
     var completedAt: Date?
 
@@ -99,7 +99,7 @@ extension BookingSchemaV3 {
          state: String,
          name: String,
          amount: Decimal,
-         amountPrefix: AmountPrefix,
+         amountPrefix: String,
          isDue: Date,
          tag: Tag?,
          completedAt: Date?,

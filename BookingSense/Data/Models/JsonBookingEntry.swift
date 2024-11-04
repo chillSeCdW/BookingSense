@@ -16,14 +16,14 @@ class JsonBookingEntry: Codable {
   var timelineEntries: [String]?
   var amount: Decimal = Decimal.zero
   var date: Date = Date()
-  var amountPrefix: AmountPrefix = AmountPrefix.minus
+  var amountPrefix: String = "minus"
   var interval: String = "monthly"
 
   init(name: String,
        state: String,
        amount: Decimal,
        date: Date = Date(),
-       amountPrefix: AmountPrefix,
+       amountPrefix: String,
        interval: Interval,
        tag: String?,
        timelineEntries: [String]?) {
@@ -56,7 +56,7 @@ class JsonBookingEntry: Codable {
     state = try container.decode(String.self, forKey: .state)
     date = try container.decode(Date.self, forKey: .date)
     amount = try container.decode(Decimal.self, forKey: .amount)
-    amountPrefix = try container.decode(AmountPrefix.self, forKey: .amountPrefix)
+    amountPrefix = try container.decode(String.self, forKey: .amountPrefix)
     interval = try container.decode(String.self, forKey: .interval)
     tag = try container.decodeIfPresent(String.self, forKey: .tag)
     timelineEntries = try container.decodeIfPresent([String].self, forKey: .timelineEntries)
