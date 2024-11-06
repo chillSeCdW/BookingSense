@@ -9,35 +9,44 @@ import Foundation
 import SwiftUI
 import SwiftData
 
-@Observable
-class AppStates {
-  var isFilterDialogPresented: Bool = false
+class AppStates: Observable, ObservableObject {
+  @Published var isFilterDialogPresented: Bool = false
 
-  var activeTimeStateFilters: Set<TimelineEntryState> {
+  @Published var activeTimeStateFilters: Set<TimelineEntryState> {
     didSet {
       let filtersArray = activeTimeStateFilters.map { $0.rawValue }
       UserDefaults.standard.set(filtersArray, forKey: "activeTimeEntryFilters")
     }
   }
-  var activeAmountPFilters: Set<AmountPrefix> {
+  @Published var activeAmountPFilters: Set<AmountPrefix> {
     didSet {
       let filtersArray = activeAmountPFilters.map { $0.rawValue }
       UserDefaults.standard.set(filtersArray, forKey: "activeStateFilters")
     }
   }
-  var sortBy: SortByEnum {
+  @Published var sortBy: SortByEnum {
     didSet {
       UserDefaults.standard.set(sortBy.rawValue, forKey: "BsortBy")
     }
   }
-  var sortOrder: SortOrderEnum {
+  @Published var sortOrder: SortOrderEnum {
     didSet {
       UserDefaults.standard.set(sortOrder.rawValue, forKey: "BSortOrder")
     }
   }
-  var searchText: String = ""
-  var searchTimelineText: String = ""
-  var authenticationActive: Bool = false
+  @Published var searchText: String = ""
+  @Published var searchTimelineText: String = ""
+  @Published var authenticationActive: Bool = false
+  @Published var blurSensitive: Bool {
+    didSet {
+      UserDefaults.standard.set(blurSensitive, forKey: "blurSensitive")
+    }
+  }
+  @Published var biometricEnabled: Bool {
+    didSet {
+      UserDefaults.standard.set(biometricEnabled, forKey: "biometricEnabled")
+    }
+  }
 
   init() {
     if let savedFilters = UserDefaults.standard.array(forKey: "activeTimeEntryFilters") as? [String] {
@@ -60,6 +69,8 @@ class AppStates {
     } else {
       self.sortOrder = .reverse
     }
+    self.blurSensitive = UserDefaults.standard.bool(forKey: "blurSensitive")
+    self.biometricEnabled = UserDefaults.standard.bool(forKey: "biometricEnabled")
   }
 
   func toggleFilter(_ filter: TimelineEntryState) {

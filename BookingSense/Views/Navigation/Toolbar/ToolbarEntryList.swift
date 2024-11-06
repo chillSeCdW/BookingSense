@@ -14,8 +14,6 @@ struct ToolbarEntryList: ToolbarContent {
 
   @Environment(\.editMode) private var editMode
   @Environment(AppStates.self) var appStates
-  @AppStorage("blurSensitive") var blurSensitive = false
-  @AppStorage("biometricEnabled") var biometricEnabled = false
 
   @Binding var showingConfirmation: Bool
 
@@ -23,8 +21,11 @@ struct ToolbarEntryList: ToolbarContent {
 
   var body: some ToolbarContent {
     ToolbarItem(placement: .navigationBarLeading) {
-      Button(action: toggleDisplaySensitiveInfo) {
-        Image(systemName: blurSensitive ? "eye.slash" : "eye")
+      Button(action: {
+        Constants.toggleDisplaySensitiveInfo(
+          appStates: appStates)
+      }) {
+        Image(systemName: appStates.blurSensitive ? "eye.slash" : "eye")
       }.contentTransition(.symbolEffect(.replace.downUp.byLayer))
     }
     ToolbarItem(placement: .navigationBarLeading) {
@@ -47,35 +48,6 @@ struct ToolbarEntryList: ToolbarContent {
   func showPopup() {
     withAnimation {
       showingConfirmation = true
-    }
-  }
-
-  func toggleDisplaySensitiveInfo() {
-    if biometricEnabled {
-      appStates.authenticationActive = true
-      BiometricHandler.shared.authenticateWithBiometrics { (success: Bool, error: Error?) in
-        if success {
-          withAnimation {
-            blurSensitive.toggle()
-          }
-          appStates.authenticationActive = false
-        } else {
-          if let error = error as? LAError {
-            switch error.code {
-            case .userCancel, .systemCancel:
-              logger.error("Authentication code userCance flailed with error: \(error.localizedDescription)")
-            case .userFallback:
-              logger.error("Authentication code userFallback failed with error: \(error.localizedDescription)")
-            default:
-              logger.error("Authentication failed with error: \(error.localizedDescription)")
-            }
-          }
-        }
-      }
-    } else {
-      withAnimation {
-        blurSensitive.toggle()
-      }
     }
   }
 }

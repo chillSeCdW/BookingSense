@@ -6,6 +6,8 @@ import SwiftData
 import Charts
 
 struct ChartView<Content: View>: View {
+  @Environment(AppStates.self) var appStates
+
   var data: [BookingEntryChartData]
   var headerTitle: String
   var isFixedColor: Bool {
@@ -14,7 +16,6 @@ struct ChartView<Content: View>: View {
   let contentView: Content
 
   @AppStorage("insightsInterval") private var interval: Interval = .monthly
-  @AppStorage("blurSensitive") private var blurSensitive = false
 
   @State var selectedPie: Double?
 
@@ -102,7 +103,7 @@ struct ChartView<Content: View>: View {
           Text(selectedStyle?.amount ?? highestData?.amount ?? Decimal(),
                format: .currency(code: Locale.current.currency!.identifier)
           )
-          .blur(radius: blurSensitive ? 5.0 : 0)
+          .blur(radius: appStates.blurSensitive ? 5.0 : 0)
           .font(.callout)
           .bold()
           .foregroundStyle(.secondary)
@@ -113,12 +114,12 @@ struct ChartView<Content: View>: View {
           Text(totalAmount,
                format: .currency(code: Locale.current.currency!.identifier)
           )
-          .blur(radius: blurSensitive ? 5.0 : 0)
+          .blur(radius: appStates.blurSensitive ? 5.0 : 0)
           .font(.callout)
           .foregroundStyle(.secondary)
           .opacity(noData ? 0 : 1)
         }
-        .animation(.easeInOut, value: blurSensitive)
+        .animation(.easeInOut, value: appStates.blurSensitive)
         .position(x: frame.midX, y: frame.midY)
       }
     }
@@ -152,22 +153,22 @@ struct ChartView<Content: View>: View {
             .foregroundColor(.primary)
             .frame(maxWidth: frame.width/2)
             .multilineTextAlignment(.center)
-            .blur(radius: blurSensitive ? 5.0 : 0)
+            .blur(radius: appStates.blurSensitive ? 5.0 : 0)
           Text(selectedStyle?.amount ?? highestData?.amount ?? Decimal(),
                format: .currency(code: Locale.current.currency!.identifier)
           )
-          .blur(radius: blurSensitive ? 5.0 : 0)
+          .blur(radius: appStates.blurSensitive ? 5.0 : 0)
           .font(.callout)
           .foregroundStyle(.secondary)
           Text("from")
             .font(.footnote)
           Text(totalAmount,
                format: .currency(code: Locale.current.currency!.identifier)
-          ).blur(radius: blurSensitive ? 5.0 : 0)
+          ).blur(radius: appStates.blurSensitive ? 5.0 : 0)
             .font(.callout)
             .foregroundStyle(.secondary)
         }
-        .animation(.easeInOut, value: blurSensitive)
+        .animation(.easeInOut, value: appStates.blurSensitive)
         .position(x: frame.midX, y: frame.midY)
       }
     }

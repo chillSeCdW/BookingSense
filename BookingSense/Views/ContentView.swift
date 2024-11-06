@@ -15,7 +15,6 @@ struct ContentView: View {
   @Environment(\.requestReview) private var requestReview
   @Environment(\.scenePhase) var scenePhase
   @AppStorage("numberOfVisits") var numberOfVisits = 0
-  @AppStorage("blurSensitive") var blurSensitive = false
   @AppStorage("tmpBlurSensitive") var tmpBlurSensitive = false
 
   var body: some View {
@@ -41,12 +40,12 @@ struct ContentView: View {
       if !appStates.authenticationActive {
         if newPhase == .active {
           if tmpBlurSensitive == true {
-            blurSensitive.toggle()
+            appStates.blurSensitive.toggle()
             tmpBlurSensitive.toggle()
           }
         } else if newPhase == .inactive {
-          if blurSensitive == false {
-            blurSensitive.toggle()
+          if appStates.blurSensitive == false {
+            appStates.blurSensitive.toggle()
             tmpBlurSensitive.toggle()
           }
         }

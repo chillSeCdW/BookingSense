@@ -4,7 +4,7 @@
 import SwiftUI
 
 struct InfoView<F: FormatStyle>: View where F.FormatInput == Decimal, F.FormatOutput == String {
-  @AppStorage("blurSensitive") var blurSensitive = false
+  @Environment(AppStates.self) var appStates
 
   let text: LocalizedStringKey
   let number: F.FormatInput
@@ -25,9 +25,9 @@ struct InfoView<F: FormatStyle>: View where F.FormatInput == Decimal, F.FormatOu
           Text("~")
         }
         Text(number, format: format)
-          .blur(radius: blurSensitive ? 5.0 : 0)
+          .blur(radius: appStates.blurSensitive ? 5.0 : 0)
       }
-      .animation(.easeInOut, value: blurSensitive)
+      .animation(.easeInOut, value: appStates.blurSensitive)
     }
   }
 }

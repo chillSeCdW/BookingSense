@@ -9,10 +9,12 @@ import TipKit
 struct SettingsNavigationStackView: View {
 
   @Environment(\.colorScheme) var colorScheme
+  @Environment(AppStates.self) var appStates
   @AppStorage("resetTips") var resetTips = false
-  @AppStorage("biometricEnabled") var biometricEnabled = false
 
   var body: some View {
+    @Bindable var appStates = appStates
+
     NavigationStack {
       List {
         Section("Export/Import") {
@@ -23,8 +25,8 @@ struct SettingsNavigationStackView: View {
         }
         if BiometricHandler.shared.canUseAuthentication() {
           Section("Authentication") {
-            Toggle("Enable Authentication for Blurring", isOn: $biometricEnabled)
-            if biometricEnabled {
+            Toggle("Enable Authentication for Blurring", isOn: $appStates.biometricEnabled)
+            if appStates.biometricEnabled {
               Button {
                 if let settingsURL = URL(string: UIApplication.openSettingsURLString) {
                   UIApplication.shared.open(settingsURL, options: [:], completionHandler: nil)

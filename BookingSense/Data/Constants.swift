@@ -9,6 +9,7 @@ import SwiftUI
 import SwiftData
 import Foundation
 import OSLog
+import LocalAuthentication
 
 struct Constants {
   static let logger = Logger(subsystem: "BookingSense", category: "Constants")
@@ -230,7 +231,7 @@ struct Constants {
     for entry in entries {
       let components = calendar.dateComponents([.year, .month], from: entry.isDue)
       let monthYearDate = calendar.date(from: components)!
-      
+
       if groupedEntries[monthYearDate] == nil {
         groupedEntries[monthYearDate] = []
       }
@@ -272,5 +273,38 @@ struct Constants {
   static func getSymbol(_ code: String) -> String? {
     let locale = NSLocale(localeIdentifier: code)
     return locale.displayName(forKey: NSLocale.Key.currencySymbol, value: code)
+  }
+
+  static func toggleDisplaySensitiveInfo(appStates: AppStates) {
+    if appStates.biometricEnabled {
+      appStates.authenticationActive = true
+      BiometricHandler.shared.authenticateWithBiometrics { (success: Bool, error: Error?) in
+        if success {
+          DispatchQueue.main.async {
+            withAnimation {
+              appStates.blurSensitive.toggle()
+              appStates.authenticationActive = false
+            }
+          }
+        } else {
+          if let error = error as? LAError {
+            switch error.code {
+            case .userCancel, .systemCancel:
+              logger.error("Authentication code userCance flailed with error: \(error.localizedDescription)")
+            case .userFallback:
+              logger.error("Authentication code userFallback failed with error: \(error.localizedDescription)")
+            default:
+              logger.error("Authentication failed with error: \(error.localizedDescription)")
+            }
+          }
+        }
+      }
+    } else {
+      DispatchQueue.main.async {
+        withAnimation {
+          appStates.blurSensitive.toggle()
+        }
+      }
+    }
   }
 }
