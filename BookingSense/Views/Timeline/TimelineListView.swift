@@ -17,15 +17,15 @@ struct TimelineListView: View {
     Constants.groupEntriesByMonthAndYear(entries: timelineEntries)
   }
 
-  init(searchText: Binding<String>,
-       stateFilter: Set<TimelineEntryState>,
-       amountPFilter: Set<AmountPrefix>
+  init(searchText: String = "",
+       stateFilter: Set<TimelineEntryState> = [],
+       prefixFilter: Set<AmountPrefix> = []
   ) {
     _timelineEntries = Query(
       filter: TimelineEntry.predicate(
-        searchText.wrappedValue,
+        searchText,
         stateFilter: stateFilter,
-        amountPFilter: amountPFilter
+        prefixFilter: prefixFilter
       ),
       sort: \.isDue,
       order: .forward
@@ -54,7 +54,7 @@ struct FilterStateButtonsView: View {
       HStack {
         ForEach(TimelineEntryState.allCases, id: \.self) { option in
           Button(
-            action: { appStates.toggleFilter(option) },
+            action: { appStates.toggleTimeStateFilter(option) },
             label: { Text(option.description) }
           )
           .background(
@@ -79,10 +79,10 @@ struct FilterAmountButtonsView: View {
       HStack {
         ForEach(AmountPrefix.allCases, id: \.self) { option in
           Button(
-            action: { appStates.toggleFilter(option) },
+            action: { appStates.toggleTimePrefixFilter(option) },
             label: { Text(option.description) }
           )
-          .background(appStates.activeAmountPFilters.contains(option) ?
+          .background(appStates.activeTimePrefixFilters.contains(option) ?
                       Constants.getListBackgroundColor(for: option) :
                         Constants.getListBackgroundColor(for: option, isActive: false)
           )

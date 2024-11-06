@@ -333,6 +333,22 @@
         }
       }
     },
+    "Active" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Aktiv"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Active"
+          }
+        }
+      }
+    },
     "Add" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -490,6 +506,22 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "App Store"
+          }
+        }
+      }
+    },
+    "Archived" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Archiviert"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Archived"
           }
         }
       }
@@ -1331,18 +1363,12 @@
         }
       }
     },
-    "No entries available" : {
+    "No entries found" : {
       "localizations" : {
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Keine Einträge vorhanden."
-          }
-        },
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "No entries available."
+            "value" : "No entries found."
           }
         }
       }
@@ -1460,6 +1486,22 @@
         }
       }
     },
+    "Paused" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pausiert"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Paused"
+          }
+        }
+      }
+    },
     "Plus" : {
       "localizations" : {
         "de" : {
@@ -1476,18 +1518,18 @@
         }
       }
     },
-    "Press the + button to add an entry" : {
+    "Press the + button to add an entry or adjust filters" : {
       "localizations" : {
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Drücken Sie die + Taste um einen Eintrag hinzuzufügen."
+            "value" : "Drücken Sie die + Taste um einen Eintrag hinzuzufügen oder ändere die ausgewählten Filter."
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Press the + button to add an entry."
+            "value" : "Press the + button to add an entry or adjust the current filters."
           }
         }
       }

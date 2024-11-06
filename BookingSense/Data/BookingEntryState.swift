@@ -12,9 +12,9 @@ enum BookingEntryState: String, Codable, CaseIterable, Identifiable {
 
   var description: String {
     switch self {
-    case .active: return "Active"
-    case .paused: return "Paused"
-    case .archived: return "Archived"
+    case .active: return String(localized: "Active")
+    case .paused: return String(localized: "Paused")
+    case .archived: return String(localized: "Archived")
     }
   }
 }

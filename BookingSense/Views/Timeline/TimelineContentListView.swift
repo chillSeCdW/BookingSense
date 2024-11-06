@@ -18,9 +18,9 @@ struct TimelineContentListView: View {
         Text("No timeline entries found")
       } else {
         TimelineListView(
-          searchText: $appStates.searchTimelineText,
+          searchText: appStates.searchTimelineText,
           stateFilter: appStates.activeTimeStateFilters,
-          amountPFilter: appStates.activeAmountPFilters
+          prefixFilter: appStates.activeTimePrefixFilters
         )
       }
     }

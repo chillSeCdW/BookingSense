@@ -12,16 +12,28 @@ import SwiftData
 class AppStates: Observable, ObservableObject {
   @Published var isFilterDialogPresented: Bool = false
 
+  @Published var activeBookingStateFilters: Set<BookingEntryState> {
+    didSet {
+      let filtersArray = activeBookingStateFilters.map { $0.rawValue }
+      UserDefaults.standard.set(filtersArray, forKey: "activeBookingStateFilters")
+    }
+  }
+  @Published var activeBookingPrefixFilters: Set<AmountPrefix> {
+    didSet {
+      let filtersArray = activeBookingPrefixFilters.map { $0.rawValue }
+      UserDefaults.standard.set(filtersArray, forKey: "activeBookingPrefixFilters")
+    }
+  }
   @Published var activeTimeStateFilters: Set<TimelineEntryState> {
     didSet {
       let filtersArray = activeTimeStateFilters.map { $0.rawValue }
-      UserDefaults.standard.set(filtersArray, forKey: "activeTimeEntryFilters")
+      UserDefaults.standard.set(filtersArray, forKey: "activeTimeStateFilters")
     }
   }
-  @Published var activeAmountPFilters: Set<AmountPrefix> {
+  @Published var activeTimePrefixFilters: Set<AmountPrefix> {
     didSet {
-      let filtersArray = activeAmountPFilters.map { $0.rawValue }
-      UserDefaults.standard.set(filtersArray, forKey: "activeStateFilters")
+      let filtersArray = activeTimePrefixFilters.map { $0.rawValue }
+      UserDefaults.standard.set(filtersArray, forKey: "activeTimePrefixFilters")
     }
   }
   @Published var sortBy: SortByEnum {
@@ -49,15 +61,25 @@ class AppStates: Observable, ObservableObject {
   }
 
   init() {
-    if let savedFilters = UserDefaults.standard.array(forKey: "activeTimeEntryFilters") as? [String] {
+    if let savedFilters = UserDefaults.standard.array(forKey: "activeBookingStateFilters") as? [String] {
+      self.activeBookingStateFilters = Set(savedFilters.compactMap { BookingEntryState(rawValue: $0) })
+    } else {
+      self.activeBookingStateFilters = [BookingEntryState.active]
+    }
+    if let savedFilters = UserDefaults.standard.array(forKey: "activeBookingPrefixFilters") as? [String] {
+      self.activeBookingPrefixFilters = Set(savedFilters.compactMap { AmountPrefix(rawValue: $0) })
+    } else {
+      self.activeBookingPrefixFilters = [AmountPrefix.minus, AmountPrefix.plus, AmountPrefix.saving]
+    }
+    if let savedFilters = UserDefaults.standard.array(forKey: "activeTimeStateFilters") as? [String] {
       self.activeTimeStateFilters = Set(savedFilters.compactMap { TimelineEntryState(rawValue: $0) })
     } else {
       self.activeTimeStateFilters = [TimelineEntryState.open]
     }
-    if let savedFilters = UserDefaults.standard.array(forKey: "activeStateFilters") as? [String] {
-      self.activeAmountPFilters = Set(savedFilters.compactMap { AmountPrefix(rawValue: $0) })
+    if let savedFilters = UserDefaults.standard.array(forKey: "activeTimePrefixFilters") as? [String] {
+      self.activeTimePrefixFilters = Set(savedFilters.compactMap { AmountPrefix(rawValue: $0) })
     } else {
-      self.activeAmountPFilters = [AmountPrefix.minus, AmountPrefix.plus, AmountPrefix.saving]
+      self.activeTimePrefixFilters = [AmountPrefix.minus, AmountPrefix.plus, AmountPrefix.saving]
     }
     if let sortByEnum = UserDefaults.standard.string(forKey: "BsortBy") {
       self.sortBy = SortByEnum(rawValue: sortByEnum) ?? .name
@@ -73,7 +95,23 @@ class AppStates: Observable, ObservableObject {
     self.biometricEnabled = UserDefaults.standard.bool(forKey: "biometricEnabled")
   }
 
-  func toggleFilter(_ filter: TimelineEntryState) {
+  func toggleBookingStateFilter(_ filter: BookingEntryState) {
+    if activeBookingStateFilters.contains(filter) {
+      activeBookingStateFilters.remove(filter)
+    } else {
+      activeBookingStateFilters.insert(filter)
+    }
+  }
+
+  func toggleBookingPrefixFilter(_ filter: AmountPrefix) {
+    if activeBookingPrefixFilters.contains(filter) {
+      activeBookingPrefixFilters.remove(filter)
+    } else {
+      activeBookingPrefixFilters.insert(filter)
+    }
+  }
+
+  func toggleTimeStateFilter(_ filter: TimelineEntryState) {
     if activeTimeStateFilters.contains(filter) {
       activeTimeStateFilters.remove(filter)
     } else {
@@ -81,11 +119,11 @@ class AppStates: Observable, ObservableObject {
     }
   }
 
-  func toggleFilter(_ filter: AmountPrefix) {
-    if activeAmountPFilters.contains(filter) {
-      activeAmountPFilters.remove(filter)
+  func toggleTimePrefixFilter(_ filter: AmountPrefix) {
+    if activeTimePrefixFilters.contains(filter) {
+      activeTimePrefixFilters.remove(filter)
     } else {
-      activeAmountPFilters.insert(filter)
+      activeTimePrefixFilters.insert(filter)
     }
   }
 }

@@ -23,7 +23,11 @@ struct BookingNavigationStackView: View {
 
     NavigationStack(path: $stackPath) {
       VStack {
-        NavigationStackContentView(searchName: appStates.searchText)
+        NavigationStackContentView(
+          searchName: appStates.searchText,
+          stateFilter: appStates.activeBookingStateFilters,
+          prefixFilter: appStates.activeBookingPrefixFilters
+        )
           .navigationDestination(for: BookingEntry.self) { entry in
             EntryView(bookingEntry: entry)
           }

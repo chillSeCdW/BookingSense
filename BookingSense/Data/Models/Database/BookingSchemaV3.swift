@@ -54,10 +54,23 @@ extension BookingSchemaV3 {
     }
 
     static func predicate(
-      searchName: String
+      searchName: String,
+      stateFilter: Set<BookingEntryState>,
+      prefixFilter: Set<AmountPrefix>
     ) -> Predicate<BookingEntry> {
+      let states = stateFilter.map { entry in
+        entry.rawValue
+      }
+      let amountPrefix = prefixFilter.map { entry in
+        entry.rawValue
+      }
+
       return #Predicate<BookingEntry> { entry in
-        (searchName.isEmpty || entry.name.localizedStandardContains(searchName))
+        return (searchName.isEmpty || entry.name.localizedStandardContains(searchName))
+        &&
+        states.contains(entry.state)
+        &&
+        amountPrefix.contains(entry.amountPrefix)
       }
     }
 
@@ -116,17 +129,17 @@ extension BookingSchemaV3 {
     static func predicate(
       _ searchName: String,
       stateFilter: Set<TimelineEntryState>,
-      amountPFilter: Set<AmountPrefix>
+      prefixFilter: Set<AmountPrefix>
     ) -> Predicate<TimelineEntry> {
       let states = stateFilter.map { entry in
         entry.rawValue
       }
-      let amountPrefix = amountPFilter.map { entry in
+      let amountPrefix = prefixFilter.map { entry in
         entry.rawValue
       }
 
       return #Predicate<TimelineEntry> { entry in
-        return (searchName.isEmpty || entry.name.contains(searchName))
+        return (searchName.isEmpty || entry.name.localizedStandardContains(searchName))
         &&
         states.contains(entry.state)
         &&

@@ -44,7 +44,7 @@ struct ListOfTimelineStateOptions: View {
       }
       .contentShape(Rectangle())
       .onTapGesture {
-        appStates.toggleFilter(option)
+        appStates.toggleTimeStateFilter(option)
       }
     }
   }
@@ -58,14 +58,14 @@ struct ListOfAmountPrefixOptions: View {
       HStack {
         Text(option.description)
         Spacer()
-        if appStates.activeAmountPFilters.contains(option) {
+        if appStates.activeTimePrefixFilters.contains(option) {
           Image(systemName: "checkmark")
             .foregroundColor(.blue)
         }
       }
       .contentShape(Rectangle())
       .onTapGesture {
-        appStates.toggleFilter(option)
+        appStates.toggleTimePrefixFilter(option)
       }
     }
   }
