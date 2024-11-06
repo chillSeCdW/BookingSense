@@ -181,22 +181,63 @@ struct Constants {
     return dates
   }
 
-  static func groupEntriesByMonthAndYear(entries: [TimelineEntry]) -> [Date: [TimelineEntry]] {
-      var groupedEntries: [Date: [TimelineEntry]] = [:]
-      let calendar = Calendar.current
+  static func groupBookingsByInterval(entries: [BookingEntry]) -> [String: [BookingEntry]] {
+    var groupedEntries: [String: [BookingEntry]] = [:]
 
-      for entry in entries {
-          let components = calendar.dateComponents([.year, .month], from: entry.isDue)
-          let monthYearDate = calendar.date(from: components)!
-
-          // Add entry to the dictionary
-          if groupedEntries[monthYearDate] == nil {
-              groupedEntries[monthYearDate] = []
-          }
-          groupedEntries[monthYearDate]?.append(entry)
+    for entry in entries {
+      if groupedEntries[entry.interval] == nil {
+        groupedEntries[entry.interval] = []
       }
+      groupedEntries[entry.interval]?.append(entry)
+    }
 
-      return groupedEntries
+    return groupedEntries
+  }
+
+  static func sortBookings(
+    bookings: [String: [BookingEntry]],
+    sortBy: SortByEnum,
+    sortOrder: SortOrderEnum
+  ) -> [String: [BookingEntry]] {
+    var sortedBookings: [String: [BookingEntry]] = [:]
+
+    for (key, entries) in bookings {
+      let sortedEntries = entries.sorted { (entry1, entry2) -> Bool in
+        switch sortBy {
+        case .name:
+          if sortOrder == .forward {
+            return entry1.name < entry2.name
+          } else {
+            return entry1.name > entry2.name
+          }
+        case .amount:
+          if sortOrder == .reverse {
+            return entry1.amount < entry2.amount
+          } else {
+            return entry1.amount > entry2.amount
+          }
+        }
+      }
+      sortedBookings[key] = sortedEntries
+    }
+    return sortedBookings
+  }
+
+  static func groupEntriesByMonthAndYear(entries: [TimelineEntry]) -> [Date: [TimelineEntry]] {
+    var groupedEntries: [Date: [TimelineEntry]] = [:]
+    let calendar = Calendar.current
+
+    for entry in entries {
+      let components = calendar.dateComponents([.year, .month], from: entry.isDue)
+      let monthYearDate = calendar.date(from: components)!
+      
+      if groupedEntries[monthYearDate] == nil {
+        groupedEntries[monthYearDate] = []
+      }
+      groupedEntries[monthYearDate]?.append(entry)
+    }
+
+    return groupedEntries
   }
 
   static func getListBackgroundView(amountPrefix: String, isActive: Bool, colorScheme: ColorScheme) -> some View {

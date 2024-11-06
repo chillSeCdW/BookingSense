@@ -25,7 +25,9 @@ struct ToolbarOverviewList: ToolbarContent {
       appStates.authenticationActive = true
       BiometricHandler.shared.authenticateWithBiometrics { (success: Bool, error: Error?) in
         if success {
-          blurSensitive.toggle()
+          withAnimation {
+            blurSensitive.toggle()
+          }
           appStates.authenticationActive = false
         } else {
           if let error = error as? LAError {
@@ -41,7 +43,9 @@ struct ToolbarOverviewList: ToolbarContent {
         }
       }
     } else {
-      blurSensitive.toggle()
+      withAnimation {
+        blurSensitive.toggle()
+      }
     }
   }
 }

@@ -27,19 +27,17 @@ struct ToolbarEntryList: ToolbarContent {
         Image(systemName: blurSensitive ? "eye.slash" : "eye")
       }.contentTransition(.symbolEffect(.replace.downUp.byLayer))
     }
+    ToolbarItem(placement: .navigationBarLeading) {
+      SortButtonView()
+    }
     if editMode?.wrappedValue.isEditing == true {
-      ToolbarItem(placement: .navigationBarLeading) {
+      ToolbarItem(placement: .navigationBarTrailing) {
         Button("Delete all", systemImage: "trash", role: .destructive, action: showPopup).tint(.red)
       }
     }
-    ToolbarItem {
+    ToolbarItem(placement: .navigationBarTrailing) {
       Button("Plus", systemImage: "plus", action: addEntry)
         .popoverTip(ToolbarAddTip())
-    }
-    ToolbarItem {
-      withAnimation {
-        SortButtonView()
-      }
     }
     ToolbarItem(placement: .navigationBarTrailing) {
       EditButton()
@@ -57,7 +55,9 @@ struct ToolbarEntryList: ToolbarContent {
       appStates.authenticationActive = true
       BiometricHandler.shared.authenticateWithBiometrics { (success: Bool, error: Error?) in
         if success {
-          blurSensitive.toggle()
+          withAnimation {
+            blurSensitive.toggle()
+          }
           appStates.authenticationActive = false
         } else {
           if let error = error as? LAError {
@@ -73,7 +73,9 @@ struct ToolbarEntryList: ToolbarContent {
         }
       }
     } else {
-      blurSensitive.toggle()
+      withAnimation {
+        blurSensitive.toggle()
+      }
     }
   }
 }

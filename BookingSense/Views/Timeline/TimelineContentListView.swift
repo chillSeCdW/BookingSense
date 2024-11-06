@@ -10,8 +10,6 @@ struct TimelineContentListView: View {
   @Environment(\.modelContext) private var modelContext
   @Query private var timelineEntries: [TimelineEntry]
 
-  @State var listEmpty = false
-
   var body: some View {
     @Bindable var appStates = appStates
 
@@ -25,8 +23,6 @@ struct TimelineContentListView: View {
           amountPFilter: appStates.activeAmountPFilters
         )
       }
-    }.onAppear {
-      listEmpty = timelineEntries.isEmpty
     }
   }
 

@@ -69,6 +69,7 @@ struct ChartView<Content: View>: View {
     }
   }
 
+  // swiftlint:disable function_body_length
   func fixedColorChart(_ noData: Bool) -> some View {
     Chart(data, id: \.id) { element in
       SectorMark(
@@ -117,10 +118,12 @@ struct ChartView<Content: View>: View {
           .foregroundStyle(.secondary)
           .opacity(noData ? 0 : 1)
         }
+        .animation(.easeInOut, value: blurSensitive)
         .position(x: frame.midX, y: frame.midY)
       }
     }
   }
+  // swiftlint:enable function_body_length
 
   func chart() -> some View {
     Chart(data, id: \.id) { element in
@@ -164,6 +167,7 @@ struct ChartView<Content: View>: View {
             .font(.callout)
             .foregroundStyle(.secondary)
         }
+        .animation(.easeInOut, value: blurSensitive)
         .position(x: frame.midX, y: frame.midY)
       }
     }

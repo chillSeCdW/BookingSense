@@ -27,6 +27,7 @@ struct InfoView<F: FormatStyle>: View where F.FormatInput == Decimal, F.FormatOu
         Text(number, format: format)
           .blur(radius: blurSensitive ? 5.0 : 0)
       }
+      .animation(.easeInOut, value: blurSensitive)
     }
   }
 }

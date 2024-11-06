@@ -23,7 +23,7 @@ struct BookingNavigationStackView: View {
 
     NavigationStack(path: $stackPath) {
       VStack {
-        NavigationStackContentView(isListEmpty: entries.isEmpty)
+        NavigationStackContentView(searchName: appStates.searchText)
           .navigationDestination(for: BookingEntry.self) { entry in
             EntryView(bookingEntry: entry)
           }

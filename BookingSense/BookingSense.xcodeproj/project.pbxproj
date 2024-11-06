@@ -43,7 +43,7 @@
 		B9383A052CD69A4800AAB674 /* TimelineEntryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9383A042CD69A4500AAB674 /* TimelineEntryView.swift */; };
 		B93F74012BF39F91008A5088 /* AdditionalInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B93F74002BF39F91008A5088 /* AdditionalInfoView.swift */; };
 		B95981FA2BE3890500578A9C /* BookingNavigationStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B95981F92BE3890500578A9C /* BookingNavigationStackView.swift */; };
-		B95981FC2BE3898B00578A9C /* EntryListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B95981FB2BE3898B00578A9C /* EntryListView.swift */; };
+		B95981FC2BE3898B00578A9C /* BookingSectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B95981FB2BE3898B00578A9C /* BookingSectionView.swift */; };
 		B95E95592C40702700B62A64 /* bookingSenseIconFinalDark.png in Resources */ = {isa = PBXBuildFile; fileRef = B95E95572C40702700B62A64 /* bookingSenseIconFinalDark.png */; };
 		B95E955A2C40702700B62A64 /* bookingSenseIconFinalTint.png in Resources */ = {isa = PBXBuildFile; fileRef = B95E95582C40702700B62A64 /* bookingSenseIconFinalTint.png */; };
 		B95E955B2C40702700B62A64 /* bookingSenseIconFinal.png in Resources */ = {isa = PBXBuildFile; fileRef = B95E95562C40702700B62A64 /* bookingSenseIconFinal.png */; };
@@ -142,7 +142,7 @@
 		B9383A042CD69A4500AAB674 /* TimelineEntryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimelineEntryView.swift; sourceTree = "<group>"; };
 		B93F74002BF39F91008A5088 /* AdditionalInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdditionalInfoView.swift; sourceTree = "<group>"; };
 		B95981F92BE3890500578A9C /* BookingNavigationStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingNavigationStackView.swift; sourceTree = "<group>"; };
-		B95981FB2BE3898B00578A9C /* EntryListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryListView.swift; sourceTree = "<group>"; };
+		B95981FB2BE3898B00578A9C /* BookingSectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingSectionView.swift; sourceTree = "<group>"; };
 		B95E95562C40702700B62A64 /* bookingSenseIconFinal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bookingSenseIconFinal.png; sourceTree = "<group>"; };
 		B95E95572C40702700B62A64 /* bookingSenseIconFinalDark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bookingSenseIconFinalDark.png; sourceTree = "<group>"; };
 		B95E95582C40702700B62A64 /* bookingSenseIconFinalTint.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bookingSenseIconFinalTint.png; sourceTree = "<group>"; };
@@ -292,7 +292,7 @@
 				B90B2B422BE504A200BD2042 /* NavigationStackContentView.swift */,
 				B919B4A12BC6AA47009B2FA4 /* EntryView.swift */,
 				B992060A2BDA96D80099EF26 /* EntryFormView.swift */,
-				B95981FB2BE3898B00578A9C /* EntryListView.swift */,
+				B95981FB2BE3898B00578A9C /* BookingSectionView.swift */,
 			);
 			path = Booking;
 			sourceTree = "<group>";
@@ -725,7 +725,7 @@
 				B96761D52C36BCCD00DA9114 /* TipJarView.swift in Sources */,
 				B9CC1BBE2CD830190048670A /* FilterDialog.swift in Sources */,
 				B91002C82CC796FF00BECF87 /* BiometricHandler.swift in Sources */,
-				B95981FC2BE3898B00578A9C /* EntryListView.swift in Sources */,
+				B95981FC2BE3898B00578A9C /* BookingSectionView.swift in Sources */,
 				B9E0B9122C1B98230047EA77 /* InfoBoxButtonView.swift in Sources */,
 				B93839FE2CD4E81D00AAB674 /* TimelineEntryState.swift in Sources */,
 				B97378FD2BDFC7D1003A729E /* Migrations.swift in Sources */,

@@ -75,8 +75,9 @@ struct OverviewView: View {
             ForEach(Interval.allCases) { option in
               Text(String(describing: option.description))
             }
-          }.accessibilityIdentifier("intervalPicker")
-            .pickerStyle(.automatic)
+          }
+          .accessibilityIdentifier("intervalPicker")
+          .pickerStyle(.automatic)
         }
         Section(LocalizedStringKey("\(interval.description) Insights"), isExpanded: $isExpandedBasic) {
           VStack {

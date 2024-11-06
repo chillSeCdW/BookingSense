@@ -54,13 +54,10 @@ extension BookingSchemaV3 {
     }
 
     static func predicate(
-      searchName: String,
-      interval: Interval
+      searchName: String
     ) -> Predicate<BookingEntry> {
       return #Predicate<BookingEntry> { entry in
-        (searchName.isEmpty || entry.name.contains(searchName))
-        &&
-        (entry.interval == interval.rawValue)
+        (searchName.isEmpty || entry.name.localizedStandardContains(searchName))
       }
     }
 
