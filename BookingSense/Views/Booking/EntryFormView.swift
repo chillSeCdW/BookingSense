@@ -73,14 +73,13 @@ struct EntryFormView: View {
   }
 
   func getNextBooking(fieldDate: Date, interval: Interval) -> Date {
-    let latestEntry = Constants.getLatestActiveTimelineEntry(
-      modelContext,
-      bookingUUID: bookingEntry?.uuid ?? ""
-    ) // TODO: maybe local Query for better consistency?
+    var latestEntry = bookingEntry?.timelineEntries?.filter { entry in
+      entry.bookingEntry?.uuid == bookingEntry?.uuid && entry.state == TimelineEntryState.open.rawValue
+    }.sorted(by: { $0.isDue < $1.isDue })
 
     if let bookDate = bookingEntry?.date {
       if Calendar.current.isDate(bookDate, equalTo: fieldDate, toGranularity: .day) {
-        if let entry = latestEntry {
+        if let entry = latestEntry?.first {
           return entry.isDue
         }
       } else {

@@ -182,27 +182,6 @@ struct Constants {
     return dates
   }
 
-  static func getLatestActiveTimelineEntry(_ context: ModelContext, bookingUUID: String) -> TimelineEntry? {
-    let stringState = TimelineEntryState.open.rawValue
-    var fetchDescriptor = FetchDescriptor<TimelineEntry>(
-      predicate: #Predicate<TimelineEntry> { entry in
-        return entry.bookingEntry?.uuid == bookingUUID
-        &&
-        entry.state == stringState
-      },
-      sortBy: [.init(\.isDue)]
-    )
-    fetchDescriptor.fetchLimit = 1
-
-    do {
-      let results = try context.fetch(fetchDescriptor)
-      return results.first
-    } catch {
-      logger.error("Failed to fetch latest active TimelineEntry: \(error)")
-      return nil
-    }
-  }
-
   static func groupBookingsByInterval(entries: [BookingEntry]) -> [String: [BookingEntry]] {
     var groupedEntries: [String: [BookingEntry]] = [:]
 
