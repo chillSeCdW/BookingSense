@@ -57,7 +57,17 @@ struct ContainerFactory {
       name: "Brötchen",
       amount: 2.5,
       amountPrefix: AmountPrefix.minus.rawValue,
-      isDue: Date.now.addingTimeInterval( 60 * 60 * 24 * 3),
+      isDue: Date.now,
+      tag: nil,
+      completedAt: nil,
+      bookingEntry: nil
+    )
+    let timelineEntry1: TimelineEntry = TimelineEntry(
+      state: TimelineEntryState.open.rawValue,
+      name: "Brötchen",
+      amount: 2.5,
+      amountPrefix: AmountPrefix.minus.rawValue,
+      isDue: Date.now.addingTimeInterval( 60 * 60 * 24 * 2),
       tag: nil,
       completedAt: nil,
       bookingEntry: nil
@@ -121,7 +131,7 @@ struct ContainerFactory {
                                      amountPrefix: AmountPrefix.minus.rawValue,
                                      interval: .daily,
                                      tag: nil,
-                                     timelineEntries: [timelineEntry, timelineEntry2]))
+                                     timelineEntries: [timelineEntry, timelineEntry1, timelineEntry2]))
     returnResult.append(BookingEntry(name: "Taschengeld Kinder",
                                      amount: 10,
                                      amountPrefix: AmountPrefix.minus.rawValue,

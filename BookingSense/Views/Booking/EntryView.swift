@@ -22,6 +22,9 @@ struct EntryView: View {
   @State private var amountPrefix: AmountPrefix = .minus
   @State private var amount: String = ""
   @State private var interval: Interval = .monthly
+  @State private var state: BookingEntryState = .active
+  @State private var date: Date = .now
+  @State private var tag: Tag?
   @State private var errorMessage: String?
   @FocusState private var focusedName: Bool
   @FocusState private var focusedAmount: Bool
@@ -33,16 +36,20 @@ struct EntryView: View {
 
   var body: some View {
     Form {
-      EntryFormView(bookingEntry: bookingEntry,
-                    name: $name,
+      EntryFormView(name: $name,
                     amountPrefix: $amountPrefix,
                     amount: $amount,
                     interval: $interval,
+                    state: $state,
+                    date: $date,
+                    tag: $tag,
                     focusedName: _focusedName,
-                    focusedAmount: _focusedAmount
+                    focusedAmount: _focusedAmount,
+                    bookingEntry: bookingEntry
       )
     }
-    .navigationTitle(isCreate ? "Create entry" : "Edit entry")
+    .listSectionSpacing(.compact)
+    .navigationTitle(isCreate ? "Create booking" : "Edit booking")
     .toolbar {
       ToolbarEntry(isCreate: isCreate, save: save, didValuesChange: didValuesChange)
     }
@@ -64,7 +71,7 @@ struct EntryView: View {
     focusedAmount = false
 
     let alreadyExists = entries.filter {
-      $0.name == name && $0.persistentModelID != bookingEntry?.persistentModelID
+      $0.name == name && $0.uuid != bookingEntry?.uuid
     }.first != nil
 
     if alreadyExists {
@@ -84,10 +91,12 @@ struct EntryView: View {
     if isCreate {
       let newEntry = BookingEntry(
         name: name,
+        state: state.rawValue,
         amount: parsedAmount ?? Decimal(),
+        date: date,
         amountPrefix: amountPrefix.rawValue,
         interval: interval,
-        tag: nil,
+        tag: tag,
         timelineEntries: nil
       )
       modelContext.insert(newEntry)
@@ -98,6 +107,9 @@ struct EntryView: View {
       bookingEntry!.amountPrefix = amountPrefix.rawValue
       bookingEntry!.amount = parsedAmount ?? Decimal()
       bookingEntry!.interval = interval.rawValue
+      bookingEntry!.state = state.rawValue
+      bookingEntry!.date = date
+      bookingEntry!.tag = tag
       dismiss()
     }
   }
@@ -120,7 +132,10 @@ struct EntryView: View {
       if name != bookingEntry.name ||
           amount != bookingEntry.amount.formatted() ||
           amountPrefix.rawValue != bookingEntry.amountPrefix ||
-          interval != Interval(rawValue: bookingEntry.interval) ?? Interval.monthly {
+          interval != Interval(rawValue: bookingEntry.interval) ?? .monthly ||
+          date != bookingEntry.date ||
+          state != BookingEntryState(rawValue: bookingEntry.state) ?? .active ||
+          tag != bookingEntry.tag {
         return true
       }
     }

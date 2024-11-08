@@ -33,21 +33,26 @@ struct NavigationStackContentView: View {
     List {
       FilterBookingStateButtonsView()
       FilterBookingAmountButtonsView()
-      if entries.isEmpty {
-        VStack {
-          Text("No entries found")
-          Text("Press the + button to add an entry or adjust filters")
-        }
-        .listRowBackground(Color.clear)
-      }
       ForEach(Interval.allCases) { option in
         IntervalSectionView(
           interval: option,
           entries: groupedEntries[option.rawValue] ?? []
         )
       }
-      Section {} footer: {
-        Text("Total bookings \(entries.count)")
+      if entries.isEmpty {
+        VStack {
+          Spacer()
+          Text("No entries found")
+            .bold()
+          Text("Press the + button to add an entry or adjust filters")
+        }
+        .foregroundStyle(.secondary)
+        .multilineTextAlignment(.center)
+        .listRowBackground(Color.clear)
+      } else {
+        Section {} footer: {
+          Text("Total bookings \(entries.count)")
+        }
       }
     }
     .animation(.easeInOut, value: groupedEntries)

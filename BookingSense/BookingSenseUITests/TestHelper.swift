@@ -49,7 +49,7 @@ class TestHelper {
       let listEntry = app.collectionViews.buttons["NavLink" + name]
       XCTAssertTrue(listEntry.isHittable)
       listEntry.tap()
-      let navBarEditEntry = app.navigationBars[localized("Edit entry")]
+      let navBarEditEntry = app.navigationBars[localized("Edit entry")] // TODO: remove unused translation
       XCTAssertTrue(navBarEditEntry.isHittable)
 
       let backButton = navBarEditEntry.buttons[localized("Bookings")]

@@ -240,7 +240,7 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "%@ Savings"
+            "value" : "%@ savings"
           }
         }
       }
@@ -606,6 +606,22 @@
         }
       }
     },
+    "Booking" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Buchung"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Booking"
+          }
+        }
+      }
+    },
     "Bookings" : {
       "localizations" : {
         "de" : {
@@ -831,6 +847,22 @@
         }
       }
     },
+    "Create booking" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Buchung erstellen"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Create booking"
+          }
+        }
+      }
+    },
     "Create entry" : {
       "localizations" : {
         "de" : {
@@ -847,6 +879,22 @@
         }
       }
     },
+    "Create tag" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tag erstellen"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Create tag"
+          }
+        }
+      }
+    },
     "Daily" : {
       "localizations" : {
         "de" : {
@@ -859,6 +907,22 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "daily"
+          }
+        }
+      }
+    },
+    "Date of first booking" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Datum der ersten Buchung"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Date of first booking"
           }
         }
       }
@@ -988,6 +1052,22 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Edit"
+          }
+        }
+      }
+    },
+    "Edit booking" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Buchung bearbeiten"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Edit booking"
           }
         }
       }
@@ -1363,9 +1443,31 @@
         }
       }
     },
+    "Next booking %@" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nächste Buchung am %@"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Next booking on %@"
+          }
+        }
+      }
+    },
     "No entries found" : {
       "localizations" : {
         "de" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "No entries found."
+          }
+        },
+        "en" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "No entries found."
@@ -1523,7 +1625,7 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Drücken Sie die + Taste um einen Eintrag hinzuzufügen oder ändere die ausgewählten Filter."
+            "value" : "Drücke die + Taste um einen Eintrag hinzuzufügen oder ändere die ausgewählten Filter."
           }
         },
         "en" : {
@@ -1892,6 +1994,38 @@
         }
       }
     },
+    "State" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Status"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "State"
+          }
+        }
+      }
+    },
+    "State of booking" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Status der Buchung"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "State of booking"
+          }
+        }
+      }
+    },
     "States" : {
       "localizations" : {
         "de" : {
@@ -1920,6 +2054,38 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Success"
+          }
+        }
+      }
+    },
+    "Tag" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tag"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tag"
+          }
+        }
+      }
+    },
+    "Tag name" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tag name"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tag name"
           }
         }
       }
@@ -2133,6 +2299,22 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Unchecked"
+          }
+        }
+      }
+    },
+    "Useful for sorting and statistics, associated with all timeline entries" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wird verwendet für das Sortieren, Statistiken und die dazugehörigen Zeitstrahleinträge."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Useful for sorting and statistics, will be associated with all timeline entries."
           }
         }
       }
