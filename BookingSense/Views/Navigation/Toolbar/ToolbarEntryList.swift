@@ -33,7 +33,8 @@ struct ToolbarEntryList: ToolbarContent {
     }
     if editMode?.wrappedValue.isEditing == true {
       ToolbarItem(placement: .navigationBarTrailing) {
-        Button("Delete all", systemImage: "trash", role: .destructive, action: showPopup).tint(.red)
+        Button("Delete all", systemImage: "trash", role: .destructive, action: showPopup)
+          .tint(.red)
       }
     }
     ToolbarItem(placement: .navigationBarTrailing) {

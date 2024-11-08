@@ -2,7 +2,14 @@
   "sourceLanguage" : "en",
   "strings" : {
     "" : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : ""
+          }
+        }
+      }
     },
     "%@ costs of annually" : {
       "localizations" : {
@@ -531,7 +538,7 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Möchten Sie sicher alle Einträge löschen?"
+            "value" : "Möchtest du sicher alle Einträge löschen?"
           }
         },
         "en" : {
@@ -547,7 +554,7 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Sind Sie sicher?"
+            "value" : "Bist du sicher?"
           }
         },
         "en" : {
@@ -960,6 +967,22 @@
         }
       }
     },
+    "Delete %@" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Eintrag %@ löschen"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Delete entry %@"
+          }
+        }
+      }
+    },
     "Delete all" : {
       "localizations" : {
         "de" : {
@@ -1108,7 +1131,7 @@
       "localizations" : {
         "de" : {
           "stringUnit" : {
-            "state" : "needs_review",
+            "state" : "translated",
             "value" : "Authentifizierung für das Verschleiern der Daten"
           }
         },
@@ -1125,13 +1148,13 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Bereits vorhandene Einträge wurden gefunden. Wie wollen Sie diese behandeln?"
+            "value" : "Bereits vorhandene Einträge wurden gefunden."
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Some existing entries were found. How do you want to handle them?"
+            "value" : "Some existing entries were found."
           }
         }
       }
@@ -1302,7 +1325,7 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Hinweise werden zurückgesetzt sobald Sie die App neustarten."
+            "value" : "Hinweise werden zurückgesetzt sobald du die App neustartest."
           }
         },
         "en" : {
@@ -1463,8 +1486,8 @@
       "localizations" : {
         "de" : {
           "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "No entries found."
+            "state" : "translated",
+            "value" : "Keine Einträge gefunden."
           }
         },
         "en" : {
@@ -2054,6 +2077,38 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Success"
+          }
+        }
+      }
+    },
+    "Sure delete entry %@ (%@)?" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sicher das du Zeitstrahleintrag “%1$@” (%2$@) löschen willst?"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sure you want to delete Timeline entry “%1$@” (%2$@)?"
+          }
+        }
+      }
+    },
+    "Sure delete entry %@, will delete timeline entries?" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sicher das du Buchung “%@” löschen willst? Dies wird auch alle zugehörigen Zeitstrahleinträge entfernen."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sure you want to delete booking “%@”? It will also delete all associated timeline entries."
           }
         }
       }

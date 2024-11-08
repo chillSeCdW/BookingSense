@@ -28,21 +28,21 @@ struct BookingNavigationStackView: View {
           stateFilter: appStates.activeBookingStateFilters,
           prefixFilter: appStates.activeBookingPrefixFilters
         )
-          .navigationDestination(for: BookingEntry.self) { entry in
-            EntryView(bookingEntry: entry)
-          }
-          .navigationTitle("Bookings")
-          .navigationBarTitleDisplayMode(.automatic)
-          .searchable(text: $appStates.searchText, prompt: "Search")
-          .toolbar {
-            ToolbarEntryList(showingConfirmation: $showingConfirmation, addEntry: addEntry)
-          }
-          .confirmationDialog("Are you sure?", isPresented: $showingConfirmation) {
-            Button("Delete all entries", role: .destructive, action: deleteAllItems)
-          } message: {
-            Text("Are you sure you want to delete all entries?")
-          }
-          .environment(\.editMode, editMode)
+        .navigationDestination(for: BookingEntry.self) { entry in
+          EntryView(bookingEntry: entry)
+        }
+        .navigationTitle("Bookings")
+        .navigationBarTitleDisplayMode(.automatic)
+        .searchable(text: $appStates.searchText, prompt: "Search")
+        .toolbar {
+          ToolbarEntryList(showingConfirmation: $showingConfirmation, addEntry: addEntry)
+        }
+        .confirmationDialog("Are you sure?", isPresented: $showingConfirmation) {
+          Button("Delete all entries", role: .destructive, action: deleteAllItems)
+        } message: {
+          Text("Are you sure you want to delete all entries?")
+        }
+        .environment(\.editMode, editMode)
       }
     }
     .sheet(isPresented: $showingSheet, content: {

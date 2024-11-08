@@ -37,15 +37,6 @@ struct BookingSectionView: View {
         )
       )
     }
-    .onDelete(perform: deleteEntry)
-  }
-
-  private func deleteEntry(offsets: IndexSet) {
-    withAnimation {
-      for index in offsets {
-        modelContext.delete(entries[index])
-      }
-    }
   }
 }
 

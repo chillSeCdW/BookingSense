@@ -107,26 +107,11 @@ struct Constants {
     return result
   }
 
-  static func generateTimelineEntriesOf(_ context: ModelContext, entry: BookingEntry) {
-    guard let entryInterval = Interval(rawValue: entry.interval) else {
-      return
-    }
-    let dateOneYearInFuture = self.getDateOfOneYearInFuture()
-
-    let entryDates = self.getDatesForEntries(entry.date, endDate: dateOneYearInFuture, interval: entryInterval)
+  static func insertTimelineEntriesOf(_ entry: BookingEntry, context: ModelContext) {
+    let timelineEntryList = generateTimelineEntriesFrom(entry)
 
     try? context.transaction {
-      entryDates.forEach { dateEntry in
-        let timelineEntry = TimelineEntry(
-          state: TimelineEntryState.open.rawValue,
-          name: entry.name,
-          amount: entry.amount,
-          amountPrefix: entry.amountPrefix,
-          isDue: dateEntry,
-          tag: entry.tag,
-          completedAt: nil,
-          bookingEntry: entry
-        )
+      timelineEntryList?.forEach { timelineEntry in
         context.insert(timelineEntry)
       }
       do {
@@ -135,7 +120,43 @@ struct Constants {
         logger.error("error saving modelContext: \(error)")
       }
     }
+  }
 
+  static func generateTimelineEntriesFrom(_ entry: BookingEntry) -> [TimelineEntry]? {
+    guard let entryInterval = Interval(rawValue: entry.interval) else {
+      return nil
+    }
+    let dateOneYearInFuture = self.getDateOfOneYearInFuture()
+
+    let entryDates = self.getDatesForEntries(entry.date, endDate: dateOneYearInFuture, interval: entryInterval)
+
+    var timelineEntriesList: [TimelineEntry] = []
+
+    entryDates.forEach { dateEntry in
+      let timelineEntry = TimelineEntry(
+        state: TimelineEntryState.open.rawValue,
+        name: entry.name,
+        amount: entry.amount,
+        amountPrefix: entry.amountPrefix,
+        isDue: dateEntry,
+        tag: entry.tag,
+        completedAt: nil,
+        bookingEntry: entry
+      )
+      timelineEntriesList.append(timelineEntry)
+    }
+
+    return timelineEntriesList
+  }
+
+  static func removeTimelineEntriesNewerThan(_ entry: BookingEntry, context: ModelContext) {
+    let timelineEntriesList = entry.timelineEntries?.filter {
+      $0.isDue >= entry.date
+    }.sorted(by: {$0.isDue < $1.isDue})
+
+    timelineEntriesList?.forEach { entry in
+      context.delete(entry)
+    }
   }
 
   // swiftlint:disable:next cyclomatic_complexity

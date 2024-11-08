@@ -5,9 +5,12 @@ import SwiftUI
 import SwiftData
 
 struct TimelineEntryView: View {
+  @Environment(\.modelContext) private var modelContext
   @Environment(AppStates.self) var appStates
 
   @StateObject var timelineEntry: TimelineEntry
+
+  @State var showingConfirmation: Bool = false
 
   var body: some View {
     Toggle(isOn: Binding(
@@ -23,14 +26,14 @@ struct TimelineEntryView: View {
         Spacer()
         VStack(alignment: .trailing) {
           Text(timelineEntry.amount, format: .currency(code: Locale.current.currency!.identifier))
-          Text(timelineEntry.isDue.formatted())
-            .foregroundStyle( timelineEntry.isDue < .now ? .red : .secondary)
+          Text(timelineEntry.isDue.formatted(date: .complete, time: .omitted))
+            .foregroundStyle(getDateColor())
         }.foregroundStyle(.secondary)
       }
     }
     .disabled(timelineEntry.state == TimelineEntryState.skipped.rawValue)
     .toggleStyle(CheckToggleStyle())
-    .swipeActions {
+    .swipeActions(edge: .trailing) {
       if timelineEntry.state != TimelineEntryState.skipped.rawValue {
         Button("Skip") {
           timelineEntry.state = TimelineEntryState.skipped.rawValue
@@ -43,10 +46,34 @@ struct TimelineEntryView: View {
         }
       }
       Button("Done on") {
+        // TODO: implement done on..
         print("open Dialog for selecting Date")
       }
       .tint(.green)
+      Button("Delete") {
+        showingConfirmation.toggle()
+      }
+      .tint(.red)
     }
+    .confirmationDialog("Are you sure?", isPresented: $showingConfirmation) {
+      Button("Delete \(timelineEntry.name)", role: .destructive, action: deleteTimelineEntry)
+    } message: {
+      Text("Sure delete entry \(timelineEntry.name) (\(timelineEntry.isDue.formatted(date: .complete, time: .omitted)))?")
+    }
+  }
+
+  func deleteTimelineEntry() {
+    modelContext.delete(timelineEntry)
+  }
+
+  func getDateColor() -> Color {
+    if timelineEntry.state != TimelineEntryState.open.rawValue {
+      return .secondary
+    }
+    if Calendar.current.compare(timelineEntry.isDue, to: .now, toGranularity: .day) == .orderedAscending {
+      return .red
+    }
+    return .secondary
   }
 }
 

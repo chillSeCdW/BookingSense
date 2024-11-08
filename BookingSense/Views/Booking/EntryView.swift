@@ -18,6 +18,7 @@ struct EntryView: View {
 
   var bookingEntry: BookingEntry?
 
+  @State var showingConfirmation: Bool = false
   @State private var name: String = ""
   @State private var amountPrefix: AmountPrefix = .minus
   @State private var amount: String = ""
@@ -51,7 +52,11 @@ struct EntryView: View {
     .listSectionSpacing(.compact)
     .navigationTitle(isCreate ? "Create booking" : "Edit booking")
     .toolbar {
-      ToolbarEntry(isCreate: isCreate, save: save, didValuesChange: didValuesChange)
+      ToolbarEntry(isCreate: isCreate,
+                   save: save,
+                   didValuesChange: didValuesChange,
+                   showingConfirmation: $showingConfirmation
+      )
     }
     .alert(Text(LocalizedStringKey(alertTitle)), isPresented: Binding<Bool>(
         get: { errorMessage != nil },
@@ -62,6 +67,13 @@ struct EntryView: View {
       }
     } message: {
         Text(LocalizedStringKey(errorMessage ?? "An unknown error occurred."))
+    }
+    .confirmationDialog("Are you sure?", isPresented: $showingConfirmation) {
+      Button("Delete \(bookingEntry!.name)", role: .destructive) {
+        modelContext.delete(bookingEntry!)
+      }
+    } message: {
+      Text("Sure delete entry \(bookingEntry!.name), will delete timeline entries?")
     }
   }
 
@@ -100,7 +112,7 @@ struct EntryView: View {
         timelineEntries: nil
       )
       modelContext.insert(newEntry)
-      Constants.generateTimelineEntriesOf(modelContext, entry: newEntry)
+      Constants.insertTimelineEntriesOf(newEntry, context: modelContext)
       dismiss()
     } else {
       bookingEntry!.name = name
@@ -110,7 +122,25 @@ struct EntryView: View {
       bookingEntry!.state = state.rawValue
       bookingEntry!.date = date
       bookingEntry!.tag = tag
+      generateTimelineEntries(BookingEntryState(rawValue: bookingEntry!.state))
       dismiss()
+    }
+  }
+
+  func generateTimelineEntries(_ state: BookingEntryState?) {
+    guard let state = state else { return }
+
+    switch state {
+    case BookingEntryState.active:
+      Constants.removeTimelineEntriesNewerThan(bookingEntry!, context: modelContext)
+      Constants.insertTimelineEntriesOf(bookingEntry!, context: modelContext)
+      break
+    case BookingEntryState.paused:
+      // TODO: delete all future timeline entries
+      break
+    case BookingEntryState.archived:
+      // TODO: Delete all future timeline entries
+      break
     }
   }
 

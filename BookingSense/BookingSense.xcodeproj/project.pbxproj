@@ -59,6 +59,7 @@
 		B9781EAB2C2EB8AF00FBA0A5 /* SettingsNavigationStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9781EAA2C2EB8AF00FBA0A5 /* SettingsNavigationStackView.swift */; };
 		B9781EB02C346F1500FBA0A5 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B9781EAF2C346F1500FBA0A5 /* StoreKit.framework */; };
 		B980A2022CC139E00075AE8F /* ChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B980A2012CC139DD0075AE8F /* ChartView.swift */; };
+		B991E2432CDECB8A0031288B /* ToolbarTagEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = B991E2422CDECB800031288B /* ToolbarTagEntry.swift */; };
 		B99205FC2BD90F780099EF26 /* AppStates.swift in Sources */ = {isa = PBXBuildFile; fileRef = B99205FB2BD90F780099EF26 /* AppStates.swift */; };
 		B99205FF2BD90FAD0099EF26 /* SortButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B99205FE2BD90FAD0099EF26 /* SortButtonView.swift */; };
 		B99206072BDA806E0099EF26 /* ToolbarEntryList.swift in Sources */ = {isa = PBXBuildFile; fileRef = B99206062BDA806E0099EF26 /* ToolbarEntryList.swift */; };
@@ -160,6 +161,7 @@
 		B9781EAF2C346F1500FBA0A5 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		B980A2012CC139DD0075AE8F /* ChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartView.swift; sourceTree = "<group>"; };
 		B982CA152C11052B002FA2DC /* BookingSense-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "BookingSense-Info.plist"; sourceTree = "<group>"; };
+		B991E2422CDECB800031288B /* ToolbarTagEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolbarTagEntry.swift; sourceTree = "<group>"; };
 		B99205FB2BD90F780099EF26 /* AppStates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStates.swift; sourceTree = "<group>"; };
 		B99205FE2BD90FAD0099EF26 /* SortButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortButtonView.swift; sourceTree = "<group>"; };
 		B99206062BDA806E0099EF26 /* ToolbarEntryList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolbarEntryList.swift; sourceTree = "<group>"; };
@@ -226,6 +228,7 @@
 				B90ABBD82BE3FC8C006E5AA8 /* Buttons */,
 				B99206062BDA806E0099EF26 /* ToolbarEntryList.swift */,
 				B99206082BDA96090099EF26 /* ToolbarEntry.swift */,
+				B991E2422CDECB800031288B /* ToolbarTagEntry.swift */,
 				B927FB282C2C386D008D30BE /* ToolbarOverviewList.swift */,
 				B9CC1BB52CD790030048670A /* ToolbarTimelineContent.swift */,
 			);
@@ -752,6 +755,7 @@
 				B915DC492BB46E350018E812 /* OverviewView.swift in Sources */,
 				B92D6F652CC006C4000A2697 /* ChartModels.swift in Sources */,
 				B919B4A22BC6AA47009B2FA4 /* EntryView.swift in Sources */,
+				B991E2432CDECB8A0031288B /* ToolbarTagEntry.swift in Sources */,
 				B9CC1BB62CD7902E0048670A /* ToolbarTimelineContent.swift in Sources */,
 				B927FB292C2C386D008D30BE /* ToolbarOverviewList.swift in Sources */,
 				B922EBEC2CCAED5F00D51C0B /* BookingSchemaV2.swift in Sources */,

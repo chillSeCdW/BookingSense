@@ -73,7 +73,7 @@ struct EntryFormView: View {
   }
 
   func getNextBooking(fieldDate: Date, interval: Interval) -> Date {
-    var latestEntry = bookingEntry?.timelineEntries?.filter { entry in
+    let latestEntry = bookingEntry?.timelineEntries?.filter { entry in
       entry.bookingEntry?.uuid == bookingEntry?.uuid && entry.state == TimelineEntryState.open.rawValue
     }.sorted(by: { $0.isDue < $1.isDue })
 
@@ -226,11 +226,10 @@ struct TagPicker: View {
           }
           .navigationTitle("Create tag")
           .toolbar {
-            ToolbarEntry(isCreate: true, save: save, didValuesChange: { false })
+            ToolbarTagEntry(save: save)
           }
           .presentationDetents([.medium, .large])
         }
-
       }
     }
   }
