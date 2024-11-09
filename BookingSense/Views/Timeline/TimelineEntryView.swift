@@ -86,12 +86,19 @@ struct TimelineEntryView: View {
 struct DateForTimelineEntry: View {
   @StateObject var timelineEntry: TimelineEntry
 
+  private var dateFormatter: DateFormatter {
+    let formatter = DateFormatter()
+    formatter.locale = Locale.current
+    formatter.setLocalizedDateFormatFromTemplate("EEE ddMMyyyy")
+    return formatter
+  }
+
   var body: some View {
     if let completetedAt = timelineEntry.completedAt {
-      Text(completetedAt.formatted(date: .complete, time: .omitted))
-        .foregroundStyle(.green)
+      Text(dateFormatter.string(from: completetedAt))
+        .foregroundStyle(timelineEntry.state == TimelineEntryState.skipped.rawValue ? Color.secondary : .green)
       } else {
-        Text(timelineEntry.isDue.formatted(date: .complete, time: .omitted))
+        Text(dateFormatter.string(from: timelineEntry.isDue))
           .foregroundStyle(getDateColor())
       }
   }
