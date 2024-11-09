@@ -82,7 +82,6 @@ struct EntryView: View {
     let sanitizedAmount = stripString(amount)
     focusedName = false
     focusedAmount = false
-
     let alreadyExists = entries.filter {
       $0.name == name && $0.uuid != bookingEntry?.uuid
     }.first != nil
@@ -119,7 +118,6 @@ struct EntryView: View {
           entry: newEntry
         )
       }
-      dismiss()
     } else {
       updateTimelineTags(tag, oldTag: bookingEntry!.tag, entry: bookingEntry)
       bookingEntry!.name = name
@@ -135,8 +133,8 @@ struct EntryView: View {
           entry: bookingEntry
         )
       }
-      dismiss()
     }
+    dismiss()
   }
 
   func generateTimelineEntries(_ state: BookingEntryState?, entry: BookingEntry?) {

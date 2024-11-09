@@ -15,9 +15,10 @@ struct ToolbarOverviewList: ToolbarContent {
       Button(action: {
         Constants.toggleDisplaySensitiveInfo(
           appStates: appStates)
-      }) {
+      }, label: {
         Image(systemName: appStates.blurSensitive ? "eye.slash" : "eye")
-      }.contentTransition(.symbolEffect(.replace.downUp.byLayer))
+      })
+      .contentTransition(.symbolEffect(.replace.downUp.byLayer))
     }
   }
 }
