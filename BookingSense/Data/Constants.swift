@@ -159,6 +159,16 @@ struct Constants {
     }
   }
 
+  static func removeTimelineEntriesNewerThan(_ date: Date, entry: BookingEntry, context: ModelContext) {
+    let timelineEntriesList = entry.timelineEntries?.filter {
+      $0.isDue >= date // TODO: inclusive today?
+    }.sorted(by: {$0.isDue < $1.isDue})
+
+    timelineEntriesList?.forEach { entry in
+      context.delete(entry)
+    }
+  }
+
   // swiftlint:disable:next cyclomatic_complexity
   static func getDatesForEntries(_ startDate: Date, endDate: Date, interval: Interval) -> [Date] {
     var dates: [Date] = []
