@@ -60,6 +60,7 @@
 		B9781EB02C346F1500FBA0A5 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B9781EAF2C346F1500FBA0A5 /* StoreKit.framework */; };
 		B980A2022CC139E00075AE8F /* ChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B980A2012CC139DD0075AE8F /* ChartView.swift */; };
 		B991E2432CDECB8A0031288B /* ToolbarTagEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = B991E2422CDECB800031288B /* ToolbarTagEntry.swift */; };
+		B991E2462CDF98150031288B /* DoneOnDialog.swift in Sources */ = {isa = PBXBuildFile; fileRef = B991E2452CDF980F0031288B /* DoneOnDialog.swift */; };
 		B99205FC2BD90F780099EF26 /* AppStates.swift in Sources */ = {isa = PBXBuildFile; fileRef = B99205FB2BD90F780099EF26 /* AppStates.swift */; };
 		B99205FF2BD90FAD0099EF26 /* SortButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B99205FE2BD90FAD0099EF26 /* SortButtonView.swift */; };
 		B99206072BDA806E0099EF26 /* ToolbarEntryList.swift in Sources */ = {isa = PBXBuildFile; fileRef = B99206062BDA806E0099EF26 /* ToolbarEntryList.swift */; };
@@ -162,6 +163,7 @@
 		B980A2012CC139DD0075AE8F /* ChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartView.swift; sourceTree = "<group>"; };
 		B982CA152C11052B002FA2DC /* BookingSense-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "BookingSense-Info.plist"; sourceTree = "<group>"; };
 		B991E2422CDECB800031288B /* ToolbarTagEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolbarTagEntry.swift; sourceTree = "<group>"; };
+		B991E2452CDF980F0031288B /* DoneOnDialog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoneOnDialog.swift; sourceTree = "<group>"; };
 		B99205FB2BD90F780099EF26 /* AppStates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStates.swift; sourceTree = "<group>"; };
 		B99205FE2BD90FAD0099EF26 /* SortButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortButtonView.swift; sourceTree = "<group>"; };
 		B99206062BDA806E0099EF26 /* ToolbarEntryList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolbarEntryList.swift; sourceTree = "<group>"; };
@@ -224,7 +226,6 @@
 		B90ABBD72BE3DCCB006E5AA8 /* Toolbar */ = {
 			isa = PBXGroup;
 			children = (
-				B9CC1BBD2CD830160048670A /* FilterDialog.swift */,
 				B90ABBD82BE3FC8C006E5AA8 /* Buttons */,
 				B99206062BDA806E0099EF26 /* ToolbarEntryList.swift */,
 				B99206082BDA96090099EF26 /* ToolbarEntry.swift */,
@@ -399,6 +400,15 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		B991E2442CDF98000031288B /* Dialog */ = {
+			isa = PBXGroup;
+			children = (
+				B991E2452CDF980F0031288B /* DoneOnDialog.swift */,
+				B9CC1BBD2CD830160048670A /* FilterDialog.swift */,
+			);
+			path = Dialog;
+			sourceTree = "<group>";
+		};
 		B99205FA2BD90F630099EF26 /* Models */ = {
 			isa = PBXGroup;
 			children = (
@@ -418,6 +428,7 @@
 		B99205FD2BD90FA40099EF26 /* Navigation */ = {
 			isa = PBXGroup;
 			children = (
+				B991E2442CDF98000031288B /* Dialog */,
 				B90ABBD72BE3DCCB006E5AA8 /* Toolbar */,
 			);
 			path = Navigation;
@@ -752,6 +763,7 @@
 				B992060B2BDA96D80099EF26 /* EntryFormView.swift in Sources */,
 				B93839F92CD26FD400AAB674 /* JsonTimelineEntry.swift in Sources */,
 				B93F74012BF39F91008A5088 /* AdditionalInfoView.swift in Sources */,
+				B991E2462CDF98150031288B /* DoneOnDialog.swift in Sources */,
 				B915DC492BB46E350018E812 /* OverviewView.swift in Sources */,
 				B92D6F652CC006C4000A2697 /* ChartModels.swift in Sources */,
 				B919B4A22BC6AA47009B2FA4 /* EntryView.swift in Sources */,

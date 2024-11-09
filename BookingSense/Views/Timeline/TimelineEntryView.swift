@@ -6,11 +6,11 @@ import SwiftData
 
 struct TimelineEntryView: View {
   @Environment(\.modelContext) private var modelContext
-  @Environment(AppStates.self) var appStates
 
   @StateObject var timelineEntry: TimelineEntry
 
   @State var showingConfirmation: Bool = false
+  @State var isDoneOnDialogPresented: Bool = false
 
   var body: some View {
     Toggle(isOn: Binding(
@@ -26,9 +26,10 @@ struct TimelineEntryView: View {
         Spacer()
         VStack(alignment: .trailing) {
           Text(timelineEntry.amount, format: .currency(code: Locale.current.currency!.identifier))
-          Text(timelineEntry.isDue.formatted(date: .complete, time: .omitted))
+          DateForTimelineEntry(timelineEntry: timelineEntry)
             .foregroundStyle(getDateColor())
-        }.foregroundStyle(.secondary)
+        }
+        .foregroundStyle(.secondary)
       }
     }
     .disabled(timelineEntry.state == TimelineEntryState.skipped.rawValue)
@@ -46,14 +47,19 @@ struct TimelineEntryView: View {
         }
       }
       Button("Done on") {
-        // TODO: implement done on..
-        print("open Dialog for selecting Date")
+        isDoneOnDialogPresented.toggle()
       }
       .tint(.green)
       Button("Delete") {
         showingConfirmation.toggle()
       }
       .tint(.red)
+    }
+    .sheet(isPresented: $isDoneOnDialogPresented) {
+      isDoneOnDialogPresented = false
+    } content: {
+      DoneOnDialog(timelineEntry: timelineEntry)
+        .presentationDetents([.medium, .large])
     }
     .confirmationDialog("Are you sure?", isPresented: $showingConfirmation) {
       Button("Delete \(timelineEntry.name)", role: .destructive, action: deleteTimelineEntry)
@@ -64,6 +70,30 @@ struct TimelineEntryView: View {
 
   func deleteTimelineEntry() {
     modelContext.delete(timelineEntry)
+  }
+
+  func getDateColor() -> Color {
+    if timelineEntry.state != TimelineEntryState.open.rawValue {
+      return .secondary
+    }
+    if Calendar.current.compare(timelineEntry.isDue, to: .now, toGranularity: .day) == .orderedAscending {
+      return .red
+    }
+    return .secondary
+  }
+}
+
+struct DateForTimelineEntry: View {
+  @StateObject var timelineEntry: TimelineEntry
+
+  var body: some View {
+    if let completetedAt = timelineEntry.completedAt {
+      Text(completetedAt.formatted(date: .complete, time: .omitted))
+        .foregroundStyle(.green)
+      } else {
+        Text(timelineEntry.isDue.formatted(date: .complete, time: .omitted))
+          .foregroundStyle(getDateColor())
+      }
   }
 
   func getDateColor() -> Color {

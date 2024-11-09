@@ -11,6 +11,22 @@
         }
       }
     },
+    "%@ %@" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%1$@ %2$@"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "%1$@ %2$@"
+          }
+        }
+      }
+    },
     "%@ costs of annually" : {
       "localizations" : {
         "de" : {
@@ -1785,6 +1801,22 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "search"
+          }
+        }
+      }
+    },
+    "Select date" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Datum auswählen"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Select date"
           }
         }
       }
