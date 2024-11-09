@@ -121,6 +121,7 @@ struct EntryView: View {
       }
       dismiss()
     } else {
+      updateTimelineTags(tag, oldTag: bookingEntry!.tag, entry: bookingEntry)
       bookingEntry!.name = name
       bookingEntry!.amountPrefix = amountPrefix.rawValue
       bookingEntry!.amount = parsedAmount ?? Decimal()
@@ -149,6 +150,17 @@ struct EntryView: View {
       Constants.removeTimelineEntriesNewerThan(.now, entry: entry, context: modelContext)
     case BookingEntryState.archived:
       Constants.removeTimelineEntriesNewerThan(.now, entry: entry, context: modelContext)
+    }
+  }
+
+  func updateTimelineTags(_ newTag: Tag?, oldTag: Tag?, entry: BookingEntry?) {
+    guard let newTag = newTag, let oldTag = oldTag, let entry = entry else { return }
+    if newTag == oldTag {
+      return
+    }
+
+    entry.timelineEntries?.forEach {
+      $0.tag = newTag
     }
   }
 

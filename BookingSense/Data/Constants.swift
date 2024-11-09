@@ -114,11 +114,6 @@ struct Constants {
       timelineEntryList?.forEach { timelineEntry in
         context.insert(timelineEntry)
       }
-      do {
-        try context.save()
-      } catch {
-        logger.error("error saving modelContext: \(error)")
-      }
     }
   }
 
