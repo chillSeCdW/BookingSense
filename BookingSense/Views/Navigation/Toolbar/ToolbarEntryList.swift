@@ -31,6 +31,11 @@ struct ToolbarEntryList: ToolbarContent {
     ToolbarItem(placement: .navigationBarLeading) {
       SortButtonView()
     }
+    ToolbarItem(placement: .navigationBarLeading) {
+      Button(action: { appStates.isBookingFilterDialogPresented.toggle()},
+             label: { Image(systemName: "line.horizontal.3.decrease.circle") }
+      )
+    }
     if editMode?.wrappedValue.isEditing == true {
       ToolbarItem(placement: .navigationBarTrailing) {
         Button("Delete all", systemImage: "trash", role: .destructive, action: showPopup)

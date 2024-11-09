@@ -45,6 +45,10 @@ struct BookingNavigationStackView: View {
         .environment(\.editMode, editMode)
       }
     }
+    .sheet(isPresented: $appStates.isBookingFilterDialogPresented) {
+      BookingFilterDialog()
+        .presentationDetents([.medium, .large])
+    }
     .sheet(isPresented: $showingSheet, content: {
       NavigationStack {
         EntryView()

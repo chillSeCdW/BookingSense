@@ -61,6 +61,7 @@
 		B980A2022CC139E00075AE8F /* ChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B980A2012CC139DD0075AE8F /* ChartView.swift */; };
 		B991E2432CDECB8A0031288B /* ToolbarTagEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = B991E2422CDECB800031288B /* ToolbarTagEntry.swift */; };
 		B991E2462CDF98150031288B /* DoneOnDialog.swift in Sources */ = {isa = PBXBuildFile; fileRef = B991E2452CDF980F0031288B /* DoneOnDialog.swift */; };
+		B991E2482CDFB28E0031288B /* BookingFilterDialog.swift in Sources */ = {isa = PBXBuildFile; fileRef = B991E2472CDFB2890031288B /* BookingFilterDialog.swift */; };
 		B99205FC2BD90F780099EF26 /* AppStates.swift in Sources */ = {isa = PBXBuildFile; fileRef = B99205FB2BD90F780099EF26 /* AppStates.swift */; };
 		B99205FF2BD90FAD0099EF26 /* SortButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B99205FE2BD90FAD0099EF26 /* SortButtonView.swift */; };
 		B99206072BDA806E0099EF26 /* ToolbarEntryList.swift in Sources */ = {isa = PBXBuildFile; fileRef = B99206062BDA806E0099EF26 /* ToolbarEntryList.swift */; };
@@ -72,7 +73,7 @@
 		B9BB9D6E2CAAE96C0057573B /* ThankYouPopUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9BB9D6D2CAAE95E0057573B /* ThankYouPopUp.swift */; };
 		B9CC1BB62CD7902E0048670A /* ToolbarTimelineContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9CC1BB52CD790030048670A /* ToolbarTimelineContent.swift */; };
 		B9CC1BB82CD7BB110048670A /* TimelineContentListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9CC1BB72CD7BB0C0048670A /* TimelineContentListView.swift */; };
-		B9CC1BBE2CD830190048670A /* FilterDialog.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9CC1BBD2CD830160048670A /* FilterDialog.swift */; };
+		B9CC1BBE2CD830190048670A /* TimeFilterDialog.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9CC1BBD2CD830160048670A /* TimeFilterDialog.swift */; };
 		B9CC1BC02CD838C90048670A /* TimelineListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9CC1BBF2CD838C50048670A /* TimelineListView.swift */; };
 		B9CC1BC22CD8C8DB0048670A /* BookingSortByEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9CC1BC12CD8C8D40048670A /* BookingSortByEnum.swift */; };
 		B9CC1BC62CD8C9540048670A /* BookingSortOrder.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9CC1BC52CD8C9540048670A /* BookingSortOrder.swift */; };
@@ -164,6 +165,7 @@
 		B982CA152C11052B002FA2DC /* BookingSense-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "BookingSense-Info.plist"; sourceTree = "<group>"; };
 		B991E2422CDECB800031288B /* ToolbarTagEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolbarTagEntry.swift; sourceTree = "<group>"; };
 		B991E2452CDF980F0031288B /* DoneOnDialog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoneOnDialog.swift; sourceTree = "<group>"; };
+		B991E2472CDFB2890031288B /* BookingFilterDialog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingFilterDialog.swift; sourceTree = "<group>"; };
 		B99205FB2BD90F780099EF26 /* AppStates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStates.swift; sourceTree = "<group>"; };
 		B99205FE2BD90FAD0099EF26 /* SortButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortButtonView.swift; sourceTree = "<group>"; };
 		B99206062BDA806E0099EF26 /* ToolbarEntryList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolbarEntryList.swift; sourceTree = "<group>"; };
@@ -176,7 +178,7 @@
 		B9C702B12C0FC6E0004546E1 /* ci_post_clone.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = ci_post_clone.sh; sourceTree = "<group>"; };
 		B9CC1BB52CD790030048670A /* ToolbarTimelineContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolbarTimelineContent.swift; sourceTree = "<group>"; };
 		B9CC1BB72CD7BB0C0048670A /* TimelineContentListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimelineContentListView.swift; sourceTree = "<group>"; };
-		B9CC1BBD2CD830160048670A /* FilterDialog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterDialog.swift; sourceTree = "<group>"; };
+		B9CC1BBD2CD830160048670A /* TimeFilterDialog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeFilterDialog.swift; sourceTree = "<group>"; };
 		B9CC1BBF2CD838C50048670A /* TimelineListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimelineListView.swift; sourceTree = "<group>"; };
 		B9CC1BC12CD8C8D40048670A /* BookingSortByEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingSortByEnum.swift; sourceTree = "<group>"; };
 		B9CC1BC52CD8C9540048670A /* BookingSortOrder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingSortOrder.swift; sourceTree = "<group>"; };
@@ -403,8 +405,9 @@
 		B991E2442CDF98000031288B /* Dialog */ = {
 			isa = PBXGroup;
 			children = (
+				B991E2472CDFB2890031288B /* BookingFilterDialog.swift */,
 				B991E2452CDF980F0031288B /* DoneOnDialog.swift */,
-				B9CC1BBD2CD830160048670A /* FilterDialog.swift */,
+				B9CC1BBD2CD830160048670A /* TimeFilterDialog.swift */,
 			);
 			path = Dialog;
 			sourceTree = "<group>";
@@ -722,6 +725,7 @@
 				B90D3D0F2C19D97D00133857 /* IntervalInsightsView.swift in Sources */,
 				B9383A052CD69A4800AAB674 /* TimelineEntryView.swift in Sources */,
 				B99206092BDA96090099EF26 /* ToolbarEntry.swift in Sources */,
+				B991E2482CDFB28E0031288B /* BookingFilterDialog.swift in Sources */,
 				B96761CD2C34A77B00DA9114 /* MailView.swift in Sources */,
 				B907587B2C13479300EDC82F /* ContentView.swift in Sources */,
 				B9CC1BC62CD8C9540048670A /* BookingSortOrder.swift in Sources */,
@@ -737,7 +741,7 @@
 				B96F6E192C41296E00132B50 /* BookingInfoPopUp.swift in Sources */,
 				B9781EAB2C2EB8AF00FBA0A5 /* SettingsNavigationStackView.swift in Sources */,
 				B96761D52C36BCCD00DA9114 /* TipJarView.swift in Sources */,
-				B9CC1BBE2CD830190048670A /* FilterDialog.swift in Sources */,
+				B9CC1BBE2CD830190048670A /* TimeFilterDialog.swift in Sources */,
 				B91002C82CC796FF00BECF87 /* BiometricHandler.swift in Sources */,
 				B95981FC2BE3898B00578A9C /* BookingSectionView.swift in Sources */,
 				B9E0B9122C1B98230047EA77 /* InfoBoxButtonView.swift in Sources */,

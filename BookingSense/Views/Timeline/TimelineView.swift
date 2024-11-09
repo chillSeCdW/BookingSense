@@ -17,8 +17,8 @@ struct TimelineView: View {
       .toolbar {
         ToolbarTimelineContent()
       }
-      .sheet(isPresented: $appStates.isFilterDialogPresented) {
-        FilterDialog()
+      .sheet(isPresented: $appStates.isTimeFilterDialogPresented) {
+        TimeFilterDialog()
           .presentationDetents([.medium, .large])
       }
     }.searchable(text: $appStates.searchTimelineText, prompt: "Search")

@@ -10,7 +10,8 @@ import SwiftUI
 import SwiftData
 
 class AppStates: Observable, ObservableObject {
-  @Published var isFilterDialogPresented: Bool = false
+  @Published var isTimeFilterDialogPresented: Bool = false
+  @Published var isBookingFilterDialogPresented: Bool = false
 
   // Filters for Bookings
   @Published var activeBookingStateFilters: Set<BookingEntryState> {

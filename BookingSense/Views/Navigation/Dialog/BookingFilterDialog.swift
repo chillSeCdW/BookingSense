@@ -1,23 +1,23 @@
-// Created for BookingSense on 03.11.24 by kenny
+// Created for BookingSense on 09.11.24 by kenny
 // Using Swift 6.0
 
 import SwiftUI
 import SwiftData
 
-struct FilterDialog: View {
+struct BookingFilterDialog: View {
   @Environment(AppStates.self) var appStates
 
   var body: some View {
     NavigationView {
       List {
         Section("Tags") {
-          ListOfTagsOptions()
+          ListOfBookingTagsOptions()
         }
         Section("States") {
-          ListOfTimelineStateOptions()
+          ListOfBookingStateOptions()
         }
         Section("Type") {
-          ListOfAmountPrefixOptions()
+          ListOfBookingPrefixOptions()
         }
       }
       .navigationTitle("Select to show")
@@ -25,7 +25,7 @@ struct FilterDialog: View {
       .toolbar {
         ToolbarItem(placement: .confirmationAction) {
           Button("Done") {
-            appStates.isFilterDialogPresented = false
+            appStates.isBookingFilterDialogPresented = false
           }
         }
       }
@@ -33,7 +33,7 @@ struct FilterDialog: View {
   }
 }
 
-struct ListOfTagsOptions: View {
+struct ListOfBookingTagsOptions: View {
   @Environment(AppStates.self) var appStates
 
   @Query var tags: [Tag]
@@ -43,41 +43,41 @@ struct ListOfTagsOptions: View {
       HStack {
         Text(option.name)
         Spacer()
-        if appStates.activeTimeTagFilters.contains(where: { $0 == option.uuid }) {
+        if appStates.activeBookingTagFilters.contains(where: { $0 == option.uuid }) {
           Image(systemName: "checkmark")
             .foregroundColor(.blue)
         }
       }
       .contentShape(Rectangle())
       .onTapGesture {
-        appStates.toggleTimeTagFilter(option)
+        appStates.toggleBookingTagFilter(option)
       }
     }
   }
 }
 
-struct ListOfTimelineStateOptions: View {
+struct ListOfBookingStateOptions: View {
   @Environment(AppStates.self) var appStates
 
   var body: some View {
-    ForEach(TimelineEntryState.allCases, id: \.self) { option in
+    ForEach(BookingEntryState.allCases, id: \.self) { option in
       HStack {
         Text(option.description)
         Spacer()
-        if appStates.activeTimeStateFilters.contains(option) {
+        if appStates.activeBookingStateFilters.contains(option) {
           Image(systemName: "checkmark")
             .foregroundColor(.blue)
         }
       }
       .contentShape(Rectangle())
       .onTapGesture {
-        appStates.toggleTimeStateFilter(option)
+        appStates.toggleBookingStateFilter(option)
       }
     }
   }
 }
 
-struct ListOfAmountPrefixOptions: View {
+struct ListOfBookingPrefixOptions: View {
   @Environment(AppStates.self) var appStates
 
   var body: some View {
@@ -85,14 +85,14 @@ struct ListOfAmountPrefixOptions: View {
       HStack {
         Text(option.description)
         Spacer()
-        if appStates.activeTimePrefixFilters.contains(option) {
+        if appStates.activeBookingPrefixFilters.contains(option) {
           Image(systemName: "checkmark")
             .foregroundColor(.blue)
         }
       }
       .contentShape(Rectangle())
       .onTapGesture {
-        appStates.toggleTimePrefixFilter(option)
+        appStates.toggleBookingPrefixFilter(option)
       }
     }
   }
