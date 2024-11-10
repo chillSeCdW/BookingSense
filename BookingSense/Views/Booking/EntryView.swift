@@ -81,7 +81,7 @@ struct EntryView: View {
         dismiss()
       }
     } message: {
-      Text("Sure delete entry \(bookingEntry?.name ?? ""), will delete timeline entries?")
+      Text("Sure delete booking \(bookingEntry?.name ?? ""), will delete timeline entries?")
     }
   }
 

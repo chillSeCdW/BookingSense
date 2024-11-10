@@ -194,7 +194,6 @@ struct TagPicker: View {
   @Binding var tag: Tag?
 
   @State var showingSheet: Bool = false
-  @State var tagName: String = ""
 
   var body: some View {
     Section(header: Text("Tag"), footer: Text("Useful for sorting and statistics, associated with all timeline entries")
@@ -221,28 +220,10 @@ struct TagPicker: View {
       .listRowBackground(Color.clear)
       .sheet(isPresented: $showingSheet) {
         NavigationStack {
-          Form {
-            TextField("Tag name", text: $tagName)
-          }
-          .navigationTitle("Create tag")
-          .toolbar {
-            ToolbarTagEntry(save: save)
-          }
-          .presentationDetents([.medium, .large])
+          TagFormView()
         }
       }
     }
-  }
-
-  func save() {
-    if tagName.isEmpty {
-      showingSheet = false
-      return
-    }
-    let newTag = Tag(name: tagName)
-    modelContext.insert(newTag)
-    tag = newTag
-    showingSheet = false
   }
 }
 

@@ -20,6 +20,16 @@ struct SettingsNavigationStackView: View {
         Section("Export/Import") {
           ExportImportButtons()
         }
+        Section("Data") {
+          NavigationLink {
+            TagsListView()
+          } label: {
+            HStack {
+              Image(systemName: "tag")
+              Text("Tags")
+            }
+          }
+        }
         Section("Contact") {
           ContactButtons()
         }

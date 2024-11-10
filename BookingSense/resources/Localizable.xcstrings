@@ -934,6 +934,22 @@
         }
       }
     },
+    "Data" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Daten"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Data"
+          }
+        }
+      }
+    },
     "Date of first booking" : {
       "localizations" : {
         "de" : {
@@ -1047,6 +1063,38 @@
         }
       }
     },
+    "Delete tag" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tag löschen"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Delete tag"
+          }
+        }
+      }
+    },
+    "Delete tag %@" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tag “%@” löschen"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Delete tag “%@”"
+          }
+        }
+      }
+    },
     "Dismiss" : {
       "localizations" : {
         "de" : {
@@ -1139,6 +1187,22 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Edit entry"
+          }
+        }
+      }
+    },
+    "Edit tag" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tag bearbeiten"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Edit tag"
           }
         }
       }
@@ -2129,6 +2193,22 @@
         }
       }
     },
+    "Sure delete booking %@, will delete timeline entries?" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sicher das du Buchung “%@” löschen willst? Dies wird auch alle zugehörigen Zeitstrahleinträge entfernen."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sure you want to delete booking “%@”? It will also delete all associated timeline entries."
+          }
+        }
+      }
+    },
     "Sure delete entry %@ (%@)?" : {
       "localizations" : {
         "de" : {
@@ -2145,18 +2225,18 @@
         }
       }
     },
-    "Sure delete entry %@, will delete timeline entries?" : {
+    "Sure delete tag %@? will remove tags from bookings/timeline entries" : {
       "localizations" : {
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Sicher das du Buchung “%@” löschen willst? Dies wird auch alle zugehörigen Zeitstrahleinträge entfernen."
+            "value" : "Sicher das du Tag “%@” löschen willst? Tag wird auch aus zugehörigen Buchungen/Zeitstrahleinträge entfernt."
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Sure you want to delete booking “%@”? It will also delete all associated timeline entries."
+            "value" : "Sure you want to delete tag “%@”? It will also remove tag from associated bookings/timeline entries."
           }
         }
       }
@@ -2189,6 +2269,22 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Tag name"
+          }
+        }
+      }
+    },
+    "Tag will be removed from associated bookings/timeline entries" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tag wird auch aus zugehörigen Buchungen/Zeitstrahleinträge entfernt."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tag will be removed from associated bookings/timeline entries."
           }
         }
       }
