@@ -141,9 +141,9 @@ extension BookingSchemaV3 {
       return #Predicate<TimelineEntry> { entry in
         return (searchName.isEmpty || entry.name.localizedStandardContains(searchName))
         &&
-        states.contains(entry.state)
+        (states.isEmpty || states.contains(entry.state))
         &&
-        amountPrefix.contains(entry.amountPrefix)
+        (amountPrefix.isEmpty || amountPrefix.contains(entry.amountPrefix))
       }
     }
   }

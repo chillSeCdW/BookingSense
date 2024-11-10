@@ -221,15 +221,18 @@ struct Constants {
     return groupedEntries
   }
 
-  static func sortBookings(
+  static func sortAndFilterBookings(
     bookings: [String: [BookingEntry]],
     sortBy: SortByEnum,
-    sortOrder: SortOrderEnum
+    sortOrder: SortOrderEnum,
+    tagFilter: Set<String> = []
   ) -> [String: [BookingEntry]] {
     var sortedBookings: [String: [BookingEntry]] = [:]
 
     for (key, entries) in bookings {
-      let sortedEntries = entries.sorted { (entry1, entry2) -> Bool in
+      let sortedEntries = entries
+        .filter { tagFilter.isEmpty || tagFilter.contains($0.tag?.uuid ?? "")}
+        .sorted { (entry1, entry2) -> Bool in
         switch sortBy {
         case .name:
           if sortOrder == .forward {
@@ -250,7 +253,10 @@ struct Constants {
     return sortedBookings
   }
 
-  static func groupEntriesByMonthAndYear(entries: [TimelineEntry]) -> [Date: [TimelineEntry]] {
+  static func groupEntriesByMonthAndYearAndFilter(
+    entries: [TimelineEntry],
+    tagFilter: Set<String> = []
+  ) -> [Date: [TimelineEntry]] {
     var groupedEntries: [Date: [TimelineEntry]] = [:]
     let calendar = Calendar.current
 
@@ -261,7 +267,9 @@ struct Constants {
       if groupedEntries[monthYearDate] == nil {
         groupedEntries[monthYearDate] = []
       }
-      groupedEntries[monthYearDate]?.append(entry)
+      if tagFilter.isEmpty || tagFilter.contains(entry.tag?.uuid ?? "") {
+        groupedEntries[monthYearDate]?.append(entry)
+      }
     }
 
     return groupedEntries

@@ -10,11 +10,18 @@ struct NavigationStackContentView: View {
 
   private var groupedEntries: [String: [BookingEntry]] {
     let groupedEntries = Constants.groupBookingsByInterval(entries: entries)
-    return Constants.sortBookings(
+    return Constants.sortAndFilterBookings(
       bookings: groupedEntries,
       sortBy: appStates.sortBy,
-      sortOrder: appStates.sortOrder
+      sortOrder: appStates.sortOrder,
+      tagFilter: appStates.activeBookingTagFilters
     )
+  }
+
+  private var entriesCount: Int {
+    groupedEntries.values.reduce(0, { count, entry in
+      count + entry.count
+    })
   }
 
   init(searchName: String = "",
@@ -39,7 +46,7 @@ struct NavigationStackContentView: View {
           entries: groupedEntries[option.rawValue] ?? []
         )
       }
-      if entries.isEmpty {
+      if entriesCount < 1 {
         VStack {
           Spacer()
           Text("No entries found")
@@ -48,10 +55,11 @@ struct NavigationStackContentView: View {
         }
         .foregroundStyle(.secondary)
         .multilineTextAlignment(.center)
+        .listRowInsets(EdgeInsets())
         .listRowBackground(Color.clear)
       } else {
-        Section {} footer: {
-          Text("Total bookings \(entries.count)")
+        Section {} header: {
+          Text("Total bookings \(entriesCount)")
         }
       }
     }

@@ -5,6 +5,7 @@ import SwiftUI
 import SwiftData
 
 struct TimelineListView: View {
+  @Environment(AppStates.self) var appStates
   @Environment(\.colorScheme) var colorScheme
   @Environment(\.modelContext) private var modelContext
   @Query private var timelineEntries: [TimelineEntry]
@@ -14,7 +15,10 @@ struct TimelineListView: View {
   }
 
   private var groupedEntries: [Date: [TimelineEntry]] {
-    Constants.groupEntriesByMonthAndYear(entries: timelineEntries)
+    Constants.groupEntriesByMonthAndYearAndFilter(
+      entries: timelineEntries,
+      tagFilter: appStates.activeTimeTagFilters
+    )
   }
 
   init(searchText: String = "",

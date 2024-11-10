@@ -20,7 +20,7 @@ struct ToolbarTimelineContent: ToolbarContent {
       })
       .contentTransition(.symbolEffect(.replace.downUp.byLayer))
     }
-    ToolbarItem(placement: .navigationBarTrailing) {
+    ToolbarItem(placement: .navigationBarLeading) {
       Button(action: { appStates.isTimeFilterDialogPresented.toggle()},
              label: { Image(systemName: "line.horizontal.3.decrease.circle") }
       )
