@@ -48,14 +48,21 @@ struct EntryView: View {
                     focusedAmount: _focusedAmount,
                     bookingEntry: bookingEntry
       )
+      Section(content: {
+        HStack {
+          Button("Delete booking", systemImage: "trash", role: .destructive, action: showDeleteConfirm)
+            .foregroundStyle(.red)
+        }
+      }, footer: {
+        Text("Will also impact associated timeline entries")
+      })
     }
     .listSectionSpacing(.compact)
     .navigationTitle(isCreate ? "Create booking" : "Edit booking")
     .toolbar {
       ToolbarEntry(isCreate: isCreate,
                    save: save,
-                   didValuesChange: didValuesChange,
-                   showingConfirmation: $showingConfirmation
+                   didValuesChange: didValuesChange
       )
     }
     .alert(Text(LocalizedStringKey(alertTitle)), isPresented: Binding<Bool>(
@@ -69,12 +76,18 @@ struct EntryView: View {
         Text(LocalizedStringKey(errorMessage ?? "An unknown error occurred."))
     }
     .confirmationDialog("Are you sure?", isPresented: $showingConfirmation) {
-      Button("Delete \(bookingEntry?.name ?? "entry")", role: .destructive) {
+      Button("Delete \(bookingEntry?.name ?? "booking")", role: .destructive) {
         modelContext.delete(bookingEntry!)
         dismiss()
       }
     } message: {
       Text("Sure delete entry \(bookingEntry?.name ?? ""), will delete timeline entries?")
+    }
+  }
+
+  func showDeleteConfirm() {
+    withAnimation {
+      showingConfirmation = true
     }
   }
 

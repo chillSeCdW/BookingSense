@@ -14,8 +14,6 @@ struct ToolbarEntry: ToolbarContent {
   var save: () -> Void
   var didValuesChange: () -> Bool
 
-  @Binding var showingConfirmation: Bool
-
   var body: some ToolbarContent {
     if isCreate {
       ToolbarItem(placement: .topBarLeading) {
@@ -28,19 +26,10 @@ struct ToolbarEntry: ToolbarContent {
       }
     } else {
       ToolbarItem {
-        Button("Delete", systemImage: "trash", role: .destructive, action: showPopup)
-          .tint(.red)
-      }
-      ToolbarItem {
         Button("Save", action: save)
           .disabled(!didValuesChange())
       }
     }
   }
 
-  func showPopup() {
-    withAnimation {
-      showingConfirmation = true
-    }
-  }
 }
