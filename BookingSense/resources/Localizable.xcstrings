@@ -742,6 +742,22 @@
         }
       }
     },
+    "Can remove this tab in settings if you don't want to use it" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Du kannst diesen Tab in den Einstellungen ausblenden, falls du ihn nicht verwenden magst."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "You can remove this tab in Settings when you don’t want to use it."
+          }
+        }
+      }
+    },
     "Cancel" : {
       "localizations" : {
         "de" : {
@@ -1530,6 +1546,23 @@
         }
       }
     },
+    "Interface" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Oberfläche"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Interface"
+          }
+        }
+      }
+    },
     "Interval" : {
       "localizations" : {
         "de" : {
@@ -2013,6 +2046,22 @@
         }
       }
     },
+    "Show Timeline tab" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zeitstrahl Tab anzeigen"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Show Timeline tab"
+          }
+        }
+      }
+    },
     "Skip" : {
       "localizations" : {
         "de" : {
@@ -2401,6 +2450,38 @@
         }
       }
     },
+    "Timeline is a Full Access feature" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zeitstrahl ist eine Vollzugang Funktionalität"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Timeline is a Full Access feature"
+          }
+        }
+      }
+    },
+    "Timeline is there to help you keep track of your bookings" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zeitstrahl dient zur leichteren Übersicht deiner Buchungen. Wenn deine Buchungen stattfanden, kannst du sie hier abhaken."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Timeline is there to help you keep track of your bookings. You will be able to check off your bookings when they happen."
+          }
+        }
+      }
+    },
     "Tips" : {
       "localizations" : {
         "de" : {
@@ -2582,6 +2663,22 @@
         }
       }
     },
+    "Unlock feature in Settings -> Features" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zum freischalten gehe in Einstellungen -> Funktionalitäten"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "To unlock feature go to Settings -> Features"
+          }
+        }
+      }
+    },
     "Useful for sorting and statistics, associated with all timeline entries" : {
       "localizations" : {
         "de" : {
@@ -2594,6 +2691,22 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Useful for sorting and statistics, will be associated with all timeline entries."
+          }
+        }
+      }
+    },
+    "User interface" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Benutzeroberfläche"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "User interface"
           }
         }
       }

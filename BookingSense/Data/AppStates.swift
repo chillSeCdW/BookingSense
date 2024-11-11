@@ -75,6 +75,7 @@ class AppStates: Observable, ObservableObject {
       UserDefaults.standard.set(biometricEnabled, forKey: "biometricEnabled")
     }
   }
+  @Published var showTimelineTab: Bool = true
 
   init() {
     // Filters for Bookings

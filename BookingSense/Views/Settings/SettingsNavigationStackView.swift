@@ -30,6 +30,9 @@ struct SettingsNavigationStackView: View {
             }
           }
         }
+        Section("User interface") {
+          Toggle("Show Timeline tab", isOn: $appStates.showTimelineTab)
+        }
         Section("Contact") {
           ContactButtons()
         }
