@@ -58,13 +58,21 @@ struct SettingsNavigationStackView: View {
             }
           }
         }
-        Section("Tip jar") {
+        Section("Store") {
           NavigationLink {
             TipJarView()
           } label: {
             HStack {
               Image(systemName: "giftcard")
-              Text("Tip jar")
+              Text("Tips")
+            }
+          }
+          NavigationLink {
+            FeaturesPageView()
+          } label: {
+            HStack {
+              Image(systemName: "storefront")
+              Text("Features")
             }
           }
         }

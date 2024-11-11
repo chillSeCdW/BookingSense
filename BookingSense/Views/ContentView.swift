@@ -16,6 +16,7 @@ struct ContentView: View {
   @Environment(\.scenePhase) var scenePhase
   @AppStorage("numberOfVisits") var numberOfVisits = 0
   @AppStorage("tmpBlurSensitive") var tmpBlurSensitive = false
+//  @AppStorage("purchasedFullAccessUnlock") var fullAccess = false
 
   var body: some View {
     TabView {
@@ -23,10 +24,12 @@ struct ContentView: View {
         .tabItem {
           Label("Overview", systemImage: "dollarsign.arrow.circlepath")
         }
-      TimelineView()
-        .tabItem {
-          Label("Timeline", systemImage: "calendar.day.timeline.left")
-        }
+//      if fullAccess {
+        TimelineView()
+          .tabItem {
+            Label("Timeline", systemImage: "calendar.day.timeline.left")
+          }
+//      }
       BookingNavigationStackView()
         .tabItem {
           Label("Bookings", systemImage: "list.dash")

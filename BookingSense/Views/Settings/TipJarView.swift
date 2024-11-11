@@ -11,23 +11,26 @@ struct TipJarView: View {
     @Environment(\.colorScheme) var colorScheme
 
     var body: some View {
-      StoreView(ids: ["com.chill.BookingSense.tip01",
-                      "com.chill.BookingSense.tip02",
-                      "com.chill.BookingSense.tip03",
-                      "com.chill.BookingSense.tip04"])
-        .productViewStyle(.compact)
-        .storeButton(.hidden, for: .cancellation)
-        .onAppear {
-          logger.info("Creating PurchaseHandler shared instance")
-          PurchaseHandler.createSharedInstance(colorScheme)
-          logger.info("PurchaseHandler shared instance created")
-        }
-        .task {
-          logger.info("Starting tasks to observe transaction updates")
-          await PurchaseHandler.shared.observeTransactionUpdates()
-          await PurchaseHandler.shared.checkForUnfinishedTransactions()
-          logger.info("Finished checking for transactions")
-        }
+      NavigationStack {
+        StoreView(ids: ["com.chill.BookingSense.tip01",
+                        "com.chill.BookingSense.tip02",
+                        "com.chill.BookingSense.tip03",
+                        "com.chill.BookingSense.tip04"])
+          .productViewStyle(.compact)
+          .storeButton(.hidden, for: .cancellation)
+          .onAppear {
+            logger.info("Creating PurchaseHandler shared instance")
+            PurchaseHandler.createSharedInstance(colorScheme)
+            logger.info("PurchaseHandler shared instance created")
+          }
+          .task {
+            logger.info("Starting tasks to observe transaction updates")
+            await PurchaseHandler.shared.observeTransactionUpdates()
+            await PurchaseHandler.shared.checkForUnfinishedTransactions()
+            logger.info("Finished checking for transactions")
+          }
+      }
+      .navigationTitle("Tips")
     }
 }
 

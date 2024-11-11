@@ -10,19 +10,23 @@ struct TagsListView: View {
   @State private var selectedTag: Tag?
 
   var body: some View {
-    List(tags) { tag in
-      HStack {
-        Text(tag.name)
-        Spacer()
-        Button("Edit") {
-          selectedTag = tag
+    if tags.isEmpty {
+      Text("No tags found")
+    } else {
+      List(tags) { tag in
+        HStack {
+          Text(tag.name)
+          Spacer()
+          Button("Edit") {
+            selectedTag = tag
+          }
         }
       }
-    }
-    .sheet(item: $selectedTag, onDismiss: {
-      selectedTag = nil
-    }) { tag in
-      TagFormView(tag: tag)
+      .sheet(item: $selectedTag,
+             onDismiss: {selectedTag = nil},
+             content: { tag in
+        TagFormView(tag: tag)
+      })
     }
   }
 }

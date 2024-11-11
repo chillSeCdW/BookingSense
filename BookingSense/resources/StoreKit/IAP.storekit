@@ -73,6 +73,26 @@
       "productID" : "com.chill.BookingSense.tip04",
       "referenceName" : "Ludicrous Tip",
       "type" : "Consumable"
+    },
+    {
+      "displayPrice" : "4.99",
+      "familyShareable" : false,
+      "internalID" : "D5CE3B19",
+      "localizations" : [
+        {
+          "description" : "Full Access to all current and future features",
+          "displayName" : "Full Access",
+          "locale" : "en_US"
+        },
+        {
+          "description" : "Vollzugriff auf alle aktuelle Funktionalitäten und zukünftigen.",
+          "displayName" : "Vollzugriff",
+          "locale" : "de"
+        }
+      ],
+      "productID" : "com.chill.BookingSense.fullAccess",
+      "referenceName" : "Full Access",
+      "type" : "NonConsumable"
     }
   ],
   "settings" : {

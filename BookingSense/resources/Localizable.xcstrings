@@ -340,6 +340,22 @@
         }
       }
     },
+    "•" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "•"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "•"
+          }
+        }
+      }
+    },
     "~" : {
       "localizations" : {
         "de" : {
@@ -1304,6 +1320,22 @@
         }
       }
     },
+    "Features" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Funktionalitäten"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Features"
+          }
+        }
+      }
+    },
     "from" : {
       "localizations" : {
         "de" : {
@@ -1606,6 +1638,22 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "No native mail account found. Add one here."
+          }
+        }
+      }
+    },
+    "No tags found" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Keine Tags gefunden."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No tags found."
           }
         }
       }
@@ -2177,6 +2225,22 @@
         }
       }
     },
+    "Store" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Store"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Store"
+          }
+        }
+      }
+    },
     "Success" : {
       "localizations" : {
         "de" : {
@@ -2337,7 +2401,7 @@
         }
       }
     },
-    "Tip jar" : {
+    "Tips" : {
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -2348,7 +2412,7 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Tip jar"
+            "value" : "Tips"
           }
         }
       }

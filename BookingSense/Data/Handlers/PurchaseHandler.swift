@@ -44,7 +44,19 @@ class PurchaseHandler {
       return
     }
 
-    if case .consumable = transaction.productType {
+    switch transaction.productType {
+      case .nonConsumable:
+      await transaction.finish()
+      unlockFeature(transaction.productID)
+      ThankYouPopUp(colorScheme: colorScheme)
+        .showAndStack()
+        .dismissAfter(2)
+      logger.debug("""
+            Finished transaction ID \(transaction.id) for \
+            \(transaction.productID)
+            """)
+      break
+      case .consumable:
       await transaction.finish()
       ThankYouPopUp(colorScheme: colorScheme)
         .showAndStack()
@@ -53,9 +65,10 @@ class PurchaseHandler {
             Finished transaction ID \(transaction.id) for \
             \(transaction.productID)
             """)
-    } else {
-      // Only relevant if other productTypes enter the scope
+      break
+    default:
       await transaction.finish()
+      break
     }
   }
 
@@ -78,6 +91,13 @@ class PurchaseHandler {
     logger.debug("Observing transaction updates")
     for await update in Transaction.updates {
       await self.process(transaction: update)
+    }
+  }
+
+  func unlockFeature(_ productID: String) {
+    if productID == "com.chill.BookingSense.fullAccess" {
+      logger.debug("setting fullAccess Flag")
+      UserDefaults.standard.set(true, forKey: "purchasedFullAccessUnlock")
     }
   }
 }

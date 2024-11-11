@@ -46,7 +46,11 @@ struct OverviewView: View {
     let totalLeft = sumForAllPlusForInterval - (sumForAllMinusForInterval + sumForAllSavingForInterval)
 
     if totalLeft < 0 {
-      return []
+      return [BookingEntryChartData(id: "empty", name: "No valid data", amount: 1, color: .gray)]
+    }
+
+    if sumForAllPlusForInterval == 0 && sumForAllMinusForInterval == 0 && sumForAllSavingForInterval == 0 {
+      return [BookingEntryChartData(id: "empty", name: "No data", amount: 1, color: .gray)]
     }
 
     return [
