@@ -107,7 +107,7 @@ struct Constants {
     return result
   }
 
-  static func getLatestTimelineEntryDueDateForWhenNewEntriesArePossible(_ entry: BookingEntry) -> Date? {
+  static func getLatestTimelineEntryDueDateFor(_ entry: BookingEntry) -> Date? {
     let latestTimelineEntry = entry.timelineEntries?.sorted(by: {$0.isDue > $1.isDue}).first
 
     if let latestTimelineEntry {
@@ -138,9 +138,15 @@ struct Constants {
   }
 
   static func insertTimelineEntriesOf(_ entry: BookingEntry, context: ModelContext, latestTimelineDate: Date? = nil) {
+    var adjustingStartDate: Bool = false
+    if let latestTimelineDate {
+      if Calendar.current.compare(latestTimelineDate, to: entry.date, toGranularity: .day) == .orderedAscending {
+        adjustingStartDate = true // use bookingEntry date as starting date
+      }
+    }
     let nextTimelineEntry = Constants.getNextDateOfInterval(latestTimelineDate, interval: entry.interval)
     let timelineEntryList = generateTimelineEntriesFrom(bookingEntry: entry,
-                                                        startDate: nextTimelineEntry
+                                                        startDate: adjustingStartDate ? nil : nextTimelineEntry
     )
 
     try? context.transaction {
@@ -189,7 +195,7 @@ struct Constants {
 
   static func removeTimelineEntriesNewerThan(_ date: Date, entry: BookingEntry, context: ModelContext) {
     let timelineEntriesList = entry.timelineEntries?.filter {
-      $0.isDue >= date // TODO: inclusive today?
+      $0.isDue >= date
     }.sorted(by: {$0.isDue < $1.isDue})
 
     timelineEntriesList?.forEach { entry in

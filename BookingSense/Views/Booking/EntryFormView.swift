@@ -20,6 +20,19 @@ struct EntryFormView: View {
   @Binding var date: Date
   @Binding var tag: Tag?
 
+  @State private var showDateNotice: Bool = false
+
+  @FocusState var focusedName: Bool
+  @FocusState var focusedAmount: Bool
+
+  var bookingEntry: BookingEntry?
+
+  private var formatter: NumberFormatter {
+    let formatter = NumberFormatter()
+    formatter.numberStyle = .decimal
+    formatter.usesGroupingSeparator = false
+    return formatter
+  }
   private var dateFormatter: DateFormatter {
     let formatter = DateFormatter()
     formatter.dateStyle = .full
@@ -27,20 +40,13 @@ struct EntryFormView: View {
     return formatter
   }
 
-  @FocusState var focusedName: Bool
-  @FocusState var focusedAmount: Bool
-
-  var bookingEntry: BookingEntry?
-  private var formatter: NumberFormatter {
-    let formatter = NumberFormatter()
-    formatter.numberStyle = .decimal
-    formatter.usesGroupingSeparator = false
-    return formatter
+  private var bookingEntryStateIsNotActive: Bool {
+    bookingEntry?.state != BookingEntryState.active.rawValue
   }
 
   var body: some View {
     Section(header: Text("Booking"),
-            footer: generateFooterView()
+            footer: footerView
     ) {
       NameTextField(name: $name, focusedName: _focusedName, focusedAmount: _focusedAmount)
       AmountPrefixPicker(amountPrefix: $amountPrefix)
@@ -50,24 +56,43 @@ struct EntryFormView: View {
         focusedAmount: _focusedAmount
       )
       StartDatePicker(date: $date)
+      DateNoticeText(display: $showDateNotice)
     }
     StatePicker(state: $state)
-    TagPicker(tag: $tag)
-    .onAppear {
-      if let bookingEntry {
-        name = bookingEntry.name
-        amountPrefix = AmountPrefix(rawValue: bookingEntry.amountPrefix)!
-        amount = formatter.string(from: NSDecimalNumber(decimal: bookingEntry.amount)) ?? ""
-        interval = Interval(rawValue: bookingEntry.interval) ?? Interval.monthly
-        state = BookingEntryState(rawValue: bookingEntry.state) ?? BookingEntryState.active
-        date = bookingEntry.date
-        tag = bookingEntry.tag
+      .onChange(of: state) { _, newState in
+        if let bookingEntry {
+          if bookingEntryStateIsNotActive {
+            if newState == .active {
+              withAnimation {
+                showDateNotice = true
+                date = .now
+              }
+            } else {
+              withAnimation {
+                showDateNotice = false
+                date = bookingEntry.date
+              }
+            }
+          }
+        }
       }
-    }
+    TagPicker(tag: $tag)
+      .onAppear {
+        if let bookingEntry {
+          name = bookingEntry.name
+          amountPrefix = AmountPrefix(rawValue: bookingEntry.amountPrefix)!
+          amount = formatter.string(from: NSDecimalNumber(decimal: bookingEntry.amount)) ?? ""
+          interval = Interval(rawValue: bookingEntry.interval) ?? Interval.monthly
+          state = BookingEntryState(rawValue: bookingEntry.state) ?? BookingEntryState.active
+          date = bookingEntry.date
+          tag = bookingEntry.tag
+        }
+      }
   }
 
-  func generateFooterView() -> some View {
-    return Text("Next booking \(getNextBooking(fieldDate: date, interval: interval), formatter: dateFormatter)")
+  var footerView: some View {
+    // swiftlint:disable:next line_length
+    Text(state == .active ? "Next booking \(getNextBooking(fieldDate: date, interval: interval), formatter: dateFormatter)" : "")
       .font(.caption)
       .foregroundStyle(.secondary)
   }
@@ -86,7 +111,6 @@ struct EntryFormView: View {
         return fieldDate
       }
     }
-
     return fieldDate
   }
 }
@@ -112,6 +136,22 @@ struct NameTextField: View {
     .focused($focusedName)
     .onSubmit {
       focusedAmount = true
+    }
+  }
+}
+
+struct DateNoticeText: View {
+  @Binding var display: Bool
+
+  var body: some View {
+    if display {
+      HStack {
+        Image(systemName: "exclamationmark.triangle")
+        Text("Please make sure start date is set correctly")
+          .font(.footnote)
+          .padding(.top, 2)
+      }
+      .foregroundColor(.orange)
     }
   }
 }

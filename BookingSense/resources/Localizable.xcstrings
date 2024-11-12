@@ -1804,6 +1804,22 @@
         }
       }
     },
+    "Please make sure start date is set correctly" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bitte stelle sicher, dass das Anfangsdatum korrekt ist."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Please make sure to starting date is correct."
+          }
+        }
+      }
+    },
     "Plus" : {
       "localizations" : {
         "de" : {

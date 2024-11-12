@@ -22,11 +22,12 @@ struct TimelineView: View {
         .navigationBarTitleDisplayMode(.automatic)
         .refreshable {
           entries.forEach { entry in
-            let latestDate = Constants.getLatestTimelineEntryDueDateForWhenNewEntriesArePossible(entry)
-            Constants.insertTimelineEntriesOf(entry,
-                                              context: modelContext,
-                                              latestTimelineDate: latestDate
-            )
+            if entry.state == BookingEntryState.active.rawValue {
+              let latestDate = Constants.getLatestTimelineEntryDueDateFor(entry)
+              Constants.insertTimelineEntriesOf(entry,
+                                                context: modelContext,
+                                                latestTimelineDate: latestDate)
+            }
           }
         }
         .toolbar {
