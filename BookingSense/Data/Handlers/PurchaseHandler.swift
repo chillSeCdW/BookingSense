@@ -45,30 +45,31 @@ class PurchaseHandler {
     }
 
     switch transaction.productType {
-      case .nonConsumable:
+    case .nonConsumable:
       await transaction.finish()
       unlockFeature(transaction.productID)
-      ThankYouPopUp(colorScheme: colorScheme)
-        .showAndStack()
-        .dismissAfter(2)
+      ThankYouPopUp(colorScheme: colorScheme,
+                    message: String(localized: "Thank you for upgrading and enjoy")
+      )
+      .showAndStack()
+      .dismissAfter(3)
       logger.debug("""
             Finished transaction ID \(transaction.id) for \
             \(transaction.productID)
             """)
-      break
-      case .consumable:
+    case .consumable:
       await transaction.finish()
-      ThankYouPopUp(colorScheme: colorScheme)
-        .showAndStack()
-        .dismissAfter(2)
+      ThankYouPopUp(colorScheme: colorScheme,
+                    message: String(localized: "Thank you for your tip!")
+      )
+      .showAndStack()
+      .dismissAfter(3)
       logger.debug("""
             Finished transaction ID \(transaction.id) for \
             \(transaction.productID)
             """)
-      break
     default:
       await transaction.finish()
-      break
     }
   }
 

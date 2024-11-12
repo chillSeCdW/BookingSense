@@ -1546,23 +1546,6 @@
         }
       }
     },
-    "Interface" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Oberfläche"
-          }
-        },
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Interface"
-          }
-        }
-      }
-    },
     "Interval" : {
       "localizations" : {
         "de" : {
@@ -2430,6 +2413,22 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Tags"
+          }
+        }
+      }
+    },
+    "Thank you for upgrading and enjoy" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Vielen Dank für das Upgraden und viel Spaß mit der Vollversion! :)"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Thank you for upgrading and enjoy the full version! :)"
           }
         }
       }
