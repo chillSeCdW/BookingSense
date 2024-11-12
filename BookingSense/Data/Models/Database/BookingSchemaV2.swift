@@ -12,7 +12,8 @@ import SwiftData
 enum BookingSchemaV2: VersionedSchema {
   static var models: [any PersistentModel.Type] {
     [
-      BookingEntry.self
+      BookingEntry.self,
+      Tag.self
     ]
   }
 

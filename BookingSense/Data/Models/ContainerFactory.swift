@@ -11,9 +11,9 @@ import SwiftData
 struct ContainerFactory {
   let container: ModelContainer
 
-  init(_ models: any PersistentModel.Type..., storeInMemory: Bool, migrationPlan: SchemaMigrationPlan.Type? = nil) {
+  init(_ schema: any VersionedSchema.Type, storeInMemory: Bool, migrationPlan: SchemaMigrationPlan.Type? = nil) {
     let config = ModelConfiguration(isStoredInMemoryOnly: storeInMemory)
-    let schema = Schema(models)
+    let schema = Schema(versionedSchema: schema)
     do {
       container = try ModelContainer(for: schema, migrationPlan: migrationPlan, configurations: config)
     } catch {

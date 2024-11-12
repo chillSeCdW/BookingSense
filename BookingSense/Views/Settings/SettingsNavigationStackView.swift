@@ -109,7 +109,7 @@ struct SettingsNavigationStackView: View {
 }
 
 #Preview {
-  let factory = ContainerFactory(BookingEntry.self, storeInMemory: true)
+  let factory = ContainerFactory(BookingSchemaV4.self, storeInMemory: true)
   factory.addExamples(ContainerFactory.generateRandomEntriesItems())
 
   return SettingsNavigationStackView()

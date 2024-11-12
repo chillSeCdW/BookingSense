@@ -64,7 +64,7 @@ struct ContentView: View {
 }
 
 #Preview {
-  let factory = ContainerFactory(BookingEntry.self, storeInMemory: true)
+  let factory = ContainerFactory(BookingSchemaV4.self, storeInMemory: true)
   factory.addExamples(ContainerFactory.generateFixedEntriesItems())
   return ContentView()
     .environment(AppStates())

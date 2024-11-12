@@ -8,7 +8,7 @@
 import Foundation
 import SwiftData
 
-enum ExpenseMigrationV1ToV3: SchemaMigrationPlan {
+enum BookingMigrationV1ToV4: SchemaMigrationPlan {
   static var schemas: [any VersionedSchema.Type] {
     [
       BookingSchemaV1.self,
@@ -30,10 +30,6 @@ enum ExpenseMigrationV1ToV3: SchemaMigrationPlan {
     fromVersion: BookingSchemaV1.self,
     toVersion: BookingSchemaV2.self
   )
-  //  static let migrateV2ToV3 = MigrationStage.lightweight(
-  //    fromVersion: BookingSchemaV2.self,
-  //    toVersion: BookingSchemaV3.self
-  //  )
   static let migrateV2ToV3 = MigrationStage.custom(fromVersion: BookingSchemaV2.self,
                                                    toVersion: BookingSchemaV3.self,
                                                    willMigrate: nil,
@@ -45,6 +41,9 @@ enum ExpenseMigrationV1ToV3: SchemaMigrationPlan {
     }
   })
 
-  static let migrateV3ToV4 = MigrationStage.lightweight(fromVersion: BookingSchemaV3.self, toVersion: BookingSchemaV4.self)
+  static let migrateV3ToV4 = MigrationStage.lightweight(
+    fromVersion: BookingSchemaV3.self,
+    toVersion: BookingSchemaV4.self
+  )
 
 }
