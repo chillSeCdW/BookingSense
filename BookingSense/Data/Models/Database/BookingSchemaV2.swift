@@ -39,7 +39,7 @@ extension BookingSchemaV2 {
     @Relationship var tag: Tag?
     var amount: Decimal = Decimal.zero
     var date: Date = Date()
-    var amountPrefix: AmountPrefix = AmountPrefix.minus
+    var amountPrefix: BookingType = BookingType.minus
     var interval: String = "monthly"
 
     init(name: String,
@@ -47,7 +47,7 @@ extension BookingSchemaV2 {
          tag: Tag?,
          amount: Decimal,
          date: Date = Date(),
-         amountPrefix: AmountPrefix,
+         amountPrefix: BookingType,
          interval: Interval) {
       self.name = name
       self.isActive = isActive
@@ -65,7 +65,7 @@ extension BookingSchemaV2 {
       tag = try container.decodeIfPresent(Tag.self, forKey: .tag)
       date = try container.decode(Date.self, forKey: .date)
       amount = try container.decode(Decimal.self, forKey: .amount)
-      amountPrefix = try container.decode(AmountPrefix.self, forKey: .amountPrefix)
+      amountPrefix = try container.decode(BookingType.self, forKey: .amountPrefix)
       interval = try container.decode(String.self, forKey: .interval)
     }
 

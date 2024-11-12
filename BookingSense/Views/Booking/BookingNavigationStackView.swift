@@ -26,7 +26,7 @@ struct BookingNavigationStackView: View {
         NavigationStackContentView(
           searchName: appStates.searchText,
           stateFilter: appStates.activeBookingStateFilters,
-          prefixFilter: appStates.activeBookingPrefixFilters
+          typeFilter: appStates.activeBookingTypeFilters
         )
         .navigationDestination(for: BookingEntry.self) { entry in
           EntryView(bookingEntry: entry)

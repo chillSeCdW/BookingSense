@@ -13,7 +13,7 @@ struct EntryFormView: View {
   @Environment(\.modelContext) private var modelContext
 
   @Binding var name: String
-  @Binding var amountPrefix: AmountPrefix
+  @Binding var bookingType: BookingType
   @Binding var amount: String
   @Binding var interval: Interval
   @Binding var state: BookingEntryState
@@ -49,7 +49,7 @@ struct EntryFormView: View {
             footer: footerView
     ) {
       NameTextField(name: $name, focusedName: _focusedName, focusedAmount: _focusedAmount)
-      AmountPrefixPicker(amountPrefix: $amountPrefix)
+      BookingTypePicker(bookingType: $bookingType)
       AmountInputSection(
         amount: $amount,
         interval: $interval,
@@ -80,7 +80,7 @@ struct EntryFormView: View {
       .onAppear {
         if let bookingEntry {
           name = bookingEntry.name
-          amountPrefix = AmountPrefix(rawValue: bookingEntry.amountPrefix)!
+          bookingType = BookingType(rawValue: bookingEntry.bookingType)!
           amount = formatter.string(from: NSDecimalNumber(decimal: bookingEntry.amount)) ?? ""
           interval = Interval(rawValue: bookingEntry.interval) ?? Interval.monthly
           state = BookingEntryState(rawValue: bookingEntry.state) ?? BookingEntryState.active
@@ -156,17 +156,17 @@ struct DateNoticeText: View {
   }
 }
 
-struct AmountPrefixPicker: View {
-  @Binding var amountPrefix: AmountPrefix
+struct BookingTypePicker: View {
+  @Binding var bookingType: BookingType
 
   var body: some View {
-    Picker("AmountPrefix", selection: $amountPrefix) {
-      ForEach(AmountPrefix.allCases) { option in
+    Picker("BookingType", selection: $bookingType) {
+      ForEach(BookingType.allCases) { option in
         Text(LocalizedStringKey(option.description))
       }
     }
     .pickerStyle(.segmented)
-    .colorMultiply(Constants.getListBackgroundColor(for: amountPrefix) ?? .white)
+    .colorMultiply(Constants.getListBackgroundColor(for: bookingType) ?? .white)
   }
 }
 
@@ -270,7 +270,7 @@ struct TagPicker: View {
 #Preview {
   @Previewable @State var name: String = "testName"
   @Previewable @State var amount: String = "15,35"
-  @Previewable @State var amountPrefix: AmountPrefix = .plus
+  @Previewable @State var bookingType: BookingType = .plus
   @Previewable @State var interval: Interval = .weekly
   @Previewable @State var state: BookingEntryState = .active
   @Previewable @State var date: Date = .now
@@ -279,14 +279,14 @@ struct TagPicker: View {
   let entry = BookingEntry(
     name: "testName",
     amount: Decimal(string: "15,35", locale: Locale(identifier: Locale.current.identifier)) ?? Decimal(),
-    amountPrefix: AmountPrefix.plus.rawValue,
+    bookingType: BookingType.plus.rawValue,
     interval: .weekly,
     tag: nil,
     timelineEntries: nil
   )
 
   EntryFormView(name: $name,
-                amountPrefix: $amountPrefix,
+                bookingType: $bookingType,
                 amount: $amount,
                 interval: $interval,
                 state: $state,

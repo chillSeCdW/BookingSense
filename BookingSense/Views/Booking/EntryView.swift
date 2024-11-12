@@ -20,7 +20,7 @@ struct EntryView: View {
 
   @State var showingConfirmation: Bool = false
   @State private var name: String = ""
-  @State private var amountPrefix: AmountPrefix = .minus
+  @State private var bookingType: BookingType = .minus
   @State private var amount: String = ""
   @State private var interval: Interval = .monthly
   @State private var state: BookingEntryState = .active
@@ -38,7 +38,7 @@ struct EntryView: View {
   var body: some View {
     Form {
       EntryFormView(name: $name,
-                    amountPrefix: $amountPrefix,
+                    bookingType: $bookingType,
                     amount: $amount,
                     interval: $interval,
                     state: $state,
@@ -119,7 +119,7 @@ struct EntryView: View {
         state: state.rawValue,
         amount: parsedAmount ?? Decimal(),
         date: date,
-        amountPrefix: amountPrefix.rawValue,
+        bookingType: bookingType.rawValue,
         interval: interval,
         tag: tag,
         timelineEntries: nil
@@ -128,7 +128,7 @@ struct EntryView: View {
     } else {
       updateTimelineTags(tag, oldTag: bookingEntry!.tag, entry: bookingEntry)
       bookingEntry!.name = name
-      bookingEntry!.amountPrefix = amountPrefix.rawValue
+      bookingEntry!.bookingType = bookingType.rawValue
       bookingEntry!.amount = parsedAmount ?? Decimal()
       bookingEntry!.interval = interval.rawValue
       bookingEntry!.state = state.rawValue
@@ -185,7 +185,7 @@ struct EntryView: View {
     if let bookingEntry {
       if name != bookingEntry.name ||
           amount != bookingEntry.amount.formatted() ||
-          amountPrefix.rawValue != bookingEntry.amountPrefix ||
+          bookingType.rawValue != bookingEntry.bookingType ||
           interval != Interval(rawValue: bookingEntry.interval) ?? .monthly ||
           date != bookingEntry.date ||
           state != BookingEntryState(rawValue: bookingEntry.state) ?? .active ||
@@ -212,7 +212,7 @@ struct EntryView: View {
   let entry = BookingEntry(
     name: "testName",
     amount: Decimal(string: "15,35", locale: Locale(identifier: Locale.current.identifier)) ?? Decimal(),
-    amountPrefix: AmountPrefix.plus.rawValue,
+    bookingType: BookingType.plus.rawValue,
     interval: .weekly,
     tag: nil,
     timelineEntries: nil)

@@ -4,7 +4,7 @@
 import Foundation
 
 enum TimelineEntryKeys: CodingKey {
-  case uuid, bookingEntry, state, name, amount, amountPrefix, isDue, completedAt
+  case uuid, bookingEntry, state, name, amount, bookingType, isDue, completedAt
 }
 
 class JsonTimelineEntry: Codable {
@@ -14,20 +14,20 @@ class JsonTimelineEntry: Codable {
   var state: String = "open"
   var name: String = ""
   var amount: Decimal = Decimal.zero
-  var amountPrefix: String = "minus"
+  var bookingType: String = "minus"
   var isDue: Date = Date()
   var completedAt: Date?
 
   init(state: String,
        name: String,
        amount: Decimal,
-       amountPrefix: String,
+       bookingType: String,
        isDue: Date,
        completedAt: Date?) {
     self.state = state
     self.name = name
     self.amount = amount
-    self.amountPrefix = amountPrefix
+    self.bookingType = bookingType
     self.isDue = isDue
     self.completedAt = completedAt
   }
@@ -38,7 +38,7 @@ class JsonTimelineEntry: Codable {
     self.state = data.state
     self.name = data.name
     self.amount = data.amount
-    self.amountPrefix = data.amountPrefix
+    self.bookingType = data.bookingType
     self.isDue = data.isDue
     self.completedAt = data.completedAt
   }
@@ -50,7 +50,7 @@ class JsonTimelineEntry: Codable {
     state = try container.decode(String.self, forKey: .state)
     name = try container.decode(String.self, forKey: .name)
     amount = try container.decode(Decimal.self, forKey: .amount)
-    amountPrefix = try container.decode(String.self, forKey: .amountPrefix)
+    bookingType = try container.decode(String.self, forKey: .bookingType)
     isDue = try container.decode(Date.self, forKey: .isDue)
     completedAt = try container.decodeIfPresent(Date.self, forKey: .completedAt)
   }
@@ -62,7 +62,7 @@ class JsonTimelineEntry: Codable {
     try container.encode(state, forKey: .state)
     try container.encode(name, forKey: .name)
     try container.encode(amount, forKey: .amount)
-    try container.encode(amountPrefix, forKey: .amountPrefix)
+    try container.encode(bookingType, forKey: .bookingType)
     try container.encode(isDue, forKey: .isDue)
     try container.encode(completedAt, forKey: .completedAt)
   }

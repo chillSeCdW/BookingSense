@@ -81,18 +81,18 @@ struct ListOfTimePrefixOptions: View {
   @Environment(AppStates.self) var appStates
 
   var body: some View {
-    ForEach(AmountPrefix.allCases, id: \.self) { option in
+    ForEach(BookingType.allCases, id: \.self) { option in
       HStack {
         Text(option.description)
         Spacer()
-        if appStates.activeTimePrefixFilters.contains(option) {
+        if appStates.activeTimeTypeFilters.contains(option) {
           Image(systemName: "checkmark")
             .foregroundColor(.blue)
         }
       }
       .contentShape(Rectangle())
       .onTapGesture {
-        appStates.toggleTimePrefixFilter(option)
+        appStates.toggleTimeTypeFilter(option)
       }
     }
   }

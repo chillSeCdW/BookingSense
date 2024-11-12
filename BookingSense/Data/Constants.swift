@@ -14,15 +14,15 @@ import LocalAuthentication
 struct Constants {
   static let logger = Logger(subsystem: "BookingSense", category: "Constants")
 
-  static var listBackgroundColors: [AmountPrefix: Color] = [
-    AmountPrefix.plus: Color(UIColor(red: 0.2039, green: 0.7373, blue: 0.2039, alpha: 1.0)), // green
-    AmountPrefix.minus: Color(UIColor(red: 0.7882, green: 0, blue: 0.0118, alpha: 1.0)), // red
-    AmountPrefix.saving: Color(UIColor(red: 44/255, green: 200/255, blue: 224/255, alpha: 1.0)) // blueish
+  static var listBackgroundColors: [BookingType: Color] = [
+    BookingType.plus: Color(UIColor(red: 0.2039, green: 0.7373, blue: 0.2039, alpha: 1.0)), // green
+    BookingType.minus: Color(UIColor(red: 0.7882, green: 0, blue: 0.0118, alpha: 1.0)), // red
+    BookingType.saving: Color(UIColor(red: 44/255, green: 200/255, blue: 224/255, alpha: 1.0)) // blueish
   ]
-  static var listBackgroundColorsInactive: [AmountPrefix: Color] = [
-    AmountPrefix.plus: Color(UIColor(red: 0.2039, green: 0.7373, blue: 0.2039, alpha: 0.3)), // green
-    AmountPrefix.minus: Color(UIColor(red: 0.7882, green: 0, blue: 0.0118, alpha: 0.3)), // red
-    AmountPrefix.saving: Color(UIColor(red: 44/255, green: 200/255, blue: 224/255, alpha: 0.3)) // blueish
+  static var listBackgroundColorsInactive: [BookingType: Color] = [
+    BookingType.plus: Color(UIColor(red: 0.2039, green: 0.7373, blue: 0.2039, alpha: 0.3)), // green
+    BookingType.minus: Color(UIColor(red: 0.7882, green: 0, blue: 0.0118, alpha: 0.3)), // red
+    BookingType.saving: Color(UIColor(red: 44/255, green: 200/255, blue: 224/255, alpha: 0.3)) // blueish
   ]
   static var getBackground: (ColorScheme) -> Color = { scheme in
     scheme == .light ? .white : Color(
@@ -38,11 +38,11 @@ struct Constants {
   static let mailTo = "hello@chillturtle.de"
   static let mailSubject = "feedback"
 
-  static func getListBackgroundColor(for amountPrefix: AmountPrefix, isActive: Bool = true) -> Color? {
+  static func getListBackgroundColor(for bookingType: BookingType, isActive: Bool = true) -> Color? {
     if isActive {
-      return Constants.listBackgroundColors[amountPrefix]
+      return Constants.listBackgroundColors[bookingType]
     } else {
-      return Constants.listBackgroundColorsInactive[amountPrefix]
+      return Constants.listBackgroundColorsInactive[bookingType]
     }
   }
 
@@ -171,7 +171,7 @@ struct Constants {
         state: TimelineEntryState.open.rawValue,
         name: bookingEntry.name,
         amount: bookingEntry.amount,
-        amountPrefix: bookingEntry.amountPrefix,
+        bookingType: bookingEntry.bookingType,
         isDue: dateEntry,
         tag: bookingEntry.tag,
         completedAt: nil,
@@ -324,12 +324,12 @@ struct Constants {
     return groupedEntries
   }
 
-  static func getListBackgroundView(amountPrefix: String, isActive: Bool, colorScheme: ColorScheme) -> some View {
+  static func getListBackgroundView(bookingType: String, isActive: Bool, colorScheme: ColorScheme) -> some View {
     return HStack(spacing: 0) {
       Rectangle()
         .fill(Constants
           .getListBackgroundColor(
-            for: AmountPrefix(rawValue: amountPrefix)!,
+            for: BookingType(rawValue: bookingType)!,
             isActive: isActive
           ) ?? Constants.getBackground(colorScheme)
         )

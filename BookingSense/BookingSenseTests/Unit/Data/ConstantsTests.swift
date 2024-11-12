@@ -15,12 +15,12 @@ final class ConstantsTests: XCTestCase {
 
   func testListBackgroundColors() throws {
     XCTAssertEqual(
-      Constants.listBackgroundColors[AmountPrefix.plus],
+      Constants.listBackgroundColors[BookingType.plus],
       Color(UIColor(red: 0.2039, green: 0.7373, blue: 0.2039, alpha: 1.0))
 
     )
     XCTAssertEqual(
-      Constants.listBackgroundColors[AmountPrefix.minus],
+      Constants.listBackgroundColors[BookingType.minus],
       Color(UIColor(red: 0.7882, green: 0, blue: 0.0118, alpha: 1.0))
     )
   }

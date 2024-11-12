@@ -4,7 +4,7 @@
 import Foundation
 
 enum JsonBookingEntryKeys: CodingKey {
-  case uuid, name, state, amount, date, amountPrefix, interval, intervalString, tag, timelineEntries
+  case uuid, name, state, amount, date, bookingType, interval, intervalString, tag, timelineEntries
 }
 
 class JsonBookingEntry: Codable {
@@ -16,14 +16,14 @@ class JsonBookingEntry: Codable {
   var timelineEntries: [String]?
   var amount: Decimal = Decimal.zero
   var date: Date = Date()
-  var amountPrefix: String = "minus"
+  var bookingType: String = "minus"
   var interval: String = "monthly"
 
   init(name: String,
        state: String,
        amount: Decimal,
        date: Date = Date(),
-       amountPrefix: String,
+       bookingType: String,
        interval: Interval,
        tag: String?,
        timelineEntries: [String]?) {
@@ -31,7 +31,7 @@ class JsonBookingEntry: Codable {
     self.state = state
     self.date = date
     self.amount = amount
-    self.amountPrefix = amountPrefix
+    self.bookingType = bookingType
     self.interval = interval.rawValue
     self.tag = tag
     self.timelineEntries = timelineEntries
@@ -43,7 +43,7 @@ class JsonBookingEntry: Codable {
     self.state = data.state
     self.date = data.date
     self.amount = data.amount
-    self.amountPrefix = data.amountPrefix
+    self.bookingType = data.bookingType
     self.interval = data.interval
     self.tag = data.tag?.uuid
     self.timelineEntries = data.timelineEntries?.map { $0.uuid }
@@ -56,7 +56,7 @@ class JsonBookingEntry: Codable {
     state = try container.decode(String.self, forKey: .state)
     date = try container.decode(Date.self, forKey: .date)
     amount = try container.decode(Decimal.self, forKey: .amount)
-    amountPrefix = try container.decode(String.self, forKey: .amountPrefix)
+    bookingType = try container.decode(String.self, forKey: .bookingType)
     interval = try container.decode(String.self, forKey: .interval)
     tag = try container.decodeIfPresent(String.self, forKey: .tag)
     timelineEntries = try container.decodeIfPresent([String].self, forKey: .timelineEntries)
@@ -69,7 +69,7 @@ class JsonBookingEntry: Codable {
     try container.encode(state, forKey: .state)
     try container.encode(date, forKey: .date)
     try container.encode(amount, forKey: .amount)
-    try container.encode(amountPrefix, forKey: .amountPrefix)
+    try container.encode(bookingType, forKey: .bookingType)
     try container.encode(interval, forKey: .interval)
     try container.encode(tag, forKey: .tag)
     try container.encode(timelineEntries, forKey: .timelineEntries)

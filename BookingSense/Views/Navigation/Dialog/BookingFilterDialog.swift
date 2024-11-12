@@ -81,18 +81,18 @@ struct ListOfBookingPrefixOptions: View {
   @Environment(AppStates.self) var appStates
 
   var body: some View {
-    ForEach(AmountPrefix.allCases, id: \.self) { option in
+    ForEach(BookingType.allCases, id: \.self) { option in
       HStack {
         Text(option.description)
         Spacer()
-        if appStates.activeBookingPrefixFilters.contains(option) {
+        if appStates.activeBookingTypeFilters.contains(option) {
           Image(systemName: "checkmark")
             .foregroundColor(.blue)
         }
       }
       .contentShape(Rectangle())
       .onTapGesture {
-        appStates.toggleBookingPrefixFilter(option)
+        appStates.toggleBookingTypeFilter(option)
       }
     }
   }

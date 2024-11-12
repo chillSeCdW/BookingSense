@@ -14,7 +14,7 @@ struct TimelineContentListView: View {
       TimelineListView(
         searchText: appStates.searchTimelineText,
         stateFilter: appStates.activeTimeStateFilters,
-        prefixFilter: appStates.activeTimePrefixFilters
+        typeFilter: appStates.activeTimeTypeFilters
       )
     }
   }

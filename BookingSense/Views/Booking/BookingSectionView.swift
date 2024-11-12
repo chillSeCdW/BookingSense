@@ -31,7 +31,7 @@ struct BookingSectionView: View {
       .accessibilityIdentifier("NavLink" + entry.name)
       .listRowBackground(
         Constants.getListBackgroundView(
-          amountPrefix: entry.amountPrefix,
+          bookingType: entry.bookingType,
           isActive: entry.state == BookingEntryState.active.rawValue,
           colorScheme: colorScheme
         )

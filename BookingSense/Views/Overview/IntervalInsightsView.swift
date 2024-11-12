@@ -60,8 +60,8 @@ struct IntervalInsightsView: View {
     }.padding(.bottom, 5)
   }
 
-  private func calculateIntervalTotalsFor(_ amountPrefix: AmountPrefix, interval: Interval) -> Decimal {
-    return entries.filter { $0.amountPrefix == amountPrefix.rawValue }
+  private func calculateIntervalTotalsFor(_ bookingType: BookingType, interval: Interval) -> Decimal {
+    return entries.filter { $0.bookingType == bookingType.rawValue }
       .map { entry in
         entry.amount * Constants.getTimesValue(from: Interval(rawValue: entry.interval), to: interval)
       }
@@ -92,7 +92,7 @@ struct IntervalInsightsView: View {
     var totalIntervalCosts: Decimal = Decimal()
 
     for entry in entries where
-    entry.amountPrefix == AmountPrefix.plus.rawValue &&
+    entry.bookingType == BookingType.plus.rawValue &&
     entry.interval == interval.rawValue {
       totalIntervalCosts += entry.amount
     }
@@ -104,7 +104,7 @@ struct IntervalInsightsView: View {
     var totalIntervalCosts: Decimal = Decimal()
 
     for entry in entries where
-    entry.amountPrefix == AmountPrefix.minus.rawValue &&
+    entry.bookingType == BookingType.minus.rawValue &&
     entry.interval == interval.rawValue {
       totalIntervalCosts += entry.amount
     }
@@ -116,7 +116,7 @@ struct IntervalInsightsView: View {
     var totalIntervalSavings: Decimal = Decimal()
 
     for entry in entries where
-    entry.amountPrefix == AmountPrefix.saving.rawValue &&
+    entry.bookingType == BookingType.saving.rawValue &&
     entry.interval == interval.rawValue {
       totalIntervalSavings += entry.amount
     }

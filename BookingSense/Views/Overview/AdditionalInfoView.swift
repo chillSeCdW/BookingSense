@@ -79,7 +79,7 @@ struct AdditionalInfoView: View {
     var totalIntervalCosts: Decimal = Decimal()
 
     for entry in entries where
-    entry.amountPrefix == AmountPrefix.minus.rawValue &&
+    entry.bookingType == BookingType.minus.rawValue &&
     entry.interval == from.rawValue {
       let curInterval = Interval(rawValue: entry.interval)
       totalIntervalCosts += entry.amount * Constants.getTimesValue(from: curInterval, to: toInterval)

@@ -20,10 +20,10 @@ class AppStates: Observable, ObservableObject {
       UserDefaults.standard.set(filtersArray, forKey: "activeBookingStateFilters")
     }
   }
-  @Published var activeBookingPrefixFilters: Set<AmountPrefix> {
+  @Published var activeBookingTypeFilters: Set<BookingType> {
     didSet {
-      let filtersArray = activeBookingPrefixFilters.map { $0.rawValue }
-      UserDefaults.standard.set(filtersArray, forKey: "activeBookingPrefixFilters")
+      let filtersArray = activeBookingTypeFilters.map { $0.rawValue }
+      UserDefaults.standard.set(filtersArray, forKey: "activeBookingTypeFilters")
     }
   }
   @Published var activeBookingTagFilters: Set<String> {
@@ -39,10 +39,10 @@ class AppStates: Observable, ObservableObject {
       UserDefaults.standard.set(filtersArray, forKey: "activeTimeStateFilters")
     }
   }
-  @Published var activeTimePrefixFilters: Set<AmountPrefix> {
+  @Published var activeTimeTypeFilters: Set<BookingType> {
     didSet {
-      let filtersArray = activeTimePrefixFilters.map { $0.rawValue }
-      UserDefaults.standard.set(filtersArray, forKey: "activeTimePrefixFilters")
+      let filtersArray = activeTimeTypeFilters.map { $0.rawValue }
+      UserDefaults.standard.set(filtersArray, forKey: "activeTimeTypeFilters")
     }
   }
   @Published var activeTimeTagFilters: Set<String> {
@@ -84,10 +84,10 @@ class AppStates: Observable, ObservableObject {
     } else {
       self.activeBookingStateFilters = [BookingEntryState.active]
     }
-    if let savedFilters = UserDefaults.standard.array(forKey: "activeBookingPrefixFilters") as? [String] {
-      self.activeBookingPrefixFilters = Set(savedFilters.compactMap { AmountPrefix(rawValue: $0) })
+    if let savedFilters = UserDefaults.standard.array(forKey: "activeBookingTypeFilters") as? [String] {
+      self.activeBookingTypeFilters = Set(savedFilters.compactMap { BookingType(rawValue: $0) })
     } else {
-      self.activeBookingPrefixFilters = [AmountPrefix.minus, AmountPrefix.plus, AmountPrefix.saving]
+      self.activeBookingTypeFilters = [BookingType.minus, BookingType.plus, BookingType.saving]
     }
     if let savedFilters = UserDefaults.standard.array(forKey: "activeBookingTagFilters") as? [String] {
       self.activeBookingTagFilters = Set(savedFilters.compactMap { $0 })
@@ -100,10 +100,10 @@ class AppStates: Observable, ObservableObject {
     } else {
       self.activeTimeStateFilters = [TimelineEntryState.open]
     }
-    if let savedFilters = UserDefaults.standard.array(forKey: "activeTimePrefixFilters") as? [String] {
-      self.activeTimePrefixFilters = Set(savedFilters.compactMap { AmountPrefix(rawValue: $0) })
+    if let savedFilters = UserDefaults.standard.array(forKey: "activeTimeTypeFilters") as? [String] {
+      self.activeTimeTypeFilters = Set(savedFilters.compactMap { BookingType(rawValue: $0) })
     } else {
-      self.activeTimePrefixFilters = [AmountPrefix.minus, AmountPrefix.plus, AmountPrefix.saving]
+      self.activeTimeTypeFilters = [BookingType.minus, BookingType.plus, BookingType.saving]
     }
     if let savedFilters = UserDefaults.standard.array(forKey: "activeTimeTagFilters") as? [String] {
       self.activeTimeTagFilters = Set(savedFilters.compactMap { $0 })
@@ -132,11 +132,11 @@ class AppStates: Observable, ObservableObject {
       activeBookingStateFilters.insert(filter)
     }
   }
-  func toggleBookingPrefixFilter(_ filter: AmountPrefix) {
-    if activeBookingPrefixFilters.contains(filter) {
-      activeBookingPrefixFilters.remove(filter)
+  func toggleBookingTypeFilter(_ filter: BookingType) {
+    if activeBookingTypeFilters.contains(filter) {
+      activeBookingTypeFilters.remove(filter)
     } else {
-      activeBookingPrefixFilters.insert(filter)
+      activeBookingTypeFilters.insert(filter)
     }
   }
   func toggleBookingTagFilter(_ filter: Tag) {
@@ -154,11 +154,11 @@ class AppStates: Observable, ObservableObject {
       activeTimeStateFilters.insert(filter)
     }
   }
-  func toggleTimePrefixFilter(_ filter: AmountPrefix) {
-    if activeTimePrefixFilters.contains(filter) {
-      activeTimePrefixFilters.remove(filter)
+  func toggleTimeTypeFilter(_ filter: BookingType) {
+    if activeTimeTypeFilters.contains(filter) {
+      activeTimeTypeFilters.remove(filter)
     } else {
-      activeTimePrefixFilters.insert(filter)
+      activeTimeTypeFilters.insert(filter)
     }
   }
   func toggleTimeTagFilter(_ filter: Tag) {

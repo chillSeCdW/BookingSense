@@ -5,7 +5,7 @@ import Foundation
 import SwiftUI
 import SwiftData
 
-enum BookingSchemaV3: VersionedSchema {
+enum BookingSchemaV4: VersionedSchema {
   static var models: [any PersistentModel.Type] {
     [
       BookingEntry.self,
@@ -14,26 +14,23 @@ enum BookingSchemaV3: VersionedSchema {
     ]
   }
 
-  static var versionIdentifier: Schema.Version = .init(1, 2, 0)
+  static var versionIdentifier: Schema.Version = .init(1, 3, 0)
 
 }
 
-extension BookingSchemaV3 {
+extension BookingSchemaV4 {
 
   @Model
   final class BookingEntry {
 
-    var id: String = UUID().uuidString
     var uuid: String
     var name: String
-    var isActive: Bool = true
     var state: String = "active"
     @Relationship var tag: Tag?
     @Relationship(deleteRule: .cascade) var timelineEntries: [TimelineEntry]?
     var amount: Decimal = Decimal.zero
     var date: Date = Date()
     var bookingType: String = "minus"
-    var amountPrefix: BookingType = BookingType.minus
     var interval: String = "monthly"
 
     init(uuid: String = UUID().uuidString,
@@ -85,8 +82,7 @@ extension BookingSchemaV3 {
   @Model
   final class Tag {
 
-    var id: String = UUID().uuidString
-    var uuid: String = UUID().uuidString
+    var uuid: String
     var name: String = ""
     @Relationship(inverse: \BookingEntry.tag) var bookingEntries: [BookingEntry]?
 

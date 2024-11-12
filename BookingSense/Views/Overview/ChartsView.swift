@@ -16,7 +16,7 @@ struct ChartsView: View {
   var intervalMinusData: [BookingEntryChartData] {
 
     let minusBreakDown: [BookingEntryChartData] = entries.filter {
-      $0.interval == interval.rawValue && $0.amountPrefix == AmountPrefix.minus.rawValue
+      $0.interval == interval.rawValue && $0.bookingType == BookingType.minus.rawValue
     }.map { entry in
       BookingEntryChartData(id: entry.uuid, name: entry.name, amount: entry.amount, color: nil)
     }.sorted(by: { entry1, entry2 in
@@ -29,7 +29,7 @@ struct ChartsView: View {
   var intervalTotalMinusData: [BookingEntryChartData] {
 
     let minusBreakDown: [BookingEntryChartData] = entries.filter {
-      $0.amountPrefix == AmountPrefix.minus.rawValue
+      $0.bookingType == BookingType.minus.rawValue
     }.map { entry in
       if entry.interval != interval.rawValue {
         return BookingEntryChartData(
@@ -50,7 +50,7 @@ struct ChartsView: View {
   var intervalPlusData: [BookingEntryChartData] {
 
     let plusBreakDown: [BookingEntryChartData] = entries.filter {
-      $0.interval == interval.rawValue && $0.amountPrefix == AmountPrefix.plus.rawValue
+      $0.interval == interval.rawValue && $0.bookingType == BookingType.plus.rawValue
     }.map { entry in
       BookingEntryChartData(id: entry.uuid, name: entry.name, amount: entry.amount, color: nil)
     }.sorted(by: { entry1, entry2 in
@@ -63,7 +63,7 @@ struct ChartsView: View {
   var intervalTotalPlusData: [BookingEntryChartData] {
 
     let plusBreakDown: [BookingEntryChartData] = entries.filter {
-      $0.amountPrefix == AmountPrefix.plus.rawValue
+      $0.bookingType == BookingType.plus.rawValue
     }.map { entry in
       if entry.interval != interval.rawValue {
         return BookingEntryChartData(
@@ -84,7 +84,7 @@ struct ChartsView: View {
   var intervalSavingData: [BookingEntryChartData] {
 
     let savingBreakDown: [BookingEntryChartData] = entries.filter {
-      $0.interval == interval.rawValue && $0.amountPrefix == AmountPrefix.saving.rawValue
+      $0.interval == interval.rawValue && $0.bookingType == BookingType.saving.rawValue
     }.map { entry in
       BookingEntryChartData(id: entry.uuid, name: entry.name, amount: entry.amount, color: nil)
     }.sorted(by: { entry1, entry2 in
@@ -97,7 +97,7 @@ struct ChartsView: View {
   var intervalTotalSavingData: [BookingEntryChartData] {
 
     let savingBreakDown: [BookingEntryChartData] = entries.filter {
-      $0.amountPrefix == AmountPrefix.saving.rawValue
+      $0.bookingType == BookingType.saving.rawValue
     }.map { entry in
       if entry.interval != interval.rawValue {
         return BookingEntryChartData(

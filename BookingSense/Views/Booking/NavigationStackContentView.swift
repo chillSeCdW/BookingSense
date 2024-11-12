@@ -26,12 +26,12 @@ struct NavigationStackContentView: View {
 
   init(searchName: String = "",
        stateFilter: Set<BookingEntryState> = [],
-       prefixFilter: Set<AmountPrefix> = []
+       typeFilter: Set<BookingType> = []
   ) {
     _entries = Query(
       filter: BookingEntry.predicate(searchName: searchName,
                                      stateFilter: stateFilter,
-                                     prefixFilter: prefixFilter)
+                                     typeFilter: typeFilter)
     )
   }
 
@@ -130,12 +130,12 @@ struct FilterBookingAmountButtonsView: View {
   var body: some View {
     ScrollView(.horizontal, showsIndicators: false) {
       HStack {
-        ForEach(AmountPrefix.allCases, id: \.self) { option in
+        ForEach(BookingType.allCases, id: \.self) { option in
           Button(
-            action: { appStates.toggleBookingPrefixFilter(option) },
+            action: { appStates.toggleBookingTypeFilter(option) },
             label: { Text(option.description) }
           )
-          .background(appStates.activeBookingPrefixFilters.contains(option) ?
+          .background(appStates.activeBookingTypeFilters.contains(option) ?
                       Constants.getListBackgroundColor(for: option) :
                         Constants.getListBackgroundColor(for: option, isActive: false)
           )

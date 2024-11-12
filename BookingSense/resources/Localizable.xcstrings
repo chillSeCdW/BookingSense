@@ -502,6 +502,7 @@
       }
     },
     "AmountPrefix" : {
+      "extractionState" : "stale",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -676,6 +677,9 @@
           }
         }
       }
+    },
+    "BookingType" : {
+
     },
     "calculated total %@ costs" : {
       "extractionState" : "manual",

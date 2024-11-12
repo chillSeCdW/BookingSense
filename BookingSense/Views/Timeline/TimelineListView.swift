@@ -21,13 +21,13 @@ struct TimelineListView: View {
 
   init(searchText: String = "",
        stateFilter: Set<TimelineEntryState> = [],
-       prefixFilter: Set<AmountPrefix> = []
+       typeFilter: Set<BookingType> = []
   ) {
     _timelineEntries = Query(
       filter: TimelineEntry.predicate(
         searchText,
         stateFilter: stateFilter,
-        prefixFilter: prefixFilter
+        typeFilter: typeFilter
       ),
       sort: \.isDue,
       order: .forward
@@ -88,12 +88,12 @@ struct FilterAmountButtonsView: View {
   var body: some View {
     ScrollView(.horizontal, showsIndicators: false) {
       HStack {
-        ForEach(AmountPrefix.allCases, id: \.self) { option in
+        ForEach(BookingType.allCases, id: \.self) { option in
           Button(
-            action: { appStates.toggleTimePrefixFilter(option) },
+            action: { appStates.toggleTimeTypeFilter(option) },
             label: { Text(option.description) }
           )
-          .background(appStates.activeTimePrefixFilters.contains(option) ?
+          .background(appStates.activeTimeTypeFilters.contains(option) ?
                       Constants.getListBackgroundColor(for: option) :
                         Constants.getListBackgroundColor(for: option, isActive: false)
           )
@@ -138,7 +138,7 @@ struct TimelineEntryRow: View {
 
   private var rowBackgroundView: some View {
     Constants.getListBackgroundView(
-      amountPrefix: entry.amountPrefix,
+      bookingType: entry.bookingType,
       isActive: entry.state != TimelineEntryState.skipped.rawValue,
       colorScheme: colorScheme
     )

@@ -20,7 +20,7 @@ struct OverviewView: View {
   var totalData: [BookingEntryChartData] {
 
     let sumForAllPlusForInterval = entries.filter {
-      $0.amountPrefix == AmountPrefix.plus.rawValue
+      $0.bookingType == BookingType.plus.rawValue
     }
       .map { entry in
         entry.amount * Constants.getTimesValue(from: Interval(rawValue: entry.interval), to: interval)
@@ -28,7 +28,7 @@ struct OverviewView: View {
       .reduce(0, +)
 
     let sumForAllMinusForInterval = entries.filter {
-      $0.amountPrefix == AmountPrefix.minus.rawValue
+      $0.bookingType == BookingType.minus.rawValue
     }
       .map { entry in
         entry.amount * Constants.getTimesValue(from: Interval(rawValue: entry.interval), to: interval)
@@ -36,7 +36,7 @@ struct OverviewView: View {
       .reduce(0, +)
 
     let sumForAllSavingForInterval = entries.filter {
-      $0.amountPrefix == AmountPrefix.saving.rawValue
+      $0.bookingType == BookingType.saving.rawValue
     }
       .map { entry in
         entry.amount * Constants.getTimesValue(from: Interval(rawValue: entry.interval), to: interval)
@@ -57,15 +57,15 @@ struct OverviewView: View {
       BookingEntryChartData(id: "Total costs",
                             name: String(localized: "Total costs"),
                             amount: sumForAllMinusForInterval,
-                            color: Constants.getListBackgroundColor(for: AmountPrefix.minus)),
+                            color: Constants.getListBackgroundColor(for: BookingType.minus)),
       BookingEntryChartData(id: "Total savings",
                             name: String(localized: "Total savings"),
                             amount: sumForAllSavingForInterval,
-                            color: Constants.getListBackgroundColor(for: AmountPrefix.saving)),
+                            color: Constants.getListBackgroundColor(for: BookingType.saving)),
       BookingEntryChartData(id: "Total left",
                             name: String(localized: "Total left"),
                             amount: totalLeft,
-                            color: Constants.getListBackgroundColor(for: AmountPrefix.plus))
+                            color: Constants.getListBackgroundColor(for: BookingType.plus))
     ].sorted(by: { entry1, entry2 in
       entry1.amount > entry2.amount
     })
