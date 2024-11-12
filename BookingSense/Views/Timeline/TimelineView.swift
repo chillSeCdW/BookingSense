@@ -5,7 +5,10 @@ import SwiftUI
 import SwiftData
 
 struct TimelineView: View {
+  @Environment(\.modelContext) private var modelContext
   @Environment(AppStates.self) var appStates
+
+  @Query private var entries: [BookingEntry]
 
   @AppStorage("purchasedFullAccessUnlock") var fullAccess = false
 
@@ -17,6 +20,15 @@ struct TimelineView: View {
         .disabled(!fullAccess)
         .navigationTitle("Timeline")
         .navigationBarTitleDisplayMode(.automatic)
+        .refreshable {
+          entries.forEach { entry in
+            let latestDate = Constants.getLatestTimelineEntryDueDateForWhenNewEntriesArePossible(entry)
+            Constants.insertTimelineEntriesOf(entry,
+                                              context: modelContext,
+                                              latestTimelineDate: latestDate
+            )
+          }
+        }
         .toolbar {
           ToolbarTimelineContent()
         }

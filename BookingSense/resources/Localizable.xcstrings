@@ -1696,13 +1696,13 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Keine Zeitstrahl Einträge gefunden."
+            "value" : "Keine Zeitstrahleinträge gefunden. Versuche die Filter anzupassen oder wische nach unten, um Einträge zu erzeugen."
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "No timeline entries found."
+            "value" : "No timeline entries found. Try adjusting filters or swipe down to generate Entries."
           }
         }
       }

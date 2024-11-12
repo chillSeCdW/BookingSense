@@ -10,7 +10,6 @@ import SwiftData
 import StoreKit
 
 struct ContentView: View {
-  @Environment(\.modelContext) private var modelContext
   @Environment(AppStates.self) var appStates
   @Environment(\.requestReview) private var requestReview
   @Environment(\.scenePhase) var scenePhase

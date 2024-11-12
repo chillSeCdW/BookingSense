@@ -107,8 +107,41 @@ struct Constants {
     return result
   }
 
-  static func insertTimelineEntriesOf(_ entry: BookingEntry, context: ModelContext) {
-    let timelineEntryList = generateTimelineEntriesFrom(entry)
+  static func getLatestTimelineEntryDueDateForWhenNewEntriesArePossible(_ entry: BookingEntry) -> Date? {
+    let latestTimelineEntry = entry.timelineEntries?.sorted(by: {$0.isDue > $1.isDue}).first
+
+    if let latestTimelineEntry {
+      return latestTimelineEntry.isDue
+    }
+    return nil
+  }
+
+  static func calculateOneIntervalTimeDifference(_ interval: Interval) -> Double {
+    let multiplier: Double
+    switch interval {
+    case .daily:
+      multiplier = 1
+    case .weekly:
+      multiplier = 7
+    case .biweekly:
+      multiplier = 14
+    case .monthly:
+      multiplier = 30
+    case .quarterly:
+      multiplier = 90
+    case .semiannually:
+      multiplier = 180
+    case .annually:
+      multiplier = 365
+    }
+    return 86400 * multiplier // 60 * 60 * 24 = 86400 one day
+  }
+
+  static func insertTimelineEntriesOf(_ entry: BookingEntry, context: ModelContext, latestTimelineDate: Date? = nil) {
+    let nextTimelineEntry = Constants.getNextDateOfInterval(latestTimelineDate, interval: entry.interval)
+    let timelineEntryList = generateTimelineEntriesFrom(bookingEntry: entry,
+                                                        startDate: nextTimelineEntry
+    )
 
     try? context.transaction {
       timelineEntryList?.forEach { timelineEntry in
@@ -117,26 +150,26 @@ struct Constants {
     }
   }
 
-  static func generateTimelineEntriesFrom(_ entry: BookingEntry) -> [TimelineEntry]? {
-    guard let entryInterval = Interval(rawValue: entry.interval) else {
-      return nil
-    }
-    let dateOneYearInFuture = self.getDateOfOneYearInFuture()
+  static func generateTimelineEntriesFrom(bookingEntry: BookingEntry, startDate: Date? = nil) -> [TimelineEntry]? {
+    let dateOneYearInFuture = getDateOfOneYearInFuture()
 
-    let entryDates = self.getDatesForEntries(entry.date, endDate: dateOneYearInFuture, interval: entryInterval)
+    let entryDates = self.getDatesForEntries(startDate ?? bookingEntry.date,
+                                             endDate: dateOneYearInFuture,
+                                             interval: bookingEntry.interval
+    )
 
     var timelineEntriesList: [TimelineEntry] = []
 
     entryDates.forEach { dateEntry in
       let timelineEntry = TimelineEntry(
         state: TimelineEntryState.open.rawValue,
-        name: entry.name,
-        amount: entry.amount,
-        amountPrefix: entry.amountPrefix,
+        name: bookingEntry.name,
+        amount: bookingEntry.amount,
+        amountPrefix: bookingEntry.amountPrefix,
         isDue: dateEntry,
-        tag: entry.tag,
+        tag: bookingEntry.tag,
         completedAt: nil,
-        bookingEntry: entry
+        bookingEntry: bookingEntry
       )
       timelineEntriesList.append(timelineEntry)
     }
@@ -164,48 +197,58 @@ struct Constants {
     }
   }
 
-  // swiftlint:disable:next cyclomatic_complexity
-  static func getDatesForEntries(_ startDate: Date, endDate: Date, interval: Interval) -> [Date] {
+  static func getDatesForEntries(_ startDate: Date, endDate: Date, interval: String) -> [Date] {
     var dates: [Date] = []
     var currentDate = startDate
 
-    let calendar = Calendar.current
-
-    while currentDate <= endDate {
+    while Calendar.current.compare(currentDate, to: endDate, toGranularity: .day) == .orderedAscending {
       dates.append(currentDate)
-      switch interval {
-      case .daily:
-        if let newDate = calendar.date(byAdding: .day, value: 1, to: currentDate) {
-          currentDate = newDate
-        }
-      case .weekly:
-        if let newDate = calendar.date(byAdding: .weekOfYear, value: 1, to: currentDate) {
-          currentDate = newDate
-        }
-      case .biweekly:
-        if let newDate = calendar.date(byAdding: .weekOfYear, value: 2, to: currentDate) {
-          currentDate = newDate
-        }
-      case .monthly:
-        if let newDate = calendar.date(byAdding: .month, value: 1, to: currentDate) {
-          currentDate = newDate
-        }
-      case .quarterly:
-        if let newDate = calendar.date(byAdding: .month, value: 3, to: currentDate) {
-          currentDate = newDate
-        }
-      case .semiannually:
-        if let newDate = calendar.date(byAdding: .month, value: 6, to: currentDate) {
-          currentDate = newDate
-        }
-      case .annually:
-        if let newDate = calendar.date(byAdding: .year, value: 1, to: currentDate) {
-          currentDate = newDate
-        }
+      if let newDate = getNextDateOfInterval(currentDate, interval: interval) {
+        currentDate = newDate
       }
     }
-
     return dates
+  }
+
+  // swiftlint:disable:next cyclomatic_complexity
+  static func getNextDateOfInterval(_ startDate: Date?, interval: String) -> Date? {
+    guard let startDate, let entryInterval = Interval(rawValue: interval) else {
+      return nil
+    }
+    var nextDate: Date?
+
+    let calendar = Calendar.current
+    switch entryInterval {
+    case .daily:
+      if let newDate = calendar.date(byAdding: .day, value: 1, to: startDate) {
+        nextDate = newDate
+      }
+    case .weekly:
+      if let newDate = calendar.date(byAdding: .weekOfYear, value: 1, to: startDate) {
+        nextDate = newDate
+      }
+    case .biweekly:
+      if let newDate = calendar.date(byAdding: .weekOfYear, value: 2, to: startDate) {
+        nextDate = newDate
+      }
+    case .monthly:
+      if let newDate = calendar.date(byAdding: .month, value: 1, to: startDate) {
+        nextDate = newDate
+      }
+    case .quarterly:
+      if let newDate = calendar.date(byAdding: .month, value: 3, to: startDate) {
+        nextDate = newDate
+      }
+    case .semiannually:
+      if let newDate = calendar.date(byAdding: .month, value: 6, to: startDate) {
+        nextDate = newDate
+      }
+    case .annually:
+      if let newDate = calendar.date(byAdding: .year, value: 1, to: startDate) {
+        nextDate = newDate
+      }
+    }
+    return nextDate
   }
 
   static func groupBookingsByInterval(entries: [BookingEntry]) -> [String: [BookingEntry]] {
@@ -293,7 +336,7 @@ struct Constants {
   static func getDateOfOneYearInFuture() -> Date {
     let nextYear = Calendar.current.component(.year, from: .now) + 1
     let currentMonth = Calendar.current.component(.month, from: .now)
-    let currentDay = Calendar.current.component(.day, from: .now)
+    let currentDay = Calendar.current.component(.day, from: .now) + 1
     var components = DateComponents()
     components.year = nextYear
     components.month = currentMonth

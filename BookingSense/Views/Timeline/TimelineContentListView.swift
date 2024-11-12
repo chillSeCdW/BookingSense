@@ -5,24 +5,17 @@ import SwiftUI
 import SwiftData
 
 struct TimelineContentListView: View {
-  @Environment(\.colorScheme) var colorScheme
   @Environment(AppStates.self) var appStates
-  @Environment(\.modelContext) private var modelContext
-  @Query private var timelineEntries: [TimelineEntry]
 
   var body: some View {
     @Bindable var appStates = appStates
 
     NavigationStack {
-      if timelineEntries.isEmpty {
-        Text("No timeline entries found")
-      } else {
-        TimelineListView(
-          searchText: appStates.searchTimelineText,
-          stateFilter: appStates.activeTimeStateFilters,
-          prefixFilter: appStates.activeTimePrefixFilters
-        )
-      }
+      TimelineListView(
+        searchText: appStates.searchTimelineText,
+        stateFilter: appStates.activeTimeStateFilters,
+        prefixFilter: appStates.activeTimePrefixFilters
+      )
     }
   }
 

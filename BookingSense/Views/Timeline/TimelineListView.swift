@@ -6,8 +6,6 @@ import SwiftData
 
 struct TimelineListView: View {
   @Environment(AppStates.self) var appStates
-  @Environment(\.colorScheme) var colorScheme
-  @Environment(\.modelContext) private var modelContext
   @Query private var timelineEntries: [TimelineEntry]
 
   private var sortedKeys: [Date] {
@@ -42,6 +40,15 @@ struct TimelineListView: View {
       FilterAmountButtonsView()
       ForEach(sortedKeys, id: \.self) { date in
         TimelineSectionView(date: date, entriesForDate: groupedEntries[date] ?? [])
+      }
+      if groupedEntries.isEmpty {
+        HStack {
+          Spacer()
+          Text("No timeline entries found")
+            .multilineTextAlignment(.center)
+          Spacer()
+        }
+        .listRowBackground(Color.clear)
       }
     }
     .listSectionSpacing(.compact)
