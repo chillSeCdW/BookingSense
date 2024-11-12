@@ -6,6 +6,7 @@ import SwiftData
 
 struct TimelineEntryView: View {
   @Environment(\.modelContext) private var modelContext
+  @Environment(AppStates.self) var appStates
 
   @StateObject var timelineEntry: TimelineEntry
 
@@ -22,12 +23,15 @@ struct TimelineEntryView: View {
     )) {
       HStack {
         Text(timelineEntry.name)
+          .blur(radius: appStates.blurSensitive ? 5.0 : 0)
           .bold()
         Spacer()
         VStack(alignment: .trailing) {
           Text(timelineEntry.amount, format: .currency(code: Locale.current.currency!.identifier))
+            .blur(radius: appStates.blurSensitive ? 5.0 : 0)
           DateForTimelineEntry(timelineEntry: timelineEntry)
             .foregroundStyle(getDateColor())
+            .blur(radius: appStates.blurSensitive ? 5.0 : 0)
         }
         .foregroundStyle(.secondary)
       }
