@@ -125,12 +125,6 @@ struct EntryView: View {
         timelineEntries: nil
       )
       modelContext.insert(newEntry)
-      Task {
-        generateTimelineEntries(
-          BookingEntryState(rawValue: newEntry.state),
-          entry: newEntry
-        )
-      }
     } else {
       updateTimelineTags(tag, oldTag: bookingEntry!.tag, entry: bookingEntry)
       bookingEntry!.name = name
@@ -141,7 +135,7 @@ struct EntryView: View {
       bookingEntry!.date = date
       bookingEntry!.tag = tag
       Task {
-        generateTimelineEntries(
+        handleTimelineEntries(
           BookingEntryState(rawValue: bookingEntry!.state),
           entry: bookingEntry
         )
@@ -150,13 +144,12 @@ struct EntryView: View {
     dismiss()
   }
 
-  func generateTimelineEntries(_ state: BookingEntryState?, entry: BookingEntry?) {
+  func handleTimelineEntries(_ state: BookingEntryState?, entry: BookingEntry?) {
     guard let state = state, let entry = entry else { return }
 
     switch state {
     case BookingEntryState.active:
       Constants.removeTimelineEntriesNewerThan(entry, context: modelContext)
-      Constants.insertTimelineEntriesOf(entry, context: modelContext)
     case BookingEntryState.paused:
       Constants.removeTimelineEntriesNewerThan(.now, entry: entry, context: modelContext)
     case BookingEntryState.archived:
