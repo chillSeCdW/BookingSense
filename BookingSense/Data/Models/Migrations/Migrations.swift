@@ -30,14 +30,34 @@ enum BookingMigrationV1ToV4: SchemaMigrationPlan {
     fromVersion: BookingSchemaV1.self,
     toVersion: BookingSchemaV2.self
   )
+
+  static let migrateV1ToV22 = MigrationStage.custom(
+    fromVersion: BookingSchemaV1.self,
+    toVersion: BookingSchemaV2.self,
+    willMigrate: nil,
+    didMigrate: { context in
+      do {
+        let bookingEntries = try context.fetch(FetchDescriptor<BookingSchemaV2.BookingEntry>())
+        print("Migration from V1 to V2 completed successfully.")
+      } catch {
+        print("Failed to migrate V1 to V2: \(error)")
+      }
+    }
+  )
+
   static let migrateV2ToV3 = MigrationStage.custom(fromVersion: BookingSchemaV2.self,
                                                    toVersion: BookingSchemaV3.self,
                                                    willMigrate: nil,
                                                    didMigrate: { context in
-    let bookingEntries = try? context.fetch(FetchDescriptor<BookingSchemaV3.BookingEntry>())
+    do {
+      let bookingEntries = try context.fetch(FetchDescriptor<BookingSchemaV3.BookingEntry>())
 
-    bookingEntries?.forEach { bookingEntry in
-      bookingEntry.bookingType = bookingEntry.amountPrefix.rawValue
+      bookingEntries.forEach { bookingEntry in
+        bookingEntry.bookingType = bookingEntry.amountPrefix.rawValue
+      }
+      print("Migration from V2 to V3 completed successfully.")
+    } catch {
+      print("Failed to migrate V2 to V3: \(error)")
     }
   })
 
