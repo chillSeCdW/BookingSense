@@ -23,8 +23,8 @@ extension BookingSchemaV4 {
   @Model
   final class BookingEntry {
 
-    var uuid: String
-    var name: String
+    var uuid: String = UUID().uuidString
+    var name: String = ""
     var state: String = "active"
     @Relationship var tag: Tag?
     @Relationship(deleteRule: .cascade) var timelineEntries: [TimelineEntry]?
@@ -82,7 +82,7 @@ extension BookingSchemaV4 {
   @Model
   final class Tag {
 
-    var uuid: String
+    var uuid: String = UUID().uuidString
     var name: String = ""
     @Relationship(inverse: \BookingEntry.tag) var bookingEntries: [BookingEntry]?
 
@@ -95,7 +95,7 @@ extension BookingSchemaV4 {
   @Model
   final class TimelineEntry: ObservableObject, Identifiable {
 
-    var uuid: String
+    var uuid: String = UUID().uuidString
     @Relationship(inverse: \BookingEntry.timelineEntries) var bookingEntry: BookingEntry?
     var state: String = "active"
     var tag: Tag?
