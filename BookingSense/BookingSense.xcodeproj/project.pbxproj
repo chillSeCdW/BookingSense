@@ -64,6 +64,7 @@
 		B991E24C2CE101310031288B /* TagFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B991E24B2CE1012C0031288B /* TagFormView.swift */; };
 		B991E24E2CE16B020031288B /* FeaturesPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B991E24D2CE16AFD0031288B /* FeaturesPageView.swift */; };
 		B991E2502CE40B9A0031288B /* BookingSchemaV4.swift in Sources */ = {isa = PBXBuildFile; fileRef = B991E24F2CE40B9A0031288B /* BookingSchemaV4.swift */; };
+		B991E2622CE4F8190031288B /* AmountPrefix.swift in Sources */ = {isa = PBXBuildFile; fileRef = B991E2612CE4F8110031288B /* AmountPrefix.swift */; };
 		B99205FC2BD90F780099EF26 /* AppStates.swift in Sources */ = {isa = PBXBuildFile; fileRef = B99205FB2BD90F780099EF26 /* AppStates.swift */; };
 		B99205FF2BD90FAD0099EF26 /* SortButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B99205FE2BD90FAD0099EF26 /* SortButtonView.swift */; };
 		B99206072BDA806E0099EF26 /* ToolbarEntryList.swift in Sources */ = {isa = PBXBuildFile; fileRef = B99206062BDA806E0099EF26 /* ToolbarEntryList.swift */; };
@@ -170,6 +171,7 @@
 		B991E24B2CE1012C0031288B /* TagFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagFormView.swift; sourceTree = "<group>"; };
 		B991E24D2CE16AFD0031288B /* FeaturesPageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeaturesPageView.swift; sourceTree = "<group>"; };
 		B991E24F2CE40B9A0031288B /* BookingSchemaV4.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingSchemaV4.swift; sourceTree = "<group>"; };
+		B991E2612CE4F8110031288B /* AmountPrefix.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AmountPrefix.swift; sourceTree = "<group>"; };
 		B99205FB2BD90F780099EF26 /* AppStates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStates.swift; sourceTree = "<group>"; };
 		B99205FE2BD90FAD0099EF26 /* SortButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortButtonView.swift; sourceTree = "<group>"; };
 		B99206062BDA806E0099EF26 /* ToolbarEntryList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolbarEntryList.swift; sourceTree = "<group>"; };
@@ -276,6 +278,7 @@
 				B915DC442BB4644A0018E812 /* Interval.swift */,
 				B915DC4E2BB479180018E812 /* Constants.swift */,
 				B9DE5B7E2BC6E7740017ACF4 /* BookingType.swift */,
+				B991E2612CE4F8110031288B /* AmountPrefix.swift */,
 				B93839FD2CD4E81300AAB674 /* TimelineEntryState.swift */,
 				B93839FF2CD506AA00AAB674 /* BookingEntryState.swift */,
 			);
@@ -767,6 +770,7 @@
 				B9E4ABF22BF6438E00E96330 /* InfoView.swift in Sources */,
 				B93839F12CD2612E00AAB674 /* BookingSchemaV3.swift in Sources */,
 				B9383A002CD506B000AAB674 /* BookingEntryState.swift in Sources */,
+				B991E2622CE4F8190031288B /* AmountPrefix.swift in Sources */,
 				B9BB9D6E2CAAE96C0057573B /* ThankYouPopUp.swift in Sources */,
 				B99206072BDA806E0099EF26 /* ToolbarEntryList.swift in Sources */,
 				B992060B2BDA96D80099EF26 /* EntryFormView.swift in Sources */,

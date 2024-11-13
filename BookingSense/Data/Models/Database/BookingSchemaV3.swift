@@ -24,8 +24,8 @@ extension BookingSchemaV3 {
   final class BookingEntry {
 
     var id: String = UUID().uuidString
-    var uuid: String
-    var name: String
+    var uuid: String = UUID().uuidString
+    var name: String = ""
     var isActive: Bool = true
     var state: String = "active"
     @Relationship var tag: Tag?
@@ -33,7 +33,7 @@ extension BookingSchemaV3 {
     var amount: Decimal = Decimal.zero
     var date: Date = Date()
     var bookingType: String = "minus"
-    var amountPrefix: BookingType = BookingType.minus
+    var amountPrefix: AmountPrefix = AmountPrefix.minus
     var interval: String = "monthly"
 
     init(uuid: String = UUID().uuidString,
@@ -54,6 +54,22 @@ extension BookingSchemaV3 {
       self.interval = interval.rawValue
       self.tag = tag
       self.timelineEntries = timelineEntries
+    }
+
+    init(name: String,
+         isActive: Bool = true,
+         tag: Tag?,
+         amount: Decimal,
+         date: Date = Date(),
+         amountPrefix: AmountPrefix,
+         interval: Interval) {
+      self.name = name
+      self.isActive = isActive
+      self.tag = tag
+      self.date = date
+      self.amount = amount
+      self.amountPrefix = amountPrefix
+      self.interval = interval.rawValue
     }
 
     static func predicate(
@@ -99,7 +115,7 @@ extension BookingSchemaV3 {
   @Model
   final class TimelineEntry: ObservableObject, Identifiable {
 
-    var uuid: String
+    var uuid: String = UUID().uuidString
     @Relationship(inverse: \BookingEntry.timelineEntries) var bookingEntry: BookingEntry?
     var state: String = "active"
     var tag: Tag?
