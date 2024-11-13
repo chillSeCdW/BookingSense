@@ -52,8 +52,19 @@ enum BookingMigrationV1ToV4: SchemaMigrationPlan {
     do {
       let bookingEntries = try context.fetch(FetchDescriptor<BookingSchemaV3.BookingEntry>())
 
+
       bookingEntries.forEach { bookingEntry in
-        bookingEntry.bookingType = bookingEntry.amountPrefix.rawValue
+        let newBookingType: String
+        switch bookingEntry.amountPrefix {
+        case .plus:
+          newBookingType = "plus"
+        case .minus:
+          newBookingType = "minus"
+        case .saving:
+          newBookingType = "saving"
+        }
+
+        bookingEntry.bookingType = newBookingType
       }
       print("Migration from V2 to V3 completed successfully.")
     } catch {
