@@ -270,15 +270,15 @@
 		B915DC4D2BB46EA50018E812 /* Data */ = {
 			isa = PBXGroup;
 			children = (
-				B92D6F642CC006BD000A2697 /* ChartModels.swift */,
+				B991E2632CE5FE850031288B /* Deprecated */,
 				B9FEC3D52CAD5277009DD4A0 /* Handlers */,
 				B927FB212C26CD1E008D30BE /* Tips */,
 				B99205FA2BD90F630099EF26 /* Models */,
 				B99205FB2BD90F780099EF26 /* AppStates.swift */,
+				B92D6F642CC006BD000A2697 /* ChartModels.swift */,
 				B915DC442BB4644A0018E812 /* Interval.swift */,
 				B915DC4E2BB479180018E812 /* Constants.swift */,
 				B9DE5B7E2BC6E7740017ACF4 /* BookingType.swift */,
-				B991E2612CE4F8110031288B /* AmountPrefix.swift */,
 				B93839FD2CD4E81300AAB674 /* TimelineEntryState.swift */,
 				B93839FF2CD506AA00AAB674 /* BookingEntryState.swift */,
 			);
@@ -419,6 +419,14 @@
 				B9CC1BBD2CD830160048670A /* TimeFilterDialog.swift */,
 			);
 			path = Dialog;
+			sourceTree = "<group>";
+		};
+		B991E2632CE5FE850031288B /* Deprecated */ = {
+			isa = PBXGroup;
+			children = (
+				B991E2612CE4F8110031288B /* AmountPrefix.swift */,
+			);
+			path = Deprecated;
 			sourceTree = "<group>";
 		};
 		B99205FA2BD90F630099EF26 /* Models */ = {

@@ -10,6 +10,7 @@ import SwiftData
 
 struct ContainerFactory {
   let container: ModelContainer
+  let cloudContainer: ModelContainer?
 
   init(_ schema: any VersionedSchema.Type, storeInMemory: Bool, migrationPlan: SchemaMigrationPlan.Type? = nil) {
     let config = ModelConfiguration(isStoredInMemoryOnly: storeInMemory)
@@ -19,6 +20,7 @@ struct ContainerFactory {
     } catch {
       fatalError("Could not create preview container")
     }
+    cloudContainer = nil
   }
 
   func addExamples(_ examples: [any PersistentModel]) {
