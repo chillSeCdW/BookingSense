@@ -138,14 +138,16 @@ struct Constants {
   }
 
   static func insertTimelineEntriesOf(_ entry: BookingEntry, context: ModelContext, latestTimelineDate: Date? = nil) {
+    guard let entryDate = entry.date else { return }
     var adjustingStartDate: Bool = false
     if let latestTimelineDate {
-      if Calendar.current.compare(latestTimelineDate, to: entry.date, toGranularity: .day) == .orderedAscending {
+      if Calendar.current.compare(latestTimelineDate, to: entryDate, toGranularity: .day) == .orderedAscending {
         adjustingStartDate = true // use bookingEntry date as starting date
       }
     }
     let nextTimelineEntry = Constants.getNextDateOfInterval(latestTimelineDate, interval: entry.interval)
     let timelineEntryList = generateTimelineEntriesFrom(bookingEntry: entry,
+                                                        entryDate: entryDate,
                                                         startDate: adjustingStartDate ? nil : nextTimelineEntry
     )
 
@@ -156,10 +158,13 @@ struct Constants {
     }
   }
 
-  static func generateTimelineEntriesFrom(bookingEntry: BookingEntry, startDate: Date? = nil) -> [TimelineEntry]? {
+  static func generateTimelineEntriesFrom(bookingEntry: BookingEntry,
+                                          entryDate: Date,
+                                          startDate: Date? = nil
+  ) -> [TimelineEntry]? {
     let dateOneYearInFuture = getDateOfOneYearInFuture()
 
-    let entryDates = self.getDatesForEntries(startDate ?? bookingEntry.date,
+    let entryDates = self.getDatesForEntries(startDate ?? entryDate,
                                              endDate: dateOneYearInFuture,
                                              interval: bookingEntry.interval
     )
@@ -183,9 +188,16 @@ struct Constants {
     return timelineEntriesList
   }
 
+  static func removeTimelineEntriesFrom(_ entry: BookingEntry, context: ModelContext) {
+    entry.timelineEntries?.forEach { entry in
+      context.delete(entry)
+    }
+  }
+
   static func removeTimelineEntriesNewerThan(_ entry: BookingEntry, context: ModelContext) {
+    guard let entryDate = entry.date else { return }
     let timelineEntriesList = entry.timelineEntries?.filter {
-      $0.isDue >= entry.date
+      $0.isDue >= entryDate
     }.sorted(by: {$0.isDue < $1.isDue})
 
     timelineEntriesList?.forEach { entry in

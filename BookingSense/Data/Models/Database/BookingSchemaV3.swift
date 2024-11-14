@@ -31,7 +31,7 @@ extension BookingSchemaV3 {
     @Relationship var tag: Tag?
     @Relationship(deleteRule: .cascade) var timelineEntries: [TimelineEntry]?
     var amount: Decimal = Decimal.zero
-    var date: Date = Date()
+    var date: Date?
     var bookingType: String = "minus"
     var amountPrefix: AmountPrefix = AmountPrefix.minus
     var interval: String = "monthly"
@@ -40,7 +40,7 @@ extension BookingSchemaV3 {
          name: String = "",
          state: String = "active",
          amount: Decimal,
-         date: Date = Date(),
+         date: Date? = nil,
          bookingType: String = "minus",
          interval: Interval,
          tag: Tag?,

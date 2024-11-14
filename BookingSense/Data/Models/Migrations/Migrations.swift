@@ -49,6 +49,7 @@ enum BookingMigrationV1ToV4: SchemaMigrationPlan {
           newBookingType = "saving"
         }
         bookingEntry.bookingType = newBookingType
+        bookingEntry.date = nil
       }
       try context.save()
       print("Migration from V2 to V3 completed successfully.")

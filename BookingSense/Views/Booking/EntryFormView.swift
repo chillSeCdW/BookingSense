@@ -19,6 +19,8 @@ struct EntryFormView: View {
   @Binding var state: BookingEntryState
   @Binding var date: Date
   @Binding var tag: Tag?
+  @Binding var enableTimeline: Bool
+  @Binding var showConfirmationTimeline: Bool
 
   @State private var showDateNotice: Bool = false
 
@@ -40,13 +42,8 @@ struct EntryFormView: View {
     return formatter
   }
 
-  private var bookingEntryStateIsNotActive: Bool {
-    bookingEntry?.state != BookingEntryState.active.rawValue
-  }
-
   var body: some View {
-    Section(header: Text("Booking"),
-            footer: footerView
+    Section(header: Text("Booking")
     ) {
       NameTextField(name: $name, focusedName: _focusedName, focusedAmount: _focusedAmount)
       BookingTypePicker(bookingType: $bookingType)
@@ -55,27 +52,21 @@ struct EntryFormView: View {
         interval: $interval,
         focusedAmount: _focusedAmount
       )
-      StartDatePicker(date: $date)
-      DateNoticeText(display: $showDateNotice)
     }
-    StatePicker(state: $state)
-      .onChange(of: state) { _, newState in
-        if let bookingEntry {
-          if bookingEntryStateIsNotActive {
-            if newState == .active {
-              withAnimation {
-                showDateNotice = true
-                date = .now
-              }
-            } else {
-              withAnimation {
-                showDateNotice = false
-                date = bookingEntry.date
-              }
-            }
-          }
-        }
-      }
+    TimelineSection(enableTimeline: $enableTimeline,
+                    date: $date,
+                    showNotice: $showDateNotice,
+                    state: $state,
+                    showConfirmationTimeline: $showConfirmationTimeline,
+                    bookingEntry: bookingEntry,
+                    getNextBooking: getNextBookingAsString
+    )
+    StatePicker(state: $state,
+                enableTimeline: $enableTimeline,
+                date: $date,
+                showNotice: $showDateNotice,
+                bookingEntry: bookingEntry
+    )
     TagPicker(tag: $tag)
       .onAppear {
         if let bookingEntry {
@@ -84,34 +75,28 @@ struct EntryFormView: View {
           amount = formatter.string(from: NSDecimalNumber(decimal: bookingEntry.amount)) ?? ""
           interval = Interval(rawValue: bookingEntry.interval) ?? Interval.monthly
           state = BookingEntryState(rawValue: bookingEntry.state) ?? BookingEntryState.active
-          date = bookingEntry.date
+          date = bookingEntry.date ?? .now
           tag = bookingEntry.tag
+          enableTimeline = bookingEntry.date != nil
         }
       }
   }
 
-  var footerView: some View {
-    // swiftlint:disable:next line_length
-    Text(state == .active ? "Next booking \(getNextBooking(fieldDate: date, interval: interval), formatter: dateFormatter)" : "")
-      .font(.caption)
-      .foregroundStyle(.secondary)
-  }
-
-  func getNextBooking(fieldDate: Date, interval: Interval) -> Date {
+  func getNextBookingAsString() -> String {
     let latestEntry = bookingEntry?.timelineEntries?.filter { entry in
       entry.bookingEntry?.uuid == bookingEntry?.uuid && entry.state == TimelineEntryState.open.rawValue
     }.sorted(by: { $0.isDue < $1.isDue })
 
     if let bookDate = bookingEntry?.date {
-      if Calendar.current.isDate(bookDate, equalTo: fieldDate, toGranularity: .day) {
+      if Calendar.current.isDate(bookDate, equalTo: date, toGranularity: .day) {
         if let entry = latestEntry?.first {
-          return entry.isDue
+          return dateFormatter.string(from: entry.isDue)
         }
       } else {
-        return fieldDate
+        return dateFormatter.string(from: date)
       }
     }
-    return fieldDate
+    return dateFormatter.string(from: date)
   }
 }
 
@@ -136,22 +121,6 @@ struct NameTextField: View {
     .focused($focusedName)
     .onSubmit {
       focusedAmount = true
-    }
-  }
-}
-
-struct DateNoticeText: View {
-  @Binding var display: Bool
-
-  var body: some View {
-    if display {
-      HStack {
-        Image(systemName: "exclamationmark.triangle")
-        Text("Please make sure start date is set correctly")
-          .font(.footnote)
-          .padding(.top, 2)
-      }
-      .foregroundColor(.orange)
     }
   }
 }
@@ -203,26 +172,95 @@ struct AmountInputSection: View {
   }
 }
 
-struct StartDatePicker: View {
+struct TimelineSection: View {
+  @Binding var enableTimeline: Bool
   @Binding var date: Date
+  @Binding var showNotice: Bool
+  @Binding var state: BookingEntryState
+  @Binding var showConfirmationTimeline: Bool
+
+  var bookingEntry: BookingEntry?
+  var getNextBooking: () -> String
 
   var body: some View {
+    Section(header: Text("Timeline"), footer: footerView) {
+      Toggle("Enable for timeline", isOn: $enableTimeline.animation())
+        .onChange(of: enableTimeline) { _, newState in
+          if !newState {
+            if bookingEntry?.date != nil {
+              showConfirmationTimeline = true
+            }
+          }
+        }
+      if enableTimeline {
+        startDatePicker
+        dateNoticeText
+      }
+    }
+  }
+
+  var startDatePicker: some View {
     DatePicker("Date of first booking", selection: $date, displayedComponents: .date)
       .datePickerStyle(.compact)
+  }
+
+  @ViewBuilder
+  var dateNoticeText: some View {
+    if showNotice {
+      HStack {
+        Image(systemName: "exclamationmark.triangle")
+        Text("Please make sure start date is set correctly")
+          .font(.footnote)
+          .padding(.top, 2)
+      }
+      .foregroundColor(.orange)
+    }
+  }
+
+  var footerView: some View {
+    Text(state == .active && enableTimeline ? "Next booking \(getNextBooking())" : "")
+      .font(.caption)
+      .foregroundStyle(.secondary)
   }
 }
 
 struct StatePicker: View {
   @Binding var state: BookingEntryState
+  @Binding var enableTimeline: Bool
+  @Binding var date: Date
+  @Binding var showNotice: Bool
+
+  var bookingEntry: BookingEntry?
+
+  private var bookingEntryStateIsNotActive: Bool {
+    bookingEntry?.state != BookingEntryState.active.rawValue
+  }
 
   var body: some View {
     Section(header: Text("State of booking")) {
-      Picker("State", selection: $state) {
+      Picker("State", selection: $state.animation()) {
         ForEach(BookingEntryState.allCases) { option in
           Text(String(describing: option.description))
         }
       }
       .pickerStyle(.segmented)
+      .onChange(of: state) { _, newState in
+        if let bookingEntry {
+          if bookingEntryStateIsNotActive {
+            if newState == .active {
+              withAnimation {
+                showNotice = true
+                date = .now
+              }
+            } else {
+              withAnimation {
+                showNotice = false
+                date = bookingEntry.date ?? .now
+              }
+            }
+          }
+        }
+      }
     }
   }
 }
@@ -275,6 +313,8 @@ struct TagPicker: View {
   @Previewable @State var state: BookingEntryState = .active
   @Previewable @State var date: Date = .now
   @Previewable @State var tag: Tag?
+  @Previewable @State var enableTimeline: Bool = false
+  @Previewable @State var showConfirmationTimeline: Bool = false
 
   let entry = BookingEntry(
     name: "testName",
@@ -292,6 +332,8 @@ struct TagPicker: View {
                 state: $state,
                 date: $date,
                 tag: $tag,
+                enableTimeline: $enableTimeline,
+                showConfirmationTimeline: $showConfirmationTimeline,
                 bookingEntry: entry
   )
 }

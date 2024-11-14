@@ -501,23 +501,6 @@
         }
       }
     },
-    "AmountPrefix" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Vorzeichen"
-          }
-        },
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Sign"
-          }
-        }
-      }
-    },
     "Annually" : {
       "localizations" : {
         "de" : {
@@ -679,7 +662,20 @@
       }
     },
     "BookingType" : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Buchungtyp"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Booking type"
+          }
+        }
+      }
     },
     "calculated total %@ costs" : {
       "extractionState" : "manual",
@@ -1018,6 +1014,38 @@
         }
       }
     },
+    "Deactivate %@ timeline" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Deaktiviere Zeitstrahl für “%@”"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Deactivate timeline for “%@”"
+          }
+        }
+      }
+    },
+    "Deactivate %@ timeline, will delete" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bist du sicher, dass du die Zeitstrahl-Funktionalität der Buchung „%@“ deaktivieren möchtest? Dadurch werden alle Zeitstrahleinträge dieser Buchung entfernt."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Are you sure you want to deactivate timeline functionality of booking “%@”? This will remove all timeline entries of this booking."
+          }
+        }
+      }
+    },
     "Delete" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -1271,6 +1299,22 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Enable Authentication for blurring data"
+          }
+        }
+      }
+    },
+    "Enable for timeline" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Buchung für Zeitstrahl aktivieren"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Enable booking for timeline"
           }
         }
       }

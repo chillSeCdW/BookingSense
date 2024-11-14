@@ -18,7 +18,8 @@ struct EntryView: View {
 
   var bookingEntry: BookingEntry?
 
-  @State var showingConfirmation: Bool = false
+  @State var showConfirmation: Bool = false
+  @State var showConfirmationTimeline: Bool = false
   @State private var name: String = ""
   @State private var bookingType: BookingType = .minus
   @State private var amount: String = ""
@@ -27,6 +28,7 @@ struct EntryView: View {
   @State private var date: Date = .now
   @State private var tag: Tag?
   @State private var errorMessage: String?
+  @State private var enableTimeline: Bool = false
   @FocusState private var focusedName: Bool
   @FocusState private var focusedAmount: Bool
   let alertTitle: String = "Save failed"
@@ -44,6 +46,8 @@ struct EntryView: View {
                     state: $state,
                     date: $date,
                     tag: $tag,
+                    enableTimeline: $enableTimeline,
+                    showConfirmationTimeline: $showConfirmationTimeline,
                     focusedName: _focusedName,
                     focusedAmount: _focusedAmount,
                     bookingEntry: bookingEntry
@@ -75,7 +79,7 @@ struct EntryView: View {
     } message: {
         Text(LocalizedStringKey(errorMessage ?? "An unknown error occurred."))
     }
-    .confirmationDialog("Are you sure?", isPresented: $showingConfirmation) {
+    .confirmationDialog("Are you sure?", isPresented: $showConfirmation) {
       Button("Delete \(bookingEntry?.name ?? "booking")", role: .destructive) {
         modelContext.delete(bookingEntry!)
         dismiss()
@@ -83,11 +87,24 @@ struct EntryView: View {
     } message: {
       Text("Sure delete booking \(bookingEntry?.name ?? ""), will delete timeline entries?")
     }
+    .confirmationDialog("Are you sure?", isPresented: $showConfirmationTimeline) {
+      Button("Deactivate \(bookingEntry?.name ?? "booking") timeline", role: .destructive) {
+        Constants.removeTimelineEntriesFrom(bookingEntry!, context: modelContext)
+        bookingEntry!.date = nil
+        showConfirmationTimeline = false
+      }
+      Button("Cancel", role: .cancel) {
+        showConfirmationTimeline = false
+        enableTimeline = true
+      }
+    } message: {
+      Text("Deactivate \(bookingEntry?.name ?? "booking") timeline, will delete")
+    }
   }
 
   func showDeleteConfirm() {
     withAnimation {
-      showingConfirmation = true
+      showConfirmation = true
     }
   }
 
@@ -118,7 +135,7 @@ struct EntryView: View {
         name: name,
         state: state.rawValue,
         amount: parsedAmount ?? Decimal(),
-        date: date,
+        date: enableTimeline ? date : nil,
         bookingType: bookingType.rawValue,
         interval: interval,
         tag: tag,
@@ -132,7 +149,7 @@ struct EntryView: View {
       bookingEntry!.amount = parsedAmount ?? Decimal()
       bookingEntry!.interval = interval.rawValue
       bookingEntry!.state = state.rawValue
-      bookingEntry!.date = date
+      bookingEntry!.date = enableTimeline ? date : nil
       bookingEntry!.tag = tag
       Task {
         handleTimelineEntries(
@@ -187,7 +204,7 @@ struct EntryView: View {
           amount != bookingEntry.amount.formatted() ||
           bookingType.rawValue != bookingEntry.bookingType ||
           interval != Interval(rawValue: bookingEntry.interval) ?? .monthly ||
-          date != bookingEntry.date ||
+          (enableTimeline ? date : nil) != bookingEntry.date ||
           state != BookingEntryState(rawValue: bookingEntry.state) ?? .active ||
           tag != bookingEntry.tag {
         return true

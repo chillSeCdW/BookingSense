@@ -15,7 +15,7 @@ class JsonBookingEntry: Codable {
   var tag: String?
   var timelineEntries: [String]?
   var amount: Decimal = Decimal.zero
-  var date: Date = Date()
+  var date: Date?
   var bookingType: String = "minus"
   var interval: String = "monthly"
 
