@@ -68,6 +68,7 @@ struct TimelineEntryView: View {
     .confirmationDialog("Are you sure?", isPresented: $showingConfirmation) {
       Button("Delete \(timelineEntry.name)", role: .destructive, action: deleteTimelineEntry)
     } message: {
+      // swiftlint:disable:next line_length
       Text("Sure delete entry \(timelineEntry.name) (\(timelineEntry.isDue.formatted(date: .complete, time: .omitted)))?")
     }
   }

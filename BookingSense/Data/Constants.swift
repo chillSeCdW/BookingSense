@@ -11,6 +11,8 @@ import Foundation
 import OSLog
 import LocalAuthentication
 
+// swiftlint:disable type_body_length
+// swiftlint:disable file_length
 struct Constants {
   static let logger = Logger(subsystem: "BookingSense", category: "Constants")
 
@@ -403,3 +405,5 @@ struct Constants {
     }
   }
 }
+// swiftlint:enable type_body_length
+// swiftlint:enable file_length
