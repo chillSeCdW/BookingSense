@@ -5,8 +5,10 @@ import StoreKit
 import OSLog
 import SwiftUICore
 
-class PurchaseHandler {
+actor PurchaseHandler {
   private let logger = Logger(subsystem: "BookingSense", category: "PurchaseHandler")
+
+  private var updatesTask: Task<Void, Never>?
 
   private let colorScheme: ColorScheme
 
@@ -18,6 +20,28 @@ class PurchaseHandler {
 
   static func createSharedInstance(_ colorScheme: ColorScheme) {
     shared = PurchaseHandler(colorScheme: colorScheme)
+  }
+
+  func status(for verificationResult: VerificationResult<StoreKit.Transaction>?, ids: PurchaseIdentifiers) -> PurchaseStatus {
+    if let verificationResult {
+      let transaction: StoreKit.Transaction
+
+      switch verificationResult {
+      case .verified(let trx):
+        logger.debug("""
+            Transaction ID \(trx.id) for \(trx.productID) is verified
+            """)
+        transaction = trx
+      case .unverified(let trx, let error):
+        logger.error("""
+            Transaction ID \(trx.id) for \(trx.productID) is unverified: \(error)
+            """)
+        return .defaultAccess
+      }
+      return PurchaseStatus(productID: transaction.productID, ids: ids) ?? .defaultAccess
+    }
+
+    return .defaultAccess
   }
 
   func process(transaction verificationResult: VerificationResult<StoreKit.Transaction>) async {
@@ -47,27 +71,32 @@ class PurchaseHandler {
     switch transaction.productType {
     case .nonConsumable:
       await transaction.finish()
-      unlockFeature(transaction.productID)
+      logger.debug("""
+            Finished transaction ID \(transaction.id) for \
+            \(transaction.productID)
+            """)
+      if transaction.revocationReason != nil {
+        return
+      }
       ThankYouPopUp(colorScheme: colorScheme,
                     message: String(localized: "Thank you for upgrading and enjoy")
       )
       .showAndStack()
       .dismissAfter(3)
+    case .consumable:
+      await transaction.finish()
       logger.debug("""
             Finished transaction ID \(transaction.id) for \
             \(transaction.productID)
             """)
-    case .consumable:
-      await transaction.finish()
+      if transaction.revocationReason != nil {
+        return
+      }
       ThankYouPopUp(colorScheme: colorScheme,
                     message: String(localized: "Thank you for your tip!")
       )
       .showAndStack()
       .dismissAfter(3)
-      logger.debug("""
-            Finished transaction ID \(transaction.id) for \
-            \(transaction.productID)
-            """)
     default:
       await transaction.finish()
     }
@@ -89,16 +118,12 @@ class PurchaseHandler {
   }
 
   func observeTransactionUpdates() async {
-    logger.debug("Observing transaction updates")
-    for await update in Transaction.updates {
-      await self.process(transaction: update)
-    }
-  }
-
-  func unlockFeature(_ productID: String) {
-    if productID == "com.chill.BookingSense.fullAccess" {
-      logger.debug("setting fullAccess Flag")
-      UserDefaults.standard.set(true, forKey: "purchasedFullAccessUnlock")
+    self.updatesTask = Task { [weak self] in
+      self?.logger.debug("Observing transaction updates")
+      for await update in Transaction.updates {
+        guard let self else { break }
+        await self.process(transaction: update)
+      }
     }
   }
 }

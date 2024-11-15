@@ -6,18 +6,17 @@ import SwiftData
 
 struct TimelineView: View {
   @Environment(\.modelContext) private var modelContext
+  @Environment(\.purchaseStatus) private var purchaseStatus
   @Environment(AppStates.self) var appStates
 
   @Query private var entries: [BookingEntry]
-
-  @AppStorage("purchasedFullAccessUnlock") var fullAccess = false
 
   var body: some View {
     @Bindable var appStates = appStates
 
     NavigationStack {
       TimelineContentListView()
-        .disabled(!fullAccess)
+        .disabled(purchaseStatus != .fullAccess)
         .navigationTitle("Timeline")
         .navigationBarTitleDisplayMode(.automatic)
         .refreshable {
@@ -46,10 +45,10 @@ struct TimelineView: View {
 }
 
 struct FullAccessTextOverlay: View {
-  @AppStorage("purchasedFullAccessUnlock") var fullAccess = false
+  @Environment(\.purchaseStatus) private var purchaseStatus
 
   var body: some View {
-    if !fullAccess {
+    if purchaseStatus != .fullAccess {
       ZStack {
         Rectangle()
           .fill(Color(.systemGray6))

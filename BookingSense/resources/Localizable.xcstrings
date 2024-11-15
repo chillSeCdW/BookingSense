@@ -1046,6 +1046,22 @@
         }
       }
     },
+    "Default Access" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Standardzugriff"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Default Access"
+          }
+        }
+      }
+    },
     "Delete" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -1412,6 +1428,22 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "from"
+          }
+        }
+      }
+    },
+    "Full Access" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Vollzugriff"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Full Access"
           }
         }
       }

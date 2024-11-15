@@ -65,6 +65,7 @@ struct BookingSenseApp: App {
   var body: some Scene {
     WindowGroup {
       ContentView()
+        .purchaseHandler()
         .implementPopupView()
         .environment(appStates)
     }

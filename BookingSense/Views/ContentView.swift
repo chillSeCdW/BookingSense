@@ -11,10 +11,16 @@ import StoreKit
 
 struct ContentView: View {
   @Environment(AppStates.self) var appStates
+  @Environment(\.purchaseStatus) private var purchaseStatus
+  @Environment(\.purchaseStatusIsLoading) private var purchaseStatusIsLoading
   @Environment(\.requestReview) private var requestReview
   @Environment(\.scenePhase) var scenePhase
   @AppStorage("numberOfVisits") var numberOfVisits = 0
   @AppStorage("tmpBlurSensitive") var tmpBlurSensitive = false
+
+  private var hasFullAccess: Bool {
+      return purchaseStatus != .defaultAccess && !purchaseStatusIsLoading
+  }
 
   var body: some View {
     TabView {

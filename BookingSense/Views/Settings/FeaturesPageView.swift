@@ -12,26 +12,14 @@ struct FeaturesPageView: View {
 
   var body: some View {
     NavigationStack {
-      ProductView(id: "com.chill.BookingSense.fullAccess",
-                  prefersPromotionalIcon: true
-      )
-      .productViewStyle(.regular)
-      .storeButton(.hidden, for: .cancellation)
-      .storeButton(.visible, for: .restorePurchases)
-      .onAppear {
-        logger.info("Creating PurchaseHandler shared instance")
-        PurchaseHandler.createSharedInstance(colorScheme)
-        logger.info("PurchaseHandler shared instance created")
-      }
-      .task {
-        logger.info("Starting tasks to observe transaction updates")
-        await PurchaseHandler.shared.observeTransactionUpdates()
-        await PurchaseHandler.shared.checkForUnfinishedTransactions()
-        logger.info("Finished checking for transactions")
-      }
       InfoBox(text: "This upgrade currently includes the following features:",
               bulletPoints: ["Timeline feature"]
       )
+      StoreView(ids: ["com.chill.BookingSense.fullAccess"],
+                  prefersPromotionalIcon: true
+      )
+      .productViewStyle(.automatic)
+      .storeButton(.hidden, for: .cancellation)
     }
     .navigationTitle("Features")
   }

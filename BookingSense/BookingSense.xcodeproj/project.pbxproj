@@ -25,6 +25,10 @@
 		B92782D02BDE631A00D13808 /* IntervalTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B92782CF2BDE631A00D13808 /* IntervalTests.swift */; };
 		B92782F32BDE779700D13808 /* BookingSenseUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B92782F22BDE779700D13808 /* BookingSenseUITests.swift */; };
 		B92782F52BDE779700D13808 /* BookingSenseUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B92782F42BDE779700D13808 /* BookingSenseUITestsLaunchTests.swift */; };
+		B927D3F32CE7E7ED006B1B19 /* PurchaseHandlerViewModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = B927D3F22CE7E7CF006B1B19 /* PurchaseHandlerViewModifier.swift */; };
+		B927D3F52CE7EA61006B1B19 /* PurchaseStatusTaskModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = B927D3F42CE7EA55006B1B19 /* PurchaseStatusTaskModifier.swift */; };
+		B927D3F82CE7EB2F006B1B19 /* PurchaseIdentifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = B927D3F72CE7EB2B006B1B19 /* PurchaseIdentifiers.swift */; };
+		B927D3FA2CE7FACC006B1B19 /* PurchaseStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = B927D3F92CE7FAC8006B1B19 /* PurchaseStatus.swift */; };
 		B927FB232C26CD49008D30BE /* ToolbarAddTip.swift in Sources */ = {isa = PBXBuildFile; fileRef = B927FB222C26CD49008D30BE /* ToolbarAddTip.swift */; };
 		B927FB292C2C386D008D30BE /* ToolbarOverviewList.swift in Sources */ = {isa = PBXBuildFile; fileRef = B927FB282C2C386D008D30BE /* ToolbarOverviewList.swift */; };
 		B92BC36F2C401DCE00019A62 /* MijickPopupView in Frameworks */ = {isa = PBXBuildFile; productRef = B92BC36E2C401DCE00019A62 /* MijickPopupView */; };
@@ -131,6 +135,10 @@
 		B92782F02BDE779700D13808 /* BookingSenseUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BookingSenseUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B92782F22BDE779700D13808 /* BookingSenseUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingSenseUITests.swift; sourceTree = "<group>"; };
 		B92782F42BDE779700D13808 /* BookingSenseUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingSenseUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		B927D3F22CE7E7CF006B1B19 /* PurchaseHandlerViewModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchaseHandlerViewModifier.swift; sourceTree = "<group>"; };
+		B927D3F42CE7EA55006B1B19 /* PurchaseStatusTaskModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchaseStatusTaskModifier.swift; sourceTree = "<group>"; };
+		B927D3F72CE7EB2B006B1B19 /* PurchaseIdentifiers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchaseIdentifiers.swift; sourceTree = "<group>"; };
+		B927D3F92CE7FAC8006B1B19 /* PurchaseStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchaseStatus.swift; sourceTree = "<group>"; };
 		B927FB222C26CD49008D30BE /* ToolbarAddTip.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolbarAddTip.swift; sourceTree = "<group>"; };
 		B927FB282C2C386D008D30BE /* ToolbarOverviewList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolbarOverviewList.swift; sourceTree = "<group>"; };
 		B92BC3702C401E7400019A62 /* ResetHintsTopPopUp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetHintsTopPopUp.swift; sourceTree = "<group>"; };
@@ -255,6 +263,7 @@
 		B915DC4C2BB46E790018E812 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				B927D3F12CE7E7A7006B1B19 /* Modifier */,
 				B9BE668A2BCFEFF70063734E /* Toast */,
 				B99205FD2BD90FA40099EF26 /* Navigation */,
 				B919B4A32BC6AAA3009B2FA4 /* Overview */,
@@ -270,6 +279,7 @@
 		B915DC4D2BB46EA50018E812 /* Data */ = {
 			isa = PBXGroup;
 			children = (
+				B927D3F62CE7EB20006B1B19 /* Store */,
 				B991E2632CE5FE850031288B /* Deprecated */,
 				B9FEC3D52CAD5277009DD4A0 /* Handlers */,
 				B927FB212C26CD1E008D30BE /* Tips */,
@@ -348,6 +358,25 @@
 				B90B2B462BE91AC600BD2042 /* TestHelper.swift */,
 			);
 			path = BookingSenseUITests;
+			sourceTree = "<group>";
+		};
+		B927D3F12CE7E7A7006B1B19 /* Modifier */ = {
+			isa = PBXGroup;
+			children = (
+				B927D3F42CE7EA55006B1B19 /* PurchaseStatusTaskModifier.swift */,
+				B927D3F22CE7E7CF006B1B19 /* PurchaseHandlerViewModifier.swift */,
+			);
+			path = Modifier;
+			sourceTree = "<group>";
+		};
+		B927D3F62CE7EB20006B1B19 /* Store */ = {
+			isa = PBXGroup;
+			children = (
+				B927D3F92CE7FAC8006B1B19 /* PurchaseStatus.swift */,
+				B9FEC3D32CAD4A29009DD4A0 /* PurchaseHandler.swift */,
+				B927D3F72CE7EB2B006B1B19 /* PurchaseIdentifiers.swift */,
+			);
+			path = Store;
 			sourceTree = "<group>";
 		};
 		B927FB212C26CD1E008D30BE /* Tips */ = {
@@ -539,7 +568,6 @@
 			isa = PBXGroup;
 			children = (
 				B91002C72CC796FA00BECF87 /* BiometricHandler.swift */,
-				B9FEC3D32CAD4A29009DD4A0 /* PurchaseHandler.swift */,
 			);
 			path = Handlers;
 			sourceTree = "<group>";
@@ -737,6 +765,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B927D3FA2CE7FACC006B1B19 /* PurchaseStatus.swift in Sources */,
 				B90D3D0F2C19D97D00133857 /* IntervalInsightsView.swift in Sources */,
 				B9383A052CD69A4800AAB674 /* TimelineEntryView.swift in Sources */,
 				B99206092BDA96090099EF26 /* ToolbarEntry.swift in Sources */,
@@ -744,10 +773,12 @@
 				B96761CD2C34A77B00DA9114 /* MailView.swift in Sources */,
 				B907587B2C13479300EDC82F /* ContentView.swift in Sources */,
 				B9CC1BC62CD8C9540048670A /* BookingSortOrder.swift in Sources */,
+				B927D3F52CE7EA61006B1B19 /* PurchaseStatusTaskModifier.swift in Sources */,
 				B9FEC3D42CAD4A32009DD4A0 /* PurchaseHandler.swift in Sources */,
 				B9CC1BC02CD838C90048670A /* TimelineListView.swift in Sources */,
 				B915DC452BB4644A0018E812 /* Interval.swift in Sources */,
 				B9CC1BB82CD7BB110048670A /* TimelineContentListView.swift in Sources */,
+				B927D3F32CE7E7ED006B1B19 /* PurchaseHandlerViewModifier.swift in Sources */,
 				B90B2B432BE504A200BD2042 /* NavigationStackContentView.swift in Sources */,
 				B9CC1BC22CD8C8DB0048670A /* BookingSortByEnum.swift in Sources */,
 				B92BC3712C401E7400019A62 /* ResetHintsTopPopUp.swift in Sources */,
@@ -793,6 +824,7 @@
 				B919B4A22BC6AA47009B2FA4 /* EntryView.swift in Sources */,
 				B991E2432CDECB8A0031288B /* ToolbarTagEntry.swift in Sources */,
 				B9CC1BB62CD7902E0048670A /* ToolbarTimelineContent.swift in Sources */,
+				B927D3F82CE7EB2F006B1B19 /* PurchaseIdentifiers.swift in Sources */,
 				B927FB292C2C386D008D30BE /* ToolbarOverviewList.swift in Sources */,
 				B922EBEC2CCAED5F00D51C0B /* BookingSchemaV2.swift in Sources */,
 				B915DC4F2BB479190018E812 /* Constants.swift in Sources */,
