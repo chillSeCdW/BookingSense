@@ -271,7 +271,6 @@
 				B919B4A42BC6AAAA009B2FA4 /* Booking */,
 				B9781EA92C2EB81F00FBA0A5 /* Settings */,
 				B907587A2C13479300EDC82F /* ContentView.swift */,
-				B9E0B9112C1B98220047EA77 /* InfoBoxButtonView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -303,6 +302,7 @@
 				B915DC482BB46E350018E812 /* OverviewView.swift */,
 				B93F74002BF39F91008A5088 /* AdditionalInfoView.swift */,
 				B9E4ABF12BF6438E00E96330 /* InfoView.swift */,
+				B9E0B9112C1B98220047EA77 /* InfoBoxButtonView.swift */,
 				B90D3D0E2C19D97D00133857 /* IntervalInsightsView.swift */,
 			);
 			path = Overview;
