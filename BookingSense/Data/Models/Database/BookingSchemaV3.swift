@@ -105,6 +105,7 @@ extension BookingSchemaV3 {
     var uuid: String = UUID().uuidString
     var name: String = ""
     @Relationship(inverse: \BookingEntry.tag) var bookingEntries: [BookingEntry]?
+    @Relationship(inverse: \TimelineEntry.tag) var timelineEntries: [TimelineEntry]?
 
     init(uuid: String = UUID().uuidString, name: String) {
       self.uuid = uuid
@@ -118,7 +119,7 @@ extension BookingSchemaV3 {
     var uuid: String = UUID().uuidString
     @Relationship(inverse: \BookingEntry.timelineEntries) var bookingEntry: BookingEntry?
     var state: String = "active"
-    var tag: Tag?
+    @Relationship var tag: Tag?
     var name: String = ""
     var amount: Decimal = Decimal.zero
     var bookingType: String = "minus"

@@ -12,9 +12,14 @@ struct ContainerFactory {
   let container: ModelContainer
   let cloudContainer: ModelContainer?
 
-  init(_ schema: any VersionedSchema.Type, storeInMemory: Bool, migrationPlan: SchemaMigrationPlan.Type? = nil) {
-    let config = ModelConfiguration(isStoredInMemoryOnly: storeInMemory)
-    let schema = Schema(versionedSchema: schema)
+  init(_ versionedSchema: any VersionedSchema.Type, storeInMemory: Bool, migrationPlan: SchemaMigrationPlan.Type? = nil) {
+    let schema = Schema(versionedSchema: versionedSchema)
+    let config = ModelConfiguration(schema: schema, isStoredInMemoryOnly: storeInMemory, groupContainer: .none, cloudKitDatabase: .none)
+//    let test = ModelConfiguration(schema: schema,
+//                                  isStoredInMemoryOnly: storeInMemory,
+//                                  groupContainer: .identifier("iCloud.com.chill.BookingSense-01"),
+//                                  cloudKitDatabase: .private("iCloud.com.chill.BookingSense-01")
+//    )
     do {
       container = try ModelContainer(for: schema, migrationPlan: migrationPlan, configurations: config)
     } catch {

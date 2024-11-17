@@ -1083,6 +1083,7 @@
 				INFOPLIST_FILE = "BookingSense-Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = BookingSense;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.finance";
+				INFOPLIST_KEY_NSFaceIDUsageDescription = "We use Face ID/Touch ID to enhance the security of your app and protect your personal information.";
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
@@ -1131,6 +1132,7 @@
 				INFOPLIST_FILE = "BookingSense-Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = BookingSense;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.finance";
+				INFOPLIST_KEY_NSFaceIDUsageDescription = "We use Face ID/Touch ID to enhance the security of your app and protect your personal information.";
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
