@@ -155,7 +155,7 @@ struct ChartsView: View {
 
   func checkDataAddEmpty(_ data: [BookingEntryChartData]) -> [BookingEntryChartData] {
     if data.isEmpty {
-      return [BookingEntryChartData(id: "empty", name: "No data", amount: 1, color: .gray)]
+      return [BookingEntryChartData(id: "empty", name: String(localized: "No data"), amount: 1, color: .gray)]
     } else {
       return data
     }

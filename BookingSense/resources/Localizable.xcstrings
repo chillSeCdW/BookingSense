@@ -1706,6 +1706,22 @@
         }
       }
     },
+    "No data" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Keine Daten"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No data"
+          }
+        }
+      }
+    },
     "No entries found" : {
       "localizations" : {
         "de" : {
@@ -1766,6 +1782,22 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "No timeline entries found. Try adjusting filters or swipe down to generate Entries."
+          }
+        }
+      }
+    },
+    "No valid data" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Keine validen Daten"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No valid data"
           }
         }
       }
