@@ -175,7 +175,7 @@ struct EntryView: View {
   }
 
   func updateTimelineTags(_ newTag: Tag?, oldTag: Tag?, entry: BookingEntry?) {
-    guard let newTag = newTag, let oldTag = oldTag, let entry = entry else { return }
+    guard let entry = entry else { return }
     if newTag == oldTag {
       return
     }
