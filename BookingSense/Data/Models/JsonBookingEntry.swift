@@ -22,7 +22,7 @@ class JsonBookingEntry: Codable {
   init(name: String,
        state: String,
        amount: Decimal,
-       date: Date = Date(),
+       date: Date?,
        bookingType: String,
        interval: Interval,
        tag: String?,
@@ -54,7 +54,7 @@ class JsonBookingEntry: Codable {
     uuid = try container.decode(String.self, forKey: .uuid)
     name = try container.decode(String.self, forKey: .name)
     state = try container.decode(String.self, forKey: .state)
-    date = try container.decode(Date.self, forKey: .date)
+    date = try container.decodeIfPresent(Date.self, forKey: .date)
     amount = try container.decode(Decimal.self, forKey: .amount)
     bookingType = try container.decode(String.self, forKey: .bookingType)
     interval = try container.decode(String.self, forKey: .interval)
