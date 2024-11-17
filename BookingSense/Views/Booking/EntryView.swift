@@ -200,8 +200,12 @@ struct EntryView: View {
 
   func didValuesChange() -> Bool {
     if let bookingEntry {
+      let formatter = NumberFormatter()
+      formatter.numberStyle = .decimal
+      formatter.usesGroupingSeparator = false
+
       if name != bookingEntry.name ||
-          amount != bookingEntry.amount.formatted() ||
+          amount != formatter.string(from: NSDecimalNumber(decimal: bookingEntry.amount)) ||
           bookingType.rawValue != bookingEntry.bookingType ||
           interval != Interval(rawValue: bookingEntry.interval) ?? .monthly ||
           (enableTimeline ? date : nil) != bookingEntry.date ||
