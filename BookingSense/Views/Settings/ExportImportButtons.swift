@@ -170,30 +170,12 @@ struct ExportImportButtons: View {
   // swiftlint:disable function_body_length
   func processImportedData(_ importList: BookingsList?) {
     var importTags: [String: Tag] = [:]
-    var importTimelineEntries: [String: TimelineEntry] = [:]
     importList?.tags.forEach { importEntry in
       let entry = importTags.contains { $0.key == importEntry.uuid }
         if !entry {
           let newTag = Tag(uuid: importEntry.uuid, name: importEntry.name)
           importTags[newTag.uuid] = newTag
         }
-    }
-    importList?.timeline.forEach { newTimelineEntry in
-      let entry = importTimelineEntries.contains { $0.key == newTimelineEntry.uuid }
-        if !entry {
-          let newTimelineEntry = TimelineEntry(
-            uuid: newTimelineEntry.uuid,
-            state: newTimelineEntry.state,
-            name: newTimelineEntry.name,
-            amount: newTimelineEntry.amount,
-            bookingType: newTimelineEntry.bookingType,
-            isDue: newTimelineEntry.isDue,
-            tag: nil,
-            completedAt: newTimelineEntry.completedAt,
-            bookingEntry: nil
-          )
-          importTimelineEntries[newTimelineEntry.uuid] = newTimelineEntry
-      }
     }
     try? modelContext.transaction {
       importList?.data.forEach { importBookingEntry in
@@ -205,7 +187,7 @@ struct ExportImportButtons: View {
             amount: importBookingEntry.amount,
             bookingType: importBookingEntry.bookingType,
             interval: Interval(rawValue: importBookingEntry.interval)!,
-            tag: nil,
+            tag: importTags[importBookingEntry.tag ?? ""],
             timelineEntries: nil
           )
         )
@@ -216,21 +198,9 @@ struct ExportImportButtons: View {
         logger.error("error saving modelContext: \(error)")
       }
     }
-    importList?.tags.forEach { importTag in
-      if let bookingEntryIDs = importTag.bookingEntries {
-        let filteredBookEntries = entries.filter {
-          return bookingEntryIDs.contains($0.uuid)
-        }
-        let newTag = Tag(uuid: importTag.uuid, name: importTag.name)
-
-        filteredBookEntries.forEach { entry in
-          entry.tag = newTag
-        }
-      }
-    }
     importList?.timeline.forEach { importTimelineEntry in
       if let bookingEntryIDs = importTimelineEntry.bookingEntry {
-        let filteredBookEntries = entries.filter { bookingEntryIDs.contains($0.uuid) }
+        let filteredBookingEntry = entries.filter { bookingEntryIDs.contains($0.uuid) }.first
 
         let timelineEntry = TimelineEntry(
           state: importTimelineEntry.state,
@@ -243,11 +213,12 @@ struct ExportImportButtons: View {
           bookingEntry: nil
         )
 
-        filteredBookEntries.forEach { entry in
-          if entry.timelineEntries == nil {
-            entry.timelineEntries = []
+        if let filteredBookingEntry {
+          if filteredBookingEntry.timelineEntries == nil {
+            filteredBookingEntry.timelineEntries = []
           }
-          entry.timelineEntries?.append(timelineEntry)
+
+          timelineEntry.tag = filteredBookingEntry.tag
         }
       }
     }

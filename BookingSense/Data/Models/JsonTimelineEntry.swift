@@ -4,7 +4,7 @@
 import Foundation
 
 enum TimelineEntryKeys: CodingKey {
-  case uuid, bookingEntry, state, name, amount, bookingType, isDue, completedAt
+  case uuid, bookingEntry, state, name, tag, amount, bookingType, isDue, completedAt
 }
 
 class JsonTimelineEntry: Codable {
@@ -13,6 +13,7 @@ class JsonTimelineEntry: Codable {
   var bookingEntry: String?
   var state: String = "open"
   var name: String = ""
+  var tag: String?
   var amount: Decimal = Decimal.zero
   var bookingType: String = "minus"
   var isDue: Date = Date()
@@ -20,12 +21,14 @@ class JsonTimelineEntry: Codable {
 
   init(state: String,
        name: String,
+       tag: String?,
        amount: Decimal,
        bookingType: String,
        isDue: Date,
        completedAt: Date?) {
     self.state = state
     self.name = name
+    self.tag = tag
     self.amount = amount
     self.bookingType = bookingType
     self.isDue = isDue
@@ -37,6 +40,7 @@ class JsonTimelineEntry: Codable {
     self.bookingEntry = data.bookingEntry?.uuid
     self.state = data.state
     self.name = data.name
+    self.tag = data.tag?.uuid
     self.amount = data.amount
     self.bookingType = data.bookingType
     self.isDue = data.isDue
@@ -49,6 +53,7 @@ class JsonTimelineEntry: Codable {
     bookingEntry = try container.decodeIfPresent(String.self, forKey: .bookingEntry)
     state = try container.decode(String.self, forKey: .state)
     name = try container.decode(String.self, forKey: .name)
+    tag = try container.decodeIfPresent(String.self, forKey: .tag)
     amount = try container.decode(Decimal.self, forKey: .amount)
     bookingType = try container.decode(String.self, forKey: .bookingType)
     isDue = try container.decode(Date.self, forKey: .isDue)
@@ -61,6 +66,7 @@ class JsonTimelineEntry: Codable {
     try container.encode(bookingEntry, forKey: .bookingEntry)
     try container.encode(state, forKey: .state)
     try container.encode(name, forKey: .name)
+    try container.encode(tag, forKey: .tag)
     try container.encode(amount, forKey: .amount)
     try container.encode(bookingType, forKey: .bookingType)
     try container.encode(isDue, forKey: .isDue)
