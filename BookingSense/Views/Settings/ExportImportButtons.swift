@@ -217,7 +217,8 @@ struct ExportImportButtons: View {
           if filteredBookingEntry.timelineEntries == nil {
             filteredBookingEntry.timelineEntries = []
           }
-
+          
+          filteredBookingEntry.timelineEntries?.append(timelineEntry)
           timelineEntry.tag = filteredBookingEntry.tag
         }
       }
