@@ -14,12 +14,6 @@ typealias BookingEntry = BookingSchemaV4.BookingEntry
 typealias Tag = BookingSchemaV4.Tag
 typealias TimelineEntry = BookingSchemaV4.TimelineEntry
 
-let factory = ContainerFactory(
-  BookingSchemaV4.self,
-  storeInMemory: false,
-  migrationPlan: BookingMigrationV1ToV4.self
-)
-
 @main
 struct BookingSenseApp: App {
 
@@ -38,7 +32,11 @@ struct BookingSenseApp: App {
       return factory.container
     }
 #endif
-    return factory.container
+    return ContainerFactory(
+      BookingSchemaV4.self,
+      storeInMemory: false,
+      migrationPlan: BookingMigrationV1ToV4.self
+    ).container
   }()
 
   @State private var appStates = AppStates()

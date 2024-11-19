@@ -10,22 +10,22 @@ import SwiftData
 
 struct ContainerFactory {
   let container: ModelContainer
-  let cloudContainer: ModelContainer?
 
-  init(_ versionedSchema: any VersionedSchema.Type, storeInMemory: Bool, migrationPlan: SchemaMigrationPlan.Type? = nil) {
+  init(_ versionedSchema: any VersionedSchema.Type,
+       storeInMemory: Bool,
+       migrationPlan: SchemaMigrationPlan.Type? = nil
+  ) {
     let schema = Schema(versionedSchema: versionedSchema)
-    let config = ModelConfiguration(schema: schema, isStoredInMemoryOnly: storeInMemory, groupContainer: .none, cloudKitDatabase: .none)
-//    let test = ModelConfiguration(schema: schema,
-//                                  isStoredInMemoryOnly: storeInMemory,
-//                                  groupContainer: .identifier("iCloud.com.chill.BookingSense-01"),
-//                                  cloudKitDatabase: .private("iCloud.com.chill.BookingSense-01")
-//    )
+    let config = ModelConfiguration(schema: schema,
+                                    isStoredInMemoryOnly: storeInMemory,
+                                    groupContainer: .identifier("group.com.chill.BookingSense"),
+                                    cloudKitDatabase: .private("iCloud.com.chill.BookingSense-01")
+    )
     do {
       container = try ModelContainer(for: schema, migrationPlan: migrationPlan, configurations: config)
     } catch {
       fatalError("Could not create preview container")
     }
-    cloudContainer = nil
   }
 
   func addExamples(_ examples: [any PersistentModel]) {
