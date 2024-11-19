@@ -9,17 +9,21 @@ private let logger = Logger(subsystem: "BookingSense", category: "UpgradePageVie
 
 struct FeaturesPageView: View {
   @Environment(\.colorScheme) var colorScheme
+  @Environment(\.purchaseStatus) private var purchaseStatus
 
   var body: some View {
     NavigationStack {
-      InfoBox(text: "This upgrade currently includes the following features:",
-              bulletPoints: ["Timeline feature"]
-      )
       StoreView(ids: ["com.chill.BookingSense.fullAccess"],
-                  prefersPromotionalIcon: true
+                prefersPromotionalIcon: true
       )
       .productViewStyle(.automatic)
       .storeButton(.hidden, for: .cancellation)
+      InfoBox(text: String(localized: "This upgrade currently includes the following features"),
+              bulletPoints: [String(localized: "Timeline feature")]
+      )
+      InfoBox(text: String(localized: "Currently in \(purchaseStatus.description)"),
+              bulletPoints: []
+      )
     }
     .navigationTitle("Features")
   }

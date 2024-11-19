@@ -950,6 +950,22 @@
         }
       }
     },
+    "Currently in %@" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Derzeit im %@"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Currently in %@"
+          }
+        }
+      }
+    },
     "Daily" : {
       "localizations" : {
         "de" : {
@@ -2561,6 +2577,22 @@
         }
       }
     },
+    "This upgrade currently includes the following features" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dieser Kauf umfasst derzeit die folgenden Funktionen:"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "This upgrade currently includes the following features:"
+          }
+        }
+      }
+    },
     "Timeline" : {
       "localizations" : {
         "de" : {
@@ -2573,6 +2605,22 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Timeline"
+          }
+        }
+      }
+    },
+    "Timeline feature" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zeitstrahl Funktionalität"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Timeline feature"
           }
         }
       }
