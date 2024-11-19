@@ -7,11 +7,15 @@ import SwiftData
 struct TimeFilterDialog: View {
   @Environment(AppStates.self) var appStates
 
+  @Query var tags: [Tag]
+
   var body: some View {
     NavigationView {
       List {
-        Section("Tags") {
-          ListOfTimeTagsOptions()
+        if !tags.isEmpty {
+          Section("Tags") {
+            ListOfTimeTagsOptions()
+          }
         }
         Section("States") {
           ListOfTimeStateOptions()

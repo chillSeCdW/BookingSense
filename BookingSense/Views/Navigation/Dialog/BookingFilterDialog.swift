@@ -7,11 +7,15 @@ import SwiftData
 struct BookingFilterDialog: View {
   @Environment(AppStates.self) var appStates
 
+  @Query var tags: [Tag]
+
   var body: some View {
     NavigationView {
       List {
-        Section("Tags") {
-          ListOfBookingTagsOptions()
+        if !tags.isEmpty {
+          Section("Tags") {
+            ListOfBookingTagsOptions()
+          }
         }
         Section("States") {
           ListOfBookingStateOptions()

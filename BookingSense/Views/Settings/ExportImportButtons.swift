@@ -62,9 +62,9 @@ struct ExportImportButtons: View {
         do {
           let access = file.startAccessingSecurityScopedResource()
           defer {
-             if access {
-               file.stopAccessingSecurityScopedResource()
-             }
+            if access {
+              file.stopAccessingSecurityScopedResource()
+            }
           }
           let data = try Data(contentsOf: file)
           importedData = try JSONDecoder().decode(BookingsList.self, from: data)
@@ -129,14 +129,14 @@ struct ExportImportButtons: View {
       if let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
          let rootViewController = windowScene.windows.first?.rootViewController {
         if let popoverController = activityViewController.popoverPresentationController {
-            popoverController.sourceView = rootViewController.view // The view from which the popover originates
-            popoverController.sourceRect = CGRect(
-              x: rootViewController.view.bounds.midX,
-              y: rootViewController.view.bounds.midY,
-              width: 0,
-              height: 0
-            )
-            popoverController.permittedArrowDirections = []
+          popoverController.sourceView = rootViewController.view // The view from which the popover originates
+          popoverController.sourceRect = CGRect(
+            x: rootViewController.view.bounds.midX,
+            y: rootViewController.view.bounds.midY,
+            width: 0,
+            height: 0
+          )
+          popoverController.permittedArrowDirections = []
         }
         rootViewController.present(activityViewController, animated: true, completion: nil)
       }
@@ -167,18 +167,42 @@ struct ExportImportButtons: View {
     }
   }
 
-  // swiftlint:disable function_body_length
   func processImportedData(_ importList: BookingsList?) {
     var importTags: [String: Tag] = [:]
+    var importTimelineEntries: [String: TimelineEntry] = [:]
     importList?.tags.forEach { importEntry in
       let entry = importTags.contains { $0.key == importEntry.uuid }
-        if !entry {
-          let newTag = Tag(uuid: importEntry.uuid, name: importEntry.name)
-          importTags[newTag.uuid] = newTag
-        }
+      if !entry {
+        let newTag = Tag(uuid: importEntry.uuid, name: importEntry.name)
+        importTags[newTag.uuid] = newTag
+      }
+    }
+    importList?.timeline.forEach { newTimelineEntry in
+      let entry = importTimelineEntries.contains { $0.key == newTimelineEntry.uuid }
+      if !entry {
+        let newTimelineEntry = TimelineEntry(
+          uuid: newTimelineEntry.uuid,
+          state: newTimelineEntry.state,
+          name: newTimelineEntry.name,
+          amount: newTimelineEntry.amount,
+          bookingType: newTimelineEntry.bookingType,
+          isDue: newTimelineEntry.isDue,
+          tag: importTags[newTimelineEntry.tag ?? ""],
+          completedAt: newTimelineEntry.completedAt,
+          bookingEntry: nil
+        )
+        importTimelineEntries[newTimelineEntry.uuid] = newTimelineEntry
+      }
     }
     try? modelContext.transaction {
       importList?.data.forEach { importBookingEntry in
+        var filteredTimelineEntries: [TimelineEntry]?
+        if let timelineEntresOfBooking = importBookingEntry.timelineEntries {
+          filteredTimelineEntries = importTimelineEntries
+            .filter { timelineEntresOfBooking.contains($0.key) }
+            .map { $0.value }
+        }
+
         modelContext.insert(
           BookingEntry(
             uuid: importBookingEntry.uuid,
@@ -188,45 +212,13 @@ struct ExportImportButtons: View {
             bookingType: importBookingEntry.bookingType,
             interval: Interval(rawValue: importBookingEntry.interval)!,
             tag: importTags[importBookingEntry.tag ?? ""],
-            timelineEntries: nil
+            timelineEntries: filteredTimelineEntries
           )
         )
       }
-      do {
-          try modelContext.save()
-      } catch {
-        logger.error("error saving modelContext: \(error)")
-      }
     }
-    importList?.timeline.forEach { importTimelineEntry in
-      if let bookingEntryIDs = importTimelineEntry.bookingEntry {
-        let filteredBookingEntry = entries.filter { bookingEntryIDs.contains($0.uuid) }.first
-
-        let timelineEntry = TimelineEntry(
-          state: importTimelineEntry.state,
-          name: importTimelineEntry.name,
-          amount: importTimelineEntry.amount,
-          bookingType: importTimelineEntry.bookingType,
-          isDue: importTimelineEntry.isDue,
-          tag: nil,
-          completedAt: importTimelineEntry.completedAt,
-          bookingEntry: nil
-        )
-
-        if let filteredBookingEntry {
-          if filteredBookingEntry.timelineEntries == nil {
-            filteredBookingEntry.timelineEntries = []
-          }
-          
-          filteredBookingEntry.timelineEntries?.append(timelineEntry)
-          timelineEntry.tag = filteredBookingEntry.tag
-        }
-      }
-    }
-    try? modelContext.save()
   }
 }
-// swiftlint:enable function_body_length
 
 extension String {
   func createJsonFile(_ withName: String = "temp") -> URL {
