@@ -33,16 +33,6 @@ struct SettingsNavigationStackView: View {
         Section("User interface") {
           Toggle("Show Timeline tab", isOn: $appStates.showTimelineTab)
         }
-        Section("iCloud") {
-          Toggle("enable iCloud Sync", isOn: $appStates.iCloudEnabled)
-        }
-        .onChange(of: appStates.iCloudEnabled) { _, newState in
-          if newState {
-            print("Enabling iCloud Sync")
-          } else {
-            print("Disabling iCloud Sync")
-          }
-        }
         Section("Contact") {
           ContactButtons()
         }

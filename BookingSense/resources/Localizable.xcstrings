@@ -1335,9 +1335,6 @@
         }
       }
     },
-    "enable iCloud Sync" : {
-
-    },
     "Entries already found" : {
       "localizations" : {
         "de" : {
@@ -1579,9 +1576,6 @@
           }
         }
       }
-    },
-    "iCloud" : {
-
     },
     "Import as json" : {
       "localizations" : {

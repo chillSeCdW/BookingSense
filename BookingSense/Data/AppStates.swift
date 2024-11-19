@@ -75,11 +75,6 @@ class AppStates: Observable, ObservableObject {
       UserDefaults.standard.set(biometricEnabled, forKey: "biometricEnabled")
     }
   }
-  @Published var iCloudEnabled: Bool {
-    didSet {
-      UserDefaults.standard.set(iCloudEnabled, forKey: "iCloudEnabled")
-    }
-  }
   @Published var showTimelineTab: Bool = true
 
   init() {
@@ -128,7 +123,6 @@ class AppStates: Observable, ObservableObject {
     }
     self.blurSensitive = UserDefaults.standard.bool(forKey: "blurSensitive")
     self.biometricEnabled = UserDefaults.standard.bool(forKey: "biometricEnabled")
-    self.iCloudEnabled = UserDefaults.standard.bool(forKey: "iCloudEnabled")
   }
 
   func toggleBookingStateFilter(_ filter: BookingEntryState) {
