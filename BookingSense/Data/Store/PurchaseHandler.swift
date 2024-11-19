@@ -22,7 +22,9 @@ actor PurchaseHandler {
     shared = PurchaseHandler(colorScheme: colorScheme)
   }
 
-  func status(for verificationResult: VerificationResult<StoreKit.Transaction>?, ids: PurchaseIdentifiers) -> PurchaseStatus {
+  func status(for verificationResult: VerificationResult<StoreKit.Transaction>?,
+              ids: PurchaseIdentifiers
+  ) -> PurchaseStatus {
     if let verificationResult {
       let transaction: StoreKit.Transaction
 
@@ -43,7 +45,7 @@ actor PurchaseHandler {
 
     return .defaultAccess
   }
-
+  // swiftlint:disable function_body_length
   func process(transaction verificationResult: VerificationResult<StoreKit.Transaction>) async {
     do {
       let unsafeTransaction = verificationResult.unsafePayloadValue
@@ -101,6 +103,7 @@ actor PurchaseHandler {
       await transaction.finish()
     }
   }
+  // swiftlint:enable function_body_length
 
   func checkForUnfinishedTransactions() async {
     logger.debug("Checking for unfinished transactions")
