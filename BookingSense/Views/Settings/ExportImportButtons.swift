@@ -3,10 +3,14 @@
 
 import SwiftUI
 import SwiftData
+import OSLog
 
 struct ExportImportButtons: View {
+  private let logger = Logger(subsystem: "BookingSense", category: "ExportImportButtons")
   @Environment(\.modelContext) private var modelContext
   @Query private var entries: [BookingEntry]
+  @Query private var tags: [Tag]
+  @Query private var timeline: [TimelineEntry]
 
   @State private var showImport = false
   @State private var isLoading = false
@@ -20,7 +24,7 @@ struct ExportImportButtons: View {
     Button {
       isLoading = true
       Task {
-        exportJson(BookingsList(entries))
+        exportJson(BookingsList(data: entries, tags: tags, timeline: timeline))
         isLoading = false
       }
     } label: {
@@ -58,13 +62,13 @@ struct ExportImportButtons: View {
         do {
           let access = file.startAccessingSecurityScopedResource()
           defer {
-             if access {
-               file.stopAccessingSecurityScopedResource()
-             }
+            if access {
+              file.stopAccessingSecurityScopedResource()
+            }
           }
           let data = try Data(contentsOf: file)
           importedData = try JSONDecoder().decode(BookingsList.self, from: data)
-          if entries.isEmpty {
+          if entries.isEmpty && tags.isEmpty {
             processImportedData(importedData)
             showSuccessAlert = true
             importConflict = false
@@ -95,10 +99,7 @@ struct ExportImportButtons: View {
     ) { isConflict in
       if isConflict {
         Button("Cancel", role: .cancel) {}
-        Button("Merge with existing") {
-          processImportedData(importedData)
-        }
-        Button("Clear and insert") {
+        Button("Clear and insert", role: .destructive) {
           cleanData()
           processImportedData(importedData)
         }
@@ -128,14 +129,14 @@ struct ExportImportButtons: View {
       if let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
          let rootViewController = windowScene.windows.first?.rootViewController {
         if let popoverController = activityViewController.popoverPresentationController {
-            popoverController.sourceView = rootViewController.view // The view from which the popover originates
-            popoverController.sourceRect = CGRect(
-              x: rootViewController.view.bounds.midX,
-              y: rootViewController.view.bounds.midY,
-              width: 0,
-              height: 0
-            )
-            popoverController.permittedArrowDirections = []
+          popoverController.sourceView = rootViewController.view // The view from which the popover originates
+          popoverController.sourceRect = CGRect(
+            x: rootViewController.view.bounds.midX,
+            y: rootViewController.view.bounds.midY,
+            width: 0,
+            height: 0
+          )
+          popoverController.permittedArrowDirections = []
         }
         rootViewController.present(activityViewController, animated: true, completion: nil)
       }
@@ -146,7 +147,6 @@ struct ExportImportButtons: View {
 
   func encodeJson(_ entries: BookingsList) -> String? {
     let encoder = JSONEncoder()
-    encoder.outputFormatting = .prettyPrinted
 
     do {
       let jsonData = try encoder.encode(entries)
@@ -160,16 +160,61 @@ struct ExportImportButtons: View {
   func cleanData() {
     do {
       try modelContext.delete(model: BookingEntry.self)
+      try modelContext.delete(model: Tag.self)
+      try modelContext.delete(model: TimelineEntry.self)
     } catch {
-      print("Failed to delete all Booking entries")
+      logger.error("Failed to delete all Booking entries: \(error)")
     }
   }
 
   func processImportedData(_ importList: BookingsList?) {
-    importList?.data.forEach { newEntry in
-      let oldEntry = entries.filter {$0.id == newEntry.id}.first
-      if oldEntry == nil {
-        modelContext.insert(newEntry)
+    var importTags: [String: Tag] = [:]
+    var importTimelineEntries: [String: TimelineEntry] = [:]
+    importList?.tags.forEach { importEntry in
+      let entry = importTags.contains { $0.key == importEntry.uuid }
+      if !entry {
+        let newTag = Tag(uuid: importEntry.uuid, name: importEntry.name)
+        importTags[newTag.uuid] = newTag
+      }
+    }
+    importList?.timeline.forEach { newTimelineEntry in
+      let entry = importTimelineEntries.contains { $0.key == newTimelineEntry.uuid }
+      if !entry {
+        let newTimelineEntry = TimelineEntry(
+          uuid: newTimelineEntry.uuid,
+          state: newTimelineEntry.state,
+          name: newTimelineEntry.name,
+          amount: newTimelineEntry.amount,
+          bookingType: newTimelineEntry.bookingType,
+          isDue: newTimelineEntry.isDue,
+          tag: importTags[newTimelineEntry.tag ?? ""],
+          completedAt: newTimelineEntry.completedAt,
+          bookingEntry: nil
+        )
+        importTimelineEntries[newTimelineEntry.uuid] = newTimelineEntry
+      }
+    }
+    try? modelContext.transaction {
+      importList?.data.forEach { importBookingEntry in
+        var filteredTimelineEntries: [TimelineEntry]?
+        if let timelineEntresOfBooking = importBookingEntry.timelineEntries {
+          filteredTimelineEntries = importTimelineEntries
+            .filter { timelineEntresOfBooking.contains($0.key) }
+            .map { $0.value }
+        }
+
+        modelContext.insert(
+          BookingEntry(
+            uuid: importBookingEntry.uuid,
+            name: importBookingEntry.name,
+            state: importBookingEntry.state,
+            amount: importBookingEntry.amount,
+            bookingType: importBookingEntry.bookingType,
+            interval: Interval(rawValue: importBookingEntry.interval)!,
+            tag: importTags[importBookingEntry.tag ?? ""],
+            timelineEntries: filteredTimelineEntries
+          )
+        )
       }
     }
   }

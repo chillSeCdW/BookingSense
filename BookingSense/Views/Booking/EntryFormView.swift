@@ -7,28 +7,109 @@
 
 import SwiftUI
 import TipKit
+import SwiftData
 
 struct EntryFormView: View {
+  @Environment(\.modelContext) private var modelContext
+
+  @Binding var name: String
+  @Binding var bookingType: BookingType
+  @Binding var amount: String
+  @Binding var interval: Interval
+  @Binding var state: BookingEntryState
+  @Binding var date: Date
+  @Binding var tag: Tag?
+  @Binding var enableTimeline: Bool
+  @Binding var showConfirmationTimeline: Bool
+
+  @State private var showDateNotice: Bool = false
+
+  @FocusState var focusedName: Bool
+  @FocusState var focusedAmount: Bool
+
   var bookingEntry: BookingEntry?
-  var formatter: NumberFormatter {
+
+  private var formatter: NumberFormatter {
     let formatter = NumberFormatter()
     formatter.numberStyle = .decimal
     formatter.usesGroupingSeparator = false
     return formatter
   }
+  private var dateFormatter: DateFormatter {
+    let formatter = DateFormatter()
+    formatter.dateStyle = .full
+    formatter.timeStyle = .none
+    return formatter
+  }
 
+  var body: some View {
+    Section(header: Text("Booking")
+    ) {
+      NameTextField(name: $name, focusedName: _focusedName, focusedAmount: _focusedAmount)
+      BookingTypePicker(bookingType: $bookingType)
+      AmountInputSection(
+        amount: $amount,
+        interval: $interval,
+        focusedAmount: _focusedAmount
+      )
+    }
+    TimelineSection(enableTimeline: $enableTimeline,
+                    date: $date,
+                    showNotice: $showDateNotice,
+                    state: $state,
+                    showConfirmationTimeline: $showConfirmationTimeline,
+                    bookingEntry: bookingEntry,
+                    getNextBooking: getNextBookingAsString
+    )
+    StatePicker(state: $state,
+                enableTimeline: $enableTimeline,
+                date: $date,
+                showNotice: $showDateNotice,
+                bookingEntry: bookingEntry
+    )
+    TagPicker(tag: $tag)
+      .onAppear {
+        if let bookingEntry {
+          name = bookingEntry.name
+          bookingType = BookingType(rawValue: bookingEntry.bookingType)!
+          amount = formatter.string(from: NSDecimalNumber(decimal: bookingEntry.amount)) ?? ""
+          interval = Interval(rawValue: bookingEntry.interval) ?? Interval.monthly
+          state = BookingEntryState(rawValue: bookingEntry.state) ?? BookingEntryState.active
+          date = bookingEntry.date ?? .now
+          tag = bookingEntry.tag
+          enableTimeline = bookingEntry.date != nil
+        }
+      }
+  }
+
+  func getNextBookingAsString() -> String {
+    let latestEntry = bookingEntry?.timelineEntries?.filter { entry in
+      entry.bookingEntry?.uuid == bookingEntry?.uuid && entry.state == TimelineEntryState.open.rawValue
+    }.sorted(by: { $0.isDue < $1.isDue })
+
+    if let bookDate = bookingEntry?.date {
+      if Calendar.current.isDate(bookDate, equalTo: date, toGranularity: .day) {
+        if let entry = latestEntry?.first {
+          return dateFormatter.string(from: entry.isDue)
+        }
+      } else {
+        return dateFormatter.string(from: date)
+      }
+    }
+    return dateFormatter.string(from: date)
+  }
+}
+
+struct NameTextField: View {
   @Binding var name: String
-  @Binding var amountPrefix: AmountPrefix
-  @Binding var amount: String
-  @Binding var interval: Interval
-
   @FocusState var focusedName: Bool
   @FocusState var focusedAmount: Bool
 
   var body: some View {
     TextField(text: $name, prompt: Text("Name")) {
       Text("Name")
-    }.toolbar {
+    }
+    .toolbar {
       ToolbarItemGroup(placement: .keyboard) {
         Spacer()
         Button("Done") {
@@ -41,45 +122,184 @@ struct EntryFormView: View {
     .onSubmit {
       focusedAmount = true
     }
-    VStack {
-      Picker("AmountPrefix", selection: $amountPrefix) {
-        ForEach(AmountPrefix.allCases) { option in
-          Text(LocalizedStringKey(option.description))
+  }
+}
+
+struct BookingTypePicker: View {
+  @Binding var bookingType: BookingType
+
+  var body: some View {
+    Picker("BookingType", selection: $bookingType) {
+      ForEach(BookingType.allCases) { option in
+        Text(LocalizedStringKey(option.description))
+      }
+    }
+    .pickerStyle(.segmented)
+    .colorMultiply(Constants.getListBackgroundColor(for: bookingType) ?? .white)
+  }
+}
+
+struct AmountInputSection: View {
+  @Binding var amount: String
+  @Binding var interval: Interval
+  @FocusState var focusedAmount: Bool
+
+  var body: some View {
+    HStack {
+      Picker("Interval", selection: $interval) {
+        ForEach(Interval.allCases) { option in
+          Text(String(describing: option.description))
+        }
+      }
+      .accessibilityIdentifier("intervalPicker")
+      .pickerStyle(.menu)
+      .labelsHidden()
+
+      TextField(text: $amount, prompt: Text("Amount")) {
+        Text("Amount")
+      }
+      .focused($focusedAmount)
+      .multilineTextAlignment(.trailing)
+      .textFieldStyle(RoundedBorderTextFieldStyle())
+      .keyboardType(.decimalPad)
+
+      Text(Constants.getSymbol(Locale.current.currency!.identifier) ?? "$")
+        .accessibilityIdentifier("CurrencySymbol")
+    }
+    .alignmentGuide(.listRowSeparatorLeading) { _ in
+      return 0
+    }
+  }
+}
+
+struct TimelineSection: View {
+  @Binding var enableTimeline: Bool
+  @Binding var date: Date
+  @Binding var showNotice: Bool
+  @Binding var state: BookingEntryState
+  @Binding var showConfirmationTimeline: Bool
+
+  var bookingEntry: BookingEntry?
+  var getNextBooking: () -> String
+
+  var body: some View {
+    Section(header: Text("Timeline"), footer: footerView) {
+      Toggle("Enable for timeline", isOn: $enableTimeline.animation())
+        .onChange(of: enableTimeline) { _, newState in
+          if !newState {
+            if bookingEntry?.date != nil {
+              showConfirmationTimeline = true
+            }
+          }
+        }
+      if enableTimeline {
+        startDatePicker
+        dateNoticeText
+      }
+    }
+  }
+
+  var startDatePicker: some View {
+    DatePicker("Date of first booking", selection: $date, displayedComponents: .date)
+      .datePickerStyle(.compact)
+  }
+
+  @ViewBuilder
+  var dateNoticeText: some View {
+    if showNotice {
+      HStack {
+        Image(systemName: "exclamationmark.triangle")
+        Text("Please make sure start date is set correctly")
+          .font(.footnote)
+          .padding(.top, 2)
+      }
+      .foregroundColor(.orange)
+    }
+  }
+
+  var footerView: some View {
+    Text(state == .active && enableTimeline ? "Next booking \(getNextBooking())" : "")
+      .font(.caption)
+      .foregroundStyle(.secondary)
+  }
+}
+
+struct StatePicker: View {
+  @Binding var state: BookingEntryState
+  @Binding var enableTimeline: Bool
+  @Binding var date: Date
+  @Binding var showNotice: Bool
+
+  var bookingEntry: BookingEntry?
+
+  private var bookingEntryStateIsNotActive: Bool {
+    bookingEntry?.state != BookingEntryState.active.rawValue
+  }
+
+  var body: some View {
+    Section(header: Text("State of booking")) {
+      Picker("State", selection: $state.animation()) {
+        ForEach(BookingEntryState.allCases) { option in
+          Text(String(describing: option.description))
         }
       }
       .pickerStyle(.segmented)
-      HStack {
-        Picker("Interval", selection: $interval) {
-          ForEach(Interval.allCases) { option in
-            Text(String(describing: option.description))
+      .onChange(of: state) { _, newState in
+        if let bookingEntry {
+          if bookingEntryStateIsNotActive {
+            if newState == .active {
+              withAnimation {
+                showNotice = true
+                date = .now
+              }
+            } else {
+              withAnimation {
+                showNotice = false
+                date = bookingEntry.date ?? .now
+              }
+            }
           }
         }
-        .accessibilityIdentifier("intervalPicker")
-        .pickerStyle(.automatic)
-        .labelsHidden()
-        Spacer()
-        TextField(
-          text: $amount,
-          prompt: Text("Amount")
-        ) {
-          Text("Amount")
-        }
-        .focused($focusedAmount)
-        .multilineTextAlignment(.trailing)
-        .textFieldStyle(RoundedBorderTextFieldStyle())
-        .keyboardType(.decimalPad)
-        .onAppear {
-          if let bookingEntry {
-            name = bookingEntry.name
-            amountPrefix = bookingEntry.amountPrefix
-            amount = formatter.string(from: NSDecimalNumber(decimal: bookingEntry.amount)) ?? ""
-            interval = Interval(rawValue: bookingEntry.interval) ?? Interval.monthly
+      }
+    }
+  }
+}
+
+struct TagPicker: View {
+  @Environment(\.modelContext) private var modelContext
+
+  @Query(sort: [SortDescriptor<Tag>(\.name, comparator: .localized)]) var tags: [Tag]
+  @Binding var tag: Tag?
+
+  @State var showingSheet: Bool = false
+
+  var body: some View {
+    Section(header: Text("Tag"), footer: Text("Useful for sorting and statistics, associated with all timeline entries")
+      .font(.caption)
+      .foregroundStyle(.secondary)
+    ) {
+      ScrollView(.horizontal) {
+        HStack {
+          ForEach(tags) { tagOption in
+            Button(tagOption.name) {
+              tag = tagOption != tag ? tagOption : nil
+            }
+            .buttonStyle(BorderedButtonStyle())
+            .tint(tag == tagOption ? .green : .primary)
           }
+          Button("Add") {
+            showingSheet.toggle()
+          }
+          .buttonStyle(.bordered)
+          .buttonStyle(BorderlessButtonStyle())
         }
-        Text(Constants.getSymbol(Locale.current.currency!.identifier) ?? "$")
-          .accessibilityIdentifier("CurrencySymbol")
-      }.alignmentGuide(.listRowSeparatorLeading) { _ in
-        return 0
+      }
+      .listRowInsets(EdgeInsets())
+      .listRowBackground(Color.clear)
+      .sheet(isPresented: $showingSheet) {
+        NavigationStack {
+          TagFormView()
+        }
       }
     }
   }
@@ -88,19 +308,32 @@ struct EntryFormView: View {
 #Preview {
   @Previewable @State var name: String = "testName"
   @Previewable @State var amount: String = "15,35"
-  @Previewable @State var amountPrefix: AmountPrefix = .plus
+  @Previewable @State var bookingType: BookingType = .plus
   @Previewable @State var interval: Interval = .weekly
+  @Previewable @State var state: BookingEntryState = .active
+  @Previewable @State var date: Date = .now
+  @Previewable @State var tag: Tag?
+  @Previewable @State var enableTimeline: Bool = false
+  @Previewable @State var showConfirmationTimeline: Bool = false
 
   let entry = BookingEntry(
     name: "testName",
-    tag: nil,
     amount: Decimal(string: "15,35", locale: Locale(identifier: Locale.current.identifier)) ?? Decimal(),
-    amountPrefix: .plus,
-    interval: .weekly)
+    bookingType: BookingType.plus.rawValue,
+    interval: .weekly,
+    tag: nil,
+    timelineEntries: nil
+  )
 
-  EntryFormView(bookingEntry: entry,
-                name: $name,
-                amountPrefix: $amountPrefix,
+  EntryFormView(name: $name,
+                bookingType: $bookingType,
                 amount: $amount,
-                interval: $interval)
+                interval: $interval,
+                state: $state,
+                date: $date,
+                tag: $tag,
+                enableTimeline: $enableTimeline,
+                showConfirmationTimeline: $showConfirmationTimeline,
+                bookingEntry: entry
+  )
 }

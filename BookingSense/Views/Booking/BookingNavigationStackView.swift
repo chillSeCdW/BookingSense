@@ -23,23 +23,31 @@ struct BookingNavigationStackView: View {
 
     NavigationStack(path: $stackPath) {
       VStack {
-        NavigationStackContentView(isListEmpty: entries.isEmpty)
-          .navigationDestination(for: BookingEntry.self) { entry in
-            EntryView(bookingEntry: entry)
-          }
-          .navigationTitle("Bookings")
-          .navigationBarTitleDisplayMode(.automatic)
-          .searchable(text: $appStates.searchText, prompt: "Search")
-          .toolbar {
-            ToolbarEntryList(showingConfirmation: $showingConfirmation, addEntry: addEntry)
-          }
-          .confirmationDialog("Are you sure?", isPresented: $showingConfirmation) {
-            Button("Delete all entries", role: .destructive, action: deleteAllItems)
-          } message: {
-            Text("Are you sure you want to delete all entries?")
-          }
-          .environment(\.editMode, editMode)
+        NavigationStackContentView(
+          searchName: appStates.searchText,
+          stateFilter: appStates.activeBookingStateFilters,
+          typeFilter: appStates.activeBookingTypeFilters
+        )
+        .navigationDestination(for: BookingEntry.self) { entry in
+          EntryView(bookingEntry: entry)
+        }
+        .navigationTitle("Bookings")
+        .navigationBarTitleDisplayMode(.automatic)
+        .searchable(text: $appStates.searchText, prompt: "Search")
+        .toolbar {
+          ToolbarEntryList(showingConfirmation: $showingConfirmation, addEntry: addEntry)
+        }
+        .confirmationDialog("Are you sure?", isPresented: $showingConfirmation) {
+          Button("Delete all entries", role: .destructive, action: deleteAllItems)
+        } message: {
+          Text("Are you sure you want to delete all entries?")
+        }
+        .environment(\.editMode, editMode)
       }
+    }
+    .sheet(isPresented: $appStates.isBookingFilterDialogPresented) {
+      BookingFilterDialog()
+        .presentationDetents([.medium, .large])
     }
     .sheet(isPresented: $showingSheet, content: {
       NavigationStack {
@@ -67,7 +75,7 @@ struct BookingNavigationStackView: View {
 }
 
 #Preview("NavStackWithList") {
-  let factory = ContainerFactory(BookingEntry.self, storeInMemory: true)
+  let factory = ContainerFactory(BookingSchemaV4.self, storeInMemory: true)
   factory.addExamples(ContainerFactory.generateRandomEntriesItems())
   return BookingNavigationStackView()
     .environment(AppStates())
@@ -75,7 +83,7 @@ struct BookingNavigationStackView: View {
 }
 
 #Preview("NavStackWithoutList") {
-  let factory = ContainerFactory(BookingEntry.self, storeInMemory: true)
+  let factory = ContainerFactory(BookingSchemaV4.self, storeInMemory: true)
   return BookingNavigationStackView()
     .environment(AppStates())
     .modelContainer(factory.container)

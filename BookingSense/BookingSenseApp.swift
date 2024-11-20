@@ -10,7 +10,9 @@ import SwiftData
 import TipKit
 import MijickPopupView
 
-typealias BookingEntry = BookingSchemaV2.BookingEntry
+typealias BookingEntry = BookingSchemaV4.BookingEntry
+typealias Tag = BookingSchemaV4.Tag
+typealias TimelineEntry = BookingSchemaV4.TimelineEntry
 
 @main
 struct BookingSenseApp: App {
@@ -21,18 +23,20 @@ struct BookingSenseApp: App {
   var sharedModelContainer: ModelContainer = {
 #if DEBUG
     if CommandLine.arguments.contains("enable-testing-empty") {
-      let factory = ContainerFactory(BookingEntry.self, storeInMemory: true)
+      let factory = ContainerFactory(BookingSchemaV4.self, storeInMemory: true)
       return factory.container
     }
     if CommandLine.arguments.contains("enable-testing-data") {
-      let factory = ContainerFactory(BookingEntry.self, storeInMemory: true)
+      let factory = ContainerFactory(BookingSchemaV4.self, storeInMemory: true)
       factory.addExamples(ContainerFactory.generateFixedEntriesItems())
       return factory.container
     }
 #endif
-
-    let factory = ContainerFactory(BookingEntry.self, storeInMemory: false, migrationPlan: ExpenseMigrationV1ToV2.self)
-    return factory.container
+    return ContainerFactory(
+      BookingSchemaV4.self,
+      storeInMemory: false,
+      migrationPlan: BookingMigrationV1ToV4.self
+    ).container
   }()
 
   @State private var appStates = AppStates()
@@ -59,6 +63,7 @@ struct BookingSenseApp: App {
   var body: some Scene {
     WindowGroup {
       ContentView()
+        .purchaseHandler()
         .implementPopupView()
         .environment(appStates)
     }

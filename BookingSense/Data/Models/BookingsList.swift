@@ -4,9 +4,13 @@
 import Foundation
 
 struct BookingsList: Codable {
-  let data: [BookingEntry]
+  let data: [JsonBookingEntry]
+  let tags: [JsonTag]
+  let timeline: [JsonTimelineEntry]
 
-  init(_ data: [BookingEntry]) {
-    self.data = data
+  init(data: [BookingEntry], tags: [Tag], timeline: [TimelineEntry]) {
+    self.data = data.map { JsonBookingEntry($0) }
+    self.tags = tags.map { JsonTag($0)}
+    self.timeline = timeline.map { JsonTimelineEntry($0) }
   }
 }

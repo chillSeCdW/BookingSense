@@ -5,8 +5,10 @@ import StoreKit
 import OSLog
 import SwiftUICore
 
-class PurchaseHandler {
+actor PurchaseHandler {
   private let logger = Logger(subsystem: "BookingSense", category: "PurchaseHandler")
+
+  private var updatesTask: Task<Void, Never>?
 
   private let colorScheme: ColorScheme
 
@@ -20,6 +22,30 @@ class PurchaseHandler {
     shared = PurchaseHandler(colorScheme: colorScheme)
   }
 
+  func status(for verificationResult: VerificationResult<StoreKit.Transaction>?,
+              ids: PurchaseIdentifiers
+  ) -> PurchaseStatus {
+    if let verificationResult {
+      let transaction: StoreKit.Transaction
+
+      switch verificationResult {
+      case .verified(let trx):
+        logger.debug("""
+            Transaction ID \(trx.id) for \(trx.productID) is verified
+            """)
+        transaction = trx
+      case .unverified(let trx, let error):
+        logger.error("""
+            Transaction ID \(trx.id) for \(trx.productID) is unverified: \(error)
+            """)
+        return .defaultAccess
+      }
+      return PurchaseStatus(productID: transaction.productID, ids: ids) ?? .defaultAccess
+    }
+
+    return .defaultAccess
+  }
+  // swiftlint:disable function_body_length
   func process(transaction verificationResult: VerificationResult<StoreKit.Transaction>) async {
     do {
       let unsafeTransaction = verificationResult.unsafePayloadValue
@@ -44,20 +70,40 @@ class PurchaseHandler {
       return
     }
 
-    if case .consumable = transaction.productType {
+    switch transaction.productType {
+    case .nonConsumable:
       await transaction.finish()
-      ThankYouPopUp(colorScheme: colorScheme)
-        .showAndStack()
-        .dismissAfter(2)
       logger.debug("""
             Finished transaction ID \(transaction.id) for \
             \(transaction.productID)
             """)
-    } else {
-      // Only relevant if other productTypes enter the scope
+      if transaction.revocationReason != nil {
+        return
+      }
+      ThankYouPopUp(colorScheme: colorScheme,
+                    message: String(localized: "Thank you for upgrading and enjoy")
+      )
+      .showAndStack()
+      .dismissAfter(3)
+    case .consumable:
+      await transaction.finish()
+      logger.debug("""
+            Finished transaction ID \(transaction.id) for \
+            \(transaction.productID)
+            """)
+      if transaction.revocationReason != nil {
+        return
+      }
+      ThankYouPopUp(colorScheme: colorScheme,
+                    message: String(localized: "Thank you for your tip!")
+      )
+      .showAndStack()
+      .dismissAfter(3)
+    default:
       await transaction.finish()
     }
   }
+  // swiftlint:enable function_body_length
 
   func checkForUnfinishedTransactions() async {
     logger.debug("Checking for unfinished transactions")
@@ -75,9 +121,12 @@ class PurchaseHandler {
   }
 
   func observeTransactionUpdates() async {
-    logger.debug("Observing transaction updates")
-    for await update in Transaction.updates {
-      await self.process(transaction: update)
+    self.updatesTask = Task { [weak self] in
+      self?.logger.debug("Observing transaction updates")
+      for await update in Transaction.updates {
+        guard let self else { break }
+        await self.process(transaction: update)
+      }
     }
   }
 }

@@ -1,5 +1,5 @@
 //
-//  AmountPrefix.swift
+//  BookingType.swift
 //  BookingSense
 //
 //  Created by kenny on 10.04.24.
@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum AmountPrefix: Codable, CaseIterable, Identifiable {
+enum BookingType: String, Codable, CaseIterable, Identifiable {
   var id: Self { self }
 
   case plus
@@ -17,11 +17,11 @@ enum AmountPrefix: Codable, CaseIterable, Identifiable {
   var description: String {
     switch self {
     case .plus:
-      return "Incoming"
+      return String(localized: "Incoming")
     case .minus:
-      return "Outgoing"
+      return String(localized: "Outgoing")
     case .saving:
-      return "Saving"
+      return String(localized: "Saving")
     }
   }
 }

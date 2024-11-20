@@ -49,7 +49,7 @@ class TestHelper {
       let listEntry = app.collectionViews.buttons["NavLink" + name]
       XCTAssertTrue(listEntry.isHittable)
       listEntry.tap()
-      let navBarEditEntry = app.navigationBars[localized("Edit entry")]
+      let navBarEditEntry = app.navigationBars[localized("Edit entry")] // TODO: remove unused translation
       XCTAssertTrue(navBarEditEntry.isHittable)
 
       let backButton = navBarEditEntry.buttons[localized("Bookings")]
@@ -64,7 +64,7 @@ class TestHelper {
       let minusPickerWheel = app.collectionViews.pickerWheels["minus"]
       let amountTextField = app.collectionViews.textFields[localized("Amount")]
       let currentCurrency = app.collectionViews.staticTexts["CurrencySymbol"]
-      let amountPrefixPicker = app.collectionViews.pickers[localized("AmountPrefix")]
+      let bookingTypePicker = app.collectionViews.pickers[localized("BookingType")]
       let intervalPicker = app.collectionViews.buttons["intervalPicker"]
       let intervalText = app.collectionViews.staticTexts[localized("Interval")]
       let local = NSLocale(localeIdentifier: localeId)
@@ -73,11 +73,11 @@ class TestHelper {
       XCTAssertTrue(minusPickerWheel.isHittable)
       XCTAssertTrue(amountTextField.isHittable)
       XCTAssertTrue(currentCurrency.isHittable)
-      XCTAssertTrue(amountPrefixPicker.isHittable)
+      XCTAssertTrue(bookingTypePicker.isHittable)
       XCTAssertTrue(intervalPicker.isHittable)
 
       XCTAssertEqual(nameTextField.value as? String, name)
-      XCTAssertEqual(amountPrefixPicker.pickerWheels.element.value as? String, "minus")
+      XCTAssertEqual(bookingTypePicker.pickerWheels.element.value as? String, "minus")
       XCTAssertEqual(amountTextField.value as? String, generateFormattedStringFromFormatterFor(amount))
       XCTAssertEqual(currentCurrency.label, local.displayName(forKey: NSLocale.Key.currencySymbol, value: localeId))
       XCTAssertEqual(intervalText.label, localized("Interval"))
@@ -106,7 +106,7 @@ class TestHelper {
       let minusPickerWheel = app.collectionViews.pickerWheels["minus"]
       let amountTextField = app.collectionViews.textFields[localized("Amount")]
       let currentCurrency = app.collectionViews.staticTexts["CurrencySymbol"]
-      let amountPrefixPicker = app.collectionViews.pickers[localized("AmountPrefix")]
+      let bookingTypePicker = app.collectionViews.pickers[localized("BookingType")]
       let intervalPicker = app.collectionViews.buttons["intervalPicker"]
       let intervalText = app.collectionViews.staticTexts[localized("Interval")]
       let local = NSLocale(localeIdentifier: localeId)
@@ -115,11 +115,11 @@ class TestHelper {
       XCTAssertTrue(minusPickerWheel.isHittable)
       XCTAssertTrue(amountTextField.isHittable)
       XCTAssertTrue(currentCurrency.isHittable)
-      XCTAssertTrue(amountPrefixPicker.isHittable)
+      XCTAssertTrue(bookingTypePicker.isHittable)
       XCTAssertTrue(intervalPicker.isHittable)
 
       XCTAssertEqual(nameTextField.value as? String, localized("Name"))
-      XCTAssertEqual(amountPrefixPicker.pickerWheels.element.value as? String, "minus")
+      XCTAssertEqual(bookingTypePicker.pickerWheels.element.value as? String, "minus")
       XCTAssertEqual(amountTextField.value as? String, localized("Amount"))
       XCTAssertEqual(currentCurrency.label, local.displayName(forKey: NSLocale.Key.currencySymbol, value: localeId))
       XCTAssertEqual(intervalText.label, localized("Interval"))

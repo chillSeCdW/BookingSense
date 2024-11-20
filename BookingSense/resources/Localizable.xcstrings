@@ -2,7 +2,30 @@
   "sourceLanguage" : "en",
   "strings" : {
     "" : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : ""
+          }
+        }
+      }
+    },
+    "%@ %@" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%1$@ %2$@"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "%1$@ %2$@"
+          }
+        }
+      }
     },
     "%@ costs of annually" : {
       "localizations" : {
@@ -240,7 +263,7 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "%@ Savings"
+            "value" : "%@ savings"
           }
         }
       }
@@ -317,6 +340,22 @@
         }
       }
     },
+    "•" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "•"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "•"
+          }
+        }
+      }
+    },
     "~" : {
       "localizations" : {
         "de" : {
@@ -329,6 +368,22 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "~"
+          }
+        }
+      }
+    },
+    "Active" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Aktiv"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Active"
           }
         }
       }
@@ -446,22 +501,6 @@
         }
       }
     },
-    "AmountPrefix" : {
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Vorzeichen"
-          }
-        },
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Sign"
-          }
-        }
-      }
-    },
     "Annually" : {
       "localizations" : {
         "de" : {
@@ -494,18 +533,34 @@
         }
       }
     },
-    "Are you sure you want to delete all entries?" : {
+    "Archived" : {
       "localizations" : {
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Möchten Sie sicher alle Einträge löschen?"
+            "value" : "Archiviert"
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Are you sure you want to delete all entries?"
+            "value" : "Archived"
+          }
+        }
+      }
+    },
+    "Are you sure you want to delete all entries?" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Möchtest du sicher alle Buchungen löschen? Dies wird auch Zeitstrahleinträge entfernen."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Are you sure you want to delete all bookings? This will also effect timeline entries."
           }
         }
       }
@@ -515,7 +570,7 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Sind Sie sicher?"
+            "value" : "Bist du sicher?"
           }
         },
         "en" : {
@@ -574,6 +629,22 @@
         }
       }
     },
+    "Booking" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Buchung"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Booking"
+          }
+        }
+      }
+    },
     "Bookings" : {
       "localizations" : {
         "de" : {
@@ -586,6 +657,22 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Bookings"
+          }
+        }
+      }
+    },
+    "BookingType" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Buchungtyp"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Booking type"
           }
         }
       }
@@ -655,6 +742,22 @@
         }
       }
     },
+    "Can remove this tab in settings if you don't want to use it" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Du kannst diesen Tab in den Einstellungen ausblenden, falls du ihn nicht verwenden magst."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "You can remove this tab in Settings when you don’t want to use it."
+          }
+        }
+      }
+    },
     "Cancel" : {
       "localizations" : {
         "de" : {
@@ -699,6 +802,22 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Charts"
+          }
+        }
+      }
+    },
+    "Checked" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Abgehackt"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Checked"
           }
         }
       }
@@ -783,6 +902,22 @@
         }
       }
     },
+    "Create booking" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Buchung erstellen"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Create booking"
+          }
+        }
+      }
+    },
     "Create entry" : {
       "localizations" : {
         "de" : {
@@ -795,6 +930,38 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Create entry"
+          }
+        }
+      }
+    },
+    "Create tag" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tag erstellen"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Create tag"
+          }
+        }
+      }
+    },
+    "Currently in %@" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Derzeit im %@"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Currently in %@"
           }
         }
       }
@@ -815,6 +982,38 @@
         }
       }
     },
+    "Data" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Daten"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Data"
+          }
+        }
+      }
+    },
+    "Date of first booking" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Datum der ersten Buchung"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Date of first booking"
+          }
+        }
+      }
+    },
     "Day" : {
       "localizations" : {
         "de" : {
@@ -827,6 +1026,54 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "day"
+          }
+        }
+      }
+    },
+    "Deactivate %@ timeline" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Deaktiviere Zeitstrahl für “%@”"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Deactivate timeline for “%@”"
+          }
+        }
+      }
+    },
+    "Deactivate %@ timeline, will delete" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bist du sicher, dass du die Zeitstrahl-Funktionalität der Buchung „%@“ deaktivieren möchtest? Dadurch werden alle Zeitstrahleinträge dieser Buchung entfernt."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Are you sure you want to deactivate timeline functionality of booking “%@”? This will remove all timeline entries of this booking."
+          }
+        }
+      }
+    },
+    "Default Access" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Standardzugriff"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Default Access"
           }
         }
       }
@@ -844,6 +1091,22 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Delete"
+          }
+        }
+      }
+    },
+    "Delete %@" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Buchung “%@” löschen"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Delete booking “%@”"
           }
         }
       }
@@ -869,13 +1132,61 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Alle Einträge löschen"
+            "value" : "Alle Buchungen löschen"
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Delete all entries"
+            "value" : "Delete all bookings"
+          }
+        }
+      }
+    },
+    "Delete booking" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Buchung löschen"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Delete booking"
+          }
+        }
+      }
+    },
+    "Delete tag" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tag löschen"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Delete tag"
+          }
+        }
+      }
+    },
+    "Delete tag %@" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tag “%@” löschen"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Delete tag “%@”"
           }
         }
       }
@@ -912,6 +1223,22 @@
         }
       }
     },
+    "Done on" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Fertig am"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Done on"
+          }
+        }
+      }
+    },
     "Edit" : {
       "localizations" : {
         "de" : {
@@ -928,6 +1255,22 @@
         }
       }
     },
+    "Edit booking" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Buchung bearbeiten"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Edit booking"
+          }
+        }
+      }
+    },
     "Edit entry" : {
       "localizations" : {
         "de" : {
@@ -940,6 +1283,22 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Edit entry"
+          }
+        }
+      }
+    },
+    "Edit tag" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tag bearbeiten"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Edit tag"
           }
         }
       }
@@ -964,7 +1323,7 @@
       "localizations" : {
         "de" : {
           "stringUnit" : {
-            "state" : "needs_review",
+            "state" : "translated",
             "value" : "Authentifizierung für das Verschleiern der Daten"
           }
         },
@@ -976,18 +1335,34 @@
         }
       }
     },
-    "Entries already found" : {
+    "Enable for timeline" : {
       "localizations" : {
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Bereits vorhandene Einträge wurden gefunden. Wie wollen Sie diese behandeln?"
+            "value" : "Buchung für Zeitstrahl aktivieren"
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Some existing entries were found. How do you want to handle them?"
+            "value" : "Enable booking for timeline"
+          }
+        }
+      }
+    },
+    "Entries already found" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bereits vorhandene Einträge wurden gefunden."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Some existing entries were found."
           }
         }
       }
@@ -1041,6 +1416,22 @@
         }
       }
     },
+    "Features" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Funktionalitäten"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Features"
+          }
+        }
+      }
+    },
     "from" : {
       "localizations" : {
         "de" : {
@@ -1053,6 +1444,22 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "from"
+          }
+        }
+      }
+    },
+    "Full Access" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Vollzugriff"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Full Access"
           }
         }
       }
@@ -1158,7 +1565,7 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Hinweise werden zurückgesetzt sobald Sie die App neustarten."
+            "value" : "Hinweise werden zurückgesetzt sobald du die App neustartest."
           }
         },
         "en" : {
@@ -1251,22 +1658,6 @@
         }
       }
     },
-    "Merge with existing" : {
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Neue Einträge mit alten zusammenführen"
-          }
-        },
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Merge new entries with old ones"
-          }
-        }
-      }
-    },
     "month" : {
       "localizations" : {
         "de" : {
@@ -1315,18 +1706,50 @@
         }
       }
     },
-    "No entries available" : {
+    "Next booking %@" : {
       "localizations" : {
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Keine Einträge vorhanden."
+            "value" : "Nächste Buchung am %@"
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "No entries available."
+            "value" : "Next booking on %@"
+          }
+        }
+      }
+    },
+    "No data" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Keine Daten"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No data"
+          }
+        }
+      }
+    },
+    "No entries found" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Keine Einträge gefunden."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No entries found."
           }
         }
       }
@@ -1347,6 +1770,54 @@
         }
       }
     },
+    "No tags found" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Keine Tags gefunden."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No tags found."
+          }
+        }
+      }
+    },
+    "No timeline entries found" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Keine Zeitstrahleinträge gefunden. Versuche die Filter anzupassen oder wische nach unten, um Einträge zu erzeugen."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No timeline entries found. Try adjusting filters or swipe down to generate Entries."
+          }
+        }
+      }
+    },
+    "No valid data" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Keine validen Daten"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No valid data"
+          }
+        }
+      }
+    },
     "Ok" : {
       "localizations" : {
         "de" : {
@@ -1359,6 +1830,22 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Ok"
+          }
+        }
+      }
+    },
+    "Open" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Offen"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Open"
           }
         }
       }
@@ -1412,6 +1899,38 @@
         }
       }
     },
+    "Paused" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pausiert"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Paused"
+          }
+        }
+      }
+    },
+    "Please make sure start date is set correctly" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bitte stelle sicher, dass das Anfangsdatum korrekt ist."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Please make sure to starting date is correct."
+          }
+        }
+      }
+    },
     "Plus" : {
       "localizations" : {
         "de" : {
@@ -1428,18 +1947,18 @@
         }
       }
     },
-    "Press the + button to add an entry" : {
+    "Press the + button to add an entry or adjust filters" : {
       "localizations" : {
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Drücken Sie die + Taste um einen Eintrag hinzuzufügen."
+            "value" : "Drücke die + Taste um einen Eintrag hinzuzufügen oder ändere die ausgewählten Filter."
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Press the + button to add an entry."
+            "value" : "Press the + button to add an entry or adjust the current filters."
           }
         }
       }
@@ -1472,6 +1991,22 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "quarterly"
+          }
+        }
+      }
+    },
+    "Reopen" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wieder öffnen"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Reopen"
           }
         }
       }
@@ -1558,6 +2093,22 @@
         }
       }
     },
+    "Select date" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Datum auswählen"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Select date"
+          }
+        }
+      }
+    },
     "Select Interval" : {
       "localizations" : {
         "de" : {
@@ -1570,6 +2121,22 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Select interval"
+          }
+        }
+      }
+    },
+    "Select to show" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Auswählen zum anzeigen"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Select to show"
           }
         }
       }
@@ -1602,6 +2169,54 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Settings"
+          }
+        }
+      }
+    },
+    "Show Timeline tab" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zeitstrahl Tab anzeigen"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Show Timeline tab"
+          }
+        }
+      }
+    },
+    "Skip" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "auslassen"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Skip"
+          }
+        }
+      }
+    },
+    "Skipped" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ausgelassen"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Skipped"
           }
         }
       }
@@ -1738,6 +2353,70 @@
         }
       }
     },
+    "State" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Status"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "State"
+          }
+        }
+      }
+    },
+    "State of booking" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Status der Buchung"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "State of booking"
+          }
+        }
+      }
+    },
+    "States" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Status"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "States"
+          }
+        }
+      }
+    },
+    "Store" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Store"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Store"
+          }
+        }
+      }
+    },
     "Success" : {
       "localizations" : {
         "de" : {
@@ -1750,6 +2429,134 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Success"
+          }
+        }
+      }
+    },
+    "Sure delete booking %@, will delete timeline entries?" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sicher das du Buchung “%@” löschen willst? Dies wird auch alle zugehörigen Zeitstrahleinträge entfernen."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sure you want to delete booking “%@”? It will also delete all associated timeline entries."
+          }
+        }
+      }
+    },
+    "Sure delete entry %@ (%@)?" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sicher das du Zeitstrahleintrag “%1$@” (%2$@) löschen willst?"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sure you want to delete Timeline entry “%1$@” (%2$@)?"
+          }
+        }
+      }
+    },
+    "Sure delete tag %@? will remove tags from bookings/timeline entries" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sicher das du Tag “%@” löschen willst? Tag wird auch aus zugehörigen Buchungen/Zeitstrahleinträge entfernt."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sure you want to delete tag “%@”? It will also remove tag from associated bookings/timeline entries."
+          }
+        }
+      }
+    },
+    "Tag" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tag"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tag"
+          }
+        }
+      }
+    },
+    "Tag name" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tag name"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tag name"
+          }
+        }
+      }
+    },
+    "Tag will be removed from associated bookings/timeline entries" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tag wird auch aus zugehörigen Buchungen/Zeitstrahleinträge entfernt."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tag will be removed from associated bookings/timeline entries."
+          }
+        }
+      }
+    },
+    "Tags" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tags"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tags"
+          }
+        }
+      }
+    },
+    "Thank you for upgrading and enjoy" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Vielen Dank für das Upgraden und viel Spaß mit der Vollversion! :)"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Thank you for upgrading and enjoy the full version! :)"
           }
         }
       }
@@ -1770,7 +2577,87 @@
         }
       }
     },
-    "Tip jar" : {
+    "This upgrade currently includes the following features" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dieser Kauf umfasst derzeit die folgenden Funktionen:"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "This upgrade currently includes the following features:"
+          }
+        }
+      }
+    },
+    "Timeline" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zeitstrahl"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Timeline"
+          }
+        }
+      }
+    },
+    "Timeline feature" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zeitstrahl Funktionalität"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Timeline feature"
+          }
+        }
+      }
+    },
+    "Timeline is a Full Access feature" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zeitstrahl ist eine Vollzugang Funktionalität"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Timeline is a Full Access feature"
+          }
+        }
+      }
+    },
+    "Timeline is there to help you keep track of your bookings" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zeitstrahl dient zur leichteren Übersicht deiner Buchungen. Wenn deine Buchungen stattfanden, kannst du sie hier abhaken."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Timeline is there to help you keep track of your bookings. You will be able to check off your bookings when they happen."
+          }
+        }
+      }
+    },
+    "Tips" : {
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -1781,7 +2668,7 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Tip jar"
+            "value" : "Tips"
           }
         }
       }
@@ -1919,6 +2806,86 @@
         }
       }
     },
+    "Type" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Typ"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Type"
+          }
+        }
+      }
+    },
+    "Unchecked" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Unabgehakt"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Unchecked"
+          }
+        }
+      }
+    },
+    "Unlock feature in Settings -> Features" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zum freischalten gehe in Einstellungen -> Funktionalitäten"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "To unlock feature go to Settings -> Features"
+          }
+        }
+      }
+    },
+    "Useful for sorting and statistics, associated with all timeline entries" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wird verwendet für das Sortieren, Statistiken und die dazugehörigen Zeitstrahleinträge."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Useful for sorting and statistics, will be associated with all timeline entries."
+          }
+        }
+      }
+    },
+    "User interface" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Benutzeroberfläche"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "User interface"
+          }
+        }
+      }
+    },
     "Week" : {
       "localizations" : {
         "de" : {
@@ -1947,6 +2914,22 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "weekly"
+          }
+        }
+      }
+    },
+    "Will also impact associated timeline entries" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dies wird auch alle dazugehörigen Zeitstrahleinträge entfernen."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "This will also remove all associated timeline entries."
           }
         }
       }

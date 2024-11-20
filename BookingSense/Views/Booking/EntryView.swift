@@ -18,11 +18,17 @@ struct EntryView: View {
 
   var bookingEntry: BookingEntry?
 
+  @State var showConfirmation: Bool = false
+  @State var showConfirmationTimeline: Bool = false
   @State private var name: String = ""
-  @State private var amountPrefix: AmountPrefix = .minus
+  @State private var bookingType: BookingType = .minus
   @State private var amount: String = ""
   @State private var interval: Interval = .monthly
+  @State private var state: BookingEntryState = .active
+  @State private var date: Date = .now
+  @State private var tag: Tag?
   @State private var errorMessage: String?
+  @State private var enableTimeline: Bool = false
   @FocusState private var focusedName: Bool
   @FocusState private var focusedAmount: Bool
   let alertTitle: String = "Save failed"
@@ -33,18 +39,35 @@ struct EntryView: View {
 
   var body: some View {
     Form {
-      EntryFormView(bookingEntry: bookingEntry,
-                    name: $name,
-                    amountPrefix: $amountPrefix,
+      EntryFormView(name: $name,
+                    bookingType: $bookingType,
                     amount: $amount,
                     interval: $interval,
+                    state: $state,
+                    date: $date,
+                    tag: $tag,
+                    enableTimeline: $enableTimeline,
+                    showConfirmationTimeline: $showConfirmationTimeline,
                     focusedName: _focusedName,
-                    focusedAmount: _focusedAmount
+                    focusedAmount: _focusedAmount,
+                    bookingEntry: bookingEntry
       )
+      Section(content: {
+        HStack {
+          Button("Delete booking", systemImage: "trash", role: .destructive, action: showDeleteConfirm)
+            .foregroundStyle(.red)
+        }
+      }, footer: {
+        Text("Will also impact associated timeline entries")
+      })
     }
-    .navigationTitle(isCreate ? "Create entry" : "Edit entry")
+    .listSectionSpacing(.compact)
+    .navigationTitle(isCreate ? "Create booking" : "Edit booking")
     .toolbar {
-      ToolbarEntry(isCreate: isCreate, save: save, didValuesChange: didValuesChange)
+      ToolbarEntry(isCreate: isCreate,
+                   save: save,
+                   didValuesChange: didValuesChange
+      )
     }
     .alert(Text(LocalizedStringKey(alertTitle)), isPresented: Binding<Bool>(
         get: { errorMessage != nil },
@@ -56,15 +79,41 @@ struct EntryView: View {
     } message: {
         Text(LocalizedStringKey(errorMessage ?? "An unknown error occurred."))
     }
+    .confirmationDialog("Are you sure?", isPresented: $showConfirmation) {
+      Button("Delete \(bookingEntry?.name ?? "booking")", role: .destructive) {
+        modelContext.delete(bookingEntry!)
+        dismiss()
+      }
+    } message: {
+      Text("Sure delete booking \(bookingEntry?.name ?? ""), will delete timeline entries?")
+    }
+    .confirmationDialog("Are you sure?", isPresented: $showConfirmationTimeline) {
+      Button("Deactivate \(bookingEntry?.name ?? "booking") timeline", role: .destructive) {
+        Constants.removeTimelineEntriesFrom(bookingEntry!, context: modelContext)
+        bookingEntry!.date = nil
+        showConfirmationTimeline = false
+      }
+      Button("Cancel", role: .cancel) {
+        showConfirmationTimeline = false
+        enableTimeline = true
+      }
+    } message: {
+      Text("Deactivate \(bookingEntry?.name ?? "booking") timeline, will delete")
+    }
+  }
+
+  func showDeleteConfirm() {
+    withAnimation {
+      showConfirmation = true
+    }
   }
 
   func save() {
     let sanitizedAmount = stripString(amount)
     focusedName = false
     focusedAmount = false
-
     let alreadyExists = entries.filter {
-      $0.name == name && $0.persistentModelID != bookingEntry?.persistentModelID
+      $0.name == name && $0.uuid != bookingEntry?.uuid
     }.first != nil
 
     if alreadyExists {
@@ -82,20 +131,57 @@ struct EntryView: View {
     }
 
     if isCreate {
-      modelContext.insert(BookingEntry(
+      let newEntry = BookingEntry(
         name: name,
-        tag: nil,
+        state: state.rawValue,
         amount: parsedAmount ?? Decimal(),
-        amountPrefix: amountPrefix,
-        interval: interval
-      ))
-      dismiss()
+        date: enableTimeline ? date : nil,
+        bookingType: bookingType.rawValue,
+        interval: interval,
+        tag: tag,
+        timelineEntries: nil
+      )
+      modelContext.insert(newEntry)
     } else {
+      updateTimelineTags(tag, oldTag: bookingEntry!.tag, entry: bookingEntry)
       bookingEntry!.name = name
-      bookingEntry!.amountPrefix = amountPrefix
+      bookingEntry!.bookingType = bookingType.rawValue
       bookingEntry!.amount = parsedAmount ?? Decimal()
       bookingEntry!.interval = interval.rawValue
-      dismiss()
+      bookingEntry!.state = state.rawValue
+      bookingEntry!.date = enableTimeline ? date : nil
+      bookingEntry!.tag = tag
+      Task {
+        handleTimelineEntries(
+          BookingEntryState(rawValue: bookingEntry!.state),
+          entry: bookingEntry
+        )
+      }
+    }
+    dismiss()
+  }
+
+  func handleTimelineEntries(_ state: BookingEntryState?, entry: BookingEntry?) {
+    guard let state = state, let entry = entry else { return }
+
+    switch state {
+    case BookingEntryState.active:
+      Constants.removeTimelineEntriesNewerThan(entry, context: modelContext)
+    case BookingEntryState.paused:
+      Constants.removeTimelineEntriesNewerThan(.now, entry: entry, context: modelContext)
+    case BookingEntryState.archived:
+      Constants.removeTimelineEntriesNewerThan(.now, entry: entry, context: modelContext)
+    }
+  }
+
+  func updateTimelineTags(_ newTag: Tag?, oldTag: Tag?, entry: BookingEntry?) {
+    guard let entry = entry else { return }
+    if newTag == oldTag {
+      return
+    }
+
+    entry.timelineEntries?.forEach {
+      $0.tag = newTag
     }
   }
 
@@ -114,10 +200,17 @@ struct EntryView: View {
 
   func didValuesChange() -> Bool {
     if let bookingEntry {
+      let formatter = NumberFormatter()
+      formatter.numberStyle = .decimal
+      formatter.usesGroupingSeparator = false
+
       if name != bookingEntry.name ||
-          amount != bookingEntry.amount.formatted() ||
-          amountPrefix != bookingEntry.amountPrefix ||
-          interval != Interval(rawValue: bookingEntry.interval) ?? Interval.monthly {
+          amount != formatter.string(from: NSDecimalNumber(decimal: bookingEntry.amount)) ||
+          bookingType.rawValue != bookingEntry.bookingType ||
+          interval != Interval(rawValue: bookingEntry.interval) ?? .monthly ||
+          (enableTimeline ? date : nil) != bookingEntry.date ||
+          state != BookingEntryState(rawValue: bookingEntry.state) ?? .active ||
+          tag != bookingEntry.tag {
         return true
       }
     }
@@ -139,10 +232,11 @@ struct EntryView: View {
 #Preview("Edit") {
   let entry = BookingEntry(
     name: "testName",
-    tag: nil,
     amount: Decimal(string: "15,35", locale: Locale(identifier: Locale.current.identifier)) ?? Decimal(),
-    amountPrefix: .plus,
-    interval: .weekly)
+    bookingType: BookingType.plus.rawValue,
+    interval: .weekly,
+    tag: nil,
+    timelineEntries: nil)
 
   return EntryView(bookingEntry: entry)
 }

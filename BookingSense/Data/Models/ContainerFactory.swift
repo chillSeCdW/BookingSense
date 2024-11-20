@@ -11,8 +11,11 @@ import SwiftData
 struct ContainerFactory {
   let container: ModelContainer
 
-  init(_ models: any PersistentModel.Type..., storeInMemory: Bool, migrationPlan: SchemaMigrationPlan.Type? = nil) {
-    let schema = Schema(models)
+  init(_ versionedSchema: any VersionedSchema.Type,
+       storeInMemory: Bool,
+       migrationPlan: SchemaMigrationPlan.Type? = nil
+  ) {
+    let schema = Schema(versionedSchema: versionedSchema)
     let config = ModelConfiguration(schema: schema,
                                     isStoredInMemoryOnly: storeInMemory,
                                     groupContainer: .identifier("group.com.chill.BookingSense"),
@@ -42,10 +45,11 @@ struct ContainerFactory {
       let randomTask = names[randomIndex]
 
       returnResult.append(BookingEntry(name: randomTask,
-                                       tag: nil,
                                        amount: Decimal(Double.random(in: 0...500)),
-                                       amountPrefix: AmountPrefix.allCases.randomElement()!,
-                                       interval: Interval.allCases.randomElement()!)
+                                       bookingType: BookingType.allCases.randomElement()!.rawValue,
+                                       interval: Interval.allCases.randomElement()!,
+                                       tag: nil,
+                                       timelineEntries: nil)
       )
     }
     return returnResult
@@ -54,144 +58,202 @@ struct ContainerFactory {
   // swiftlint:disable function_body_length
   static func generateFixedEntriesItems() -> [BookingEntry] {
     var returnResult: [BookingEntry] = []
+    let incomeTag: Tag = Tag(name: "income")
+    let timelineEntry: TimelineEntry = TimelineEntry(
+      state: TimelineEntryState.open.rawValue,
+      name: "Brötchen",
+      amount: 2.5,
+      bookingType: BookingType.minus.rawValue,
+      isDue: Date.now,
+      tag: nil,
+      completedAt: nil,
+      bookingEntry: nil
+    )
+    let timelineEntry1: TimelineEntry = TimelineEntry(
+      state: TimelineEntryState.open.rawValue,
+      name: "Brötchen",
+      amount: 2.5,
+      bookingType: BookingType.minus.rawValue,
+      isDue: Date.now.addingTimeInterval( 60 * 60 * 24 * 2),
+      tag: nil,
+      completedAt: nil,
+      bookingEntry: nil
+    )
+    let timelineEntry2: TimelineEntry = TimelineEntry(
+      state: TimelineEntryState.open.rawValue,
+      name: "Brötchen",
+      amount: 2.5,
+      bookingType: BookingType.minus.rawValue,
+      isDue: Date.now.addingTimeInterval( 60 * 60 * 24),
+      tag: nil,
+      completedAt: nil,
+      bookingEntry: nil
+    )
 
     returnResult.append(BookingEntry(name: "Trinkgeld",
-                                     tag: nil,
                                      amount: 1,
-                                     amountPrefix: AmountPrefix.plus,
-                                     interval: .daily))
+                                     bookingType: BookingType.plus.rawValue,
+                                     interval: .daily,
+                                     tag: incomeTag,
+                                     timelineEntries: nil))
     returnResult.append(BookingEntry(name: "Cashback",
-                                     tag: nil,
                                      amount: 10,
-                                     amountPrefix: AmountPrefix.plus,
-                                     interval: .weekly))
+                                     bookingType: BookingType.plus.rawValue,
+                                     interval: .weekly,
+                                     tag: incomeTag,
+                                     timelineEntries: nil))
     returnResult.append(BookingEntry(name: "Tutoring",
-                                     tag: nil,
                                      amount: 50,
-                                     amountPrefix: AmountPrefix.plus,
-                                     interval: .biweekly))
+                                     bookingType: BookingType.plus.rawValue,
+                                     interval: .biweekly,
+                                     tag: incomeTag,
+                                     timelineEntries: nil))
     returnResult.append(BookingEntry(name: "Salary",
-                                     tag: nil,
                                      amount: 2500,
-                                     amountPrefix: AmountPrefix.plus,
-                                     interval: .monthly))
+                                     bookingType: BookingType.plus.rawValue,
+                                     interval: .monthly,
+                                     tag: incomeTag,
+                                     timelineEntries: nil))
     returnResult.append(BookingEntry(name: "Rent Parking",
-                                     tag: nil,
                                      amount: 150,
-                                     amountPrefix: AmountPrefix.plus,
-                                     interval: .monthly))
+                                     bookingType: BookingType.plus.rawValue,
+                                     interval: .monthly,
+                                     tag: incomeTag,
+                                     timelineEntries: nil))
     returnResult.append(BookingEntry(name: "Investment",
-                                     tag: nil,
                                      amount: 500,
-                                     amountPrefix: AmountPrefix.plus,
-                                     interval: .semiannually))
+                                     bookingType: BookingType.plus.rawValue,
+                                     interval: .semiannually,
+                                     tag: incomeTag,
+                                     timelineEntries: nil))
     returnResult.append(BookingEntry(name: "Festgeld",
-                                     tag: nil,
                                      amount: 1000,
-                                     amountPrefix: AmountPrefix.plus,
-                                     interval: .annually))
+                                     bookingType: BookingType.plus.rawValue,
+                                     interval: .annually,
+                                     tag: incomeTag,
+                                     timelineEntries: nil))
 
     returnResult.append(BookingEntry(name: "Brötchen",
-                                     tag: nil,
                                      amount: 2.5,
-                                     amountPrefix: AmountPrefix.minus,
-                                     interval: .daily))
+                                     bookingType: BookingType.minus.rawValue,
+                                     interval: .daily,
+                                     tag: nil,
+                                     timelineEntries: [timelineEntry, timelineEntry1, timelineEntry2]))
     returnResult.append(BookingEntry(name: "Taschengeld Kinder",
-                                     tag: nil,
                                      amount: 10,
-                                     amountPrefix: AmountPrefix.minus,
-                                     interval: .weekly))
+                                     bookingType: BookingType.minus.rawValue,
+                                     interval: .weekly,
+                                     tag: nil,
+                                     timelineEntries: nil))
     returnResult.append(BookingEntry(name: "Babysitter",
-                                     tag: nil,
                                      amount: 50,
-                                     amountPrefix: AmountPrefix.minus,
-                                     interval: .biweekly))
+                                     bookingType: BookingType.minus.rawValue,
+                                     interval: .biweekly,
+                                     tag: nil,
+                                     timelineEntries: nil))
     returnResult.append(BookingEntry(name: "Rent",
-                                     tag: nil,
                                      amount: 800,
-                                     amountPrefix: AmountPrefix.minus,
-                                     interval: .monthly))
+                                     bookingType: BookingType.minus.rawValue,
+                                     interval: .monthly,
+                                     tag: nil,
+                                     timelineEntries: nil))
     returnResult.append(BookingEntry(name: "Netflix",
-                                     tag: nil,
                                      amount: 20,
-                                     amountPrefix: AmountPrefix.minus,
-                                     interval: .monthly))
+                                     bookingType: BookingType.minus.rawValue,
+                                     interval: .monthly,
+                                     tag: nil,
+                                     timelineEntries: nil))
     returnResult.append(BookingEntry(name: "Benzin",
-                                     tag: nil,
                                      amount: 150,
-                                     amountPrefix: AmountPrefix.minus,
-                                     interval: .monthly))
+                                     bookingType: BookingType.minus.rawValue,
+                                     interval: .monthly,
+                                     tag: nil,
+                                     timelineEntries: nil))
     returnResult.append(BookingEntry(name: "Youtube Premium",
-                                     tag: nil,
                                      amount: 14,
-                                     amountPrefix: AmountPrefix.minus,
-                                     interval: .monthly))
+                                     bookingType: BookingType.minus.rawValue,
+                                     interval: .monthly,
+                                     tag: nil,
+                                     timelineEntries: nil))
     returnResult.append(BookingEntry(name: "iCloud",
-                                     tag: nil,
                                      amount: 2,
-                                     amountPrefix: AmountPrefix.minus,
-                                     interval: .monthly))
+                                     bookingType: BookingType.minus.rawValue,
+                                     interval: .monthly,
+                                     tag: nil,
+                                     timelineEntries: nil))
     returnResult.append(BookingEntry(name: "GEZ",
-                                     tag: nil,
                                      amount: 55,
-                                     amountPrefix: AmountPrefix.minus,
-                                     interval: .quarterly))
+                                     bookingType: BookingType.minus.rawValue,
+                                     interval: .quarterly,
+                                     tag: nil,
+                                     timelineEntries: nil))
     returnResult.append(BookingEntry(name: "semiannuallyEntry",
-                                     tag: nil,
                                      amount: 200,
-                                     amountPrefix: AmountPrefix.minus,
-                                     interval: .semiannually))
+                                     bookingType: BookingType.minus.rawValue,
+                                     interval: .semiannually,
+                                     tag: nil,
+                                     timelineEntries: nil))
     returnResult.append(BookingEntry(name: "KFZ Steuer",
-                                     tag: nil,
                                      amount: 450,
-                                     amountPrefix: AmountPrefix.minus,
-                                     interval: .annually))
-    returnResult.append(BookingEntry(name: "TÜV",
+                                     bookingType: BookingType.minus.rawValue,
+                                     interval: .annually,
                                      tag: nil,
+                                     timelineEntries: nil))
+    returnResult.append(BookingEntry(name: "TÜV",
                                      amount: 800,
-                                     amountPrefix: AmountPrefix.minus,
-                                     interval: .annually))
+                                     bookingType: BookingType.minus.rawValue,
+                                     interval: .annually,
+                                     tag: nil,
+                                     timelineEntries: nil))
 
     returnResult.append(BookingEntry(name: "Einkauf Aufrundung",
-                                     tag: nil,
                                      amount: 1,
-                                     amountPrefix: AmountPrefix.saving,
-                                     interval: .daily))
+                                     bookingType: BookingType.saving.rawValue,
+                                     interval: .daily,
+                                     tag: nil,
+                                     timelineEntries: nil))
     returnResult.append(BookingEntry(name: "Bike saving",
-                                     tag: nil,
                                      amount: 10,
-                                     amountPrefix: AmountPrefix.saving,
-                                     interval: .weekly))
+                                     bookingType: BookingType.saving.rawValue,
+                                     interval: .weekly,
+                                     tag: nil,
+                                     timelineEntries: nil))
     returnResult.append(BookingEntry(name: "Phone saving",
-                                     tag: nil,
                                      amount: 20,
-                                     amountPrefix: AmountPrefix.saving,
-                                     interval: .biweekly))
+                                     bookingType: BookingType.saving.rawValue,
+                                     interval: .biweekly,
+                                     tag: nil,
+                                     timelineEntries: nil))
     returnResult.append(BookingEntry(name: "Tagesgeld",
-                                     tag: nil,
                                      amount: 500,
-                                     amountPrefix: AmountPrefix.saving,
-                                     interval: .monthly))
+                                     bookingType: BookingType.saving.rawValue,
+                                     interval: .monthly,
+                                     tag: nil,
+                                     timelineEntries: nil))
     returnResult.append(BookingEntry(name: "ETF",
-                                     tag: nil,
                                      amount: 200,
-                                     amountPrefix: AmountPrefix.saving,
-                                     interval: .monthly))
+                                     bookingType: BookingType.saving.rawValue,
+                                     interval: .monthly,
+                                     tag: nil,
+                                     timelineEntries: nil))
     returnResult.append(BookingEntry(name: "Versicherung",
-                                     tag: nil,
                                      amount: 200,
-                                     amountPrefix: AmountPrefix.saving,
-                                     interval: .quarterly))
+                                     bookingType: BookingType.saving.rawValue,
+                                     interval: .quarterly,
+                                     tag: nil,
+                                     timelineEntries: nil))
     returnResult.append(BookingEntry(name: "Altervorsorge",
-                                     tag: nil,
                                      amount: 200,
-                                     amountPrefix: AmountPrefix.saving,
-                                     interval: .semiannually))
-    returnResult.append(BookingEntry(name: "Auto reperatur",
+                                     bookingType: BookingType.saving.rawValue,
+                                     interval: .semiannually,
                                      tag: nil,
+                                     timelineEntries: nil))
+    returnResult.append(BookingEntry(name: "Auto reperatur",
                                      amount: 500,
-                                     amountPrefix: AmountPrefix.saving,
-                                     interval: .annually))
+                                     bookingType: BookingType.saving.rawValue,
+                                     interval: .annually,
+                                     tag: nil,
+                                     timelineEntries: nil))
     return returnResult
   }
   // swiftlint:enable function_body_length

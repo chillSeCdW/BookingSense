@@ -8,47 +8,30 @@
 import SwiftUI
 
 struct SortButtonView: View {
-    @AppStorage("sortParameter") var sortParameter: SortParameter = .name
-    @AppStorage("sortOrder") var sortOrder: SortOrderParameter = .reverse
+  @Environment(AppStates.self) var appStates
 
-    var body: some View {
-        Menu {
-            Picker("Sort order", selection: $sortOrder) {
-                ForEach(SortOrderParameter.allCases) { order in
-                    Text(order.name)
-                }
-            }
-            Picker("Sort by", selection: $sortParameter) {
-                ForEach(SortParameter.allCases) { parameter in
-                    Text(parameter.name)
-                }
-            }
-        } label: {
-            Label("Sort", systemImage: "arrow.up.arrow.down")
+  var body: some View {
+    @Bindable var appStates = appStates
+
+    Menu {
+      Picker("Sort order", selection: $appStates.sortOrder) {
+        ForEach(SortOrderEnum.allCases) { order in
+          Text(order.name)
         }
-        .pickerStyle(.inline)
+      }
+      Picker("Sort by", selection: $appStates.sortBy) {
+        ForEach(SortByEnum.allCases) { parameter in
+          Text(parameter.name)
+        }
+      }
+    } label: {
+      Label("Sort", systemImage: "arrow.up.arrow.down")
     }
-}
-
-enum SortParameter: String, CaseIterable, Identifiable {
-    case name, amount
-    var id: Self { self }
-  var name: String {
-    let key = "sort_parameter.\(rawValue.lowercased())"
-    return NSLocalizedString(key, comment: "")
+    .pickerStyle(.inline)
   }
 }
 
-enum SortOrderParameter: String, CaseIterable, Identifiable {
-    case forward, reverse
-    var id: Self { self }
-    var name: String {
-      let key = "sort_order.\(rawValue.lowercased())"
-      return NSLocalizedString(key, comment: "")
-    }
-}
-
 #Preview {
-    SortButtonView()
-        .environment(AppStates())
+  SortButtonView()
+    .environment(AppStates())
 }

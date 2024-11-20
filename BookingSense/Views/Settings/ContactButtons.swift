@@ -22,7 +22,8 @@ struct ContactButtons: View {
             Text("Give feedback")
           }
         }
-      }.sheet(isPresented: $isShowingMailView) {
+      }
+      .sheet(isPresented: $isShowingMailView) {
         MailView(isShowing: self.$isShowingMailView,
                  result: self.$result,
                  subject: subject,

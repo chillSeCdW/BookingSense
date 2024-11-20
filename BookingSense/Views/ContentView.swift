@@ -10,13 +10,17 @@ import SwiftData
 import StoreKit
 
 struct ContentView: View {
-  @Environment(\.modelContext) private var modelContext
   @Environment(AppStates.self) var appStates
+  @Environment(\.purchaseStatus) private var purchaseStatus
+  @Environment(\.purchaseStatusIsLoading) private var purchaseStatusIsLoading
   @Environment(\.requestReview) private var requestReview
   @Environment(\.scenePhase) var scenePhase
   @AppStorage("numberOfVisits") var numberOfVisits = 0
-  @AppStorage("blurSensitive") var blurSensitive = false
   @AppStorage("tmpBlurSensitive") var tmpBlurSensitive = false
+
+  private var hasFullAccess: Bool {
+      return purchaseStatus != .defaultAccess && !purchaseStatusIsLoading
+  }
 
   var body: some View {
     TabView {
@@ -24,6 +28,12 @@ struct ContentView: View {
         .tabItem {
           Label("Overview", systemImage: "dollarsign.arrow.circlepath")
         }
+      if appStates.showTimelineTab {
+        TimelineView()
+          .tabItem {
+            Label("Timeline", systemImage: "calendar.day.timeline.left")
+          }
+      }
       BookingNavigationStackView()
         .tabItem {
           Label("Bookings", systemImage: "list.dash")
@@ -37,12 +47,12 @@ struct ContentView: View {
       if !appStates.authenticationActive {
         if newPhase == .active {
           if tmpBlurSensitive == true {
-            blurSensitive.toggle()
+            appStates.blurSensitive.toggle()
             tmpBlurSensitive.toggle()
           }
         } else if newPhase == .inactive {
-          if blurSensitive == false {
-            blurSensitive.toggle()
+          if appStates.blurSensitive == false {
+            appStates.blurSensitive.toggle()
             tmpBlurSensitive.toggle()
           }
         }
@@ -60,7 +70,7 @@ struct ContentView: View {
 }
 
 #Preview {
-  let factory = ContainerFactory(BookingEntry.self, storeInMemory: true)
+  let factory = ContainerFactory(BookingSchemaV4.self, storeInMemory: true)
   factory.addExamples(ContainerFactory.generateFixedEntriesItems())
   return ContentView()
     .environment(AppStates())

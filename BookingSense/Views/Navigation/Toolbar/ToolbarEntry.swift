@@ -31,4 +31,5 @@ struct ToolbarEntry: ToolbarContent {
       }
     }
   }
+
 }

@@ -60,8 +60,8 @@ struct IntervalInsightsView: View {
     }.padding(.bottom, 5)
   }
 
-  private func calculateIntervalTotalsFor(_ amountPrefix: AmountPrefix, interval: Interval) -> Decimal {
-    return entries.filter { $0.amountPrefix == amountPrefix }
+  private func calculateIntervalTotalsFor(_ bookingType: BookingType, interval: Interval) -> Decimal {
+    return entries.filter { $0.bookingType == bookingType.rawValue }
       .map { entry in
         entry.amount * Constants.getTimesValue(from: Interval(rawValue: entry.interval), to: interval)
       }
@@ -91,7 +91,9 @@ struct IntervalInsightsView: View {
   private func calculateIntervalIncomeOf(_ interval: Interval) -> Decimal {
     var totalIntervalCosts: Decimal = Decimal()
 
-    for entry in entries where entry.amountPrefix == .plus && entry.interval == interval.rawValue {
+    for entry in entries where
+    entry.bookingType == BookingType.plus.rawValue &&
+    entry.interval == interval.rawValue {
       totalIntervalCosts += entry.amount
     }
 
@@ -101,7 +103,9 @@ struct IntervalInsightsView: View {
   private func calculateIntervalDeductionsOf(_ interval: Interval) -> Decimal {
     var totalIntervalCosts: Decimal = Decimal()
 
-    for entry in entries where entry.amountPrefix == .minus && entry.interval == interval.rawValue {
+    for entry in entries where
+    entry.bookingType == BookingType.minus.rawValue &&
+    entry.interval == interval.rawValue {
       totalIntervalCosts += entry.amount
     }
 
@@ -111,7 +115,9 @@ struct IntervalInsightsView: View {
   private func calculateIntervalSavings(_ interval: Interval) -> Decimal {
     var totalIntervalSavings: Decimal = Decimal()
 
-    for entry in entries where entry.amountPrefix == .saving && entry.interval == interval.rawValue {
+    for entry in entries where
+    entry.bookingType == BookingType.saving.rawValue &&
+    entry.interval == interval.rawValue {
       totalIntervalSavings += entry.amount
     }
 
@@ -120,7 +126,7 @@ struct IntervalInsightsView: View {
 }
 
 #Preview {
-  let factory = ContainerFactory(BookingEntry.self, storeInMemory: true)
+  let factory = ContainerFactory(BookingSchemaV4.self, storeInMemory: true)
   factory.addExamples(ContainerFactory.generateRandomEntriesItems())
   return IntervalInsightsView()
     .modelContainer(factory.container)

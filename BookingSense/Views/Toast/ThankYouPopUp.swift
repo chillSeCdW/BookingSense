@@ -7,6 +7,8 @@ import MijickPopupView
 struct ThankYouPopUp: TopPopup {
   let colorScheme: ColorScheme
 
+  var message: String
+
   func configurePopup(popup: TopPopupConfig) -> TopPopupConfig {
     let scene = (UIApplication.shared.connectedScenes.first as? UIWindowScene)
     let safeAreaPaddingTop = scene?.windows.first?.safeAreaInsets.top
@@ -25,7 +27,7 @@ struct ThankYouPopUp: TopPopup {
         VStack(alignment: .leading) {
           Text(String(localized: "Wuhoo!"))
             .fontWeight(.semibold)
-          Text(String(localized: "Thank you for your tip!"))
+          Text(message)
         }.fixedSize(horizontal: false, vertical: true)
       }
       Button(action: dismiss) {
@@ -40,5 +42,5 @@ struct ThankYouPopUp: TopPopup {
 }
 
 #Preview {
-  ThankYouPopUp(colorScheme: ColorScheme.light)
+  ThankYouPopUp(colorScheme: ColorScheme.light, message: String(localized: "Thank you for your tip!"))
 }

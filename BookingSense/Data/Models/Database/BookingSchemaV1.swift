@@ -33,10 +33,10 @@ extension BookingSchemaV1 {
     var name: String
     var tags: [String]
     var amount: Decimal
-    var amountPrefix: AmountPrefix
+    var amountPrefix: BookingType
     var interval: String
 
-    init(name: String, tags: [String], amount: Decimal, amountPrefix: AmountPrefix, interval: Interval) {
+    init(name: String, tags: [String], amount: Decimal, amountPrefix: BookingType, interval: Interval) {
       self.id = UUID().uuidString
       self.name = name
       self.tags = tags
@@ -51,7 +51,7 @@ extension BookingSchemaV1 {
       name = try container.decode(String.self, forKey: .name)
       tags = try container.decode([String].self, forKey: .tags)
       amount = try container.decode(Decimal.self, forKey: .amount)
-      amountPrefix = try container.decode(AmountPrefix.self, forKey: .amountPrefix)
+      amountPrefix = try container.decode(BookingType.self, forKey: .amountPrefix)
       interval = try container.decode(String.self, forKey: .interval)
     }
 

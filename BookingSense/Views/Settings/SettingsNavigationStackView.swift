@@ -9,22 +9,37 @@ import TipKit
 struct SettingsNavigationStackView: View {
 
   @Environment(\.colorScheme) var colorScheme
+  @Environment(AppStates.self) var appStates
   @AppStorage("resetTips") var resetTips = false
-  @AppStorage("biometricEnabled") var biometricEnabled = false
 
   var body: some View {
+    @Bindable var appStates = appStates
+
     NavigationStack {
       List {
         Section("Export/Import") {
           ExportImportButtons()
+        }
+        Section("Data") {
+          NavigationLink {
+            TagsListView()
+          } label: {
+            HStack {
+              Image(systemName: "tag")
+              Text("Tags")
+            }
+          }
+        }
+        Section("User interface") {
+          Toggle("Show Timeline tab", isOn: $appStates.showTimelineTab)
         }
         Section("Contact") {
           ContactButtons()
         }
         if BiometricHandler.shared.canUseAuthentication() {
           Section("Authentication") {
-            Toggle("Enable Authentication for Blurring", isOn: $biometricEnabled)
-            if biometricEnabled {
+            Toggle("Enable Authentication for Blurring", isOn: $appStates.biometricEnabled)
+            if appStates.biometricEnabled {
               Button {
                 if let settingsURL = URL(string: UIApplication.openSettingsURLString) {
                   UIApplication.shared.open(settingsURL, options: [:], completionHandler: nil)
@@ -46,13 +61,21 @@ struct SettingsNavigationStackView: View {
             }
           }
         }
-        Section("Tip jar") {
+        Section("Store") {
           NavigationLink {
             TipJarView()
           } label: {
             HStack {
               Image(systemName: "giftcard")
-              Text("Tip jar")
+              Text("Tips")
+            }
+          }
+          NavigationLink {
+            FeaturesPageView()
+          } label: {
+            HStack {
+              Image(systemName: "storefront")
+              Text("Features")
             }
           }
         }
@@ -86,7 +109,7 @@ struct SettingsNavigationStackView: View {
 }
 
 #Preview {
-  let factory = ContainerFactory(BookingEntry.self, storeInMemory: true)
+  let factory = ContainerFactory(BookingSchemaV4.self, storeInMemory: true)
   factory.addExamples(ContainerFactory.generateRandomEntriesItems())
 
   return SettingsNavigationStackView()

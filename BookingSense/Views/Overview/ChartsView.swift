@@ -16,9 +16,9 @@ struct ChartsView: View {
   var intervalMinusData: [BookingEntryChartData] {
 
     let minusBreakDown: [BookingEntryChartData] = entries.filter {
-      $0.interval == interval.rawValue && $0.amountPrefix == .minus
+      $0.interval == interval.rawValue && $0.bookingType == BookingType.minus.rawValue
     }.map { entry in
-      BookingEntryChartData(id: entry.id, name: entry.name, amount: entry.amount, color: nil)
+      BookingEntryChartData(id: entry.uuid, name: entry.name, amount: entry.amount, color: nil)
     }.sorted(by: { entry1, entry2 in
       entry1.amount > entry2.amount
     })
@@ -29,17 +29,17 @@ struct ChartsView: View {
   var intervalTotalMinusData: [BookingEntryChartData] {
 
     let minusBreakDown: [BookingEntryChartData] = entries.filter {
-      $0.amountPrefix == .minus
+      $0.bookingType == BookingType.minus.rawValue
     }.map { entry in
       if entry.interval != interval.rawValue {
         return BookingEntryChartData(
-          id: entry.id,
+          id: entry.uuid,
           name: entry.name,
           amount: entry.amount * Constants.getTimesValue(from: Interval(rawValue: entry.interval), to: interval),
           color: nil
         )
       }
-      return BookingEntryChartData(id: entry.id, name: entry.name, amount: entry.amount, color: nil)
+      return BookingEntryChartData(id: entry.uuid, name: entry.name, amount: entry.amount, color: nil)
     }.sorted(by: { entry1, entry2 in
       entry1.amount > entry2.amount
     })
@@ -50,9 +50,9 @@ struct ChartsView: View {
   var intervalPlusData: [BookingEntryChartData] {
 
     let plusBreakDown: [BookingEntryChartData] = entries.filter {
-      $0.interval == interval.rawValue && $0.amountPrefix == .plus
+      $0.interval == interval.rawValue && $0.bookingType == BookingType.plus.rawValue
     }.map { entry in
-      BookingEntryChartData(id: entry.id, name: entry.name, amount: entry.amount, color: nil)
+      BookingEntryChartData(id: entry.uuid, name: entry.name, amount: entry.amount, color: nil)
     }.sorted(by: { entry1, entry2 in
       entry1.amount > entry2.amount
     })
@@ -63,17 +63,17 @@ struct ChartsView: View {
   var intervalTotalPlusData: [BookingEntryChartData] {
 
     let plusBreakDown: [BookingEntryChartData] = entries.filter {
-      $0.amountPrefix == .plus
+      $0.bookingType == BookingType.plus.rawValue
     }.map { entry in
       if entry.interval != interval.rawValue {
         return BookingEntryChartData(
-          id: entry.id,
+          id: entry.uuid,
           name: entry.name,
           amount: entry.amount * Constants.getTimesValue(from: Interval(rawValue: entry.interval), to: interval),
           color: nil
         )
       }
-      return BookingEntryChartData(id: entry.id, name: entry.name, amount: entry.amount, color: nil)
+      return BookingEntryChartData(id: entry.uuid, name: entry.name, amount: entry.amount, color: nil)
     }.sorted(by: { entry1, entry2 in
       entry1.amount > entry2.amount
     })
@@ -84,9 +84,9 @@ struct ChartsView: View {
   var intervalSavingData: [BookingEntryChartData] {
 
     let savingBreakDown: [BookingEntryChartData] = entries.filter {
-      $0.interval == interval.rawValue && $0.amountPrefix == .saving
+      $0.interval == interval.rawValue && $0.bookingType == BookingType.saving.rawValue
     }.map { entry in
-      BookingEntryChartData(id: entry.id, name: entry.name, amount: entry.amount, color: nil)
+      BookingEntryChartData(id: entry.uuid, name: entry.name, amount: entry.amount, color: nil)
     }.sorted(by: { entry1, entry2 in
       entry1.amount > entry2.amount
     })
@@ -97,17 +97,17 @@ struct ChartsView: View {
   var intervalTotalSavingData: [BookingEntryChartData] {
 
     let savingBreakDown: [BookingEntryChartData] = entries.filter {
-      $0.amountPrefix == .saving
+      $0.bookingType == BookingType.saving.rawValue
     }.map { entry in
       if entry.interval != interval.rawValue {
         return BookingEntryChartData(
-          id: entry.id,
+          id: entry.uuid,
           name: entry.name,
           amount: entry.amount * Constants.getTimesValue(from: Interval(rawValue: entry.interval), to: interval),
           color: nil
         )
       }
-      return BookingEntryChartData(id: entry.id, name: entry.name, amount: entry.amount, color: nil)
+      return BookingEntryChartData(id: entry.uuid, name: entry.name, amount: entry.amount, color: nil)
     }.sorted(by: { entry1, entry2 in
       entry1.amount > entry2.amount
     })
@@ -155,7 +155,7 @@ struct ChartsView: View {
 
   func checkDataAddEmpty(_ data: [BookingEntryChartData]) -> [BookingEntryChartData] {
     if data.isEmpty {
-      return [BookingEntryChartData(id: "empty", name: "No data", amount: 1, color: .gray)]
+      return [BookingEntryChartData(id: "empty", name: String(localized: "No data"), amount: 1, color: .gray)]
     } else {
       return data
     }
