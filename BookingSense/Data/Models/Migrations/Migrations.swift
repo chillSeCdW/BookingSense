@@ -48,6 +48,7 @@ enum BookingMigrationV1ToV4: SchemaMigrationPlan {
         case .saving:
           newBookingType = "saving"
         }
+        bookingEntry.uuid = UUID().uuidString
         bookingEntry.bookingType = newBookingType
         bookingEntry.date = nil
       }
