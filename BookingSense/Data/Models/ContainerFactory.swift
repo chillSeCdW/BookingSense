@@ -12,8 +12,12 @@ struct ContainerFactory {
   let container: ModelContainer
 
   init(_ models: any PersistentModel.Type..., storeInMemory: Bool, migrationPlan: SchemaMigrationPlan.Type? = nil) {
-    let config = ModelConfiguration(isStoredInMemoryOnly: storeInMemory)
     let schema = Schema(models)
+    let config = ModelConfiguration(schema: schema,
+                                    isStoredInMemoryOnly: storeInMemory,
+                                    groupContainer: .identifier("group.com.chill.BookingSense"),
+                                    cloudKitDatabase: .none
+    )
     do {
       container = try ModelContainer(for: schema, migrationPlan: migrationPlan, configurations: config)
     } catch {
