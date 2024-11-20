@@ -19,7 +19,7 @@ struct ContainerFactory {
     let config = ModelConfiguration(schema: schema,
                                     isStoredInMemoryOnly: storeInMemory,
                                     groupContainer: .identifier("group.com.chill.BookingSense"),
-                                    cloudKitDatabase: .private("iCloud.com.chill.BookingSense-01")
+                                    cloudKitDatabase: .none
     )
     do {
       container = try ModelContainer(for: schema, migrationPlan: migrationPlan, configurations: config)
