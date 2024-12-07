@@ -78,6 +78,7 @@
 		B997384F2C4079DA00897AFD /* BookingSenseIconFinalLight.png in Resources */ = {isa = PBXBuildFile; fileRef = B997384E2C4079DA00897AFD /* BookingSenseIconFinalLight.png */; };
 		B9B8212B2BF244EB00CEDE43 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = B9B8212A2BF244EB00CEDE43 /* Settings.bundle */; };
 		B9BB9D6E2CAAE96C0057573B /* ThankYouPopUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9BB9D6D2CAAE95E0057573B /* ThankYouPopUp.swift */; };
+		B9C6EC3E2D04FBE800092E23 /* DecimalExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9C6EC3D2D04FBDF00092E23 /* DecimalExtensions.swift */; };
 		B9CC1BB62CD7902E0048670A /* ToolbarTimelineContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9CC1BB52CD790030048670A /* ToolbarTimelineContent.swift */; };
 		B9CC1BB82CD7BB110048670A /* TimelineContentListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9CC1BB72CD7BB0C0048670A /* TimelineContentListView.swift */; };
 		B9CC1BBE2CD830190048670A /* TimeFilterDialog.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9CC1BBD2CD830160048670A /* TimeFilterDialog.swift */; };
@@ -189,6 +190,7 @@
 		B997384E2C4079DA00897AFD /* BookingSenseIconFinalLight.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = BookingSenseIconFinalLight.png; sourceTree = "<group>"; };
 		B9B8212A2BF244EB00CEDE43 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 		B9BB9D6D2CAAE95E0057573B /* ThankYouPopUp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThankYouPopUp.swift; sourceTree = "<group>"; };
+		B9C6EC3D2D04FBDF00092E23 /* DecimalExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecimalExtensions.swift; sourceTree = "<group>"; };
 		B9C702B12C0FC6E0004546E1 /* ci_post_clone.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = ci_post_clone.sh; sourceTree = "<group>"; };
 		B9CC1BB52CD790030048670A /* ToolbarTimelineContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolbarTimelineContent.swift; sourceTree = "<group>"; };
 		B9CC1BB72CD7BB0C0048670A /* TimelineContentListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimelineContentListView.swift; sourceTree = "<group>"; };
@@ -278,6 +280,7 @@
 		B915DC4D2BB46EA50018E812 /* Data */ = {
 			isa = PBXGroup;
 			children = (
+				B9C6EC3F2D04FD1700092E23 /* Helper */,
 				B927D3F62CE7EB20006B1B19 /* Store */,
 				B991E2632CE5FE850031288B /* Deprecated */,
 				B9FEC3D52CAD5277009DD4A0 /* Handlers */,
@@ -286,7 +289,6 @@
 				B99205FB2BD90F780099EF26 /* AppStates.swift */,
 				B92D6F642CC006BD000A2697 /* ChartModels.swift */,
 				B915DC442BB4644A0018E812 /* Interval.swift */,
-				B915DC4E2BB479180018E812 /* Constants.swift */,
 				B9DE5B7E2BC6E7740017ACF4 /* BookingType.swift */,
 				B93839FD2CD4E81300AAB674 /* TimelineEntryState.swift */,
 				B93839FF2CD506AA00AAB674 /* BookingEntryState.swift */,
@@ -508,6 +510,15 @@
 				B96F6E182C41296E00132B50 /* BookingInfoPopUp.swift */,
 			);
 			path = Toast;
+			sourceTree = "<group>";
+		};
+		B9C6EC3F2D04FD1700092E23 /* Helper */ = {
+			isa = PBXGroup;
+			children = (
+				B915DC4E2BB479180018E812 /* Constants.swift */,
+				B9C6EC3D2D04FBDF00092E23 /* DecimalExtensions.swift */,
+			);
+			path = Helper;
 			sourceTree = "<group>";
 		};
 		B9C702B02C0FC6C8004546E1 /* ci_scripts */ = {
@@ -775,6 +786,7 @@
 				B9CC1BC62CD8C9540048670A /* BookingSortOrder.swift in Sources */,
 				B927D3F52CE7EA61006B1B19 /* PurchaseStatusTaskModifier.swift in Sources */,
 				B9FEC3D42CAD4A32009DD4A0 /* PurchaseHandler.swift in Sources */,
+				B9C6EC3E2D04FBE800092E23 /* DecimalExtensions.swift in Sources */,
 				B9CC1BC02CD838C90048670A /* TimelineListView.swift in Sources */,
 				B915DC452BB4644A0018E812 /* Interval.swift in Sources */,
 				B9CC1BB82CD7BB110048670A /* TimelineContentListView.swift in Sources */,
@@ -1093,7 +1105,7 @@
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen.storyboard;
 				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphoneos*]" = UIStatusBarStyleDefault;
 				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphonesimulator*]" = UIStatusBarStyleDefault;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
@@ -1142,7 +1154,7 @@
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen.storyboard;
 				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphoneos*]" = UIStatusBarStyleDefault;
 				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphonesimulator*]" = UIStatusBarStyleDefault;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";

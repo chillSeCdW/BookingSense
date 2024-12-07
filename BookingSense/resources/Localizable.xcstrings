@@ -2433,6 +2433,54 @@
         }
       }
     },
+    "sum of costs" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Summe des Einkommen"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sum of costs"
+          }
+        }
+      }
+    },
+    "sum of income" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Summe der Ausgaben"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sum of income"
+          }
+        }
+      }
+    },
+    "sum of savings" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Summe der Einsparungen"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sum of savings"
+          }
+        }
+      }
+    },
     "Sure delete booking %@, will delete timeline entries?" : {
       "localizations" : {
         "de" : {

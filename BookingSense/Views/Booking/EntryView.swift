@@ -52,6 +52,18 @@ struct EntryView: View {
                     focusedAmount: _focusedAmount,
                     bookingEntry: bookingEntry
       )
+      .onAppear {
+        if let bookingEntry {
+          name = bookingEntry.name
+          bookingType = BookingType(rawValue: bookingEntry.bookingType)!
+          amount = bookingEntry.amount.generateFormattedNumber()
+          interval = Interval(rawValue: bookingEntry.interval) ?? Interval.monthly
+          state = BookingEntryState(rawValue: bookingEntry.state) ?? BookingEntryState.active
+          date = bookingEntry.date ?? .now
+          tag = bookingEntry.tag
+          enableTimeline = bookingEntry.date != nil
+        }
+      }
       Section(content: {
         HStack {
           Button("Delete booking", systemImage: "trash", role: .destructive, action: showDeleteConfirm)
@@ -200,12 +212,8 @@ struct EntryView: View {
 
   func didValuesChange() -> Bool {
     if let bookingEntry {
-      let formatter = NumberFormatter()
-      formatter.numberStyle = .decimal
-      formatter.usesGroupingSeparator = false
-
       if name != bookingEntry.name ||
-          amount != formatter.string(from: NSDecimalNumber(decimal: bookingEntry.amount)) ||
+          amount != bookingEntry.amount.generateFormattedNumber() ||
           bookingType.rawValue != bookingEntry.bookingType ||
           interval != Interval(rawValue: bookingEntry.interval) ?? .monthly ||
           (enableTimeline ? date : nil) != bookingEntry.date ||
