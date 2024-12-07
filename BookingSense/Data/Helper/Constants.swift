@@ -410,7 +410,7 @@ struct Constants {
   static func getDateOfOneYearInFuture() -> Date {
     var calendar = Calendar(identifier: .gregorian)
     calendar.timeZone = TimeZone(identifier: "UTC")!
-    let nextYear = calendar.component(.year, from: .now) + 5
+    let nextYear = calendar.component(.year, from: .now) + 1
     let currentMonth = calendar.component(.month, from: .now)
     let currentDay = calendar.component(.day, from: .now) + 1
     var components = DateComponents()

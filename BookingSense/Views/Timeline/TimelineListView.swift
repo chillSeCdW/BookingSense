@@ -112,10 +112,51 @@ struct TimelineSectionView: View {
   let date: Date
   let entriesForDate: [TimelineEntry]
 
+  var totalSectionPlus: Decimal { entriesForDate.reduce(0) {
+    if $1.bookingType == BookingType.plus.rawValue {
+      return $0 + $1.amount
+    }
+    return $0
+  }}
+
+  var totalSectionMinus: Decimal { entriesForDate.reduce(0) {
+    if $1.bookingType == BookingType.minus.rawValue {
+      return $0 + $1.amount
+    }
+    return $0
+  }}
+
+  var totalSectionSaving: Decimal { entriesForDate.reduce(0) {
+    if $1.bookingType == BookingType.saving.rawValue {
+      return $0 + $1.amount
+    }
+    return $0
+  }}
+
   var body: some View {
-    Section(header: Text(sectionTitle(for: date))) {
+    Section(header: Text(sectionTitle(for: date)), footer: footerInfo) {
       ForEach(entriesForDate, id: \.uuid) { entry in
         TimelineEntryRow(entry: entry)
+      }
+    }
+  }
+
+  @ViewBuilder
+  var footerInfo: some View {
+    HStack(alignment: .center) {
+      VStack {
+        Text("sum of income")
+        Text(totalSectionPlus.generateFormattedCurrency())
+      }
+      Spacer()
+      VStack {
+        Text("sum of costs")
+        Text(totalSectionMinus.generateFormattedCurrency())
+      }
+      Spacer()
+      VStack {
+        Text("sum of savings")
+        Text(totalSectionSaving.generateFormattedCurrency())
       }
     }
   }

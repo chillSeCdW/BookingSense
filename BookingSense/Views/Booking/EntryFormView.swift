@@ -29,12 +29,6 @@ struct EntryFormView: View {
 
   var bookingEntry: BookingEntry?
 
-  private var formatter: NumberFormatter {
-    let formatter = NumberFormatter()
-    formatter.numberStyle = .decimal
-    formatter.usesGroupingSeparator = false
-    return formatter
-  }
   private var dateFormatter: DateFormatter {
     let formatter = DateFormatter()
     formatter.dateStyle = .full
@@ -69,18 +63,6 @@ struct EntryFormView: View {
                 bookingEntry: bookingEntry
     )
     TagPicker(tag: $tag)
-      .onAppear {
-        if let bookingEntry {
-          name = bookingEntry.name
-          bookingType = BookingType(rawValue: bookingEntry.bookingType)!
-          amount = formatter.string(from: NSDecimalNumber(decimal: bookingEntry.amount)) ?? ""
-          interval = Interval(rawValue: bookingEntry.interval) ?? Interval.monthly
-          state = BookingEntryState(rawValue: bookingEntry.state) ?? BookingEntryState.active
-          date = bookingEntry.date ?? .now
-          tag = bookingEntry.tag
-          enableTimeline = bookingEntry.date != nil
-        }
-      }
   }
 
   func getNextBookingAsString() -> String {
