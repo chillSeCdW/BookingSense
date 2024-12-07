@@ -142,15 +142,28 @@ struct Constants {
   static func insertTimelineEntriesOf(_ entry: BookingEntry, context: ModelContext, latestTimelineDate: Date? = nil) {
     guard let entryDate = entry.date else { return }
     var adjustingStartDate: Bool = false
+
+    var calendar = Calendar(identifier: .gregorian)
+    calendar.timeZone = TimeZone(identifier: "UTC")!
+
     if let latestTimelineDate {
-      if Calendar.current.compare(latestTimelineDate, to: entryDate, toGranularity: .day) == .orderedAscending {
+      if calendar.compare(latestTimelineDate, to: entryDate, toGranularity: .day) == .orderedAscending {
         adjustingStartDate = true // use bookingEntry date as starting date
       }
     }
-    let nextTimelineEntry = Constants.getNextDateOfInterval(latestTimelineDate, interval: entry.interval)
+    let originalDay = calendar.dateComponents([.day, .hour], from: entryDate)
+    let dayOfEntry = calendar.dateComponents([.day], from: entryDate).day!
+    let nextTimelineEntry = Constants.getNextDateOfInterval(
+      latestTimelineDate,
+      interval: entry.interval,
+      searchComponents: originalDay,
+      dayOfEntry: dayOfEntry
+    )
     let timelineEntryList = generateTimelineEntriesFrom(bookingEntry: entry,
                                                         entryDate: entryDate,
-                                                        startDate: adjustingStartDate ? nil : nextTimelineEntry
+                                                        startDate: adjustingStartDate ? nil : nextTimelineEntry,
+                                                        dayOfEntry: dayOfEntry
+
     )
 
     try? context.transaction {
@@ -162,13 +175,15 @@ struct Constants {
 
   static func generateTimelineEntriesFrom(bookingEntry: BookingEntry,
                                           entryDate: Date,
-                                          startDate: Date? = nil
+                                          startDate: Date? = nil,
+                                          dayOfEntry: Int
   ) -> [TimelineEntry]? {
     let dateOneYearInFuture = getDateOfOneYearInFuture()
 
     let entryDates = self.getDatesForEntries(startDate ?? entryDate,
                                              endDate: dateOneYearInFuture,
-                                             interval: bookingEntry.interval
+                                             interval: bookingEntry.interval,
+                                             dayOfEntry: dayOfEntry
     )
 
     var timelineEntriesList: [TimelineEntry] = []
@@ -217,13 +232,24 @@ struct Constants {
     }
   }
 
-  static func getDatesForEntries(_ startDate: Date, endDate: Date, interval: String) -> [Date] {
+  static func getDatesForEntries(_ startDate: Date, endDate: Date, interval: String, dayOfEntry: Int) -> [Date] {
     var dates: [Date] = []
     var currentDate = startDate
+    var calendar = Calendar(identifier: .gregorian)
+    calendar.timeZone = TimeZone(identifier: "UTC")!
 
-    while Calendar.current.compare(currentDate, to: endDate, toGranularity: .day) == .orderedAscending {
+    let originalDay = calendar.dateComponents([.day, .hour], from: startDate)
+
+    while calendar.compare(currentDate, to: endDate, toGranularity: .day) == .orderedAscending {
+      print("currentDate: \(currentDate)")
       dates.append(currentDate)
-      if let newDate = getNextDateOfInterval(currentDate, interval: interval) {
+      if let newDate = getNextDateOfInterval(
+        currentDate,
+        interval: interval,
+        searchComponents: originalDay,
+        dayOfEntry: dayOfEntry
+      ) {
+        print("setting currentDate to \(newDate)")
         currentDate = newDate
       }
     }
@@ -231,13 +257,15 @@ struct Constants {
   }
 
   // swiftlint:disable:next cyclomatic_complexity
-  static func getNextDateOfInterval(_ startDate: Date?, interval: String) -> Date? {
+  static func getNextDateOfInterval(_ startDate: Date?, interval: String, searchComponents: DateComponents, dayOfEntry: Int) -> Date? {
     guard let startDate, let entryInterval = Interval(rawValue: interval) else {
       return nil
     }
     var nextDate: Date?
 
-    let calendar = Calendar.current
+    var calendar = Calendar(identifier: .gregorian)
+    calendar.timeZone = TimeZone(identifier: "UTC")!
+
     switch entryInterval {
     case .daily:
       if let newDate = calendar.date(byAdding: .day, value: 1, to: startDate) {
@@ -253,22 +281,47 @@ struct Constants {
       }
     case .monthly:
       if let newDate = calendar.date(byAdding: .month, value: 1, to: startDate) {
-        nextDate = newDate
+        nextDate = coverEndOfMonthEdgeCase(date: newDate, dayOfEntry: dayOfEntry)
       }
     case .quarterly:
       if let newDate = calendar.date(byAdding: .month, value: 3, to: startDate) {
-        nextDate = newDate
+        nextDate = coverEndOfMonthEdgeCase(date: newDate, dayOfEntry: dayOfEntry)
       }
     case .semiannually:
       if let newDate = calendar.date(byAdding: .month, value: 6, to: startDate) {
-        nextDate = newDate
+        nextDate = coverEndOfMonthEdgeCase(date: newDate, dayOfEntry: dayOfEntry)
       }
     case .annually:
       if let newDate = calendar.date(byAdding: .year, value: 1, to: startDate) {
-        nextDate = newDate
+        nextDate = coverEndOfMonthEdgeCase(date: newDate, dayOfEntry: dayOfEntry)
       }
     }
     return nextDate
+  }
+
+  static func coverEndOfMonthEdgeCase(date: Date, dayOfEntry: Int) -> Date {
+    if dayOfEntry >= 28 {
+      return getAdjustedEndOfMonthDate(date: date, dayOfEntry: dayOfEntry)
+    } else {
+      return date
+    }
+  }
+
+  static func getAdjustedEndOfMonthDate(date: Date, dayOfEntry: Int) -> Date {
+    var calendar = Calendar(identifier: .gregorian)
+    calendar.timeZone = TimeZone(identifier: "UTC")!
+    let dayRange = calendar.range(of: .day, in: .month, for: date)!
+    let lastDay = dayRange.upperBound
+    var nextDateComponents = calendar.dateComponents([.year, .month, .hour, .minute], from: date)
+    nextDateComponents.calendar = calendar
+    nextDateComponents.day = min(dayOfEntry, lastDay)
+    if !nextDateComponents.isValidDate {
+      nextDateComponents.day = min(dayOfEntry, lastDay - 1)
+    }
+    if let adjustedDate = calendar.date(from: nextDateComponents) {
+      return adjustedDate
+    }
+    return date
   }
 
   static func groupBookingsByInterval(entries: [BookingEntry]) -> [String: [BookingEntry]] {
@@ -321,7 +374,8 @@ struct Constants {
     tagFilter: Set<String> = []
   ) -> [Date: [TimelineEntry]] {
     var groupedEntries: [Date: [TimelineEntry]] = [:]
-    let calendar = Calendar.current
+    var calendar = Calendar(identifier: .gregorian)
+    calendar.timeZone = TimeZone(identifier: "UTC")!
 
     for entry in entries {
       let components = calendar.dateComponents([.year, .month], from: entry.isDue)
@@ -354,9 +408,11 @@ struct Constants {
   }
 
   static func getDateOfOneYearInFuture() -> Date {
-    let nextYear = Calendar.current.component(.year, from: .now) + 1
-    let currentMonth = Calendar.current.component(.month, from: .now)
-    let currentDay = Calendar.current.component(.day, from: .now) + 1
+    var calendar = Calendar(identifier: .gregorian)
+    calendar.timeZone = TimeZone(identifier: "UTC")!
+    let nextYear = calendar.component(.year, from: .now) + 5
+    let currentMonth = calendar.component(.month, from: .now)
+    let currentDay = calendar.component(.day, from: .now) + 1
     var components = DateComponents()
     components.year = nextYear
     components.month = currentMonth
@@ -364,7 +420,7 @@ struct Constants {
     components.hour = 23
     components.minute = 59
 
-    return Calendar.current.date(from: components)!
+    return calendar.date(from: components)!
   }
 
   static func getSymbol(_ code: String) -> String? {
