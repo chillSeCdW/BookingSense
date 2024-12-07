@@ -38,6 +38,7 @@ struct EntryFormView: View {
   private var dateFormatter: DateFormatter {
     let formatter = DateFormatter()
     formatter.dateStyle = .full
+    formatter.timeZone = TimeZone(identifier: "UTC")
     formatter.timeStyle = .none
     return formatter
   }
@@ -88,7 +89,9 @@ struct EntryFormView: View {
     }.sorted(by: { $0.isDue < $1.isDue })
 
     if let bookDate = bookingEntry?.date {
-      if Calendar.current.isDate(bookDate, equalTo: date, toGranularity: .day) {
+      var calendar = Calendar(identifier: .gregorian)
+      calendar.timeZone = TimeZone(identifier: "UTC")!
+      if calendar.isDate(bookDate, equalTo: date, toGranularity: .day) {
         if let entry = latestEntry?.first {
           return dateFormatter.string(from: entry.isDue)
         }

@@ -81,7 +81,9 @@ struct TimelineEntryView: View {
     if timelineEntry.state != TimelineEntryState.open.rawValue {
       return .secondary
     }
-    if Calendar.current.compare(timelineEntry.isDue, to: .now, toGranularity: .day) == .orderedAscending {
+    var calendar = Calendar(identifier: .gregorian)
+    calendar.timeZone = TimeZone(identifier: "UTC")!
+    if calendar.compare(timelineEntry.isDue, to: .now, toGranularity: .day) == .orderedAscending {
       return .red
     }
     return .secondary
@@ -94,6 +96,7 @@ struct DateForTimelineEntry: View {
   private var dateFormatter: DateFormatter {
     let formatter = DateFormatter()
     formatter.locale = Locale.current
+    formatter.timeZone = TimeZone(identifier: "UTC")
     formatter.setLocalizedDateFormatFromTemplate("EEE ddMMyyyy")
     return formatter
   }
@@ -112,7 +115,9 @@ struct DateForTimelineEntry: View {
     if timelineEntry.state != TimelineEntryState.open.rawValue {
       return .secondary
     }
-    if Calendar.current.compare(timelineEntry.isDue, to: .now, toGranularity: .day) == .orderedAscending {
+    var calendar = Calendar(identifier: .gregorian)
+    calendar.timeZone = TimeZone(identifier: "UTC")!
+    if calendar.compare(timelineEntry.isDue, to: .now, toGranularity: .day) == .orderedAscending {
       return .red
     }
     return .secondary

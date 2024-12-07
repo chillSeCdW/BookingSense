@@ -122,6 +122,7 @@ struct TimelineSectionView: View {
 
   private func sectionTitle(for date: Date) -> String {
     let dateFormatter = DateFormatter()
+    dateFormatter.timeZone = TimeZone(identifier: "UTC")
     dateFormatter.dateFormat = "MMMM yyyy"
     return dateFormatter.string(from: date)
   }
