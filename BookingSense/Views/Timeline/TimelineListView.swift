@@ -134,7 +134,7 @@ struct TimelineSectionView: View {
   }}
 
   var body: some View {
-    Section(header: Text(sectionTitle(for: date)), footer: footerInfo) {
+    Section(header: Text(date.sectionTitleFormatting()), footer: footerInfo) {
       ForEach(entriesForDate, id: \.uuid) { entry in
         TimelineEntryRow(entry: entry)
       }
@@ -159,13 +159,6 @@ struct TimelineSectionView: View {
         Text(totalSectionSaving.generateFormattedCurrency())
       }
     }
-  }
-
-  private func sectionTitle(for date: Date) -> String {
-    let dateFormatter = DateFormatter()
-    dateFormatter.timeZone = TimeZone(identifier: "UTC")
-    dateFormatter.dateFormat = "MMMM yyyy"
-    return dateFormatter.string(from: date)
   }
 }
 

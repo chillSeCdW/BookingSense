@@ -79,6 +79,7 @@
 		B9B8212B2BF244EB00CEDE43 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = B9B8212A2BF244EB00CEDE43 /* Settings.bundle */; };
 		B9BB9D6E2CAAE96C0057573B /* ThankYouPopUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9BB9D6D2CAAE95E0057573B /* ThankYouPopUp.swift */; };
 		B9C6EC3E2D04FBE800092E23 /* DecimalExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9C6EC3D2D04FBDF00092E23 /* DecimalExtensions.swift */; };
+		B9C6EC412D05B34D00092E23 /* DateExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9C6EC402D05B34900092E23 /* DateExtensions.swift */; };
 		B9CC1BB62CD7902E0048670A /* ToolbarTimelineContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9CC1BB52CD790030048670A /* ToolbarTimelineContent.swift */; };
 		B9CC1BB82CD7BB110048670A /* TimelineContentListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9CC1BB72CD7BB0C0048670A /* TimelineContentListView.swift */; };
 		B9CC1BBE2CD830190048670A /* TimeFilterDialog.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9CC1BBD2CD830160048670A /* TimeFilterDialog.swift */; };
@@ -191,6 +192,7 @@
 		B9B8212A2BF244EB00CEDE43 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 		B9BB9D6D2CAAE95E0057573B /* ThankYouPopUp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThankYouPopUp.swift; sourceTree = "<group>"; };
 		B9C6EC3D2D04FBDF00092E23 /* DecimalExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecimalExtensions.swift; sourceTree = "<group>"; };
+		B9C6EC402D05B34900092E23 /* DateExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateExtensions.swift; sourceTree = "<group>"; };
 		B9C702B12C0FC6E0004546E1 /* ci_post_clone.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = ci_post_clone.sh; sourceTree = "<group>"; };
 		B9CC1BB52CD790030048670A /* ToolbarTimelineContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolbarTimelineContent.swift; sourceTree = "<group>"; };
 		B9CC1BB72CD7BB0C0048670A /* TimelineContentListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimelineContentListView.swift; sourceTree = "<group>"; };
@@ -515,6 +517,7 @@
 		B9C6EC3F2D04FD1700092E23 /* Helper */ = {
 			isa = PBXGroup;
 			children = (
+				B9C6EC402D05B34900092E23 /* DateExtensions.swift */,
 				B915DC4E2BB479180018E812 /* Constants.swift */,
 				B9C6EC3D2D04FBDF00092E23 /* DecimalExtensions.swift */,
 			);
@@ -825,6 +828,7 @@
 				B9BB9D6E2CAAE96C0057573B /* ThankYouPopUp.swift in Sources */,
 				B99206072BDA806E0099EF26 /* ToolbarEntryList.swift in Sources */,
 				B992060B2BDA96D80099EF26 /* EntryFormView.swift in Sources */,
+				B9C6EC412D05B34D00092E23 /* DateExtensions.swift in Sources */,
 				B93839F92CD26FD400AAB674 /* JsonTimelineEntry.swift in Sources */,
 				B991E24E2CE16B020031288B /* FeaturesPageView.swift in Sources */,
 				B991E24C2CE101310031288B /* TagFormView.swift in Sources */,
