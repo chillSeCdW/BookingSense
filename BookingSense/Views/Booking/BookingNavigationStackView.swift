@@ -50,10 +50,8 @@ struct BookingNavigationStackView: View {
         .presentationDetents([.medium, .large])
     }
     .sheet(isPresented: $showingSheet, content: {
-      NavigationStack {
-        EntryView()
-          .presentationDetents([.medium, .large])
-      }
+        EntryEditView()
+        .presentationDetents([.medium, .large])
     })
   }
 

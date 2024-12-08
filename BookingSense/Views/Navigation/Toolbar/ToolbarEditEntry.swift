@@ -7,20 +7,17 @@
 
 import SwiftUI
 
-struct ToolbarEntry: ToolbarContent {
-  @Environment(\.dismiss) var dismiss
-
+struct ToolbarEditEntry: ToolbarContent {
   var isCreate: Bool
   var save: () -> Void
   var didValuesChange: () -> Bool
+  var dismissSheet: () -> Void
 
   var body: some ToolbarContent {
+    ToolbarItem(placement: .topBarLeading) {
+      Button("Cancel", action: dismissSheet)
+    }
     if isCreate {
-      ToolbarItem(placement: .topBarLeading) {
-        Button("Cancel") {
-          dismiss()
-        }
-      }
       ToolbarItem {
         Button("Create", action: save)
       }
@@ -31,5 +28,4 @@ struct ToolbarEntry: ToolbarContent {
       }
     }
   }
-
 }
