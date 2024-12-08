@@ -65,14 +65,16 @@ struct EntryEditView: View {
             enableTimeline = bookingEntry.date != nil
           }
         }
-        Section(content: {
-          HStack {
-            Button("Delete booking", systemImage: "trash", role: .destructive, action: showDeleteConfirm)
-              .foregroundStyle(.red)
-          }
-        }, footer: {
-          Text("Will also impact associated timeline entries")
-        })
+        if !isCreate {
+          Section(content: {
+            HStack {
+              Button("Delete booking", systemImage: "trash", role: .destructive, action: showDeleteConfirm)
+                .foregroundStyle(.red)
+            }
+          }, footer: {
+            Text("Will also impact associated timeline entries")
+          })
+        }
       }
       .listSectionSpacing(.compact)
       .navigationTitle(isCreate ? "Create booking" : "Edit booking")
