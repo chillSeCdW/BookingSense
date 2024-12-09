@@ -4,11 +4,15 @@
 import SwiftUI
 
 struct ToolbarViewEntry: ToolbarContent {
+  @Environment(AppStates.self) var appStates
   var edit: () -> Void
+
+  @State private var showTooltip: Bool = false
 
   var body: some ToolbarContent {
     ToolbarItem {
       Button("Edit", systemImage: "pencil", action: edit)
+        .disabled(appStates.blurSensitive)
     }
   }
 }

@@ -109,6 +109,7 @@ struct FilterAmountButtonsView: View {
 }
 
 struct TimelineSectionView: View {
+  @Environment(AppStates.self) var appStates
   let date: Date
   let entriesForDate: [TimelineEntry]
 
@@ -147,16 +148,19 @@ struct TimelineSectionView: View {
       VStack {
         Text("sum of income")
         Text(totalSectionPlus.generateFormattedCurrency())
+          .blur(radius: appStates.blurSensitive ? 5.0 : 0)
       }
       Spacer()
       VStack {
         Text("sum of costs")
         Text(totalSectionMinus.generateFormattedCurrency())
+          .blur(radius: appStates.blurSensitive ? 5.0 : 0)
       }
       Spacer()
       VStack {
         Text("sum of savings")
         Text(totalSectionSaving.generateFormattedCurrency())
+          .blur(radius: appStates.blurSensitive ? 5.0 : 0)
       }
     }
   }
