@@ -109,6 +109,7 @@ struct FilterAmountButtonsView: View {
 }
 
 struct TimelineSectionView: View {
+  @Environment(AppStates.self) var appStates
   let date: Date
   let entriesForDate: [TimelineEntry]
 
@@ -134,7 +135,7 @@ struct TimelineSectionView: View {
   }}
 
   var body: some View {
-    Section(header: Text(sectionTitle(for: date)), footer: footerInfo) {
+    Section(header: Text(date.sectionTitleFormatting()), footer: footerInfo) {
       ForEach(entriesForDate, id: \.uuid) { entry in
         TimelineEntryRow(entry: entry)
       }
@@ -147,25 +148,21 @@ struct TimelineSectionView: View {
       VStack {
         Text("sum of income")
         Text(totalSectionPlus.generateFormattedCurrency())
+          .blur(radius: appStates.blurSensitive ? 5.0 : 0)
       }
       Spacer()
       VStack {
         Text("sum of costs")
         Text(totalSectionMinus.generateFormattedCurrency())
+          .blur(radius: appStates.blurSensitive ? 5.0 : 0)
       }
       Spacer()
       VStack {
         Text("sum of savings")
         Text(totalSectionSaving.generateFormattedCurrency())
+          .blur(radius: appStates.blurSensitive ? 5.0 : 0)
       }
     }
-  }
-
-  private func sectionTitle(for date: Date) -> String {
-    let dateFormatter = DateFormatter()
-    dateFormatter.timeZone = TimeZone(identifier: "UTC")
-    dateFormatter.dateFormat = "MMMM yyyy"
-    return dateFormatter.string(from: date)
   }
 }
 

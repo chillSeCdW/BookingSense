@@ -501,6 +501,22 @@
         }
       }
     },
+    "Amount:" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Betrag:"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Amount:"
+          }
+        }
+      }
+    },
     "Annually" : {
       "localizations" : {
         "de" : {
@@ -641,6 +657,22 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Booking"
+          }
+        }
+      }
+    },
+    "Booking type:" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Buchungstyp:"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Booking type:"
           }
         }
       }
@@ -1658,6 +1690,22 @@
         }
       }
     },
+    "Interval:" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Intervall:"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Interval:"
+          }
+        }
+      }
+    },
     "month" : {
       "localizations" : {
         "de" : {
@@ -1702,6 +1750,22 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Name"
+          }
+        }
+      }
+    },
+    "Name:" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Name:"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Name:"
           }
         }
       }
@@ -2353,6 +2417,22 @@
         }
       }
     },
+    "Start date:" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Startdatum:"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Start date:"
+          }
+        }
+      }
+    },
     "State" : {
       "localizations" : {
         "de" : {
@@ -2381,6 +2461,22 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "State of booking"
+          }
+        }
+      }
+    },
+    "State:" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Status:"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "State:"
           }
         }
       }
@@ -2438,7 +2534,7 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Summe des Einkommen"
+            "value" : "Summe der Ausgaben"
           }
         },
         "en" : {
@@ -2454,7 +2550,7 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Summe der Ausgaben"
+            "value" : "Summe des Einkommens"
           }
         },
         "en" : {
@@ -2573,6 +2669,22 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Tag will be removed from associated bookings/timeline entries."
+          }
+        }
+      }
+    },
+    "Tag:" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tag:"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tag:"
           }
         }
       }

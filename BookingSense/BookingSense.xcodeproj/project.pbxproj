@@ -17,7 +17,7 @@
 		B915DC452BB4644A0018E812 /* Interval.swift in Sources */ = {isa = PBXBuildFile; fileRef = B915DC442BB4644A0018E812 /* Interval.swift */; };
 		B915DC492BB46E350018E812 /* OverviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B915DC482BB46E350018E812 /* OverviewView.swift */; };
 		B915DC4F2BB479190018E812 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = B915DC4E2BB479180018E812 /* Constants.swift */; };
-		B919B4A22BC6AA47009B2FA4 /* EntryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B919B4A12BC6AA47009B2FA4 /* EntryView.swift */; };
+		B919B4A22BC6AA47009B2FA4 /* EntryEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B919B4A12BC6AA47009B2FA4 /* EntryEditView.swift */; };
 		B922EBEC2CCAED5F00D51C0B /* BookingSchemaV2.swift in Sources */ = {isa = PBXBuildFile; fileRef = B922EBEB2CCAED5F00D51C0B /* BookingSchemaV2.swift */; };
 		B92782C12BDD9F8000D13808 /* ContainerFactoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B92782C02BDD9F8000D13808 /* ContainerFactoryTests.swift */; };
 		B92782C82BDD9F9D00D13808 /* ConstantsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B92782C72BDD9F9D00D13808 /* ConstantsTests.swift */; };
@@ -72,13 +72,16 @@
 		B99205FC2BD90F780099EF26 /* AppStates.swift in Sources */ = {isa = PBXBuildFile; fileRef = B99205FB2BD90F780099EF26 /* AppStates.swift */; };
 		B99205FF2BD90FAD0099EF26 /* SortButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B99205FE2BD90FAD0099EF26 /* SortButtonView.swift */; };
 		B99206072BDA806E0099EF26 /* ToolbarEntryList.swift in Sources */ = {isa = PBXBuildFile; fileRef = B99206062BDA806E0099EF26 /* ToolbarEntryList.swift */; };
-		B99206092BDA96090099EF26 /* ToolbarEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = B99206082BDA96090099EF26 /* ToolbarEntry.swift */; };
+		B99206092BDA96090099EF26 /* ToolbarEditEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = B99206082BDA96090099EF26 /* ToolbarEditEntry.swift */; };
 		B992060B2BDA96D80099EF26 /* EntryFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B992060A2BDA96D80099EF26 /* EntryFormView.swift */; };
 		B99284B32C0F090400CB6404 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B99284B22C0F090400CB6404 /* LaunchScreen.storyboard */; };
 		B997384F2C4079DA00897AFD /* BookingSenseIconFinalLight.png in Resources */ = {isa = PBXBuildFile; fileRef = B997384E2C4079DA00897AFD /* BookingSenseIconFinalLight.png */; };
 		B9B8212B2BF244EB00CEDE43 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = B9B8212A2BF244EB00CEDE43 /* Settings.bundle */; };
 		B9BB9D6E2CAAE96C0057573B /* ThankYouPopUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9BB9D6D2CAAE95E0057573B /* ThankYouPopUp.swift */; };
 		B9C6EC3E2D04FBE800092E23 /* DecimalExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9C6EC3D2D04FBDF00092E23 /* DecimalExtensions.swift */; };
+		B9C6EC412D05B34D00092E23 /* DateExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9C6EC402D05B34900092E23 /* DateExtensions.swift */; };
+		B9C6EC432D05B53900092E23 /* EntryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9C6EC422D05B53500092E23 /* EntryView.swift */; };
+		B9C6EC452D05B6A400092E23 /* ToolbarViewEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9C6EC442D05B69A00092E23 /* ToolbarViewEntry.swift */; };
 		B9CC1BB62CD7902E0048670A /* ToolbarTimelineContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9CC1BB52CD790030048670A /* ToolbarTimelineContent.swift */; };
 		B9CC1BB82CD7BB110048670A /* TimelineContentListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9CC1BB72CD7BB0C0048670A /* TimelineContentListView.swift */; };
 		B9CC1BBE2CD830190048670A /* TimeFilterDialog.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9CC1BBD2CD830160048670A /* TimeFilterDialog.swift */; };
@@ -126,7 +129,7 @@
 		B915DC442BB4644A0018E812 /* Interval.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Interval.swift; sourceTree = "<group>"; };
 		B915DC482BB46E350018E812 /* OverviewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverviewView.swift; sourceTree = "<group>"; };
 		B915DC4E2BB479180018E812 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
-		B919B4A12BC6AA47009B2FA4 /* EntryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryView.swift; sourceTree = "<group>"; };
+		B919B4A12BC6AA47009B2FA4 /* EntryEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryEditView.swift; sourceTree = "<group>"; };
 		B922EBEB2CCAED5F00D51C0B /* BookingSchemaV2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingSchemaV2.swift; sourceTree = "<group>"; };
 		B92782BE2BDD9F8000D13808 /* BookingSenseTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BookingSenseTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B92782C02BDD9F8000D13808 /* ContainerFactoryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContainerFactoryTests.swift; sourceTree = "<group>"; };
@@ -184,13 +187,16 @@
 		B99205FB2BD90F780099EF26 /* AppStates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStates.swift; sourceTree = "<group>"; };
 		B99205FE2BD90FAD0099EF26 /* SortButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortButtonView.swift; sourceTree = "<group>"; };
 		B99206062BDA806E0099EF26 /* ToolbarEntryList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolbarEntryList.swift; sourceTree = "<group>"; };
-		B99206082BDA96090099EF26 /* ToolbarEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolbarEntry.swift; sourceTree = "<group>"; };
+		B99206082BDA96090099EF26 /* ToolbarEditEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolbarEditEntry.swift; sourceTree = "<group>"; };
 		B992060A2BDA96D80099EF26 /* EntryFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryFormView.swift; sourceTree = "<group>"; };
 		B99284B22C0F090400CB6404 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B997384E2C4079DA00897AFD /* BookingSenseIconFinalLight.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = BookingSenseIconFinalLight.png; sourceTree = "<group>"; };
 		B9B8212A2BF244EB00CEDE43 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 		B9BB9D6D2CAAE95E0057573B /* ThankYouPopUp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThankYouPopUp.swift; sourceTree = "<group>"; };
 		B9C6EC3D2D04FBDF00092E23 /* DecimalExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecimalExtensions.swift; sourceTree = "<group>"; };
+		B9C6EC402D05B34900092E23 /* DateExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateExtensions.swift; sourceTree = "<group>"; };
+		B9C6EC422D05B53500092E23 /* EntryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryView.swift; sourceTree = "<group>"; };
+		B9C6EC442D05B69A00092E23 /* ToolbarViewEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolbarViewEntry.swift; sourceTree = "<group>"; };
 		B9C702B12C0FC6E0004546E1 /* ci_post_clone.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = ci_post_clone.sh; sourceTree = "<group>"; };
 		B9CC1BB52CD790030048670A /* ToolbarTimelineContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolbarTimelineContent.swift; sourceTree = "<group>"; };
 		B9CC1BB72CD7BB0C0048670A /* TimelineContentListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimelineContentListView.swift; sourceTree = "<group>"; };
@@ -246,7 +252,8 @@
 			children = (
 				B90ABBD82BE3FC8C006E5AA8 /* Buttons */,
 				B99206062BDA806E0099EF26 /* ToolbarEntryList.swift */,
-				B99206082BDA96090099EF26 /* ToolbarEntry.swift */,
+				B9C6EC442D05B69A00092E23 /* ToolbarViewEntry.swift */,
+				B99206082BDA96090099EF26 /* ToolbarEditEntry.swift */,
 				B991E2422CDECB800031288B /* ToolbarTagEntry.swift */,
 				B927FB282C2C386D008D30BE /* ToolbarOverviewList.swift */,
 				B9CC1BB52CD790030048670A /* ToolbarTimelineContent.swift */,
@@ -313,9 +320,10 @@
 		B919B4A42BC6AAAA009B2FA4 /* Booking */ = {
 			isa = PBXGroup;
 			children = (
+				B9C6EC422D05B53500092E23 /* EntryView.swift */,
 				B95981F92BE3890500578A9C /* BookingNavigationStackView.swift */,
 				B90B2B422BE504A200BD2042 /* NavigationStackContentView.swift */,
-				B919B4A12BC6AA47009B2FA4 /* EntryView.swift */,
+				B919B4A12BC6AA47009B2FA4 /* EntryEditView.swift */,
 				B992060A2BDA96D80099EF26 /* EntryFormView.swift */,
 				B95981FB2BE3898B00578A9C /* BookingSectionView.swift */,
 			);
@@ -515,6 +523,7 @@
 		B9C6EC3F2D04FD1700092E23 /* Helper */ = {
 			isa = PBXGroup;
 			children = (
+				B9C6EC402D05B34900092E23 /* DateExtensions.swift */,
 				B915DC4E2BB479180018E812 /* Constants.swift */,
 				B9C6EC3D2D04FBDF00092E23 /* DecimalExtensions.swift */,
 			);
@@ -779,7 +788,7 @@
 				B927D3FA2CE7FACC006B1B19 /* PurchaseStatus.swift in Sources */,
 				B90D3D0F2C19D97D00133857 /* IntervalInsightsView.swift in Sources */,
 				B9383A052CD69A4800AAB674 /* TimelineEntryView.swift in Sources */,
-				B99206092BDA96090099EF26 /* ToolbarEntry.swift in Sources */,
+				B99206092BDA96090099EF26 /* ToolbarEditEntry.swift in Sources */,
 				B991E2482CDFB28E0031288B /* BookingFilterDialog.swift in Sources */,
 				B96761CD2C34A77B00DA9114 /* MailView.swift in Sources */,
 				B907587B2C13479300EDC82F /* ContentView.swift in Sources */,
@@ -791,6 +800,7 @@
 				B915DC452BB4644A0018E812 /* Interval.swift in Sources */,
 				B9CC1BB82CD7BB110048670A /* TimelineContentListView.swift in Sources */,
 				B927D3F32CE7E7ED006B1B19 /* PurchaseHandlerViewModifier.swift in Sources */,
+				B9C6EC432D05B53900092E23 /* EntryView.swift in Sources */,
 				B90B2B432BE504A200BD2042 /* NavigationStackContentView.swift in Sources */,
 				B9CC1BC22CD8C8DB0048670A /* BookingSortByEnum.swift in Sources */,
 				B92BC3712C401E7400019A62 /* ResetHintsTopPopUp.swift in Sources */,
@@ -802,6 +812,7 @@
 				B96761D52C36BCCD00DA9114 /* TipJarView.swift in Sources */,
 				B9CC1BBE2CD830190048670A /* TimeFilterDialog.swift in Sources */,
 				B91002C82CC796FF00BECF87 /* BiometricHandler.swift in Sources */,
+				B9C6EC452D05B6A400092E23 /* ToolbarViewEntry.swift in Sources */,
 				B95981FC2BE3898B00578A9C /* BookingSectionView.swift in Sources */,
 				B9E0B9122C1B98230047EA77 /* InfoBoxButtonView.swift in Sources */,
 				B93839FE2CD4E81D00AAB674 /* TimelineEntryState.swift in Sources */,
@@ -825,6 +836,7 @@
 				B9BB9D6E2CAAE96C0057573B /* ThankYouPopUp.swift in Sources */,
 				B99206072BDA806E0099EF26 /* ToolbarEntryList.swift in Sources */,
 				B992060B2BDA96D80099EF26 /* EntryFormView.swift in Sources */,
+				B9C6EC412D05B34D00092E23 /* DateExtensions.swift in Sources */,
 				B93839F92CD26FD400AAB674 /* JsonTimelineEntry.swift in Sources */,
 				B991E24E2CE16B020031288B /* FeaturesPageView.swift in Sources */,
 				B991E24C2CE101310031288B /* TagFormView.swift in Sources */,
@@ -833,7 +845,7 @@
 				B991E2462CDF98150031288B /* DoneOnDialog.swift in Sources */,
 				B915DC492BB46E350018E812 /* OverviewView.swift in Sources */,
 				B92D6F652CC006C4000A2697 /* ChartModels.swift in Sources */,
-				B919B4A22BC6AA47009B2FA4 /* EntryView.swift in Sources */,
+				B919B4A22BC6AA47009B2FA4 /* EntryEditView.swift in Sources */,
 				B991E2432CDECB8A0031288B /* ToolbarTagEntry.swift in Sources */,
 				B9CC1BB62CD7902E0048670A /* ToolbarTimelineContent.swift in Sources */,
 				B927D3F82CE7EB2F006B1B19 /* PurchaseIdentifiers.swift in Sources */,
@@ -1220,7 +1232,7 @@
 			repositoryURL = "https://github.com/realm/SwiftLint.git";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 0.54.0;
+				minimumVersion = 0.57.1;
 			};
 		};
 		B92BC36D2C401DCE00019A62 /* XCRemoteSwiftPackageReference "PopupView" */ = {
@@ -1228,7 +1240,7 @@
 			repositoryURL = "https://github.com/Mijick/PopupView.git";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 2.5.0;
+				minimumVersion = 2.7.1;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */

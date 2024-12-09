@@ -77,6 +77,20 @@ extension BookingSchemaV4 {
     static func totalExpenseEntries(modelContext: ModelContext) -> Int {
       (try? modelContext.fetchCount(FetchDescriptor<BookingEntry>())) ?? 0
     }
+
+    func getNextBookingDate() -> Date? {
+      let latestEntry = self.timelineEntries?.filter { entry in
+        entry.bookingEntry?.uuid == self.uuid && entry.state == TimelineEntryState.open.rawValue
+      }.sorted(by: { $0.isDue < $1.isDue })
+
+      if let bookDate = self.date {
+        if let entry = latestEntry?.first {
+          return entry.isDue
+        }
+        return bookDate
+      }
+      return nil
+    }
   }
 
   @Model

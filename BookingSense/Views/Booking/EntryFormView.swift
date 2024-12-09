@@ -29,14 +29,6 @@ struct EntryFormView: View {
 
   var bookingEntry: BookingEntry?
 
-  private var dateFormatter: DateFormatter {
-    let formatter = DateFormatter()
-    formatter.dateStyle = .full
-    formatter.timeZone = TimeZone(identifier: "UTC")
-    formatter.timeStyle = .none
-    return formatter
-  }
-
   var body: some View {
     Section(header: Text("Booking")
     ) {
@@ -75,13 +67,13 @@ struct EntryFormView: View {
       calendar.timeZone = TimeZone(identifier: "UTC")!
       if calendar.isDate(bookDate, equalTo: date, toGranularity: .day) {
         if let entry = latestEntry?.first {
-          return dateFormatter.string(from: entry.isDue)
+          return entry.isDue.bookingEntryNextDateFormatting()
         }
       } else {
-        return dateFormatter.string(from: date)
+        return date.bookingEntryNextDateFormatting()
       }
     }
-    return dateFormatter.string(from: date)
+    return date.bookingEntryNextDateFormatting()
   }
 }
 
