@@ -33,8 +33,8 @@ struct EntryView: View {
 
   @ViewBuilder
   var footerView: some View {
-    if let nextBooking = getNextBookingAsString() {
-      Text("Next booking \(nextBooking)")
+    if let nextBooking = bookingEntry.getNextBookingDate() {
+      Text("Next booking \(nextBooking.bookingEntryNextDateFormatting())")
         .font(.caption)
         .foregroundStyle(.secondary)
         .blur(radius: appStates.blurSensitive ? 5.0 : 0)
@@ -110,20 +110,6 @@ struct EntryView: View {
 
   func didDismiss() {
     presentingEntry = nil
-  }
-
-  func getNextBookingAsString() -> String? {
-    let latestEntry = bookingEntry.timelineEntries?.filter { entry in
-      entry.bookingEntry?.uuid == bookingEntry.uuid && entry.state == TimelineEntryState.open.rawValue
-    }.sorted(by: { $0.isDue < $1.isDue })
-
-    if let bookDate = bookingEntry.date {
-      if let entry = latestEntry?.first {
-        return entry.isDue.bookingEntryNextDateFormatting()
-      }
-      return bookDate.bookingEntryNextDateFormatting()
-    }
-    return nil
   }
 }
 
