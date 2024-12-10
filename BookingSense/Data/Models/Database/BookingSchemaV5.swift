@@ -32,7 +32,7 @@ extension BookingSchemaV5 {
     var date: Date?
     var bookingType: String = "minus"
     var interval: String = "monthly"
-    var isLastDayOfMonth: Bool = false
+    var dayOfEntry: Int = 0 // used for last day of Month
 
     init(uuid: String = UUID().uuidString,
          name: String = "",
@@ -41,7 +41,7 @@ extension BookingSchemaV5 {
          date: Date? = nil,
          bookingType: String = "minus",
          interval: Interval,
-         isLastDayOfMonth: Bool = false,
+         dayOfEntry: Int = 0,
          tag: Tag?,
          timelineEntries: [TimelineEntry]?) {
       self.uuid = uuid
@@ -51,7 +51,7 @@ extension BookingSchemaV5 {
       self.amount = amount
       self.bookingType = bookingType
       self.interval = interval.rawValue
-      self.isLastDayOfMonth = isLastDayOfMonth
+      self.dayOfEntry = dayOfEntry
       self.tag = tag
       self.timelineEntries = timelineEntries
     }

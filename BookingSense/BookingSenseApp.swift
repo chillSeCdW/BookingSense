@@ -23,17 +23,17 @@ struct BookingSenseApp: App {
   var sharedModelContainer: ModelContainer = {
 #if DEBUG
     if CommandLine.arguments.contains("enable-testing-empty") {
-      let factory = ContainerFactory(BookingSchemaV4.self, storeInMemory: true)
+      let factory = ContainerFactory(BookingSchemaV5.self, storeInMemory: true)
       return factory.container
     }
     if CommandLine.arguments.contains("enable-testing-data") {
-      let factory = ContainerFactory(BookingSchemaV4.self, storeInMemory: true)
+      let factory = ContainerFactory(BookingSchemaV5.self, storeInMemory: true)
       factory.addExamples(ContainerFactory.generateFixedEntriesItems())
       return factory.container
     }
 #endif
     return ContainerFactory(
-      BookingSchemaV4.self,
+      BookingSchemaV5.self,
       storeInMemory: false,
       migrationPlan: BookingMigrationV1ToV5.self
     ).container
