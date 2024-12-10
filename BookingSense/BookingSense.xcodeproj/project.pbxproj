@@ -82,6 +82,7 @@
 		B9C6EC412D05B34D00092E23 /* DateExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9C6EC402D05B34900092E23 /* DateExtensions.swift */; };
 		B9C6EC432D05B53900092E23 /* EntryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9C6EC422D05B53500092E23 /* EntryView.swift */; };
 		B9C6EC452D05B6A400092E23 /* ToolbarViewEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9C6EC442D05B69A00092E23 /* ToolbarViewEntry.swift */; };
+		B9C6EC472D084A5000092E23 /* BookingSchemaV5.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9C6EC462D084A4900092E23 /* BookingSchemaV5.swift */; };
 		B9CC1BB62CD7902E0048670A /* ToolbarTimelineContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9CC1BB52CD790030048670A /* ToolbarTimelineContent.swift */; };
 		B9CC1BB82CD7BB110048670A /* TimelineContentListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9CC1BB72CD7BB0C0048670A /* TimelineContentListView.swift */; };
 		B9CC1BBE2CD830190048670A /* TimeFilterDialog.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9CC1BBD2CD830160048670A /* TimeFilterDialog.swift */; };
@@ -197,6 +198,7 @@
 		B9C6EC402D05B34900092E23 /* DateExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateExtensions.swift; sourceTree = "<group>"; };
 		B9C6EC422D05B53500092E23 /* EntryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryView.swift; sourceTree = "<group>"; };
 		B9C6EC442D05B69A00092E23 /* ToolbarViewEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolbarViewEntry.swift; sourceTree = "<group>"; };
+		B9C6EC462D084A4900092E23 /* BookingSchemaV5.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingSchemaV5.swift; sourceTree = "<group>"; };
 		B9C702B12C0FC6E0004546E1 /* ci_post_clone.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = ci_post_clone.sh; sourceTree = "<group>"; };
 		B9CC1BB52CD790030048670A /* ToolbarTimelineContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolbarTimelineContent.swift; sourceTree = "<group>"; };
 		B9CC1BB72CD7BB0C0048670A /* TimelineContentListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimelineContentListView.swift; sourceTree = "<group>"; };
@@ -404,6 +406,7 @@
 				B922EBEB2CCAED5F00D51C0B /* BookingSchemaV2.swift */,
 				B93839F02CD2612700AAB674 /* BookingSchemaV3.swift */,
 				B991E24F2CE40B9A0031288B /* BookingSchemaV4.swift */,
+				B9C6EC462D084A4900092E23 /* BookingSchemaV5.swift */,
 			);
 			path = Database;
 			sourceTree = "<group>";
@@ -826,6 +829,7 @@
 				B9DAFAD52BA8AFAF000486EA /* BookingSenseApp.swift in Sources */,
 				B980A2022CC139E00075AE8F /* ChartView.swift in Sources */,
 				B95981FA2BE3890500578A9C /* BookingNavigationStackView.swift in Sources */,
+				B9C6EC472D084A5000092E23 /* BookingSchemaV5.swift in Sources */,
 				B93839F52CD26FC400AAB674 /* JsonBookingEntry.swift in Sources */,
 				B93839FC2CD3F4E300AAB674 /* TimelineView.swift in Sources */,
 				B9DE5B7F2BC6E7740017ACF4 /* BookingType.swift in Sources */,

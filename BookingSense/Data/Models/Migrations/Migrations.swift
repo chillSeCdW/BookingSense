@@ -8,13 +8,14 @@
 import Foundation
 import SwiftData
 
-enum BookingMigrationV1ToV4: SchemaMigrationPlan {
+enum BookingMigrationV1ToV5: SchemaMigrationPlan {
   static var schemas: [any VersionedSchema.Type] {
     [
       BookingSchemaV1.self,
       BookingSchemaV2.self,
       BookingSchemaV3.self,
-      BookingSchemaV4.self
+      BookingSchemaV4.self,
+      BookingSchemaV5.self
     ]
   }
 
@@ -22,7 +23,8 @@ enum BookingMigrationV1ToV4: SchemaMigrationPlan {
     [
       migrateV1ToV2,
       migrateV2ToV3,
-      migrateV3ToV4
+      migrateV3ToV4,
+      migrateV4ToV5
     ]
   }
 
@@ -62,6 +64,11 @@ enum BookingMigrationV1ToV4: SchemaMigrationPlan {
   static let migrateV3ToV4 = MigrationStage.lightweight(
     fromVersion: BookingSchemaV3.self,
     toVersion: BookingSchemaV4.self
+  )
+
+  static let migrateV4ToV5 = MigrationStage.lightweight(
+    fromVersion: BookingSchemaV4.self,
+    toVersion: BookingSchemaV5.self
   )
 
 }

@@ -10,9 +10,9 @@ import SwiftData
 import TipKit
 import MijickPopupView
 
-typealias BookingEntry = BookingSchemaV4.BookingEntry
-typealias Tag = BookingSchemaV4.Tag
-typealias TimelineEntry = BookingSchemaV4.TimelineEntry
+typealias BookingEntry = BookingSchemaV5.BookingEntry
+typealias Tag = BookingSchemaV5.Tag
+typealias TimelineEntry = BookingSchemaV5.TimelineEntry
 
 @main
 struct BookingSenseApp: App {
@@ -35,7 +35,7 @@ struct BookingSenseApp: App {
     return ContainerFactory(
       BookingSchemaV4.self,
       storeInMemory: false,
-      migrationPlan: BookingMigrationV1ToV4.self
+      migrationPlan: BookingMigrationV1ToV5.self
     ).container
   }()
 
