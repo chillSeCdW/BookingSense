@@ -8,21 +8,19 @@ struct NavigationStackContentView: View {
   @Environment(AppStates.self) var appStates
   @Query private var entries: [BookingEntry]
 
-  private var groupedEntries: [String: [BookingEntry]] {
-    let groupedEntries = Constants.groupBookingsByInterval(entries: entries)
-    return Constants.sortAndFilterBookings(
-      bookings: groupedEntries,
-      sortBy: appStates.sortBy,
-      sortOrder: appStates.sortOrder,
-      tagFilter: appStates.activeBookingTagFilters
-    )
-  }
+  @State private var groupedEntries: [String: [BookingEntry]] = [:]
+  @State private var entriesCount: Int = 0
 
-  private var entriesCount: Int {
-    groupedEntries.values.reduce(0, { count, entry in
-      count + entry.count
-    })
-  }
+  private func updateGroupedEntries() {
+      let grouped = Constants.groupBookingsByInterval(entries: entries)
+      groupedEntries = Constants.sortAndFilterBookings(
+        bookings: grouped,
+        sortBy: appStates.sortBy,
+        sortOrder: appStates.sortOrder,
+        tagFilter: appStates.activeBookingTagFilters
+      )
+      entriesCount = groupedEntries.values.reduce(0) { $0 + $1.count }
+    }
 
   init(searchName: String = "",
        stateFilter: Set<BookingEntryState> = [],
@@ -63,15 +61,16 @@ struct NavigationStackContentView: View {
         }
       }
     }
+    .onChange(of: entries, initial: true) { _, _  in updateGroupedEntries() }
+    .onChange(of: appStates.sortBy, initial: false) { _, _  in updateGroupedEntries() }
+    .onChange(of: appStates.sortOrder, initial: false) { _, _  in updateGroupedEntries() }
+    .onChange(of: appStates.activeBookingTagFilters, initial: false) { _, _ in updateGroupedEntries() }
     .animation(.easeInOut, value: groupedEntries)
     .listRowSpacing(5)
   }
 }
 
 struct IntervalSectionView: View {
-  @Environment(\.colorScheme) var colorScheme
-  @Environment(\.modelContext) private var modelContext
-
   var interval: Interval
   var entries: [BookingEntry]
 
@@ -87,14 +86,6 @@ struct IntervalSectionView: View {
         Text(LocalizedStringKey("\(entries.count) entries"))
       })
       .headerProminence(.increased)
-    }
-  }
-
-  private func deleteEntry(offsets: IndexSet) {
-    withAnimation {
-      for index in offsets {
-        modelContext.delete(entries[index])
-      }
     }
   }
 }

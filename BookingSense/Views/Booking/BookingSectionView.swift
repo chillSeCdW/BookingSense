@@ -9,7 +9,6 @@ import SwiftUI
 import SwiftData
 
 struct BookingSectionView: View {
-  @Environment(\.modelContext) private var modelContext
   @Environment(AppStates.self) var appStates
   @Environment(\.colorScheme) var colorScheme
 

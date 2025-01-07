@@ -21,7 +21,7 @@ enum BookingSchemaV5: VersionedSchema {
 extension BookingSchemaV5 {
 
   @Model
-  final class BookingEntry {
+  final class BookingEntry: Hashable {
 
     var uuid: String = UUID().uuidString
     var name: String = ""
@@ -94,10 +94,18 @@ extension BookingSchemaV5 {
       }
       return nil
     }
+
+    static func == (lhs: BookingEntry, rhs: BookingEntry) -> Bool {
+        lhs.uuid == rhs.uuid
+    }
+
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(uuid)
+    }
   }
 
   @Model
-  final class Tag {
+  final class Tag: Hashable {
 
     var uuid: String = UUID().uuidString
     var name: String = ""
@@ -108,10 +116,18 @@ extension BookingSchemaV5 {
       self.uuid = uuid
       self.name = name
     }
+
+    static func == (lhs: Tag, rhs: Tag) -> Bool {
+        lhs.uuid == rhs.uuid
+    }
+
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(uuid)
+    }
   }
 
   @Model
-  final class TimelineEntry: ObservableObject, Identifiable {
+  final class TimelineEntry: ObservableObject, Identifiable, Hashable {
 
     var uuid: String = UUID().uuidString
     @Relationship(inverse: \BookingEntry.timelineEntries) var bookingEntry: BookingEntry?
@@ -163,6 +179,14 @@ extension BookingSchemaV5 {
         &&
         (bookingType.isEmpty || bookingType.contains(entry.bookingType))
       }
+    }
+
+    static func == (lhs: TimelineEntry, rhs: TimelineEntry) -> Bool {
+        lhs.uuid == rhs.uuid
+    }
+
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(uuid)
     }
   }
 }

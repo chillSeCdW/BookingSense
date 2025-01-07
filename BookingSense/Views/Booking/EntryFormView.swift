@@ -306,7 +306,7 @@ struct TagPicker: View {
     ) {
       ScrollView(.horizontal) {
         HStack {
-          ForEach(tags) { tagOption in
+          ForEach(tags, id: \.uuid) { tagOption in
             Button(tagOption.name) {
               tag = tagOption != tag ? tagOption : nil
             }
