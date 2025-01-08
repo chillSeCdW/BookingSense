@@ -4,7 +4,7 @@
 import Foundation
 
 enum JsonBookingEntryKeys: CodingKey {
-  case uuid, name, state, amount, date, bookingType, interval, intervalString, tag, timelineEntries
+  case uuid, name, state, amount, date, bookingType, interval, dayOfEntry, intervalString, tag, timelineEntries
 }
 
 class JsonBookingEntry: Codable {
@@ -18,6 +18,7 @@ class JsonBookingEntry: Codable {
   var date: Date?
   var bookingType: String = "minus"
   var interval: String = "monthly"
+  var dayOfEntry: Int
 
   init(name: String,
        state: String,
@@ -25,6 +26,7 @@ class JsonBookingEntry: Codable {
        date: Date?,
        bookingType: String,
        interval: Interval,
+       dayOfEntry: Int = 0,
        tag: String?,
        timelineEntries: [String]?) {
     self.name = name
@@ -33,18 +35,19 @@ class JsonBookingEntry: Codable {
     self.amount = amount
     self.bookingType = bookingType
     self.interval = interval.rawValue
+    self.dayOfEntry = dayOfEntry
     self.tag = tag
     self.timelineEntries = timelineEntries
   }
 
   init(_ data: BookingEntry) {
-    self.uuid = data.uuid
     self.name = data.name
     self.state = data.state
     self.date = data.date
     self.amount = data.amount
     self.bookingType = data.bookingType
     self.interval = data.interval
+    self.dayOfEntry = data.dayOfEntry
     self.tag = data.tag?.uuid
     self.timelineEntries = data.timelineEntries?.map { $0.uuid }
   }
@@ -58,6 +61,7 @@ class JsonBookingEntry: Codable {
     amount = try container.decode(Decimal.self, forKey: .amount)
     bookingType = try container.decode(String.self, forKey: .bookingType)
     interval = try container.decode(String.self, forKey: .interval)
+    dayOfEntry = try container.decodeIfPresent(Int.self, forKey: .dayOfEntry) ?? 0
     tag = try container.decodeIfPresent(String.self, forKey: .tag)
     timelineEntries = try container.decodeIfPresent([String].self, forKey: .timelineEntries)
   }
@@ -71,6 +75,7 @@ class JsonBookingEntry: Codable {
     try container.encode(amount, forKey: .amount)
     try container.encode(bookingType, forKey: .bookingType)
     try container.encode(interval, forKey: .interval)
+    try container.encode(dayOfEntry, forKey: .dayOfEntry)
     try container.encode(tag, forKey: .tag)
     try container.encode(timelineEntries, forKey: .timelineEntries)
   }

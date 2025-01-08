@@ -209,8 +209,10 @@ struct ExportImportButtons: View {
             name: importBookingEntry.name,
             state: importBookingEntry.state,
             amount: importBookingEntry.amount,
+            date: importBookingEntry.date,
             bookingType: importBookingEntry.bookingType,
             interval: Interval(rawValue: importBookingEntry.interval)!,
+            dayOfEntry: importBookingEntry.dayOfEntry,
             tag: importTags[importBookingEntry.tag ?? ""],
             timelineEntries: filteredTimelineEntries
           )

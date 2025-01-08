@@ -8,19 +8,21 @@ struct NavigationStackContentView: View {
   @Environment(AppStates.self) var appStates
   @Query private var entries: [BookingEntry]
 
-  @State private var groupedEntries: [String: [BookingEntry]] = [:]
-  @State private var entriesCount: Int = 0
+  private var groupedEntries: [String: [BookingEntry]] {
+    let groupedEntries = Constants.groupBookingsByInterval(entries: entries)
+    return Constants.sortAndFilterBookings(
+      bookings: groupedEntries,
+      sortBy: appStates.sortBy,
+      sortOrder: appStates.sortOrder,
+      tagFilter: appStates.activeBookingTagFilters
+    )
+  }
 
-  private func updateGroupedEntries() {
-      let grouped = Constants.groupBookingsByInterval(entries: entries)
-      groupedEntries = Constants.sortAndFilterBookings(
-        bookings: grouped,
-        sortBy: appStates.sortBy,
-        sortOrder: appStates.sortOrder,
-        tagFilter: appStates.activeBookingTagFilters
-      )
-      entriesCount = groupedEntries.values.reduce(0) { $0 + $1.count }
-    }
+  private var entriesCount: Int {
+    groupedEntries.values.reduce(0, { count, entry in
+      count + entry.count
+    })
+  }
 
   init(searchName: String = "",
        stateFilter: Set<BookingEntryState> = [],
@@ -61,10 +63,6 @@ struct NavigationStackContentView: View {
         }
       }
     }
-    .onChange(of: entries, initial: true) { _, _  in updateGroupedEntries() }
-    .onChange(of: appStates.sortBy, initial: false) { _, _  in updateGroupedEntries() }
-    .onChange(of: appStates.sortOrder, initial: false) { _, _  in updateGroupedEntries() }
-    .onChange(of: appStates.activeBookingTagFilters, initial: false) { _, _ in updateGroupedEntries() }
     .animation(.easeInOut, value: groupedEntries)
     .listRowSpacing(5)
   }

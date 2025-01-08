@@ -94,14 +94,6 @@ extension BookingSchemaV5 {
       }
       return nil
     }
-
-    static func == (lhs: BookingEntry, rhs: BookingEntry) -> Bool {
-        lhs.uuid == rhs.uuid
-    }
-
-    func hash(into hasher: inout Hasher) {
-        hasher.combine(uuid)
-    }
   }
 
   @Model
@@ -115,14 +107,6 @@ extension BookingSchemaV5 {
     init(uuid: String = UUID().uuidString, name: String) {
       self.uuid = uuid
       self.name = name
-    }
-
-    static func == (lhs: Tag, rhs: Tag) -> Bool {
-        lhs.uuid == rhs.uuid
-    }
-
-    func hash(into hasher: inout Hasher) {
-        hasher.combine(uuid)
     }
   }
 
@@ -179,14 +163,6 @@ extension BookingSchemaV5 {
         &&
         (bookingType.isEmpty || bookingType.contains(entry.bookingType))
       }
-    }
-
-    static func == (lhs: TimelineEntry, rhs: TimelineEntry) -> Bool {
-        lhs.uuid == rhs.uuid
-    }
-
-    func hash(into hasher: inout Hasher) {
-        hasher.combine(uuid)
     }
   }
 }

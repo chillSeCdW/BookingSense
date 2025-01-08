@@ -15,7 +15,7 @@ struct BookingSectionView: View {
   var entries: [BookingEntry]
 
   var body: some View {
-    ForEach(entries, id: \.self) { entry in
+    ForEach(entries, id: \.uuid) { entry in
       NavigationLink(value: entry) {
         HStack(spacing: 0) {
           Text(entry.name)

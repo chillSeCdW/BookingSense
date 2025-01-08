@@ -8,9 +8,7 @@ import SwiftData
 struct EntryView: View {
   @Environment(AppStates.self) var appStates
   @Environment(\.modelContext) private var modelContext
-
-  @Query private var entries: [BookingEntry]
-
+  
   var bookingEntry: BookingEntry
 
   @State var presentingEntry: BookingEntry?

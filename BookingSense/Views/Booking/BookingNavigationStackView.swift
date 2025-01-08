@@ -12,7 +12,6 @@ struct BookingNavigationStackView: View {
   @Environment(AppStates.self) var appStates
   @Environment(\.editMode) private var editMode
   @Environment(\.modelContext) private var modelContext
-  @Query private var entries: [BookingEntry]
 
   @State private var showingSheet = false
   @State private var showingConfirmation = false
@@ -51,7 +50,6 @@ struct BookingNavigationStackView: View {
     }
     .sheet(isPresented: $showingSheet, content: {
         EntryEditView()
-        .presentationDetents([.medium, .large])
     })
   }
 
