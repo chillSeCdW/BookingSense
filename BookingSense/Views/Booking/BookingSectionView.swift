@@ -9,14 +9,13 @@ import SwiftUI
 import SwiftData
 
 struct BookingSectionView: View {
-  @Environment(\.modelContext) private var modelContext
   @Environment(AppStates.self) var appStates
   @Environment(\.colorScheme) var colorScheme
 
   var entries: [BookingEntry]
 
   var body: some View {
-    ForEach(entries, id: \.self) { entry in
+    ForEach(entries, id: \.uuid) { entry in
       NavigationLink(value: entry) {
         HStack(spacing: 0) {
           Text(entry.name)

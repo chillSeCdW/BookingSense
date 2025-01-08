@@ -26,9 +26,11 @@ struct EntryEditView: View {
   @State private var interval: Interval = .monthly
   @State private var state: BookingEntryState = .active
   @State private var date: Date = .now
+  @State private var dayOfEntry: Int = 0
   @State private var tag: Tag?
   @State private var errorMessage: String?
   @State private var enableTimeline: Bool = false
+  @State private var useLastDayOfMonth: Bool = false
   @FocusState private var focusedName: Bool
   @FocusState private var focusedAmount: Bool
   let alertTitle: String = "Save failed"
@@ -46,8 +48,10 @@ struct EntryEditView: View {
                       interval: $interval,
                       state: $state,
                       date: $date,
+                      dayOfEntry: $dayOfEntry,
                       tag: $tag,
                       enableTimeline: $enableTimeline,
+                      useLastDayOfMonth: $useLastDayOfMonth,
                       showConfirmationTimeline: $showConfirmationTimeline,
                       focusedName: _focusedName,
                       focusedAmount: _focusedAmount,
@@ -61,8 +65,10 @@ struct EntryEditView: View {
             interval = Interval(rawValue: bookingEntry.interval) ?? Interval.monthly
             state = BookingEntryState(rawValue: bookingEntry.state) ?? BookingEntryState.active
             date = bookingEntry.date ?? .now
+            dayOfEntry = bookingEntry.dayOfEntry
             tag = bookingEntry.tag
             enableTimeline = bookingEntry.date != nil
+            useLastDayOfMonth = bookingEntry.dayOfEntry == 31
           }
         }
         if !isCreate {
@@ -156,6 +162,7 @@ struct EntryEditView: View {
         date: enableTimeline ? date : nil,
         bookingType: bookingType.rawValue,
         interval: interval,
+        dayOfEntry: dayOfEntry,
         tag: tag,
         timelineEntries: nil
       )
@@ -168,6 +175,7 @@ struct EntryEditView: View {
       bookingEntry!.interval = interval.rawValue
       bookingEntry!.state = state.rawValue
       bookingEntry!.date = enableTimeline ? date : nil
+      bookingEntry!.dayOfEntry = dayOfEntry
       bookingEntry!.tag = tag
       Task {
         handleTimelineEntries(
@@ -223,6 +231,7 @@ struct EntryEditView: View {
           bookingType.rawValue != bookingEntry.bookingType ||
           interval != Interval(rawValue: bookingEntry.interval) ?? .monthly ||
           (enableTimeline ? date : nil) != bookingEntry.date ||
+          dayOfEntry != bookingEntry.dayOfEntry ||
           state != BookingEntryState(rawValue: bookingEntry.state) ?? .active ||
           tag != bookingEntry.tag {
         return true

@@ -1898,6 +1898,22 @@
         }
       }
     },
+    "On last day of month" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Am letzten Tag des Monats"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "on last day of month"
+          }
+        }
+      }
+    },
     "Open" : {
       "localizations" : {
         "de" : {
@@ -2185,6 +2201,22 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Select interval"
+          }
+        }
+      }
+    },
+    "Select starting month" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Startmonat auswählen"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Select starting month"
           }
         }
       }

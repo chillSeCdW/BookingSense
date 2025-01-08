@@ -69,9 +69,6 @@ struct NavigationStackContentView: View {
 }
 
 struct IntervalSectionView: View {
-  @Environment(\.colorScheme) var colorScheme
-  @Environment(\.modelContext) private var modelContext
-
   var interval: Interval
   var entries: [BookingEntry]
 
@@ -87,14 +84,6 @@ struct IntervalSectionView: View {
         Text(LocalizedStringKey("\(entries.count) entries"))
       })
       .headerProminence(.increased)
-    }
-  }
-
-  private func deleteEntry(offsets: IndexSet) {
-    withAnimation {
-      for index in offsets {
-        modelContext.delete(entries[index])
-      }
     }
   }
 }

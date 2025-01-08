@@ -18,8 +18,10 @@ struct EntryFormView: View {
   @Binding var interval: Interval
   @Binding var state: BookingEntryState
   @Binding var date: Date
+  @Binding var dayOfEntry: Int
   @Binding var tag: Tag?
   @Binding var enableTimeline: Bool
+  @Binding var useLastDayOfMonth: Bool
   @Binding var showConfirmationTimeline: Bool
 
   @State private var showDateNotice: Bool = false
@@ -41,7 +43,9 @@ struct EntryFormView: View {
       )
     }
     TimelineSection(enableTimeline: $enableTimeline,
+                    useLastDayOfMonth: $useLastDayOfMonth,
                     date: $date,
+                    dayOfEntry: $dayOfEntry,
                     showNotice: $showDateNotice,
                     state: $state,
                     showConfirmationTimeline: $showConfirmationTimeline,
@@ -151,10 +155,15 @@ struct AmountInputSection: View {
 
 struct TimelineSection: View {
   @Binding var enableTimeline: Bool
+  @Binding var useLastDayOfMonth: Bool
   @Binding var date: Date
+  @Binding var dayOfEntry: Int
   @Binding var showNotice: Bool
   @Binding var state: BookingEntryState
   @Binding var showConfirmationTimeline: Bool
+
+  @State private var selectedMonth = 0
+  @State private var selectedYear = 2024
 
   var bookingEntry: BookingEntry?
   var getNextBooking: () -> String
@@ -170,15 +179,55 @@ struct TimelineSection: View {
           }
         }
       if enableTimeline {
-        startDatePicker
+        toggleLastDayOfMonth
+        if useLastDayOfMonth {
+          monthYearPicker
+        } else {
+          startDatePicker
+        }
         dateNoticeText
       }
     }
   }
 
+  var toggleLastDayOfMonth: some View {
+    Toggle("On last day of month", isOn: $useLastDayOfMonth.animation())
+      .onChange(of: useLastDayOfMonth) { _, newState in
+        if newState {
+          dayOfEntry = 31 // setting day to last possible day of month
+          var calendar = Calendar(identifier: .gregorian)
+          calendar.timeZone = TimeZone(identifier: "UTC")!
+          var dateComponents = calendar.dateComponents([.year, .month, .hour, .minute], from: date)
+          dateComponents.day = 31
+
+          var newDate: Date
+          if let bookDate = bookingEntry?.date {
+            newDate = Calendar.current.date(from: dateComponents) ?? bookDate
+          } else {
+            newDate = Calendar.current.date(from: dateComponents) ?? .now
+          }
+          date = newDate
+        } else {
+          dayOfEntry = 0
+          if let bookDate = bookingEntry?.date {
+            date = bookDate
+          } else {
+            date = .now
+          }
+        }
+      }
+  }
+
   var startDatePicker: some View {
     DatePicker("Date of first booking", selection: $date, displayedComponents: .date)
       .datePickerStyle(.compact)
+  }
+
+  var monthYearPicker: some View {
+    VStack {
+      Text("Select starting month")
+      MonthYearPickerView(selectedDate: $date)
+    }
   }
 
   @ViewBuilder
@@ -257,7 +306,7 @@ struct TagPicker: View {
     ) {
       ScrollView(.horizontal) {
         HStack {
-          ForEach(tags) { tagOption in
+          ForEach(tags, id: \.uuid) { tagOption in
             Button(tagOption.name) {
               tag = tagOption != tag ? tagOption : nil
             }
@@ -289,8 +338,10 @@ struct TagPicker: View {
   @Previewable @State var interval: Interval = .weekly
   @Previewable @State var state: BookingEntryState = .active
   @Previewable @State var date: Date = .now
+  @Previewable @State var dayOfEntry: Int = 0
   @Previewable @State var tag: Tag?
   @Previewable @State var enableTimeline: Bool = false
+  @Previewable @State var useLastDayOfMonth: Bool = false
   @Previewable @State var showConfirmationTimeline: Bool = false
 
   let entry = BookingEntry(
@@ -308,8 +359,10 @@ struct TagPicker: View {
                 interval: $interval,
                 state: $state,
                 date: $date,
+                dayOfEntry: $dayOfEntry,
                 tag: $tag,
                 enableTimeline: $enableTimeline,
+                useLastDayOfMonth: $useLastDayOfMonth,
                 showConfirmationTimeline: $showConfirmationTimeline,
                 bookingEntry: entry
   )

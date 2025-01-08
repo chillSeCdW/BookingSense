@@ -257,7 +257,10 @@ struct Constants {
   }
 
   // swiftlint:disable:next cyclomatic_complexity
-  static func getNextDateOfInterval(_ startDate: Date?, interval: String, searchComponents: DateComponents, dayOfEntry: Int) -> Date? {
+  static func getNextDateOfInterval(_ startDate: Date?,
+                                    interval: String,
+                                    searchComponents: DateComponents,
+                                    dayOfEntry: Int) -> Date? {
     guard let startDate, let entryInterval = Interval(rawValue: interval) else {
       return nil
     }
