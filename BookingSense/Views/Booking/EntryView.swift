@@ -8,7 +8,7 @@ import SwiftData
 struct EntryView: View {
   @Environment(AppStates.self) var appStates
   @Environment(\.modelContext) private var modelContext
-  
+
   var bookingEntry: BookingEntry
 
   @State var presentingEntry: BookingEntry?
@@ -16,6 +16,7 @@ struct EntryView: View {
   var body: some View {
     List {
       bookingData
+      bookingInfo
     }
     .listSectionSpacing(.compact)
     .navigationTitle(bookingEntry.name)
@@ -103,6 +104,31 @@ struct EntryView: View {
             .blur(radius: appStates.blurSensitive ? 5.0 : 0)
         }
       }
+    }
+  }
+
+  @ViewBuilder
+  var bookingInfo: some View {
+    Section(header: Text("Booking conversions")) {
+      ForEach(Interval.allCases, id: \.self) { interval in
+        if interval.rawValue != bookingEntry.interval {
+          bookingBreakdown(
+            interval: interval,
+            bookingTypeString: BookingType(rawValue: bookingEntry.bookingType)?.description ?? ""
+          )
+        }
+      }
+    }
+  }
+
+  @ViewBuilder
+  func bookingBreakdown(interval: Interval, bookingTypeString: String) -> some View {
+    HStack {
+      Text("breakdown \(interval.description.capitalized) \(bookingTypeString.lowercased())")
+      Spacer()
+      Text(Constants.calculateCostOf(bookingEntry, to: interval).generateFormattedCurrency())
+        .foregroundColor(.secondary)
+        .blur(radius: appStates.blurSensitive ? 5.0 : 0)
     }
   }
 

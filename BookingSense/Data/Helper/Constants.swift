@@ -109,6 +109,11 @@ struct Constants {
     return result
   }
 
+  static func calculateCostOf(_ entry: BookingEntry, to toInterval: Interval) -> Decimal {
+    let curInterval = Interval(rawValue: entry.interval)
+    return entry.amount * getTimesValue(from: curInterval, to: toInterval)
+  }
+
   static func getLatestTimelineEntryDueDateFor(_ entry: BookingEntry) -> Date? {
     let latestTimelineEntry = entry.timelineEntries?.sorted(by: {$0.isDue > $1.isDue}).first
 
