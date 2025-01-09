@@ -49,7 +49,7 @@ struct BookingNavigationStackView: View {
         .presentationDetents([.medium, .large])
     }
     .sheet(isPresented: $showingSheet, content: {
-        EntryEditView()
+      EntryEditView()
     })
   }
 
