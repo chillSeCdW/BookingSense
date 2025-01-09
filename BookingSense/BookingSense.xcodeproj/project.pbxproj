@@ -58,6 +58,7 @@
 		B97378F82BDFC11E003A729E /* ContainerFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = B97378F72BDFC11E003A729E /* ContainerFactory.swift */; };
 		B97378FA2BDFC569003A729E /* BookingSchemaV1.swift in Sources */ = {isa = PBXBuildFile; fileRef = B97378F92BDFC569003A729E /* BookingSchemaV1.swift */; };
 		B97378FD2BDFC7D1003A729E /* Migrations.swift in Sources */ = {isa = PBXBuildFile; fileRef = B97378FC2BDFC7D1003A729E /* Migrations.swift */; };
+		B97557F02D3033D60026C9C3 /* BookingConversionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B97557EF2D3033D00026C9C3 /* BookingConversionsView.swift */; };
 		B9781EAB2C2EB8AF00FBA0A5 /* SettingsNavigationStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9781EAA2C2EB8AF00FBA0A5 /* SettingsNavigationStackView.swift */; };
 		B9781EB02C346F1500FBA0A5 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B9781EAF2C346F1500FBA0A5 /* StoreKit.framework */; };
 		B980A2022CC139E00075AE8F /* ChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B980A2012CC139DD0075AE8F /* ChartView.swift */; };
@@ -174,6 +175,7 @@
 		B97378F72BDFC11E003A729E /* ContainerFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContainerFactory.swift; sourceTree = "<group>"; };
 		B97378F92BDFC569003A729E /* BookingSchemaV1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingSchemaV1.swift; sourceTree = "<group>"; };
 		B97378FC2BDFC7D1003A729E /* Migrations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Migrations.swift; sourceTree = "<group>"; };
+		B97557EF2D3033D00026C9C3 /* BookingConversionsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingConversionsView.swift; sourceTree = "<group>"; };
 		B9781EAA2C2EB8AF00FBA0A5 /* SettingsNavigationStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsNavigationStackView.swift; sourceTree = "<group>"; };
 		B9781EAF2C346F1500FBA0A5 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		B980A2012CC139DD0075AE8F /* ChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartView.swift; sourceTree = "<group>"; };
@@ -325,6 +327,7 @@
 		B919B4A42BC6AAAA009B2FA4 /* Booking */ = {
 			isa = PBXGroup;
 			children = (
+				B97557EF2D3033D00026C9C3 /* BookingConversionsView.swift */,
 				B9C6EC422D05B53500092E23 /* EntryView.swift */,
 				B95981F92BE3890500578A9C /* BookingNavigationStackView.swift */,
 				B90B2B422BE504A200BD2042 /* NavigationStackContentView.swift */,
@@ -803,6 +806,7 @@
 				B90D3D0F2C19D97D00133857 /* IntervalInsightsView.swift in Sources */,
 				B9383A052CD69A4800AAB674 /* TimelineEntryView.swift in Sources */,
 				B99206092BDA96090099EF26 /* ToolbarEditEntry.swift in Sources */,
+				B97557F02D3033D60026C9C3 /* BookingConversionsView.swift in Sources */,
 				B991E2482CDFB28E0031288B /* BookingFilterDialog.swift in Sources */,
 				B96761CD2C34A77B00DA9114 /* MailView.swift in Sources */,
 				B907587B2C13479300EDC82F /* ContentView.swift in Sources */,

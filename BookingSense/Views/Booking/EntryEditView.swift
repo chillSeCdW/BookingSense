@@ -17,6 +17,7 @@ struct EntryEditView: View {
   @Query private var entries: [BookingEntry]
 
   var bookingEntry: BookingEntry?
+  var closeCallback: (() -> Void)? // optional callback for creating booking
 
   @State var showConfirmation: Bool = false
   @State var showConfirmationTimeline: Bool = false
@@ -41,7 +42,7 @@ struct EntryEditView: View {
 
   var body: some View {
     NavigationView {
-      Form {
+      List {
         EntryFormView(name: $name,
                       bookingType: $bookingType,
                       amount: $amount,
@@ -82,6 +83,7 @@ struct EntryEditView: View {
           })
         }
       }
+      .listStyle(.sidebar)
       .listSectionSpacing(.compact)
       .navigationTitle(isCreate ? "Create booking" : "Edit booking")
       .toolbar {
@@ -105,6 +107,7 @@ struct EntryEditView: View {
         Button("Delete \(bookingEntry?.name ?? "booking")", role: .destructive) {
           modelContext.delete(bookingEntry!)
           dismiss()
+          closeCallback?()
         }
       } message: {
         Text("Sure delete booking \(bookingEntry?.name ?? ""), will delete timeline entries?")

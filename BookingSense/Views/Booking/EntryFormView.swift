@@ -25,6 +25,7 @@ struct EntryFormView: View {
   @Binding var showConfirmationTimeline: Bool
 
   @State private var showDateNotice: Bool = false
+  @State private var isExpandedBookingConversions: Bool = false
 
   @FocusState var focusedName: Bool
   @FocusState var focusedAmount: Bool
@@ -42,6 +43,12 @@ struct EntryFormView: View {
         focusedAmount: _focusedAmount
       )
     }
+    BookingConversionsView(
+      bookingInterval: interval,
+      bookingType: bookingType,
+      bookingAmount: try? Decimal(amount, format: Decimal.FormatStyle(locale: Locale.current)),
+      isExpandedBookingConversions: $isExpandedBookingConversions
+    )
     TimelineSection(enableTimeline: $enableTimeline,
                     useLastDayOfMonth: $useLastDayOfMonth,
                     date: $date,

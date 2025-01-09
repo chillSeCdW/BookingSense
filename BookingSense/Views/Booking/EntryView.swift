@@ -8,16 +8,24 @@ import SwiftData
 struct EntryView: View {
   @Environment(AppStates.self) var appStates
   @Environment(\.modelContext) private var modelContext
+  @Environment(\.dismiss) var dismiss
 
   var bookingEntry: BookingEntry
 
   @State var presentingEntry: BookingEntry?
+  @State private var isExpandedBookingConversions: Bool = true
 
   var body: some View {
     List {
       bookingData
-      bookingInfo
+      BookingConversionsView(
+        bookingInterval: Interval(rawValue: bookingEntry.interval),
+        bookingType: BookingType(rawValue: bookingEntry.bookingType),
+        bookingAmount: bookingEntry.amount,
+        isExpandedBookingConversions: $isExpandedBookingConversions
+      )
     }
+    .listStyle(.sidebar)
     .listSectionSpacing(.compact)
     .navigationTitle(bookingEntry.name)
     .toolbar {
@@ -26,7 +34,9 @@ struct EntryView: View {
       }
     }
     .sheet(item: $presentingEntry, onDismiss: didDismiss) { entry in
-      EntryEditView(bookingEntry: entry)
+      EntryEditView(bookingEntry: entry) {
+        dismiss()
+      }
     }
   }
 
@@ -104,31 +114,6 @@ struct EntryView: View {
             .blur(radius: appStates.blurSensitive ? 5.0 : 0)
         }
       }
-    }
-  }
-
-  @ViewBuilder
-  var bookingInfo: some View {
-    Section(header: Text("Booking conversions")) {
-      ForEach(Interval.allCases, id: \.self) { interval in
-        if interval.rawValue != bookingEntry.interval {
-          bookingBreakdown(
-            interval: interval,
-            bookingTypeString: BookingType(rawValue: bookingEntry.bookingType)?.description ?? ""
-          )
-        }
-      }
-    }
-  }
-
-  @ViewBuilder
-  func bookingBreakdown(interval: Interval, bookingTypeString: String) -> some View {
-    HStack {
-      Text("breakdown \(interval.description.capitalized) \(bookingTypeString.lowercased())")
-      Spacer()
-      Text(Constants.calculateCostOf(bookingEntry, to: interval).generateFormattedCurrency())
-        .foregroundColor(.secondary)
-        .blur(radius: appStates.blurSensitive ? 5.0 : 0)
     }
   }
 
