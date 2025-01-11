@@ -822,22 +822,6 @@
         }
       }
     },
-    "Can remove this tab in settings if you don't want to use it" : {
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Du kannst diesen Tab in den Einstellungen ausblenden, falls du ihn nicht verwenden magst."
-          }
-        },
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "You can remove this tab in Settings when you don’t want to use it."
-          }
-        }
-      }
-    },
     "Cancel" : {
       "localizations" : {
         "de" : {
@@ -1604,22 +1588,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "half-year"
-          }
-        }
-      }
-    },
-    "Highest amount" : {
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Höchster Betrag"
-          }
-        },
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Highest amount"
           }
         }
       }
@@ -2865,38 +2833,6 @@
         }
       }
     },
-    "Timeline is a Full Access feature" : {
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Zeitstrahl ist eine Vollzugang Funktionalität"
-          }
-        },
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Timeline is a Full Access feature"
-          }
-        }
-      }
-    },
-    "Timeline is there to help you keep track of your bookings" : {
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Zeitstrahl dient zur leichteren Übersicht deiner Buchungen. Wenn deine Buchungen stattfanden, kannst du sie hier abhaken."
-          }
-        },
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Timeline is there to help you keep track of your bookings. You will be able to check off your bookings when they happen."
-          }
-        }
-      }
-    },
     "Tips" : {
       "localizations" : {
         "de" : {
@@ -3074,22 +3010,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Unchecked"
-          }
-        }
-      }
-    },
-    "Unlock feature in Settings -> Features" : {
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Zum freischalten gehe in Einstellungen -> Funktionalitäten"
-          }
-        },
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "To unlock feature go to Settings -> Features"
           }
         }
       }
