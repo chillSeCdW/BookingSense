@@ -18,4 +18,12 @@ extension Decimal {
     return formatter.string(from: NSDecimalNumber(decimal: self)) ?? ""
   }
 
+  func generateFormattedPercent() -> String {
+    let formatter = NumberFormatter()
+    formatter.numberStyle = .percent
+    formatter.locale = Locale(identifier: "en_US")
+    formatter.maximumFractionDigits = 2
+    return formatter.string(from: NSDecimalNumber(decimal: self)) ?? ""
+  }
+
 }

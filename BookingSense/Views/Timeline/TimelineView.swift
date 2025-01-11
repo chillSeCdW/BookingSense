@@ -6,7 +6,6 @@ import SwiftData
 
 struct TimelineView: View {
   @Environment(\.modelContext) private var modelContext
-  @Environment(\.purchaseStatus) private var purchaseStatus
   @Environment(AppStates.self) var appStates
 
   @Query private var entries: [BookingEntry]
@@ -16,7 +15,6 @@ struct TimelineView: View {
 
     NavigationStack {
       TimelineContentListView()
-        .disabled(purchaseStatus != .fullAccess)
         .navigationTitle("Timeline")
         .navigationBarTitleDisplayMode(.automatic)
         .refreshable {
@@ -36,39 +34,7 @@ struct TimelineView: View {
           TimeFilterDialog()
             .presentationDetents([.medium, .large])
         }
-        .overlay(alignment: .center) {
-          FullAccessTextOverlay()
-        }
     }
     .searchable(text: $appStates.searchTimelineText, prompt: "Search")
-  }
-}
-
-struct FullAccessTextOverlay: View {
-  @Environment(\.purchaseStatus) private var purchaseStatus
-
-  var body: some View {
-    if purchaseStatus != .fullAccess {
-      ZStack {
-        Rectangle()
-          .fill(Color(.systemGray6))
-          .border(Color(.systemGray), width: 5)
-          .frame(maxHeight: 300)
-          .opacity(0.8)
-        VStack {
-          Text("Timeline is a Full Access feature")
-            .bold()
-            .font(.title3)
-            .padding(.bottom)
-          Text("Timeline is there to help you keep track of your bookings")
-          Text("Can remove this tab in settings if you don't want to use it")
-          Text("Unlock feature in Settings -> Features")
-            .italic()
-            .padding(.top, 5)
-        }
-        .padding(.horizontal)
-        .multilineTextAlignment(.center)
-      }
-    }
   }
 }

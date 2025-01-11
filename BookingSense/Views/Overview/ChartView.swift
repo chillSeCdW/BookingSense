@@ -56,6 +56,10 @@ struct ChartView<Content: View>: View {
     return nil
   }
 
+  var percentOfSelectedAmount: Decimal {
+    (selectedStyle?.amount ?? highestData?.amount ?? Decimal()) / totalAmount
+  }
+
   var body: some View {
     VStack {
       Text(LocalizedStringKey(headerTitle))
@@ -92,10 +96,9 @@ struct ChartView<Content: View>: View {
       GeometryReader { geometry in
         let frame = geometry[chartProxy.plotFrame!]
         VStack {
-          Text("Highest amount")
+          Text("\(percentOfSelectedAmount.generateFormattedPercent()) / 100%")
             .font(.callout)
             .foregroundStyle(.secondary)
-            .opacity(selectedStyle != nil || selectedStyle?.name == highestData?.name || noData ? 0 : 1)
           Text(LocalizedStringKey(selectedStyle?.name ?? highestData?.name ?? ""))
             .font(.title3.bold())
             .foregroundColor(.primary)
@@ -144,10 +147,9 @@ struct ChartView<Content: View>: View {
       GeometryReader { geometry in
         let frame = geometry[chartProxy.plotFrame!]
         VStack {
-          Text("Highest amount")
+          Text("\(percentOfSelectedAmount.generateFormattedPercent()) / 100%")
             .font(.callout)
             .foregroundStyle(.secondary)
-            .opacity(selectedStyle == nil || selectedStyle?.name == highestData?.name ? 1 : 0)
           Text(LocalizedStringKey(selectedStyle?.name ?? highestData?.name ?? ""))
             .font(.title3.bold())
             .foregroundColor(.primary)
