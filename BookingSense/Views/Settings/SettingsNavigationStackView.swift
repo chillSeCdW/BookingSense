@@ -70,14 +70,6 @@ struct SettingsNavigationStackView: View {
               Text("Tips")
             }
           }
-          NavigationLink {
-            FeaturesPageView()
-          } label: {
-            HStack {
-              Image(systemName: "storefront")
-              Text("Features")
-            }
-          }
         }
         Section("Hints") {
           Button(action: {
