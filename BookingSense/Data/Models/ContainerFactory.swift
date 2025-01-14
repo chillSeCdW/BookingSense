@@ -30,8 +30,10 @@ struct ContainerFactory {
 
   func addExamples(_ examples: [any PersistentModel]) {
     Task { @MainActor in
-      examples.forEach { example in
-        container.mainContext.insert(example)
+      try? container.mainContext.transaction {
+        examples.forEach { example in
+          container.mainContext.insert(example)
+        }
       }
     }
   }
