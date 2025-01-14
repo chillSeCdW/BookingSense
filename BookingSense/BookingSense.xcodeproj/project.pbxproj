@@ -31,10 +31,10 @@
 		B927D3FA2CE7FACC006B1B19 /* PurchaseStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = B927D3F92CE7FAC8006B1B19 /* PurchaseStatus.swift */; };
 		B927FB232C26CD49008D30BE /* ToolbarAddTip.swift in Sources */ = {isa = PBXBuildFile; fileRef = B927FB222C26CD49008D30BE /* ToolbarAddTip.swift */; };
 		B927FB292C2C386D008D30BE /* ToolbarOverviewList.swift in Sources */ = {isa = PBXBuildFile; fileRef = B927FB282C2C386D008D30BE /* ToolbarOverviewList.swift */; };
-		B92BC36F2C401DCE00019A62 /* MijickPopupView in Frameworks */ = {isa = PBXBuildFile; productRef = B92BC36E2C401DCE00019A62 /* MijickPopupView */; };
 		B92BC3712C401E7400019A62 /* ResetHintsTopPopUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = B92BC3702C401E7400019A62 /* ResetHintsTopPopUp.swift */; };
 		B92C53B32BDFED590029E759 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = B9D534122BD2903500C3355F /* Localizable.xcstrings */; };
 		B92D6F652CC006C4000A2697 /* ChartModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = B92D6F642CC006BD000A2697 /* ChartModels.swift */; };
+		B936B99B2D367AF600A8DA5F /* MijickPopups in Frameworks */ = {isa = PBXBuildFile; productRef = B936B99A2D367AF600A8DA5F /* MijickPopups */; };
 		B93839F12CD2612E00AAB674 /* BookingSchemaV3.swift in Sources */ = {isa = PBXBuildFile; fileRef = B93839F02CD2612700AAB674 /* BookingSchemaV3.swift */; };
 		B93839F52CD26FC400AAB674 /* JsonBookingEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = B93839F42CD26FB800AAB674 /* JsonBookingEntry.swift */; };
 		B93839F72CD26FCD00AAB674 /* JsonTag.swift in Sources */ = {isa = PBXBuildFile; fileRef = B93839F62CD26FC800AAB674 /* JsonTag.swift */; };
@@ -245,8 +245,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B936B99B2D367AF600A8DA5F /* MijickPopups in Frameworks */,
 				B9781EB02C346F1500FBA0A5 /* StoreKit.framework in Frameworks */,
-				B92BC36F2C401DCE00019A62 /* MijickPopupView in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -663,7 +663,7 @@
 			);
 			name = BookingSense;
 			packageProductDependencies = (
-				B92BC36E2C401DCE00019A62 /* MijickPopupView */,
+				B936B99A2D367AF600A8DA5F /* MijickPopups */,
 			);
 			productName = ExpenseSense;
 			productReference = B9DAFAD12BA8AFAF000486EA /* BookingSense.app */;
@@ -1252,7 +1252,7 @@
 			repositoryURL = "https://github.com/realm/SwiftLint.git";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 0.57.1;
+				minimumVersion = 0.58.0;
 			};
 		};
 		B92BC36D2C401DCE00019A62 /* XCRemoteSwiftPackageReference "PopupView" */ = {
@@ -1260,16 +1260,16 @@
 			repositoryURL = "https://github.com/Mijick/PopupView.git";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 2.7.1;
+				minimumVersion = 4.0.1;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		B92BC36E2C401DCE00019A62 /* MijickPopupView */ = {
+		B936B99A2D367AF600A8DA5F /* MijickPopups */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = B92BC36D2C401DCE00019A62 /* XCRemoteSwiftPackageReference "PopupView" */;
-			productName = MijickPopupView;
+			productName = MijickPopups;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

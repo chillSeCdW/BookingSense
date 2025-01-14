@@ -135,6 +135,7 @@ struct EntryEditView: View {
     }
   }
 
+  // swiftlint:disable:next function_body_length
   func save() {
     let sanitizedAmount = stripString(amount)
     focusedName = false
@@ -152,9 +153,14 @@ struct EntryEditView: View {
 
     let parsedAmount = try? Decimal(sanitizedAmount, format: Decimal.FormatStyle(locale: Locale.current))
     if checkIfAmountWasTransformed(sanitizedAmount, parsedDecimal: parsedAmount) {
-      BookingInfoPopUp(colorScheme: colorScheme, parsedAmount: parsedAmount)
-        .showAndStack()
+      Task {
+        await BookingInfoPopUp(
+          colorScheme: colorScheme,
+          message: String(localized: "\(parsedAmount?.formatted() ?? "0") transformedInfo")
+        )
         .dismissAfter(10)
+        .present()
+      }
     }
 
     if isCreate {

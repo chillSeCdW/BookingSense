@@ -8,6 +8,7 @@ import OSLog
 struct ExportImportButtons: View {
   private let logger = Logger(subsystem: "BookingSense", category: "ExportImportButtons")
   @Environment(\.modelContext) private var modelContext
+  @Environment(\.colorScheme) var colorScheme
   @Query private var entries: [BookingEntry]
   @Query private var tags: [Tag]
   @Query private var timeline: [TimelineEntry]
@@ -102,6 +103,11 @@ struct ExportImportButtons: View {
         Button("Clear and insert", role: .destructive) {
           cleanData()
           processImportedData(importedData)
+          Task {
+            await BookingInfoPopUp(colorScheme: colorScheme, message: String(localized: "Successfully imported"))
+              .dismissAfter(3)
+              .present()
+          }
         }
       } else {
         Button("Ok") {

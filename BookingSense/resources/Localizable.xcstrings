@@ -2577,6 +2577,22 @@
         }
       }
     },
+    "Successfully imported" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Erfolgreich importiert"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Successfully imported"
+          }
+        }
+      }
+    },
     "sum of costs" : {
       "localizations" : {
         "de" : {

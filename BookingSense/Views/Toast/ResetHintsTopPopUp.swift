@@ -2,22 +2,18 @@
 // Using Swift 5.0
 
 import SwiftUI
-import MijickPopupView
+import MijickPopups
 
-struct ResetHintsTopPopUp: TopPopup {
+struct ResetHintsTopPopUp: CenterPopup {
   let colorScheme: ColorScheme
 
   func configurePopup(popup: TopPopupConfig) -> TopPopupConfig {
-    let scene = (UIApplication.shared.connectedScenes.first as? UIWindowScene)
-    let safeAreaPaddingTop = scene?.windows.first?.safeAreaInsets.top
-
     return popup
-      .backgroundColour(Constants.getBackground(colorScheme))
-      .topPadding(safeAreaPaddingTop ?? 55)
-      .horizontalPadding(16)
+      .backgroundColor(Constants.getBackground(colorScheme))
   }
 
-  func createContent() -> some View {
+  // swiftlint:disable multiple_closures_with_trailing_closure
+  var body: some View {
     VStack(spacing: 12) {
       HStack(spacing: 12) {
         Image(systemName: "info.circle")
@@ -28,7 +24,7 @@ struct ResetHintsTopPopUp: TopPopup {
           Text("Hints will be reset when restarting the App")
         }.fixedSize(horizontal: false, vertical: true)
       }
-      Button(action: dismiss) {
+      Button(action: { Task { await dismissLastPopup() } }) {
         Text("Dismiss")
       }
     }
@@ -37,6 +33,7 @@ struct ResetHintsTopPopUp: TopPopup {
     .padding(.leading, 20)
     .padding(.trailing, 32)
   }
+  // swiftlint:enable multiple_closures_with_trailing_closure
 }
 
 #Preview {

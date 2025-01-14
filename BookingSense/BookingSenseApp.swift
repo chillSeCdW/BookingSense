@@ -8,7 +8,7 @@
 import SwiftUI
 import SwiftData
 import TipKit
-import MijickPopupView
+import MijickPopups
 
 typealias BookingEntry = BookingSchemaV5.BookingEntry
 typealias Tag = BookingSchemaV5.Tag
@@ -63,7 +63,13 @@ struct BookingSenseApp: App {
   var body: some Scene {
     WindowGroup {
       ContentView()
-        .implementPopupView()
+        .registerPopups(id: .shared) { $0
+          .center {
+            $0.cornerRadius(20)
+              .tapOutsideToDismissPopup(true)
+              .popupHorizontalPadding(20)
+          }
+        }
         .environment(appStates)
     }
     .modelContainer(sharedModelContainer)

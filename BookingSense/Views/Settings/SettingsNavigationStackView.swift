@@ -74,9 +74,11 @@ struct SettingsNavigationStackView: View {
         Section("Hints") {
           Button(action: {
             resetTips = true
-            ResetHintsTopPopUp(colorScheme: colorScheme)
-              .showAndStack()
-              .dismissAfter(5)
+            Task {
+              await ResetHintsTopPopUp(colorScheme: colorScheme)
+                .dismissAfter(5)
+                .present()
+            }
           }, label: {
             HStack {
               Image(systemName: "info")

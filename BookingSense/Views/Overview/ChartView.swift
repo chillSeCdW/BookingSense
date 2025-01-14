@@ -57,7 +57,11 @@ struct ChartView<Content: View>: View {
   }
 
   var percentOfSelectedAmount: Decimal {
-    (selectedStyle?.amount ?? highestData?.amount ?? Decimal()) / totalAmount
+    guard totalAmount != 0 else {
+        print("Error: Division by zero")
+        return 0
+    }
+    return (selectedStyle?.amount ?? highestData?.amount ?? Decimal()) / totalAmount
   }
 
   var body: some View {
@@ -74,7 +78,6 @@ struct ChartView<Content: View>: View {
     }
   }
 
-  // swiftlint:disable function_body_length
   func fixedColorChart(_ noData: Bool) -> some View {
     Chart(data, id: \.id) { element in
       SectorMark(
@@ -127,7 +130,6 @@ struct ChartView<Content: View>: View {
       }
     }
   }
-  // swiftlint:enable function_body_length
 
   func chart() -> some View {
     Chart(data, id: \.id) { element in

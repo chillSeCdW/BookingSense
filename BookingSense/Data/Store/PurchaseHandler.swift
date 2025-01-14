@@ -80,11 +80,13 @@ actor PurchaseHandler {
       if transaction.revocationReason != nil {
         return
       }
-      ThankYouPopUp(colorScheme: colorScheme,
-                    message: String(localized: "Thank you for upgrading and enjoy")
-      )
-      .showAndStack()
-      .dismissAfter(3)
+      Task {
+        await ThankYouPopUp(colorScheme: colorScheme,
+                            message: String(localized: "Thank you for upgrading and enjoy")
+        )
+        .dismissAfter(3)
+        .present()
+      }
     case .consumable:
       await transaction.finish()
       logger.debug("""
@@ -94,11 +96,13 @@ actor PurchaseHandler {
       if transaction.revocationReason != nil {
         return
       }
-      ThankYouPopUp(colorScheme: colorScheme,
-                    message: String(localized: "Thank you for your tip!")
-      )
-      .showAndStack()
-      .dismissAfter(3)
+      Task {
+        await ThankYouPopUp(colorScheme: colorScheme,
+                            message: String(localized: "Thank you for your tip!")
+        )
+        .dismissAfter(3)
+        .present()
+      }
     default:
       await transaction.finish()
     }
