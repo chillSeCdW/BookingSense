@@ -60,14 +60,14 @@ struct ContainerFactory {
   // swiftlint:disable function_body_length
   static func generateFixedEntriesItems() -> [BookingEntry] {
     var returnResult: [BookingEntry] = []
-    let incomeTag: Tag = Tag(name: "income")
+    let someTag: Tag = Tag(name: "someTag")
     let timelineEntry: TimelineEntry = TimelineEntry(
       state: TimelineEntryState.open.rawValue,
       name: "Brötchen",
       amount: 2.5,
       bookingType: BookingType.minus.rawValue,
       isDue: Date.now,
-      tag: nil,
+      tag: someTag,
       completedAt: nil,
       bookingEntry: nil
     )
@@ -77,7 +77,7 @@ struct ContainerFactory {
       amount: 2.5,
       bookingType: BookingType.minus.rawValue,
       isDue: Date.now.addingTimeInterval( 60 * 60 * 24 * 2),
-      tag: nil,
+      tag: someTag,
       completedAt: nil,
       bookingEntry: nil
     )
@@ -87,7 +87,7 @@ struct ContainerFactory {
       amount: 2.5,
       bookingType: BookingType.minus.rawValue,
       isDue: Date.now.addingTimeInterval( 60 * 60 * 24),
-      tag: nil,
+      tag: someTag,
       completedAt: nil,
       bookingEntry: nil
     )
@@ -96,50 +96,50 @@ struct ContainerFactory {
                                      amount: 1,
                                      bookingType: BookingType.plus.rawValue,
                                      interval: .daily,
-                                     tag: incomeTag,
+                                     tag: someTag,
                                      timelineEntries: nil))
     returnResult.append(BookingEntry(name: "Cashback",
                                      amount: 10,
                                      bookingType: BookingType.plus.rawValue,
                                      interval: .weekly,
-                                     tag: incomeTag,
+                                     tag: someTag,
                                      timelineEntries: nil))
     returnResult.append(BookingEntry(name: "Tutoring",
                                      amount: 50,
                                      bookingType: BookingType.plus.rawValue,
                                      interval: .biweekly,
-                                     tag: incomeTag,
+                                     tag: someTag,
                                      timelineEntries: nil))
     returnResult.append(BookingEntry(name: "Salary",
                                      amount: 2500,
                                      bookingType: BookingType.plus.rawValue,
                                      interval: .monthly,
-                                     tag: incomeTag,
+                                     tag: someTag,
                                      timelineEntries: nil))
     returnResult.append(BookingEntry(name: "Rent Parking",
                                      amount: 150,
                                      bookingType: BookingType.plus.rawValue,
                                      interval: .monthly,
-                                     tag: incomeTag,
+                                     tag: someTag,
                                      timelineEntries: nil))
     returnResult.append(BookingEntry(name: "Investment",
                                      amount: 500,
                                      bookingType: BookingType.plus.rawValue,
                                      interval: .semiannually,
-                                     tag: incomeTag,
+                                     tag: someTag,
                                      timelineEntries: nil))
     returnResult.append(BookingEntry(name: "Festgeld",
                                      amount: 1000,
                                      bookingType: BookingType.plus.rawValue,
                                      interval: .annually,
-                                     tag: incomeTag,
+                                     tag: someTag,
                                      timelineEntries: nil))
 
     returnResult.append(BookingEntry(name: "Brötchen",
                                      amount: 2.5,
                                      bookingType: BookingType.minus.rawValue,
                                      interval: .daily,
-                                     tag: incomeTag,
+                                     tag: someTag,
                                      timelineEntries: [timelineEntry, timelineEntry1, timelineEntry2]))
     returnResult.append(BookingEntry(name: "Taschengeld Kinder",
                                      amount: 10,
