@@ -401,7 +401,7 @@ struct Constants {
       }
     }
 
-    return groupedEntries
+    return groupedEntries.filter { !$0.value.isEmpty }
   }
 
   static func getListBackgroundView(bookingType: String, isActive: Bool, colorScheme: ColorScheme) -> some View {

@@ -40,9 +40,7 @@ struct TimelineListView: View {
       FilterAmountButtonsView()
       ForEach(sortedKeys, id: \.self) { date in
         if let groupEntriesForMonth = groupedEntries[date] {
-          if !groupEntriesForMonth.isEmpty {
-            TimelineSectionView(date: date, entriesForDate: groupEntriesForMonth)
-          }
+          TimelineSectionView(date: date, entriesForDate: groupEntriesForMonth)
         }
       }
       if groupedEntries.isEmpty {
