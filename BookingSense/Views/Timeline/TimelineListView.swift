@@ -39,7 +39,9 @@ struct TimelineListView: View {
       FilterStateButtonsView()
       FilterAmountButtonsView()
       ForEach(sortedKeys, id: \.self) { date in
-        TimelineSectionView(date: date, entriesForDate: groupedEntries[date] ?? [])
+        if let groupEntriesForMonth = groupedEntries[date] {
+          TimelineSectionView(date: date, entriesForDate: groupEntriesForMonth)
+        }
       }
       if groupedEntries.isEmpty {
         HStack {

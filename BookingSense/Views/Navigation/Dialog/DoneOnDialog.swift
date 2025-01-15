@@ -12,7 +12,7 @@ struct DoneOnDialog: View {
   var body: some View {
     NavigationView {
       List {
-        Section("\(timelineEntry.name) \(timelineEntry.isDue.formatted(date: .complete, time: .omitted))") {
+        Section("Done on Section for \(timelineEntry.name) \(timelineEntry.isDue.formatted(date: .complete, time: .omitted))") {
           DatePicker("Done on", selection: $date, displayedComponents: .date)
             .datePickerStyle(.compact)
         }

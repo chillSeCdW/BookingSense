@@ -13,7 +13,8 @@ struct EntryView: View {
   var bookingEntry: BookingEntry
 
   @State var presentingEntry: BookingEntry?
-  @State private var isExpandedBookingConversions: Bool = true
+  @AppStorage("isExpandedBookingConversions") private var isExpandedBookingConversions: Bool = true
+  @AppStorage("isExpandedTimelineStatistics") private var isExpandedTimelineStatistics: Bool = true
 
   var body: some View {
     List {
@@ -24,6 +25,13 @@ struct EntryView: View {
         bookingAmount: bookingEntry.amount,
         isExpandedBookingConversions: $isExpandedBookingConversions
       )
+      if let timelineEntries = bookingEntry.timelineEntries {
+        if !timelineEntries.isEmpty {
+          TimelineInfosView(timelineEntries: timelineEntries,
+                            isExpandedTimelineStatistics: $isExpandedTimelineStatistics
+          )
+        }
+      }
     }
     .listStyle(.sidebar)
     .listSectionSpacing(.compact)

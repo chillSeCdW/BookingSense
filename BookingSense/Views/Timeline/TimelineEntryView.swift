@@ -39,10 +39,11 @@ struct TimelineEntryView: View {
     .disabled(timelineEntry.state == TimelineEntryState.skipped.rawValue)
     .toggleStyle(CheckToggleStyle())
     .swipeActions(edge: .trailing) {
-      Button("Delete") {
-        showingConfirmation.toggle()
+      Button("Done on time") {
+        timelineEntry.state = TimelineEntryState.done.rawValue
+        timelineEntry.completedAt = timelineEntry.isDue
       }
-      .tint(.red)
+      .tint(.blue)
       if timelineEntry.state != TimelineEntryState.skipped.rawValue {
         Button("Skip") {
           timelineEntry.state = TimelineEntryState.skipped.rawValue
@@ -58,6 +59,12 @@ struct TimelineEntryView: View {
         isDoneOnDialogPresented.toggle()
       }
       .tint(.green)
+    }
+    .swipeActions(edge: .leading) {
+      Button("Delete") {
+        showingConfirmation.toggle()
+      }
+      .tint(.red)
     }
     .sheet(isPresented: $isDoneOnDialogPresented) {
       isDoneOnDialogPresented = false
