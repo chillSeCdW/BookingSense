@@ -139,7 +139,7 @@ struct ContainerFactory {
                                      amount: 2.5,
                                      bookingType: BookingType.minus.rawValue,
                                      interval: .daily,
-                                     tag: nil,
+                                     tag: incomeTag,
                                      timelineEntries: [timelineEntry, timelineEntry1, timelineEntry2]))
     returnResult.append(BookingEntry(name: "Taschengeld Kinder",
                                      amount: 10,
