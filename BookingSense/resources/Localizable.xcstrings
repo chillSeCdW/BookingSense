@@ -1310,6 +1310,12 @@
             "state" : "translated",
             "value" : "Pünktlich erledigt"
           }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Done on time"
+          }
         }
       }
     },
@@ -3047,7 +3053,7 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Bookings completed on-time"
+            "value" : "Bookings completed on time"
           }
         }
       }
