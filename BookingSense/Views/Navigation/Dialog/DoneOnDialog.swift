@@ -2,6 +2,7 @@
 // Using Swift 6.0
 
 import SwiftUI
+import BookingSenseData
 
 struct DoneOnDialog: View {
   @Environment(\.dismiss) var dismiss
@@ -12,6 +13,7 @@ struct DoneOnDialog: View {
   var body: some View {
     NavigationView {
       List {
+        // swiftlint:disable:next line_length
         Section("Done on Section for \(timelineEntry.name) \(timelineEntry.isDue.formatted(date: .complete, time: .omitted))") {
           DatePicker("Done on", selection: $date, displayedComponents: .date)
             .datePickerStyle(.compact)

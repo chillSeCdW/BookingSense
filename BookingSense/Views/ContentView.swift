@@ -8,6 +8,7 @@
 import SwiftUI
 import SwiftData
 import StoreKit
+import BookingSenseData
 
 struct ContentView: View {
   @Environment(AppStates.self) var appStates

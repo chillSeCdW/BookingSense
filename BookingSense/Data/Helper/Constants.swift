@@ -10,6 +10,7 @@ import SwiftData
 import Foundation
 import OSLog
 import LocalAuthentication
+import BookingSenseData
 
 // swiftlint:disable type_body_length
 // swiftlint:disable file_length

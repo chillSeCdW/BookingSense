@@ -4,6 +4,7 @@
 import SwiftUI
 import SwiftData
 import Charts
+import BookingSenseData
 
 struct ChartsView: View {
   @Query private var entries: [BookingEntry]

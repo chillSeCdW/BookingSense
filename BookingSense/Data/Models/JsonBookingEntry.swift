@@ -2,6 +2,7 @@
 // Using Swift 6.0
 
 import Foundation
+import BookingSenseData
 
 enum JsonBookingEntryKeys: CodingKey {
   case uuid, name, state, amount, date, bookingType, interval, dayOfEntry, intervalString, tag, timelineEntries

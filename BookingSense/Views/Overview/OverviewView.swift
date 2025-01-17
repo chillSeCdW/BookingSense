@@ -8,6 +8,7 @@
 import Foundation
 import SwiftUI
 import SwiftData
+import BookingSenseData
 
 struct OverviewView: View {
   @Query private var entries: [BookingEntry]
@@ -107,7 +108,7 @@ struct OverviewView: View {
 
 #Preview {
   let factory = ContainerFactory(BookingSchemaV4.self, storeInMemory: true)
-  factory.addExamples(ContainerFactory.generateRandomEntriesItems())
+  factory.addExamples(ContainerFactory.generateFixedEntriesItems())
   return OverviewView()
     .environment(AppStates())
     .modelContainer(factory.container)

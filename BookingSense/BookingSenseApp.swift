@@ -9,10 +9,7 @@ import SwiftUI
 import SwiftData
 import TipKit
 import MijickPopupView
-
-typealias BookingEntry = BookingSchemaV5.BookingEntry
-typealias Tag = BookingSchemaV5.Tag
-typealias TimelineEntry = BookingSchemaV5.TimelineEntry
+import BookingSenseData
 
 @main
 struct BookingSenseApp: App {

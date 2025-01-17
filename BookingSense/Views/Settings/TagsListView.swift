@@ -3,6 +3,7 @@
 
 import SwiftUI
 import SwiftData
+import BookingSenseData
 
 struct TagsListView: View {
   @Query(sort: [SortDescriptor<Tag>(\.name, comparator: .localized)]) var tags: [Tag]

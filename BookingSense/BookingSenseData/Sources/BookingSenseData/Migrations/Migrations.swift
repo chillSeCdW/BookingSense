@@ -8,8 +8,8 @@
 import Foundation
 import SwiftData
 
-enum BookingMigrationV1ToV5: SchemaMigrationPlan {
-  static var schemas: [any VersionedSchema.Type] {
+public enum BookingMigrationV1ToV5: SchemaMigrationPlan {
+  public static var schemas: [any VersionedSchema.Type] {
     [
       BookingSchemaV1.self,
       BookingSchemaV2.self,
@@ -19,7 +19,7 @@ enum BookingMigrationV1ToV5: SchemaMigrationPlan {
     ]
   }
 
-  static var stages: [MigrationStage] {
+  public static var stages: [MigrationStage] {
     [
       migrateV1ToV2,
       migrateV2ToV3,
@@ -28,12 +28,12 @@ enum BookingMigrationV1ToV5: SchemaMigrationPlan {
     ]
   }
 
-  static let migrateV1ToV2 = MigrationStage.lightweight(
+  public nonisolated(unsafe) static let migrateV1ToV2 = MigrationStage.lightweight(
     fromVersion: BookingSchemaV1.self,
     toVersion: BookingSchemaV2.self
   )
 
-  static let migrateV2ToV3 = MigrationStage.custom(fromVersion: BookingSchemaV2.self,
+  public nonisolated(unsafe) static let migrateV2ToV3 = MigrationStage.custom(fromVersion: BookingSchemaV2.self,
                                                    toVersion: BookingSchemaV3.self,
                                                    willMigrate: nil,
                                                    didMigrate: { context in
@@ -61,12 +61,12 @@ enum BookingMigrationV1ToV5: SchemaMigrationPlan {
     }
   })
 
-  static let migrateV3ToV4 = MigrationStage.lightweight(
+  public nonisolated(unsafe) static let migrateV3ToV4 = MigrationStage.lightweight(
     fromVersion: BookingSchemaV3.self,
     toVersion: BookingSchemaV4.self
   )
 
-  static let migrateV4ToV5 = MigrationStage.lightweight(
+  public nonisolated(unsafe) static let migrateV4ToV5 = MigrationStage.lightweight(
     fromVersion: BookingSchemaV4.self,
     toVersion: BookingSchemaV5.self
   )

@@ -3,6 +3,7 @@
 
 import SwiftUI
 import SwiftData
+import BookingSenseData
 
 struct NavigationStackContentView: View {
   @Environment(AppStates.self) var appStates

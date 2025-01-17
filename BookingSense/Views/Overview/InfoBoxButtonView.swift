@@ -2,6 +2,7 @@
 // Using Swift 5.0
 
 import SwiftUI
+import BookingSenseData
 
 struct InfoBoxButtonView: View {
   let headline: LocalizedStringKey

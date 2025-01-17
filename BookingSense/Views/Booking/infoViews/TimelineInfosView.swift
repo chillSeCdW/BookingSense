@@ -2,6 +2,7 @@
 // Using Swift 6.0
 
 import SwiftUI
+import BookingSenseData
 
 struct TimelineInfosView: View {
   @Environment(AppStates.self) var appStates

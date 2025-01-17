@@ -8,6 +8,7 @@
 import SwiftUI
 import TipKit
 import SwiftData
+import BookingSenseData
 
 struct EntryFormView: View {
   @Environment(\.modelContext) private var modelContext

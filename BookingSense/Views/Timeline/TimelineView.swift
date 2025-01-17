@@ -3,6 +3,7 @@
 
 import SwiftUI
 import SwiftData
+import BookingSenseData
 
 struct TimelineView: View {
   @Environment(\.modelContext) private var modelContext

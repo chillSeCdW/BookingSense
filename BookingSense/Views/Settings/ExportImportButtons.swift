@@ -4,6 +4,7 @@
 import SwiftUI
 import SwiftData
 import OSLog
+import BookingSenseData
 
 struct ExportImportButtons: View {
   private let logger = Logger(subsystem: "BookingSense", category: "ExportImportButtons")

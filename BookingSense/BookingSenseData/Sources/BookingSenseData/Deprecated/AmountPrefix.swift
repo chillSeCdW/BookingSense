@@ -1,14 +1,10 @@
-//
-//  BookingType.swift
-//  BookingSense
-//
-//  Created by kenny on 10.04.24.
-//
+// Created for BookingSense on 13.11.24 by kenny
+// Using Swift 6.0
 
 import Foundation
 
-enum BookingType: String, Codable, CaseIterable, Identifiable {
-  var id: Self { self }
+public enum AmountPrefix: Codable, CaseIterable, Identifiable {
+  public var id: Self { self }
 
   case plus
   case minus

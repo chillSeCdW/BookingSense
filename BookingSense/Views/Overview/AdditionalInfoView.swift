@@ -3,6 +3,7 @@
 
 import SwiftUI
 import SwiftData
+import BookingSenseData
 
 struct AdditionalInfoView: View {
   @Query private var entries: [BookingEntry]

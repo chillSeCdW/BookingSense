@@ -2,6 +2,7 @@
 // Using Swift 6.0
 
 import Foundation
+import BookingSenseData
 
 enum TagKeys: CodingKey {
   case uuid, name

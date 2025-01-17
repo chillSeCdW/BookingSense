@@ -7,6 +7,7 @@
 
 import SwiftUI
 import SwiftData
+import BookingSenseData
 
 struct BookingNavigationStackView: View {
   @Environment(AppStates.self) var appStates

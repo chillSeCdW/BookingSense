@@ -8,6 +8,7 @@
 import Foundation
 import SwiftUI
 import SwiftData
+import BookingSenseData
 
 struct EntryEditView: View {
   @Environment(\.colorScheme) var colorScheme

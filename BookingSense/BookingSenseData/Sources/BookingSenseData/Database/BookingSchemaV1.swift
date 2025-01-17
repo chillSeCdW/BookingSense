@@ -9,14 +9,14 @@ import Foundation
 import SwiftUI
 import SwiftData
 
-enum BookingSchemaV1: VersionedSchema {
-  static var models: [any PersistentModel.Type] {
+public enum BookingSchemaV1: VersionedSchema {
+  public static var models: [any PersistentModel.Type] {
     [
       BookingEntry.self
     ]
   }
 
-  static var versionIdentifier: Schema.Version = .init(1, 0, 0)
+  public nonisolated(unsafe) static var versionIdentifier: Schema.Version = .init(1, 0, 0)
 
 }
 
@@ -27,14 +27,14 @@ extension BookingSchemaV1 {
   }
 
   @Model
-  final class BookingEntry: Codable {
+  public final class BookingEntry: Codable {
 
-    var id: String
-    var name: String
-    var tags: [String]
-    var amount: Decimal
-    var amountPrefix: BookingType
-    var interval: String
+    public var id: String
+    public var name: String
+    public var tags: [String]
+    public var amount: Decimal
+    public var amountPrefix: BookingType
+    public var interval: String
 
     init(name: String, tags: [String], amount: Decimal, amountPrefix: BookingType, interval: Interval) {
       self.id = UUID().uuidString
@@ -45,7 +45,7 @@ extension BookingSchemaV1 {
       self.interval = interval.rawValue
     }
 
-    required init(from decoder: Decoder) throws {
+    public required init(from decoder: Decoder) throws {
       let container = try decoder.container(keyedBy: CodingKeys.self)
       id = try container.decode(String.self, forKey: .id)
       name = try container.decode(String.self, forKey: .name)
@@ -55,7 +55,7 @@ extension BookingSchemaV1 {
       interval = try container.decode(String.self, forKey: .interval)
     }
 
-    func encode(to encoder: Encoder) throws {
+    public func encode(to encoder: Encoder) throws {
       var container = encoder.container(keyedBy: CodingKeys.self)
       try container.encode(id, forKey: .id)
       try container.encode(name, forKey: .name)
@@ -65,7 +65,7 @@ extension BookingSchemaV1 {
       try container.encode(interval, forKey: .interval)
     }
 
-    static func predicate(
+    public static func predicate(
       searchName: String,
       interval: Interval
     ) -> Predicate<BookingEntry> {

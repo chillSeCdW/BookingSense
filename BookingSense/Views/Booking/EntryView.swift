@@ -4,6 +4,7 @@
 import Foundation
 import SwiftUI
 import SwiftData
+import BookingSenseData
 
 struct EntryView: View {
   @Environment(AppStates.self) var appStates

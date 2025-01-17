@@ -8,12 +8,17 @@
 import SwiftUI
 import SwiftData
 
-struct ContainerFactory {
-  let container: ModelContainer
+public typealias BookingEntry = BookingSchemaV5.BookingEntry
+public typealias Tag = BookingSchemaV5.Tag
+public typealias TimelineEntry = BookingSchemaV5.TimelineEntry
 
-  init(_ versionedSchema: any VersionedSchema.Type,
-       storeInMemory: Bool,
-       migrationPlan: SchemaMigrationPlan.Type? = nil
+public struct ContainerFactory {
+  public let container: ModelContainer
+
+  public init(
+    _ versionedSchema: any VersionedSchema.Type,
+    storeInMemory: Bool,
+    migrationPlan: SchemaMigrationPlan.Type? = nil
   ) {
     let schema = Schema(versionedSchema: versionedSchema)
     let config = ModelConfiguration(schema: schema,
@@ -28,17 +33,15 @@ struct ContainerFactory {
     }
   }
 
-  func addExamples(_ examples: [any PersistentModel]) {
-    Task { @MainActor in
-      try? container.mainContext.transaction {
-        examples.forEach { example in
-          container.mainContext.insert(example)
-        }
+  @MainActor public func addExamples(_ examples: [any PersistentModel]) {
+    try? container.mainContext.transaction {
+      examples.forEach { example in
+        container.mainContext.insert(example)
       }
     }
   }
 
-  static func generateRandomEntriesItems() -> [BookingEntry] {
+  public static func generateRandomEntriesItems() -> [BookingEntry] {
     var returnResult: [BookingEntry] = []
     let names = [ "Rent", "Car", "Groceries", "Gym", "Internet", "Netflix", "Donations", "Phone", "Cloud" ]
 
@@ -58,7 +61,7 @@ struct ContainerFactory {
   }
 
   // swiftlint:disable function_body_length
-  static func generateFixedEntriesItems() -> [BookingEntry] {
+  public static func generateFixedEntriesItems() -> [BookingEntry] {
     var returnResult: [BookingEntry] = []
     let someTag: Tag = Tag(name: "someTag")
     let timelineEntry: TimelineEntry = TimelineEntry(

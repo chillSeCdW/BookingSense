@@ -9,15 +9,15 @@ import Foundation
 import SwiftUI
 import SwiftData
 
-enum BookingSchemaV2: VersionedSchema {
-  static var models: [any PersistentModel.Type] {
+public enum BookingSchemaV2: VersionedSchema {
+  public static var models: [any PersistentModel.Type] {
     [
       BookingEntry.self,
       Tag.self
     ]
   }
 
-  static var versionIdentifier: Schema.Version = .init(1, 1, 0)
+  public nonisolated(unsafe) static var versionIdentifier: Schema.Version = .init(1, 1, 0)
 
 }
 
@@ -32,34 +32,35 @@ extension BookingSchemaV2 {
   }
 
   @Model
-  final class BookingEntry: Codable {
+  public final class BookingEntry: Codable {
 
-    var id: String = UUID().uuidString
-    var name: String = ""
-    var isActive: Bool = true
-    @Relationship var tag: Tag?
-    var amount: Decimal = Decimal.zero
-    var date: Date = Date()
-    var amountPrefix: AmountPrefix = AmountPrefix.minus
-    var interval: String = "monthly"
+    public var id: String = UUID().uuidString
+    public var name: String = ""
+    public var isActive: Bool = true
+    @Relationship public var tag: Tag?
+    public var amount: Decimal = Decimal.zero
+    public var date: Date = Date()
+    public var amountPrefix: AmountPrefix = AmountPrefix.minus
+    public var interval: String = "monthly"
 
-    init(name: String,
-         isActive: Bool = true,
-         tag: Tag?,
-         amount: Decimal,
-         date: Date = Date(),
-         amountPrefix: AmountPrefix,
-         interval: Interval) {
-      self.name = name
-      self.isActive = isActive
-      self.tag = tag
-      self.date = date
-      self.amount = amount
-      self.amountPrefix = amountPrefix
-      self.interval = interval.rawValue
-    }
+    public init(
+      name: String,
+      isActive: Bool = true,
+      tag: Tag?,
+      amount: Decimal,
+      date: Date = Date(),
+      amountPrefix: AmountPrefix,
+      interval: Interval) {
+        self.name = name
+        self.isActive = isActive
+        self.tag = tag
+        self.date = date
+        self.amount = amount
+        self.amountPrefix = amountPrefix
+        self.interval = interval.rawValue
+      }
 
-    required init(from decoder: Decoder) throws {
+    public required init(from decoder: Decoder) throws {
       let container = try decoder.container(keyedBy: BookingEntryKeys.self)
       id = try container.decode(String.self, forKey: .id)
       name = try container.decode(String.self, forKey: .name)
@@ -70,7 +71,7 @@ extension BookingSchemaV2 {
       interval = try container.decode(String.self, forKey: .interval)
     }
 
-    func encode(to encoder: Encoder) throws {
+    public func encode(to encoder: Encoder) throws {
       var container = encoder.container(keyedBy: BookingEntryKeys.self)
       try container.encode(id, forKey: .id)
       try container.encode(name, forKey: .name)
@@ -81,7 +82,7 @@ extension BookingSchemaV2 {
       try container.encode(interval, forKey: .interval)
     }
 
-    static func predicate(
+    public static func predicate(
       searchName: String,
       interval: Interval
     ) -> Predicate<BookingEntry> {
@@ -92,29 +93,29 @@ extension BookingSchemaV2 {
       }
     }
 
-    static func totalExpenseEntries(modelContext: ModelContext) -> Int {
+    public static func totalExpenseEntries(modelContext: ModelContext) -> Int {
       (try? modelContext.fetchCount(FetchDescriptor<BookingEntry>())) ?? 0
     }
   }
 
   @Model
-  final class Tag: Codable {
+  public final class Tag: Codable {
 
-    var id: String = UUID().uuidString
-    var name: String = ""
-    @Relationship(inverse: \BookingEntry.tag) var bookingEntry: [BookingEntry]?
+    public var id: String = UUID().uuidString
+    public var name: String = ""
+    @Relationship(inverse: \BookingEntry.tag) public var bookingEntry: [BookingEntry]?
 
-    init(_ name: String) {
+    public init(_ name: String) {
       self.name = name
     }
 
-    required init(from decoder: Decoder) throws {
+    public required init(from decoder: Decoder) throws {
       let container = try decoder.container(keyedBy: TagKeys.self)
       id = try container.decode(String.self, forKey: .id)
       name = try container.decode(String.self, forKey: .name)
     }
 
-    func encode(to encoder: Encoder) throws {
+    public func encode(to encoder: Encoder) throws {
       var container = encoder.container(keyedBy: TagKeys.self)
       try container.encode(id, forKey: .id)
       try container.encode(name, forKey: .name)

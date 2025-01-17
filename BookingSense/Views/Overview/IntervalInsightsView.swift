@@ -3,6 +3,7 @@
 
 import SwiftUI
 import SwiftData
+import BookingSenseData
 
 struct IntervalInsightsView: View {
   @Query private var entries: [BookingEntry]
