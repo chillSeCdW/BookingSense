@@ -3,14 +3,14 @@
 import Foundation
 
 extension Decimal {
-  func generateFormattedNumber() -> String {
+  public func generateFormattedNumber() -> String {
     let formatter = NumberFormatter()
     formatter.numberStyle = .decimal
     formatter.usesGroupingSeparator = false
     return formatter.string(from: NSDecimalNumber(decimal: self)) ?? ""
   }
 
-  func generateFormattedCurrency() -> String {
+  public func generateFormattedCurrency() -> String {
     let formatter = NumberFormatter()
     formatter.numberStyle = .currency
     formatter.usesGroupingSeparator = false
@@ -18,7 +18,7 @@ extension Decimal {
     return formatter.string(from: NSDecimalNumber(decimal: self)) ?? ""
   }
 
-  func generateFormattedPercent() -> String {
+  public func generateFormattedPercent() -> String {
     let formatter = NumberFormatter()
     formatter.numberStyle = .percent
     formatter.locale = Locale(identifier: "en_US")

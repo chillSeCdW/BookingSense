@@ -7,6 +7,6 @@ import SwiftUI
 @main
 struct BookingSenseBundle: WidgetBundle {
     var body: some Widget {
-      BookingSenseWidget()
+      BookingTimeWidget()
     }
 }

@@ -80,12 +80,12 @@
       <EnvironmentVariables>
          <EnvironmentVariable
             key = "_XCWidgetKind"
-            value = ""
+            value = "BookingTimeWidget"
             isEnabled = "YES">
          </EnvironmentVariable>
          <EnvironmentVariable
             key = "_XCWidgetDefaultView"
-            value = "timeline"
+            value = "placeholder"
             isEnabled = "YES">
          </EnvironmentVariable>
          <EnvironmentVariable

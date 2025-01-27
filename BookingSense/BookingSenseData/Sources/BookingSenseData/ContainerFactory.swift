@@ -29,6 +29,7 @@ public struct ContainerFactory {
     do {
       container = try ModelContainer(for: schema, migrationPlan: migrationPlan, configurations: config)
     } catch {
+      print(error)
       fatalError("Could not create preview container")
     }
   }

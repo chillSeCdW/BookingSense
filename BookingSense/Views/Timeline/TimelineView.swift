@@ -3,6 +3,7 @@
 
 import SwiftUI
 import SwiftData
+import WidgetKit
 import BookingSenseData
 
 struct TimelineView: View {
@@ -27,6 +28,7 @@ struct TimelineView: View {
                                                 latestTimelineDate: latestDate)
             }
           }
+          WidgetCenter.shared.reloadTimelines(ofKind: "BookingTimeWidget")
         }
         .toolbar {
           ToolbarTimelineContent()

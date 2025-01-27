@@ -1,0 +1,72 @@
+{
+  "sourceLanguage" : "en",
+  "strings" : {
+    "%@" : {
+
+    },
+    "%lld" : {
+
+    },
+    "All" : {
+
+    },
+    "All entries" : {
+
+    },
+    "All incoming entries" : {
+
+    },
+    "All outgoing entries" : {
+
+    },
+    "All saving entries" : {
+
+    },
+    "bookings type list" : {
+
+    },
+    "Checked" : {
+
+    },
+    "Checkmark Timeline entry" : {
+
+    },
+    "Config for filtering bookings in Widget." : {
+
+    },
+    "Configuration" : {
+
+    },
+    "Get quick access to your timeline." : {
+
+    },
+    "Incoming" : {
+
+    },
+    "No entries found." : {
+
+    },
+    "Outgoing" : {
+
+    },
+    "Saving" : {
+
+    },
+    "Timeline entry will be completed on current date" : {
+
+    },
+    "Timeline List" : {
+
+    },
+    "Type of bookings" : {
+
+    },
+    "Unchecked" : {
+
+    },
+    "UUID of TimelineEntry" : {
+
+    }
+  },
+  "version" : "1.0"
+}

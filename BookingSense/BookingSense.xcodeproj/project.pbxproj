@@ -35,6 +35,8 @@
 		B93DD1272D37B7A400C533F9 /* TimelineInfosView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B93DD1262D37B79C00C533F9 /* TimelineInfosView.swift */; };
 		B93F74012BF39F91008A5088 /* AdditionalInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B93F74002BF39F91008A5088 /* AdditionalInfoView.swift */; };
 		B945794C2D3962B000467C95 /* BookingSenseData in Frameworks */ = {isa = PBXBuildFile; productRef = B945794B2D3962B000467C95 /* BookingSenseData */; };
+		B94579552D3E874D00467C95 /* BookingSenseData in Frameworks */ = {isa = PBXBuildFile; productRef = B94579542D3E874D00467C95 /* BookingSenseData */; };
+		B945795A2D41253900467C95 /* CheckMarkTL.swift in Sources */ = {isa = PBXBuildFile; fileRef = B94579592D41245400467C95 /* CheckMarkTL.swift */; };
 		B95981FA2BE3890500578A9C /* BookingNavigationStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B95981F92BE3890500578A9C /* BookingNavigationStackView.swift */; };
 		B95981FC2BE3898B00578A9C /* BookingSectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B95981FB2BE3898B00578A9C /* BookingSectionView.swift */; };
 		B95E95592C40702700B62A64 /* bookingSenseIconFinalDark.png in Resources */ = {isa = PBXBuildFile; fileRef = B95E95572C40702700B62A64 /* bookingSenseIconFinalDark.png */; };
@@ -68,8 +70,6 @@
 		B9AD85ED2D394EF6009E52CC /* WidgetExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = B9AD85DB2D394EF5009E52CC /* WidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		B9B8212B2BF244EB00CEDE43 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = B9B8212A2BF244EB00CEDE43 /* Settings.bundle */; };
 		B9BB9D6E2CAAE96C0057573B /* ThankYouPopUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9BB9D6D2CAAE95E0057573B /* ThankYouPopUp.swift */; };
-		B9C6EC3E2D04FBE800092E23 /* DecimalExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9C6EC3D2D04FBDF00092E23 /* DecimalExtensions.swift */; };
-		B9C6EC412D05B34D00092E23 /* DateExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9C6EC402D05B34900092E23 /* DateExtensions.swift */; };
 		B9C6EC432D05B53900092E23 /* EntryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9C6EC422D05B53500092E23 /* EntryView.swift */; };
 		B9C6EC452D05B6A400092E23 /* ToolbarViewEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9C6EC442D05B69A00092E23 /* ToolbarViewEntry.swift */; };
 		B9C6EC4A2D087AF000092E23 /* MonthYearPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9C6EC492D087AEF00092E23 /* MonthYearPickerView.swift */; };
@@ -167,6 +167,7 @@
 		B93DD1262D37B79C00C533F9 /* TimelineInfosView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimelineInfosView.swift; sourceTree = "<group>"; };
 		B93F74002BF39F91008A5088 /* AdditionalInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdditionalInfoView.swift; sourceTree = "<group>"; };
 		B945794A2D39626900467C95 /* BookingSenseData */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = BookingSenseData; sourceTree = "<group>"; };
+		B94579592D41245400467C95 /* CheckMarkTL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckMarkTL.swift; sourceTree = "<group>"; };
 		B95981F92BE3890500578A9C /* BookingNavigationStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingNavigationStackView.swift; sourceTree = "<group>"; };
 		B95981FB2BE3898B00578A9C /* BookingSectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingSectionView.swift; sourceTree = "<group>"; };
 		B95E95562C40702700B62A64 /* bookingSenseIconFinal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bookingSenseIconFinal.png; sourceTree = "<group>"; };
@@ -202,8 +203,6 @@
 		B9AD85DE2D394EF5009E52CC /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = /System/Library/Frameworks/SwiftUI.framework; sourceTree = "<absolute>"; };
 		B9B8212A2BF244EB00CEDE43 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 		B9BB9D6D2CAAE95E0057573B /* ThankYouPopUp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThankYouPopUp.swift; sourceTree = "<group>"; };
-		B9C6EC3D2D04FBDF00092E23 /* DecimalExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecimalExtensions.swift; sourceTree = "<group>"; };
-		B9C6EC402D05B34900092E23 /* DateExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateExtensions.swift; sourceTree = "<group>"; };
 		B9C6EC422D05B53500092E23 /* EntryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryView.swift; sourceTree = "<group>"; };
 		B9C6EC442D05B69A00092E23 /* ToolbarViewEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolbarViewEntry.swift; sourceTree = "<group>"; };
 		B9C6EC492D087AEF00092E23 /* MonthYearPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthYearPickerView.swift; sourceTree = "<group>"; };
@@ -263,6 +262,7 @@
 			files = (
 				B9AD85DF2D394EF5009E52CC /* SwiftUI.framework in Frameworks */,
 				B9AD85DD2D394EF5009E52CC /* WidgetKit.framework in Frameworks */,
+				B94579552D3E874D00467C95 /* BookingSenseData in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -423,6 +423,14 @@
 			path = infoViews;
 			sourceTree = "<group>";
 		};
+		B94579582D41243D00467C95 /* AppIntents */ = {
+			isa = PBXGroup;
+			children = (
+				B94579592D41245400467C95 /* CheckMarkTL.swift */,
+			);
+			path = AppIntents;
+			sourceTree = "<group>";
+		};
 		B9781EA92C2EB81F00FBA0A5 /* Settings */ = {
 			isa = PBXGroup;
 			children = (
@@ -510,9 +518,7 @@
 		B9C6EC3F2D04FD1700092E23 /* Helper */ = {
 			isa = PBXGroup;
 			children = (
-				B9C6EC402D05B34900092E23 /* DateExtensions.swift */,
 				B915DC4E2BB479180018E812 /* Constants.swift */,
-				B9C6EC3D2D04FBDF00092E23 /* DecimalExtensions.swift */,
 			);
 			path = Helper;
 			sourceTree = "<group>";
@@ -544,6 +550,7 @@
 		B9DAFAC82BA8AFAF000486EA = {
 			isa = PBXGroup;
 			children = (
+				B94579582D41243D00467C95 /* AppIntents */,
 				B982CA152C11052B002FA2DC /* BookingSense-Info.plist */,
 				B9C702B02C0FC6C8004546E1 /* ci_scripts */,
 				B9DAFADD2BA8AFAF000486EA /* Preview Content */,
@@ -646,6 +653,7 @@
 			);
 			name = WidgetExtension;
 			packageProductDependencies = (
+				B94579542D3E874D00467C95 /* BookingSenseData */,
 			);
 			productName = WidgetExtension;
 			productReference = B9AD85DB2D394EF5009E52CC /* WidgetExtension.appex */;
@@ -813,6 +821,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B945795A2D41253900467C95 /* CheckMarkTL.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -831,7 +840,6 @@
 				B9CC1BC62CD8C9540048670A /* BookingSortOrder.swift in Sources */,
 				B927D3F52CE7EA61006B1B19 /* PurchaseStatusTaskModifier.swift in Sources */,
 				B9FEC3D42CAD4A32009DD4A0 /* PurchaseHandler.swift in Sources */,
-				B9C6EC3E2D04FBE800092E23 /* DecimalExtensions.swift in Sources */,
 				B9CC1BC02CD838C90048670A /* TimelineListView.swift in Sources */,
 				B9CC1BB82CD7BB110048670A /* TimelineContentListView.swift in Sources */,
 				B927D3F32CE7E7ED006B1B19 /* PurchaseHandlerViewModifier.swift in Sources */,
@@ -866,7 +874,6 @@
 				B9BB9D6E2CAAE96C0057573B /* ThankYouPopUp.swift in Sources */,
 				B99206072BDA806E0099EF26 /* ToolbarEntryList.swift in Sources */,
 				B992060B2BDA96D80099EF26 /* EntryFormView.swift in Sources */,
-				B9C6EC412D05B34D00092E23 /* DateExtensions.swift in Sources */,
 				B93839F92CD26FD400AAB674 /* JsonTimelineEntry.swift in Sources */,
 				B991E24E2CE16B020031288B /* FeaturesPageView.swift in Sources */,
 				B991E24C2CE101310031288B /* TagFormView.swift in Sources */,
@@ -1033,7 +1040,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = auto;
 				SKIP_INSTALL = YES;
-				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -1074,7 +1081,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = auto;
 				SKIP_INSTALL = YES;
-				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -1142,6 +1149,7 @@
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
@@ -1198,6 +1206,7 @@
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_EMIT_LOC_STRINGS = YES;
 			};
 			name = Release;
 		};
@@ -1377,6 +1386,10 @@
 			productName = MijickPopupView;
 		};
 		B945794B2D3962B000467C95 /* BookingSenseData */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = BookingSenseData;
+		};
+		B94579542D3E874D00467C95 /* BookingSenseData */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = BookingSenseData;
 		};
