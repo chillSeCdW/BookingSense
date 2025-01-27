@@ -25,72 +25,67 @@ struct WidgetTimelineListView: View {
 
   var smallWidget: some View {
     VStack(alignment: .center) {
-      HStack(alignment: .center) {
-        Spacer()
-        Text("\(entry.configuration.typeOfBookings.localizedStringResource)")
-          .font(.title3)
-          .foregroundStyle(
-            getListBackgroundColor(
-              for: entry.configuration.typeOfBookings
+      if entry.configuration.showHeader == .show {
+        HStack(alignment: .center) {
+          Spacer()
+          Text("\(entry.configuration.typeOfBookings.localizedStringResource)")
+            .font(.title3)
+            .foregroundStyle(
+              getHeaderTextColor(
+                for: entry.configuration.typeOfBookings
+              )
             )
-          )
-        Text("\(entry.bookingTimeSnapshot.count)")
-          .font(.title2)
-          .bold()
+          Text("\(entry.bookingTimeSnapshot.count)")
+            .font(.title2)
+            .bold()
+        }
+        midWidget(showDivider: false)
       }
-      midWidget(showDivider: false)
-      ForEach(entry.bookingTimeSnapshot.prefix(3)) { snapshot in
-        bottomWidget(snapshot)
-      }
+      bottomWidget(listLength: entry.configuration.showHeader == .hide ? 4 : 3)
       Spacer()
     }
   }
 
   var mediumWidget: some View {
     HStack {
-      VStack(alignment: .leading) {
-        Spacer()
-        Text("\(entry.bookingTimeSnapshot.count)")
-          .font(.largeTitle)
-        Text("\(entry.configuration.typeOfBookings.localizedStringResource)")
-          .font(.title2)
-          .foregroundStyle(
-            getListBackgroundColor(
-              for: entry.configuration.typeOfBookings
+      if entry.configuration.showHeader == .show {
+        VStack(alignment: .leading) {
+          Spacer()
+          Text("\(entry.bookingTimeSnapshot.count)")
+            .font(.largeTitle)
+          Text("\(entry.configuration.typeOfBookings.localizedStringResource)")
+            .font(.title2)
+            .foregroundStyle(
+              getHeaderTextColor(
+                for: entry.configuration.typeOfBookings
+              )
             )
-          )
-      }
-      midWidget()
-      VStack(alignment: .center) {
-        ForEach(entry.bookingTimeSnapshot.prefix(4)) { snapshot in
-          bottomWidget(snapshot)
         }
-        Spacer()
+        midWidget()
       }
+      bottomWidget(listLength: 4)
     }
   }
 
   var largeWidget: some View {
     VStack {
-      HStack(alignment: .center) {
-        Spacer()
-        Text("\(entry.configuration.typeOfBookings.localizedStringResource)")
-          .font(.title2)
-          .foregroundStyle(
-            getListBackgroundColor(
-              for: entry.configuration.typeOfBookings
+      if entry.configuration.showHeader == .show {
+        HStack(alignment: .center) {
+          Spacer()
+          Text("\(entry.configuration.typeOfBookings.localizedStringResource)")
+            .font(.title2)
+            .foregroundStyle(
+              getHeaderTextColor(
+                for: entry.configuration.typeOfBookings
+              )
             )
-          )
-        Text("\(entry.bookingTimeSnapshot.count)")
-          .font(.largeTitle)
-          .bold()
-      }
-      midWidget()
-      VStack(alignment: .center) {
-        ForEach(entry.bookingTimeSnapshot.prefix(7)) { snapshot in
-          bottomWidget(snapshot)
+          Text("\(entry.bookingTimeSnapshot.count)")
+            .font(.largeTitle)
+            .bold()
         }
+        midWidget()
       }
+      bottomWidget(listLength: entry.configuration.showHeader == .hide ? 9 : 7)
       Spacer()
     }
   }
@@ -100,18 +95,31 @@ struct WidgetTimelineListView: View {
     if showDivider {
       Divider()
     }
+  }
+
+  @ViewBuilder
+  func bottomWidget(listLength: Int) -> some View {
     if entry.bookingTimeSnapshot.isEmpty {
       Spacer()
       Text("No entries found.")
       Spacer()
+    } else {
+      VStack(alignment: .center) {
+        ForEach(entry.bookingTimeSnapshot.prefix(listLength)) { snapshot in
+          entryLine(snapshot)
+        }
+      }
     }
   }
 
   @ViewBuilder
-  func bottomWidget(_ snapshot: BookingTimeSnapshot) -> some View {
+  func entryLine(_ snapshot: BookingTimeSnapshot) -> some View {
     HStack {
       Toggle(isOn: snapshot.completedAt != nil, intent: CheckMarkTL(uuid: snapshot.uuid)) {}
-        .toggleStyle(CheckToggleStyle(bookingType: BookingType(rawValue: snapshot.bookingType) ?? .minus))
+        .toggleStyle(CheckToggleStyle(
+          bookingType: BookingType(rawValue: snapshot.bookingType),
+          coloredToggle: entry.configuration.colorToggle
+        ))
       VStack(alignment: .leading) {
         Text(snapshot.name)
           .lineLimit(1)
@@ -137,7 +145,7 @@ struct WidgetTimelineListView: View {
     return .secondary
   }
 
-  func getListBackgroundColor(for bookingType: BookingSenseWidgetContentType) -> Color {
+  func getHeaderTextColor(for bookingType: BookingSenseWidgetContentType) -> Color {
     switch bookingType {
     case .all:
       return .primary
@@ -175,7 +183,8 @@ struct DateForTimelineEntry: View {
 }
 
 struct CheckToggleStyle: ToggleStyle {
-  let bookingType: BookingType
+  let bookingType: BookingType?
+  let coloredToggle: BookingSenseWidgetColoredToggle
 
   func makeBody(configuration: Configuration) -> some View {
     Button {
@@ -188,13 +197,26 @@ struct CheckToggleStyle: ToggleStyle {
           .foregroundStyle(
             configuration.isOn ?
             Color.accentColor :
-              StyleHelper.getListBackgroundColor(for: bookingType) ?? .secondary
+              getIconColor(for: bookingType, enableColor: coloredToggle)
           )
           .accessibility(label: Text(configuration.isOn ? "Checked" : "Unchecked"))
           .imageScale(.large)
       }
     }
     .buttonStyle(.plain)
+  }
+
+  func getIconColor(
+    for bookingType: BookingType?,
+    enableColor: BookingSenseWidgetColoredToggle
+  ) -> Color {
+    if enableColor == .black {
+      return .secondary
+    }
+    if let bookingType = bookingType {
+      return StyleHelper.listBackgroundColors[bookingType] ?? .secondary
+    }
+    return .secondary
   }
 }
 
