@@ -37,6 +37,8 @@
 		B945794C2D3962B000467C95 /* BookingSenseData in Frameworks */ = {isa = PBXBuildFile; productRef = B945794B2D3962B000467C95 /* BookingSenseData */; };
 		B94579552D3E874D00467C95 /* BookingSenseData in Frameworks */ = {isa = PBXBuildFile; productRef = B94579542D3E874D00467C95 /* BookingSenseData */; };
 		B945795A2D41253900467C95 /* CheckMarkTL.swift in Sources */ = {isa = PBXBuildFile; fileRef = B94579592D41245400467C95 /* CheckMarkTL.swift */; };
+		B94579662D47CBD800467C95 /* StyleHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = B94579652D47CB5600467C95 /* StyleHelper.swift */; };
+		B94579672D47CD5C00467C95 /* StyleHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = B94579652D47CB5600467C95 /* StyleHelper.swift */; };
 		B95981FA2BE3890500578A9C /* BookingNavigationStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B95981F92BE3890500578A9C /* BookingNavigationStackView.swift */; };
 		B95981FC2BE3898B00578A9C /* BookingSectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B95981FB2BE3898B00578A9C /* BookingSectionView.swift */; };
 		B95E95592C40702700B62A64 /* bookingSenseIconFinalDark.png in Resources */ = {isa = PBXBuildFile; fileRef = B95E95572C40702700B62A64 /* bookingSenseIconFinalDark.png */; };
@@ -168,6 +170,7 @@
 		B93F74002BF39F91008A5088 /* AdditionalInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdditionalInfoView.swift; sourceTree = "<group>"; };
 		B945794A2D39626900467C95 /* BookingSenseData */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = BookingSenseData; sourceTree = "<group>"; };
 		B94579592D41245400467C95 /* CheckMarkTL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckMarkTL.swift; sourceTree = "<group>"; };
+		B94579652D47CB5600467C95 /* StyleHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StyleHelper.swift; sourceTree = "<group>"; };
 		B95981F92BE3890500578A9C /* BookingNavigationStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingNavigationStackView.swift; sourceTree = "<group>"; };
 		B95981FB2BE3898B00578A9C /* BookingSectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingSectionView.swift; sourceTree = "<group>"; };
 		B95E95562C40702700B62A64 /* bookingSenseIconFinal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bookingSenseIconFinal.png; sourceTree = "<group>"; };
@@ -431,6 +434,14 @@
 			path = AppIntents;
 			sourceTree = "<group>";
 		};
+		B94579642D47CB5200467C95 /* Shared */ = {
+			isa = PBXGroup;
+			children = (
+				B94579652D47CB5600467C95 /* StyleHelper.swift */,
+			);
+			path = Shared;
+			sourceTree = "<group>";
+		};
 		B9781EA92C2EB81F00FBA0A5 /* Settings */ = {
 			isa = PBXGroup;
 			children = (
@@ -550,6 +561,7 @@
 		B9DAFAC82BA8AFAF000486EA = {
 			isa = PBXGroup;
 			children = (
+				B94579642D47CB5200467C95 /* Shared */,
 				B94579582D41243D00467C95 /* AppIntents */,
 				B982CA152C11052B002FA2DC /* BookingSense-Info.plist */,
 				B9C702B02C0FC6C8004546E1 /* ci_scripts */,
@@ -821,6 +833,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B94579672D47CD5C00467C95 /* StyleHelper.swift in Sources */,
 				B945795A2D41253900467C95 /* CheckMarkTL.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -829,6 +842,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B94579662D47CBD800467C95 /* StyleHelper.swift in Sources */,
 				B927D3FA2CE7FACC006B1B19 /* PurchaseStatus.swift in Sources */,
 				B90D3D0F2C19D97D00133857 /* IntervalInsightsView.swift in Sources */,
 				B9383A052CD69A4800AAB674 /* TimelineEntryView.swift in Sources */,

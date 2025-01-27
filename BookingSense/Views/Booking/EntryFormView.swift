@@ -124,7 +124,7 @@ struct BookingTypePicker: View {
       }
     }
     .pickerStyle(.segmented)
-    .colorMultiply(Constants.getListBackgroundColor(for: bookingType) ?? .white)
+    .colorMultiply(StyleHelper.getListBackgroundColor(for: bookingType) ?? .white)
   }
 }
 

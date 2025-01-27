@@ -97,8 +97,8 @@ struct FilterAmountButtonsView: View {
             label: { Text(option.description) }
           )
           .background(appStates.activeTimeTypeFilters.contains(option) ?
-                      Constants.getListBackgroundColor(for: option) :
-                        Constants.getListBackgroundColor(for: option, isActive: false)
+                      StyleHelper.getListBackgroundColor(for: option) :
+                        StyleHelper.getListBackgroundColor(for: option, isActive: false)
           )
           .foregroundColor(.white)
           .cornerRadius(20)

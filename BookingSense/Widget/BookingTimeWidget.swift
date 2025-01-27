@@ -33,10 +33,3 @@ struct BookingTimeWidget: Widget {
     .supportedFamilies(families)
   }
 }
-
-extension ConfigIntent {
-  fileprivate static var smiley: ConfigIntent {
-    let intent = ConfigIntent()
-    return intent
-  }
-}

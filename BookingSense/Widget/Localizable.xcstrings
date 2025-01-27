@@ -22,6 +22,15 @@
     "All saving entries" : {
 
     },
+    "Behaviour of check" : {
+
+    },
+    "Black" : {
+
+    },
+    "bookings check behaviour list" : {
+
+    },
     "bookings type list" : {
 
     },
@@ -29,6 +38,12 @@
 
     },
     "Checkmark Timeline entry" : {
+
+    },
+    "color toggle based on booking type" : {
+
+    },
+    "Colored" : {
 
     },
     "Config for filtering bookings in Widget." : {
@@ -40,10 +55,16 @@
     "Get quick access to your timeline." : {
 
     },
+    "Hide" : {
+
+    },
     "Incoming" : {
 
     },
     "No entries found." : {
+
+    },
+    "On time" : {
 
     },
     "Outgoing" : {
@@ -52,10 +73,25 @@
     "Saving" : {
 
     },
+    "Show" : {
+
+    },
+    "show header in widget" : {
+
+    },
+    "Show header of widget" : {
+
+    },
     "Timeline entry will be completed on current date" : {
 
     },
     "Timeline List" : {
+
+    },
+    "Today" : {
+
+    },
+    "toggle color in widget" : {
 
     },
     "Type of bookings" : {

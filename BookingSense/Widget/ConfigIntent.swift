@@ -10,15 +10,32 @@ struct ConfigIntent: WidgetConfigurationIntent {
   static var title: LocalizedStringResource { "Configuration" }
   static var description: IntentDescription { "Config for filtering bookings in Widget." }
 
-  init(typeOfBookings: BookingSenseWidgetContentType = .all) {
+  init(
+    typeOfBookings: BookingSenseWidgetContentType = .all,
+    checkBehaviour: BookingSenseWidgetCheckBehaviour = .today,
+    showHeader: BookingSenseWidgetShowHeader = .show,
+    colorToggle: BookingSenseWidgetColoredToggle = .colored
+  ) {
       self.typeOfBookings = typeOfBookings
+      self.checkBehaviour = checkBehaviour
+      self.showHeader = showHeader
+      self.colorToggle = colorToggle
   }
 
   init() {
   }
 
-  @Parameter(title: "Type of bookings", default: BookingSenseWidgetContentType.minus)
+  @Parameter(title: "Type of bookings", default: BookingSenseWidgetContentType.all)
   var typeOfBookings: BookingSenseWidgetContentType
+
+  @Parameter(title: "Behaviour of check", default: BookingSenseWidgetCheckBehaviour.today)
+  var checkBehaviour: BookingSenseWidgetCheckBehaviour
+
+  @Parameter(title: "Show header of widget", default: BookingSenseWidgetShowHeader.show)
+  var showHeader: BookingSenseWidgetShowHeader
+
+  @Parameter(title: "color toggle based on booking type", default: BookingSenseWidgetColoredToggle.colored)
+  var colorToggle: BookingSenseWidgetColoredToggle
 
   func buildPredicate() -> Predicate<BookingSchemaV5.TimelineEntry> {
     let typeFilterString = typeOfBookings.rawValue
@@ -51,5 +68,41 @@ enum BookingSenseWidgetContentType: String, AppEnum {
     .plus: DisplayRepresentation(title: LocalizedStringResource("Incoming")),
     .minus: DisplayRepresentation(title: LocalizedStringResource("Outgoing")),
     .saving: DisplayRepresentation(title: LocalizedStringResource("Saving"))
+  ]
+}
+
+enum BookingSenseWidgetCheckBehaviour: String, AppEnum {
+  case today
+  case onTime
+
+  static var typeDisplayRepresentation = TypeDisplayRepresentation(name: "bookings check behaviour list")
+
+  static let caseDisplayRepresentations: [BookingSenseWidgetCheckBehaviour: DisplayRepresentation] = [
+    .today: DisplayRepresentation(title: LocalizedStringResource("Today")),
+    .onTime: DisplayRepresentation(title: LocalizedStringResource("On time"))
+  ]
+}
+
+enum BookingSenseWidgetShowHeader: String, AppEnum {
+  case show
+  case hide
+
+  static var typeDisplayRepresentation = TypeDisplayRepresentation(name: "show header in widget")
+
+  static let caseDisplayRepresentations: [BookingSenseWidgetShowHeader: DisplayRepresentation] = [
+    .show: DisplayRepresentation(title: LocalizedStringResource("Show")),
+    .hide: DisplayRepresentation(title: LocalizedStringResource("Hide"))
+  ]
+}
+
+enum BookingSenseWidgetColoredToggle: String, AppEnum {
+  case colored
+  case black
+
+  static var typeDisplayRepresentation = TypeDisplayRepresentation(name: "toggle color in widget")
+
+  static let caseDisplayRepresentations: [BookingSenseWidgetColoredToggle: DisplayRepresentation] = [
+    .colored: DisplayRepresentation(title: LocalizedStringResource("Colored")),
+    .black: DisplayRepresentation(title: LocalizedStringResource("Black"))
   ]
 }

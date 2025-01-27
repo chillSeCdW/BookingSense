@@ -25,12 +25,24 @@ struct WidgetTimelineListView: View {
 
   var smallWidget: some View {
     VStack(alignment: .center) {
-      if entry.bookingTimeSnapshot.isEmpty {
-        Text("No entries found.")
+      HStack(alignment: .center) {
+        Spacer()
+        Text("\(entry.configuration.typeOfBookings.localizedStringResource)")
+          .font(.title3)
+          .foregroundStyle(
+            getListBackgroundColor(
+              for: entry.configuration.typeOfBookings
+            )
+          )
+        Text("\(entry.bookingTimeSnapshot.count)")
+          .font(.title2)
+          .bold()
       }
-      ForEach(entry.bookingTimeSnapshot.prefix(4)) { snapshot in
+      midWidget(showDivider: false)
+      ForEach(entry.bookingTimeSnapshot.prefix(3)) { snapshot in
         bottomWidget(snapshot)
       }
+      Spacer()
     }
   }
 
@@ -41,38 +53,57 @@ struct WidgetTimelineListView: View {
         Text("\(entry.bookingTimeSnapshot.count)")
           .font(.largeTitle)
         Text("\(entry.configuration.typeOfBookings.localizedStringResource)")
-          .font(.title3)
+          .font(.title2)
+          .foregroundStyle(
+            getListBackgroundColor(
+              for: entry.configuration.typeOfBookings
+            )
+          )
       }
-      Spacer(minLength: 30)
-      if entry.bookingTimeSnapshot.isEmpty {
-        Text("No entries found.")
-      }
+      midWidget()
       VStack(alignment: .center) {
         ForEach(entry.bookingTimeSnapshot.prefix(4)) { snapshot in
           bottomWidget(snapshot)
         }
+        Spacer()
       }
     }
   }
 
   var largeWidget: some View {
-    HStack {
-      VStack(alignment: .leading) {
+    VStack {
+      HStack(alignment: .center) {
         Spacer()
+        Text("\(entry.configuration.typeOfBookings.localizedStringResource)")
+          .font(.title2)
+          .foregroundStyle(
+            getListBackgroundColor(
+              for: entry.configuration.typeOfBookings
+            )
+          )
         Text("\(entry.bookingTimeSnapshot.count)")
           .font(.largeTitle)
-        Text("\(entry.configuration.typeOfBookings.localizedStringResource)")
-          .font(.title3)
+          .bold()
       }
-      Spacer(minLength: 30)
-      if entry.bookingTimeSnapshot.isEmpty {
-        Text("No entries found.")
-      }
+      midWidget()
       VStack(alignment: .center) {
-        ForEach(entry.bookingTimeSnapshot.prefix(9)) { snapshot in
+        ForEach(entry.bookingTimeSnapshot.prefix(7)) { snapshot in
           bottomWidget(snapshot)
         }
       }
+      Spacer()
+    }
+  }
+
+  @ViewBuilder
+  func midWidget(showDivider: Bool = true) -> some View {
+    if showDivider {
+      Divider()
+    }
+    if entry.bookingTimeSnapshot.isEmpty {
+      Spacer()
+      Text("No entries found.")
+      Spacer()
     }
   }
 
@@ -80,7 +111,7 @@ struct WidgetTimelineListView: View {
   func bottomWidget(_ snapshot: BookingTimeSnapshot) -> some View {
     HStack {
       Toggle(isOn: snapshot.completedAt != nil, intent: CheckMarkTL(uuid: snapshot.uuid)) {}
-      .toggleStyle(CheckToggleStyle())
+        .toggleStyle(CheckToggleStyle(bookingType: BookingType(rawValue: snapshot.bookingType) ?? .minus))
       VStack(alignment: .leading) {
         Text(snapshot.name)
           .lineLimit(1)
@@ -105,6 +136,16 @@ struct WidgetTimelineListView: View {
     }
     return .secondary
   }
+
+  func getListBackgroundColor(for bookingType: BookingSenseWidgetContentType) -> Color {
+    switch bookingType {
+    case .all:
+      return .primary
+    default:
+      let type = BookingType(rawValue: bookingType.rawValue) ?? .minus
+      return StyleHelper.listBackgroundColors[type] ?? .primary
+    }
+  }
 }
 
 struct DateForTimelineEntry: View {
@@ -114,10 +155,10 @@ struct DateForTimelineEntry: View {
     if let completetedAt = timelineSnapshot.completedAt {
       Text(completetedAt.timelineEntryShortFormatting())
         .foregroundStyle(timelineSnapshot.state == TimelineEntryState.skipped.rawValue ? Color.secondary : .green)
-      } else {
-        Text(timelineSnapshot.isDue.timelineEntryShortFormatting())
-          .foregroundStyle(getDateColor())
-      }
+    } else {
+      Text(timelineSnapshot.isDue.timelineEntryShortFormatting())
+        .foregroundStyle(getDateColor())
+    }
   }
 
   func getDateColor() -> Color {
@@ -134,35 +175,75 @@ struct DateForTimelineEntry: View {
 }
 
 struct CheckToggleStyle: ToggleStyle {
-    func makeBody(configuration: Configuration) -> some View {
-        Button {
-            configuration.isOn.toggle()
-        } label: {
-            Label {
-                configuration.label
-            } icon: {
-                Image(systemName: configuration.isOn ? "checkmark.circle.fill" : "circle")
-                    .foregroundStyle(configuration.isOn ? Color.accentColor : .secondary)
-                    .accessibility(label: Text(configuration.isOn ? "Checked" : "Unchecked"))
-                    .imageScale(.large)
-            }
-        }
-        .buttonStyle(.plain)
+  let bookingType: BookingType
+
+  func makeBody(configuration: Configuration) -> some View {
+    Button {
+      configuration.isOn.toggle()
+    } label: {
+      Label {
+        configuration.label
+      } icon: {
+        Image(systemName: configuration.isOn ? "checkmark.circle.fill" : "circle")
+          .foregroundStyle(
+            configuration.isOn ?
+            Color.accentColor :
+              StyleHelper.getListBackgroundColor(for: bookingType) ?? .secondary
+          )
+          .accessibility(label: Text(configuration.isOn ? "Checked" : "Unchecked"))
+          .imageScale(.large)
+      }
     }
+    .buttonStyle(.plain)
+  }
 }
 
-#Preview(as: .systemSmall) {
+#Preview("Small Widget", as: .systemSmall) {
   BookingTimeWidget()
 } timeline: {
   BookingTimeEntry(
     bookingTimeSnapshot: [BookingTimeSnapshot(uuid: "someUUID",
-                                             name: "example name",
-                                             bookingType: "minus",
-                                             amount: 50,
-                                             isDue: .now,
-                                             state: TimelineEntryState.open.rawValue,
-                                             completedAt: nil
-                                            )],
+                                              name: "example name",
+                                              bookingType: "minus",
+                                              amount: 50,
+                                              isDue: .now,
+                                              state: TimelineEntryState.open.rawValue,
+                                              completedAt: nil
+                                             )],
+    date: .now,
+    configuration: ConfigIntent()
+  )
+}
+
+#Preview("Medium Widget", as: .systemMedium) {
+  BookingTimeWidget()
+} timeline: {
+  BookingTimeEntry(
+    bookingTimeSnapshot: [BookingTimeSnapshot(uuid: "someUUID",
+                                              name: "example name",
+                                              bookingType: "minus",
+                                              amount: 50,
+                                              isDue: .now,
+                                              state: TimelineEntryState.open.rawValue,
+                                              completedAt: nil
+                                             )],
+    date: .now,
+    configuration: ConfigIntent()
+  )
+}
+
+#Preview("Large Widget", as: .systemLarge) {
+  BookingTimeWidget()
+} timeline: {
+  BookingTimeEntry(
+    bookingTimeSnapshot: [BookingTimeSnapshot(uuid: "someUUID",
+                                              name: "example name",
+                                              bookingType: "minus",
+                                              amount: 50,
+                                              isDue: .now,
+                                              state: TimelineEntryState.open.rawValue,
+                                              completedAt: nil
+                                             )],
     date: .now,
     configuration: ConfigIntent()
   )
