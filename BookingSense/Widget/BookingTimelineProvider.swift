@@ -74,7 +74,7 @@ struct BookingTimelineProvider: AppIntentTimelineProvider {
     var entries: [BookingTimeEntry] = []
     var snapshots: [BookingTimeSnapshot] = []
     let timelineEntry = getTimelineEntries(for: configuration)
-    let TwelveHours: TimeInterval = 60 * 60 * 12
+    let twelveHours: TimeInterval = 60 * 60 * 12
 
     timelineEntry.forEach { entry in
       snapshots.append(
@@ -98,7 +98,7 @@ struct BookingTimelineProvider: AppIntentTimelineProvider {
       )
     )
 
-    return Timeline(entries: entries, policy: .after(.now + TwelveHours))
+    return Timeline(entries: entries, policy: .after(.now + twelveHours))
   }
 
   func recommendations() -> [AppIntentRecommendation<ConfigIntent>] {
