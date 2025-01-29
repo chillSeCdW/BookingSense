@@ -12,7 +12,7 @@ struct BookingTimelineProvider: AppIntentTimelineProvider {
 
   func getTimelineEntries(for configuration: ConfigIntent) -> [BookingSchemaV5.TimelineEntry] {
     do {
-      var data = try ModelContext(DataModel.shared.modelContainer).fetch(
+      let data = try ModelContext(DataModel.shared.modelContainer).fetch(
         FetchDescriptor<BookingSchemaV5.TimelineEntry>(
           predicate: configuration.buildPredicate(),
           sortBy: [.init(\.isDue)]
