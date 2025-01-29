@@ -10,6 +10,8 @@ struct ToolbarTimelineContent: ToolbarContent {
 
   @Environment(AppStates.self) var appStates
 
+  let proxy: ScrollViewProxy
+
   var body: some ToolbarContent {
     ToolbarItem(placement: .navigationBarLeading) {
       Button(action: {
@@ -23,6 +25,16 @@ struct ToolbarTimelineContent: ToolbarContent {
     ToolbarItem(placement: .navigationBarLeading) {
       Button(action: { appStates.isTimeFilterDialogPresented.toggle()},
              label: { Image(systemName: "line.horizontal.3.decrease.circle") }
+      )
+    }
+    ToolbarItem(placement: .navigationBarTrailing) {
+      Button(
+        action: {
+          withAnimation {
+            proxy.scrollTo("currentMonthSection", anchor: .top)
+          }
+        },
+        label: { Text("Today") }
       )
     }
   }

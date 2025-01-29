@@ -25,7 +25,7 @@ struct ConfigIntent: WidgetConfigurationIntent {
   init() {
   }
 
-  @Parameter(title: "Type of bookings", default: BookingSenseWidgetContentType.all)
+  @Parameter(title: "Filter for entries", default: BookingSenseWidgetContentType.all)
   var typeOfBookings: BookingSenseWidgetContentType
 
   @Parameter(title: "Behaviour of check", default: BookingSenseWidgetCheckBehaviour.today)
@@ -34,7 +34,7 @@ struct ConfigIntent: WidgetConfigurationIntent {
   @Parameter(title: "Show header of widget", default: BookingSenseWidgetShowHeader.show)
   var showHeader: BookingSenseWidgetShowHeader
 
-  @Parameter(title: "color toggle based on booking type", default: BookingSenseWidgetColoredToggle.colored)
+  @Parameter(title: "Color toggle based on booking type", default: BookingSenseWidgetColoredToggle.colored)
   var colorToggle: BookingSenseWidgetColoredToggle
 
   func buildPredicate() -> Predicate<BookingSchemaV5.TimelineEntry> {
@@ -61,7 +61,7 @@ enum BookingSenseWidgetContentType: String, AppEnum {
   case minus
   case saving
 
-  static var typeDisplayRepresentation = TypeDisplayRepresentation(name: "bookings type list")
+  static var typeDisplayRepresentation = TypeDisplayRepresentation(name: "Bookings type list")
 
   static let caseDisplayRepresentations: [BookingSenseWidgetContentType: DisplayRepresentation] = [
     .all: DisplayRepresentation(title: LocalizedStringResource("All")),
@@ -75,7 +75,7 @@ enum BookingSenseWidgetCheckBehaviour: String, AppEnum {
   case today
   case onTime
 
-  static var typeDisplayRepresentation = TypeDisplayRepresentation(name: "bookings check behaviour list")
+  static var typeDisplayRepresentation = TypeDisplayRepresentation(name: "Bookings check behaviour list")
 
   static let caseDisplayRepresentations: [BookingSenseWidgetCheckBehaviour: DisplayRepresentation] = [
     .today: DisplayRepresentation(title: LocalizedStringResource("Today")),
@@ -87,7 +87,7 @@ enum BookingSenseWidgetShowHeader: String, AppEnum {
   case show
   case hide
 
-  static var typeDisplayRepresentation = TypeDisplayRepresentation(name: "show header in widget")
+  static var typeDisplayRepresentation = TypeDisplayRepresentation(name: "Show header of widget")
 
   static let caseDisplayRepresentations: [BookingSenseWidgetShowHeader: DisplayRepresentation] = [
     .show: DisplayRepresentation(title: LocalizedStringResource("Show")),
@@ -99,7 +99,7 @@ enum BookingSenseWidgetColoredToggle: String, AppEnum {
   case colored
   case black
 
-  static var typeDisplayRepresentation = TypeDisplayRepresentation(name: "toggle color in widget")
+  static var typeDisplayRepresentation = TypeDisplayRepresentation(name: "Toggle color in widget")
 
   static let caseDisplayRepresentations: [BookingSenseWidgetColoredToggle: DisplayRepresentation] = [
     .colored: DisplayRepresentation(title: LocalizedStringResource("Colored")),

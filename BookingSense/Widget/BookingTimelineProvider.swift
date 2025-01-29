@@ -74,6 +74,7 @@ struct BookingTimelineProvider: AppIntentTimelineProvider {
     var entries: [BookingTimeEntry] = []
     var snapshots: [BookingTimeSnapshot] = []
     let timelineEntry = getTimelineEntries(for: configuration)
+    let TwelveHours: TimeInterval = 60 * 60 * 12
 
     timelineEntry.forEach { entry in
       snapshots.append(
@@ -89,33 +90,23 @@ struct BookingTimelineProvider: AppIntentTimelineProvider {
       )
     }
 
-    if let firstSnapshotDate = snapshots.first {
-      entries.append(
-        BookingTimeEntry(
-          bookingTimeSnapshot: snapshots,
-          date: firstSnapshotDate.isDue,
-          configuration: configuration
-        )
+    entries.append(
+      BookingTimeEntry(
+        bookingTimeSnapshot: snapshots,
+        date: .now,
+        configuration: configuration
       )
-    } else {
-      entries.append(
-        BookingTimeEntry(
-          bookingTimeSnapshot: [],
-          date: .now,
-          configuration: configuration
-        )
-      )
-    }
+    )
 
-    return Timeline(entries: entries, policy: .never)
+    return Timeline(entries: entries, policy: .after(.now + TwelveHours))
   }
 
   func recommendations() -> [AppIntentRecommendation<ConfigIntent>] {
       [
         AppIntentRecommendation(intent: ConfigIntent(typeOfBookings: .all), description: "All entries"),
-        AppIntentRecommendation(intent: ConfigIntent(typeOfBookings: .minus), description: "All outgoing entries"),
-        AppIntentRecommendation(intent: ConfigIntent(typeOfBookings: .plus), description: "All incoming entries"),
-        AppIntentRecommendation(intent: ConfigIntent(typeOfBookings: .saving), description: "All saving entries")
+        AppIntentRecommendation(intent: ConfigIntent(typeOfBookings: .minus), description: "Outgoing entries"),
+        AppIntentRecommendation(intent: ConfigIntent(typeOfBookings: .plus), description: "Incoming entries"),
+        AppIntentRecommendation(intent: ConfigIntent(typeOfBookings: .saving), description: "Saving entries")
       ]
   }
 

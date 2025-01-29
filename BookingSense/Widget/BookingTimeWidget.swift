@@ -29,7 +29,7 @@ struct BookingTimeWidget: Widget {
         .containerBackground(.fill.tertiary, for: .widget)
     }
     .configurationDisplayName("Timeline List")
-    .description("Get quick access to your timeline.")
+    .description("Get quick access to your timeline")
     .supportedFamilies(families)
   }
 }

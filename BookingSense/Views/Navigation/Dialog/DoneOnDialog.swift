@@ -2,13 +2,14 @@
 // Using Swift 6.0
 
 import SwiftUI
+import WidgetKit
 import BookingSenseData
 
 struct DoneOnDialog: View {
   @Environment(\.dismiss) var dismiss
 
   @State var date: Date = .now
-  var timelineEntry: TimelineEntry
+  var timelineEntry: BookingSenseData.TimelineEntry
 
   var body: some View {
     NavigationView {
@@ -31,6 +32,7 @@ struct DoneOnDialog: View {
           Button("Save") {
             timelineEntry.completedAt = date
             timelineEntry.state = TimelineEntryState.done.rawValue
+            WidgetCenter.shared.reloadTimelines(ofKind: "BookingTimeWidget")
             dismiss()
           }
         }

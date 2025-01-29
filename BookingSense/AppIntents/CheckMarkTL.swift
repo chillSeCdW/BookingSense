@@ -13,21 +13,25 @@ private let logger = Logger(subsystem: "BookingSenseWidget", category: "CheckMar
 struct CheckMarkTL: AppIntent {
 
   static var title: LocalizedStringResource = "Checkmark Timeline entry"
-  static var description = IntentDescription("Timeline entry will be completed on current date")
+  static var description = IntentDescription("Timeline entry will be completed on configured day")
 
   @Parameter(title: "UUID of TimelineEntry")
   var uuid: String
 
-  init(uuid: String) {
+  @Parameter(title: "Type of checking")
+  var typeOfChecking: BookingSenseWidgetCheckBehaviour
+
+  init(uuid: String, typeOfChecking: BookingSenseWidgetCheckBehaviour) {
     self.uuid = uuid
+    self.typeOfChecking = typeOfChecking
   }
 
   init() {}
 
   func perform() async throws -> some IntentResult {
     do {
-      var context = ModelContext(DataModel.shared.modelContainer)
-      var data = try context.fetch(
+      let context = ModelContext(DataModel.shared.modelContainer)
+      let data = try context.fetch(
         FetchDescriptor<BookingSchemaV5.TimelineEntry>(
           predicate: #Predicate {
             $0.uuid == uuid
@@ -37,8 +41,14 @@ struct CheckMarkTL: AppIntent {
       )
       if let entry = data.first {
         entry.state = TimelineEntryState.done.rawValue
-        entry.completedAt = Date()
+        switch typeOfChecking {
+        case .onTime:
+          entry.completedAt = entry.isDue
+        case .today:
+          entry.completedAt = Date()
+        }
         try context.save()
+        WidgetCenter.shared.reloadTimelines(ofKind: "BookingTimeWidget")
       }
     } catch {
       logger.error("\(error.localizedDescription)")

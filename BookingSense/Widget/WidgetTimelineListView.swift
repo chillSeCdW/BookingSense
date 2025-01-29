@@ -28,14 +28,14 @@ struct WidgetTimelineListView: View {
       if entry.configuration.showHeader == .show {
         HStack(alignment: .center) {
           Spacer()
-          Text("\(entry.configuration.typeOfBookings.localizedStringResource)")
+          Text("filter type \(entry.configuration.typeOfBookings.localizedStringResource)")
             .font(.title3)
             .foregroundStyle(
               getHeaderTextColor(
                 for: entry.configuration.typeOfBookings
               )
             )
-          Text("\(entry.bookingTimeSnapshot.count)")
+          Text("entry count \(entry.bookingTimeSnapshot.count)")
             .font(.title2)
             .bold()
         }
@@ -51,9 +51,9 @@ struct WidgetTimelineListView: View {
       if entry.configuration.showHeader == .show {
         VStack(alignment: .leading) {
           Spacer()
-          Text("\(entry.bookingTimeSnapshot.count)")
+          Text("entry count \(entry.bookingTimeSnapshot.count)")
             .font(.largeTitle)
-          Text("\(entry.configuration.typeOfBookings.localizedStringResource)")
+          Text("filter type \(entry.configuration.typeOfBookings.localizedStringResource)")
             .font(.title2)
             .foregroundStyle(
               getHeaderTextColor(
@@ -72,14 +72,14 @@ struct WidgetTimelineListView: View {
       if entry.configuration.showHeader == .show {
         HStack(alignment: .center) {
           Spacer()
-          Text("\(entry.configuration.typeOfBookings.localizedStringResource)")
+          Text("filter type \(entry.configuration.typeOfBookings.localizedStringResource)")
             .font(.title2)
             .foregroundStyle(
               getHeaderTextColor(
                 for: entry.configuration.typeOfBookings
               )
             )
-          Text("\(entry.bookingTimeSnapshot.count)")
+          Text("entry count \(entry.bookingTimeSnapshot.count)")
             .font(.largeTitle)
             .bold()
         }
@@ -115,7 +115,12 @@ struct WidgetTimelineListView: View {
   @ViewBuilder
   func entryLine(_ snapshot: BookingTimeSnapshot) -> some View {
     HStack {
-      Toggle(isOn: snapshot.completedAt != nil, intent: CheckMarkTL(uuid: snapshot.uuid)) {}
+      Toggle(isOn: snapshot.completedAt != nil,
+             intent: CheckMarkTL(
+              uuid: snapshot.uuid,
+              typeOfChecking: entry.configuration.checkBehaviour
+             )
+      ) {}
         .toggleStyle(CheckToggleStyle(
           bookingType: BookingType(rawValue: snapshot.bookingType),
           coloredToggle: entry.configuration.colorToggle
