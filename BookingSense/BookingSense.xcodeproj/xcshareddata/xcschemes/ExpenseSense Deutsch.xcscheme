@@ -91,7 +91,7 @@
             isEnabled = "YES">
          </CommandLineArgument>
          <CommandLineArgument
-            argument = "enable-testing-data"
+            argument = "insert-testing-data"
             isEnabled = "NO">
          </CommandLineArgument>
          <CommandLineArgument

@@ -18,11 +18,6 @@ public actor DataModel {
       let factory = ContainerFactory(BookingSchemaV5.self, storeInMemory: true)
       return factory.container
     }
-    if CommandLine.arguments.contains("enable-testing-data") {
-      let factory = ContainerFactory(BookingSchemaV5.self, storeInMemory: true)
-//      factory.addExamples(ContainerFactory.generateFixedEntriesItems())
-      return factory.container
-    }
     #endif
     return ContainerFactory(
       BookingSchemaV5.self,

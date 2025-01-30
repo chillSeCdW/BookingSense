@@ -128,7 +128,10 @@ struct IntervalInsightsView: View {
 
 #Preview {
   let factory = ContainerFactory(BookingSchemaV4.self, storeInMemory: true)
-  factory.addExamples(ContainerFactory.generateRandomEntriesItems())
+  ContainerFactory.addExamples(
+    ContainerFactory.generateRandomEntriesItems(),
+    modelContext: factory.container.mainContext
+  )
   return IntervalInsightsView()
     .modelContainer(factory.container)
 

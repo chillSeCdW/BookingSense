@@ -29,10 +29,18 @@ struct BookingSenseApp: App {
     }
     //    Tips.showAllTipsForTesting()
 
+    #if DEBUG
     if CommandLine.arguments.contains("disableTips") {
       numberOfVisits = 0
       return
     }
+    if CommandLine.arguments.contains("insert-testing-data") {
+      ContainerFactory.addExamples(
+        ContainerFactory.generateFixedEntriesItems(),
+        modelContext: modelContainer.mainContext
+      )
+    }
+    #endif
 
     try? Tips.configure([
       .displayFrequency(.immediate)
