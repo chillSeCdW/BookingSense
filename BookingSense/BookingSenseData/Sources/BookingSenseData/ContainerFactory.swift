@@ -34,10 +34,10 @@ public struct ContainerFactory {
     }
   }
 
-  @MainActor public func addExamples(_ examples: [any PersistentModel]) {
-    try? container.mainContext.transaction {
+  @MainActor public static func addExamples(_ examples: [any PersistentModel], modelContext: ModelContext) {
+    try? modelContext.transaction {
       examples.forEach { example in
-        container.mainContext.insert(example)
+        modelContext.insert(example)
       }
     }
   }
