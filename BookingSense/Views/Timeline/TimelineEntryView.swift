@@ -110,7 +110,7 @@ struct DateForTimelineEntry: View {
   var body: some View {
     if let completetedAt = timelineEntry.completedAt {
       Text(completetedAt.timelineEntryFormatting())
-        .foregroundStyle(timelineEntry.state == TimelineEntryState.skipped.rawValue ? Color.secondary : .green)
+        .foregroundStyle(getCompletedDateColor(completetedAt))
       } else {
         Text(timelineEntry.isDue.timelineEntryFormatting())
           .foregroundStyle(getDateColor())
@@ -125,6 +125,19 @@ struct DateForTimelineEntry: View {
     calendar.timeZone = TimeZone(identifier: "UTC")!
     if calendar.compare(timelineEntry.isDue, to: .now, toGranularity: .day) == .orderedAscending {
       return .red
+    }
+    return .secondary
+  }
+
+  func getCompletedDateColor(_ completedAt: Date) -> Color {
+    if timelineEntry.state != TimelineEntryState.skipped.rawValue {
+      var calendar = Calendar(identifier: .gregorian)
+      calendar.timeZone = TimeZone(identifier: "UTC")!
+      if calendar.compare(completedAt, to: timelineEntry.isDue, toGranularity: .day) == .orderedDescending {
+        return .red
+      } else {
+        return .green
+      }
     }
     return .secondary
   }
