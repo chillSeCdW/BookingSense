@@ -5,6 +5,7 @@ import SwiftUI
 import SwiftData
 import MessageUI
 import TipKit
+import BookingSenseData
 
 struct SettingsNavigationStackView: View {
 

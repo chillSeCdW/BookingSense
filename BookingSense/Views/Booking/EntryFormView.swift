@@ -8,6 +8,7 @@
 import SwiftUI
 import TipKit
 import SwiftData
+import BookingSenseData
 
 struct EntryFormView: View {
   @Environment(\.modelContext) private var modelContext
@@ -123,7 +124,7 @@ struct BookingTypePicker: View {
       }
     }
     .pickerStyle(.segmented)
-    .colorMultiply(Constants.getListBackgroundColor(for: bookingType) ?? .white)
+    .colorMultiply(StyleHelper.getListBackgroundColor(for: bookingType) ?? .white)
   }
 }
 

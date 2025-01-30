@@ -3,6 +3,7 @@
 
 import SwiftUI
 import SwiftData
+import BookingSenseData
 
 struct NavigationStackContentView: View {
   @Environment(AppStates.self) var appStates
@@ -125,8 +126,8 @@ struct FilterBookingAmountButtonsView: View {
             label: { Text(option.description) }
           )
           .background(appStates.activeBookingTypeFilters.contains(option) ?
-                      Constants.getListBackgroundColor(for: option) :
-                        Constants.getListBackgroundColor(for: option, isActive: false)
+                      StyleHelper.getListBackgroundColor(for: option) :
+                        StyleHelper.getListBackgroundColor(for: option, isActive: false)
           )
           .foregroundColor(.white)
           .cornerRadius(20)

@@ -3,6 +3,7 @@
 
 import SwiftUI
 import SwiftData
+import BookingSenseData
 
 struct BookingFilterDialog: View {
   @Environment(AppStates.self) var appStates

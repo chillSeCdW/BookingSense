@@ -3,12 +3,14 @@
 
 import SwiftUI
 import SwiftData
+import WidgetKit
+import BookingSenseData
 
 struct TimelineEntryView: View {
   @Environment(\.modelContext) private var modelContext
   @Environment(AppStates.self) var appStates
 
-  @StateObject var timelineEntry: TimelineEntry
+  @StateObject var timelineEntry: BookingSenseData.TimelineEntry
 
   @State var showingConfirmation: Bool = false
   @State var isDoneOnDialogPresented: Bool = false
@@ -19,6 +21,7 @@ struct TimelineEntryView: View {
       set: { isDone in
         timelineEntry.state = isDone ? TimelineEntryState.done.rawValue : TimelineEntryState.open.rawValue
         timelineEntry.completedAt = isDone ? .now : nil
+        WidgetCenter.shared.reloadTimelines(ofKind: "BookingTimeWidget")
       }
     )) {
       HStack {
@@ -42,17 +45,20 @@ struct TimelineEntryView: View {
       Button("Done on time") {
         timelineEntry.state = TimelineEntryState.done.rawValue
         timelineEntry.completedAt = timelineEntry.isDue
+        WidgetCenter.shared.reloadTimelines(ofKind: "BookingTimeWidget")
       }
       .tint(.blue)
       if timelineEntry.state != TimelineEntryState.skipped.rawValue {
         Button("Skip") {
           timelineEntry.state = TimelineEntryState.skipped.rawValue
           timelineEntry.completedAt = .now
+          WidgetCenter.shared.reloadTimelines(ofKind: "BookingTimeWidget")
         }
       } else {
         Button("Reopen") {
           timelineEntry.state = TimelineEntryState.open.rawValue
           timelineEntry.completedAt = nil
+          WidgetCenter.shared.reloadTimelines(ofKind: "BookingTimeWidget")
         }
       }
       Button("Done on") {
@@ -82,6 +88,7 @@ struct TimelineEntryView: View {
 
   func deleteTimelineEntry() {
     modelContext.delete(timelineEntry)
+    WidgetCenter.shared.reloadTimelines(ofKind: "BookingTimeWidget")
   }
 
   func getDateColor() -> Color {
@@ -98,7 +105,7 @@ struct TimelineEntryView: View {
 }
 
 struct DateForTimelineEntry: View {
-  @StateObject var timelineEntry: TimelineEntry
+  @StateObject var timelineEntry: BookingSenseData.TimelineEntry
 
   var body: some View {
     if let completetedAt = timelineEntry.completedAt {

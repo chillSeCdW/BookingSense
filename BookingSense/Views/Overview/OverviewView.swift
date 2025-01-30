@@ -8,6 +8,7 @@
 import Foundation
 import SwiftUI
 import SwiftData
+import BookingSenseData
 
 struct OverviewView: View {
   @Query private var entries: [BookingEntry]
@@ -57,15 +58,15 @@ struct OverviewView: View {
       BookingEntryChartData(id: "Total costs",
                             name: String(localized: "Total costs"),
                             amount: sumForAllMinusForInterval,
-                            color: Constants.getListBackgroundColor(for: BookingType.minus)),
+                            color: StyleHelper.getListBackgroundColor(for: BookingType.minus)),
       BookingEntryChartData(id: "Total savings",
                             name: String(localized: "Total savings"),
                             amount: sumForAllSavingForInterval,
-                            color: Constants.getListBackgroundColor(for: BookingType.saving)),
+                            color: StyleHelper.getListBackgroundColor(for: BookingType.saving)),
       BookingEntryChartData(id: "Total left",
                             name: String(localized: "Total left"),
                             amount: totalLeft,
-                            color: Constants.getListBackgroundColor(for: BookingType.plus))
+                            color: StyleHelper.getListBackgroundColor(for: BookingType.plus))
     ].sorted(by: { entry1, entry2 in
       entry1.amount > entry2.amount
     })
@@ -107,7 +108,7 @@ struct OverviewView: View {
 
 #Preview {
   let factory = ContainerFactory(BookingSchemaV4.self, storeInMemory: true)
-  factory.addExamples(ContainerFactory.generateRandomEntriesItems())
+  factory.addExamples(ContainerFactory.generateFixedEntriesItems())
   return OverviewView()
     .environment(AppStates())
     .modelContainer(factory.container)

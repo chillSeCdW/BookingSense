@@ -2,6 +2,7 @@
 // Using Swift 6.0
 
 import Foundation
+import BookingSenseData
 
 enum TimelineEntryKeys: CodingKey {
   case uuid, bookingEntry, state, name, tag, amount, bookingType, isDue, completedAt

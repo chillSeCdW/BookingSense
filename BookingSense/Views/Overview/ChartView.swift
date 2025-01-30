@@ -4,6 +4,7 @@
 import SwiftUI
 import SwiftData
 import Charts
+import BookingSenseData
 
 struct ChartView<Content: View>: View {
   @Environment(AppStates.self) var appStates
@@ -74,7 +75,6 @@ struct ChartView<Content: View>: View {
     }
   }
 
-  // swiftlint:disable function_body_length
   func fixedColorChart(_ noData: Bool) -> some View {
     Chart(data, id: \.id) { element in
       SectorMark(
@@ -127,7 +127,6 @@ struct ChartView<Content: View>: View {
       }
     }
   }
-  // swiftlint:enable function_body_length
 
   func chart() -> some View {
     Chart(data, id: \.id) { element in

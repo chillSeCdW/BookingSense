@@ -2,6 +2,7 @@
 // Using Swift 6.0
 
 import SwiftUI
+import BookingSenseData
 
 struct BookingConversionsView: View {
   @Environment(AppStates.self) var appStates

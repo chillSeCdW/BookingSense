@@ -12,7 +12,7 @@ struct ResetHintsTopPopUp: TopPopup {
     let safeAreaPaddingTop = scene?.windows.first?.safeAreaInsets.top
 
     return popup
-      .backgroundColour(Constants.getBackground(colorScheme))
+      .backgroundColour(StyleHelper.getBackground(colorScheme))
       .topPadding(safeAreaPaddingTop ?? 55)
       .horizontalPadding(16)
   }

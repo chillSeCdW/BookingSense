@@ -3,6 +3,8 @@
 
 import SwiftUI
 import SwiftData
+import WidgetKit
+import BookingSenseData
 
 struct TimelineView: View {
   @Environment(\.modelContext) private var modelContext
@@ -14,27 +16,30 @@ struct TimelineView: View {
     @Bindable var appStates = appStates
 
     NavigationStack {
-      TimelineContentListView()
-        .navigationTitle("Timeline")
-        .navigationBarTitleDisplayMode(.automatic)
-        .refreshable {
-          entries.forEach { entry in
-            if entry.state == BookingEntryState.active.rawValue {
-              let latestDate = Constants.getLatestTimelineEntryDueDateFor(entry)
-              Constants.insertTimelineEntriesOf(entry,
-                                                context: modelContext,
-                                                latestTimelineDate: latestDate)
+      ScrollViewReader { proxy in
+        TimelineContentListView()
+          .navigationTitle("Timeline")
+          .navigationBarTitleDisplayMode(.automatic)
+          .refreshable {
+            entries.forEach { entry in
+              if entry.state == BookingEntryState.active.rawValue {
+                let latestDate = Constants.getLatestTimelineEntryDueDateFor(entry)
+                Constants.insertTimelineEntriesOf(entry,
+                                                  context: modelContext,
+                                                  latestTimelineDate: latestDate)
+              }
             }
+            WidgetCenter.shared.reloadTimelines(ofKind: "BookingTimeWidget")
           }
-        }
-        .toolbar {
-          ToolbarTimelineContent()
-        }
-        .sheet(isPresented: $appStates.isTimeFilterDialogPresented) {
-          TimeFilterDialog()
-            .presentationDetents([.medium, .large])
-        }
+          .toolbar {
+            ToolbarTimelineContent(proxy: proxy)
+          }
+          .sheet(isPresented: $appStates.isTimeFilterDialogPresented) {
+            TimeFilterDialog()
+              .presentationDetents([.medium, .large])
+          }
+      }
+      .searchable(text: $appStates.searchTimelineText, prompt: "Search")
     }
-    .searchable(text: $appStates.searchTimelineText, prompt: "Search")
   }
 }

@@ -2,6 +2,7 @@
 // Using Swift 5.0
 
 import SwiftUI
+import BookingSenseData
 
 struct InfoView<F: FormatStyle>: View where F.FormatInput == Decimal, F.FormatOutput == String {
   @Environment(AppStates.self) var appStates

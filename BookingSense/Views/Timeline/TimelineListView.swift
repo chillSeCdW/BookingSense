@@ -3,6 +3,7 @@
 
 import SwiftUI
 import SwiftData
+import BookingSenseData
 
 struct TimelineListView: View {
   @Environment(AppStates.self) var appStates
@@ -40,7 +41,12 @@ struct TimelineListView: View {
       FilterAmountButtonsView()
       ForEach(sortedKeys, id: \.self) { date in
         if let groupEntriesForMonth = groupedEntries[date] {
-          TimelineSectionView(date: date, entriesForDate: groupEntriesForMonth)
+          if date == getClosestSectionToToday() {
+            TimelineSectionView(date: date, entriesForDate: groupEntriesForMonth)
+              .id("currentMonthSection")
+          } else {
+            TimelineSectionView(date: date, entriesForDate: groupEntriesForMonth)
+          }
         }
       }
       if groupedEntries.isEmpty {
@@ -56,6 +62,27 @@ struct TimelineListView: View {
     .listSectionSpacing(.compact)
     .listRowSpacing(5)
     .animation(.easeInOut, value: groupedEntries)
+  }
+
+  func getClosestSectionToToday() -> Date? {
+    var calendar = Calendar(identifier: .gregorian)
+    calendar.timeZone = TimeZone(identifier: "UTC")!
+    var exactMonth: Date?
+
+    groupedEntries.keys.forEach { sectionDate in
+      if calendar.compare(sectionDate, to: .now, toGranularity: .month) == .orderedSame {
+        exactMonth = sectionDate
+      }
+    }
+
+    if exactMonth == nil {
+      if let closestDate = groupedEntries.keys.min(
+        by: { abs($0.timeIntervalSinceNow) < abs($1.timeIntervalSinceNow) }
+      ) {
+        return closestDate
+      }
+    }
+    return exactMonth
   }
 }
 
@@ -96,8 +123,8 @@ struct FilterAmountButtonsView: View {
             label: { Text(option.description) }
           )
           .background(appStates.activeTimeTypeFilters.contains(option) ?
-                      Constants.getListBackgroundColor(for: option) :
-                        Constants.getListBackgroundColor(for: option, isActive: false)
+                      StyleHelper.getListBackgroundColor(for: option) :
+                        StyleHelper.getListBackgroundColor(for: option, isActive: false)
           )
           .foregroundColor(.white)
           .cornerRadius(20)

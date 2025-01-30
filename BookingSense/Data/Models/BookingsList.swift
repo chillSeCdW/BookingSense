@@ -2,6 +2,7 @@
 // Using Swift 5.0
 
 import Foundation
+import BookingSenseData
 
 struct BookingsList: Codable {
   let data: [JsonBookingEntry]

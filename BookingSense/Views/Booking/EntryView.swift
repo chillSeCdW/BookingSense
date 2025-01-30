@@ -4,6 +4,7 @@
 import Foundation
 import SwiftUI
 import SwiftData
+import BookingSenseData
 
 struct EntryView: View {
   @Environment(AppStates.self) var appStates
@@ -73,7 +74,7 @@ struct EntryView: View {
           Text("Booking type:")
           Spacer()
           Text(type.description)
-            .foregroundColor(Constants.getListBackgroundColor(for: type))
+            .foregroundColor(StyleHelper.getListBackgroundColor(for: type))
             .blur(radius: appStates.blurSensitive ? 5.0 : 0)
         }
       }
