@@ -33,22 +33,6 @@
         }
       }
     },
-    "Behaviour of check" : {
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Verhalten des Abhaken"
-          }
-        },
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Behaviour of check"
-          }
-        }
-      }
-    },
     "Black" : {
       "localizations" : {
         "de" : {
@@ -294,6 +278,22 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Show header of widget"
+          }
+        }
+      }
+    },
+    "Tap action" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Aktion des Abhakens"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tap action"
           }
         }
       }
