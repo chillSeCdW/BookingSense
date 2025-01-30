@@ -76,7 +76,6 @@
 		B9C6EC452D05B6A400092E23 /* ToolbarViewEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9C6EC442D05B69A00092E23 /* ToolbarViewEntry.swift */; };
 		B9C6EC4A2D087AF000092E23 /* MonthYearPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9C6EC492D087AEF00092E23 /* MonthYearPickerView.swift */; };
 		B9CC1BB62CD7902E0048670A /* ToolbarTimelineContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9CC1BB52CD790030048670A /* ToolbarTimelineContent.swift */; };
-		B9CC1BB82CD7BB110048670A /* TimelineContentListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9CC1BB72CD7BB0C0048670A /* TimelineContentListView.swift */; };
 		B9CC1BBE2CD830190048670A /* TimeFilterDialog.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9CC1BBD2CD830160048670A /* TimeFilterDialog.swift */; };
 		B9CC1BC02CD838C90048670A /* TimelineListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9CC1BBF2CD838C50048670A /* TimelineListView.swift */; };
 		B9CC1BC22CD8C8DB0048670A /* BookingSortByEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9CC1BC12CD8C8D40048670A /* BookingSortByEnum.swift */; };
@@ -211,7 +210,6 @@
 		B9C6EC492D087AEF00092E23 /* MonthYearPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthYearPickerView.swift; sourceTree = "<group>"; };
 		B9C702B12C0FC6E0004546E1 /* ci_post_clone.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = ci_post_clone.sh; sourceTree = "<group>"; };
 		B9CC1BB52CD790030048670A /* ToolbarTimelineContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolbarTimelineContent.swift; sourceTree = "<group>"; };
-		B9CC1BB72CD7BB0C0048670A /* TimelineContentListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimelineContentListView.swift; sourceTree = "<group>"; };
 		B9CC1BBD2CD830160048670A /* TimeFilterDialog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeFilterDialog.swift; sourceTree = "<group>"; };
 		B9CC1BBF2CD838C50048670A /* TimelineListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimelineListView.swift; sourceTree = "<group>"; };
 		B9CC1BC12CD8C8D40048670A /* BookingSortByEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingSortByEnum.swift; sourceTree = "<group>"; };
@@ -362,13 +360,6 @@
 			path = Booking;
 			sourceTree = "<group>";
 		};
-		B92782BF2BDD9F8000D13808 /* BookingSenseTests */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = BookingSenseTests;
-			sourceTree = "<group>";
-		};
 		B92782F12BDE779700D13808 /* BookingSenseUITests */ = {
 			isa = PBXGroup;
 			children = (
@@ -410,7 +401,6 @@
 			isa = PBXGroup;
 			children = (
 				B9CC1BBF2CD838C50048670A /* TimelineListView.swift */,
-				B9CC1BB72CD7BB0C0048670A /* TimelineContentListView.swift */,
 				B9383A042CD69A4500AAB674 /* TimelineEntryView.swift */,
 				B93839FB2CD3F4DF00AAB674 /* TimelineView.swift */,
 			);
@@ -571,7 +561,6 @@
 				B9DAFAD42BA8AFAF000486EA /* BookingSenseApp.swift */,
 				B9B8212A2BF244EB00CEDE43 /* Settings.bundle */,
 				B99284B42C0F09ED00CB6404 /* resources */,
-				B92782BF2BDD9F8000D13808 /* BookingSenseTests */,
 				B92782F12BDE779700D13808 /* BookingSenseUITests */,
 				B9AD85E02D394EF5009E52CC /* Widget */,
 				B945794A2D39626900467C95 /* BookingSenseData */,
@@ -855,7 +844,6 @@
 				B927D3F52CE7EA61006B1B19 /* PurchaseStatusTaskModifier.swift in Sources */,
 				B9FEC3D42CAD4A32009DD4A0 /* PurchaseHandler.swift in Sources */,
 				B9CC1BC02CD838C90048670A /* TimelineListView.swift in Sources */,
-				B9CC1BB82CD7BB110048670A /* TimelineContentListView.swift in Sources */,
 				B927D3F32CE7E7ED006B1B19 /* PurchaseHandlerViewModifier.swift in Sources */,
 				B9C6EC432D05B53900092E23 /* EntryView.swift in Sources */,
 				B90B2B432BE504A200BD2042 /* NavigationStackContentView.swift in Sources */,
@@ -1056,6 +1044,7 @@
 				SKIP_INSTALL = YES;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -1097,6 +1086,7 @@
 				SKIP_INSTALL = YES;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -1268,6 +1258,7 @@
 				SDKROOT = auto;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -1318,6 +1309,7 @@
 				SDKROOT = auto;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

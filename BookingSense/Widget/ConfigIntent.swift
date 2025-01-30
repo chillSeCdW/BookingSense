@@ -28,7 +28,7 @@ struct ConfigIntent: WidgetConfigurationIntent {
   @Parameter(title: "Filter for entries", default: BookingSenseWidgetContentType.all)
   var typeOfBookings: BookingSenseWidgetContentType
 
-  @Parameter(title: "Behaviour of check", default: BookingSenseWidgetCheckBehaviour.today)
+  @Parameter(title: "Tap action", default: BookingSenseWidgetCheckBehaviour.today)
   var checkBehaviour: BookingSenseWidgetCheckBehaviour
 
   @Parameter(title: "Show header of widget", default: BookingSenseWidgetShowHeader.show)

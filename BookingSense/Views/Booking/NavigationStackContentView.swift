@@ -9,6 +9,10 @@ struct NavigationStackContentView: View {
   @Environment(AppStates.self) var appStates
   @Query private var entries: [BookingEntry]
 
+  private var sortedKeys: [String] {
+    groupedEntries.keys.sorted()
+  }
+
   private var groupedEntries: [String: [BookingEntry]] {
     let groupedEntries = Constants.groupBookingsByInterval(entries: entries)
     return Constants.sortAndFilterBookings(
@@ -41,18 +45,23 @@ struct NavigationStackContentView: View {
     List {
       FilterBookingStateButtonsView()
       FilterBookingAmountButtonsView()
-      ForEach(Interval.allCases) { option in
+      ForEach(sortedKeys, id: \.self) { intervalKey in
         IntervalSectionView(
-          interval: option,
-          entries: groupedEntries[option.rawValue] ?? []
+          interval: Interval(rawValue: intervalKey) ?? nil,
+          entries: groupedEntries[intervalKey] ?? []
         )
       }
       if entriesCount < 1 {
-        VStack {
+        HStack {
           Spacer()
-          Text("No entries found")
-            .bold()
-          Text("Press the + button to add an entry or adjust filters")
+          VStack {
+            Text("No entries found")
+              .multilineTextAlignment(.center)
+              .bold()
+            Text("Press the + button to add an entry or adjust filters")
+              .multilineTextAlignment(.center)
+          }
+          Spacer()
         }
         .foregroundStyle(.secondary)
         .multilineTextAlignment(.center)
@@ -70,20 +79,19 @@ struct NavigationStackContentView: View {
 }
 
 struct IntervalSectionView: View {
-  var interval: Interval
+  var interval: Interval?
   var entries: [BookingEntry]
 
   var body: some View {
-    if !entries.isEmpty {
-      Section(content: {
-        BookingSectionView(entries: entries)
-      }, header: {
-        HStack {
-          Text(interval.description.capitalized)
+    if let intervalString = interval?.description.capitalized {
+      Section(
+        header: Text(intervalString),
+        footer: Text(LocalizedStringKey("\(entries.count) entries"))
+      ) {
+        ForEach(entries, id: \.uuid) { entry in
+          BookingSectionView(entry: entry)
         }
-      }, footer: {
-        Text(LocalizedStringKey("\(entries.count) entries"))
-      })
+      }
       .headerProminence(.increased)
     }
   }

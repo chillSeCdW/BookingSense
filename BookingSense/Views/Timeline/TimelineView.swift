@@ -17,29 +17,33 @@ struct TimelineView: View {
 
     NavigationStack {
       ScrollViewReader { proxy in
-        TimelineContentListView()
-          .navigationTitle("Timeline")
-          .navigationBarTitleDisplayMode(.automatic)
-          .refreshable {
-            entries.forEach { entry in
-              if entry.state == BookingEntryState.active.rawValue {
-                let latestDate = Constants.getLatestTimelineEntryDueDateFor(entry)
-                Constants.insertTimelineEntriesOf(entry,
-                                                  context: modelContext,
-                                                  latestTimelineDate: latestDate)
-              }
+        TimelineListView(
+          searchText: appStates.searchTimelineText,
+          stateFilter: appStates.activeTimeStateFilters,
+          typeFilter: appStates.activeTimeTypeFilters
+        )
+        .navigationTitle("Timeline")
+        .navigationBarTitleDisplayMode(.automatic)
+        .searchable(text: $appStates.searchTimelineText, prompt: "Search")
+        .refreshable {
+          entries.forEach { entry in
+            if entry.state == BookingEntryState.active.rawValue {
+              let latestDate = Constants.getLatestTimelineEntryDueDateFor(entry)
+              Constants.insertTimelineEntriesOf(entry,
+                                                context: modelContext,
+                                                latestTimelineDate: latestDate)
             }
-            WidgetCenter.shared.reloadTimelines(ofKind: "BookingTimeWidget")
           }
-          .toolbar {
-            ToolbarTimelineContent(proxy: proxy)
-          }
-          .sheet(isPresented: $appStates.isTimeFilterDialogPresented) {
-            TimeFilterDialog()
-              .presentationDetents([.medium, .large])
-          }
+          WidgetCenter.shared.reloadTimelines(ofKind: "BookingTimeWidget")
+        }
+        .toolbar {
+          ToolbarTimelineContent(proxy: proxy)
+        }
+        .sheet(isPresented: $appStates.isTimeFilterDialogPresented) {
+          TimeFilterDialog()
+            .presentationDetents([.medium, .large])
+        }
       }
-      .searchable(text: $appStates.searchTimelineText, prompt: "Search")
     }
   }
 }

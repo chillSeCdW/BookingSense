@@ -13,36 +13,27 @@ struct BookingSectionView: View {
   @Environment(AppStates.self) var appStates
   @Environment(\.colorScheme) var colorScheme
 
-  var entries: [BookingEntry]
+  var entry: BookingEntry
 
   var body: some View {
-    ForEach(entries, id: \.uuid) { entry in
-      NavigationLink(value: entry) {
-        HStack(spacing: 0) {
-          Text(entry.name)
-            .blur(radius: appStates.blurSensitive ? 5 : 0)
-          Spacer()
-          Text(entry.amount, format: .currency(code: Locale.current.currency!.identifier))
-            .contentTransition(.symbolEffect(.replace.downUp.byLayer))
-            .blur(radius: appStates.blurSensitive ? 5 : 0)
-        }
-        .animation(.easeInOut, value: appStates.blurSensitive)
+    NavigationLink(value: entry) {
+      HStack(spacing: 0) {
+        Text(entry.name)
+          .blur(radius: appStates.blurSensitive ? 5 : 0)
+        Spacer()
+        Text(entry.amount, format: .currency(code: Locale.current.currency!.identifier))
+          .contentTransition(.symbolEffect(.replace.downUp.byLayer))
+          .blur(radius: appStates.blurSensitive ? 5 : 0)
       }
-      .accessibilityIdentifier("NavLink" + entry.name)
-      .listRowBackground(
-        Constants.getListBackgroundView(
-          bookingType: entry.bookingType,
-          isActive: entry.state == BookingEntryState.active.rawValue,
-          colorScheme: colorScheme
-        )
-      )
+      .animation(.easeInOut, value: appStates.blurSensitive)
     }
+    .accessibilityIdentifier("NavLink" + entry.name)
+    .listRowBackground(
+      Constants.getListBackgroundView(
+        bookingType: entry.bookingType,
+        isActive: entry.state == BookingEntryState.active.rawValue,
+        colorScheme: colorScheme
+      )
+    )
   }
-}
-
-#Preview {
-  let factory = ContainerFactory(BookingSchemaV4.self, storeInMemory: true)
-  factory.addExamples(ContainerFactory.generateRandomEntriesItems())
-  return BookingSectionView(entries: [])
-    .modelContainer(factory.container)
 }
