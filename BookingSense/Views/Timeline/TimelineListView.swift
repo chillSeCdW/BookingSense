@@ -76,7 +76,9 @@ struct TimelineListView: View {
     }
 
     if exactMonth == nil {
-      if let closestDate = groupedEntries.keys.min(by: { abs($0.timeIntervalSinceNow) < abs($1.timeIntervalSinceNow) }) {
+      if let closestDate = groupedEntries.keys.min(
+        by: { abs($0.timeIntervalSinceNow) < abs($1.timeIntervalSinceNow) }
+      ) {
         return closestDate
       }
     }

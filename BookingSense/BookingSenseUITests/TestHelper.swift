@@ -4,7 +4,7 @@
 import Foundation
 import XCTest
 
-//class TestHelper {
+// class TestHelper {
 //
 //  let aClass: AnyClass
 //
@@ -49,7 +49,7 @@ import XCTest
 //      let listEntry = app.collectionViews.buttons["NavLink" + name]
 //      XCTAssertTrue(listEntry.isHittable)
 //      listEntry.tap()
-//      let navBarEditEntry = app.navigationBars[localized("Edit entry")] // TODO: remove unused translation
+//      let navBarEditEntry = app.navigationBars[localized("Edit entry")]
 //      XCTAssertTrue(navBarEditEntry.isHittable)
 //
 //      let backButton = navBarEditEntry.buttons[localized("Bookings")]
@@ -309,9 +309,9 @@ import XCTest
 //      XCTFail("Button " + buttonName + "was not found")
 //    }
 //  }
-//}
+// }
 //
-//extension XCUIElement {
+// extension XCUIElement {
 //  func clearAndEnterText(_ text: String) {
 //          guard let stringValue = self.value as? String else {
 //              XCTFail("Tried to clear and enter text into a non string value")
@@ -337,4 +337,4 @@ import XCTest
 //          }
 //          typeText(deleteString)
 //      }
-//}
+// }
