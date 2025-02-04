@@ -24,7 +24,7 @@ public struct ContainerFactory {
     let config = ModelConfiguration(schema: schema,
                                     isStoredInMemoryOnly: storeInMemory,
                                     groupContainer: .identifier("group.com.chill.BookingSense"),
-                                    cloudKitDatabase: .none
+                                    cloudKitDatabase: .private("iCloud.com.chill.BookingSense-01")
     )
     do {
       container = try ModelContainer(for: schema, migrationPlan: migrationPlan, configurations: config)
@@ -65,36 +65,6 @@ public struct ContainerFactory {
   public static func generateFixedEntriesItems() -> [BookingEntry] {
     var returnResult: [BookingEntry] = []
     let someTag: Tag = Tag(name: "someTag")
-    let timelineEntry: TimelineEntry = TimelineEntry(
-      state: TimelineEntryState.open.rawValue,
-      name: "Brötchen",
-      amount: 2.5,
-      bookingType: BookingType.minus.rawValue,
-      isDue: Date.now,
-      tag: someTag,
-      completedAt: nil,
-      bookingEntry: nil
-    )
-    let timelineEntry1: TimelineEntry = TimelineEntry(
-      state: TimelineEntryState.open.rawValue,
-      name: "Brötchen",
-      amount: 2.5,
-      bookingType: BookingType.minus.rawValue,
-      isDue: Date.now.addingTimeInterval( 60 * 60 * 24 * 2),
-      tag: someTag,
-      completedAt: nil,
-      bookingEntry: nil
-    )
-    let timelineEntry2: TimelineEntry = TimelineEntry(
-      state: TimelineEntryState.open.rawValue,
-      name: "Brötchen",
-      amount: 2.5,
-      bookingType: BookingType.minus.rawValue,
-      isDue: Date.now.addingTimeInterval( 60 * 60 * 24),
-      tag: someTag,
-      completedAt: nil,
-      bookingEntry: nil
-    )
 
     returnResult.append(BookingEntry(name: "Trinkgeld",
                                      amount: 1,
@@ -144,7 +114,7 @@ public struct ContainerFactory {
                                      bookingType: BookingType.minus.rawValue,
                                      interval: .daily,
                                      tag: someTag,
-                                     timelineEntries: [timelineEntry, timelineEntry1, timelineEntry2]))
+                                     timelineEntries: nil))
     returnResult.append(BookingEntry(name: "Taschengeld Kinder",
                                      amount: 10,
                                      bookingType: BookingType.minus.rawValue,
