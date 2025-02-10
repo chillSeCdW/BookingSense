@@ -27,15 +27,18 @@ struct WidgetTimelineListView: View {
     VStack(alignment: .center) {
       if entry.configuration.showHeader == .show {
         HStack(alignment: .center) {
-          Spacer()
           Text("filter type \(entry.configuration.typeOfBookings.localizedStringResource)")
-            .font(.title3)
+            .font(.footnote)
+            .bold()
             .foregroundStyle(
               getHeaderTextColor(
                 for: entry.configuration.typeOfBookings
               )
             )
-          Text("entry count \(entry.bookingTimeSnapshot.count)")
+          Spacer()
+          Text("Late")
+            .font(.footnote)
+          Text("entry count \(getCountOfLateEntries(timelineSnapshots: entry.bookingTimeSnapshot))")
             .font(.title2)
             .bold()
         }
@@ -50,16 +53,19 @@ struct WidgetTimelineListView: View {
     HStack {
       if entry.configuration.showHeader == .show {
         VStack(alignment: .leading) {
-          Spacer()
-          Text("entry count \(entry.bookingTimeSnapshot.count)")
-            .font(.largeTitle)
           Text("filter type \(entry.configuration.typeOfBookings.localizedStringResource)")
             .font(.title2)
+            .bold()
             .foregroundStyle(
               getHeaderTextColor(
                 for: entry.configuration.typeOfBookings
               )
             )
+          Spacer()
+          Text("Late")
+            .font(.title2)
+          Text("entry count \(getCountOfLateEntries(timelineSnapshots: entry.bookingTimeSnapshot))")
+            .font(.largeTitle)
         }
         midWidget()
       }
@@ -71,21 +77,25 @@ struct WidgetTimelineListView: View {
     VStack {
       if entry.configuration.showHeader == .show {
         HStack(alignment: .center) {
-          Spacer()
           Text("filter type \(entry.configuration.typeOfBookings.localizedStringResource)")
             .font(.title2)
+            .bold()
             .foregroundStyle(
               getHeaderTextColor(
                 for: entry.configuration.typeOfBookings
               )
             )
-          Text("entry count \(entry.bookingTimeSnapshot.count)")
+          Spacer()
+          Text("Late")
+            .font(.title2)
+          Text("entry count \(getCountOfLateEntries(timelineSnapshots: entry.bookingTimeSnapshot))")
             .font(.largeTitle)
-            .bold()
         }
+        .padding(.bottom, -5)
+        .padding(.top, 5)
         midWidget()
       }
-      bottomWidget(listLength: entry.configuration.showHeader == .hide ? 9 : 7)
+      bottomWidget(listLength: entry.configuration.showHeader == .hide ? 9 : 8)
       Spacer()
     }
   }
@@ -132,22 +142,26 @@ struct WidgetTimelineListView: View {
         DateForTimelineEntry(timelineSnapshot: snapshot)
           .font(.footnote)
           .lineLimit(1)
-          .foregroundStyle(getDateColor(timelineSnapshot: snapshot))
       }
       Spacer()
     }
   }
 
-  func getDateColor(timelineSnapshot: BookingTimeSnapshot) -> Color {
-    if timelineSnapshot.state != TimelineEntryState.open.rawValue {
-      return .secondary
+  func getCountOfLateEntries(timelineSnapshots: [BookingTimeSnapshot]) -> Int {
+    var countOfLateEntries = 0
+
+    timelineSnapshots.forEach { timelineSnapshot in
+      if timelineSnapshot.state != TimelineEntryState.open.rawValue {
+        return
+      }
+      var calendar = Calendar(identifier: .gregorian)
+      calendar.timeZone = TimeZone(identifier: "UTC")!
+      if calendar.compare(timelineSnapshot.isDue, to: .now, toGranularity: .day) == .orderedAscending {
+        countOfLateEntries += 1
+      }
     }
-    var calendar = Calendar(identifier: .gregorian)
-    calendar.timeZone = TimeZone(identifier: "UTC")!
-    if calendar.compare(timelineSnapshot.isDue, to: .now, toGranularity: .day) == .orderedAscending {
-      return .red
-    }
-    return .secondary
+
+    return countOfLateEntries
   }
 
   func getHeaderTextColor(for bookingType: BookingSenseWidgetContentType) -> Color {
@@ -246,12 +260,12 @@ struct CheckToggleStyle: ToggleStyle {
                                               name: "example name",
                                               bookingType: "minus",
                                               amount: 50,
-                                              isDue: .now,
+                                              isDue: Date(timeIntervalSinceReferenceDate: -123456789.0),
                                               state: TimelineEntryState.open.rawValue,
                                               completedAt: nil
                                              )],
     date: .now,
-    configuration: ConfigIntent()
+    configuration: ConfigIntent(typeOfBookings: .minus)
   )
 }
 
