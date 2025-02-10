@@ -196,6 +196,22 @@
         }
       }
     },
+    "Late" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Spät"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Late"
+          }
+        }
+      }
+    },
     "No entries found." : {
       "localizations" : {
         "de" : {
