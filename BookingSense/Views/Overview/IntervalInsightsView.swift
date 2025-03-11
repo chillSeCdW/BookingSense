@@ -126,6 +126,7 @@ struct IntervalInsightsView: View {
   }
 }
 
+#if DEBUG
 #Preview {
   let modelContainer = DataModel.shared.previewContainer
   return IntervalInsightsView()
@@ -133,3 +134,4 @@ struct IntervalInsightsView: View {
     .modelContainer(modelContainer)
 
 }
+#endif

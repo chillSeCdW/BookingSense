@@ -101,9 +101,11 @@ struct SettingsNavigationStackView: View {
   }
 }
 
+#if DEBUG
 #Preview {
   let modelContainer = DataModel.shared.previewContainer
   return SettingsNavigationStackView()
     .environment(AppStates())
     .modelContainer(modelContainer)
 }
+#endif
