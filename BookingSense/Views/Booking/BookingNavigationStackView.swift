@@ -69,20 +69,9 @@ struct BookingNavigationStackView: View {
   }
 }
 
-#Preview("NavStackWithList") {
-  let factory = ContainerFactory(BookingSchemaV4.self, storeInMemory: true)
-  ContainerFactory.addExamples(
-    ContainerFactory.generateRandomEntriesItems(),
-    modelContext: factory.container.mainContext
-  )
+#Preview {
+  let modelContainer = DataModel.shared.previewContainer
   return BookingNavigationStackView()
     .environment(AppStates())
-    .modelContainer(factory.container)
-}
-
-#Preview("NavStackWithoutList") {
-  let factory = ContainerFactory(BookingSchemaV4.self, storeInMemory: true)
-  return BookingNavigationStackView()
-    .environment(AppStates())
-    .modelContainer(factory.container)
+    .modelContainer(modelContainer)
 }

@@ -92,7 +92,6 @@ struct WidgetTimelineListView: View {
             .font(.largeTitle)
         }
         .padding(.bottom, -5)
-        .padding(.top, 5)
         midWidget()
       }
       bottomWidget(listLength: entry.configuration.showHeader == .hide ? 9 : 8)
