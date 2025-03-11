@@ -25,4 +25,23 @@ public actor DataModel {
       migrationPlan: BookingMigrationV1ToV5.self
     ).container
   }()
+
+  #if DEBUG
+  @MainActor
+  public lazy var previewContainer: ModelContainer = {
+    let factory = ContainerFactory(
+      BookingSchemaV5.self,
+      storeInMemory: true,
+      migrationPlan: BookingMigrationV1ToV5.self
+    )
+
+    let examples = ContainerFactory.generateRandomEntriesItems()
+
+    examples.forEach { example in
+      factory.container.mainContext.insert(example)
+    }
+
+    return factory.container
+  }()
+  #endif
 }

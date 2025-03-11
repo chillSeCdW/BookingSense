@@ -7,7 +7,7 @@ import Charts
 import BookingSenseData
 
 struct ChartsView: View {
-  @Query private var entries: [BookingEntry]
+  @Query(filter: #Predicate<BookingEntry> { $0.state == "active" }) private var entries: [BookingEntry]
 
   @AppStorage("insightsInterval") private var interval: Interval = .monthly
   @AppStorage("chartTypeIntervalMinus") var chartTypeIntervalMinus: ChartType = .interval

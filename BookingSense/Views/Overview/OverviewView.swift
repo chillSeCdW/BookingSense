@@ -11,7 +11,7 @@ import SwiftData
 import BookingSenseData
 
 struct OverviewView: View {
-  @Query private var entries: [BookingEntry]
+  @Query(filter: #Predicate<BookingEntry> { $0.state == "active" }) private var entries: [BookingEntry]
 
   @AppStorage("expandedBasic") private var isExpandedBasic = true
   @AppStorage("expandedAdditional") private var isAdditionalInfo = false
@@ -107,12 +107,8 @@ struct OverviewView: View {
 }
 
 #Preview {
-  let factory = ContainerFactory(BookingSchemaV4.self, storeInMemory: true)
-  ContainerFactory.addExamples(
-    ContainerFactory.generateRandomEntriesItems(),
-    modelContext: factory.container.mainContext
-  )
+  let modelContainer = DataModel.shared.previewContainer
   return OverviewView()
     .environment(AppStates())
-    .modelContainer(factory.container)
+    .modelContainer(modelContainer)
 }

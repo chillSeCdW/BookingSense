@@ -65,12 +65,8 @@ struct ContentView: View {
 }
 
 #Preview {
-  let factory = ContainerFactory(BookingSchemaV4.self, storeInMemory: true)
-  ContainerFactory.addExamples(
-    ContainerFactory.generateRandomEntriesItems(),
-    modelContext: factory.container.mainContext
-  )
+  let modelContainer = DataModel.shared.previewContainer
   return ContentView()
     .environment(AppStates())
-    .modelContainer(factory.container)
+    .modelContainer(modelContainer)
 }
