@@ -64,9 +64,11 @@ struct ContentView: View {
   }
 }
 
+#if DEBUG
 #Preview {
   let modelContainer = DataModel.shared.previewContainer
   return ContentView()
     .environment(AppStates())
     .modelContainer(modelContainer)
 }
+#endif

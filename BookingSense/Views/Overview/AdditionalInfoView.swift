@@ -100,9 +100,11 @@ struct AdditionalInfoView: View {
   }
 }
 
+#if DEBUG
 #Preview {
   let modelContainer = DataModel.shared.previewContainer
   return AdditionalInfoView()
     .environment(AppStates())
     .modelContainer(modelContainer)
 }
+#endif

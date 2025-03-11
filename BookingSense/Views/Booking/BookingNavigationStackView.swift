@@ -69,9 +69,11 @@ struct BookingNavigationStackView: View {
   }
 }
 
+#if DEBUG
 #Preview {
   let modelContainer = DataModel.shared.previewContainer
   return BookingNavigationStackView()
     .environment(AppStates())
     .modelContainer(modelContainer)
 }
+#endif

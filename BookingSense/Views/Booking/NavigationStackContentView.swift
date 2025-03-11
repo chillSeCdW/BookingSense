@@ -148,6 +148,7 @@ struct FilterBookingAmountButtonsView: View {
   }
 }
 
+#if DEBUG
 #Preview("WithContent") {
   let modelContainer = DataModel.shared.previewContainer
   return NavigationStackContentView()
@@ -159,3 +160,4 @@ struct FilterBookingAmountButtonsView: View {
   NavigationStackContentView()
     .environment(AppStates())
 }
+#endif
