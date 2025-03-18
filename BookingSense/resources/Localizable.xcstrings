@@ -1432,6 +1432,22 @@
         }
       }
     },
+    "General" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Allgemein"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "General"
+          }
+        }
+      }
+    },
     "Give feedback" : {
       "localizations" : {
         "de" : {
@@ -1813,22 +1829,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Open homepage"
-          }
-        }
-      }
-    },
-    "Overview" : {
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Übersicht"
-          }
-        },
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Overview"
           }
         }
       }
@@ -2302,6 +2302,22 @@
         }
       }
     },
+    "Statistics" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Statistiken"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Statistics"
+          }
+        }
+      }
+    },
     "Store" : {
       "localizations" : {
         "de" : {
@@ -2605,6 +2621,9 @@
           }
         }
       }
+    },
+    "Timeline View Content" : {
+
     },
     "Tips" : {
       "localizations" : {
