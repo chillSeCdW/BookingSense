@@ -32,13 +32,13 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "%@e Kosten der jährlichen Buchungen:"
+            "value" : "%@e Abzüge der jährlichen Buchungen:"
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "%@ costs of annual bookings:"
+            "value" : "%@ deductions of annual bookings:"
           }
         }
       }
@@ -48,13 +48,13 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "%@e Kosten der zweiwöchtlichen Buchungen:"
+            "value" : "%@e Abzüge der zweiwöchtlichen Buchungen:"
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "%@ costs of biweekly bookings:"
+            "value" : "%@ deductions of biweekly bookings:"
           }
         }
       }
@@ -64,13 +64,13 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "%@e Kosten der täglichen Buchungen:"
+            "value" : "%@e Abzüge der täglichen Buchungen:"
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "%@ costs of daily bookings:"
+            "value" : "%@ deductions of daily bookings:"
           }
         }
       }
@@ -80,13 +80,13 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "%@e Kosten der monatlichen Buchungen:"
+            "value" : "%@e Abzüge der monatlichen Buchungen:"
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "%@ costs of monthly bookings:"
+            "value" : "%@ deductions of monthly bookings:"
           }
         }
       }
@@ -96,13 +96,13 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "%@e Kosten der vierteljährlichen Buchungen:"
+            "value" : "%@e Abzüge der vierteljährlichen Buchungen:"
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "%@ costs of quarterly bookings:"
+            "value" : "%@ deductions of quarterly bookings:"
           }
         }
       }
@@ -112,13 +112,13 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "%@e Kosten der halbjährlichen Buchungen:"
+            "value" : "%@e Abzüge der halbjährlichen Buchungen:"
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "%@ costs of semiannual bookings:"
+            "value" : "%@ deductions of semiannual bookings:"
           }
         }
       }
@@ -128,13 +128,13 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "%@e Kosten der wöchentlichen Buchungen:"
+            "value" : "%@e Abzüge der wöchentlichen Buchungen:"
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "%@ costs of weekly bookings:"
+            "value" : "%@ deductions of weekly bookings:"
           }
         }
       }
@@ -421,18 +421,34 @@
         }
       }
     },
-    "All costs as %@" : {
+    "All" : {
       "localizations" : {
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Alle Kosten als %@:"
+            "value" : "Alle"
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "All costs as %@:"
+            "value" : "All"
+          }
+        }
+      }
+    },
+    "All costs as %@" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Alle Abzüge als %@:"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "All deductions as %@:"
           }
         }
       }
@@ -1014,6 +1030,22 @@
         }
       }
     },
+    "Deductions" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Abzüge"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Deductions"
+          }
+        }
+      }
+    },
     "Default Access" : {
       "localizations" : {
         "de" : {
@@ -1400,6 +1432,22 @@
         }
       }
     },
+    "Filter" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Filter"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Filter"
+          }
+        }
+      }
+    },
     "from" : {
       "localizations" : {
         "de" : {
@@ -1573,6 +1621,22 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Import data"
+          }
+        }
+      }
+    },
+    "Income" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Einkommen"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Income"
           }
         }
       }
@@ -1962,6 +2026,22 @@
         }
       }
     },
+    "Savings" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Einsparungen"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Savings"
+          }
+        }
+      }
+    },
     "Search" : {
       "localizations" : {
         "de" : {
@@ -2010,6 +2090,22 @@
         }
       }
     },
+    "Select period" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zeitrahmen auswählen:"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Select period:"
+          }
+        }
+      }
+    },
     "Select starting month" : {
       "localizations" : {
         "de" : {
@@ -2022,6 +2118,22 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Select starting month"
+          }
+        }
+      }
+    },
+    "Select status" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Status auswählen:"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Select status:"
           }
         }
       }
@@ -2355,13 +2467,13 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Summe der Ausgaben"
+            "value" : "Summe der Abzüge"
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Sum of costs"
+            "value" : "Sum of deductions"
           }
         }
       }
@@ -2622,9 +2734,6 @@
         }
       }
     },
-    "Timeline View Content" : {
-
-    },
     "Tips" : {
       "localizations" : {
         "de" : {
@@ -2702,6 +2811,22 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Total %@ left:"
+          }
+        }
+      }
+    },
+    "Total amount for period and status" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Gesamtbetrag für Zeitrahmen und Status"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Total amount for period and status"
           }
         }
       }
@@ -2856,13 +2981,13 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Gesamtkosten"
+            "value" : "Gesamtabzüge"
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Total costs"
+            "value" : "Total deductions"
           }
         }
       }

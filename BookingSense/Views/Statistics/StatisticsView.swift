@@ -15,19 +15,20 @@ struct StatisticsView: View {
 
   var body: some View {
     NavigationStack {
-        TabView(selection: $selectedTab) {
-          Tab(value: 0) {
-            GeneralStatsView()
-          } label: {
-            Label("General", systemImage: "house")
-          }
-          Tab(value: 1) {
-            TimelineStatsView()
-          } label: {
-            Label("Timeline", systemImage: "clock")
-          }
+      TabView(selection: $selectedTab) {
+        Tab(value: 0) {
+          Text("General")
+          GeneralStatsView()
+        } label: {
+          Label("General", systemImage: "house")
         }
-      .listStyle(.plain)
+        Tab(value: 1) {
+          Text("Timeline")
+          TimelineStatsView()
+        } label: {
+          Label("Timeline", systemImage: "clock")
+        }
+      }
       .toolbar {
         ToolbarStatisticsList()
       }
