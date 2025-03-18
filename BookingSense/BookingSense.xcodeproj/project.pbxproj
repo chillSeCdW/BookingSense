@@ -309,7 +309,7 @@
 				B927D3F12CE7E7A7006B1B19 /* Modifier */,
 				B9BE668A2BCFEFF70063734E /* Toast */,
 				B99205FD2BD90FA40099EF26 /* Navigation */,
-				B919B4A32BC6AAA3009B2FA4 /* Overview */,
+				B919B4A32BC6AAA3009B2FA4 /* Statistics */,
 				B93839FA2CD3F46F00AAB674 /* Timeline */,
 				B919B4A42BC6AAAA009B2FA4 /* Booking */,
 				B9781EA92C2EB81F00FBA0A5 /* Settings */,
@@ -332,7 +332,7 @@
 			path = Data;
 			sourceTree = "<group>";
 		};
-		B919B4A32BC6AAA3009B2FA4 /* Overview */ = {
+		B919B4A32BC6AAA3009B2FA4 /* Statistics */ = {
 			isa = PBXGroup;
 			children = (
 				B980A2012CC139DD0075AE8F /* ChartView.swift */,
@@ -343,7 +343,7 @@
 				B9E0B9112C1B98220047EA77 /* InfoBoxButtonView.swift */,
 				B90D3D0E2C19D97D00133857 /* IntervalInsightsView.swift */,
 			);
-			path = Overview;
+			path = Statistics;
 			sourceTree = "<group>";
 		};
 		B919B4A42BC6AAAA009B2FA4 /* Booking */ = {
