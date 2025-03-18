@@ -34,7 +34,6 @@
 		B9383A052CD69A4800AAB674 /* TimelineEntryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9383A042CD69A4500AAB674 /* TimelineEntryView.swift */; };
 		B93DD1272D37B7A400C533F9 /* TimelineInfosView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B93DD1262D37B79C00C533F9 /* TimelineInfosView.swift */; };
 		B93F74012BF39F91008A5088 /* AdditionalInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B93F74002BF39F91008A5088 /* AdditionalInfoView.swift */; };
-		B945794C2D3962B000467C95 /* BookingSenseData in Frameworks */ = {isa = PBXBuildFile; productRef = B945794B2D3962B000467C95 /* BookingSenseData */; };
 		B94579552D3E874D00467C95 /* BookingSenseData in Frameworks */ = {isa = PBXBuildFile; productRef = B94579542D3E874D00467C95 /* BookingSenseData */; };
 		B945795A2D41253900467C95 /* CheckMarkTL.swift in Sources */ = {isa = PBXBuildFile; fileRef = B94579592D41245400467C95 /* CheckMarkTL.swift */; };
 		B94579662D47CBD800467C95 /* StyleHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = B94579652D47CB5600467C95 /* StyleHelper.swift */; };
@@ -81,12 +80,15 @@
 		B9CC1BC22CD8C8DB0048670A /* BookingSortByEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9CC1BC12CD8C8D40048670A /* BookingSortByEnum.swift */; };
 		B9CC1BC62CD8C9540048670A /* BookingSortOrder.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9CC1BC52CD8C9540048670A /* BookingSortOrder.swift */; };
 		B9D0ACC62CA995100051F6DC /* IAP.storekit in Resources */ = {isa = PBXBuildFile; fileRef = B9D0ACC52CA995100051F6DC /* IAP.storekit */; };
+		B9D221302D898199007E0D8B /* BookingSenseData in Frameworks */ = {isa = PBXBuildFile; productRef = B9D2212F2D898199007E0D8B /* BookingSenseData */; };
 		B9D534132BD2903500C3355F /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = B9D534122BD2903500C3355F /* Localizable.xcstrings */; };
 		B9DAFAD52BA8AFAF000486EA /* BookingSenseApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9DAFAD42BA8AFAF000486EA /* BookingSenseApp.swift */; };
 		B9DAFADB2BA8AFAF000486EA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B9DAFADA2BA8AFAF000486EA /* Assets.xcassets */; };
 		B9DAFADF2BA8AFAF000486EA /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B9DAFADE2BA8AFAF000486EA /* Preview Assets.xcassets */; };
 		B9E0B9122C1B98230047EA77 /* InfoBoxButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9E0B9112C1B98220047EA77 /* InfoBoxButtonView.swift */; };
 		B9E4ABF22BF6438E00E96330 /* InfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9E4ABF12BF6438E00E96330 /* InfoView.swift */; };
+		B9F2C1222D89805B00E1B43B /* GeneralStatsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9F2C1212D89805900E1B43B /* GeneralStatsView.swift */; };
+		B9F2C1242D89808400E1B43B /* TimelineStatsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9F2C1232D89807F00E1B43B /* TimelineStatsView.swift */; };
 		B9F4E0352CB2BB5700A12762 /* ChartsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9F4E0342CB2BB5300A12762 /* ChartsView.swift */; };
 		B9FEC3D42CAD4A32009DD4A0 /* PurchaseHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9FEC3D32CAD4A29009DD4A0 /* PurchaseHandler.swift */; };
 /* End PBXBuildFile section */
@@ -224,6 +226,8 @@
 		B9DAFADE2BA8AFAF000486EA /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		B9E0B9112C1B98220047EA77 /* InfoBoxButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoBoxButtonView.swift; sourceTree = "<group>"; };
 		B9E4ABF12BF6438E00E96330 /* InfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoView.swift; sourceTree = "<group>"; };
+		B9F2C1212D89805900E1B43B /* GeneralStatsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralStatsView.swift; sourceTree = "<group>"; };
+		B9F2C1232D89807F00E1B43B /* TimelineStatsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimelineStatsView.swift; sourceTree = "<group>"; };
 		B9F4E0342CB2BB5300A12762 /* ChartsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartsView.swift; sourceTree = "<group>"; };
 		B9FEC3D32CAD4A29009DD4A0 /* PurchaseHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchaseHandler.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -273,7 +277,7 @@
 			files = (
 				B9781EB02C346F1500FBA0A5 /* StoreKit.framework in Frameworks */,
 				B92BC36F2C401DCE00019A62 /* MijickPopupView in Frameworks */,
-				B945794C2D3962B000467C95 /* BookingSenseData in Frameworks */,
+				B9D221302D898199007E0D8B /* BookingSenseData in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -335,13 +339,11 @@
 		B919B4A32BC6AAA3009B2FA4 /* Statistics */ = {
 			isa = PBXGroup;
 			children = (
+				B9F2C1202D89802E00E1B43B /* Timeline */,
+				B9F2C11F2D89802200E1B43B /* General */,
 				B980A2012CC139DD0075AE8F /* ChartView.swift */,
-				B9F4E0342CB2BB5300A12762 /* ChartsView.swift */,
 				B915DC482BB46E350018E812 /* StatisticsView.swift */,
-				B93F74002BF39F91008A5088 /* AdditionalInfoView.swift */,
-				B9E4ABF12BF6438E00E96330 /* InfoView.swift */,
 				B9E0B9112C1B98220047EA77 /* InfoBoxButtonView.swift */,
-				B90D3D0E2C19D97D00133857 /* IntervalInsightsView.swift */,
 			);
 			path = Statistics;
 			sourceTree = "<group>";
@@ -590,6 +592,26 @@
 			path = "Preview Content";
 			sourceTree = "<group>";
 		};
+		B9F2C11F2D89802200E1B43B /* General */ = {
+			isa = PBXGroup;
+			children = (
+				B9F2C1212D89805900E1B43B /* GeneralStatsView.swift */,
+				B93F74002BF39F91008A5088 /* AdditionalInfoView.swift */,
+				B9E4ABF12BF6438E00E96330 /* InfoView.swift */,
+				B9F4E0342CB2BB5300A12762 /* ChartsView.swift */,
+				B90D3D0E2C19D97D00133857 /* IntervalInsightsView.swift */,
+			);
+			path = General;
+			sourceTree = "<group>";
+		};
+		B9F2C1202D89802E00E1B43B /* Timeline */ = {
+			isa = PBXGroup;
+			children = (
+				B9F2C1232D89807F00E1B43B /* TimelineStatsView.swift */,
+			);
+			path = Timeline;
+			sourceTree = "<group>";
+		};
 		B9FEC3D52CAD5277009DD4A0 /* Handlers */ = {
 			isa = PBXGroup;
 			children = (
@@ -679,7 +701,7 @@
 			name = BookingSense;
 			packageProductDependencies = (
 				B92BC36E2C401DCE00019A62 /* MijickPopupView */,
-				B945794B2D3962B000467C95 /* BookingSenseData */,
+				B9D2212F2D898199007E0D8B /* BookingSenseData */,
 			);
 			productName = ExpenseSense;
 			productReference = B9DAFAD12BA8AFAF000486EA /* BookingSense.app */;
@@ -876,10 +898,12 @@
 				B9BB9D6E2CAAE96C0057573B /* ThankYouPopUp.swift in Sources */,
 				B99206072BDA806E0099EF26 /* ToolbarEntryList.swift in Sources */,
 				B992060B2BDA96D80099EF26 /* EntryFormView.swift in Sources */,
+				B9F2C1222D89805B00E1B43B /* GeneralStatsView.swift in Sources */,
 				B93839F92CD26FD400AAB674 /* JsonTimelineEntry.swift in Sources */,
 				B991E24E2CE16B020031288B /* FeaturesPageView.swift in Sources */,
 				B991E24C2CE101310031288B /* TagFormView.swift in Sources */,
 				B93F74012BF39F91008A5088 /* AdditionalInfoView.swift in Sources */,
+				B9F2C1242D89808400E1B43B /* TimelineStatsView.swift in Sources */,
 				B991E2462CDF98150031288B /* DoneOnDialog.swift in Sources */,
 				B915DC492BB46E350018E812 /* StatisticsView.swift in Sources */,
 				B92D6F652CC006C4000A2697 /* ChartModels.swift in Sources */,
@@ -1395,11 +1419,11 @@
 			package = B92BC36D2C401DCE00019A62 /* XCRemoteSwiftPackageReference "PopupView" */;
 			productName = MijickPopupView;
 		};
-		B945794B2D3962B000467C95 /* BookingSenseData */ = {
+		B94579542D3E874D00467C95 /* BookingSenseData */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = BookingSenseData;
 		};
-		B94579542D3E874D00467C95 /* BookingSenseData */ = {
+		B9D2212F2D898199007E0D8B /* BookingSenseData */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = BookingSenseData;
 		};
