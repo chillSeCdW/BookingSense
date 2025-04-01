@@ -12,7 +12,7 @@ public actor DataModel {
   public static let shared = DataModel()
   private init() {}
 
-  public nonisolated lazy var modelContainer: ModelContainer = {
+  public nonisolated let modelContainer: ModelContainer = {
     #if DEBUG
     if CommandLine.arguments.contains("enable-testing-empty") {
       let factory = ContainerFactory(BookingSchemaV5.self, storeInMemory: true)
