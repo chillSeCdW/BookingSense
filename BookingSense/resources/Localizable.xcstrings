@@ -629,6 +629,22 @@
         }
       }
     },
+    "Booking type breakdown" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Aufteilung nach Buchungsart"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Breakdown by booking type"
+          }
+        }
+      }
+    },
     "Booking type:" : {
       "localizations" : {
         "de" : {
@@ -3022,6 +3038,54 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Total savings"
+          }
+        }
+      }
+    },
+    "Total timeline deductions" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Aufteilung der Kosten"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Deduction breakdown"
+          }
+        }
+      }
+    },
+    "Total timeline plus" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Aufteilung des Einkommens"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Income breakdown"
+          }
+        }
+      }
+    },
+    "Total timeline savings" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Aufteilung der Rücklagen"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Saving breakdown"
           }
         }
       }

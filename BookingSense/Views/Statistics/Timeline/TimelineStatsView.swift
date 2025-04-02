@@ -58,6 +58,9 @@ struct TimelineStatsView: View {
         }
         .pickerStyle(.menu)
       }
+      Section("Booking type breakdown") {
+        TimelineDiagramView(filteredEntries: filteredEntries)
+      }
       Section("Total amount for period and status") {
         CalcViews(filteredEntries: filteredEntries)
       }
@@ -102,6 +105,55 @@ struct CalcViews: View {
              number: totalAmountSavings,
              format: .currency(code: Locale.current.currency!.identifier)
     )
+  }
+}
+
+struct TimelineDiagramView: View {
+  var filteredEntries: [TimelineEntry]
+
+  var totalPlusData: [BookingEntryChartData] {
+    return getFilteredMapData(bookingType: .plus)
+  }
+
+  var totalDeductionData: [BookingEntryChartData] {
+    return getFilteredMapData(bookingType: .minus)
+  }
+
+  var totalSavingData: [BookingEntryChartData] {
+    return getFilteredMapData(bookingType: .saving)
+  }
+
+  func getFilteredMapData(bookingType: BookingType) -> [BookingEntryChartData] {
+    let bookingTypeEntries = filteredEntries.filter { $0.bookingType == bookingType.rawValue }
+
+    let timelineEntriesByBookingUUID = Dictionary(grouping: bookingTypeEntries) { entry in
+        entry.bookingEntry?.uuid ?? ""
+    }
+
+    let breakDownOfBookingType = timelineEntriesByBookingUUID.map { bookingUUID, entries in
+      BookingEntryChartData(id: bookingUUID,
+                              name: entries.first?.bookingEntry?.name ?? "",
+                              amount: entries.reduce(0) { result, entry in
+                                result + entry.amount
+                              },
+                              color: nil)
+    }
+
+    return checkDataAddEmpty(breakDownOfBookingType)
+  }
+
+  func checkDataAddEmpty(_ data: [BookingEntryChartData]) -> [BookingEntryChartData] {
+    if data.isEmpty {
+      return [BookingEntryChartData(id: "empty", name: String(localized: "No data"), amount: 1, color: .gray)]
+    } else {
+      return data
+    }
+  }
+
+  var body: some View {
+    ChartView(data: totalPlusData, headerTitle: String(localized: "Total timeline plus"))
+    ChartView(data: totalDeductionData, headerTitle: String(localized: "Total timeline deductions"))
+    ChartView(data: totalSavingData, headerTitle: String(localized: "Total timeline savings"))
   }
 }
 
