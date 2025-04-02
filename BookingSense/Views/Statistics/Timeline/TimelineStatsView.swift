@@ -59,7 +59,13 @@ struct TimelineStatsView: View {
         .pickerStyle(.menu)
       }
       Section("Booking type breakdown") {
-        TimelineDiagramView(filteredEntries: filteredEntries)
+        if UIDevice.current.userInterfaceIdiom == .pad {
+          HStack {
+            TimelineDiagramView(filteredEntries: filteredEntries)
+          }
+        } else {
+          TimelineDiagramView(filteredEntries: filteredEntries)
+        }
       }
       Section("Total amount for period and status") {
         CalcViews(filteredEntries: filteredEntries)
