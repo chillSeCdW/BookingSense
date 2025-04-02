@@ -1,16 +1,12 @@
-//
-//  OverviewView.swift
-//  BookingSense
-//
-//  Created by kenny on 27.03.24.
-//
+// Created for BookingSense on 18.03.25 by kenny
+// Using Swift 6.0
 
 import Foundation
 import SwiftUI
 import SwiftData
 import BookingSenseData
 
-struct OverviewView: View {
+struct GeneralStatsView: View {
   @Query(filter: #Predicate<BookingEntry> { $0.state == "active" }) private var entries: [BookingEntry]
 
   @AppStorage("expandedBasic") private var isExpandedBasic = true
@@ -73,7 +69,6 @@ struct OverviewView: View {
   }
 
   var body: some View {
-    NavigationStack {
       List {
         Section("Select Interval") {
           Picker("Interval", selection: $interval) {
@@ -96,21 +91,8 @@ struct OverviewView: View {
         Section("Additional \(interval.description) Infos", isExpanded: $isAdditionalInfo) {
           AdditionalInfoView()
         }
+        .padding(.bottom)
       }
-      .navigationTitle("Overview")
       .listStyle(.sidebar)
-      .toolbar {
-        ToolbarOverviewList()
-      }
     }
-  }
 }
-
-#if DEBUG
-#Preview {
-  let modelContainer = DataModel.shared.previewContainer
-  return OverviewView()
-    .environment(AppStates())
-    .modelContainer(modelContainer)
-}
-#endif

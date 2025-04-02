@@ -19,9 +19,9 @@ struct ContentView: View {
 
   var body: some View {
     TabView {
-      OverviewView()
+      StatisticsView()
         .tabItem {
-          Label("Overview", systemImage: "dollarsign.arrow.circlepath")
+          Label("Statistics", systemImage: "chart.xyaxis.line")
         }
       if appStates.showTimelineTab {
         TimelineView()

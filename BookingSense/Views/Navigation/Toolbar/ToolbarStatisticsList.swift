@@ -5,8 +5,8 @@ import SwiftUI
 import LocalAuthentication
 import OSLog
 
-struct ToolbarOverviewList: ToolbarContent {
-  private let logger = Logger(subsystem: "BookingSense", category: "ToolbarOverviewList")
+struct ToolbarStatisticsList: ToolbarContent {
+  private let logger = Logger(subsystem: "BookingSense", category: "ToolbarStatisticsList")
 
   @Environment(AppStates.self) var appStates
 

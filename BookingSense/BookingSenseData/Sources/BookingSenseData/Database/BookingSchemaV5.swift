@@ -116,7 +116,7 @@ extension BookingSchemaV5 {
 
     public var uuid: String = UUID().uuidString
     @Relationship(inverse: \BookingEntry.timelineEntries) public var bookingEntry: BookingEntry?
-    public var state: String = "active"
+    public var state: String = "open"
     @Relationship public var tag: Tag?
     public var name: String = ""
     public var amount: Decimal = Decimal.zero
