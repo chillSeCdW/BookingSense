@@ -8,7 +8,11 @@ import OSLog
 struct ToolbarTimelineContent: ToolbarContent {
   private let logger = Logger(subsystem: "BookingSense", category: "ToolbarTimelineContent")
 
+  @Environment(\.editMode) private var editMode
   @Environment(AppStates.self) var appStates
+
+  @Binding var showDeleteAllConfirm: Bool
+  @Binding var showDeleteOpenConfirm: Bool
 
   let proxy: ScrollViewProxy
 
@@ -27,15 +31,37 @@ struct ToolbarTimelineContent: ToolbarContent {
              label: { Image(systemName: "line.horizontal.3.decrease.circle") }
       )
     }
+    if editMode?.wrappedValue.isEditing == true {
+      ToolbarItem(placement: .navigationBarTrailing) {
+        Menu {
+          Button("Delete all", systemImage: "trash.fill", role: .destructive, action: {
+            withAnimation {
+              showDeleteAllConfirm = true
+            }
+          })
+          Button("Delete all open entries", systemImage: "trash", role: .destructive, action: {
+            withAnimation {
+              showDeleteOpenConfirm = true
+            }
+          })
+        } label: {
+          Label("Edit options", systemImage: "pencil")
+        }
+      }
+    } else {
+      ToolbarItem(placement: .navigationBarTrailing) {
+        Button(
+          action: {
+            withAnimation {
+              proxy.scrollTo("currentMonthSection", anchor: .top)
+            }
+          },
+          label: { Text("Today") }
+        )
+      }
+    }
     ToolbarItem(placement: .navigationBarTrailing) {
-      Button(
-        action: {
-          withAnimation {
-            proxy.scrollTo("currentMonthSection", anchor: .top)
-          }
-        },
-        label: { Text("Today") }
-      )
+      EditButton()
     }
   }
 }

@@ -549,6 +549,38 @@
         }
       }
     },
+    "Are you sure you want to delete all open entries?" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bist du sicher du willst alle offenen Zeitstrahleinträge löschen?"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Are you sure you want to delete all open entries?"
+          }
+        }
+      }
+    },
+    "Are you sure you want to delete all timeline entries?" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bist du sicher du willst alle Zeitstrahleinträge löschen?"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Are you sure you want to delete all timeline entries?"
+          }
+        }
+      }
+    },
     "Are you sure?" : {
       "localizations" : {
         "de" : {
@@ -1143,6 +1175,38 @@
         }
       }
     },
+    "Delete all open entries" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Lösche alle offenen Einträge"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Delete all open entries"
+          }
+        }
+      }
+    },
+    "Delete all timeline entries" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Lösche alle Zeitstrahleinträge"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Delete all timeline entries"
+          }
+        }
+      }
+    },
     "Delete booking" : {
       "localizations" : {
         "de" : {
@@ -1299,6 +1363,22 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Edit booking"
+          }
+        }
+      }
+    },
+    "Edit options" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bearbeitungsoptionen"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Edit options"
           }
         }
       }
