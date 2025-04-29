@@ -42,10 +42,11 @@ struct ToolbarEntryList: ToolbarContent {
         Button("Delete all", systemImage: "trash", role: .destructive, action: showPopup)
           .tint(.red)
       }
-    }
-    ToolbarItem(placement: .navigationBarTrailing) {
-      Button("Plus", systemImage: "plus", action: addEntry)
-        .popoverTip(ToolbarAddTip())
+    } else {
+      ToolbarItem(placement: .navigationBarTrailing) {
+        Button("Plus", systemImage: "plus", action: addEntry)
+          .popoverTip(ToolbarAddTip())
+      }
     }
     ToolbarItem(placement: .navigationBarTrailing) {
       EditButton()
