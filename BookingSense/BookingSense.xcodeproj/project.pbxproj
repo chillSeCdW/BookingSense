@@ -53,6 +53,14 @@
 		B9781EAB2C2EB8AF00FBA0A5 /* SettingsNavigationStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9781EAA2C2EB8AF00FBA0A5 /* SettingsNavigationStackView.swift */; };
 		B9781EB02C346F1500FBA0A5 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B9781EAF2C346F1500FBA0A5 /* StoreKit.framework */; };
 		B980A2022CC139E00075AE8F /* ChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B980A2012CC139DD0075AE8F /* ChartView.swift */; };
+		B9822C922DFEEB99009CB741 /* TimelineHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9822C912DFEEB92009CB741 /* TimelineHandler.swift */; };
+		B9822C942DFEF46A009CB741 /* SelectTimelineEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9822C932DFEF462009CB741 /* SelectTimelineEntry.swift */; };
+		B9822C972DFEF5AB009CB741 /* OpenTimelineEntryEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9822C962DFEF5A1009CB741 /* OpenTimelineEntryEntity.swift */; };
+		B9822C992DFEFD8B009CB741 /* SelectOpenTimelineEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9822C982DFEFD84009CB741 /* SelectOpenTimelineEntry.swift */; };
+		B9822C9B2DFEFEFF009CB741 /* CheckTimelineEntryEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9822C9A2DFEFEF3009CB741 /* CheckTimelineEntryEntity.swift */; };
+		B9822C9D2DFF03C6009CB741 /* TimelineEntryEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9822C9C2DFF03C2009CB741 /* TimelineEntryEntity.swift */; };
+		B9822C9F2DFF0601009CB741 /* BookingEntryEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9822C9E2DFF05FC009CB741 /* BookingEntryEntity.swift */; };
+		B9822CA12DFF06B0009CB741 /* SelectBookingEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9822CA02DFF06A6009CB741 /* SelectBookingEntry.swift */; };
 		B991E2432CDECB8A0031288B /* ToolbarTagEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = B991E2422CDECB800031288B /* ToolbarTagEntry.swift */; };
 		B991E2462CDF98150031288B /* DoneOnDialog.swift in Sources */ = {isa = PBXBuildFile; fileRef = B991E2452CDF980F0031288B /* DoneOnDialog.swift */; };
 		B991E2482CDFB28E0031288B /* BookingFilterDialog.swift in Sources */ = {isa = PBXBuildFile; fileRef = B991E2472CDFB2890031288B /* BookingFilterDialog.swift */; };
@@ -188,6 +196,14 @@
 		B9781EAA2C2EB8AF00FBA0A5 /* SettingsNavigationStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsNavigationStackView.swift; sourceTree = "<group>"; };
 		B9781EAF2C346F1500FBA0A5 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		B980A2012CC139DD0075AE8F /* ChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartView.swift; sourceTree = "<group>"; };
+		B9822C912DFEEB92009CB741 /* TimelineHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimelineHandler.swift; sourceTree = "<group>"; };
+		B9822C932DFEF462009CB741 /* SelectTimelineEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectTimelineEntry.swift; sourceTree = "<group>"; };
+		B9822C962DFEF5A1009CB741 /* OpenTimelineEntryEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenTimelineEntryEntity.swift; sourceTree = "<group>"; };
+		B9822C982DFEFD84009CB741 /* SelectOpenTimelineEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectOpenTimelineEntry.swift; sourceTree = "<group>"; };
+		B9822C9A2DFEFEF3009CB741 /* CheckTimelineEntryEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckTimelineEntryEntity.swift; sourceTree = "<group>"; };
+		B9822C9C2DFF03C2009CB741 /* TimelineEntryEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimelineEntryEntity.swift; sourceTree = "<group>"; };
+		B9822C9E2DFF05FC009CB741 /* BookingEntryEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingEntryEntity.swift; sourceTree = "<group>"; };
+		B9822CA02DFF06A6009CB741 /* SelectBookingEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectBookingEntry.swift; sourceTree = "<group>"; };
 		B982CA152C11052B002FA2DC /* BookingSense-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "BookingSense-Info.plist"; sourceTree = "<group>"; };
 		B991E2422CDECB800031288B /* ToolbarTagEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolbarTagEntry.swift; sourceTree = "<group>"; };
 		B991E2452CDF980F0031288B /* DoneOnDialog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoneOnDialog.swift; sourceTree = "<group>"; };
@@ -421,7 +437,12 @@
 		B94579582D41243D00467C95 /* AppIntents */ = {
 			isa = PBXGroup;
 			children = (
+				B9822C952DFEF592009CB741 /* IntentModels */,
+				B9822CA02DFF06A6009CB741 /* SelectBookingEntry.swift */,
+				B9822C982DFEFD84009CB741 /* SelectOpenTimelineEntry.swift */,
+				B9822C932DFEF462009CB741 /* SelectTimelineEntry.swift */,
 				B94579592D41245400467C95 /* CheckMarkTL.swift */,
+				B9822C9A2DFEFEF3009CB741 /* CheckTimelineEntryEntity.swift */,
 			);
 			path = AppIntents;
 			sourceTree = "<group>";
@@ -457,6 +478,16 @@
 				B9AD85DE2D394EF5009E52CC /* SwiftUI.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		B9822C952DFEF592009CB741 /* IntentModels */ = {
+			isa = PBXGroup;
+			children = (
+				B9822C9E2DFF05FC009CB741 /* BookingEntryEntity.swift */,
+				B9822C9C2DFF03C2009CB741 /* TimelineEntryEntity.swift */,
+				B9822C962DFEF5A1009CB741 /* OpenTimelineEntryEntity.swift */,
+			);
+			path = IntentModels;
 			sourceTree = "<group>";
 		};
 		B991E2442CDF98000031288B /* Dialog */ = {
@@ -615,6 +646,7 @@
 		B9FEC3D52CAD5277009DD4A0 /* Handlers */ = {
 			isa = PBXGroup;
 			children = (
+				B9822C912DFEEB92009CB741 /* TimelineHandler.swift */,
 				B91002C72CC796FA00BECF87 /* BiometricHandler.swift */,
 			);
 			path = Handlers;
@@ -844,8 +876,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B9822C972DFEF5AB009CB741 /* OpenTimelineEntryEntity.swift in Sources */,
+				B9822C9B2DFEFEFF009CB741 /* CheckTimelineEntryEntity.swift in Sources */,
 				B94579672D47CD5C00467C95 /* StyleHelper.swift in Sources */,
 				B945795A2D41253900467C95 /* CheckMarkTL.swift in Sources */,
+				B9822CA12DFF06B0009CB741 /* SelectBookingEntry.swift in Sources */,
+				B9822C9F2DFF0601009CB741 /* BookingEntryEntity.swift in Sources */,
+				B9822C9D2DFF03C6009CB741 /* TimelineEntryEntity.swift in Sources */,
+				B9822C992DFEFD8B009CB741 /* SelectOpenTimelineEntry.swift in Sources */,
+				B9822C942DFEF46A009CB741 /* SelectTimelineEntry.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -882,6 +921,7 @@
 				B91002C82CC796FF00BECF87 /* BiometricHandler.swift in Sources */,
 				B9C6EC452D05B6A400092E23 /* ToolbarViewEntry.swift in Sources */,
 				B95981FC2BE3898B00578A9C /* BookingSectionView.swift in Sources */,
+				B9822C922DFEEB99009CB741 /* TimelineHandler.swift in Sources */,
 				B93DD1272D37B7A400C533F9 /* TimelineInfosView.swift in Sources */,
 				B9E0B9122C1B98230047EA77 /* InfoBoxButtonView.swift in Sources */,
 				B99205FC2BD90F780099EF26 /* AppStates.swift in Sources */,
@@ -1056,7 +1096,7 @@
 					"@executable_path/../../../../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 14.0;
-				MARKETING_VERSION = 2.1.0;
+				MARKETING_VERSION = 2.2.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.chill.BookingSense.Widget;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = auto;
@@ -1097,7 +1137,7 @@
 					"@executable_path/../../../../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 14.0;
-				MARKETING_VERSION = 2.1.0;
+				MARKETING_VERSION = 2.2.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.chill.BookingSense.Widget;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = auto;
@@ -1272,7 +1312,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 15.0;
-				MARKETING_VERSION = 2.1.0;
+				MARKETING_VERSION = 2.2.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.chill.BookingSense;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -1323,7 +1363,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 15.0;
-				MARKETING_VERSION = 2.1.0;
+				MARKETING_VERSION = 2.2.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.chill.BookingSense;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";

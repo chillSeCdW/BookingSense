@@ -7,7 +7,7 @@
 
 import Foundation
 
-public enum Interval: String, Codable, CaseIterable, Identifiable {
+public enum Interval: String, Codable, CaseIterable, Identifiable, Sendable {
   public var id: Self { self }
 
   case daily

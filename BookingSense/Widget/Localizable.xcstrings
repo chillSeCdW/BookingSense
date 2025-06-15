@@ -1,6 +1,20 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
+    "%@" : {
+      "shouldTranslate" : false
+    },
+    "%@, %@" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "%1$@, %2$@"
+          }
+        }
+      },
+      "shouldTranslate" : false
+    },
     "All" : {
       "localizations" : {
         "de" : {
@@ -33,6 +47,54 @@
         }
       }
     },
+    "Allows the user to select a booking entry" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Erlaubt dem Benutzer einen Buchungseintrag auszuwählen"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Allows the user to select a booking entry"
+          }
+        }
+      }
+    },
+    "Allows the user to select a timeline entry" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Erlaubt dem Benutzer einen Zeitstrahleintrag auszuwählen"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Allows the user to select a timeline entry"
+          }
+        }
+      }
+    },
+    "Allows the user to select a timeline entry from the next 10 open entries" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ermöglicht die Auswahl eines Zeitleisteneintrags aus den nächsten 10 offenen Einträgen"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Allows the user to select a timeline entry from the next 10 open entries"
+          }
+        }
+      }
+    },
     "Black" : {
       "localizations" : {
         "de" : {
@@ -43,11 +105,31 @@
         }
       }
     },
+    "Booking Entry" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Booking Entry"
+          }
+        }
+      }
+    },
     "Bookings check behaviour list" : {
 
     },
     "Bookings type list" : {
 
+    },
+    "Check Timeline entry" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Anhaken eines Zeitstrahleintrags"
+          }
+        }
+      }
     },
     "Checked" : {
       "localizations" : {
@@ -272,6 +354,36 @@
         }
       }
     },
+    "Select a timeline entry" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zeitstrahleintrag auswählen"
+          }
+        }
+      }
+    },
+    "Select booking entry" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Buchung auswählen"
+          }
+        }
+      }
+    },
+    "Select open timeline entry" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Offenen Zeitstrahleintrag auswählen"
+          }
+        }
+      }
+    },
     "Show" : {
       "localizations" : {
         "de" : {
@@ -310,6 +422,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Tap action"
+          }
+        }
+      }
+    },
+    "Timeline Entry" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zeitstrahleintrag"
           }
         }
       }
@@ -379,6 +501,22 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "UUID des Zeistrahleintrags"
+          }
+        }
+      }
+    },
+    "Will tick timeline entry to done" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Eintrag in der Zeitleiste wird als erledigt markiert"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Will tick timeline entry to done"
           }
         }
       }

@@ -7,7 +7,7 @@
 
 import Foundation
 
-public enum BookingType: String, Codable, CaseIterable, Identifiable {
+public enum BookingType: String, Codable, CaseIterable, Identifiable, Sendable {
   public var id: Self { self }
 
   case plus

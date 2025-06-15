@@ -613,6 +613,22 @@
         }
       }
     },
+    "Auto Timeline" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Automatischer Zeitstrahl"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Auto Timeline"
+          }
+        }
+      }
+    },
     "Biweek" : {
       "localizations" : {
         "de" : {
@@ -3279,6 +3295,22 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "This will also remove all associated timeline entries."
+          }
+        }
+      }
+    },
+    "Will automatically tick timeline entries on due date" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wird automatisch Zeitstrahleinträge pünktlich abhaken"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Will automatically tick timeline entries on due date"
           }
         }
       }

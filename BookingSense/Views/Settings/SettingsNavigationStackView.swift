@@ -33,6 +33,12 @@ struct SettingsNavigationStackView: View {
         }
         Section("User interface") {
           Toggle("Show Timeline tab", isOn: $appStates.showTimelineTab)
+          VStack(alignment: .leading) {
+            Toggle("Auto Timeline", isOn: $appStates.autoTimeline)
+            Text("Will automatically tick timeline entries on due date")
+              .font(.footnote)
+              .foregroundStyle(.secondary)
+          }
         }
         Section("Contact") {
           ContactButtons()

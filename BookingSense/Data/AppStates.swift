@@ -76,7 +76,16 @@ class AppStates: Observable, ObservableObject {
       UserDefaults.standard.set(biometricEnabled, forKey: "biometricEnabled")
     }
   }
-  @Published var showTimelineTab: Bool = true
+  @Published var showTimelineTab: Bool {
+    didSet {
+      UserDefaults.standard.set(showTimelineTab, forKey: "showTimelineTab")
+    }
+  }
+  @Published var autoTimeline: Bool {
+    didSet {
+      UserDefaults.standard.set(autoTimeline, forKey: "autoTimeline")
+    }
+  }
 
   init() {
     // Filters for Bookings
@@ -124,6 +133,12 @@ class AppStates: Observable, ObservableObject {
     }
     self.blurSensitive = UserDefaults.standard.bool(forKey: "blurSensitive")
     self.biometricEnabled = UserDefaults.standard.bool(forKey: "biometricEnabled")
+
+    self.showTimelineTab = UserDefaults.standard.object(forKey: "showTimelineTab") != nil ?
+      UserDefaults.standard.bool(forKey: "showTimelineTab") :
+      true
+
+    self.autoTimeline = UserDefaults.standard.bool(forKey: "autoTimeline")
   }
 
   func toggleBookingStateFilter(_ filter: BookingEntryState) {

@@ -9,9 +9,11 @@ import SwiftUI
 import SwiftData
 import StoreKit
 import BookingSenseData
+import WidgetKit
 
 struct ContentView: View {
   @Environment(AppStates.self) var appStates
+  @Environment(\.modelContext) private var modelContext
   @Environment(\.requestReview) private var requestReview
   @Environment(\.scenePhase) var scenePhase
   @AppStorage("numberOfVisits") var numberOfVisits = 0
@@ -50,6 +52,11 @@ struct ContentView: View {
             appStates.blurSensitive.toggle()
             tmpBlurSensitive.toggle()
           }
+        }
+      }
+      if appStates.autoTimeline {
+        if TimelineHandler.tickTimelineEntriesUntilTodayEntries(context: modelContext) > 0 {
+          WidgetCenter.shared.reloadTimelines(ofKind: "BookingTimeWidget")
         }
       }
     }
