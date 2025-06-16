@@ -10,19 +10,19 @@ import BookingSenseData
 
 private let logger = Logger(subsystem: "BookingSenseWidget", category: "CheckMarkTL")
 
-struct CheckMarkTL: AppIntent {
+struct TickTimelineEntryWithBehaviour: AppIntent {
 
-  static var title: LocalizedStringResource = "Checkmark Timeline entry"
+  static var title: LocalizedStringResource = "Tick Timeline entry with behaviour"
   static var description = IntentDescription("Timeline entry will be completed on configured day")
 
-  @Parameter(title: "UUID of TimelineEntry")
-  var uuid: String
+  @Parameter(title: "Timeline Entry")
+  var timelineEntryEntity: TimelineEntryEntity
 
   @Parameter(title: "Type of checking")
   var typeOfChecking: BookingSenseWidgetCheckBehaviour
 
-  init(uuid: String, typeOfChecking: BookingSenseWidgetCheckBehaviour) {
-    self.uuid = uuid
+  init(timelineEntryEntity: TimelineEntryEntity, typeOfChecking: BookingSenseWidgetCheckBehaviour) {
+    self.timelineEntryEntity = timelineEntryEntity
     self.typeOfChecking = typeOfChecking
   }
 
@@ -31,10 +31,11 @@ struct CheckMarkTL: AppIntent {
   func perform() async throws -> some IntentResult {
     do {
       let context = ModelContext(DataModel.shared.modelContainer)
+      let uuidOfTimelineEntryToUpdate = timelineEntryEntity.uuid
       let data = try context.fetch(
         FetchDescriptor<BookingSchemaV5.TimelineEntry>(
           predicate: #Predicate {
-            $0.uuid == uuid
+            $0.uuid == uuidOfTimelineEntryToUpdate
           },
           sortBy: [.init(\.isDue)]
         )

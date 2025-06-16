@@ -38,7 +38,7 @@ struct WidgetTimelineListView: View {
           Spacer()
           Text("Late")
             .font(.footnote)
-          Text("entry count \(getCountOfLateEntries(timelineSnapshots: entry.bookingTimeSnapshot))")
+          Text("entry count \(getCountOfLateEntries(timelineSnapshots: entry.timelineEntrySnapshot))")
             .font(.title2)
             .bold()
         }
@@ -64,7 +64,7 @@ struct WidgetTimelineListView: View {
           Spacer()
           Text("Late")
             .font(.title2)
-          Text("entry count \(getCountOfLateEntries(timelineSnapshots: entry.bookingTimeSnapshot))")
+          Text("entry count \(getCountOfLateEntries(timelineSnapshots: entry.timelineEntrySnapshot))")
             .font(.largeTitle)
         }
         midWidget()
@@ -88,7 +88,7 @@ struct WidgetTimelineListView: View {
           Spacer()
           Text("Late")
             .font(.title2)
-          Text("entry count \(getCountOfLateEntries(timelineSnapshots: entry.bookingTimeSnapshot))")
+          Text("entry count \(getCountOfLateEntries(timelineSnapshots: entry.timelineEntrySnapshot))")
             .font(.largeTitle)
         }
         .padding(.bottom, -5)
@@ -108,13 +108,13 @@ struct WidgetTimelineListView: View {
 
   @ViewBuilder
   func bottomWidget(listLength: Int) -> some View {
-    if entry.bookingTimeSnapshot.isEmpty {
+    if entry.timelineEntrySnapshot.isEmpty {
       Spacer()
       Text("No entries found.")
       Spacer()
     } else {
       VStack(alignment: .center) {
-        ForEach(entry.bookingTimeSnapshot.prefix(listLength)) { snapshot in
+        ForEach(entry.timelineEntrySnapshot.prefix(listLength)) { snapshot in
           entryLine(snapshot)
         }
       }
@@ -122,16 +122,16 @@ struct WidgetTimelineListView: View {
   }
 
   @ViewBuilder
-  func entryLine(_ snapshot: BookingTimeSnapshot) -> some View {
+  func entryLine(_ snapshot: TimelineEntryEntity) -> some View {
     HStack {
       Toggle(isOn: snapshot.completedAt != nil,
-             intent: CheckMarkTL(
-              uuid: snapshot.uuid,
+             intent: TickTimelineEntryWithBehaviour(
+              timelineEntryEntity: snapshot,
               typeOfChecking: entry.configuration.checkBehaviour
              )
       ) {}
         .toggleStyle(CheckToggleStyle(
-          bookingType: BookingType(rawValue: snapshot.bookingType),
+          bookingType: BookingType(rawValue: snapshot.bookingType.rawValue),
           coloredToggle: entry.configuration.colorToggle
         ))
       VStack(alignment: .leading) {
@@ -146,11 +146,11 @@ struct WidgetTimelineListView: View {
     }
   }
 
-  func getCountOfLateEntries(timelineSnapshots: [BookingTimeSnapshot]) -> Int {
+  func getCountOfLateEntries(timelineSnapshots: [TimelineEntryEntity]) -> Int {
     var countOfLateEntries = 0
 
     timelineSnapshots.forEach { timelineSnapshot in
-      if timelineSnapshot.state != TimelineEntryState.open.rawValue {
+      if timelineSnapshot.state != TimelineEntryState.open {
         return
       }
       var calendar = Calendar(identifier: .gregorian)
@@ -175,7 +175,7 @@ struct WidgetTimelineListView: View {
 }
 
 struct DateForTimelineEntry: View {
-  var timelineSnapshot: BookingTimeSnapshot
+  var timelineSnapshot: TimelineEntryEntity
 
   var body: some View {
     if let completetedAt = timelineSnapshot.completedAt {
@@ -188,7 +188,7 @@ struct DateForTimelineEntry: View {
   }
 
   func getDateColor() -> Color {
-    if timelineSnapshot.state != TimelineEntryState.open.rawValue {
+    if timelineSnapshot.state != TimelineEntryState.open {
       return .secondary
     }
     var calendar = Calendar(identifier: .gregorian)
@@ -200,7 +200,7 @@ struct DateForTimelineEntry: View {
   }
 
   func getCompletedDateColor(_ completedAt: Date) -> Color {
-    if timelineSnapshot.state != TimelineEntryState.skipped.rawValue {
+    if timelineSnapshot.state != TimelineEntryState.skipped {
       var calendar = Calendar(identifier: .gregorian)
       calendar.timeZone = TimeZone(identifier: "UTC")!
       if calendar.compare(completedAt, to: timelineSnapshot.isDue, toGranularity: .day) == .orderedDescending {
@@ -255,12 +255,12 @@ struct CheckToggleStyle: ToggleStyle {
   BookingTimeWidget()
 } timeline: {
   BookingTimeEntry(
-    bookingTimeSnapshot: [BookingTimeSnapshot(uuid: "someUUID",
+    timelineEntrySnapshot: [TimelineEntryEntity(uuid: "someUUID",
+                                              state: TimelineEntryState.open,
                                               name: "example name",
-                                              bookingType: "minus",
                                               amount: 50,
+                                              bookingType: BookingType.minus,
                                               isDue: Date(timeIntervalSinceReferenceDate: -123456789.0),
-                                              state: TimelineEntryState.open.rawValue,
                                               completedAt: nil
                                              )],
     date: .now,
@@ -272,14 +272,14 @@ struct CheckToggleStyle: ToggleStyle {
   BookingTimeWidget()
 } timeline: {
   BookingTimeEntry(
-    bookingTimeSnapshot: [BookingTimeSnapshot(uuid: "someUUID",
-                                              name: "example name",
-                                              bookingType: "minus",
-                                              amount: 50,
-                                              isDue: .now,
-                                              state: TimelineEntryState.open.rawValue,
-                                              completedAt: nil
-                                             )],
+    timelineEntrySnapshot: [TimelineEntryEntity(uuid: "someUUID",
+                                                state: TimelineEntryState.open,
+                                                name: "example name",
+                                                amount: 50,
+                                                bookingType: BookingType.minus,
+                                                isDue: .now,
+                                                completedAt: nil
+                                               )],
     date: .now,
     configuration: ConfigIntent()
   )
@@ -289,14 +289,14 @@ struct CheckToggleStyle: ToggleStyle {
   BookingTimeWidget()
 } timeline: {
   BookingTimeEntry(
-    bookingTimeSnapshot: [BookingTimeSnapshot(uuid: "someUUID",
-                                              name: "example name",
-                                              bookingType: "minus",
-                                              amount: 50,
-                                              isDue: .now,
-                                              state: TimelineEntryState.open.rawValue,
-                                              completedAt: nil
-                                             )],
+    timelineEntrySnapshot: [TimelineEntryEntity(uuid: "someUUID",
+                                                state: TimelineEntryState.open,
+                                                name: "example name",
+                                                amount: 50,
+                                                bookingType: BookingType.minus,
+                                                isDue: .now,
+                                                completedAt: nil
+                                               )],
     date: .now,
     configuration: ConfigIntent()
   )

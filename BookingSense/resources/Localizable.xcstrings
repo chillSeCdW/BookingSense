@@ -11,6 +11,9 @@
         }
       }
     },
+    "%@" : {
+
+    },
     "%@ / 100%%" : {
       "localizations" : {
         "de" : {
@@ -340,6 +343,9 @@
         }
       }
     },
+    "%lld navigation options" : {
+
+    },
     "•" : {
       "localizations" : {
         "de" : {
@@ -481,6 +487,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "All savings as %@:"
+          }
+        }
+      }
+    },
+    "Allows the user to navigate to a Tab" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ermöglicht es dem Benutzer zu einer Registerkarte zu navigieren"
           }
         }
       }
@@ -1849,6 +1865,29 @@
         }
       }
     },
+    "Navigate" : {
+
+    },
+    "Navigate to ${navigationOption}" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Navigieren zu ${navigationOption}"
+          }
+        }
+      }
+    },
+    "Navigate to Tab" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zu Tab navigieren"
+          }
+        }
+      }
+    },
     "Next booking %@" : {
       "localizations" : {
         "de" : {
@@ -1989,6 +2028,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "on last day of month"
+          }
+        }
+      }
+    },
+    "On time" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pünktlich"
           }
         }
       }
@@ -2670,6 +2719,9 @@
         }
       }
     },
+    "Tab" : {
+
+    },
     "Tag" : {
       "localizations" : {
         "de" : {
@@ -2798,6 +2850,25 @@
         }
       }
     },
+    "Tick" : {
+
+    },
+    "Tick Timeline entry with behaviour" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zeitstrahleintrag mit Verhalten ankreuzen"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tick Timeline entry with behaviour"
+          }
+        }
+      }
+    },
     "Timeline" : {
       "localizations" : {
         "de" : {
@@ -2810,6 +2881,29 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Timeline"
+          }
+        }
+      }
+    },
+    "Timeline check behaviour list" : {
+
+    },
+    "Timeline Entry" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zeitstrahleintrag"
+          }
+        }
+      }
+    },
+    "Timeline entry will be completed on configured day" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zeitstrahleintrag anhand Konfiguration abschließen"
           }
         }
       }
@@ -3219,6 +3313,16 @@
         }
       }
     },
+    "Type of checking" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Verhalten des Abhaken"
+          }
+        }
+      }
+    },
     "Unchecked" : {
       "localizations" : {
         "de" : {
@@ -3279,6 +3383,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "week"
+          }
+        }
+      }
+    },
+    "Which Tab?" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Welcher Tab?"
           }
         }
       }

@@ -27,14 +27,14 @@ struct BookingTimelineProvider: AppIntentTimelineProvider {
 
   func placeholder(in context: Context) -> BookingTimeEntry {
     return BookingTimeEntry(
-      bookingTimeSnapshot: [BookingTimeSnapshot(uuid: "someUUID",
-                                               name: "example name",
-                                               bookingType: "minus",
-                                               amount: 50,
-                                               isDue: .now,
-                                               state: TimelineEntryState.open.rawValue,
-                                               completedAt: nil
-                                              )],
+      timelineEntrySnapshot: [TimelineEntryEntity(uuid: "someUUID",
+                                                  state: TimelineEntryState.open,
+                                                  name: "example name",
+                                                  amount: 50,
+                                                  bookingType: BookingType.minus,
+                                                  isDue: .now,
+                                                  completedAt: nil
+                                                 )],
       date: .now,
       configuration: ConfigIntent()
     )
@@ -44,27 +44,20 @@ struct BookingTimelineProvider: AppIntentTimelineProvider {
     let timelineEntry = getTimelineEntries(for: configuration).first
     if let entry = timelineEntry {
       return BookingTimeEntry(
-        bookingTimeSnapshot: [BookingTimeSnapshot(uuid: entry.uuid,
-                                                 name: entry.name,
-                                                 bookingType: entry.bookingType,
-                                                 amount: entry.amount,
-                                                 isDue: entry.isDue,
-                                                 state: entry.state,
-                                                 completedAt: entry.completedAt
-                                                )],
+        timelineEntrySnapshot: [TimelineEntryEntity(from: entry)],
         date: entry.isDue,
         configuration: ConfigIntent()
       )
     }
     return BookingTimeEntry(
-      bookingTimeSnapshot: [BookingTimeSnapshot(uuid: "someUUID",
-                                               name: "example name",
-                                               bookingType: "minus",
-                                               amount: 50,
-                                               isDue: .now,
-                                               state: TimelineEntryState.open.rawValue,
-                                               completedAt: nil
-                                              )],
+      timelineEntrySnapshot: [TimelineEntryEntity(uuid: "someUUID",
+                                                  state: TimelineEntryState.open,
+                                                  name: "example name",
+                                                  amount: 50,
+                                                  bookingType: BookingType.minus,
+                                                  isDue: .now,
+                                                  completedAt: nil
+                                                 )],
       date: .now,
       configuration: configuration
     )
@@ -72,27 +65,19 @@ struct BookingTimelineProvider: AppIntentTimelineProvider {
 
   func timeline(for configuration: ConfigIntent, in context: Context) async -> Timeline<BookingTimeEntry> {
     var entries: [BookingTimeEntry] = []
-    var snapshots: [BookingTimeSnapshot] = []
+    var snapshots: [TimelineEntryEntity] = []
     let timelineEntry = getTimelineEntries(for: configuration)
     let twelveHours: TimeInterval = 60 * 60 * 12
 
     timelineEntry.forEach { entry in
       snapshots.append(
-        BookingTimeSnapshot(
-          uuid: entry.uuid,
-          name: entry.name,
-          bookingType: entry.bookingType,
-          amount: entry.amount,
-          isDue: entry.isDue,
-          state: entry.state,
-          completedAt: entry.completedAt
-        )
+        TimelineEntryEntity(from: entry)
       )
     }
 
     entries.append(
       BookingTimeEntry(
-        bookingTimeSnapshot: snapshots,
+        timelineEntrySnapshot: snapshots,
         date: .now,
         configuration: configuration
       )

@@ -5,7 +5,7 @@ import WidgetKit
 import SwiftUI
 
 struct BookingTimeEntry: WidgetKit.TimelineEntry {
-  let bookingTimeSnapshot: [BookingTimeSnapshot]
+  let timelineEntrySnapshot: [TimelineEntryEntity]
   let date: Date
   let configuration: ConfigIntent
 }

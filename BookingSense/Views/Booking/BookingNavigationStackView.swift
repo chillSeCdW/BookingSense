@@ -11,6 +11,7 @@ import BookingSenseData
 
 struct BookingNavigationStackView: View {
   @Environment(AppStates.self) var appStates
+  @Environment(Navigator.self) var navigator
   @Environment(\.editMode) private var editMode
   @Environment(\.modelContext) private var modelContext
 
@@ -20,8 +21,9 @@ struct BookingNavigationStackView: View {
 
   var body: some View {
     @Bindable var appStates = appStates
+    @Bindable var navigator = navigator
 
-    NavigationStack(path: $stackPath) {
+    NavigationStack(path: $navigator.stackPath) {
       NavigationStackContentView(
         searchName: appStates.searchText,
         stateFilter: appStates.activeBookingStateFilters,

@@ -13,6 +13,7 @@ import WidgetKit
 
 struct ContentView: View {
   @Environment(AppStates.self) var appStates
+  @Environment(Navigator.self) var navigator
   @Environment(\.modelContext) private var modelContext
   @Environment(\.requestReview) private var requestReview
   @Environment(\.scenePhase) var scenePhase
@@ -20,25 +21,23 @@ struct ContentView: View {
   @AppStorage("tmpBlurSensitive") var tmpBlurSensitive = false
 
   var body: some View {
-    TabView {
-      StatisticsView()
-        .tabItem {
-          Label("Statistics", systemImage: "chart.xyaxis.line")
-        }
-      if appStates.showTimelineTab {
-        TimelineView()
-          .tabItem {
-            Label("Timeline", systemImage: "calendar.day.timeline.left")
-          }
+    @Bindable var navigator = navigator
+
+    TabView(selection: $navigator.selectedTab) {
+      Tab("Statistics", systemImage: "chart.xyaxis.line", value: .statistics) {
+        StatisticsView()
       }
-      BookingNavigationStackView()
-        .tabItem {
-          Label("Bookings", systemImage: "list.dash")
+      if appStates.showTimelineTab {
+        Tab("Timeline", systemImage: "calendar.day.timeline.left", value: .timeline) {
+          TimelineView()
         }
-      SettingsNavigationStackView()
-        .tabItem {
-          Label("Settings", systemImage: "gear")
-        }
+      }
+      Tab("Bookings", systemImage: "list.dash", value: .bookings) {
+        BookingNavigationStackView()
+      }
+      Tab("Settings", systemImage: "gear", value: .settings) {
+        SettingsNavigationStackView()
+      }
     }
     .onChange(of: scenePhase) { _, newPhase in
       if !appStates.authenticationActive {

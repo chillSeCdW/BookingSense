@@ -28,6 +28,27 @@ struct TimelineEntryEntity: AppEntity {
   var tagName: String?
   var bookingEntryName: String?
 
+  init(uuid: String,
+       state: TimelineEntryState,
+       name: String,
+       amount: Decimal,
+       bookingType: BookingType,
+       isDue: Date,
+       completedAt: Date? = nil,
+       tagName: String? = nil,
+       bookingEntryName: String? = nil
+  ) {
+    self.uuid = uuid
+    self.state = state
+    self.name = name
+    self.amount = amount
+    self.bookingType = bookingType
+    self.isDue = isDue
+    self.completedAt = completedAt
+    self.tagName = tagName
+    self.bookingEntryName = bookingEntryName
+  }
+
   init(from model: BookingSchemaV5.TimelineEntry) {
     self.uuid = model.uuid
     self.state = TimelineEntryState(rawValue: model.state) ?? TimelineEntryState.open
@@ -54,8 +75,6 @@ struct TimelineEntryEntityQuery: EntityQuery {
 
   func suggestedEntities() async throws -> [TimelineEntryEntity] {
     let context = ModelContext(DataModel.shared.modelContainer)
-    let timelineEntryStateOpen = TimelineEntryState.open.rawValue
-
     let descriptor = FetchDescriptor<BookingSchemaV5.TimelineEntry>(
       sortBy: [.init(\.isDue)]
     )
