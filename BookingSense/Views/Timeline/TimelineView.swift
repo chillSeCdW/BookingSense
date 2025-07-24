@@ -40,6 +40,11 @@ struct TimelineView: View {
           isGeneratingTimeline = true
           await generatedTimelineEntries()
           isGeneratingTimeline = false
+          if appStates.autoTimeline {
+            if TimelineHandler.tickTimelineEntriesUntilTodayEntries(context: modelContext) > 0 {
+              WidgetCenter.shared.reloadTimelines(ofKind: "BookingTimeWidget")
+            }
+          }
         }
         .toolbar {
           ToolbarTimelineContent(
@@ -73,12 +78,14 @@ struct TimelineView: View {
     for entry in activeEntries {
       await MainActor.run {
         let latestDate = Constants.getLatestTimelineEntryDueDateFor(entry)
-        Constants.insertTimelineEntriesOf(entry,
+        let count = Constants.insertTimelineEntriesOf(entry,
                                           context: modelContext,
                                           latestTimelineDate: latestDate)
+        if count > 0 {
+          WidgetCenter.shared.reloadTimelines(ofKind: "BookingTimeWidget")
+        }
       }
     }
-    WidgetCenter.shared.reloadTimelines(ofKind: "BookingTimeWidget")
   }
 
   private func deleteAllItems() {

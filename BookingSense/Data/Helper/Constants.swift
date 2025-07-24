@@ -120,8 +120,8 @@ struct Constants {
     return 86400 * multiplier // 60 * 60 * 24 = 86400 one day
   }
 
-  static func insertTimelineEntriesOf(_ entry: BookingEntry, context: ModelContext, latestTimelineDate: Date? = nil) {
-    guard let entryDate = entry.date else { return }
+  static func insertTimelineEntriesOf(_ entry: BookingEntry, context: ModelContext, latestTimelineDate: Date? = nil) -> Int {
+    guard let entryDate = entry.date else { return 0 }
     var adjustingStartDate: Bool = false
 
     var calendar = Calendar(identifier: .gregorian)
@@ -146,19 +146,24 @@ struct Constants {
                                                         dayOfEntry: dayOfEntry
 
     )
+    if timelineEntryList.isEmpty {
+      return 0
+    }
 
     try? context.transaction {
-      timelineEntryList?.forEach { timelineEntry in
+      timelineEntryList.forEach { timelineEntry in
         context.insert(timelineEntry)
       }
     }
+
+    return timelineEntryList.count
   }
 
   static func generateTimelineEntriesFrom(bookingEntry: BookingEntry,
                                           entryDate: Date,
                                           startDate: Date? = nil,
                                           dayOfEntry: Int
-  ) -> [TimelineEntry]? {
+  ) -> [TimelineEntry] {
     let dateOneYearInFuture = getDateOfOneYearInFuture()
 
     let entryDates = self.getDatesForEntries(startDate ?? entryDate,

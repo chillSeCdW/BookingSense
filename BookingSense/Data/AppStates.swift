@@ -11,6 +11,8 @@ import SwiftData
 import BookingSenseData
 
 class AppStates: Observable, ObservableObject {
+  private let sharedDefaults = UserDefaults(suiteName: "group.com.chill.BookingSense")
+
   @Published var isTimeFilterDialogPresented: Bool = false
   @Published var isBookingFilterDialogPresented: Bool = false
 
@@ -83,7 +85,7 @@ class AppStates: Observable, ObservableObject {
   }
   @Published var autoTimeline: Bool {
     didSet {
-      UserDefaults.standard.set(autoTimeline, forKey: "autoTimeline")
+      sharedDefaults?.set(autoTimeline, forKey: "autoTimeline")
     }
   }
 
@@ -138,7 +140,7 @@ class AppStates: Observable, ObservableObject {
       UserDefaults.standard.bool(forKey: "showTimelineTab") :
       true
 
-    self.autoTimeline = UserDefaults.standard.bool(forKey: "autoTimeline")
+    self.autoTimeline = sharedDefaults?.bool(forKey: "autoTimeline") ?? false
   }
 
   func toggleBookingStateFilter(_ filter: BookingEntryState) {

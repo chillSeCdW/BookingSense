@@ -53,11 +53,6 @@ struct ContentView: View {
           }
         }
       }
-      if appStates.autoTimeline {
-        if TimelineHandler.tickTimelineEntriesUntilTodayEntries(context: modelContext) > 0 {
-          WidgetCenter.shared.reloadTimelines(ofKind: "BookingTimeWidget")
-        }
-      }
     }
     .onAppear {
       if numberOfVisits >= 5 {

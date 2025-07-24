@@ -25,6 +25,35 @@ struct BookingTimelineProvider: AppIntentTimelineProvider {
     return []
   }
 
+  func tickTimelineEntriesUntilTodayEntries() {
+    let today = Calendar.current.startOfDay(for: .now)
+    let timelineEntryStateDone = TimelineEntryState.open.rawValue
+
+    do {
+      let context = ModelContext(DataModel.shared.modelContainer)
+      let entries = try context.fetch(
+        FetchDescriptor<BookingSchemaV5.TimelineEntry>(
+          predicate: #Predicate { $0.isDue <= today && $0.state == timelineEntryStateDone },
+        )
+      )
+
+      if entries.count == 0 {
+        logger.debug("no entries to tick")
+        return
+      } else {
+        logger.debug("found \(entries.count) entries to tick")
+      }
+
+      for entry in entries {
+        entry.completedAt = entry.isDue
+        entry.state = TimelineEntryState.done.rawValue
+      }
+      try context.save()
+    } catch {
+      logger.info("Failed to tick entries: \(error)")
+    }
+  }
+
   func placeholder(in context: Context) -> BookingTimeEntry {
     return BookingTimeEntry(
       timelineEntrySnapshot: [TimelineEntryEntity(uuid: "someUUID",
@@ -64,10 +93,14 @@ struct BookingTimelineProvider: AppIntentTimelineProvider {
   }
 
   func timeline(for configuration: ConfigIntent, in context: Context) async -> Timeline<BookingTimeEntry> {
+    let autoTimeline = UserDefaults(suiteName: "group.com.chill.BookingSense")?.bool(forKey: "autoTimeline") ?? false
+    if autoTimeline {
+      tickTimelineEntriesUntilTodayEntries()
+    }
     var entries: [BookingTimeEntry] = []
     var snapshots: [TimelineEntryEntity] = []
     let timelineEntry = getTimelineEntries(for: configuration)
-    let twelveHours: TimeInterval = 60 * 60 * 12
+    let twentyFourHours: TimeInterval = 60 * 60 * 24
 
     timelineEntry.forEach { entry in
       snapshots.append(
@@ -83,7 +116,7 @@ struct BookingTimelineProvider: AppIntentTimelineProvider {
       )
     )
 
-    return Timeline(entries: entries, policy: .after(.now + twelveHours))
+    return Timeline(entries: entries, policy: .after(.now + twentyFourHours))
   }
 
   func recommendations() -> [AppIntentRecommendation<ConfigIntent>] {
