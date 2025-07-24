@@ -3,7 +3,7 @@
 
 import Foundation
 
-public enum TimelineEntryState: String, Codable, CaseIterable, Identifiable {
+public enum TimelineEntryState: String, Codable, CaseIterable, Identifiable, Sendable {
   public var id: Self { self }
 
   case open

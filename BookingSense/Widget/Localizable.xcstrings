@@ -1,6 +1,23 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
+    "%@" : {
+      "shouldTranslate" : false
+    },
+    "%@, %@" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "%1$@, %2$@"
+          }
+        }
+      },
+      "shouldTranslate" : false
+    },
+    "%lld navigation options" : {
+
+    },
     "All" : {
       "localizations" : {
         "de" : {
@@ -33,6 +50,54 @@
         }
       }
     },
+    "Allows the user to find booking entries" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ermöglicht dem Benutzer die Suche nach Buchungseinträgen"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Allows the user to find booking entries"
+          }
+        }
+      }
+    },
+    "Allows the user to find timeline entries" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ermöglicht dem Benutzer die Suche nach Zeitstrahleinträgen"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Allows the user to find timeline entries"
+          }
+        }
+      }
+    },
+    "Allows the user to navigate to a Tab" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ermöglicht es dem Benutzer zu einer Registerkarte zu navigieren"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Allows the user to navigate to a Tab"
+          }
+        }
+      }
+    },
     "Black" : {
       "localizations" : {
         "de" : {
@@ -43,11 +108,53 @@
         }
       }
     },
-    "Bookings check behaviour list" : {
-
+    "Booking Entry" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Buchungseintrag"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Booking Entry"
+          }
+        }
+      }
+    },
+    "Bookings" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Buchung"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bookings"
+          }
+        }
+      }
     },
     "Bookings type list" : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Buchungstyp"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Booking type"
+          }
+        }
+      }
     },
     "Checked" : {
       "localizations" : {
@@ -55,16 +162,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Abgehakt"
-          }
-        }
-      }
-    },
-    "Checkmark Timeline entry" : {
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Abhaken Zeitstrahleintrag"
           }
         }
       }
@@ -150,6 +247,38 @@
         }
       }
     },
+    "Find booking entries" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Buchungseinträge finden"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Find booking entries"
+          }
+        }
+      }
+    },
+    "Find timeline entries" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zeitstrahleinträge finden"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Find timeline entries"
+          }
+        }
+      }
+    },
     "Get quick access to your timeline" : {
       "localizations" : {
         "de" : {
@@ -208,6 +337,38 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Late"
+          }
+        }
+      }
+    },
+    "Navigate to ${navigationOption}" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Navigieren zu ${navigationOption}"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Navigate to ${navigationOption}"
+          }
+        }
+      }
+    },
+    "Navigate to Tab" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zu Tab navigieren"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Navigate to Tab"
           }
         }
       }
@@ -272,6 +433,16 @@
         }
       }
     },
+    "Settings" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Einstellungen"
+          }
+        }
+      }
+    },
     "Show" : {
       "localizations" : {
         "de" : {
@@ -298,6 +469,38 @@
         }
       }
     },
+    "Statistics" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Statistik"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Statistics"
+          }
+        }
+      }
+    },
+    "Tab" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tab"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tab"
+          }
+        }
+      }
+    },
     "Tap action" : {
       "localizations" : {
         "de" : {
@@ -314,12 +517,63 @@
         }
       }
     },
+    "Tick Timeline entry with behaviour" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Behaviour of ticking"
+          }
+        }
+      }
+    },
+    "Timeline" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zeitstrahl"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Timeline"
+          }
+        }
+      }
+    },
+    "Timeline check behaviour list" : {
+
+    },
+    "Timeline Entry" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zeitstrahleintrag"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Timeline Entry"
+          }
+        }
+      }
+    },
     "Timeline entry will be completed on configured day" : {
       "localizations" : {
         "de" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Zeitstrahleintrag anhand Konfiguration abschließen"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Timeline entry will be completed on configured day"
           }
         }
       }
@@ -352,6 +606,12 @@
     },
     "Toggle color in widget" : {
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Schalter Farbe im Widget"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -373,12 +633,18 @@
     "Unchecked" : {
 
     },
-    "UUID of TimelineEntry" : {
+    "Which Tab?" : {
       "localizations" : {
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "UUID des Zeistrahleintrags"
+            "value" : "Welcher Tab?"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Which Tab?"
           }
         }
       }

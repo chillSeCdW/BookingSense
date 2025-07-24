@@ -25,16 +25,45 @@ struct BookingTimelineProvider: AppIntentTimelineProvider {
     return []
   }
 
+  func tickTimelineEntriesUntilTodayEntries() {
+    let today = Calendar.current.startOfDay(for: .now)
+    let timelineEntryStateDone = TimelineEntryState.open.rawValue
+
+    do {
+      let context = ModelContext(DataModel.shared.modelContainer)
+      let entries = try context.fetch(
+        FetchDescriptor<BookingSchemaV5.TimelineEntry>(
+          predicate: #Predicate { $0.isDue <= today && $0.state == timelineEntryStateDone },
+        )
+      )
+
+      if entries.count == 0 {
+        logger.debug("no entries to tick")
+        return
+      } else {
+        logger.debug("found \(entries.count) entries to tick")
+      }
+
+      for entry in entries {
+        entry.completedAt = entry.isDue
+        entry.state = TimelineEntryState.done.rawValue
+      }
+      try context.save()
+    } catch {
+      logger.info("Failed to tick entries: \(error)")
+    }
+  }
+
   func placeholder(in context: Context) -> BookingTimeEntry {
     return BookingTimeEntry(
-      bookingTimeSnapshot: [BookingTimeSnapshot(uuid: "someUUID",
-                                               name: "example name",
-                                               bookingType: "minus",
-                                               amount: 50,
-                                               isDue: .now,
-                                               state: TimelineEntryState.open.rawValue,
-                                               completedAt: nil
-                                              )],
+      timelineEntrySnapshot: [TimelineEntryEntity(uuid: "someUUID",
+                                                  state: TimelineEntryState.open,
+                                                  name: "example name",
+                                                  amount: 50,
+                                                  bookingType: BookingType.minus,
+                                                  isDue: .now,
+                                                  completedAt: nil
+                                                 )],
       date: .now,
       configuration: ConfigIntent()
     )
@@ -44,61 +73,50 @@ struct BookingTimelineProvider: AppIntentTimelineProvider {
     let timelineEntry = getTimelineEntries(for: configuration).first
     if let entry = timelineEntry {
       return BookingTimeEntry(
-        bookingTimeSnapshot: [BookingTimeSnapshot(uuid: entry.uuid,
-                                                 name: entry.name,
-                                                 bookingType: entry.bookingType,
-                                                 amount: entry.amount,
-                                                 isDue: entry.isDue,
-                                                 state: entry.state,
-                                                 completedAt: entry.completedAt
-                                                )],
+        timelineEntrySnapshot: [TimelineEntryEntity(from: entry)],
         date: entry.isDue,
         configuration: ConfigIntent()
       )
     }
     return BookingTimeEntry(
-      bookingTimeSnapshot: [BookingTimeSnapshot(uuid: "someUUID",
-                                               name: "example name",
-                                               bookingType: "minus",
-                                               amount: 50,
-                                               isDue: .now,
-                                               state: TimelineEntryState.open.rawValue,
-                                               completedAt: nil
-                                              )],
+      timelineEntrySnapshot: [TimelineEntryEntity(uuid: "someUUID",
+                                                  state: TimelineEntryState.open,
+                                                  name: "example name",
+                                                  amount: 50,
+                                                  bookingType: BookingType.minus,
+                                                  isDue: .now,
+                                                  completedAt: nil
+                                                 )],
       date: .now,
       configuration: configuration
     )
   }
 
   func timeline(for configuration: ConfigIntent, in context: Context) async -> Timeline<BookingTimeEntry> {
+    let autoTimeline = UserDefaults(suiteName: "group.com.chill.BookingSense")?.bool(forKey: "autoTimeline") ?? false
+    if autoTimeline {
+      tickTimelineEntriesUntilTodayEntries()
+    }
     var entries: [BookingTimeEntry] = []
-    var snapshots: [BookingTimeSnapshot] = []
+    var snapshots: [TimelineEntryEntity] = []
     let timelineEntry = getTimelineEntries(for: configuration)
-    let twelveHours: TimeInterval = 60 * 60 * 12
+    let twentyFourHours: TimeInterval = 60 * 60 * 24
 
     timelineEntry.forEach { entry in
       snapshots.append(
-        BookingTimeSnapshot(
-          uuid: entry.uuid,
-          name: entry.name,
-          bookingType: entry.bookingType,
-          amount: entry.amount,
-          isDue: entry.isDue,
-          state: entry.state,
-          completedAt: entry.completedAt
-        )
+        TimelineEntryEntity(from: entry)
       )
     }
 
     entries.append(
       BookingTimeEntry(
-        bookingTimeSnapshot: snapshots,
+        timelineEntrySnapshot: snapshots,
         date: .now,
         configuration: configuration
       )
     )
 
-    return Timeline(entries: entries, policy: .after(.now + twelveHours))
+    return Timeline(entries: entries, policy: .after(.now + twentyFourHours))
   }
 
   func recommendations() -> [AppIntentRecommendation<ConfigIntent>] {

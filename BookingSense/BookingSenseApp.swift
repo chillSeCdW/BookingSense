@@ -10,6 +10,7 @@ import SwiftData
 import TipKit
 import MijickPopupView
 import BookingSenseData
+import AppIntents
 
 @main
 struct BookingSenseApp: App {
@@ -20,8 +21,11 @@ struct BookingSenseApp: App {
   let modelContainer = DataModel.shared.modelContainer
 
   @State private var appStates = AppStates()
+  @State private var navigator = Navigator.shared
 
   init() {
+    let navigator = self.navigator
+    AppDependencyManager.shared.add(dependency: navigator)
     setupVersion()
     if resetTips {
       resetTips = false
@@ -53,6 +57,7 @@ struct BookingSenseApp: App {
       ContentView()
         .implementPopupView()
         .environment(appStates)
+        .environmentObject(navigator)
     }
     .modelContainer(modelContainer)
   }
