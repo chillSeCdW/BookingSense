@@ -11,7 +11,7 @@
           "glass" : true,
           "hidden" : false,
           "image-name" : "TopBook.png 2.png",
-          "name" : "TopBook.png 2"
+          "name" : "TopBook.png"
         }
       ],
       "lighting" : "individual",
