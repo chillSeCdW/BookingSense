@@ -3,7 +3,7 @@
 
 import LocalAuthentication
 import UIKit
-import SwiftUICore
+import SwiftUI
 
 class BiometricHandler {
     static let shared = BiometricHandler()

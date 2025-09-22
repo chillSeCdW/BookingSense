@@ -120,6 +120,7 @@ struct Constants {
     return 86400 * multiplier // 60 * 60 * 24 = 86400 one day
   }
 
+  // swiftlint:disable:next line_length
   static func insertTimelineEntriesOf(_ entry: BookingEntry, context: ModelContext, latestTimelineDate: Date? = nil) -> Int {
     guard let entryDate = entry.date else { return 0 }
     var adjustingStartDate: Bool = false

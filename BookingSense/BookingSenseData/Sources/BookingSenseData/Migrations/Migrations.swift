@@ -28,12 +28,12 @@ public enum BookingMigrationV1ToV5: SchemaMigrationPlan {
     ]
   }
 
-  public nonisolated(unsafe) static let migrateV1ToV2 = MigrationStage.lightweight(
+  public static let migrateV1ToV2 = MigrationStage.lightweight(
     fromVersion: BookingSchemaV1.self,
     toVersion: BookingSchemaV2.self
   )
 
-  public nonisolated(unsafe) static let migrateV2ToV3 = MigrationStage.custom(fromVersion: BookingSchemaV2.self,
+  public static let migrateV2ToV3 = MigrationStage.custom(fromVersion: BookingSchemaV2.self,
                                                    toVersion: BookingSchemaV3.self,
                                                    willMigrate: nil,
                                                    didMigrate: { context in
@@ -61,12 +61,12 @@ public enum BookingMigrationV1ToV5: SchemaMigrationPlan {
     }
   })
 
-  public nonisolated(unsafe) static let migrateV3ToV4 = MigrationStage.lightweight(
+  public static let migrateV3ToV4 = MigrationStage.lightweight(
     fromVersion: BookingSchemaV3.self,
     toVersion: BookingSchemaV4.self
   )
 
-  public nonisolated(unsafe) static let migrateV4ToV5 = MigrationStage.lightweight(
+  public static let migrateV4ToV5 = MigrationStage.lightweight(
     fromVersion: BookingSchemaV4.self,
     toVersion: BookingSchemaV5.self
   )

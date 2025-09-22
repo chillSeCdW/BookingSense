@@ -2,7 +2,7 @@
 // Using Swift 6.0
 
 import Foundation
-import SwiftUICore
+import SwiftUI
 
 struct BookingEntryChartData {
   let id: String
