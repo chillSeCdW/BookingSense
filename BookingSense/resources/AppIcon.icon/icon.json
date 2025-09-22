@@ -1,0 +1,102 @@
+{
+  "fill" : {
+    "solid" : "display-p3:0.55766,0.57716,0.59247,1.00000"
+  },
+  "groups" : [
+    {
+      "blur-material" : null,
+      "hidden" : false,
+      "layers" : [
+        {
+          "glass" : true,
+          "hidden" : false,
+          "image-name" : "TopBook.png 2.png",
+          "name" : "TopBook.png 2"
+        }
+      ],
+      "lighting" : "individual",
+      "name" : "Top",
+      "opacity" : 1,
+      "shadow" : {
+        "kind" : "layer-color",
+        "opacity" : 1
+      },
+      "specular" : true,
+      "translucency" : {
+        "enabled" : false,
+        "value" : 0.5
+      }
+    },
+    {
+      "blur-material" : null,
+      "layers" : [
+        {
+          "blend-mode" : "normal",
+          "glass" : false,
+          "hidden" : false,
+          "image-name" : "Pages.png",
+          "name" : "Pages"
+        },
+        {
+          "glass" : true,
+          "hidden" : false,
+          "image-name" : "BookSide.png",
+          "name" : "BookSide"
+        }
+      ],
+      "lighting" : "individual",
+      "name" : "Bottom",
+      "shadow" : {
+        "kind" : "neutral",
+        "opacity" : 0.5
+      },
+      "translucency" : {
+        "enabled" : true,
+        "value" : 0.5
+      }
+    },
+    {
+      "layers" : [
+        {
+          "glass" : true,
+          "image-name" : "Card3.png",
+          "name" : "Card3"
+        },
+        {
+          "glass" : true,
+          "image-name" : "Card2.png",
+          "name" : "Card2"
+        },
+        {
+          "glass" : true,
+          "image-name" : "Card1.png",
+          "name" : "Card1",
+          "opacity-specializations" : [
+            {
+              "value" : 1
+            },
+            {
+              "appearance" : "tinted",
+              "value" : 1
+            }
+          ]
+        }
+      ],
+      "name" : "Cards",
+      "shadow" : {
+        "kind" : "neutral",
+        "opacity" : 0.5
+      },
+      "translucency" : {
+        "enabled" : true,
+        "value" : 0.5
+      }
+    }
+  ],
+  "supported-platforms" : {
+    "circles" : [
+      "watchOS"
+    ],
+    "squares" : "shared"
+  }
+}

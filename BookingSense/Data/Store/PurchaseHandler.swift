@@ -3,7 +3,7 @@
 
 import StoreKit
 import OSLog
-import SwiftUICore
+import SwiftUI
 
 actor PurchaseHandler {
   private let logger = Logger(subsystem: "BookingSense", category: "PurchaseHandler")
